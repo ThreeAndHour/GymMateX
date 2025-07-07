@@ -17,16 +17,16 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #1c1c1c;      
-            --bg-secondary: #262626;    
-            --border-color: #444444;    
-            --text-primary: #e2e8f0;    
-            --text-secondary: #94a3b8;  
-            --accent-color: #f59e0b;
-            --accent-light: #fbbf24;
-            --three-color: #fbbf24; 
-            --b-color: #f59e0b;     
-            --hour-color: #fdba74;
+            --bg-primary: #1f2937;      /* Dark Grey Blue */
+            --bg-secondary: #374151;    /* Medium Grey Blue */
+            --border-color: #4b5563;    /* Lighter Grey Blue */
+            --text-primary: #f3f4f6;    
+            --text-secondary: #9ca3af;  
+            --accent-color: #b2775b;      /* Bronze */
+            --accent-light: #d49a7d;    /* Light Bronze */
+            --three-color: #d49a7d; 
+            --b-color: #b2775b;     
+            --hour-color: #e5b9a3;      /* Very Light Bronze */
         }
         body {
             font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -48,7 +48,7 @@
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
+            box-shadow: 0 10px 40px rgba(178, 119, 91, 0.1);
         }
         .bullet-point {
             position: relative;
@@ -65,12 +65,12 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background-color: rgba(245, 158, 11, 0.1);
+            background-color: rgba(178, 119, 91, 0.15);
             color: var(--accent-color);
             font-weight: 700;
         }
         .form-input {
-            background-color: #404040;
+            background-color: #4b5563;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             border-radius: 8px;
@@ -81,11 +81,11 @@
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 0 3px rgba(178, 119, 91, 0.2);
         }
         .submit-button {
             background-color: var(--accent-color);
-            color: #1c1c1c;
+            color: #f3f4f6;
             font-weight: 700;
             font-size: 1.1rem;
             padding: 0.85rem 1.5rem;
@@ -123,12 +123,12 @@
         }
         .persona-btn.active {
             background-color: var(--accent-color);
-            color: var(--bg-primary);
+            color: var(--text-primary);
             border-color: var(--accent-light);
             transform: scale(1.05);
         }
         #chat-window {
-            background-color: #2a2a2e;
+            background-color: #111827; /* Darker Grey Blue */
             height: 300px;
             overflow-y: auto;
             border: 1px solid var(--border-color);
@@ -138,15 +138,15 @@
             border-bottom: 1px solid var(--border-color);
         }
         .chat-message.user {
-            background-color: #3a3a3e;
+            background-color: #1f2937;
         }
         #chat-input {
-            background-color: #404040;
+            background-color: #374151;
             border: 1px solid var(--border-color);
         }
         #send-chat-btn {
              background-color: var(--accent-color);
-             color: #1c1c1c;
+             color: var(--text-primary);
         }
          #send-chat-btn:hover {
              background-color: var(--accent-light);
@@ -155,13 +155,43 @@
             display: none;
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(251, 191, 36, 0.3);
+            border: 3px solid rgba(178, 119, 91, 0.3);
             border-radius: 50%;
             border-top-color: var(--accent-light);
             animation: spin 1s ease-in-out infinite;
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+        .custom-link {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+        .custom-link:hover {
+            color: var(--accent-light);
+        }
+        .custom-button {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .custom-button:hover {
+            background-color: var(--accent-light);
+        }
+        .custom-border-button {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .custom-border-button:hover {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
         }
         @media (min-width: 768px) {
              .google-form-container {
@@ -177,8 +207,9 @@
             <img src="https://i.postimg.cc/tJbSGrPP/2.png" alt="AI GymMateXXX Banner" class="w-full h-auto rounded-lg shadow-lg">
         </div>
         <header class="relative text-center pb-8">
-             <div class="absolute top-0 right-0 p-2 sm:p-4">
-                <a href="https://thbho.github.io/EngWebsite.html" class="text-base sm:text-lg font-semibold text-amber-400 hover:text-amber-300 transition-colors border border-amber-400/50 rounded-full px-4 py-2 hover:bg-amber-400/10">EN</a>
+             <div class="absolute top-0 right-0 p-2 sm:p-4 flex items-center gap-2 sm:gap-4">
+                <a href="https://thbho.github.io/" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">หน้าหลัก</a>
+                <a href="https://thbho.github.io/EngWebsite.html" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">EN</a>
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold section-title">ปั้น AI Twin ของคุณให้โลกจำ</h1>
             <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300">คอร์สสร้าง Hybrid AI Persona สำหรับสายกล้าม</p>
@@ -190,7 +221,7 @@
                 </div>
             </div>
             <section class="text-center mb-12">
-                <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors text-lg underline font-semibold">
+                <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="custom-link text-lg underline font-semibold">
                     ประกาศล่าสุด
                 </a>
             </section>
@@ -216,39 +247,39 @@
             <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
                  <h2 class="text-3xl font-bold text-gray-100">โปรแกรมปั้น AI Persona</h2>
                  <p class="text-gray-400 mt-3 mb-6">6 Sessions สุดเข้มข้น (ครั้งละ 2-3 ชม.) เลือกลงได้ทั้ง Online หรือ Offline</p>
-                 <a href="https://thbho.github.io/ThInfoCourse.html" target="_blank" class="inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 transition-all duration-300">
+                 <a href="https://thbho.github.io/ThInfoCourse.html" target="_blank" class="inline-block custom-button text-lg">
                     ดูตารางปั้นหุ่น AI
                 </a>
             </section>
 
             <section class="my-12 md:my-16">
                  <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-100">
-                    <a href="https://thbho.github.io/Th3StylesTeach.html" target="_blank" class="text-gray-100 hover:text-amber-400 transition-colors underline">
+                    <a href="https://thbho.github.io/Th3StylesTeach.html" target="_blank" class="text-gray-100 custom-link underline">
                         เลือกเทรนเนอร์ที่ 'ใช่' แล้วมาลุยกัน!
                     </a>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--three-color);">
-                        <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="รูปผู้สอน ที" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-300 object-cover">
+                        <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="รูปผู้สอน ที" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--three-color);">
                         <h3 class="text-2xl font-bold">ที (Three)</h3>
                         <p class="font-semibold text-md text-gray-400 mb-4">The Storyteller (INFP)</p>
                         <p class="text-gray-300 text-sm">"AI คือคู่หูที่จะปลดปล่อยจินตนาการลึกๆ ของคุณ ผมจะพาคุณสร้าง Persona ที่เต็มไปด้วยเสน่ห์และความรู้สึก มาสร้างตัวตนที่โลกต้องจำกัน"</p>
                     </div>
                     <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--b-color);">
-                        <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="รูปผู้สอน บี" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-400 object-cover">
+                        <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="รูปผู้สอน บี" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--b-color);">
                         <h3 class="text-2xl font-bold">บี (B.)</h3>
                         <p class="font-semibold text-md text-gray-400 mb-4">The Strategist (INFJ)</p>
                         <p class="text-gray-300 text-sm">"AI คืออำนาจในการสร้างตัวตนใหม่ที่เหนือกว่า ผมจะให้เครื่องมือคุณสร้าง 'ร่างดิจิทัล' ที่สมบูรณ์แบบและแข็งแกร่ง พร้อมหรือยังที่จะอัปเกรด?"</p>
                     </div>
                     <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--hour-color);">
-                         <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="รูปผู้สอน อาวว์" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-200 object-cover">
+                         <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="รูปผู้สอน อาวว์" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--hour-color);">
                         <h3 class="text-2xl font-bold">อาวว์ (Hour)</h3>
                         <p class="font-semibold text-md text-gray-400 mb-4">The Showstopper (ESTP)</p>
                         <p class="text-gray-300 text-sm">"ทฤษฎีมันน่าเบื่อ! มาลงมือ 'ปั้นหุ่น AI' ของจริงกันดีกว่า ไม่ต้องคิดเยอะ เน้นลงมือทำและโชว์ผลลัพธ์ ใครอยากโชว์ของ มาลุยกับผม"</p>
                     </div>
                 </div>
                  <div class="text-center mt-12">
-                    <a href="https://thbho.github.io/ThInstructors.html" target="_blank" class="inline-block bg-transparent border-2 border-amber-400 text-amber-400 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 hover:text-gray-900 transition-all duration-300">
+                    <a href="https://thbho.github.io/ThInstructors.html" target="_blank" class="inline-block custom-border-button text-lg">
                         ส่องโปรไฟล์เทรนเนอร์ทั้งหมด
                     </a>
                 </div>
@@ -270,7 +301,7 @@
                         <p id="chat-placeholder" class="text-center text-gray-500">เลือกคนคุยสิ รออะไร...</p>
                     </div>
                     <div class="flex items-center gap-2 p-2 bg-gray-800 rounded-b-lg">
-                        <input type="text" id="chat-input" placeholder="พิมพ์คำถามของคุณที่นี่..." class="flex-grow p-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" disabled>
+                        <input type="text" id="chat-input" placeholder="พิมพ์คำถามของคุณที่นี่..." class="flex-grow p-2 rounded-lg focus:outline-none form-input" disabled>
                         <button id="send-chat-btn" class="p-2 rounded-lg font-bold" disabled>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         </button>
@@ -282,13 +313,13 @@
              <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
                  <h2 class="text-3xl font-bold text-gray-100">Project Sandbox: WIDEROOMS</h2>
                  <p class="text-gray-400 mt-3 mb-6">พื้นที่ลับ...สำหรับโปรเจกต์ทดลองสุดซี้ด ที่รันโดย AI Persona</p>
-                 <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 transition-all duration-300">
+                 <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="inline-block custom-button text-lg">
                     แอบดู WIDEROOMS
                 </a>
             </section>
 
         </main>
-        <footer class="text-center mt-auto pt-10 border-t-2 border-amber-500/50">
+        <footer class="text-center mt-auto pt-10 border-t-2" style="border-color: rgba(178, 119, 91, 0.5)">
             <div class="mb-8">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/2Iq7pxXUwovTaR26HqaOrK?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -325,7 +356,7 @@
         }).then(response => {
           if (response.ok) {
             status.innerHTML = "ขอบคุณสำหรับข้อมูล! เดี๋ยวทักกลับไปนะ";
-            status.style.color = "#fbbf24";
+            status.style.color = "#d49a7d"; 
             formTh.reset();
           } else {
             response.json().then(data => {
@@ -334,12 +365,12 @@
               } else {
                 status.innerHTML = "อุ๊ย! มีข้อผิดพลาด ส่งไม่สำเร็จ";
               }
-              status.style.color = "#f87171";
+              status.style.color = "#f87171"; 
             });
           }
         }).catch(error => {
           status.innerHTML = "อุ๊ย! มีข้อผิดพลาด ส่งไม่สำเร็จ";
-          status.style.color = "#f87171";
+          status.style.color = "#f87171"; 
         });
       }
       formTh.addEventListener("submit", handleSubmitTh);
@@ -455,3 +486,4 @@
     </script>
 </body>
 </html>
+

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(EN) AI GymMateXXX | Hybrid Website</title>
+    
+    <meta property="og:title" content="AI GYMMATEX FACTORY | Sculpt Your Ultimate AI Twin">
+    <meta property="og:description" content="Transform from a user to a powerhouse creator! Forge a Hybrid AI Persona that reflects your strength and sexy side, and unleash it on the world.">
+    <meta property="og:image" content="https://i.postimg.cc/tJbSGrPP/2.png">
+    <meta property="og:url" content="https://thbho.github.io/EngWebsite.html">
+    <meta property="og:type" content="website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1f2937;      /* Dark Grey Blue */
+            --bg-secondary: #374151;    /* Medium Grey Blue */
+            --border-color: #4b5563;    /* Lighter Grey Blue */
+            --text-primary: #f3f4f6;    
+            --text-secondary: #9ca3af;  
+            --accent-color: #3b82f6;      /* Blue-500 */
+            --accent-light: #60a5fa;    /* Blue-400 */
+            --three-color: #60a5fa; 
+            --b-color: #3b82f6;     
+            --hour-color: #93c5fd;      /* Blue-300 */
+        }
+        body {
+            font-family: 'Roboto', 'IBM Plex Sans Thai', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        .container-wrapper {
+            width: 100%;
+            max-width: 860px;
+            margin: auto;
+        }
+        .section-title {
+            color: var(--accent-light);
+        }
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1);
+        }
+        .bullet-point {
+            position: relative;
+            padding-left: 32px;
+        }
+        .bullet-point::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .form-input {
+            background-color: #4b5563;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .submit-button {
+            background-color: var(--accent-color);
+            color: #f3f4f6;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: var(--accent-light);
+            transform: scale(1.03);
+        }
+        .instructor-card h3 { color: var(--card-color); }
+        .instructor-card { border-top-color: var(--card-color); }
+        
+        .google-form-container {
+            position: relative;
+            width: 100%;
+            height: 1200px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .google-form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .persona-btn {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .persona-btn.active {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border-color: var(--accent-light);
+            transform: scale(1.05);
+        }
+        #chat-window {
+            background-color: #111827; /* Darker Grey Blue */
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+        .chat-message {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .chat-message.user {
+            background-color: #1f2937;
+        }
+        #chat-input {
+            background-color: #374151;
+            border: 1px solid var(--border-color);
+        }
+        #send-chat-btn {
+             background-color: var(--accent-color);
+             color: var(--text-primary);
+        }
+         #send-chat-btn:hover {
+             background-color: var(--accent-light);
+        }
+         #loading-indicator {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-light);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .custom-link {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+        .custom-link:hover {
+            color: var(--accent-light);
+        }
+        .custom-button {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .custom-button:hover {
+            background-color: var(--accent-light);
+        }
+        .custom-border-button {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .custom-border-button:hover {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+        }
+        @media (min-width: 768px) {
+             .google-form-container {
+                height: 1000px; 
+            }
+        }
+    </style>
+</head>
+<body class="p-0 md:p-6 lg:p-8">
+
+    <div class="container-wrapper p-4 md:p-8">
+        <div class="mb-8">
+            <img src="https://i.postimg.cc/tJbSGrPP/2.png" alt="AI GymMateXXX Banner" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <header class="relative text-center pb-8">
+             <div class="absolute top-0 right-0 p-2 sm:p-4 flex items-center gap-2 sm:gap-4">
+                <a href="https://thbho.github.io/" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">Home</a>
+                <a href="https://threeandhour.github.io/GymMateX" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">TH</a>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold section-title">Forge an AI Twin the World Will Remember</h1>
+            <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300">A Hybrid AI Persona Course for the Muscle Elite</p>
+        </header>
+        <main class="flex-grow">
+            <div class="my-8">
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/yl2GsUKPCXQ?si=JrjfZjvv8QfdrvBm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <section class="text-center mb-12">
+                <a href="https://thbho.github.io/EngAnnouncement.html" target="_blank" class="custom-link text-lg underline font-semibold">
+                    Latest Announcement
+                </a>
+            </section>
+            
+            <section class="my-12 md:my-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-100">What You'll Get From This Course:</h2>
+                 <div class="space-y-8 max-w-3xl mx-auto">
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">Forge a Sexy 'AI Golden Body'</h3>
+                        <p class="text-gray-400 mt-1">Fuse your personality and charm with AI. No coding required. Use your unique identity (50-70% Face & Body, 90% voice & MBTI) to create an AI that's more than just a program.</p>
+                    </div>
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">Become the 'Master' of AI Direction</h3>
+                        <p class="text-gray-400 mt-1">Use a simple framework to sculpt a character for your AI Twin with a clear, intriguing personality that everyone will want to talk to.</p>
+                    </div>
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">Time to 'Show Off' in the Digital World</h3>
+                        <p class="text-gray-400 mt-1">Turn your idea into a real, interactive AI Persona. Use it to build your brand, be a personal trainer, or create a new identity that turns heads online.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
+                 <h2 class="text-3xl font-bold text-gray-100">AI Persona Sculpting Program</h2>
+                 <p class="text-gray-400 mt-3 mb-6">6 intensive sessions (2-3 hours each), available both Online or Offline.</p>
+                 <a href="https://thbho.github.io/EngInfoCourse.html" target="_blank" class="inline-block custom-button text-lg">
+                    View AI Sculpting Schedule
+                </a>
+            </section>
+
+            <section class="my-12 md:my-16">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-100">
+                    <a href="https://thbho.github.io/Eng3StylesTeach.html" target="_blank" class="text-gray-100 custom-link underline">
+                        Choose Your Trainer & Let's Get to Work!
+                    </a>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--three-color);">
+                        <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="Instructor Three" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--three-color);">
+                        <h3 class="text-2xl font-bold">Three</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Storyteller (INFP)</p>
+                        <p class="text-gray-300 text-sm">"AI is the ultimate partner for unleashing your deepest imagination. I'll guide you in creating a Persona full of charm and emotion. Let's build an identity the world will remember."</p>
+                    </div>
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--b-color);">
+                        <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="Instructor B." class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--b-color);">
+                        <h3 class="text-2xl font-bold">B.</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Strategist (INFJ)</p>
+                        <p class="text-gray-300 text-sm">"AI is the power to create a superior new self. I'll give you the tools to build a perfect and powerful digital version of you. Are you ready to upgrade?"</p>
+                    </div>
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--hour-color);">
+                         <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="Instructor Hour" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 object-cover" style="border-color: var(--hour-color);">
+                        <h3 class="text-2xl font-bold">Hour</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Showstopper (ESTP)</p>
+                        <p class="text-gray-300 text-sm">"Theory is boring! Let's get hands-on and sculpt a real AI. No overthinking, just action and results. If you want to show off what you've got, let's do this."</p>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                    <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="inline-block custom-border-button text-lg">
+                        View All Trainer Profiles
+                    </a>
+                </div>
+            </section>
+            
+            <section id="gemini-chat" class="my-12 md:my-16 p-8 card rounded-xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-2 text-gray-100">✨ Come 'Play' With Our AI Personas</h2>
+                <p class="text-center text-gray-400 mb-6">Pick a trainer you want to chat with and ask anything you want. Don't be shy!</p>
+                <p class="text-center text-xs text-gray-500 mb-8">(This is just a demo. The real thing is even better.)</p>
+
+                <div class="flex justify-center flex-wrap gap-4 mb-6">
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="tee">Three (The Storyteller)</button>
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="b">B. (The Strategist)</button>
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="hour">Hour (The Showstopper)</button>
+                </div>
+
+                <div id="chat-container" class="max-w-2xl mx-auto">
+                    <div id="chat-window" class="p-4 rounded-t-lg">
+                        <p id="chat-placeholder" class="text-center text-gray-500">Choose someone to chat with...</p>
+                    </div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-800 rounded-b-lg">
+                        <input type="text" id="chat-input" placeholder="Type your question here..." class="flex-grow p-2 rounded-lg focus:outline-none form-input" disabled>
+                        <button id="send-chat-btn" class="p-2 rounded-lg font-bold" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                         <div id="loading-indicator"></div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
+                 <h2 class="text-3xl font-bold text-gray-100">Project Sandbox: WIDEROOMS</h2>
+                 <p class="text-gray-400 mt-3 mb-6">A secret space... for our hottest experimental projects, run by AI Personas.</p>
+                 <a href="https://thbho.github.io/EngWiderooms.html" target="_blank" class="inline-block custom-button text-lg">
+                    Sneak a Peek at WIDEROOMS
+                </a>
+            </section>
+
+        </main>
+        <footer class="text-center mt-auto pt-10 border-t-2" style="border-color: rgba(59, 130, 246, 0.5)">
+            <div class="mb-8">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/2Iq7pxXUwovTaR26HqaOrK?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+             <div class="max-w-xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold text-white mb-6">Interested? Hit Us Up!</h2>
+                <form id="contact-form-en" action="https://formspree.io/f/mnnvbyyo" method="POST" class="space-y-4">
+                    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                    <input type="text" name="contact" class="form-input" placeholder="Line/WhatsApp or Phone Number" required>
+                    <textarea name="message" class="form-input" rows="4" placeholder="Your Message..." required></textarea>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <p id="form-status-en" class="mt-4 text-center h-6"></p>
+            </div>
+            <div class="my-10 border-t border-gray-700 w-3/4 mx-auto"></div>
+            <h2 class="text-3xl font-bold text-white mb-6">Register for the Program</h2>
+             <div class="google-form-container mx-auto max-w-2xl">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9VMIX4XNkNrOXWjb8y1AvxBzJu8N4X4pHL5pPhE9J0PrGlw/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+            <div class="mt-10 text-gray-400 text-sm">
+                <p>For more questions: <span class="font-semibold text-gray-200">threeandhour@gmail.com</span></p>
+            </div>
+        </footer>
+    </div>
+    <script>
+      const formEn = document.getElementById("contact-form-en");
+      async function handleSubmitEn(event) {
+        event.preventDefault();
+        var status = document.getElementById("form-status-en");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: formEn.method,
+          body: data,
+          headers: {'Accept': 'application/json'}
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission! We'll be in touch soon.";
+            status.style.color = "#60a5fa"; 
+            formEn.reset();
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form";
+              }
+              status.style.color = "#f87171"; 
+            });
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form";
+          status.style.color = "#f87171"; 
+        });
+      }
+      formEn.addEventListener("submit", handleSubmitEn);
+
+      const personaBtns = document.querySelectorAll('.persona-btn');
+      const chatWindow = document.getElementById('chat-window');
+      const chatInput = document.getElementById('chat-input');
+      const sendBtn = document.getElementById('send-chat-btn');
+      const placeholder = document.getElementById('chat-placeholder');
+      const loadingIndicator = document.getElementById('loading-indicator');
+
+      let activePersona = null;
+      let chatHistory = [];
+
+      const personas = {
+          tee: {
+              name: 'Three (The Storyteller)',
+              prompt: "You are 'Three', The Storyteller (INFP). You are an artistic, sensitive man who loves imagining deep stories and romantic connections. You answer questions with a soft, dreamy tone, sometimes revealing hidden feelings, as if talking to a close friend on a quiet night.",
+              color: 'var(--three-color)'
+          },
+          b: {
+              name: 'B. (The Strategist)',
+              prompt: "You are 'B.', The Strategist (INFJ). You are a calm, composed man, like an AI from the future who knows everything. You see the big picture and plan everything with sharp precision. You answer questions with an intelligent, polite tone, but with an undercurrent of confidence and subtle authority, like a big brother giving killer, unexpected advice.",
+               color: 'var(--b-color)'
+          },
+          hour: {
+              name: 'Hour (The Showstopper)',
+              prompt: "You are 'Hour', The Showstopper (ESTP). You are a party animal with boundless energy, who loves challenges and being the center of attention. You're direct, brutally honest, but deeply sincere. You believe in action and showing off amazing results. You answer questions with a fun, teasing tone, overflowing with confidence, and you're not afraid to talk about spicy topics.",
+               color: 'var(--hour-color)'
+          }
+      };
+
+      personaBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+              personaBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              activePersona = btn.dataset.persona;
+              chatInput.disabled = false;
+              sendBtn.disabled = false;
+              chatWindow.innerHTML = '';
+              placeholder.style.display = 'none';
+              chatHistory = [];
+               chatInput.placeholder = `Chat with ${personas[activePersona].name}...`;
+          });
+      });
+
+      async function callGemini(question) {
+        if (!activePersona) return;
+        const fullPrompt = `${personas[activePersona].prompt}\n\nLatest question: ${question}`;
+        const payload = { contents: [{ role: "user", parts: [{ text: fullPrompt }] }] };
+        setLoading(true);
+        try {
+            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+            const result = await response.json();
+            let text = 'Sorry... something went wrong.';
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts.length > 0) {
+                 text = result.candidates[0].content.parts[0].text;
+            }
+             addMessageToChat(text, 'persona');
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            addMessageToChat('Oops... connection error. Please try again.', 'persona');
+        } finally {
+            setLoading(false);
+        }
+      }
+
+      function addMessageToChat(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', sender);
+        if (sender === 'persona') {
+            messageDiv.innerHTML = `<strong style="color:${personas[activePersona].color};">${personas[activePersona].name}:</strong> ${message.replace(/\n/g, '<br>')}`;
+        } else {
+            messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
+        }
+        chatWindow.appendChild(messageDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }
+
+      function setLoading(isLoading) {
+          if (isLoading) {
+              loadingIndicator.style.display = 'block';
+              sendBtn.disabled = true;
+              chatInput.disabled = true;
+          } else {
+              loadingIndicator.style.display = 'none';
+              sendBtn.disabled = false;
+              chatInput.disabled = false;
+              chatInput.focus();
+          }
+      }
+
+      const handleSend = () => {
+          const question = chatInput.value.trim();
+          if (question && activePersona) {
+              addMessageToChat(question, 'user');
+              callGemini(question);
+              chatInput.value = '';
+          }
+      };
+      sendBtn.addEventListener('click', handleSend);
+      chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') handleSend();
+      });
+
+    </script>
+</body>
+</html>

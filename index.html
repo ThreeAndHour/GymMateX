@@ -17,16 +17,16 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Mali:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #68869a;      /* Muted Blue-Grey */
-            --bg-secondary: #5a7689;    /* Darker shade for cards */
-            --border-color: #7f99aa;    /* Lighter shade for borders */
-            --text-primary: #f0f8ff;    /* AliceBlue, for main text */
-            --text-secondary: #b0c4de;  /* LightSteelBlue, for secondary text */
-            --accent-color: #8f391d;      /* Rusty Red/Brown */
-            --accent-light: #b25e42;    /* Lighter Rusty Red/Brown */
-            --three-color: #b25e42; 
-            --b-color: #8f391d;     
-            --hour-color: #d98c71;      /* Very Light Rusty Red/Brown */
+            --bg-primary: #1c1c1c;      /* Dark Grey */
+            --bg-secondary: #262626;    /* Lighter Dark Grey */
+            --border-color: #444444;    /* Grey border */
+            --text-primary: #e2e8f0;    /* Light Grey Text */
+            --text-secondary: #94a3b8;  /* Muted Grey Text */
+            --accent-color: #f59e0b;      /* Amber/Gold */
+            --accent-light: #fbbf24;    /* Lighter Amber/Gold */
+            --three-color: #fbbf24; 
+            --b-color: #f59e0b;     
+            --hour-color: #fdba74;      /* Very Light Amber/Gold */
         }
         body {
             font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -51,7 +51,7 @@
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 40px rgba(143, 57, 29, 0.1);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
         }
         .bullet-point {
             position: relative;
@@ -68,12 +68,12 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background-color: rgba(143, 57, 29, 0.15);
+            background-color: rgba(245, 158, 11, 0.15);
             color: var(--accent-color);
             font-weight: 700;
         }
         .form-input {
-            background-color: var(--bg-secondary);
+            background-color: #404040;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             border-radius: 8px;
@@ -84,11 +84,11 @@
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(143, 57, 29, 0.2);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
         }
         .submit-button {
             background-color: var(--accent-color);
-            color: #f0f8ff;
+            color: #1c1c1c;
             font-weight: 700;
             font-size: 1.1rem;
             padding: 0.85rem 1.5rem;
@@ -127,12 +127,12 @@
         }
         .persona-btn.active {
             background-color: var(--accent-color);
-            color: var(--text-primary);
+            color: #1c1c1c;
             border-color: var(--accent-light);
             transform: scale(1.05);
         }
         #chat-window {
-            background-color: #587588;
+            background-color: #1a1a1a;
             height: 300px;
             overflow-y: auto;
             border: 1px solid var(--border-color);
@@ -142,15 +142,15 @@
             border-bottom: 1px solid var(--border-color);
         }
         .chat-message.user {
-            background-color: #68869a;
+            background-color: #262626;
         }
         #chat-input {
-            background-color: #587588;
+            background-color: #404040;
             border: 1px solid var(--border-color);
         }
         #send-chat-btn {
              background-color: var(--accent-color);
-             color: var(--text-primary);
+             color: #1c1c1c;
         }
          #send-chat-btn:hover {
              background-color: var(--accent-light);
@@ -159,7 +159,7 @@
             display: none;
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(143, 57, 29, 0.3);
+            border: 3px solid rgba(245, 158, 11, 0.3);
             border-radius: 50%;
             border-top-color: var(--accent-light);
             animation: spin 1s ease-in-out infinite;
@@ -190,7 +190,7 @@
         }
         .community-button:hover {
             background-color: var(--accent-color);
-            color: var(--text-primary);
+            color: #1c1c1c;
             transform: translateY(-2px);
         }
         .community-button svg {
@@ -199,7 +199,7 @@
         }
         .custom-button {
             background-color: var(--accent-color);
-            color: var(--text-primary);
+            color: #1c1c1c;
             font-weight: bold;
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
@@ -218,7 +218,7 @@
         }
         .custom-border-button:hover {
             background-color: var(--accent-color);
-            color: var(--text-primary);
+            color: #1c1c1c;
         }
         @media (min-width: 768px) {
              .google-form-container {
@@ -353,7 +353,7 @@
             </section>
 
         </main>
-        <footer class="text-center mt-auto pt-10 border-t-2" style="border-color: rgba(178, 119, 91, 0.2);">
+        <footer class="text-center mt-auto pt-10 border-t-2" style="border-color: rgba(143, 57, 29, 0.2);">
             <div class="mb-8">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/4qp2ZKyAGTsr3ioFYftJHz?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>

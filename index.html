@@ -21,12 +21,12 @@
             --bg-secondary: #1e5272;    /* Medium Sapphire Blue */
             --border-color: #2f6484;    /* Lighter Sapphire Blue */
             --text-primary: #f0f8ff;    /* AliceBlue */
-            --text-secondary: #a9c1d0;  /* Light Blue-Grey */
-            --accent-color: #8f391d;      /* Rusty Red/Brown */
-            --accent-light: #b25e42;    /* Lighter Rusty Red/Brown */
-            --three-color: #b25e42; 
-            --b-color: #8f391d;     
-            --hour-color: #d98c71;      /* Very Light Rusty Red/Brown */
+            --text-secondary: #d1d5db;  /* Light Grey for better readability */
+            --accent-color: #f97316;      /* Vibrant Orange */
+            --accent-light: #fb923c;    /* Lighter Orange */
+            --three-color: #fb923c; 
+            --b-color: #f97316;     
+            --hour-color: #fdba74;      /* Very Light Orange */
         }
         body {
             font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -51,7 +51,7 @@
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 40px rgba(143, 57, 29, 0.1);
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.1);
         }
         .bullet-point {
             position: relative;
@@ -68,7 +68,7 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background-color: rgba(143, 57, 29, 0.15);
+            background-color: rgba(249, 115, 22, 0.15);
             color: var(--accent-color);
             font-weight: 700;
         }
@@ -84,7 +84,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(143, 57, 29, 0.2);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
         }
         .submit-button {
             background-color: var(--accent-color);
@@ -127,7 +127,7 @@
         }
         .persona-btn.active {
             background-color: var(--accent-color);
-            color: var(--text-primary);
+            color: #f0f8ff;
             border-color: var(--accent-light);
             transform: scale(1.05);
         }
@@ -159,7 +159,7 @@
             display: none;
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(143, 57, 29, 0.3);
+            border: 3px solid rgba(249, 115, 22, 0.3);
             border-radius: 50%;
             border-top-color: var(--accent-light);
             animation: spin 1s ease-in-out infinite;
@@ -561,4 +561,3 @@
     </script>
 </body>
 </html>
-

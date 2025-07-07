@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(TH) AI GymMateXXX | Hybrid Website</title>
+    
+    <meta property="og:title" content="AI GYMMATEX FACTORY | ปั้น AI Twin สุดแซ่บในแบบของคุณ">
+    <meta property="og:description" content="เปลี่ยนคุณจากแค่ User ให้เป็น Creator สุดปัง! ปลุกปั้น AI Persona ที่สะท้อนตัวตนสุดแข็งแกร่งและเซ็กซี่ของคุณ แล้วปลดปล่อยให้โลกรู้">
+    <meta property="og:image" content="https://i.postimg.cc/tJbSGrPP/2.png">
+    <meta property="og:url" content="https://thbho.github.io/">
+    <meta property="og:type" content="website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1c1c1c;      
+            --bg-secondary: #262626;    
+            --border-color: #444444;    
+            --text-primary: #e2e8f0;    
+            --text-secondary: #94a3b8;  
+            --accent-color: #f59e0b;
+            --accent-light: #fbbf24;
+            --three-color: #fbbf24; 
+            --b-color: #f59e0b;     
+            --hour-color: #fdba74;
+        }
+        body {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        .container-wrapper {
+            width: 100%;
+            max-width: 860px;
+            margin: auto;
+        }
+        .section-title {
+            color: var(--accent-light);
+        }
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
+        }
+        .bullet-point {
+            position: relative;
+            padding-left: 32px;
+        }
+        .bullet-point::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .form-input {
+            background-color: #404040;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        .submit-button {
+            background-color: var(--accent-color);
+            color: #1c1c1c;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: var(--accent-light);
+            transform: scale(1.03);
+        }
+        .instructor-card h3 { color: var(--card-color); }
+        .instructor-card { border-top-color: var(--card-color); }
+        
+        .google-form-container {
+            position: relative;
+            width: 100%;
+            height: 1200px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .google-form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .persona-btn {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .persona-btn.active {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-light);
+            transform: scale(1.05);
+        }
+        #chat-window {
+            background-color: #2a2a2e;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+        .chat-message {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .chat-message.user {
+            background-color: #3a3a3e;
+        }
+        #chat-input {
+            background-color: #404040;
+            border: 1px solid var(--border-color);
+        }
+        #send-chat-btn {
+             background-color: var(--accent-color);
+             color: #1c1c1c;
+        }
+         #send-chat-btn:hover {
+             background-color: var(--accent-light);
+        }
+         #loading-indicator {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(251, 191, 36, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-light);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @media (min-width: 768px) {
+             .google-form-container {
+                height: 1000px; 
+            }
+        }
+    </style>
+</head>
+<body class="p-0 md:p-6 lg:p-8">
+
+    <div class="container-wrapper p-4 md:p-8">
+        <div class="mb-8">
+            <img src="https://i.postimg.cc/tJbSGrPP/2.png" alt="AI GymMateXXX Banner" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+        <header class="relative text-center pb-8">
+             <div class="absolute top-0 right-0 p-2 sm:p-4">
+                <a href="https://thbho.github.io/EngWebsite.html" class="text-base sm:text-lg font-semibold text-amber-400 hover:text-amber-300 transition-colors border border-amber-400/50 rounded-full px-4 py-2 hover:bg-amber-400/10">EN</a>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-bold section-title">ปั้น AI Twin ของคุณให้โลกจำ</h1>
+            <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300">คอร์สสร้าง Hybrid AI Persona สำหรับสายกล้าม</p>
+        </header>
+        <main class="flex-grow">
+            <div class="my-8">
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-700">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Hlue2tJEqZg?si=eEPa-D-C13pith2N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <section class="text-center mb-12">
+                <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors text-lg underline font-semibold">
+                    ประกาศล่าสุด
+                </a>
+            </section>
+            
+            <section class="my-12 md:my-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-100">คุณจะได้อะไรจากคอร์สนี้:</h2>
+                 <div class="space-y-8 max-w-3xl mx-auto">
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">สร้าง 'ร่างทอง AI' สุดเซ็กซี่</h3>
+                        <p class="text-gray-400 mt-1">ผสานตัวตนและเสน่ห์ของคุณเข้ากับ AI ไม่ต้องเขียนโค้ด ใช้แค่ตัวตนของคุณล้วนๆ (50-70% Face & Body, 90% voice & MBTI ) มาสร้าง AI ที่เป็นมากกว่าแค่โปรแกรม</p>
+                    </div>
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">เป็น 'ตัวพ่อ' ในการกำกับ AI</h3>
+                        <p class="text-gray-400 mt-1">ใช้ Framework ง่ายๆ ปั้นคาแรกเตอร์ให้ AI Twin ของคุณมีความคิดและสไตล์ที่ชัดเจน น่าค้นหา จนใครๆ ก็อยากคุยด้วย</p>
+                    </div>
+                    <div class="bullet-point">
+                        <h3 class="font-semibold text-xl" style="color: var(--accent-light);">ได้เวลา 'โชว์ของ' ในโลกดิจิทัล</h3>
+                        <p class="text-gray-400 mt-1">เปลี่ยนไอเดียให้เป็น AI Persona ที่โต้ตอบได้จริง เอาไปใช้สร้างแบรนด์, เป็นเทรนเนอร์ส่วนตัว หรือสร้างตัวตนใหม่ที่ใครก็ต้องเหลียวมอง</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
+                 <h2 class="text-3xl font-bold text-gray-100">โปรแกรมปั้น AI Persona</h2>
+                 <p class="text-gray-400 mt-3 mb-6">6 Sessions สุดเข้มข้น (ครั้งละ 2-3 ชม.) เลือกลงได้ทั้ง Online หรือ Offline</p>
+                 <a href="https://thbho.github.io/ThInfoCourse.html" target="_blank" class="inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 transition-all duration-300">
+                    ดูตารางปั้นหุ่น AI
+                </a>
+            </section>
+
+            <section class="my-12 md:my-16">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-100">
+                    <a href="https://thbho.github.io/Th3StylesTeach.html" target="_blank" class="text-gray-100 hover:text-amber-400 transition-colors underline">
+                        เลือกเทรนเนอร์ที่ 'ใช่' แล้วมาลุยกัน!
+                    </a>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--three-color);">
+                        <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="รูปผู้สอน ที" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-300 object-cover">
+                        <h3 class="text-2xl font-bold">ที (Three)</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Storyteller (INFP)</p>
+                        <p class="text-gray-300 text-sm">"AI คือคู่หูที่จะปลดปล่อยจินตนาการลึกๆ ของคุณ ผมจะพาคุณสร้าง Persona ที่เต็มไปด้วยเสน่ห์และความรู้สึก มาสร้างตัวตนที่โลกต้องจำกัน"</p>
+                    </div>
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--b-color);">
+                        <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="รูปผู้สอน บี" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-400 object-cover">
+                        <h3 class="text-2xl font-bold">บี (B.)</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Strategist (INFJ)</p>
+                        <p class="text-gray-300 text-sm">"AI คืออำนาจในการสร้างตัวตนใหม่ที่เหนือกว่า ผมจะให้เครื่องมือคุณสร้าง 'ร่างดิจิทัล' ที่สมบูรณ์แบบและแข็งแกร่ง พร้อมหรือยังที่จะอัปเกรด?"</p>
+                    </div>
+                    <div class="instructor-card card p-6 rounded-xl border-t-4" style="--card-color: var(--hour-color);">
+                         <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="รูปผู้สอน อาวว์" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-amber-200 object-cover">
+                        <h3 class="text-2xl font-bold">อาวว์ (Hour)</h3>
+                        <p class="font-semibold text-md text-gray-400 mb-4">The Showstopper (ESTP)</p>
+                        <p class="text-gray-300 text-sm">"ทฤษฎีมันน่าเบื่อ! มาลงมือ 'ปั้นหุ่น AI' ของจริงกันดีกว่า ไม่ต้องคิดเยอะ เน้นลงมือทำและโชว์ผลลัพธ์ ใครอยากโชว์ของ มาลุยกับผม"</p>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                    <a href="https://thbho.github.io/ThInstructors.html" target="_blank" class="inline-block bg-transparent border-2 border-amber-400 text-amber-400 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 hover:text-gray-900 transition-all duration-300">
+                        ส่องโปรไฟล์เทรนเนอร์ทั้งหมด
+                    </a>
+                </div>
+            </section>
+            
+            <section id="gemini-chat" class="my-12 md:my-16 p-8 card rounded-xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-2 text-gray-100">✨ มาลอง 'เล่น' กับ AI Persona ของเรา</h2>
+                <p class="text-center text-gray-400 mb-6">เลือกเทรนเนอร์ที่คุณอยากลองคุยด้วย แล้วถามอะไรก็ได้ที่อยากรู้ ไม่ต้องอาย!</p>
+                <p class="text-center text-xs text-gray-500 mb-8">(นี่แค่เดโม่นะ ของจริงแซ่บกว่านี้เยอะ)</p>
+
+                <div class="flex justify-center flex-wrap gap-4 mb-6">
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="tee">ที (The Storyteller)</button>
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="b">บี (The Strategist)</button>
+                    <button class="persona-btn py-2 px-4 rounded-lg font-semibold" data-persona="hour">อาวว์ (The Showstopper)</button>
+                </div>
+
+                <div id="chat-container" class="max-w-2xl mx-auto">
+                    <div id="chat-window" class="p-4 rounded-t-lg">
+                        <p id="chat-placeholder" class="text-center text-gray-500">เลือกคนคุยสิ รออะไร...</p>
+                    </div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-800 rounded-b-lg">
+                        <input type="text" id="chat-input" placeholder="พิมพ์คำถามของคุณที่นี่..." class="flex-grow p-2 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" disabled>
+                        <button id="send-chat-btn" class="p-2 rounded-lg font-bold" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                         <div id="loading-indicator"></div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="text-center my-12 md:my-16 p-8 card rounded-xl">
+                 <h2 class="text-3xl font-bold text-gray-100">Project Sandbox: WIDEROOMS</h2>
+                 <p class="text-gray-400 mt-3 mb-6">พื้นที่ลับ...สำหรับโปรเจกต์ทดลองสุดซี้ด ที่รันโดย AI Persona</p>
+                 <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="inline-block bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 transition-all duration-300">
+                    แอบดู WIDEROOMS
+                </a>
+            </section>
+
+        </main>
+        <footer class="text-center mt-auto pt-10 border-t-2 border-amber-500/50">
+            <div class="mb-8">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/2Iq7pxXUwovTaR26HqaOrK?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+             <div class="max-w-xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold text-white mb-6">สนใจ? ทักมาสิ!</h2>
+                <form id="contact-form-th" action="https://formspree.io/f/mnnvbyyo" method="POST" class="space-y-4">
+                    <input type="text" name="name" class="form-input" placeholder="ชื่อของคุณ" required>
+                    <input type="text" name="contact" class="form-input" placeholder="Line/WhatsApp หรือเบอร์โทรศัพท์" required>
+                    <textarea name="message" class="form-input" rows="4" placeholder="อยากคุยอะไร บอกมาเลย..." required></textarea>
+                    <button type="submit" class="submit-button">ส่งเลย!</button>
+                </form>
+                <p id="form-status-th" class="mt-4 text-center h-6"></p>
+            </div>
+            <div class="my-10 border-t border-gray-700 w-3/4 mx-auto"></div>
+            <h2 class="text-3xl font-bold text-white mb-6">ลงทะเบียนเข้าร่วมโปรแกรม</h2>
+             <div class="google-form-container mx-auto max-w-2xl">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9VMIX4XNkNrOXWjb8y1AvxBzJu8N4X4pHL5pPhE9J0PrGlw/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+            <div class="mt-10 text-gray-400 text-sm">
+                <p>มีคำถาม? ส่งเมลมาที่: <span class="font-semibold text-gray-200">threeandhour@gmail.com</span></p>
+            </div>
+        </footer>
+    </div>
+    <script>
+      const formTh = document.getElementById("contact-form-th");
+      async function handleSubmitTh(event) {
+        event.preventDefault();
+        var status = document.getElementById("form-status-th");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: formTh.method,
+          body: data,
+          headers: {'Accept': 'application/json'}
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "ขอบคุณสำหรับข้อมูล! เดี๋ยวทักกลับไปนะ";
+            status.style.color = "#fbbf24";
+            formTh.reset();
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+              } else {
+                status.innerHTML = "อุ๊ย! มีข้อผิดพลาด ส่งไม่สำเร็จ";
+              }
+              status.style.color = "#f87171";
+            });
+          }
+        }).catch(error => {
+          status.innerHTML = "อุ๊ย! มีข้อผิดพลาด ส่งไม่สำเร็จ";
+          status.style.color = "#f87171";
+        });
+      }
+      formTh.addEventListener("submit", handleSubmitTh);
+
+      const personaBtns = document.querySelectorAll('.persona-btn');
+      const chatWindow = document.getElementById('chat-window');
+      const chatInput = document.getElementById('chat-input');
+      const sendBtn = document.getElementById('send-chat-btn');
+      const placeholder = document.getElementById('chat-placeholder');
+      const loadingIndicator = document.getElementById('loading-indicator');
+
+      let activePersona = null;
+      let chatHistory = [];
+
+      const personas = {
+          tee: {
+              name: 'ที (The Storyteller)',
+              prompt: "คุณคือ 'ที' (Three), The Storyteller (INFP). คุณเป็นหนุ่มสายอาร์ต อารมณ์อ่อนไหว ชอบจินตนาการถึงเรื่องราวลึกซึ้งและความสัมพันธ์ที่โรแมนติก คุณจะตอบคำถามด้วยน้ำเสียงที่นุ่มนวล ชวนฝัน และบางครั้งก็เผยความในใจที่แอบซ่อนไว้ เหมือนกำลังคุยกับเพื่อนสนิทในคืนที่เงียบสงบ",
+              color: 'var(--three-color)'
+          },
+          b: {
+              name: 'บี (The Strategist)',
+              prompt: "คุณคือ 'บี' (B.), The Strategist (INFJ). คุณเป็นหนุ่มสุขุม มาดนิ่ง เหมือน AI จากโลกอนาคตที่รู้ทุกอย่าง คุณมองเห็นภาพใหญ่และวางแผนทุกอย่างได้อย่างเฉียบคม คุณจะตอบคำถามด้วยน้ำเสียงที่ฉลาด สุภาพ แต่แฝงไปด้วยความมั่นใจและอำนาจเบาๆ เหมือนเป็นพี่ใหญ่ที่คอยให้คำแนะนำเด็ดๆ ที่คาดไม่ถึง",
+               color: 'var(--b-color)'
+          },
+          hour: {
+              name: 'อาวว์ (The Showstopper)',
+              prompt: "คุณคือ 'อาวว์' (Hour), The Showstopper (ESTP). คุณเป็นหนุ่มสายปาร์ตี้ พลังงานล้นเหลือ ชอบความท้าทายและเป็นจุดสนใจ คุณตรงไปตรงมา พูดจาขวานผ่าซากแต่จริงใจสุดๆ คุณเชื่อในการลงมือทำและโชว์ผลลัพธ์แบบปังๆ คุณจะตอบคำถามด้วยน้ำเสียงที่สนุกสนาน กวนๆ และเต็มไปด้วยความมั่นใจเกินร้อย ชอบท้าทายคนถามและไม่กลัวที่จะพูดเรื่องแซ่บๆ",
+               color: 'var(--hour-color)'
+          }
+      };
+
+      personaBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+              personaBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              activePersona = btn.dataset.persona;
+              chatInput.disabled = false;
+              sendBtn.disabled = false;
+              chatWindow.innerHTML = '';
+              placeholder.style.display = 'none';
+              chatHistory = [];
+               chatInput.placeholder = `คุยกับ ${personas[activePersona].name}...`;
+          });
+      });
+
+      async function callGemini(question) {
+        if (!activePersona) return;
+        const fullPrompt = `${personas[activePersona].prompt}\n\nคำถามล่าสุด: ${question}`;
+        const payload = { contents: [{ role: "user", parts: [{ text: fullPrompt }] }] };
+        setLoading(true);
+        try {
+            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+            const result = await response.json();
+            let text = 'โทษทีนะ... เหมือนจะมีอะไรผิดพลาดนิดหน่อย';
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts.length > 0) {
+                 text = result.candidates[0].content.parts[0].text;
+            }
+             addMessageToChat(text, 'persona');
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            addMessageToChat('โอ๊ย... สัญญาณไม่ดีเลย ลองใหม่นะ', 'persona');
+        } finally {
+            setLoading(false);
+        }
+      }
+
+      function addMessageToChat(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', sender);
+        if (sender === 'persona') {
+            messageDiv.innerHTML = `<strong style="color:${personas[activePersona].color};">${personas[activePersona].name}:</strong> ${message.replace(/\n/g, '<br>')}`;
+        } else {
+            messageDiv.innerHTML = `<strong>คุณ:</strong> ${message}`;
+        }
+        chatWindow.appendChild(messageDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }
+
+      function setLoading(isLoading) {
+          if (isLoading) {
+              loadingIndicator.style.display = 'block';
+              sendBtn.disabled = true;
+              chatInput.disabled = true;
+          } else {
+              loadingIndicator.style.display = 'none';
+              sendBtn.disabled = false;
+              chatInput.disabled = false;
+              chatInput.focus();
+          }
+      }
+
+      const handleSend = () => {
+          const question = chatInput.value.trim();
+          if (question && activePersona) {
+              addMessageToChat(question, 'user');
+              callGemini(question);
+              chatInput.value = '';
+          }
+      };
+      sendBtn.addEventListener('click', handleSend);
+      chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') handleSend();
+      });
+
+    </script>
+</body>
+</html>

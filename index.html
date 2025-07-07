@@ -17,16 +17,16 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Mali:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #1f2937;      /* Dark Grey Blue */
-            --bg-secondary: #374151;    /* Medium Grey Blue */
-            --border-color: #4b5563;    /* Lighter Grey Blue */
-            --text-primary: #f3f4f6;    
-            --text-secondary: #9ca3af;  
-            --accent-color: #68869a;      /* User's choice: Muted Blue-Grey */
-            --accent-light: #8ba4b5;    /* Lighter Muted Blue-Grey */
-            --three-color: #8ba4b5; 
-            --b-color: #68869a;     
-            --hour-color: #a9c1d0;      /* Very Light Muted Blue-Grey */
+            --bg-primary: #0c4160;      /* Dark Sapphire Blue */
+            --bg-secondary: #1e5272;    /* Medium Sapphire Blue */
+            --border-color: #2f6484;    /* Lighter Sapphire Blue */
+            --text-primary: #f0f8ff;    /* AliceBlue */
+            --text-secondary: #a9c1d0;  /* Light Blue-Grey */
+            --accent-color: #8f391d;      /* Rusty Red/Brown */
+            --accent-light: #b25e42;    /* Lighter Rusty Red/Brown */
+            --three-color: #b25e42; 
+            --b-color: #8f391d;     
+            --hour-color: #d98c71;      /* Very Light Rusty Red/Brown */
         }
         body {
             font-family: 'IBM Plex Sans Thai', sans-serif;
@@ -51,7 +51,7 @@
         }
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 10px 40px rgba(104, 134, 154, 0.1);
+            box-shadow: 0 10px 40px rgba(143, 57, 29, 0.1);
         }
         .bullet-point {
             position: relative;
@@ -68,12 +68,12 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            background-color: rgba(104, 134, 154, 0.15);
+            background-color: rgba(143, 57, 29, 0.15);
             color: var(--accent-color);
             font-weight: 700;
         }
         .form-input {
-            background-color: #4b5563;
+            background-color: #1e5272;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             border-radius: 8px;
@@ -84,11 +84,11 @@
         .form-input:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(104, 134, 154, 0.2);
+            box-shadow: 0 0 0 3px rgba(143, 57, 29, 0.2);
         }
         .submit-button {
             background-color: var(--accent-color);
-            color: #f3f4f6;
+            color: #f0f8ff;
             font-weight: 700;
             font-size: 1.1rem;
             padding: 0.85rem 1.5rem;
@@ -132,7 +132,7 @@
             transform: scale(1.05);
         }
         #chat-window {
-            background-color: #111827; /* Darker Grey Blue */
+            background-color: #08314a;
             height: 300px;
             overflow-y: auto;
             border: 1px solid var(--border-color);
@@ -142,10 +142,10 @@
             border-bottom: 1px solid var(--border-color);
         }
         .chat-message.user {
-            background-color: #1f2937;
+            background-color: #0c4160;
         }
         #chat-input {
-            background-color: #374151;
+            background-color: #1e5272;
             border: 1px solid var(--border-color);
         }
         #send-chat-btn {
@@ -159,7 +159,7 @@
             display: none;
             width: 24px;
             height: 24px;
-            border: 3px solid rgba(104, 134, 154, 0.3);
+            border: 3px solid rgba(143, 57, 29, 0.3);
             border-radius: 50%;
             border-top-color: var(--accent-light);
             animation: spin 1s ease-in-out infinite;

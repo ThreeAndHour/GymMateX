@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI GYMMATEX FACTORY | HYBRID Trainers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&family=Sarabun:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background-main: #332E2C; /* Greyish-Brown */
+            --color-background-card: #4A4441; /* Slightly lighter warm grey */
+            --color-background-section: #3A3533; /* Slightly darker for contrast */
+            --color-text-main: #FDFCFB; /* Light Cream/White */
+            --color-accent-primary: #E6A23C; /* Golden Orange */
+            --color-accent-secondary: #FBBF24; /* Soft Gold (Amber 400) */
+            --color-link-blue: #38bdf8; /* Tailwind Sky 400 for links/buttons */
+        }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--color-background-main);
+            color: var(--color-text-main);
+            line-height: 1.7;
+        }
+        .title-en {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Sarabun', sans-serif;
+            font-weight: 700;
+        }
+        .instructor-card {
+            border-radius: 0.75rem;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #6B625E; 
+            color: var(--color-text-main);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            height: 100%;
+        }
+        .card-three {
+            background: linear-gradient(to bottom right, #4A4441, #554D4A); 
+        }
+        .card-b {
+            background: linear-gradient(to bottom right, #4A4441, #55504A);
+        }
+        .card-hour {
+            background: linear-gradient(to bottom right, #4A4441, #554A4A);
+        }
+        .instructor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        .section-bg {
+            background-color: var(--color-background-section);
+        }
+        .mb-type {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--color-accent-primary);
+            margin-bottom: 0.75rem;
+        }
+        .profile-link {
+            display: inline-block;
+            margin-top: auto; /* Push link to the bottom */
+            padding-top: 1rem;
+            color: var(--color-link-blue);
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .profile-link:hover {
+            color: #7dd3fc; /* Lighter blue */
+        }
+        .relationship-card {
+            background-color: var(--color-background-card);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: var(--color-text-main);
+        }
+        .relationship-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .relationship-item svg {
+            flex-shrink: 0;
+            margin-right: 1rem;
+            color: var(--color-accent-secondary);
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+        .download-book-section {
+            background-color: var(--color-background-section);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--color-text-main);
+        }
+        .download-book-link {
+            background-color: var(--color-link-blue);
+            color: var(--color-text-main);
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-book-link:hover {
+            background-color: #0284c7; /* Darker blue */
+        }
+    </style>
+</head>
+<body class="p-4">
+
+    <!-- Navigation Bar -->
+    <div class="bg-black bg-opacity-25 mb-8 sticky top-0 z-50">
+        <nav class="container mx-auto max-w-7xl py-3 px-4 flex justify-between items-center">
+            <a href="https://threeandhour.github.io/GymMateX" class="text-lg font-bold title-en hover:text-amber-400 transition-colors" style="color: var(--color-accent-primary);">
+                AI GYMMATEX FACTORY
+            </a>
+            <div class="flex items-center space-x-1 sm:space-x-4">
+                <a href="https://threeandhour.github.io/GymMateX" class="text-slate-300 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="#" class="bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Trainers</a>
+                <div class="flex items-center space-x-2 border-l border-gray-600 pl-2 sm:pl-4">
+                     <a href="#" class="text-white font-bold text-sm px-2 py-1 rounded-md">TH</a>
+                     <span class="text-gray-500">|</span>
+                     <a href="https://threeandhour.github.io/GymMateX/En3Trainers" class="text-gray-400 hover:text-white font-bold text-sm px-2 py-1 rounded-md transition-colors">EN</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="container mx-auto max-w-7xl py-8">
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4" style="color: var(--color-accent-primary);">
+                พบกับทีม <span class="title-en">HYBRID TRAINERS</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                เบื่อทฤษฎี AI ที่จับต้องไม่ได้? ที่นี่เราเน้นผลลัพธ์จริง พบกับ 3 ผู้เชี่ยวชาญ AI ที่จะปลุกศักยภาพ <span class="title-en">Hybrid Creator</span> ในตัวคุณ ด้วยมุมมองและสไตล์ที่ไม่เหมือนใคร
+            </p>
+        </header>
+
+        <section id="instructors-bio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Trainer: Three (ที) - INFP -->
+            <div class="instructor-card card-three">
+                <img src="https://i.postimg.cc/zXVgyKTT/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="รูปโปรไฟล์ของ Three" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 shadow-lg object-cover" style="border-color: #A78BFA;">
+                <h3 class="text-2xl font-bold text-white">Three (ที)</h3>
+                <p class="mb-type" style="color: #A78BFA;">INFP (The Mediator)</p>
+                <div class="w-full my-4">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126460438%3Fsecret_token%3Ds-CBnI2RS6C3a&color=%23866c64&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/thho-8445239" title="ThHo" target="_blank" style="color: #cccccc; text-decoration: none;">ThHo</a> · <a href="https://soundcloud.com/thho-8445239/34faeb10-5f63-4e97-9999-275c61921966/s-CBnI2RS6C3a" title="Three แนะนำตัว" target="_blank" style="color: #cccccc; text-decoration: none;">Three แนะนำตัว</a></div>
+                </div>
+                <a href="https://thbho.github.io/ThThreeTeachBio.html" target="_blank" rel="noopener noreferrer" class="profile-link">
+                    รู้จักเขาให้มากขึ้น &rarr;
+                </a>
+            </div>
+
+            <!-- Trainer: B. - INFJ -->
+            <div class="instructor-card card-b">
+                <img src="https://i.postimg.cc/8CHJ4Kz3/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="รูปโปรไฟล์ของ B." class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-sky-400 shadow-lg object-cover">
+                <h3 class="text-2xl font-bold text-white">B.</h3>
+                <p class="mb-type" style="color: #38bdf8;">INFJ (The Advocate)</p>
+                <div class="w-full my-4">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126459079%3Fsecret_token%3Ds-MdZuDU5VwLx&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/thho-8445239" title="ThHo" target="_blank" style="color: #cccccc; text-decoration: none;">ThHo</a> · <a href="https://soundcloud.com/thho-8445239/c5fb9086-b09f-4942-8be7-27ae20fdb110/s-MdZuDU5VwLx" title="B. แนะนำตัว" target="_blank" style="color: #cccccc; text-decoration: none;">B. แนะนำตัว</a></div>
+                </div>
+                <a href="https://thbho.github.io/ThBTeachBio.html" target="_blank" rel="noopener noreferrer" class="profile-link">
+                    รู้จักเขาให้มากขึ้น &rarr;
+                </a>
+            </div>
+
+            <!-- Trainer: Hour (อาวว์) - ESTP -->
+            <div class="instructor-card card-hour">
+                <img src="https://i.postimg.cc/dt17BmbN/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="รูปโปรไฟล์ของ Hour" class="w-32 h-32 rounded-full mx-auto mb-4 border-4" style="border-color: #F59E0B;">
+                <h3 class="text-2xl font-bold text-white">Hour (อาวว์)</h3>
+                <p class="mb-type" style="color: #F59E0B;">ESTP (The Entrepreneur)</p>
+                <div class="w-full my-4">
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126457279%3Fsecret_token%3Ds-1VWD8hpdxej&color=%232c2a2d&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/thho-8445239" title="ThHo" target="_blank" style="color: #cccccc; text-decoration: none;">ThHo</a> · <a href="https://soundcloud.com/thho-8445239/1e37b060-bf5b-433e-8ee2-7d26a261b3ca/s-1VWD8hpdxej" title="Hour แนะนำตัว" target="_blank" style="color: #cccccc; text-decoration: none;">Hour แนะนำตัว</a></div>
+                </div>
+                <a href="https://thbho.github.io/ThHourTeachBio.html" target="_blank" rel="noopener noreferrer" class="profile-link">
+                    รู้จักเขาให้มากขึ้น &rarr;
+                </a>
+            </div>
+
+        </section>
+
+        <section id="trio-dynamic" class="section-bg py-16 px-6 mt-16 rounded-lg">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold" style="color: var(--color-accent-primary);">สมการพลัง 3 ขั้ว: อะไรที่หลอมเราให้เป็นหนึ่ง?</h2>
+                <p class="text-lg text-slate-300 max-w-4xl mx-auto mt-2">
+                    เราไม่ใช่แค่ทีม แต่คือการรวมตัวของ 3 บุคลิกที่แตกต่างอย่างลงตัว พลังที่เกิดจากการทำงานร่วมกันของเรา ไม่ได้มอบแค่ความรู้ แต่จะมอบแรงบันดาลใจและมุมมองใหม่ๆ ที่จะเปลี่ยนวิธีที่คุณสร้างสรรค์ผลงานไปตลอดกาล
+                </p>
+            </div>
+            <div class="max-w-5xl mx-auto relationship-card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                    
+                    <div class="relationship-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+                        <div>
+                            <p class="font-semibold text-white">Three & B.: จิตวิญญาณและกลยุทธ์</p>
+                            <p class="text-slate-300 text-sm">
+                                Three นำเสนอไอเดียที่เปี่ยมด้วยจินตนาการ B. เปลี่ยนไอเดียนั้นให้กลายเป็นแผนกลยุทธ์ที่เฉียบคมและทำได้จริง
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relationship-item">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 12.75l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 18l-1.035.259a3.375 3.375 0 00-2.456 2.456L18 21.75l-.259-1.035a3.375 3.375 0 00-2.456-2.456L14.25 18l1.035-.259a3.375 3.375 0 002.456-2.456L18 12.75z" /></svg>
+                        <div>
+                            <p class="font-semibold text-white">Hour & Three: พลังงานและการสร้างสรรค์</p>
+                            <p class="text-slate-300 text-sm">
+                                พลังงานที่ล้นเหลือของ Hour คือแรงผลักดันให้ความคิดสร้างสรรค์อันลึกซึ้งของ Three เกิดขึ้นจริง พวกเขาคือส่วนผสมที่เติมเต็มกันและกันอย่างสมบูรณ์แบบ
+                            </p>
+                        </div>
+                    </div>
+                     <div class="relationship-item md:col-span-2">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        <div>
+                            <p class="font-semibold text-white">B. & Hour: วิสัยทัศน์และการลงมือทำ</p>
+                            <p class="text-slate-300 text-sm">
+                                B. วางภาพอนาคตและแผนการที่ชัดเจน Hour คือพลังขับเคลื่อนที่ทำให้ทุกอย่างเกิดขึ้นได้จริง เมื่อวิสัยทัศน์และพลังงานมาเจอกัน ไม่มีอะไรที่เป็นไปไม่ได้
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center border-t border-gray-600 pt-6">
+                    <h4 class="text-xl font-bold text-amber-400 mb-4">เสน่ห์เฉพาะตัว & เรื่องน่ารู้:</h4>
+                    <ul class="list-none p-0 m-0 text-slate-300 text-base space-y-3">
+                        <li><strong class="text-white">Three (INFP):</strong> Hour ตั้งฉายาให้เขาว่า "น้ำชา" เพราะภายนอกดูสงบ แต่ลุ่มลึกและซับซ้อน ความสามารถในการเจาะลึกแนวคิดของเขา จะทำให้คุณมอง AI เป็นเรื่องที่เข้าถึงง่ายและมีความหมาย</li>
+                        <li><strong class="text-white">B. (INFJ):</strong> ไม่ใช่แค่ AI ทั่วไป เพราะ B. เรียนรู้และเข้าใจ 'อารมณ์' เพื่อสร้าง Hybrid Persona ที่มีความลึกซึ้งเหมือนมนุษย์ เตรียมพบกับมุมมองที่คุณจะไม่ได้จากที่ไหน</li>
+                        <li><strong class="text-white">Hour (ESTP):</strong> ชื่อ "อาวว์" (ชั่วโมง) ก็บอกทุกอย่าง! เขาคือชายหนุ่มแห่งการลงมือทำ ตรงไปตรงมา และพร้อมลุยเสมอ บทเรียนของเขาไม่มีอ้อมค้อม มีแต่เนื้อหาเน้นๆ ที่ใช้ได้จริง</li>
+                        <li><strong class="text-white">พลังของสาม (3SOME):</strong> เรื่องราวของพวกเขาคือบทพิสูจน์ว่า แม้บุคลิกที่แตกต่างกัน ก็สามารถสร้างพลังแห่งการทำงานร่วมกันที่น่าทึ่ง และยกระดับกันและกันได้ในโลกแห่งความเป็นจริง (และในโลก AI!)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="book-download" class="download-book-section">
+            <h2 class="text-3xl font-bold mb-4" style="color: var(--color-accent-primary);">อยากรู้จักพวกเขามากกว่านี้?</h2>
+            <p class="text-lg text-slate-300 mb-6 max-w-3xl mx-auto">
+                อยากรู้เบื้องหลังและเรื่องราวที่หล่อหลอมพวกเขาใช่ไหม? ดาวน์โหลด "3SOME | BOOK1 | 3H" ฉบับเต็ม เพื่อสัมผัสเรื่องราวความสัมพันธ์ที่สร้างแรงบันดาลใจนี้
+            </p>
+            <a href="https://drive.google.com/file/d/1DeS2BEmlgmcmzP8C0mQzGb_agrvzQ8bl/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-book-link">
+                ดาวน์โหลด E-BOOK: 3SOME | BOOK1 (PDF ภาษาไทย)
+            </a>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-12" style="background-color: var(--color-background-section); border-top: 1px solid #6B625E;">
+        <p class="text-slate-400">&copy; 2025 AI GYMMATEX FACTORY. สงวนลิขสิทธิ์</p>
+    </footer>
+
+</body>
+</html>

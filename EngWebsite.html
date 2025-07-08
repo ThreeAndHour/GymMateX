@@ -233,7 +233,7 @@
         <nav class="w-full flex justify-between items-center mb-4">
             <span class="text-xl sm:text-2xl font-bold text-white">GymMateX Factory</span>
             <div class="flex items-center gap-2 sm:gap-4">
-                <a href="https://thbho.github.io/EngWebsite.html" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">General</a>
+                <a href="https://threeandhour.github.io/GymMateX/EngWebsite.html" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">General</a>
                 <a href="https://threeandhour.github.io/GymMateX" class="text-base sm:text-lg font-semibold custom-link border border-current/50 rounded-full px-4 py-2 hover:bg-current/10">TH</a>
             </div>
         </nav>
@@ -269,7 +269,7 @@
                     </div>
                     <div class="bullet-point">
                         <h3 class="font-semibold text-xl" style="color: var(--accent-light);">Become the 'Master' of AI Direction</h3>
-                        <p class="text-gray-400 mt-1">Use a simple framework likes MBTI to sculpt a character for your AI Twin with a clear, intriguing personality that everyone will want to talk to.</p>
+                        <p class="text-gray-400 mt-1">Use a simple framework to sculpt a character for your AI Twin with a clear, intriguing personality that everyone will want to talk to.</p>
                     </div>
                     <div class="bullet-point">
                         <h3 class="font-semibold text-xl" style="color: var(--accent-light);">Time to 'Show Off' in the Digital World</h3>
@@ -313,7 +313,7 @@
                     </div>
                 </div>
                  <div class="text-center mt-12">
-                    <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="inline-block custom-border-button text-lg">
+                    <a href="https://threeandhour.github.io/GymMateX/En3Trainers" target="_blank" class="inline-block custom-border-button text-lg">
                         View All Trainer Profiles
                     </a>
                 </div>
@@ -337,7 +337,7 @@
                     <div class="flex items-center gap-2 p-2 bg-gray-800 rounded-b-lg">
                         <input type="text" id="chat-input" placeholder="Type your question here..." class="flex-grow p-2 rounded-lg focus:outline-none form-input" disabled>
                         <button id="send-chat-btn" class="p-2 rounded-lg font-bold" disabled>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                         </button>
                          <div id="loading-indicator"></div>
                     </div>
@@ -526,7 +526,7 @@
         if (sender === 'persona') {
             messageDiv.innerHTML = `<strong style="color:${personas[activePersona].color};">${personas[activePersona].name}:</strong> ${message.replace(/\n/g, '<br>')}`;
         } else {
-            messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
+            messageDiv.innerHTML = `<strong>คุณ:</strong> ${message}`;
         }
         chatWindow.appendChild(messageDiv);
         chatWindow.scrollTop = chatWindow.scrollHeight;

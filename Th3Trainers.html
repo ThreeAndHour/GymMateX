@@ -119,6 +119,23 @@
         .download-book-link:hover {
             background-color: #0284c7; /* Darker blue */
         }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 960px; /* Adjust for a wider view */
+            margin: auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="p-4">
@@ -257,27 +274,18 @@
         <!-- Video Section -->
         <section id="video-showcase" class="py-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold" style="color: var(--color-accent-primary);">วิดีโอแนะนำจากทีม <span class="title-en">TRAINERS</span></h2>
+                <h2 class="text-3xl font-bold" style="color: var(--color-accent-primary);">สัมผัสพลังของทีมเรา</h2>
                 <p class="text-lg text-slate-300 max-w-2xl mx-auto mt-2">
-                    ชมวิดีโอสั้นๆ เพื่อทำความรู้จักกับสไตล์และพลังของเทรนเนอร์แต่ละคน
+                    ชมวิดีโอสั้นๆ เพื่อทำความรู้จักกับสไตล์และพลังของทีม <span class="title-en">TRAINERS</span>
                 </p>
             </div>
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-                <!-- Video: Three -->
-                <div>
-                    <video class="w-full rounded-lg shadow-xl" src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/85d40299-01b3-4991-a830-ac713aaa5dbe/85d40299-01b3-4991-a830-ac713aaa5dbe.mp4" controls></video>
-                    <h4 class="text-center text-xl font-bold mt-4 text-white">Three (ที)</h4>
-                </div>
-                <!-- Video: B. -->
-                <div>
-                    <video class="w-full rounded-lg shadow-xl" src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/98a2f080-e694-496a-b078-c861e63901b4/98a2f080-e694-496a-b078-c861e63901b4.mp4" controls></video>
-                    <h4 class="text-center text-xl font-bold mt-4 text-white">B.</h4>
-                </div>
-                <!-- Video: Hour -->
-                <div>
-                    <video class="w-full rounded-lg shadow-xl" src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/1e850ba0-4bc8-4266-89a4-afbb824e3a8d/1e850ba0-4bc8-4266-89a4-afbb824e3a8d.mp4" controls></video>
-                    <h4 class="text-center text-xl font-bold mt-4 text-white">Hour (อาวว์)</h4>
-                </div>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/ln-f8rh2ynE?autoplay=1&mute=1&loop=1&playlist=ln-f8rh2ynE&controls=0&showinfo=0&modestbranding=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </section>
 

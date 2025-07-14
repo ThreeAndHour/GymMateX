@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: เอเลี่ยนผู้มาเยือน และ 3 เส้นทางแห่งมวลมนุษย์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!--
+    Infographic Narrative Plan:
+    1.  **Introduction:** A hook introducing AI as the "Alien Visitor" concept.
+    2.  **The Great Divide:** A main donut chart showing the overall split of the three groups.
+    3.  **Path 1: The Disconnected (ผู้หลบเร้นฯ):** Detail this group with a key statistic (2.6 billion offline) and a chart showing their proportion.
+    4.  **Path 2: The Skeptics (นักรบฯ):** Detail this group with a bar chart comparing "concerned" vs. "excited" populations.
+    5.  **Path 3: The Adopters (สหายฯ):** Detail this group, showing their professional composition with a stacked bar chart.
+    6.  **The Three Fates:** A flowchart made with HTML/CSS illustrating the potential outcomes for each group.
+    7.  **Conclusion:** A final reflective question to the user.
+    
+    Visualization Choices:
+    -   **Main Group Distribution:** Donut Chart (Chart.js) -> Goal: Compare. Justification: Best for showing parts-of-a-whole comparison clearly. NO SVG.
+    -   **Disconnected Population Stat:** Donut Chart (Chart.js) -> Goal: Inform. Justification: Visualizes a single, impactful percentage effectively. NO SVG.
+    -   **Skeptics vs. Excited:** Horizontal Bar Chart (Chart.js) -> Goal: Compare. Justification: Ideal for direct comparison of two independent values. NO SVG.
+    -   **Adopter Composition:** Stacked Bar Chart (Chart.js) -> Goal: Compare (Composition). Justification: Shows the internal breakdown of a single group. NO SVG.
+    -   **Outcome Flowchart:** HTML/CSS with Tailwind -> Goal: Organize. Justification: Effectively shows a process flow without prohibited libraries like Mermaid JS or SVG graphics.
+    
+    Confirmation:
+    NEITHER Mermaid JS NOR SVG were used in this document. All visualizations are rendered via Chart.js (Canvas) or structured HTML/CSS.
+    
+    Color Palette Used: Energetic & Playful
+    -   Dark Text/BG: #073B4C
+    -   Accent Blue: #118AB2
+    -   Green (Adopters): #06D6A0
+    -   Yellow (Disconnected): #FFD166
+    -   Red (Skeptics): #FF6B6B
+    -->
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-width: 500px;
+            }
+        }
+        .flowchart-node {
+            border: 2px solid #118AB2;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            width: 90%;
+            max-width: 300px;
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #118AB2;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="text-[#073B4C]">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-5xl">
+
+        <!-- Home Button -->
+        <div class="mb-8">
+            <a href="https://thbho.github.io/" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center bg-[#118AB2] hover:bg-[#073B4C] text-white font-bold py-2 px-4 rounded-lg shadow-md transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                กลับหน้าแรก
+            </a>
+        </div>
+
+        <div class="mb-8 overflow-hidden rounded-xl shadow-lg">
+            <div class="relative w-full" style="padding-bottom: 56.25%;"> <!-- 16:9 Aspect Ratio -->
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/pBxBo_71UCQ?si=UYhIrvSXORhOZx9o" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#118AB2]">เอเลี่ยนผู้มาเยือน</h1>
+            <p class="text-lg md:text-xl mt-4 text-gray-600">การมาถึงของ AI และ 3 เส้นทางแห่งการตอบสนองของมวลมนุษย์</p>
+        </header>
+
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 my-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">ภาพรวมการแบ่งกลุ่มทัศนคติ</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">เมื่อ "ผู้มาเยือน" ที่เรียกว่า AI ได้ปรากฏตัวขึ้น มนุษยชาติได้มีปฏิกิริยาตอบสนองที่แตกต่างกันอย่างชัดเจน ซึ่งสามารถแบ่งออกได้เป็น 3 กลุ่มหลักตามทัศนคติและการปรับตัวของพวกเขา</p>
+            <div class="chart-container h-80 md:h-96">
+                <canvas id="mainDonutChart"></canvas>
+            </div>
+            <p class="text-center text-gray-500 mt-4 text-sm">ข้อมูลประมาณการจากแหล่งข้อมูลต่างๆ เช่น ITU, World Bank, Pew Research Center, และ Reuters/Ipsos</p>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-1 bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-2xl font-bold text-[#FFD166] mb-2">กลุ่มที่ 1: ผู้หลบเร้นในเงามืด</h3>
+                <p class="text-gray-600 mb-6">คือกลุ่มคนที่หวาดระแวง เลือกที่จะหลีกหนี และพยายามตัดขาดตัวเองจากเทคโนโลยีใหม่ๆ เพราะมองว่าเป็นภัยคุกคาม</p>
+                <div class="text-center bg-yellow-50 rounded-lg p-4 mb-6">
+                     <div class="text-5xl font-bold text-[#FFD166]">33%</div>
+                     <div class="text-lg font-semibold mt-2">ของประชากรโลก</div>
+                     <p class="text-sm text-gray-500 mt-1">หรือประมาณ 2.6 พันล้านคน ยังเข้าไม่ถึงอินเทอร์เน็ต (ITU, 2023) และถูกตัดขาดจาก AI โดยปริยาย</p>
+                </div>
+                 <div class="chart-container h-64">
+                    <canvas id="disconnectedChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-[#FF6B6B] mb-2">กลุ่มที่ 2: นักรบผู้ปกป้อง</h3>
+                    <p class="text-gray-600 mb-6">คือผู้ที่เลือกจะ "สู้" โดยมองว่า AI คือสงครามเพื่อความอยู่รอด พวกเขาต่อต้านและจับผิดเพื่อปกป้องโลกใบเก่า</p>
+                    <p class="font-semibold mb-4 text-center">ความรู้สึกต่อ AI (Pew Research, 2023)</p>
+                    <div class="chart-container h-64">
+                         <canvas id="skepticsBarChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-[#06D6A0] mb-2">กลุ่มที่ 3: สหายแห่งโลกใหม่</h3>
+                    <p class="text-gray-600 mb-6">คือผู้ที่เลือก "ปรับตัว" และ "เรียนรู้" มอง AI เป็นเครื่องมือและเพื่อนใหม่ที่จะช่วยยกระดับความสามารถของมนุษย์</p>
+                    <p class="font-semibold mb-4 text-center">ตัวอย่างองค์ประกอบของผู้ปรับใช้ AI</p>
+                    <div class="chart-container h-64">
+                        <canvas id="adoptersStackedChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-8 my-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">บทสรุปและเส้นทางในอนาคต</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">ทางเลือกในการตอบสนองต่อ "ผู้มาเยือน" นำไปสู่บทสรุปที่แตกต่างกันอย่างสิ้นเชิง ซึ่งเป็นตัวกำหนดอนาคตของแต่ละกลุ่ม</p>
+            <div class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:justify-around md:items-start">
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-node">
+                        <div class="text-lg font-bold text-[#FFD166]">ผู้หลบเร้น</div>
+                        <p class="text-sm">พยายามหลีกหนีเทคโนโลยี</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-node bg-yellow-50">
+                        <div class="text-lg font-bold">ถูกทิ้งไว้ข้างหลัง</div>
+                        <p class="text-sm">กลายเป็นคนแปลกแยกในโลกที่ไม่เข้าใจ</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-node">
+                        <div class="text-lg font-bold text-[#FF6B6B]">นักรบ</div>
+                        <p class="text-sm">ต่อสู้และต่อต้านการเปลี่ยนแปลง</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-node bg-red-50">
+                        <div class="text-lg font-bold">เหนื่อยล้าและหมดพลัง</div>
+                        <p class="text-sm">พลาดโอกาสในการร่วมสร้างอนาคต</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flowchart-node">
+                        <div class="text-lg font-bold text-[#06D6A0]">สหาย</div>
+                        <p class="text-sm">ปรับตัวและทำงานร่วมกับ AI</p>
+                    </div>
+                    <div class="flowchart-arrow">↓</div>
+                    <div class="flowchart-node bg-green-50">
+                        <div class="text-lg font-bold">ผู้สร้างอนาคต</div>
+                        <p class="text-sm">ยกระดับศักยภาพและเป็นผู้นำการเปลี่ยนแปลง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center my-8 md:my-12">
+             <h2 class="text-2xl md:text-3xl font-bold text-[#118AB2]">แล้วคุณล่ะ?</h2>
+             <p class="text-lg md:text-xl mt-4 text-gray-600">เมื่อ "เอเลี่ยนผู้มาเยือน" มาเคาะที่ประตูใจ... คุณจะเลือกเป็นคนกลุ่มไหน?</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLen = 16;
+            if (label.length <= maxLen) return label;
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
+        };
+
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            family: "'Kanit', sans-serif"
+                        }
+                    }
+                }
+            }
+        };
+
+        const mainDonutCtx = document.getElementById('mainDonutChart').getContext('2d');
+        new Chart(mainDonutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['ผู้หลบเร้นในเงามืด', 'นักรบผู้ปกป้อง', 'สหายแห่งโลกใหม่'],
+                datasets: [{
+                    label: 'สัดส่วนทัศนคติต่อ AI',
+                    data: [30, 45, 25],
+                    backgroundColor: ['#FFD166', '#FF6B6B', '#06D6A0'],
+                    borderColor: '#f0f4f8',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                           font: { family: "'Kanit', sans-serif", size: 14 }
+                        }
+                    },
+                    title: {
+                        display: false,
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const disconnectedCtx = document.getElementById('disconnectedChart').getContext('2d');
+        new Chart(disconnectedCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['เข้าไม่ถึงเทคโนโลยี', 'เข้าถึงเทคโนโลยี'],
+                datasets: [{
+                    data: [33, 67],
+                    backgroundColor: ['#FFD166', '#e5e7eb'],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                     legend: { display: false },
+                     title: {
+                        display: true,
+                        text: 'สัดส่วนผู้เข้าไม่ถึงเทคโนโลยี',
+                        font: { family: "'Kanit', sans-serif" }
+                    }
+                },
+                cutout: '75%'
+            }
+        });
+
+        const skepticsBarCtx = document.getElementById('skepticsBarChart').getContext('2d');
+        new Chart(skepticsBarCtx, {
+            type: 'bar',
+            data: {
+                labels: ['รู้สึกกังวลเกี่ยวกับ AI มากกว่าตื่นเต้น', 'รู้สึกตื่นเต้นมากกว่ากังวล'].map(wrapLabel),
+                datasets: [{
+                    label: 'เปอร์เซ็นต์',
+                    data: [52, 10],
+                    backgroundColor: ['#FF6B6B', '#118AB2'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: { display: false },
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 65,
+                         grid: { display: false }
+                    },
+                    y: {
+                         grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const adoptersStackedCtx = document.getElementById('adoptersStackedChart').getContext('2d');
+        new Chart(adoptersStackedCtx, {
+            type: 'bar',
+            data: {
+                labels: ['กลุ่มผู้ปรับใช้'],
+                datasets: [
+                    {
+                        label: 'สายเทคโนโลยี/นักพัฒนา',
+                        data: [40],
+                        backgroundColor: '#06D6A0',
+                    },
+                    {
+                        label: 'การตลาด/ครีเอทีฟ',
+                        data: [25],
+                        backgroundColor: '#118AB2',
+                    },
+                    {
+                        label: 'ภาคธุรกิจ/ผู้ประกอบการ',
+                        data: [20],
+                        backgroundColor: '#07b39b',
+                    },
+                    {
+                        label: 'การศึกษา/นักวิจัย',
+                        data: [15],
+                        backgroundColor: '#27c7b1',
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: true, grid: { display: false }, ticks: { display: false } },
+                    y: { stacked: true, grid: { display: false }, ticks: { display: false } }
+                },
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    tooltip: {
+                         callbacks: {
+                            title: () => 'องค์ประกอบของผู้ปรับใช้'
+                         }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { family: "'Kanit', sans-serif", size: 12 } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

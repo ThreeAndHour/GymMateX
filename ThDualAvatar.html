@@ -281,6 +281,12 @@
         const errorMessage = document.getElementById('error-message');
         const personaOutput = document.getElementById('persona-output');
 
+        // **FIX:** Moved apiKey to the top level of the script.
+        // **สำคัญ:** หากต้องการใช้งานฟีเจอร์นี้บนเว็บไซต์ภายนอก
+        // คุณต้องใส่ Google AI API Key ของคุณเองที่นี่
+        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio
+        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- ใส่ API KEY ของคุณที่นี่
+
         generateBtn.addEventListener('click', async () => {
             const productCategory = productInput.value;
             if (!productCategory.trim()) {
@@ -337,7 +343,7 @@
                         responseSchema: schema
                     }
                 };
-                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
+                
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
                 
                 const response = await fetch(apiUrl, {
@@ -358,7 +364,6 @@
                     result.candidates[0].content.parts.length > 0) {
                     
                     const jsonText = result.candidates[0].content.parts[0].text;
-                    // **FIX:** Clean the JSON string from control characters before parsing
                     const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
 
                     try {
@@ -385,7 +390,6 @@
         });
 
         function displayPersonas(data) {
-            // **FIX:** Add robust validation for the data structure
             if (!data || typeof data !== 'object') {
                 console.error("Invalid data object received:", data);
                 errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
@@ -550,3 +554,4 @@
     </script>
 </body>
 </html>
+

@@ -281,10 +281,6 @@
         const errorMessage = document.getElementById('error-message');
         const personaOutput = document.getElementById('persona-output');
 
-        // **FIX:** Moved apiKey to the top level of the script.
-        // **สำคัญ:** หากต้องการใช้งานฟีเจอร์นี้บนเว็บไซต์ภายนอก
-        // คุณต้องใส่ Google AI API Key ของคุณเองที่นี่
-        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio
         const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- ใส่ API KEY ของคุณที่นี่
 
         generateBtn.addEventListener('click', async () => {
@@ -397,14 +393,8 @@
                 return;
             }
 
-            const { evangelist, lookalike } = data;
-
-            if (!evangelist || typeof evangelist !== 'object' || !lookalike || typeof lookalike !== 'object') {
-                 console.error("Invalid evangelist or lookalike object:", data);
-                errorMessage.textContent = 'ข้อมูล Persona ที่ได้รับไม่สมบูรณ์';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
+            const evangelist = data.evangelist || {};
+            const lookalike = data.lookalike || {};
 
             const evangelistChars = Array.isArray(evangelist.characteristics) 
                 ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('') 
@@ -415,32 +405,36 @@
                 : '';
 
             const evangelistHtml = `
-                <div class="gemini-card rounded-lg p-6">
+                <div class="gemini-card rounded-lg p-6 flex flex-col">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🧠</div>
-                        <h3 class="text-2xl font-bold text-blue-300 mt-2">${evangelist.name || 'ผู้เผยแพร่'}</h3>
+                        <h3 class="text-2xl font-bold text-blue-300 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่'}</h3>
                         <p class="font-semibold text-white">(Category Evangelist)</p>
                     </div>
-                    <p class="text-gray-300 mb-4">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
-                    <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
-                    <ul class="list-check text-gray-300">
-                        ${evangelistChars}
-                    </ul>
+                    <div class="flex-grow">
+                        <p class="text-gray-300 mb-4 break-words">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
+                        <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                        <ul class="list-check text-gray-300">
+                            ${evangelistChars}
+                        </ul>
+                    </div>
                 </div>
             `;
 
             const lookalikeHtml = `
-                <div class="gemini-card rounded-lg p-6">
+                <div class="gemini-card rounded-lg p-6 flex flex-col">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🤝</div>
-                        <h3 class="text-2xl font-bold text-pink-300 mt-2">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
+                        <h3 class="text-2xl font-bold text-pink-300 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
                         <p class="font-semibold text-white">(Buyer Lookalike)</p>
                     </div>
-                    <p class="text-gray-300 mb-4">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
-                    <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
-                    <ul class="list-check text-gray-300">
-                         ${lookalikeChars}
-                    </ul>
+                    <div class="flex-grow">
+                        <p class="text-gray-300 mb-4 break-words">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
+                        <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                        <ul class="list-check text-gray-300">
+                             ${lookalikeChars}
+                        </ul>
+                    </div>
                 </div>
             `;
             

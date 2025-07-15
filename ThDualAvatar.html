@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อินโฟกราฟิก: กลยุทธ์ Dual-Avatar (พร้อม Gemini AI)</title>
+    <title>อินโฟกราฟิก: กลยุทธ์ Dual-Avatar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,27 +74,6 @@
             left: 0;
             color: #2ecc71;
         }
-        .gemini-card {
-            background-color: #0d1b2a;
-            border: 1px solid #778da9;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -161,26 +140,6 @@
                              <p class="text-sm text-gray-400">ตัวอย่าง: <strong class="text-white">"ป้าสมศรี"</strong> (ป้าวัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gemini-generator" class="mb-16 md:mb-24 card p-6 md:p-8 rounded-lg shadow-xl">
-            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ สร้าง Avatar ของคุณด้วย Gemini AI</h2>
-            <p class="text-center text-gray-300 max-w-2xl mx-auto mb-6">
-                ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ
-            </p>
-            <div class="max-w-xl mx-auto">
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="product-input" class="flex-grow bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน">
-                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">สร้างไอเดีย Persona</button>
-                </div>
-            </div>
-            <div id="gemini-result" class="mt-8">
-                <div id="loader" class="hidden loader"></div>
-                <div id="error-message" class="hidden text-center text-red-400 p-4 bg-red-900/50 rounded-lg"></div>
-                <div id="persona-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Results will be injected here -->
                 </div>
             </div>
         </section>
@@ -284,194 +243,6 @@
     </div>
 
     <script>
-        const generateBtn = document.getElementById('generate-btn');
-        const productInput = document.getElementById('product-input');
-        const loader = document.getElementById('loader');
-        const errorMessage = document.getElementById('error-message');
-        const personaOutput = document.getElementById('persona-output');
-
-        // =================================================================
-        // !! สำคัญ: กรุณาใส่ GOOGLE AI API KEY ของคุณที่นี่ก่อนใช้งาน !!
-        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio (ai.google.dev)
-        // หากไม่ใส่คีย์ ฟีเจอร์สร้าง Avatar จะไม่ทำงาน
-        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- วาง API KEY ของคุณในเครื่องหมายคำพูดนี้
-        // =================================================================
-
-        generateBtn.addEventListener('click', async () => {
-            if (!apiKey) {
-                errorMessage.textContent = 'ข้อผิดพลาด: กรุณาใส่ Gemini API Key ของคุณในโค้ดก่อนใช้งาน (มองหาตัวแปร apiKey)';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
-
-            const productCategory = productInput.value;
-            if (!productCategory.trim()) {
-                errorMessage.textContent = 'กรุณาป้อนประเภทสินค้าหรือบริการ';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
-            
-            generateBtn.disabled = true;
-            generateBtn.textContent = 'กำลังสร้าง...';
-            loader.classList.remove('hidden');
-            errorMessage.classList.add('hidden');
-            personaOutput.classList.add('hidden');
-            personaOutput.innerHTML = '';
-
-            // **FIX:** Updated prompt to be more explicit and strict about separating fields.
-            const prompt = `คุณคือผู้เชี่ยวชาญด้านการสร้างแบรนด์ สร้าง AI Influencer Persona 2 แบบสำหรับสินค้า/บริการ: "${productCategory}" เป็นภาษาไทย
-**คำสั่งสำคัญที่สุด:** ต้องตอบกลับในรูปแบบ JSON ที่ถูกต้องตาม Schema ที่กำหนดเท่านั้น ห้ามมีข้อความอื่นนอกเหนือจาก JSON โดยเด็ดขาด
-แยกข้อมูลแต่ละส่วนให้ชัดเจนตามโครงสร้างที่กำหนด:
-1.  "Category Evangelist":
-    - name: ชื่อที่สั้นและกระชับ (ไม่เกิน 5 คำ) **ห้าม** นำประวัติหรือลักษณะเด่นมารวมในชื่อ
-    - bio: ประวัติที่อธิบายความเชี่ยวชาญ (ประมาณ 2-3 ประโยค)
-    - characteristics: ลักษณะเด่น 3 ข้อ (ต้องเป็น Array ของ String)
-2.  "Buyer Lookalike":
-    - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นกันเอง (ไม่เกิน 5 คำ) **ห้าม** นำประวัติหรือลักษณะเด่นมารวมในชื่อ
-    - bio: ประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์ (ประมาณ 2-3 ประโยค)
-    - characteristics: ลักษณะเด่น 3 ข้อ (ต้องเป็น Array ของ String)`;
-
-            const schema = {
-                type: "OBJECT",
-                properties: {
-                    evangelist: {
-                        type: "OBJECT",
-                        properties: {
-                            name: { type: "STRING" },
-                            bio: { type: "STRING" },
-                            characteristics: {
-                                type: "ARRAY",
-                                items: { type: "STRING" }
-                            }
-                        }
-                    },
-                    lookalike: {
-                        type: "OBJECT",
-                        properties: {
-                            name: { type: "STRING" },
-                            bio: { type: "STRING" },
-                            characteristics: {
-                                type: "ARRAY",
-                                items: { type: "STRING" }
-                            }
-                        }
-                    }
-                }
-            };
-
-            try {
-                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = {
-                    contents: chatHistory,
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: schema
-                    }
-                };
-                
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorBody = await response.text();
-                    throw new Error(`API Error: ${response.status} ${response.statusText}. Body: ${errorBody}`);
-                }
-
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    
-                    const jsonText = result.candidates[0].content.parts[0].text;
-                    const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
-
-                    try {
-                        const data = JSON.parse(cleanedJsonText);
-                        displayPersonas(data);
-                    } catch (parseError) {
-                        console.error('JSON Parse Error:', parseError);
-                        console.error('Malformed JSON string received:', cleanedJsonText);
-                        throw new Error(`เกิดข้อผิดพลาดในการอ่านข้อมูลจาก AI: ${parseError.message}`);
-                    }
-                } else {
-                    throw new Error("ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์");
-                }
-
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                errorMessage.textContent = `เกิดข้อผิดพลาด: ${error.message}. กรุณาลองใหม่อีกครั้ง`;
-                errorMessage.classList.remove('hidden');
-            } finally {
-                loader.classList.add('hidden');
-                generateBtn.disabled = false;
-                generateBtn.textContent = 'สร้างไอเดีย Persona';
-            }
-        });
-
-        function displayPersonas(data) {
-            if (!data || typeof data !== 'object') {
-                console.error("Invalid data object received:", data);
-                errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
-
-            const evangelist = data.evangelist || {};
-            const lookalike = data.lookalike || {};
-
-            const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
-                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('')
-                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
-
-            const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
-                ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
-                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
-
-            const evangelistHtml = `
-                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl">🧠</div>
-                        <h3 class="text-2xl font-bold text-blue-300 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่'}</h3>
-                        <p class="font-semibold text-white">(Category Evangelist)</p>
-                    </div>
-                    <div class="flex-grow">
-                        <p class="text-gray-300 mb-4 break-words">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
-                        <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
-                        <ul class="list-check text-gray-300">
-                            ${evangelistChars}
-                        </ul>
-                    </div>
-                </div>
-            `;
-
-            const lookalikeHtml = `
-                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
-                    <div class="text-center mb-4">
-                        <div class="text-4xl">🤝</div>
-                        <h3 class="text-2xl font-bold text-pink-300 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
-                        <p class="font-semibold text-white">(Buyer Lookalike)</p>
-                    </div>
-                    <div class="flex-grow">
-                        <p class="text-gray-300 mb-4 break-words">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
-                        <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
-                        <ul class="list-check text-gray-300">
-                             ${lookalikeChars}
-                        </ul>
-                    </div>
-                </div>
-            `;
-            
-            personaOutput.innerHTML = evangelistHtml + lookalikeHtml;
-            personaOutput.classList.remove('hidden');
-        }
-
-
         const wrapLabel = (label, maxLength = 16) => {
             if (label.length <= maxLength) {
                 return label;
@@ -577,4 +348,3 @@
     </script>
 </body>
 </html>
-

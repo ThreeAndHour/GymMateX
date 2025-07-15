@@ -377,19 +377,34 @@
         });
 
         function displayPersonas(data) {
+            if (!data || !data.evangelist || !data.lookalike) {
+                console.error("Invalid persona data received:", data);
+                errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
             const { evangelist, lookalike } = data;
+
+            const evangelistChars = Array.isArray(evangelist.characteristics) 
+                ? evangelist.characteristics.map(c => `<li>${c}</li>`).join('') 
+                : '';
+
+            const lookalikeChars = Array.isArray(lookalike.characteristics)
+                ? lookalike.characteristics.map(c => `<li>${c}</li>`).join('')
+                : '';
 
             const evangelistHtml = `
                 <div class="gemini-card rounded-lg p-6">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🧠</div>
-                        <h3 class="text-2xl font-bold text-blue-300 mt-2">${evangelist.name}</h3>
+                        <h3 class="text-2xl font-bold text-blue-300 mt-2">${evangelist.name || 'ผู้เผยแพร่'}</h3>
                         <p class="font-semibold text-white">(Category Evangelist)</p>
                     </div>
-                    <p class="text-gray-300 mb-4">${evangelist.bio}</p>
+                    <p class="text-gray-300 mb-4">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
                     <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
                     <ul class="list-check text-gray-300">
-                        ${evangelist.characteristics.map(c => `<li>${c}</li>`).join('')}
+                        ${evangelistChars}
                     </ul>
                 </div>
             `;
@@ -398,13 +413,13 @@
                 <div class="gemini-card rounded-lg p-6">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🤝</div>
-                        <h3 class="text-2xl font-bold text-pink-300 mt-2">${lookalike.name}</h3>
+                        <h3 class="text-2xl font-bold text-pink-300 mt-2">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
                         <p class="font-semibold text-white">(Buyer Lookalike)</p>
                     </div>
-                    <p class="text-gray-300 mb-4">${lookalike.bio}</p>
+                    <p class="text-gray-300 mb-4">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
                     <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
                     <ul class="list-check text-gray-300">
-                         ${lookalike.characteristics.map(c => `<li>${c}</li>`).join('')}
+                         ${lookalikeChars}
                     </ul>
                 </div>
             `;

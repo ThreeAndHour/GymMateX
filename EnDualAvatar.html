@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Dual-Avatar Strategy (with Gemini AI)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1B2A;
+            color: #E0E1DD;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .card {
+            background-color: #1B263B;
+            border: 1px solid #415A77;
+            height: 100%;
+        }
+        .flow-arrow {
+            color: #778DA9;
+        }
+        .flow-box {
+            border: 2px dashed #415A77;
+            background-color: rgba(65, 90, 119, 0.1);
+        }
+         .flow-line {
+            width: 2px;
+            background-color: #415A77;
+            flex-grow: 1;
+        }
+        .kpi-box {
+            background-color: #415A77;
+            color: #E0E1DD;
+        }
+        .list-check {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .list-check li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .list-check li.placeholder {
+            color: #778DA9;
+        }
+        .list-check li.placeholder::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: #778DA9;
+        }
+        .list-check li:not(.placeholder)::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+        }
+        .gemini-card {
+            background-color: #0d1b2a;
+            border: 1px solid #778da9;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <div class="mb-8 flex flex-wrap gap-4 justify-start">
+            <a href="https://thbho.github.io/" 
+               class="inline-block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                &larr; Back to Home
+            </a>
+            <a href="#" onclick="window.history.back();"
+               class="inline-block bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                Thai Version &larr;
+            </a>
+        </div>
+
+        <div class="my-8 flex justify-center">
+            <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto" onerror="this.style.display='none'">
+        </div>
+
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">The Dual-Avatar Strategy: Creating 2D Influence</h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto">Every brand should create two complementary types of AI influencers to cover the consumer journey from awareness to trust.</p>
+        </header>
+
+        <section id="avatars" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Types of AI Influencers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="card rounded-lg shadow-xl p-6 flex flex-col">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🧠</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">1. The Category Evangelist</h3>
+                        <p class="text-gray-300 mb-6">An AI built as an expert in your product category to educate and build credibility.</p>
+                    </div>
+                    <div class="text-left mt-auto">
+                        <h4 class="font-bold text-white mb-2">Key Functions:</h4>
+                        <ul class="list-check text-gray-300">
+                            <li>The Trust Builder</li>
+                            <li>Establishes "Authority" for the brand/category</li>
+                            <li>Provides in-depth information, answers logical questions</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                             <p class="text-sm text-gray-400">Example: <strong class="text-white">"Dr. Anya,"</strong> a virtual nutritionist explaining plant-based proteins.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card rounded-lg shadow-xl p-6 flex flex-col">
+                     <div class="text-center">
+                        <div class="text-6xl mb-4">🤝</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">2. The Buyer Lookalike</h3>
+                        <p class="text-gray-300 mb-6">An AI created to represent your target customer, reflecting their problems and creating a sense of accessibility.</p>
+                    </div>
+                     <div class="text-left mt-auto">
+                        <h4 class="font-bold text-white mb-2">Key Functions:</h4>
+                        <ul class="list-check text-gray-300">
+                            <li>The Empathy Bridge</li>
+                            <li>Reflects the target customer and their pain points</li>
+                            <li>Builds "Relatability" and an emotional bridge</li>
+                        </ul>
+                         <div class="mt-4 pt-4 border-t border-gray-700">
+                             <p class="text-sm text-gray-400">Example: <strong class="text-white">"Leo the Weekend Warrior"</strong> reviewing protein powder recipes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gemini-generator" class="mb-16 md:mb-24 card p-6 md:p-8 rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ Create Your Avatars with Gemini AI</h2>
+            <p class="text-center text-gray-300 max-w-2xl mx-auto mb-6">
+                Put theory into practice! Just enter your product or service category, and Gemini will help brainstorm Persona ideas for both avatar types.
+            </p>
+            <div class="max-w-xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="product-input" class="flex-grow bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., skincare for sensitive skin, Italian cooking course">
+                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Generate Persona Ideas</button>
+                </div>
+            </div>
+            <div id="gemini-result" class="mt-8">
+                <div id="loader" class="hidden loader"></div>
+                <div id="error-message" class="hidden text-center text-red-400 p-4 bg-red-900/50 rounded-lg"></div>
+                <div id="persona-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="dual-funnel" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Synergy Across the Consumer Journey</h2>
+             <div class="max-w-5xl mx-auto p-4 md:p-6 card rounded-lg">
+                <div class="flex flex-col items-center">
+                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
+                        <h4 class="text-xl font-bold text-white">Awareness</h4>
+                        <p class="text-sm text-gray-300">🧠 The Evangelist educates the market.</p>
+                        <p class="font-bold text-blue-300 mt-2">Answers: "Why should I care?"</p>
+                    </div>
+                    <div class="flow-arrow text-4xl mb-4">↓</div>
+                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
+                        <h4 class="text-xl font-bold text-white">Consideration</h4>
+                        <p class="text-sm text-gray-300">🧠 The Evangelist builds credibility with deep dives.</p>
+                        <p class="text-sm text-gray-300">🤝 The Lookalike builds trust with reviews and real-life use.</p>
+                    </div>
+                    <div class="flow-arrow text-4xl mb-4">↓</div>
+                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
+                        <h4 class="text-xl font-bold text-white">Decision</h4>
+                        <p class="text-sm text-gray-300">🤝 The Lookalike drives conversion with authentic recommendations.</p>
+                         <p class="font-bold text-pink-300 mt-2">Answers: "How will it help me?"</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-lg text-gray-300 mt-8 max-w-3xl mx-auto">
+                <strong>Outcome:</strong> Guides consumers through the entire path: Knowledge → Credibility → Empathy → Adoption.
+            </p>
+        </section>
+
+        <section id="comparison" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-white mb-4 text-center">AI vs. Human: A Strategic Comparison</h2>
+            <div class="card rounded-lg shadow-xl p-4 md:p-8">
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="case-studies" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Case Studies in Thailand</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card rounded-lg p-6 text-center">
+                    <p class="text-4xl mb-3">📡</p>
+                    <h4 class="font-bold text-white text-xl">Ai-Ailynn & AIS</h4>
+                    <span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">Evangelist</span>
+                    <p class="text-sm text-gray-300">Uses a futuristic image to communicate 5G technology.</p>
+                </div>
+                <div class="card rounded-lg p-6 text-center">
+                    <p class="text-4xl mb-3">🏠</p>
+                    <h4 class="font-bold text-white text-xl">Wunni & Ananda</h4>
+                    <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">Lookalike</span>
+                    <p class="text-sm text-gray-300">Represents Gen-C customers, reflecting an urban, connected lifestyle.</p>
+                </div>
+                <div class="card rounded-lg p-6 text-center">
+                     <p class="text-4xl mb-3">🏦</p>
+                    <h4 class="font-bold text-white text-xl">Ken & Kacey & KBank</h4>
+                     <span class="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">Hybrid</span>
+                    <p class="text-sm text-gray-300">Brand-owned duo acting as the face of KBank Live with a modern personality.</p>
+                </div>
+                 <div class="card rounded-lg p-6 text-center">
+                     <p class="text-4xl mb-3">✨</p>
+                    <h4 class="font-bold text-white text-xl">Katii</h4>
+                     <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">Lookalike</span>
+                    <p class="text-sm text-gray-300">Relatable and authentic, perfect for fashion and lifestyle brands.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendations" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Recommendations for Advancement</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">Bridge the Two Avatars</h3>
+                    <p class="text-gray-300 mb-4">Create interactions between them to make their world feel real.</p>
+                    <ul class="list-check text-gray-300">
+                        <li>Have the Lookalike learn from and reference the Evangelist.</li>
+                        <li>Have the Evangelist use the Lookalike's story as a case study.</li>
+                    </ul>
+                </div>
+                <div class="card rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">Design a Persona Journey</h3>
+                    <p class="text-gray-300 mb-4">Make the avatars dynamic and allow them to grow with their audience.</p>
+                     <ul class="list-check text-gray-300">
+                        <li>Evangelist: Always updates with new knowledge and trends.</li>
+                        <li>Lookalike: "Grows" from a beginner to an intermediate user/advisor.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+         <footer class="text-center border-t border-gray-700 pt-8 mt-12">
+            <p class="text-gray-400 mb-4">This is the shift from broadcasting to nurturing relationships at scale.</p>
+            <a href="https://thbho.github.io/" 
+               class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 text-lg">
+                Learn More on Our Website
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const productInput = document.getElementById('product-input');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const personaOutput = document.getElementById('persona-output');
+
+        // =================================================================
+        // !! IMPORTANT: PLEASE INSERT YOUR GOOGLE AI API KEY HERE !!
+        // You can get a free key from Google AI Studio (ai.google.dev)
+        // If you don't add a key, the Avatar Generator feature will not work.
+        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- PASTE YOUR API KEY INSIDE THE QUOTES
+        // =================================================================
+
+        generateBtn.addEventListener('click', async () => {
+            if (!apiKey) {
+                errorMessage.textContent = 'Error: Please add your Gemini API Key to the code (look for the apiKey variable).';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const productCategory = productInput.value;
+            if (!productCategory.trim()) {
+                errorMessage.textContent = 'Please enter a product or service category.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+            loader.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            personaOutput.classList.add('hidden');
+            personaOutput.innerHTML = '';
+
+            const prompt = `As a brand strategist, for the product/service category: "${productCategory}", create 2 distinct AI Influencer Personas in English. Strictly separate each piece of information according to the defined structure:
+1.  "Category Evangelist":
+    - name: A short, concise, professional-sounding name (very important: do not include the bio or characteristics in the name).
+    - bio: A bio explaining their expertise (about 2-3 sentences).
+    - characteristics: 3 key traits (as an array of strings).
+2.  "Buyer Lookalike":
+    - name: A short, concise, friendly-sounding name (very important: do not include the bio or characteristics in the name).
+    - bio: A bio explaining their lifestyle and connection to the product (about 2-3 sentences).
+    - characteristics: 3 key traits (as an array of strings).`;
+
+            const schema = {
+                type: "OBJECT",
+                properties: {
+                    evangelist: {
+                        type: "OBJECT",
+                        properties: {
+                            name: { type: "STRING" },
+                            bio: { type: "STRING" },
+                            characteristics: {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            }
+                        }
+                    },
+                    lookalike: {
+                        type: "OBJECT",
+                        properties: {
+                            name: { type: "STRING" },
+                            bio: { type: "STRING" },
+                            characteristics: {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            }
+                        }
+                    }
+                }
+            };
+
+            try {
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: schema
+                    }
+                };
+                
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    throw new Error(`API Error: ${response.status} ${response.statusText}. Body: ${errorBody}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    
+                    const jsonText = result.candidates[0].content.parts[0].text;
+                    const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+
+                    try {
+                        const data = JSON.parse(cleanedJsonText);
+                        displayPersonas(data);
+                    } catch (parseError) {
+                        console.error('JSON Parse Error:', parseError);
+                        console.error('Malformed JSON string received:', cleanedJsonText);
+                        throw new Error(`Error reading data from AI: ${parseError.message}`);
+                    }
+                } else {
+                    throw new Error("Did not receive Persona data from AI or the data was incomplete.");
+                }
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                errorMessage.textContent = `An error occurred: ${error.message}. Please try again.`;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate Persona Ideas';
+            }
+        });
+
+        function displayPersonas(data) {
+            if (!data || typeof data !== 'object') {
+                console.error("Invalid data object received:", data);
+                errorMessage.textContent = 'Received malformed Persona data from AI.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const evangelist = data.evangelist || {};
+            const lookalike = data.lookalike || {};
+
+            const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
+                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('')
+                : '<li class="placeholder">No characteristics provided.</li>';
+
+            const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
+                ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
+                : '<li class="placeholder">No characteristics provided.</li>';
+
+            const evangelistHtml = `
+                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl">🧠</div>
+                        <h3 class="text-2xl font-bold text-blue-300 mt-2 break-words">${evangelist.name || 'Evangelist'}</h3>
+                        <p class="font-semibold text-white">(Category Evangelist)</p>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-gray-300 mb-4 break-words">${evangelist.bio || 'No description provided.'}</p>
+                        <h4 class="font-bold text-white mb-2">Key Characteristics:</h4>
+                        <ul class="list-check text-gray-300">
+                            ${evangelistChars}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            const lookalikeHtml = `
+                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl">🤝</div>
+                        <h3 class="text-2xl font-bold text-pink-300 mt-2 break-words">${lookalike.name || 'Lookalike'}</h3>
+                        <p class="font-semibold text-white">(Buyer Lookalike)</p>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-gray-300 mb-4 break-words">${lookalike.bio || 'No description provided.'}</p>
+                        <h4 class="font-bold text-white mb-2">Key Characteristics:</h4>
+                        <ul class="list-check text-gray-300">
+                             ${lookalikeChars}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            personaOutput.innerHTML = evangelistHtml + lookalikeHtml;
+            personaOutput.classList.remove('hidden');
+        }
+
+
+        const wrapLabel = (label, maxLength = 16) => {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+
+        const globalChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#E0E1DD',
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    titleFont: {
+                        family: "'Inter', sans-serif"
+                    },
+                    bodyFont: {
+                        family: "'Inter', sans-serif"
+                    },
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const comparisonChartCtx = document.getElementById('comparisonChart').getContext('2d');
+        const comparisonChart = new Chart(comparisonChartCtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Control & Brand Safety', 
+                    'Scalability', 
+                    'Long-term Cost-Effectiveness', 
+                    'Creative Freedom', 
+                    'Emotional Connection',
+                    'Perceived Authenticity'
+                ].map(label => wrapLabel(label)),
+                datasets: [{
+                    label: 'AI Influencer',
+                    data: [10, 10, 9, 10, 6, 7],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    pointBackgroundColor: '#3498db',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#3498db'
+                }, {
+                    label: 'Human Influencer',
+                    data: [4, 6, 5, 7, 10, 10],
+                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                    borderColor: '#e74c3c',
+                    pointBackgroundColor: '#e74c3c',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#e74c3c'
+                }]
+            },
+            options: {
+                ...globalChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(224, 225, 221, 0.2)' },
+                        grid: { color: 'rgba(224, 225, 221, 0.2)' },
+                        pointLabels: { color: '#E0E1DD', font: { size: 12, family: "'Inter', sans-serif" }},
+                        ticks: {
+                            color: '#0D1B2A',
+                            backdropColor: 'rgba(224, 225, 221, 0.8)',
+                            stepSize: 2
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

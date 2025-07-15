@@ -358,9 +358,17 @@
                     result.candidates[0].content.parts.length > 0) {
                     
                     const jsonText = result.candidates[0].content.parts[0].text;
-                    const data = JSON.parse(jsonText);
-                    
-                    displayPersonas(data);
+                    // **FIX:** Clean the JSON string from control characters before parsing
+                    const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+
+                    try {
+                        const data = JSON.parse(cleanedJsonText);
+                        displayPersonas(data);
+                    } catch (parseError) {
+                        console.error('JSON Parse Error:', parseError);
+                        console.error('Malformed JSON string received:', cleanedJsonText);
+                        throw new Error(`เกิดข้อผิดพลาดในการอ่านข้อมูลจาก AI: ${parseError.message}`);
+                    }
                 } else {
                     throw new Error("ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์");
                 }
@@ -377,8 +385,9 @@
         });
 
         function displayPersonas(data) {
-            if (!data || !data.evangelist || !data.lookalike) {
-                console.error("Invalid persona data received:", data);
+            // **FIX:** Add robust validation for the data structure
+            if (!data || typeof data !== 'object') {
+                console.error("Invalid data object received:", data);
                 errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
                 errorMessage.classList.remove('hidden');
                 return;
@@ -386,12 +395,19 @@
 
             const { evangelist, lookalike } = data;
 
+            if (!evangelist || typeof evangelist !== 'object' || !lookalike || typeof lookalike !== 'object') {
+                 console.error("Invalid evangelist or lookalike object:", data);
+                errorMessage.textContent = 'ข้อมูล Persona ที่ได้รับไม่สมบูรณ์';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
             const evangelistChars = Array.isArray(evangelist.characteristics) 
-                ? evangelist.characteristics.map(c => `<li>${c}</li>`).join('') 
+                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('') 
                 : '';
 
             const lookalikeChars = Array.isArray(lookalike.characteristics)
-                ? lookalike.characteristics.map(c => `<li>${c}</li>`).join('')
+                ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
                 : '';
 
             const evangelistHtml = `

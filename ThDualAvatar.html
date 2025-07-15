@@ -82,6 +82,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -100,7 +104,7 @@
         </div>
 
         <div class="my-8 flex justify-center">
-            <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto">
+            <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto" onerror="this.style.display='none'">
         </div>
 
         <header class="text-center mb-12 md:mb-20">
@@ -273,7 +277,6 @@
     <script>
         const generateBtn = document.getElementById('generate-btn');
         const productInput = document.getElementById('product-input');
-        const geminiResult = document.getElementById('gemini-result');
         const loader = document.getElementById('loader');
         const errorMessage = document.getElementById('error-message');
         const personaOutput = document.getElementById('persona-output');
@@ -285,13 +288,17 @@
                 errorMessage.classList.remove('hidden');
                 return;
             }
-
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'กำลังสร้าง...';
             loader.classList.remove('hidden');
             errorMessage.classList.add('hidden');
             personaOutput.classList.add('hidden');
             personaOutput.innerHTML = '';
 
-            const prompt = `Based on the product category "${productCategory}", generate two distinct AI influencer personas in Thai language: a "Category Evangelist" and a "Buyer Lookalike".`;
+            const prompt = `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "${productCategory}", กรุณาสร้าง AI Influencer Persona ที่แตกต่างกัน 2 แบบเป็นภาษาไทย:
+1.  "Category Evangelist": บุคคลที่ดูเป็นผู้เชี่ยวชาญ น่าเชื่อถือ และมีความรู้ลึกซึ้ง ให้ตั้งชื่อที่ฟังดูเป็นมืออาชีพ, เขียนประวัติที่อธิบายความเชี่ยวชาญ, และบอกลักษณะเด่น 3 ข้อ
+2.  "Buyer Lookalike": บุคคลที่ดูเป็นมิตร เข้าถึงง่าย และสะท้อนภาพลูกค้าเป้าหมายอย่างแท้จริง ให้ตั้งชื่อที่ฟังดูเป็นกันเอง, เขียนประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์, และบอกลักษณะเด่น 3 ข้อ`;
 
             const schema = {
                 type: "OBJECT",
@@ -340,7 +347,8 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API Error: ${response.statusText}`);
+                    const errorBody = await response.text();
+                    throw new Error(`API Error: ${response.status} ${response.statusText}. Body: ${errorBody}`);
                 }
 
                 const result = await response.json();
@@ -354,7 +362,7 @@
                     
                     displayPersonas(data);
                 } else {
-                    throw new Error("ไม่ได้รับข้อมูล Persona จาก AI");
+                    throw new Error("ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์");
                 }
 
             } catch (error) {
@@ -363,6 +371,8 @@
                 errorMessage.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'สร้างไอเดีย Persona';
             }
         });
 

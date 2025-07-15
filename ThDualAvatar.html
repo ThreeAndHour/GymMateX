@@ -59,7 +59,16 @@
             padding-left: 1.5rem;
             margin-bottom: 0.5rem;
         }
-        .list-check li::before {
+        .list-check li.placeholder {
+            color: #778DA9;
+        }
+        .list-check li.placeholder::before {
+            content: '-';
+            position: absolute;
+            left: 0;
+            color: #778DA9;
+        }
+        .list-check li:not(.placeholder)::before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -396,13 +405,13 @@
             const evangelist = data.evangelist || {};
             const lookalike = data.lookalike || {};
 
-            const evangelistChars = Array.isArray(evangelist.characteristics) 
-                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('') 
-                : '';
+            const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
+                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('')
+                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
 
-            const lookalikeChars = Array.isArray(lookalike.characteristics)
+            const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
                 ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
-                : '';
+                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
 
             const evangelistHtml = `
                 <div class="gemini-card rounded-lg p-6 flex flex-col">
@@ -548,4 +557,5 @@
     </script>
 </body>
 </html>
+
 

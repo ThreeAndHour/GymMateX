@@ -290,9 +290,20 @@
         const errorMessage = document.getElementById('error-message');
         const personaOutput = document.getElementById('persona-output');
 
-        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- ใส่ API KEY ของคุณที่นี่
+        // =================================================================
+        // !! สำคัญ: กรุณาใส่ GOOGLE AI API KEY ของคุณที่นี่ก่อนใช้งาน !!
+        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio (ai.google.dev)
+        // หากไม่ใส่คีย์ ฟีเจอร์สร้าง Avatar จะไม่ทำงาน
+        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- วาง API KEY ของคุณในเครื่องหมายคำพูดนี้
+        // =================================================================
 
         generateBtn.addEventListener('click', async () => {
+            if (!apiKey) {
+                errorMessage.textContent = 'ข้อผิดพลาด: กรุณาใส่ Gemini API Key ของคุณในโค้ดก่อนใช้งาน (มองหาตัวแปร apiKey)';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
             const productCategory = productInput.value;
             if (!productCategory.trim()) {
                 errorMessage.textContent = 'กรุณาป้อนประเภทสินค้าหรือบริการ';
@@ -307,9 +318,16 @@
             personaOutput.classList.add('hidden');
             personaOutput.innerHTML = '';
 
-            const prompt = `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "${productCategory}", กรุณาสร้าง AI Influencer Persona ที่แตกต่างกัน 2 แบบเป็นภาษาไทย:
-1.  "Category Evangelist": บุคคลที่ดูเป็นผู้เชี่ยวชาญ น่าเชื่อถือ และมีความรู้ลึกซึ้ง ให้ตั้งชื่อที่ฟังดูเป็นมืออาชีพ, เขียนประวัติที่อธิบายความเชี่ยวชาญ, และบอกลักษณะเด่น 3 ข้อ
-2.  "Buyer Lookalike": บุคคลที่ดูเป็นมิตร เข้าถึงง่าย และสะท้อนภาพลูกค้าเป้าหมายอย่างแท้จริง ให้ตั้งชื่อที่ฟังดูเป็นกันเอง, เขียนประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์, และบอกลักษณะเด่น 3 ข้อ`;
+            // **FIX:** Updated prompt to be more explicit about separating fields.
+            const prompt = `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "${productCategory}", กรุณาสร้าง AI Influencer Persona ที่แตกต่างกัน 2 แบบเป็นภาษาไทย โดยแยกข้อมูลแต่ละส่วนให้ชัดเจนตามโครงสร้างที่กำหนด:
+1.  "Category Evangelist":
+    - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นมืออาชีพ (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
+    - bio: ประวัติที่อธิบายความเชี่ยวชาญ (ประมาณ 2-3 ประโยค)
+    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)
+2.  "Buyer Lookalike":
+    - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นกันเอง (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
+    - bio: ประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์ (ประมาณ 2-3 ประโยค)
+    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)`;
 
             const schema = {
                 type: "OBJECT",
@@ -557,5 +575,3 @@
     </script>
 </body>
 </html>
-
-

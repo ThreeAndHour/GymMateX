@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อินโฟกราฟิก: กลยุทธ์ Dual-Avatar</title>
+    <title>อินโฟกราฟิก: กลยุทธ์ Dual-Avatar (พร้อม Gemini AI)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,8 @@
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #0D1B2A;
-            color: #E0E1DD;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
         .chart-container {
             position: relative;
@@ -30,25 +30,9 @@
             }
         }
         .card {
-            background-color: #1B263B;
-            border: 1px solid #415A77;
+            background-color: #1e293b;
+            border: 1px solid #334155;
             height: 100%;
-        }
-        .flow-arrow {
-            color: #778DA9;
-        }
-        .flow-box {
-            border: 2px dashed #415A77;
-            background-color: rgba(65, 90, 119, 0.1);
-        }
-         .flow-line {
-            width: 2px;
-            background-color: #415A77;
-            flex-grow: 1;
-        }
-        .kpi-box {
-            background-color: #415A77;
-            color: #E0E1DD;
         }
         .list-check {
             list-style-type: none;
@@ -56,176 +40,232 @@
         }
         .list-check li {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.75rem;
             margin-bottom: 0.5rem;
         }
-        .list-check li.placeholder {
-            color: #778DA9;
-        }
-        .list-check li.placeholder::before {
-            content: '-';
-            position: absolute;
-            left: 0;
-            color: #778DA9;
-        }
-        .list-check li:not(.placeholder)::before {
+        .list-check li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #2ecc71;
+            color: #34d399;
+            font-weight: bold;
+        }
+        .list-check li.placeholder {
+            color: #94a3b8;
+        }
+        .list-check li.placeholder::before {
+            content: '-';
+            color: #94a3b8;
+        }
+        .gemini-card {
+            background-color: #0f172a;
+            border: 1px solid #475569;
+        }
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="container mx-auto p-4 md:p-8">
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
 
         <div class="mb-8 flex flex-wrap gap-4 justify-start">
             <a href="https://thbho.github.io/" 
-               class="inline-block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+               class="inline-block bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
                 &larr; กลับไปหน้า Home
             </a>
-            <a href="https://threeandhour.github.io/GymMateX/EnDualAvatar.html" 
+             <a href="https://threeandhour.github.io/GymMateX/EnDualAvatar.html" 
                class="inline-block bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
                 English Version &rarr;
             </a>
         </div>
-
+        
         <div class="my-8 flex justify-center">
             <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto" onerror="this.style.display='none'">
         </div>
 
-        <header class="text-center mb-12 md:mb-20">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">กลยุทธ์ Dual-Avatar: สร้างอิทธิพลสองมิติ</h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto">ทุกแบรนด์ควรสร้าง AI อินฟลูเอนเซอร์สองประเภทที่ทำงานเสริมกัน เพื่อครอบคลุมเส้นทางการตัดสินใจของผู้บริโภคตั้งแต่การสร้างการรับรู้ไปจนถึงการสร้างความไว้วางใจ</p>
+        <header class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">กลยุทธ์ Dual-Avatar: สร้างอิทธิพลสองมิติ</h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto">
+                ทุกแบรนด์ควรสร้าง AI อินฟลูเอนเซอร์สองประเภทที่ทำงานเสริมกัน เพื่อครอบคลุมเส้นทางการตัดสินใจของผู้บริโภคตั้งแต่การสร้างการรับรู้ไปจนถึงการสร้างความไว้วางใจ
+            </p>
         </header>
+        
+        <section id="gemini-generator" class="mb-20 md:mb-28 card rounded-xl shadow-xl p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ สร้าง Avatar ของคุณด้วย Gemini AI</h2>
+            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-8">
+                ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ
+            </p>
+            <div class="max-w-xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="product-input" class="flex-grow bg-slate-900 text-white border border-slate-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400" placeholder="เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน">
+                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">สร้างไอเดีย Persona</button>
+                </div>
+            </div>
+            <div id="gemini-result" class="mt-8">
+                <div id="loader" class="hidden loader"></div>
+                <div id="error-message" class="hidden text-center text-red-400 p-4 bg-red-900/50 rounded-lg"></div>
+                <div id="persona-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+        </section>
 
-        <section id="avatars" class="mb-16 md:mb-24">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">ประเภทของ AI อินฟลูเอนเซอร์</h2>
+        <section id="avatars" class="mb-20 md:mb-28">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">ประเภทของ AI อินฟลูเอนเซอร์</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div class="card rounded-lg shadow-xl p-6 flex flex-col">
+                
+                <div class="card rounded-xl shadow-xl p-8 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
                     <div class="text-center">
                         <div class="text-6xl mb-4">🧠</div>
                         <h3 class="text-2xl font-bold text-white mb-2">1. ผู้เผยแพร่หมวดหมู่</h3>
-                        <p class="font-semibold text-lg text-blue-300 mb-4">(Category Evangelist)</p>
-                        <p class="text-gray-300 mb-6">สร้าง AI ในฐานะผู้เชี่ยวชาญในหมวดหมู่สินค้าของคุณ เพื่อให้ความรู้และสร้างความน่าเชื่อถือ</p>
+                        <p class="font-semibold text-lg text-sky-400 mb-4">(Category Evangelist)</p>
+                        <p class="text-slate-300 mb-6">สร้าง AI ในฐานะผู้เชี่ยวชาญในหมวดหมู่สินค้าของคุณ เพื่อให้ความรู้และสร้างความน่าเชื่อถือ</p>
                     </div>
-                    <div class="text-left mt-auto">
-                        <h4 class="font-bold text-white mb-2">หน้าที่หลัก:</h4>
-                        <ul class="list-check text-gray-300">
+                    <div class="text-left mt-auto pt-6 border-t border-slate-700">
+                        <h4 class="font-bold text-white mb-3">หน้าที่หลัก:</h4>
+                        <ul class="list-check text-slate-300 space-y-2">
                             <li>ผู้สร้างความน่าเชื่อถือ (The Trust Builder)</li>
                             <li>สร้าง "Authority" ให้กับแบรนด์/หมวดหมู่</li>
                             <li>ให้ข้อมูลเชิงลึก ตอบข้อสงสัยเชิงเหตุผล</li>
                         </ul>
-                        <div class="mt-4 pt-4 border-t border-gray-700">
-                             <p class="text-sm text-gray-400">ตัวอย่าง: <strong class="text-white">"Brian นักบัญชีภาษี"</strong> ที่อธิบายเรื่องภาษีคริปโตให้เข้าใจง่าย</p>
-                        </div>
+                        <p class="text-sm text-slate-400 mt-6">ตัวอย่าง: <strong class="text-white">"Brian นักบัญชีภาษี"</strong> ที่อธิบายเรื่องภาษีคริปโตให้เข้าใจง่าย</p>
                     </div>
                 </div>
-                <div class="card rounded-lg shadow-xl p-6 flex flex-col">
+
+                <div class="card rounded-xl shadow-xl p-8 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
                      <div class="text-center">
                         <div class="text-6xl mb-4">🤝</div>
                         <h3 class="text-2xl font-bold text-white mb-2">2. ผู้ซื้อที่มีลักษณะคล้ายกัน</h3>
-                         <p class="font-semibold text-lg text-pink-300 mb-4">(Buyer Lookalike)</p>
-                        <p class="text-gray-300 mb-6">สร้าง AI ที่เป็นตัวแทนของลูกค้าเป้าหมายของคุณ เพื่อสะท้อนปัญหาและสร้างความรู้สึกเข้าถึงได้</p>
+                         <p class="font-semibold text-lg text-pink-400 mb-4">(Buyer Lookalike)</p>
+                        <p class="text-slate-300 mb-6">สร้าง AI ที่เป็นตัวแทนของลูกค้าเป้าหมายของคุณ เพื่อสะท้อนปัญหาและสร้างความรู้สึกเข้าถึงได้</p>
                     </div>
-                     <div class="text-left mt-auto">
-                        <h4 class="font-bold text-white mb-2">หน้าที่หลัก:</h4>
-                        <ul class="list-check text-gray-300">
+                     <div class="text-left mt-auto pt-6 border-t border-slate-700">
+                        <h4 class="font-bold text-white mb-3">หน้าที่หลัก:</h4>
+                        <ul class="list-check text-slate-300 space-y-2">
                             <li>ผู้สร้างความเชื่อมโยง (The Empathy Bridge)</li>
                             <li>สะท้อนภาพลูกค้าเป้าหมายและ Pain Points</li>
                             <li>สร้าง "Relatability" และสะพานทางอารมณ์</li>
                         </ul>
-                         <div class="mt-4 pt-4 border-t border-gray-700">
-                             <p class="text-sm text-gray-400">ตัวอย่าง: <strong class="text-white">"ป้าสมศรี"</strong> (ป้าวัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย</p>
-                        </div>
+                         <p class="text-sm text-slate-400 mt-6">ตัวอย่าง: <strong class="text-white">"ป้าสมศรี"</strong> (วัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="dual-funnel" class="mb-16 md:mb-24">
+        <section id="dual-funnel" class="mb-20 md:mb-28">
             <h2 class="text-3xl font-bold text-white mb-12 text-center">การทำงานร่วมกันบน Consumer Journey</h2>
-             <div class="max-w-5xl mx-auto p-4 md:p-6 card rounded-lg">
-                <div class="flex flex-col items-center">
-                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
-                        <h4 class="text-xl font-bold text-white">การสร้างการรับรู้ (Awareness)</h4>
-                        <p class="text-sm text-gray-300">🧠 ผู้เผยแพร่ให้ความรู้แก่ตลาด</p>
-                        <p class="font-bold text-blue-300 mt-2">ตอบคำถาม: "ทำไมฉันควรสนใจสิ่งนี้?"</p>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative pl-8 border-l-2 border-slate-700 space-y-16">
+                    
+                    <div class="relative">
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
+                            <span class="text-xl">🧠</span>
+                        </div>
+                        <div class="pl-8">
+                            <h3 class="text-2xl font-bold text-white">การสร้างการรับรู้ (Awareness)</h3>
+                            <p class="mt-2 text-slate-300">ผู้เผยแพร่ให้ความรู้แก่ตลาด สร้างความเข้าใจในปัญหาและโซลูชัน</p>
+                            <p class="mt-3 font-semibold text-sky-400">ตอบคำถาม: "ทำไมฉันควรสนใจสิ่งนี้?"</p>
+                        </div>
                     </div>
-                    <div class="flow-arrow text-4xl mb-4">↓</div>
-                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
-                        <h4 class="text-xl font-bold text-white">การพิจารณา (Consideration)</h4>
-                        <p class="text-sm text-gray-300">🧠 สร้างความน่าเชื่อถือด้วยข้อมูลเชิงลึก</p>
-                        <p class="text-sm text-gray-300">🤝 สร้างความไว้วางใจด้วยรีวิวและการใช้งานจริง</p>
+
+                    <div class="relative">
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
+                             <span class="text-xl">🤝</span>
+                        </div>
+                        <div class="pl-8">
+                            <h3 class="text-2xl font-bold text-white">การพิจารณา (Consideration)</h3>
+                            <p class="mt-2 text-slate-300">ผู้เผยแพร่ให้ข้อมูลเชิงลึกเพื่อสร้างความน่าเชื่อถือ ในขณะที่ผู้ซื้อ Lookalike สร้างความไว้วางใจผ่านรีวิวและการใช้งานจริง</p>
+                        </div>
                     </div>
-                    <div class="flow-arrow text-4xl mb-4">↓</div>
-                    <div class="flow-box rounded-lg p-4 mb-4 text-center w-full md:w-3/4">
-                        <h4 class="text-xl font-bold text-white">การตัดสินใจซื้อ (Decision)</h4>
-                        <p class="text-sm text-gray-300">🤝 ผู้ซื้อ Lookalike ขับเคลื่อนการตัดสินใจ</p>
-                         <p class="font-bold text-pink-300 mt-2">ตอบคำถาม: "แล้วมันจะช่วยให้ชีวิตฉันดีขึ้นได้อย่างไร?"</p>
+
+                    <div class="relative">
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
+                             <span class="text-xl">❤️</span>
+                        </div>
+                        <div class="pl-8">
+                            <h3 class="text-2xl font-bold text-white">การตัดสินใจซื้อ (Decision)</h3>
+                            <p class="mt-2 text-slate-300">ผู้ซื้อ Lookalike ขับเคลื่อนการตัดสินใจด้วยคำแนะนำที่จริงใจและโปรโมชั่น</p>
+                            <p class="mt-3 font-semibold text-pink-400">ตอบคำถาม: "แล้วมันจะช่วยให้ชีวิตฉันดีขึ้นได้อย่างไร?"</p>
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <p class="text-center text-lg text-gray-300 mt-8 max-w-3xl mx-auto">
+             <p class="text-center text-lg text-slate-300 mt-12 max-w-3xl mx-auto">
                 <strong>ผลลัพธ์:</strong> นำพาผู้บริโภคตลอดเส้นทาง: สร้างความรู้ → สร้างความน่าเชื่อถือ → สร้างความเข้าอกเข้าใจ → ผลักดันให้เกิดการยอมรับ
             </p>
         </section>
 
-        <section id="comparison" class="mb-16 md:mb-24">
-            <h2 class="text-3xl font-bold text-white mb-4 text-center">AI vs. มนุษย์: ข้อได้เปรียบเชิงกลยุทธ์</h2>
-            <div class="card rounded-lg shadow-xl p-4 md:p-8">
+        <section id="comparison" class="mb-20 md:mb-28">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">AI vs. มนุษย์: ข้อได้เปรียบเชิงกลยุทธ์</h2>
+            <div class="card rounded-xl shadow-xl p-4 md:p-8">
                 <div class="chart-container">
                     <canvas id="comparisonChart"></canvas>
                 </div>
             </div>
         </section>
         
-        <section id="case-studies" class="mb-16 md:mb-24">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">กรณีศึกษาในประเทศไทย</h2>
+        <section id="case-studies" class="mb-20 md:mb-28">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">กรณีศึกษาในประเทศไทย</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card rounded-lg p-6 text-center">
                     <p class="text-4xl mb-3">📡</p>
                     <h4 class="font-bold text-white text-xl">ไอ-ไอรีน & AIS</h4>
                     <span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้เผยแพร่</span>
-                    <p class="text-sm text-gray-300">ใช้ภาพลักษณ์ล้ำสมัยเพื่อสื่อสารเทคโนโลยี 5G</p>
+                    <p class="text-sm text-slate-300">ใช้ภาพลักษณ์ล้ำสมัยเพื่อสื่อสารเทคโนโลยี 5G สร้างความน่าเชื่อถือและให้ความรู้แก่ตลาด</p>
                 </div>
                 <div class="card rounded-lg p-6 text-center">
                     <p class="text-4xl mb-3">🏠</p>
                     <h4 class="font-bold text-white text-xl">วันนี้ & Ananda</h4>
                     <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้ซื้อ Lookalike</span>
-                    <p class="text-sm text-gray-300">เป็นตัวแทนของลูกค้า Gen-C สะท้อนไลฟ์สไตล์คนเมือง</p>
+                    <p class="text-sm text-slate-300">เป็นตัวแทนของลูกค้า Gen-C สะท้อนไลฟ์สไตล์คนเมืองที่เชื่อมต่อกับโลกดิจิทัล สร้างความรู้สึกเข้าถึงได้</p>
                 </div>
                 <div class="card rounded-lg p-6 text-center">
                      <p class="text-4xl mb-3">🏦</p>
                     <h4 class="font-bold text-white text-xl">เคน & เคซี่ & KBank</h4>
                      <span class="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ไฮบริด</span>
-                    <p class="text-sm text-gray-300">คู่หูอวตารที่เป็นสินทรัพย์ของแบรนด์เอง สร้างบุคลิกที่ทันสมัย</p>
+                    <p class="text-sm text-slate-300">คู่หูอวตารที่เป็นสินทรัพย์ของแบรนด์เอง ทำหน้าที่เป็นหน้าตาของ KBank Live สร้างบุคลิกที่ทันสมัยและเป็นมิตร</p>
                 </div>
                  <div class="card rounded-lg p-6 text-center">
                      <p class="text-4xl mb-3">✨</p>
                     <h4 class="font-bold text-white text-xl">กะทิ</h4>
                      <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้ซื้อ Lookalike</span>
-                    <p class="text-sm text-gray-300">มีบุคลิกเข้าถึงง่าย เป็นตัวของตัวเอง เหมาะกับแบรนด์แฟชั่น</p>
+                    <p class="text-sm text-slate-300">มีบุคลิกเข้าถึงง่าย เป็นตัวของตัวเอง ทำให้ผู้บริโภครู้สึกเชื่อมโยงได้ง่าย เหมาะกับแบรนด์แฟชั่นและไลฟ์สไตล์</p>
                 </div>
             </div>
         </section>
 
-        <section id="recommendations" class="mb-16 md:mb-24">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">ข้อเสนอแนะเพื่อต่อยอด</h2>
+        <section id="recommendations" class="mb-20 md:mb-28">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">ข้อเสนอแนะเพื่อต่อยอด</h2>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div class="card rounded-lg shadow-xl p-6">
+                <div class="card rounded-xl shadow-xl p-8">
                     <h3 class="text-xl font-bold text-white mb-4">สร้างสะพานเชื่อมระหว่างสอง Avatars</h3>
-                    <p class="text-gray-300 mb-4">สร้างปฏิสัมพันธ์ระหว่างกันเพื่อให้โลกของพวกเขาสมจริง</p>
-                    <ul class="list-check text-gray-300">
+                    <p class="text-slate-300 mb-4">สร้างปฏิสัมพันธ์ระหว่างกันเพื่อให้โลกของพวกเขาสมจริงและน่าติดตาม</p>
+                    <ul class="list-check text-slate-300">
                         <li>ให้ Lookalike เรียนรู้และอ้างอิงข้อมูลจาก Evangelist</li>
                         <li>ให้ Evangelist นำเรื่องราวของ Lookalike มาเป็น Case Study</li>
                     </ul>
                 </div>
-                <div class="card rounded-lg shadow-xl p-6">
+                <div class="card rounded-xl shadow-xl p-8">
                     <h3 class="text-xl font-bold text-white mb-4">ออกแบบการเดินทาง (Journey) ของ Persona</h3>
-                    <p class="text-gray-300 mb-4">ทำให้อวตารมีชีวิตชีวาและเติบโตไปพร้อมกับผู้ติดตาม</p>
-                     <ul class="list-check text-gray-300">
+                    <p class="text-slate-300 mb-4">ทำให้อวตารมีชีวิตชีวาและเติบโตไปพร้อมกับผู้ติดตาม</p>
+                     <ul class="list-check text-slate-300">
                         <li>Evangelist: อัปเดตความรู้และเทรนด์ใหม่ๆ เสมอ</li>
                         <li>Lookalike: มีการ "เติบโต" จากผู้เริ่มต้นสู่ผู้ให้คำแนะนำ</li>
                     </ul>
@@ -233,8 +273,8 @@
             </div>
         </section>
 
-         <footer class="text-center border-t border-gray-700 pt-8 mt-12">
-            <p class="text-gray-400 mb-4">นี่คือการเปลี่ยนแปลงจากการสื่อสารแบบวงกว้าง (Broadcasting) ไปสู่การบ่มเพาะความสัมพันธ์ (Nurturing) ในระดับมหาศาล</p>
+         <footer class="text-center border-t border-slate-700 pt-8 mt-12">
+            <p class="text-slate-400 mb-4">นี่คือการเปลี่ยนแปลงจากการสื่อสารแบบวงกว้าง (Broadcasting) ไปสู่การบ่มเพาะความสัมพันธ์ (Nurturing) ในระดับมหาศาล</p>
             <a href="https://thbho.github.io/" 
                class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 text-lg">
                 ดูข้อมูลเพิ่มเติมที่เว็บไซต์
@@ -243,6 +283,202 @@
     </div>
 
     <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const productInput = document.getElementById('product-input');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const personaOutput = document.getElementById('persona-output');
+
+        // =================================================================
+        // !! สำคัญ: กรุณาใส่ GOOGLE AI API KEY ของคุณที่นี่ก่อนใช้งาน !!
+        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio (ai.google.dev)
+        // หากไม่ใส่คีย์ ฟีเจอร์สร้าง Avatar จะไม่ทำงาน
+        // =================================================================
+        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- วาง API KEY ของคุณในเครื่องหมายคำพูดนี้
+
+        generateBtn.addEventListener('click', async () => {
+            if (!apiKey) {
+                errorMessage.textContent = 'ข้อผิดพลาด: กรุณาใส่ Gemini API Key ในโค้ดก่อนใช้งาน (มองหาตัวแปร apiKey)';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const productCategory = productInput.value;
+            if (!productCategory.trim()) {
+                errorMessage.textContent = 'กรุณาป้อนประเภทสินค้าหรือบริการ';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'กำลังสร้าง...';
+            loader.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            personaOutput.classList.add('hidden');
+            personaOutput.innerHTML = '';
+
+            const prompt = `ในฐานะผู้เชี่ยวชาญด้านการสร้างแบรนด์ ช่วยสร้าง AI Influencer Persona 2 แบบสำหรับสินค้าประเภท "${productCategory}" ในรูปแบบ JSON ที่ถูกต้องสมบูรณ์ โดยต้องมีโครงสร้างตามนี้เป๊ะๆ:
+            {
+              "evangelist": {
+                "name": "ชื่อที่สั้นและดูเชี่ยวชาญ (ไม่เกิน 3-4 คำ)",
+                "bio": "ประวัติสั้นๆ 2-3 ประโยค ที่แสดงถึงความเชี่ยวชาญในหมวดหมู่ ${productCategory}",
+                "characteristics": ["ลักษณะเด่นข้อที่ 1", "ลักษณะเด่นข้อที่ 2", "ลักษณะเด่นข้อที่ 3"]
+              },
+              "lookalike": {
+                "name": "ชื่อที่สั้นและดูเป็นกันเอง (ไม่เกิน 3-4 คำ)",
+                "bio": "ประวัติสั้นๆ 2-3 ประโยค ที่สะท้อนชีวิตและปัญหาของกลุ่มเป้าหมายที่ใช้ ${productCategory}",
+                "characteristics": ["ลักษณะเด่นข้อที่ 1", "ลักษณะเด่นข้อที่ 2", "ลักษณะเด่นข้อที่ 3"]
+              }
+            }
+            ข้อมูลทุกส่วนต้องเป็นภาษาไทย และ "name" ต้องสั้นกระชับ ห้ามใส่ข้อมูลอื่นปนมาเด็ดขาด`;
+
+            const schema = {
+                type: "OBJECT",
+                properties: {
+                    evangelist: {
+                        type: "OBJECT",
+                        properties: {
+                            name: { type: "STRING" },
+                            bio: { type: "STRING" },
+                            characteristics: {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            }
+                        },
+                        required: ["name", "bio", "characteristics"]
+                    },
+                    lookalike: {
+                        type: "OBJECT",
+                        properties: {
+                            name: { type: "STRING" },
+                            bio: { type: "STRING" },
+                            characteristics: {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            }
+                        },
+                         required: ["name", "bio", "characteristics"]
+                    }
+                }
+            };
+
+            try {
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: schema
+                    }
+                };
+                
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    throw new Error(`API Error: ${response.status} ${response.statusText}. Body: ${errorBody}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    
+                    const jsonText = result.candidates[0].content.parts[0].text;
+                    const cleanedJsonText = jsonText.replace(/```json/g, '').replace(/```/g, '').trim();
+
+                    try {
+                        const data = JSON.parse(cleanedJsonText);
+                        displayPersonas(data);
+                    } catch (parseError) {
+                        console.error('JSON Parse Error:', parseError);
+                        console.error('Malformed JSON string received:', cleanedJsonText);
+                        throw new Error(`เกิดข้อผิดพลาดในการอ่านข้อมูลจาก AI: ${parseError.message}`);
+                    }
+                } else {
+                    let errorMessageText = "ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์";
+                    if(result.promptFeedback && result.promptFeedback.blockReason){
+                       errorMessageText += ` (Reason: ${result.promptFeedback.blockReason})`;
+                    }
+                    throw new Error(errorMessageText);
+                }
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                errorMessage.textContent = `เกิดข้อผิดพลาด: ${error.message}. กรุณาลองใหม่อีกครั้ง`;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'สร้างไอเดีย Persona';
+            }
+        });
+
+        function displayPersonas(data) {
+             if (!data || typeof data !== 'object' || !data.evangelist || !data.lookalike) {
+                console.error("Invalid or incomplete data object received:", data);
+                errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const evangelist = data.evangelist;
+            const lookalike = data.lookalike;
+
+            const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
+                ? evangelist.characteristics.map(c => `<li>${String(c || '').trim()}</li>`).join('')
+                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
+
+            const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
+                ? lookalike.characteristics.map(c => `<li>${String(c || '').trim()}</li>`).join('')
+                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
+
+            const evangelistHtml = `
+                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl">🧠</div>
+                        <h3 class="text-2xl font-bold text-sky-400 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่ (ไม่มีชื่อ)'}</h3>
+                        <p class="font-semibold text-white">(Category Evangelist)</p>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <p class="text-slate-300 mb-4 break-words flex-grow">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                            <ul class="list-check text-slate-300">${evangelistChars}</ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const lookalikeHtml = `
+                <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl">🤝</div>
+                        <h3 class="text-2xl font-bold text-pink-400 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน (ไม่มีชื่อ)'}</h3>
+                        <p class="font-semibold text-white">(Buyer Lookalike)</p>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <p class="text-slate-300 mb-4 break-words flex-grow">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
+                         <div>
+                            <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                            <ul class="list-check text-slate-300">${lookalikeChars}</ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            personaOutput.innerHTML = evangelistHtml + lookalikeHtml;
+            personaOutput.classList.remove('hidden');
+        }
+
+
         const wrapLabel = (label, maxLength = 16) => {
             if (label.length <= maxLength) {
                 return label;
@@ -277,7 +513,7 @@
             plugins: {
                 legend: {
                     labels: {
-                        color: '#E0E1DD',
+                        color: '#e2e8f0', // text-slate-200
                         font: {
                             family: "'Kanit', sans-serif"
                         }
@@ -312,33 +548,33 @@
                 datasets: [{
                     label: 'AI Influencer',
                     data: [10, 10, 9, 10, 6, 7],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: '#3498db',
-                    pointBackgroundColor: '#3498db',
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)', // blue-500
+                    borderColor: '#3b82f6', // blue-500
+                    pointBackgroundColor: '#3b82f6',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#3498db'
+                    pointHoverBorderColor: '#3b82f6'
                 }, {
                     label: 'Human Influencer',
                     data: [4, 6, 5, 7, 10, 10],
-                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                    borderColor: '#e74c3c',
-                    pointBackgroundColor: '#e74c3c',
+                    backgroundColor: 'rgba(236, 72, 153, 0.2)', // pink-500
+                    borderColor: '#ec4899', // pink-500
+                    pointBackgroundColor: '#ec4899',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#e74c3c'
+                    pointHoverBorderColor: '#ec4899'
                 }]
             },
             options: {
                 ...globalChartOptions,
                 scales: {
                     r: {
-                        angleLines: { color: 'rgba(224, 225, 221, 0.2)' },
-                        grid: { color: 'rgba(224, 225, 221, 0.2)' },
-                        pointLabels: { color: '#E0E1DD', font: { size: 12, family: "'Kanit', sans-serif" }},
+                        angleLines: { color: 'rgba(226, 232, 240, 0.2)' }, // slate-200
+                        grid: { color: 'rgba(226, 232, 240, 0.2)' },
+                        pointLabels: { color: '#e2e8f0', font: { size: 12, family: "'Kanit', sans-serif" }},
                         ticks: {
-                            color: '#0D1B2A',
-                            backdropColor: 'rgba(224, 225, 221, 0.8)',
+                            color: '#0f172a', // slate-900
+                            backdropColor: 'rgba(226, 232, 240, 0.8)',
                             stepSize: 2
                         }
                     }
@@ -348,3 +584,4 @@
     </script>
 </body>
 </html>
+

@@ -106,14 +106,23 @@
                class="inline-block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
                 &larr; Back to Home
             </a>
-            <a href="https://threeandhour.github.io/GymMateX/ThDualAvatar.html" onclick="window.history.back();"
+            <a href="#" onclick="window.history.back();"
                class="inline-block bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
                 Thai Version &larr;
             </a>
         </div>
 
-        <div class="my-8 flex justify-center">
-            <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto" onerror="this.style.display='none'">
+        <div class="my-8">
+            <div class="relative mx-auto max-w-4xl overflow-hidden rounded-lg shadow-xl" style="padding-top: 56.25%;"> <!-- 16:9 Aspect Ratio -->
+                <iframe class="absolute top-0 left-0 h-full w-full" 
+                        src="https://www.youtube.com/embed/rqs3Vs5CMJc?si=zM8lmq8TmeH1VuGG" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
         <header class="text-center mb-12 md:mb-20">
@@ -292,7 +301,7 @@
         // !! IMPORTANT: PLEASE INSERT YOUR GOOGLE AI API KEY HERE !!
         // You can get a free key from Google AI Studio (ai.google.dev)
         // If you don't add a key, the Avatar Generator feature will not work.
-        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- PASTE YOUR API KEY INSIDE THE QUOTES
+        const apiKey = ""; // <--- PASTE YOUR API KEY INSIDE THE QUOTES
         // =================================================================
 
         generateBtn.addEventListener('click', async () => {
@@ -316,15 +325,15 @@
             personaOutput.classList.add('hidden');
             personaOutput.innerHTML = '';
 
-            const prompt = `As a brand strategist, for the product/service category: "${productCategory}", create 2 distinct AI Influencer Personas in English. Strictly separate each piece of information according to the defined structure:
+            const prompt = `As a brand strategist, for the product/service category: "${productCategory}", create 2 distinct AI Influencer Personas in English. Strictly separate each piece of information according to the defined structure.
 1.  "Category Evangelist":
     - name: A short, concise, professional-sounding name (very important: do not include the bio or characteristics in the name).
     - bio: A bio explaining their expertise (about 2-3 sentences).
-    - characteristics: 3 key traits (as an array of strings).
+    - characteristics: A JSON array of exactly 3 string traits.
 2.  "Buyer Lookalike":
     - name: A short, concise, friendly-sounding name (very important: do not include the bio or characteristics in the name).
     - bio: A bio explaining their lifestyle and connection to the product (about 2-3 sentences).
-    - characteristics: 3 key traits (as an array of strings).`;
+    - characteristics: A JSON array of exactly 3 string traits.`;
 
             const schema = {
                 type: "OBJECT",
@@ -572,3 +581,4 @@
     </script>
 </body>
 </html>
+

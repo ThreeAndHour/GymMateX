@@ -94,6 +94,21 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -121,26 +136,6 @@
                 ทุกแบรนด์ควรสร้าง AI อินฟลูเอนเซอร์สองประเภทที่ทำงานเสริมกัน เพื่อครอบคลุมเส้นทางการตัดสินใจของผู้บริโภคตั้งแต่การสร้างการรับรู้ไปจนถึงการสร้างความไว้วางใจ
             </p>
         </header>
-        
-        <section id="gemini-generator" class="mb-20 md:mb-28 card rounded-xl shadow-xl p-6 md:p-8">
-            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ สร้าง Avatar ของคุณด้วย Gemini AI</h2>
-            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-8">
-                ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ
-            </p>
-            <div class="max-w-xl mx-auto">
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="product-input" class="flex-grow bg-slate-900 text-white border border-slate-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400" placeholder="เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน">
-                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">สร้างไอเดีย Persona</button>
-                </div>
-            </div>
-            <div id="gemini-result" class="mt-8">
-                <div id="loader" class="hidden loader"></div>
-                <div id="error-message" class="hidden text-center text-red-400 p-4 bg-red-900/50 rounded-lg"></div>
-                <div id="persona-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Results will be injected here -->
-                </div>
-            </div>
-        </section>
 
         <section id="avatars" class="mb-20 md:mb-28">
             <h2 class="text-3xl font-bold text-white mb-12 text-center">ประเภทของ AI อินฟลูเอนเซอร์</h2>
@@ -180,6 +175,38 @@
                         </ul>
                          <p class="text-sm text-slate-400 mt-6">ตัวอย่าง: <strong class="text-white">"ป้าสมศรี"</strong> (วัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="global-pioneer-video" class="mb-20 md:mb-28">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">ตัวอย่างการใช้งานจริง</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="video-container rounded-lg overflow-hidden shadow-xl">
+                    <iframe src="https://www.youtube.com/embed/vw3D20zv990?si=JAcubaeE-Dq-1RxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="text-center text-slate-300 mt-6 max-w-3xl mx-auto space-y-4">
+                    <p>วิดีโอนี้อธิบายการใช้ AI เข้ามาช่วยในการขายและการตลาด โดยการสร้าง AI อินฟลูเอนเซอร์สองประเภท  ทั้ง "B." และ "Hour" ถูกออกแบบมาเพื่อช่วยเพิ่มยอดขาย โดยในวิดีโอจะแสดงตัวอย่างการโปรโมตสินค้าง่ายๆอย่างไอศครีม</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gemini-generator" class="mb-20 md:mb-28 card rounded-xl shadow-xl p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ สร้าง Avatar ของคุณด้วย Gemini AI</h2>
+            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-8">
+                ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ
+            </p>
+            <div class="max-w-xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="product-input" class="flex-grow bg-slate-900 text-white border border-slate-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400" placeholder="เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน">
+                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">สร้างไอเดีย Persona</button>
+                </div>
+            </div>
+            <div id="gemini-result" class="mt-8">
+                <div id="loader" class="hidden loader"></div>
+                <div id="error-message" class="hidden text-center text-red-400 p-4 bg-red-900/50 rounded-lg"></div>
+                <div id="persona-output" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Results will be injected here -->
                 </div>
             </div>
         </section>
@@ -595,3 +622,4 @@
     </script>
 </body>
 </html>
+

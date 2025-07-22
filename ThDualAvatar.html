@@ -34,6 +34,22 @@
             border: 1px solid #334155;
             height: 100%;
         }
+        .flow-arrow {
+            color: #778DA9;
+        }
+        .flow-box {
+            border: 2px dashed #415A77;
+            background-color: rgba(65, 90, 119, 0.1);
+        }
+         .flow-line {
+            width: 2px;
+            background-color: #415A77;
+            flex-grow: 1;
+        }
+        .kpi-box {
+            background-color: #415A77;
+            color: #E0E1DD;
+        }
         .list-check {
             list-style-type: none;
             padding-left: 0;
@@ -43,19 +59,19 @@
             padding-left: 1.75rem;
             margin-bottom: 0.5rem;
         }
-        .list-check li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #34d399;
-            font-weight: bold;
-        }
         .list-check li.placeholder {
             color: #94a3b8;
         }
         .list-check li.placeholder::before {
             content: '-';
             color: #94a3b8;
+        }
+        .list-check li:not(.placeholder)::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #34d399;
+            font-weight: bold;
         }
         .gemini-card {
             background-color: #0f172a;
@@ -317,20 +333,15 @@
             personaOutput.classList.add('hidden');
             personaOutput.innerHTML = '';
 
-            const prompt = `ในฐานะผู้เชี่ยวชาญด้านการสร้างแบรนด์ ช่วยสร้าง AI Influencer Persona 2 แบบสำหรับสินค้าประเภท "${productCategory}" ในรูปแบบ JSON ที่ถูกต้องสมบูรณ์ โดยต้องมีโครงสร้างตามนี้เป๊ะๆ:
-            {
-              "evangelist": {
-                "name": "ชื่อที่สั้นและดูเชี่ยวชาญ (ไม่เกิน 3-4 คำ)",
-                "bio": "ประวัติสั้นๆ 2-3 ประโยค ที่แสดงถึงความเชี่ยวชาญในหมวดหมู่ ${productCategory}",
-                "characteristics": ["ลักษณะเด่นข้อที่ 1", "ลักษณะเด่นข้อที่ 2", "ลักษณะเด่นข้อที่ 3"]
-              },
-              "lookalike": {
-                "name": "ชื่อที่สั้นและดูเป็นกันเอง (ไม่เกิน 3-4 คำ)",
-                "bio": "ประวัติสั้นๆ 2-3 ประโยค ที่สะท้อนชีวิตและปัญหาของกลุ่มเป้าหมายที่ใช้ ${productCategory}",
-                "characteristics": ["ลักษณะเด่นข้อที่ 1", "ลักษณะเด่นข้อที่ 2", "ลักษณะเด่นข้อที่ 3"]
-              }
-            }
-            ข้อมูลทุกส่วนต้องเป็นภาษาไทย และ "name" ต้องสั้นกระชับ ห้ามใส่ข้อมูลอื่นปนมาเด็ดขาด`;
+            const prompt = `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "${productCategory}", กรุณาสร้าง AI Influencer Persona 2 แบบเป็นภาษาไทย โดยแยกข้อมูลแต่ละส่วนให้ชัดเจนตามโครงสร้างที่กำหนด:
+1.  "Category Evangelist":
+    - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นมืออาชีพ (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
+    - bio: ประวัติที่อธิบายความเชี่ยวชาญ (ประมาณ 2-3 ประโยค)
+    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)
+2.  "Buyer Lookalike":
+    - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นกันเอง (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
+    - bio: ประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์ (ประมาณ 2-3 ประโยค)
+    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)`;
 
             const schema = {
                 type: "OBJECT",
@@ -392,7 +403,7 @@
                     result.candidates[0].content.parts.length > 0) {
                     
                     const jsonText = result.candidates[0].content.parts[0].text;
-                    const cleanedJsonText = jsonText.replace(/```json/g, '').replace(/```/g, '').trim();
+                    const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
 
                     try {
                         const data = JSON.parse(cleanedJsonText);
@@ -422,29 +433,29 @@
         });
 
         function displayPersonas(data) {
-             if (!data || typeof data !== 'object' || !data.evangelist || !data.lookalike) {
-                console.error("Invalid or incomplete data object received:", data);
+            if (!data || typeof data !== 'object') {
+                console.error("Invalid data object received:", data);
                 errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
                 errorMessage.classList.remove('hidden');
                 return;
             }
 
-            const evangelist = data.evangelist;
-            const lookalike = data.lookalike;
+            const evangelist = data.evangelist || {};
+            const lookalike = data.lookalike || {};
 
             const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
-                ? evangelist.characteristics.map(c => `<li>${String(c || '').trim()}</li>`).join('')
+                ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('')
                 : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
 
             const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
-                ? lookalike.characteristics.map(c => `<li>${String(c || '').trim()}</li>`).join('')
+                ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
                 : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
 
             const evangelistHtml = `
                 <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🧠</div>
-                        <h3 class="text-2xl font-bold text-sky-400 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่ (ไม่มีชื่อ)'}</h3>
+                        <h3 class="text-2xl font-bold text-sky-400 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่'}</h3>
                         <p class="font-semibold text-white">(Category Evangelist)</p>
                     </div>
                     <div class="flex-grow flex flex-col">
@@ -461,7 +472,7 @@
                 <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🤝</div>
-                        <h3 class="text-2xl font-bold text-pink-400 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน (ไม่มีชื่อ)'}</h3>
+                        <h3 class="text-2xl font-bold text-pink-400 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
                         <p class="font-semibold text-white">(Buyer Lookalike)</p>
                     </div>
                     <div class="flex-grow flex flex-col">
@@ -584,4 +595,3 @@
     </script>
 </body>
 </html>
-

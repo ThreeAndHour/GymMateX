@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+Thai:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+Thai:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Hebrew:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', sans-serif;
+            font-family: 'Inter', 'Noto Sans Thai', 'Noto Sans Khmer', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans Devanagari', 'Noto Sans Hebrew', sans-serif;
         }
         .gradient-text {
             background: linear-gradient(to right, #EF4444, #DC2626);
@@ -211,9 +211,20 @@
 
         // --- Translations Object ---
         const languages = {
-            en: 'English', th: 'ไทย', fr: 'Français', de: 'Deutsch', 
-            ru: 'Русский', zh: '中文', ja: '日本語', ko: '한국어', 
-            ar: 'العربية', km: 'ខ្មែរ'
+            ar: 'العربية',
+            zh: '中文',
+            de: 'Deutsch',
+            en: 'English',
+            es: 'Español',
+            fr: 'Français',
+            he: 'עברית',
+            hi: 'हिन्दी',
+            it: 'Italiano',
+            ja: '日本語',
+            km: 'ខ្មែរ',
+            ko: '한국어',
+            ru: 'Русский',
+            th: 'ไทย'
         };
 
         const all_hashtags = "#TruthFromThailand #scambodia #cambodiaopenfire #cambodiainvadesthailand #cambodiaviolatesottawatreaty #cambodiabreakscesefire";
@@ -329,7 +340,7 @@
                 gemini_button: "✨ إنشاء منشورات على وسائل التواصل الاجتماعي", gemini_loading: "Gemini يفكر...", footer_hashtag: other_hashtags, footer_verify: "تحقق من جميع المعلومات من مصادر موثوقة ومستقلة."
             },
             km: {
-                header_title: "ការកំណត់เป้าหมายលើជនស៊ីវិល", header_subtitle: "ការពិតដែលถูกបំភ្លៃ", header_description: "សង្គ្រាមរបស់កម្ពុជាលើការពិត និងជនស្លូតត្រង់",
+                header_title: "កំណត់គោលដៅជនស៊ីវិល", header_subtitle: "ការពិតដែលถูกបំភ្លៃ", header_description: "សង្គ្រាមរបស់កម្ពុជាលើការពិត និងជនស្លូតត្រង់",
                 fact1_title: "ការបង្កហេតុដំបូង", fact1_desc: "កម្ពុជាបានផ្តួចផ្តើមជម្លោះដោយការដាំគ្រាប់មីនប្រឆាំងមនុស្ស PMN-2 នៅក្នុងទឹកដីថៃ ដែលរំលោភលើសន្ធិសញ្ញាអូតាវ៉ា ហើយបន្ទាប់មកបានបើកការវាយប្រហារយោធាដំបូង។",
                 fact2_title: "ការវាយប្រហារដោយគ្រាប់រ៉ុក្កែតលើជនស៊ីវិល", fact2_desc: "កងកម្លាំងកម្พុជាបានបាញ់គ្រាប់រ៉ុក្កែត BM-21 ជាច្រើនគ្រាប់ចូលទៅក្នុងតំបន់ជនស៊ីវិលថៃ។ ឧក្រិដ្ឋកម្មសង្គ្រាមទាំងនេះបានបណ្តាលឱ្យមានអ្នកស្លាប់ និងរបួសរួមមានស្ត្រី កុមារ និងមនុស្សចាស់ ហើយបានបំផ្លាញហាង និងផ្ទះសម្បែង។",
                 fact3_title: "ព័ត៌មានក្លែងក្លាយ និងការផ្សព្វផ្សាយព័ត៌មានមិនពិត", fact3_desc: "យុទ្ធនាការផ្សព្វផ្សាយព័ត៌មានមិនពិតទ្រង់ទ្រាយធំមួយកំពុងត្រូវបានធ្វើឡើងដោយប្រទេសកម្ពុជា ដោយប្រើប្រាស់ប្រព័ន្ធផ្សព្វផ្សាយរបស់រដ្ឋ និងគណនីប្រព័ន្ធផ្សព្វផ្សាយសង្គមរាប់ពាន់ដើម្បីផ្សព្វផ្សាយនិទានកថាមិនពិត និងបង្ហាញថាប្រទេសថៃជាអ្នកឈ្លានពាន។",
@@ -339,6 +350,54 @@
                 top_hashtag: "#TruthFromThailand",
                 gemini_title: "ផ្សព្វផ្សាយការពិត", gemini_desc: "ចុចប៊ូតុងខាងក្រោមដើម្បីប្រើ Gemini API ដើម្បីបង្កើតការបង្ហោះប្រព័ន្ធផ្សព្វផ្សាយសង្គមដែលអាចចែករំលែកបានដោយផ្អែកលើការពិតទាំងនេះ។ ជួយពិភពលោកឱ្យយល់ពីស្ថានភាព។",
                 gemini_button: "✨ បង្កើតការបង្ហោះលើប្រព័ន្ធផ្សព្វផ្សាយសង្គម", gemini_loading: "Gemini កំពុងគិត...", footer_hashtag: other_hashtags, footer_verify: "ផ្ទៀងផ្ទាត់ព័ត៌មានទាំងអស់ពីប្រភពដែលអាចទុកចិត្តបាន និងឯករាជ្យ។"
+            },
+            es: {
+                header_title: "Civiles en el punto de mira", header_subtitle: "Verdad Retorcida", header_description: "La guerra de Camboya contra los hechos y los inocentes",
+                fact1_title: "PROVOCACIÓN INICIAL", fact1_desc: "Camboya inició el conflicto colocando minas antipersonales PMN-2 en territorio tailandés, violando el Tratado de Ottawa, y luego lanzando el primer ataque militar.",
+                fact2_title: "ATAQUES CON COHETES A CIVILES", fact2_desc: "Las fuerzas camboyanas dispararon lanzacohetes múltiples BM-21 contra zonas civiles tailandesas. Estos crímenes de guerra causaron víctimas, entre ellas mujeres, niños y ancianos, y destruyeron tiendas y hogares.",
+                fact3_title: "NOTICIAS FALSAS Y DESINFORMACIÓN", fact3_desc: "Camboya está llevando a cabo una campaña de desinformación a gran escala, utilizando medios estatales y miles de cuentas en redes sociales para difundir narrativas falsas y presentar a Tailandia como el agresor.",
+                fact4_title: "USO DE IMÁGENES COMO ARMA", fact4_desc: "Las imágenes se tuercen deliberadamente. Una foto de Reuters de un avión de bomberos se presentó falsamente como un ataque químico. Se utilizaron fotos de territorios tailandeses, como un 7-Eleven quemado, para difundir narrativas falsas.",
+                fact5_title: "POSTURA DE TAILANDIA", fact5_desc: "Tailandia siempre ha buscado una solución pacífica, actuando solo en defensa propia y respetando el derecho internacional. El mensaje es claro: Detengan los ataques. Detengan las mentiras. Exijan responsabilidades.",
+                fact6_title: "UNA CUESTIÓN DE CONFIANZA", fact6_desc: "Si confías en un país que sirve de base para bandas de estafadores que engañan a personas en todo el mundo, incluidos tus propios ciudadanos, entonces no eres diferente de las víctimas.",
+                top_hashtag: "#TruthFromThailand",
+                gemini_title: "Difunde la Verdad", gemini_desc: "Haz clic en el botón de abajo para usar la API de Gemini y generar publicaciones compartibles en redes sociales basadas en estos hechos. Ayuda al mundo a entender la situación.",
+                gemini_button: "✨ Generar Publicaciones", gemini_loading: "Gemini está pensando...", footer_hashtag: other_hashtags, footer_verify: "Verifica toda la información de fuentes creíbles e independientes."
+            },
+            hi: {
+                header_title: "नागरिकों पर निशाना", header_subtitle: "तोड़ा-मरोड़ा गया सच", header_description: "तथ्यों और निर्दोषों के खिलाफ कंबोडिया का युद्ध",
+                fact1_title: "प्रारंभिक उकसावा", fact1_desc: "कंबोडिया ने ओटावा संधि का उल्लंघन करते हुए थाई क्षेत्र में PMN-2 एंटी-पर्सोनेल खदानें लगाकर संघर्ष शुरू किया और फिर पहला सैन्य हमला किया।",
+                fact2_title: "नागरिकों पर रॉकेट हमले", fact2_desc: "कंबोडियाई सेना ने थाई नागरिक क्षेत्रों में BM-21 मल्टीपल रॉकेट लॉन्चर दागे। इन युद्ध अपराधों के परिणामस्वरूप महिलाओं, बच्चों और बुजुर्गों सहित कई हताहत हुए, और दुकानें और घर नष्ट हो गए।",
+                fact3_title: "फर्जी खबरें और दुष्प्रचार", fact3_desc: "कंबोडिया द्वारा एक बड़े पैमाने पर दुष्प्रचार अभियान चलाया जा रहा है, जिसमें सरकारी मीडिया और हजारों सोशल मीडिया खातों का उपयोग करके झूठी कहानियों को फैलाया जा रहा है और थाईलैंड को हमलावर के रूप में चित्रित किया जा रहा है।",
+                fact4_title: "छवियों का हथियारीकरण", fact4_desc: "छवियों को जानबूझकर तोड़ा-मरोड़ा जाता है। एक अग्निशमन विमान की रॉयटर्स की तस्वीर को झूठे तौर पर एक रासायनिक हमले के रूप में प्रस्तुत किया गया था। जले हुए 7-इलेवन जैसे थाई क्षेत्रों की तस्वीरों का इस्तेमाल झूठी कहानियों को फैलाने के लिए किया गया था।",
+                fact5_title: "थाईलैंड का रुख", fact5_desc: "थाईलैंड ने हमेशा एक शांतिपूर्ण समाधान की मांग की है, केवल आत्मरक्षा में और अंतरराष्ट्रीय कानून का पालन करते हुए कार्य किया है। संदेश स्पष्ट है: हमले बंद करो। झूठ बोलना बंद करो। जवाबदेही की मांग करो।",
+                fact6_title: "विश्वास का एक सवाल", fact6_desc: "यदि आप एक ऐसे देश पर भरोसा करते हैं जो दुनिया भर के लोगों को धोखा देने वाले स्कैमर गिरोहों के लिए एक अड्डे के रूप में कार्य करता है - जिसमें आपके अपने नागरिक भी शामिल हैं - तो आप पीड़ितों से अलग नहीं हैं।",
+                top_hashtag: "#TruthFromThailand",
+                gemini_title: "सच फैलाओ", gemini_desc: "इन तथ्यों के आधार पर साझा करने योग्य सोशल मीडिया पोस्ट बनाने के लिए नीचे दिए गए बटन पर क्लिक करें और Gemini API का उपयोग करें। दुनिया को स्थिति को समझने में मदद करें।",
+                gemini_button: "✨ सोशल मीडिया पोस्ट बनाएं", gemini_loading: "जेमिनी सोच रहा है...", footer_hashtag: other_hashtags, footer_verify: "सभी जानकारी विश्वसनीय और स्वतंत्र स्रोतों से सत्यापित करें।"
+            },
+            it: {
+                header_title: "Civili nel Mirino", header_subtitle: "Verità Distorta", header_description: "La guerra della Cambogia contro i fatti e gli innocenti",
+                fact1_title: "PROVOCAZIONE INIZIALE", fact1_desc: "La Cambogia ha iniziato il conflitto piazzando mine antiuomo PMN-2 in territorio thailandese, violando il Trattato di Ottawa, e poi lanciando il primo attacco militare.",
+                fact2_title: "ATTACCHI MISSILISTICI SUI CIVILI", fact2_desc: "Le forze cambogiane hanno sparato lanciarazzi multipli BM-21 in zone civili thailandesi. Questi crimini di guerra hanno causato vittime tra cui donne, bambini e anziani, e hanno distrutto negozi e case.",
+                fact3_title: "FAKE NEWS E DISINFORMAZIONE", fact3_desc: "Una vasta campagna di disinformazione è in corso da parte della Cambogia, utilizzando i media statali e migliaia di account sui social media per diffondere narrazioni false e dipingere la Thailandia come l'aggressore.",
+                fact4_title: "STRUMENTALIZZAZIONE DELLE IMMAGINI", fact4_desc: "Le immagini vengono deliberatamente distorte. Una foto della Reuters di un aereo antincendio è stata falsamente presentata come un attacco chimico. Foto di territori thailandesi, come un 7-Eleven bruciato, sono state usate per diffondere narrazioni false.",
+                fact5_title: "POSIZIONE DELLA THAILANDIA", fact5_desc: "La Thailandia ha sempre cercato una soluzione pacifica, agendo solo per autodifesa e nel rispetto del diritto internazionale. Il messaggio è chiaro: Fermate gli attacchi. Fermate le bugie. Chiedete responsabilità.",
+                fact6_title: "UNA QUESTIONE DI FIDUCIA", fact6_desc: "Se ti fidi di un paese che funge da base per bande di truffatori che ingannano persone in tutto il mondo, compresi i tuoi stessi cittadini, allora non sei diverso dalle vittime.",
+                top_hashtag: "#TruthFromThailand",
+                gemini_title: "Diffondi la Verità", gemini_desc: "Clicca il pulsante qui sotto per usare l'API Gemini per generare post condivisibili sui social media basati su questi fatti. Aiuta il mondo a capire la situazione.",
+                gemini_button: "✨ Genera Post", gemini_loading: "Gemini sta pensando...", footer_hashtag: other_hashtags, footer_verify: "Verifica tutte le informazioni da fonti credibili e indipendenti."
+            },
+            he: {
+                header_title: "אזרחים על הכוונת", header_subtitle: "אמת מעוותת", header_description: "המלחמה של קמבודיה בעובדות ובחפים מפשע",
+                fact1_title: "פרובוקציה ראשונית", fact1_desc: "קמבודיה יזמה את הסכסוך על ידי הנחת מוקשים נגד אדם מסוג PMN-2 בשטח תאילנד, תוך הפרה של אמנת אוטווה, ולאחר מכן פתחה במתקפה הצבאית הראשונה.",
+                fact2_title: "התקפות רקטות על אזרחים", fact2_desc: "כוחות קמבודיים ירו משגרי רקטות מרובים מסוג BM-21 לעבר אזורים אזרחיים בתאילנד. פשעי מלחמה אלה גרמו לנפגעים, כולל נשים, ילדים וקשישים, והרסו חנויות ובתים.",
+                fact3_title: "חדשות כזב ודיסאינפורמציה", fact3_desc: "קמבודיה מנהלת קמפיין דיסאינפורמציה רחב היקף, תוך שימוש בתקשורת ממלכתית ובאלפי חשבונות מדיה חברתית להפצת נרטיבים שקריים ולהצגת תאילנד כתוקפן.",
+                fact4_title: "שימוש בתמונות כנשק", fact4_desc: "תמונות מעוותות בכוונה. תמונה של רויטרס של מטוס כיבוי אש הוצגה באופן שקרי כהתקפה כימית. תמונות של שטחים תאילנדיים, כמו סניף 7-Eleven שרוף, שימשו להפצת נרטיבים שקריים.",
+                fact5_title: "עמדת תאילנד", fact5_desc: "תאילנד תמיד חיפשה פתרון של שלום, ופעלה רק מתוך הגנה עצמית ותוך הקפדה על החוק הבינלאומי. המסר ברור: הפסיקו את ההתקפות. הפסיקו את השקרים. דרשו דין וחשבון.",
+                fact6_title: "שאלה של אמון", fact6_desc: "אם אתם בוטחים במדינה המשמשת בסיס לכנופיות נוכלים המונות אנשים ברחבי העולם - כולל אזרחים משלכם - אז אינכם שונים מהקורבנות.",
+                top_hashtag: "#TruthFromThailand",
+                gemini_title: "הפיצו את האמת", gemini_desc: "לחץ על הכפתור למטה כדי להשתמש ב-API של Gemini ליצירת פוסטים ניתנים לשיתוף במדיה החברתית על בסיס עובדות אלה. עזרו לעולם להבין את המצב.",
+                gemini_button: "✨ צור פוסטים", gemini_loading: "Gemini חושב...", footer_hashtag: other_hashtags, footer_verify: "ודא את כל המידע ממקורות אמינים ובלתי תלויים."
             }
         };
 
@@ -461,7 +520,7 @@ Format the output as a simple text list, with each post separated by a newline. 
          * @returns {Promise<string>} A promise that resolves to the generated text.
          */
         async function callGeminiAPI(prompt) {
-            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API Key is handled by the environment
+            const apiKey = ""; // API Key is handled by the environment
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             const payload = {
@@ -545,3 +604,4 @@ Format the output as a simple text list, with each post separated by a newline. 
     </script>
 </body>
 </html>
+

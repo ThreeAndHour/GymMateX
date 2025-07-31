@@ -95,9 +95,12 @@
     </div>
     
     <div class="bg-white py-4 shadow-md">
-        <div class="container mx-auto text-center px-4">
-            <a href="https://drive.google.com/file/d/1ESc9Q40wlx7KX46fZFDJfRyfBD73AD2b/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-[#004AAD] font-bold hover:underline" data-lang-key="pdf_link_text">
-                ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime
+        <div class="container mx-auto text-center px-4 flex flex-col items-center space-y-2">
+            <a href="https://drive.google.com/file/d/1ESc9Q40wlx7KX46fZFDJfRyfBD73AD2b/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-[#004AAD] font-bold hover:underline" data-lang-key="pdf_link_text_en">
+                Download Full Analysis Report (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime
+            </a>
+            <a id="thai-pdf-link" href="https://drive.google.com/file/d/1OfXNHSAw00TYp8S3CHUb2lXPWNVaW3wp/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-[#004AAD] font-bold hover:underline hidden" data-lang-key="pdf_link_text_th">
+                ดาวน์โหลดรายงานฉบับเต็ม (ไทย PDF)
             </a>
         </div>
     </div>
@@ -345,7 +348,8 @@
     <script>
         const translations = {
             th: {
-                pdf_link_text: "ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_en: "ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_th: "ดาวน์โหลดรายงานฉบับเต็ม (ไทย PDF)",
                 main_title: "อาณาจักรแห่งการหลอกลวง",
                 main_subtitle: "บทวิเคราะห์กัมพูชา: จากฐานแก๊งคอลเซ็นเตอร์สู่สมรภูมิข้อมูลข่าวสารโลก",
                 overview_title: "ภาพรวมวิกฤตการณ์ระดับโลก",
@@ -425,7 +429,8 @@
                 chart_cpi_labels: ['สิงคโปร์', 'มาเลเซีย', 'เวียดนาม', 'ไทย', 'อินโดนีเซีย', 'ฟิลิปปินส์', 'กัมพูชา', 'เมียนมา']
             },
             en: {
-                pdf_link_text: "Download Full Analysis Report (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_en: "Download Full Analysis Report (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_th: "",
                 main_title: "The Empire of Deceit",
                 main_subtitle: "An Analysis of Cambodia: From Scam Hub to Global Infowar Battlefield",
                 overview_title: "A Global Crisis at a Glance",
@@ -505,7 +510,8 @@
                 chart_cpi_labels: ['Singapore', 'Malaysia', 'Vietnam', 'Thailand', 'Indonesia', 'Philippines', 'Cambodia', 'Myanmar']
             },
             zh: {
-                pdf_link_text: "下载完整报告 (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_en: "下载完整分析报告 (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_th: "",
                 main_title: "欺诈帝国",
                 main_subtitle: "柬埔寨分析：从诈骗中心到全球信息战战场",
                 overview_title: "全球危机概览",
@@ -585,7 +591,8 @@
                 chart_cpi_labels: ['新加坡', '马来西亚', '越南', '泰国', '印度尼西亚', '菲律宾', '柬埔寨', '缅甸']
             },
             km: {
-                pdf_link_text: "ទាញយករបាយការណ៍ពេញលេញ (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_en: "ទាញយករបាយការណ៍វិភាគពេញលេញ (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
+                pdf_link_text_th: "",
                 main_title: "អាណាចក្រនៃ​ការបោកប្រាស់",
                 main_subtitle: "บทวิเคราะห์អំពីកម្ពុជា៖ ពីមជ្ឈមណ្ឌលបោកប្រាស់ ទៅជាសមរភូមិព័ត៌មានសកល",
                 overview_title: "ទិដ្ឋភាពទូទៅនៃវិបត្តិសកល",
@@ -617,7 +624,7 @@
                 economy_gdp_title: "ចំណូលឧក្រិដ្ឋកម្ម ទល់នឹង GDP ជាតិ",
                 economy_gdp_desc: "ទំហំនៃសេដ្ឋកិច្ចស្រមោលនេះគឺធំធេងណាស់ ដែលស្មើនឹងជិតពាក់កណ្តាលនៃ GDP ផ្លូវការរបស់កម្ពុជា ដែលបង្ហាញពីការលើកទឹកចិត្តដ៏ខ្លាំងក្លាសម្រាប់ឥស្សរជនក្នុងការការពារវា។",
                 economy_laundering_title: "ត្រីឯកភាពដ៏អាក្រក់នៃការលាងលុយ",
-                economy_laundering_desc: "ប្រាក់ចំណូលពីការបោកប្រាស់ត្រូវបានលាងសម្អាតតាមរយៈបណ្តាញដ៏ซับซ้อนមួយដែលผสมผสานវិធីសាស្រ្តបុរាណជាមួយបច្ចេកវិទ្យាទំនើប។",
+                economy_laundering_desc: "ប្រាក់ចំណូលពីការបោកប្រាស់ត្រូវបានលាងសម្អាតតាមរយៈបណ្តាញដ៏ซับซ้อนមួយដែលผสมผสานវិធីសាស្រ្តបុរាណជាមួយបច្ចកវិទ្យាទំនើប។",
                 economy_laundering_method1_title: "កាស៊ីណូ និង Junkets",
                 economy_laundering_method1_desc: "បម្រើជាช่องทางចម្បងសម្រាប់ការលាងលុយកខ្វក់ និងជាប្រព័ន្ធធនាគារក្រោមដី។",
                 economy_laundering_method2_title: "រូបិយប័ណ្ណគ្រីបតូ",
@@ -632,7 +639,7 @@
                 nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីบริษัทធំៗที่มีสายสัมพันธ์ทางการเมืองថាមានส่วนเกี่ยวข้องกับឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
                 nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង 4 ពាន់លានដុល្លារ និងเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)។",
                 nexus_group2_desc: "ត្រូវបានระบุว่าเป็นទីតាំងของปฏิบัติการបោកប្រាស់และค้ามนุษย์។",
-                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒិสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
+                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
                 infowar_title: "សមរភូមិថ្មី៖ ពីការបោកប្រាស់ទៅសង្គ្រាមព័ត៌មាន",
                 infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះបានបង្ហាញពីការវិវត្តដ៏น่ากังวลមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុคลากรจากមជ្ឈមណ្ឌលបោកប្រាស់ត្រូវបានปรับเปลี่ยนជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងประเทศไทย។",
                 infowar_stat_desc: "ការវាយប្រហារតាមអ៊ីនធឺណិតលើប្រព័ន្ធផ្សព្វផ្សាយថៃក្នុងរយៈពេល 3 ថ្ងៃក្នុងអំឡុងពេលជម្លោះ។",
@@ -853,6 +860,13 @@
                 }
             });
 
+            const thaiPdfLink = document.getElementById('thai-pdf-link');
+            if (lang === 'th') {
+                thaiPdfLink.classList.remove('hidden');
+            } else {
+                thaiPdfLink.classList.add('hidden');
+            }
+
             // Update charts
             const chartLang = translations[lang];
             createVictimOriginChart(chartLang.chart_victim_labels);
@@ -888,4 +902,3 @@
     </script>
 </body>
 </html>
-

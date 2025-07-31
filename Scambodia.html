@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -70,6 +70,10 @@
         [lang="zh"] body, [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3, [lang="zh"] h4, [lang="zh"] p, [lang="zh"] span, [lang="zh"] div, [lang="zh"] button, [lang="zh"] li, [lang="zh"] strong, [lang="zh"] textarea, [lang="zh"] a {
             font-family: 'Noto Sans SC', 'Sarabun', sans-serif;
         }
+        [lang="fr"] body, [lang="fr"] h1, [lang="fr"] h2, [lang="fr"] h3, [lang="fr"] h4, [lang="fr"] p, [lang="fr"] span, [lang="fr"] div, [lang="fr"] button, [lang="fr"] li, [lang="fr"] strong, [lang="fr"] textarea, [lang="fr"] a,
+        [lang="es"] body, [lang="es"] h1, [lang="es"] h2, [lang="es"] h3, [lang="es"] h4, [lang="es"] p, [lang="es"] span, [lang="es"] div, [lang="es"] button, [lang="es"] li, [lang="es"] strong, [lang="es"] textarea, [lang="es"] a {
+            font-family: 'Roboto', 'Sarabun', sans-serif;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -80,11 +84,13 @@
             Your browser does not support the video tag.
         </video>
         <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
-        <div id="language-switcher" class="absolute top-4 right-4 z-30">
+        <div id="language-switcher" class="absolute top-4 right-4 z-30 flex flex-wrap justify-end">
             <button class="lang-btn" data-lang="th">ไทย</button>
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="zh">中文</button>
             <button class="lang-btn" data-lang="km">ខ្មែរ</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="es">ES</button>
         </div>
         <header class="relative z-20 flex flex-col items-center justify-center h-full text-white p-6">
             <div class="container mx-auto text-center">
@@ -130,7 +136,7 @@
 
         <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
             <h2 class="text-3xl font-bold text-[#004AAD] mb-4 text-center" data-lang-key="storm_title">กำเนิด "พายุที่สมบูรณ์แบบ"</h2>
-            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8" data-lang-key="storm_desc">การผงาดขึ้นของกัมพูชาในฐานะฐานที่มั่นของแก๊งคอลเซ็นเตอร์ไม่ได้เกิดขึ้นโดยบังเอิญ แต่เป็นผลจาก 3 ปัจจัยหลักที่เกิดขึ้นพร้อมกัน สร้างสภาวะที่เอื้อต่อการเติบโตของอุตสาหกรรมอาชญากรรมอย่างที่ไม่เคยมีมาก่อน</p>
+            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8" data-lang-key="storm_desc">การผงาดขึ้นของกัมพูชาในฐานะฐานที่มั่นของแก๊งคอลเซ็นเตอร์ไม่ได้เกิดขึ้นโดยบังเอิญ แต่เป็นผลจาก 3 ปัจจัยหลักที่เกิดขึ้นพร้อมกัน สร้างสภาวะที่เอื้อต่อการเติบโตของอุตสาหកម្មอาชญากรรมอย่างที่ไม่เคยมีมาก่อน</p>
             <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-4">
                 <div class="text-center w-full md:w-1/4 p-4 bg-blue-50 rounded-lg">
                     <div class="text-4xl mb-2">🇨🇳</div>
@@ -594,23 +600,23 @@
                 pdf_link_text_en: "ទាញយករបាយការណ៍វិភាគពេញលេញ (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 pdf_link_text_th: "",
                 main_title: "អាណាចក្រនៃ​ការបោកប្រាស់",
-                main_subtitle: "บทวิเคราะห์អំពីកម្ពុជា៖ ពីមជ្ឈមណ្ឌលបោកប្រាស់ ទៅជាសមរភូមិព័ត៌មានសកល",
+                main_subtitle: "ការវិភាគអំពីកម្ពុជា៖ ពីមជ្ឈមណ្ឌលបោកប្រាស់ ទៅជាសមរភូមិព័ត៌មានសកល",
                 overview_title: "ទិដ្ឋភាពទូទៅនៃវិបត្តិសកល",
                 overview_stat1_title: "ជនរងគ្រោះនៃការជួញដូរមនុស្ស",
-                overview_stat1_desc: "ត្រូវបានបង្ខំឱ្យធ្វើការនៅកម្ពុជា (ការប៉ាន់ស្មានដោយ UN)",
-                overview_stat2_title: "ចំណូលប្រចាំปี",
+                overview_stat1_desc: "ត្រូវបានបង្ខំឱ្យធ្វើការនៅកម្ពុជា (ការប៉ាន់ស្មានដោយអង្គការសហប្រជាជាតិ)",
+                overview_stat2_title: "ចំណូលប្រចាំឆ្នាំ",
                 overview_stat2_desc: "ពីឧស្សាហកម្មបោកប្រាស់នៅកម្ពុជា",
-                overview_stat3_title: "នៃ GDP របស់ប្រទេស",
+                overview_stat3_title: "នៃផលិតផលក្នុងស្រុកសរុប",
                 overview_stat3_desc: "គឺជាទំហំនៃសេដ្ឋកិច្ចឧក្រិដ្ឋកម្មនេះ",
                 storm_title: "កំណើតនៃ \"ព្យុះដ៏ល្អឥតខ្ចោះ\"",
                 storm_desc: "ការលេចត្រដែតរបស់កម្ពុជាជាមជ្ឈមណ្ឌលបោកប្រាស់មិនមែនជារឿងចៃដន្យទេ។ វាជាលទ្ធផលនៃកត្តាសំខាន់ៗចំនួនបីដែលកើតឡើងព្រមគ្នា បង្កើតបានជាមូលដ្ឋានដ៏អំណោយផលដែលមិនធ្លាប់មានសម្រាប់ការរីកចម្រើននៃឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
                 storm_factor1_title: "ការបង្ក្រាបរបស់ចិន",
-                storm_factor1_desc: "ក្នុងឆ្នាំ 2018 ការបង្ក្រាបរបស់ចិនលើแก๊งអនឡាញបានបង្ខំឱ្យអង្គការឧក្រិដ្ឋកម្មផ្លាស់ប្តូរទីតាំង។",
-                storm_factor2_title: "ការហាមឃាត់ល្បែងស៊ីសងតាមអ៊ីនធឺណិតរបស់កម្ពុជា",
-                storm_factor2_desc: "ក្នុងឆ្នាំ 2019 ការហាមឃាត់នេះបានបន្សល់ទុកនូវអគារកាស៊ីណូជាច្រើនដែលទំនេរ បង្កើតការផ្គត់ផ្គង់ទីកន្លែងប្រតិបត្តិการ។",
-                storm_factor3_title: "វិបត្តិ COVID-19",
-                storm_factor3_desc: "ក្នុងឆ្នាំ 2020 វិស័យទេសចរណ៍បានដួលរលំ នាំឱ្យម្ចាស់អាជីវកម្មដែលអស់សង្ឃឹមសហការជាមួយឧក្រិដ្ឋជន។",
-                cost_title: "តម្លៃដែលមនុស្សត្រូវចំណាយ៖ ទាសភាពសម័យទំនើប",
+                storm_factor1_desc: "ក្នុងឆ្នាំ ២០១៨ ការបង្ក្រាបរបស់ចិនលើក្រុមឧក្រិដ្ឋកម្មអនឡាញបានបង្ខំឱ្យអង្គការឧក្រិដ្ឋកម្មផ្លាស់ប្តូរទីតាំង។",
+                storm_factor2_title: "កម្ពុជាហាមឃាត់ល្បែងអនឡាញ",
+                storm_factor2_desc: "ក្នុងឆ្នាំ ២០១៩ បទបញ្ជានេះបានបន្សល់ទុកនូវអគារកាស៊ីណូជាច្រើនដែលទំនេរ បង្កើតការផ្គត់ផ្គង់ទីកន្លែងប្រតិបត្តិការ។",
+                storm_factor3_title: "វិបត្តិជំងឺកូវីដ-១៩",
+                storm_factor3_desc: "ក្នុងឆ្នាំ ២០២០ វិស័យទេសចរណ៍បានដួលរលំ ធ្វើឲ្យម្ចាស់អាជីវកម្មដែលអស់សង្ឃឹម បែរទៅសហការជាមួយឧក្រិដ្ឋជន។",
+                cost_title: "តម្លៃដែលមនុស្សជាតិត្រូវបង់៖ ទាសភាពសម័យទំនើប",
                 cost_cycle_title: "វដ្តនៃការបោកបញ្ឆោត",
                 cost_cycle_desc: "ជនរងគ្រោះ ដែលភាគច្រើនជាយុវជនមានការអប់រំ ត្រូវបានទាក់ទាញដោយការផ្សាយពាណិជ្ជកម្មការងារក្លែងក្លាយនៅលើបណ្តាញសង្គម បន្ទាប់មកត្រូវបានចាប់ដាក់គុក និងបង្ខំឱ្យធ្វើការនៅក្នុង 'បរិវេណទាសករ'។",
                 cost_cycle_step1: "<strong>១. ការផ្សាយពាណិជ្ជកម្មការងារក្លែងក្លាយ៖</strong> ផ្តល់ជូនការងារដែលមានប្រាក់ខែខ្ពស់នៅលើ Facebook, Instagram។",
@@ -621,53 +627,53 @@
                 cost_victims_desc: "ប្រតិបត្តិការនេះបានពង្រីកបណ្តាញយ៉ាងធំទូលាយ ដោយចាប់ជនរងគ្រោះទូទាំងពិភពលោក ជាពិសេសពីបណ្តាប្រទេសអាស៊ាន និងអាស៊ីខាងត្បូង។",
                 video_title: "រឿងពិតពីនរកមជ្ឈមណ្ឌលបោកប្រាស់",
                 economy_title: "កាយវិភាគសាស្ត្រនៃសេដ្ឋកិច្ចឧក្រិដ្ឋកម្ម",
-                economy_gdp_title: "ចំណូលឧក្រិដ្ឋកម្ម ទល់នឹង GDP ជាតិ",
-                economy_gdp_desc: "ទំហំនៃសេដ្ឋកិច្ចស្រមោលនេះគឺធំធេងណាស់ ដែលស្មើនឹងជិតពាក់កណ្តាលនៃ GDP ផ្លូវការរបស់កម្ពុជា ដែលបង្ហាញពីការលើកទឹកចិត្តដ៏ខ្លាំងក្លាសម្រាប់ឥស្សរជនក្នុងការការពារវា។",
+                economy_gdp_title: "ចំណូលឧក្រិដ្ឋកម្ម ទល់នឹង ផលិតផលក្នុងស្រុកសរុប",
+                economy_gdp_desc: "ទំហំនៃសេដ្ឋកិច្ចស្រមោលនេះគឺធំធេងណាស់ ដែលស្មើនឹងជិតពាក់កណ្តាលនៃផលិតផលក្នុងស្រុកសរុបផ្លូវការរបស់កម្ពុជា ដែលបង្ហាញពីការលើកទឹកចិត្តដ៏ខ្លាំងក្លាសម្រាប់ឥស្សរជនក្នុងការការពារវា។",
                 economy_laundering_title: "ត្រីឯកភាពដ៏អាក្រក់នៃការលាងលុយ",
-                economy_laundering_desc: "ប្រាក់ចំណូលពីការបោកប្រាស់ត្រូវបានលាងសម្អាតតាមរយៈបណ្តាញដ៏ซับซ้อนមួយដែលผสมผสานវិធីសាស្រ្តបុរាណជាមួយបច្ចកវិទ្យាទំនើប។",
-                economy_laundering_method1_title: "កាស៊ីណូ និង Junkets",
-                economy_laundering_method1_desc: "បម្រើជាช่องทางចម្បងសម្រាប់ការលាងលុយកខ្វក់ និងជាប្រព័ន្ធធនាគារក្រោមដី។",
+                economy_laundering_desc: "ប្រាក់ចំណូលពីការបោកប្រាស់ត្រូវបានលាងសម្អាតតាមរយៈបណ្តាញដ៏ស្មុគស្មាញមួយ ដែលរួមបញ្ចូលគ្នារវាងវិធីសាស្រ្តបុរាណ និងបច្ចេកវិទ្យាទំនើប។",
+                economy_laundering_method1_title: "កាស៊ីណូ និង ជ៉ាំងឃីត",
+                economy_laundering_method1_desc: "បម្រើជាច្រកសំខាន់សម្រាប់ការលាងលុយកខ្វក់ និងជាប្រព័ន្ធធនាគារក្រោមដី។",
                 economy_laundering_method2_title: "រូបិយប័ណ្ណគ្រីបតូ",
-                economy_laundering_method2_desc: "ត្រូវបានប្រើសម្រាប់ការทำธุรกรรมที่รวดเร็วและยากต่อการตรวจสอบតាមរយៈសេវាកម្មผสมកាក់។",
+                economy_laundering_method2_desc: "ត្រូវបានប្រើសម្រាប់ប្រតិបត្តិការរហ័ស និងពិបាកតាមដានតាមរយៈសេវាកម្មលាយកាក់។",
                 economy_laundering_method3_title: "ធនាគារក្រោមដី",
-                economy_laundering_method3_desc: "បណ្តាញ 'Money Mules' ផ្លាស់ទីប្រាក់จำนวนมหาศาลข้ามพรมแดន។",
+                economy_laundering_method3_desc: "បណ្តាញ 'Money Mules' ផ្លាស់ទីប្រាក់យ៉ាងច្រើនសន្ធឹកសន្ធាប់ឆ្លងកាត់ព្រំដែន។",
                 nexus_title: "សម្ព័ន្ធភាពរដ្ឋ-ឧក្រិដ្ឋកម្ម៖ ស្ថាបត្យកម្មនៃនិទណ្ឌភាព",
-                nexus_desc: "ឧស្សាហកម្មនេះរីកចម្រើនមិនមែនដោយសាររដ្ឋទន់ខ្សោយនោះទេ ប៉ុន្តែដោយសារការការពារយ៉ាងសកម្មពី 'សម្ព័ន្ធភាពរដ្ឋ-ឧក្រិដ្ឋកម្ម' តាមរយៈអំពើពុករលួយជាប្រព័ន្ធ និងការสมรู้ร่วมคิดរបស់មន្ត្រី និងกลุ่มทุนที่ใกล้ชิดชนชั้นนำ។",
+                nexus_desc: "ឧស្សាហកម្មនេះរីកចម្រើនមិនមែនដោយសាររដ្ឋទន់ខ្សោយនោះទេ ប៉ុន្តែដោយសារការការពារយ៉ាងសកម្មពី 'សម្ព័ន្ធភាពរដ្ឋ-ឧក្រិដ្ឋកម្ម' តាមរយៈអំពើពុករលួយជាប្រព័ន្ធ និងការសមគំនិតរបស់មន្ត្រី និងបណ្ដាសម្ព័ន្ធក្រុមហ៊ុនដែលមានទំនាក់ទំនងជាមួយក្រុមអ្នកមានអំណាច។",
                 nexus_cpi_title: "សន្ទស្សន៍អំពើពុករលួយ (CPI 2023)",
-                nexus_cpi_desc: "កម្ពុជាជាប់ចំណាត់ថ្នាក់ជាប្រទេសមួយក្នុងចំណោមប្រទេសที่มีអំពើពុករលួយបំផុតនៅលើពិភពលោក និងស្ថិតនៅបាតតារាងក្នុងអាស៊ាន។",
-                nexus_groups_title: "กลุ่มทุนที่ถูกกล่าวหาว่าเชื่อมโยง",
-                nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីบริษัทធំៗที่มีสายสัมพันธ์ทางการเมืองថាមានส่วนเกี่ยวข้องกับឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
-                nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង 4 ពាន់លានដុល្លារ និងเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)។",
-                nexus_group2_desc: "ត្រូវបានระบุว่าเป็นទីតាំងของปฏิบัติการបោកប្រាស់และค้ามนุษย์។",
-                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
+                nexus_cpi_desc: "កម្ពុជាជាប់ចំណាត់ថ្នាក់ជាប្រទេសមួយក្នុងចំណោមប្រទេសដែលមានអំពើពុករលួយបំផុតនៅលើពិភពលោក និងស្ថិតនៅបាតតារាងក្នុងអាស៊ាន។",
+                nexus_groups_title: "ក្រុមហ៊ុនធំៗដែលជាប់ចោទថាមានជាប់ទាក់ទង",
+                nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីក្រុមហ៊ុនធំៗដែលមានទំនាក់ទំនងនយោបាយថាមានជាប់ពាក់ព័ន្ធនឹងឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
+                nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង ៤ ពាន់លានដុល្លារ និងមានទំនាក់ទំនងជាមួយសាច់ញាតិរបស់នាយករដ្ឋមន្ត្រី (ត្រូវបានដាក់ទណ្ឌកម្មដោយសហរដ្ឋអាមេរិក)។",
+                nexus_group2_desc: "ត្រូវបានកំណត់ថាជាទីតាំងនៃប្រតិបត្តិការបោកប្រាស់ និងការជួញដូរមនុស្ស។",
+                nexus_group3_desc: "មានទំនាក់ទំនងกับการบังคับใช้កម្លាំងពលកម្ម (ម្ចាស់គឺជាសមាជិកព្រឹទ្ធសភា និងត្រូវបានដាក់ទណ្ឌកម្មដោយសហរដ្ឋអាមេរិក)។",
                 infowar_title: "សមរភូមិថ្មី៖ ពីការបោកប្រាស់ទៅសង្គ្រាមព័ត៌មាន",
-                infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះបានបង្ហាញពីការវិវត្តដ៏น่ากังวลមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុคลากรจากមជ្ឈមណ្ឌលបោកប្រាស់ត្រូវបានปรับเปลี่ยนជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងประเทศไทย។",
+                infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះ បានបង្ហាញពីការវិវត្តដ៏น่าព្រួយបារម្ភមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុគ្គលិកពីមជ្ឈមណ្ឌលបោកប្រាស់ ត្រូវបានប្រែក្លាយជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងប្រទេសថៃ។",
                 infowar_stat_desc: "ការវាយប្រហារតាមអ៊ីនធឺណិតលើប្រព័ន្ធផ្សព្វផ្សាយថៃក្នុងរយៈពេល 3 ថ្ងៃក្នុងអំឡុងពេលជម្លោះ។",
                 infowar_strategy_title: "យុទ្ធសាស្ត្រ \"ទុយោទឹកពន្លត់អគ្គីភ័យនៃភាពមិនពិត\"",
                 infowar_strategy1_title: "១. ការប្រមូលផ្តុំ",
                 infowar_strategy1_desc: "ប្រើប្រាស់ 'បុគ្គលិក' ពីមជ្ឈមណ្ឌលបោកប្រាស់ជាកម្លាំង។",
                 infowar_strategy2_title: "២. ការបង្កើតអវតារ",
-                infowar_strategy2_desc: "បង្កើតគណនីผู้ใช้ปลอมจำนวนมหาศาล។",
+                infowar_strategy2_desc: "បង្កើតគណនីអ្នកប្រើប្រាស់ក្លែងក្លាយយ៉ាងច្រើនសន្ធឹកសន្ធាប់។",
                 infowar_strategy3_title: "៣. ការវាយប្រហារ",
-                infowar_strategy3_desc: "ផ្សព្វផ្សាយข่าวปลอม, สแปม, และ Mass Report โจมตีพื้นที่ออนไลน์ของไทย។",
-                infowar_goal: "គោលដៅ៖ បង្កើតความสับสน, บิดเบือนความจริง, และช่วงชิงความชอบธรรมในสายตาประชาคมโลก។",
-                gemini_title: "เครื่องมือวิเคราะห์ความเสี่ยง ✨",
-                gemini_desc: "ទទួលបានข้อความน่าสงสัย? មិនแน่ใจว่าเป็นงานจริงหรือแก๊งต้มตุ๋น? ลองใช้เครื่องมือวิเคราะห์ที่ขับเคลื่อนโดย Gemini API ដើម្បីประเมินความเสี่ยงเบื้องต้น។",
-                gemini_placeholder: "วางข้อความที่น่าสงสัยที่นี่... เช่น 'งานง่าย รายได้ดี สนใจคลิก!'",
-                gemini_button: "วิเคราะห์ด้วย Gemini",
-                gemini_result_placeholder: "ผลการวิเคราะห์จะปรากฏที่นี่...",
-                gemini_disclaimer: "ការបដិសេធ៖ ឧបករណ៍នេះផ្តល់នូវคำแนะนำเบื้องต้นโดยใช้ AI និងไม่ถือเป็นคำแนะนำทางกฎหมายหรือความปลอดภัยจากผู้เชี่ยวชาญ។",
-                references_title: "ប្រភពឯកសារយោងที่น่าเชื่อถือ",
-                footer_text: "จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้។",
+                infowar_strategy3_desc: "ផ្សព្វផ្សាយព័ត៌មានក្លែងក្លាយ ស្ពែម និងការរាយការណ៍ទ្រង់ទ្រាយធំ ដើម្បីវាយប្រហារលើพื้นที่អនឡាញរបស់ថៃ។",
+                infowar_goal: "គោលដៅ៖ បង្កើតភាពច្របូកច្របល់ បំភ្លៃការពិត និងដណ្តើមយកភាពស្របច្បាប់ក្នុងក្រសែភ្នែកសហគមន៍អន្តរជាតិ។",
+                gemini_title: "ឧបករណ៍វិភាគហានិភ័យ ✨",
+                gemini_desc: "ទទួលបានសារគួរឱ្យសង្ស័យមែនទេ? មិនប្រាកដថាជាការងារពិត ឬជាការបោកប្រាស់? សូមសាកល្បងប្រើឧបករណ៍វិភាគដែលដំណើរការដោយ Gemini API នេះ ដើម្បីវាយតម្លៃហានិភ័យជាបឋម។",
+                gemini_placeholder: "សូមដាក់សារដែលគួរឱ្យសងสัยនៅទីនេះ... ឧទាហរណ៍៖ 'ការងារងាយស្រួល ប្រាក់ខែខ្ពស់ ចុចទីនេះដើម្បីដាក់ពាក្យ!'",
+                gemini_button: "វិភាគជាមួយ Gemini",
+                gemini_result_placeholder: "លទ្ធផលវិភាគនឹងបង្ហាញនៅទីនេះ...",
+                gemini_disclaimer: "ការបដិសេធ៖ ឧបករណ៍នេះផ្តល់នូវដំបូន្មានជាបឋមដោយប្រើ AI ហើយមិនមែនជាដំបូន្មានផ្នែកច្បាប់ ឬសន្តិសុខពីអ្នកជំនាញឡើយ។",
+                references_title: "ប្រភពឯកសារយោងដែលអាចទុកចិត្តបាន",
+                footer_text: "បង្កើតនៅថ្ងៃទី ៣១ ខែកក្កដា ឆ្នាំ ២០២៥ | ក្រាហ្វិកព័ត៌មាននេះបង្កើតឡើងសម្រាប់គោលបំណងអប់រំ និងការយល់ដឹង។",
                 error_title: "មានបញ្ហា",
                 error_close_button: "បិទ",
                 error_input_message: "សូមបញ្ចូលអត្ថបទដើម្បីវិភាគ។",
                 error_api_message: "មិនអាចវិភាគអត្ថបទបានទេនៅពេលនេះ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។",
-                chart_victim_title: "สัดส่วนเหยื่อ",
+                chart_victim_title: "សัดส่วนเหยื่อ",
                 chart_victim_labels: ['អាស៊ាន (ថៃ, វៀតណាម, ឥណ្ឌូនេស៊ី)', 'អាស៊ីខាងត្បូង (ឥណ្ឌា, បង់ក្លាដែស)', 'អាហ្វ្រិក', 'អាមេរិកឡាទីន', 'ផ្សេងៗ'],
-                chart_gdp_labels: ['GDP ផ្លូវការ', 'ចំណូលឧស្សាហកម្មបោកប្រាស់ (ប៉ាន់ស្មាន)'],
+                chart_gdp_labels: ['ផលិតផលក្នុងស្រុកសរុបផ្លូវការ', 'ចំណូលឧស្សាហកម្មបោកប្រាស់ (ប៉ាន់ស្មាន)'],
                 chart_gdp_tooltip_base: "100% (មូលដ្ឋាន)",
-                chart_gdp_tooltip_scam: "~50% នៃ GDP",
+                chart_gdp_tooltip_scam: "~50% នៃផលិតផលក្នុងស្រុកសរុប",
                 chart_cpi_title: "ពិន្ទុ CPI 2023 (ក្នុងចំណោម 100)",
                 chart_cpi_labels: ['សិង្ហបុរី', 'ម៉ាឡេស៊ី', 'វៀតណាម', 'ថៃ', 'ឥណ្ឌូនេស៊ី', 'ហ្វីលីពីន', 'កម្ពុជា', 'មីយ៉ាន់ម៉ា']
             }
@@ -807,7 +813,9 @@
                 th: `ในฐานะผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ที่เชี่ยวชาญด้านการหลอกลวงออนไลน์จากเอเชียตะวันออกเฉียงใต้ โปรดวิเคราะห์ข้อความต่อไปนี้เพื่อหาสัญญาณของการหลอกลวง: "${text}". โปรดระบุจุดที่น่าสงสัย (red flags) อธิบายกลยุทธ์การหลอกลวงที่น่าจะเป็นไปได้ และให้คำแนะนำที่เป็นรูปธรรม จัดรูปแบบคำตอบของคุณโดยใช้หัวข้อและรายการสัญลักษณ์ (bullet points) ที่ชัดเจน เข้าใจง่าย เป็นภาษาไทย`,
                 en: `As a cybersecurity expert specializing in Southeast Asian online scams, analyze the following message for signs of a scam: "${text}". Identify red flags, explain the likely scam tactic (e.g., romance scam, investment fraud), and provide concrete advice. Format your response in English with clear headings and bullet points.`,
                 zh: `作为一名专门研究东南亚网络诈骗的网络安全专家，请分析以下信息以寻找诈骗迹象：“${text}”。请识别危险信号，解释可能的诈骗策略（例如，爱情诈骗，投资欺诈），并提供具体建议。请使用中文清晰的标题和项目符号格式化您的回答。`,
-                km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`
+                km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`,
+                fr: `En tant qu'expert en cybersécurité spécialisé dans les escroqueries en ligne en Asie du Sud-Est, analysez le message suivant pour déceler des signes d'escroquerie : "${text}". Identifiez les signaux d'alarme, expliquez la tactique d'escroquerie probable (par exemple, arnaque sentimentale, fraude à l'investissement) et donnez des conseils concrets. Formatez votre réponse en français avec des titres clairs et des listes à puces.`,
+                es: `Como experto en ciberseguridad especializado en estafas en línea del sudeste asiático, analice el siguiente mensaje en busca de señales de estafa: "${text}". Identifique las señales de alerta, explique la táctica de estafa probable (por ejemplo, estafa romántica, fraude de inversión) y proporcione consejos concretos. Formatee su respuesta en español con encabezados claros y viñetas.`
             };
 
             const payload = { contents: [{ role: "user", parts: [{ text: prompts[lang] }] }] };
@@ -902,3 +910,4 @@
     </script>
 </body>
 </html>
+

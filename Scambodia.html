@@ -64,10 +64,10 @@
             background-color: #0079FF;
             font-weight: bold;
         }
-        [lang="km"] body, [lang="km"] h1, [lang="km"] h2, [lang="km"] h3, [lang="km"] h4, [lang="km"] p, [lang="km"] span, [lang="km"] div, [lang="km"] button, [lang="km"] li, [lang="km"] strong, [lang="km"] textarea {
+        [lang="km"] body, [lang="km"] h1, [lang="km"] h2, [lang="km"] h3, [lang="km"] h4, [lang="km"] p, [lang="km"] span, [lang="km"] div, [lang="km"] button, [lang="km"] li, [lang="km"] strong, [lang="km"] textarea, [lang="km"] a {
             font-family: 'Noto Sans Khmer', 'Sarabun', sans-serif;
         }
-        [lang="zh"] body, [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3, [lang="zh"] h4, [lang="zh"] p, [lang="zh"] span, [lang="zh"] div, [lang="zh"] button, [lang="zh"] li, [lang="zh"] strong, [lang="zh"] textarea {
+        [lang="zh"] body, [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3, [lang="zh"] h4, [lang="zh"] p, [lang="zh"] span, [lang="zh"] div, [lang="zh"] button, [lang="zh"] li, [lang="zh"] strong, [lang="zh"] textarea, [lang="zh"] a {
             font-family: 'Noto Sans SC', 'Sarabun', sans-serif;
         }
     </style>
@@ -92,6 +92,14 @@
                 <p class="text-lg md:text-2xl mt-4" data-lang-key="main_subtitle">บทวิเคราะห์กัมพูชา: จากฐานแก๊งคอลเซ็นเตอร์สู่สมรภูมิข้อมูลข่าวสารโลก</p>
             </div>
         </header>
+    </div>
+    
+    <div class="bg-white py-4 shadow-md">
+        <div class="container mx-auto text-center px-4">
+            <a href="https://drive.google.com/file/d/1ESc9Q40wlx7KX46fZFDJfRyfBD73AD2b/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-[#004AAD] font-bold hover:underline" data-lang-key="pdf_link_text">
+                ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime
+            </a>
+        </div>
     </div>
 
     <main class="container mx-auto p-4 md:p-8">
@@ -331,6 +339,7 @@
     <script>
         const translations = {
             th: {
+                pdf_link_text: "ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 main_title: "อาณาจักรแห่งการหลอกลวง",
                 main_subtitle: "บทวิเคราะห์กัมพูชา: จากฐานแก๊งคอลเซ็นเตอร์สู่สมรภูมิข้อมูลข่าวสารโลก",
                 overview_title: "ภาพรวมวิกฤตการณ์ระดับโลก",
@@ -409,6 +418,7 @@
                 chart_cpi_labels: ['สิงคโปร์', 'มาเลเซีย', 'เวียดนาม', 'ไทย', 'อินโดนีเซีย', 'ฟิลิปปินส์', 'กัมพูชา', 'เมียนมา']
             },
             en: {
+                pdf_link_text: "Download Full Analysis Report (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 main_title: "The Empire of Deceit",
                 main_subtitle: "An Analysis of Cambodia: From Scam Hub to Global Infowar Battlefield",
                 overview_title: "A Global Crisis at a Glance",
@@ -487,6 +497,7 @@
                 chart_cpi_labels: ['Singapore', 'Malaysia', 'Vietnam', 'Thailand', 'Indonesia', 'Philippines', 'Cambodia', 'Myanmar']
             },
             zh: {
+                pdf_link_text: "下载完整报告 (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 main_title: "欺诈帝国",
                 main_subtitle: "柬埔寨分析：从诈骗中心到全球信息战战场",
                 overview_title: "全球危机概览",
@@ -565,6 +576,7 @@
                 chart_cpi_labels: ['新加坡', '马来西亚', '越南', '泰国', '印度尼西亚', '菲律宾', '柬埔寨', '缅甸']
             },
             km: {
+                pdf_link_text: "ទាញយករបាយការណ៍ពេញលេញ (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 main_title: "អាណាចក្រនៃ​ការបោកប្រាស់",
                 main_subtitle: "บทวิเคราะห์អំពីកម្ពុជា៖ ពីមជ្ឈមណ្ឌលបោកប្រាស់ ទៅជាសមរភូមិព័ត៌មានសកល",
                 overview_title: "ទិដ្ឋភាពទូទៅនៃវិបត្តិសកល",
@@ -610,7 +622,7 @@
                 nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីบริษัทធំៗที่มีสายสัมพันธ์ทางการเมืองថាមានส่วนเกี่ยวข้องกับឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
                 nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង 4 ពាន់លានដុល្លារ និងเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)។",
                 nexus_group2_desc: "ត្រូវបានระบุว่าเป็นទីតាំងของปฏิบัติการបោកប្រាស់และค้ามนุษย์។",
-                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
+                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒិสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
                 infowar_title: "សមរភូមិថ្មី៖ ពីការបោកប្រាស់ទៅសង្គ្រាមព័ត៌មាន",
                 infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះបានបង្ហាញពីការវិវត្តដ៏น่ากังวลមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុคลากรจากមជ្ឈមណ្ឌលបោកប្រាស់ត្រូវបានปรับเปลี่ยนជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងประเทศไทย។",
                 infowar_stat_desc: "ការវាយប្រហារតាមអ៊ីនធឺណិតលើប្រព័ន្ធផ្សព្វផ្សាយថៃក្នុងរយៈពេល 3 ថ្ងៃក្នុងអំឡុងពេលជម្លោះ។",
@@ -866,3 +878,4 @@
     </script>
 </body>
 </html>
+

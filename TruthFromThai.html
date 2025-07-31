@@ -25,20 +25,6 @@
             width: 120px;
             flex-shrink: 0;
         }
-        .gemini-button {
-            transition: all 0.3s ease;
-        }
-        .gemini-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .post-card {
-            transition: background-color 0.3s ease;
-        }
-        .post-card:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        /* Language Switcher Styles */
         #language-switcher button {
             transition: background-color 0.2s;
         }
@@ -51,38 +37,49 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-4xl">
         
-        <!-- Language Switcher -->
         <div class="flex justify-end mb-4">
             <div class="relative" id="language-switcher">
                 <button id="language-toggle" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg inline-flex items-center">
                     <span id="current-language-name">Language</span>
                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div id="language-dropdown" class="absolute right-0 mt-2 py-2 w-48 bg-gray-700 rounded-lg shadow-xl z-20 hidden">
-                    <!-- Language options will be injected by JS -->
-                </div>
+                <div id="language-dropdown" class="absolute right-0 mt-2 py-2 w-48 bg-gray-700 rounded-lg shadow-xl z-20 hidden"></div>
             </div>
         </div>
 
-        <!-- Top Hashtag Section -->
         <div class="text-center mb-6">
             <p data-key="top_hashtag" class="text-2xl font-bold text-green-400 tracking-wider">#TruthFromThailand</p>
         </div>
 
+        <!-- Image Banner -->
+        <div class="mb-8">
+            <img src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/af954f40-6e6f-45e4-a347-c309aa9fde87/variations/universal_upscale_0_af954f40-6e6f-45e4-a347-c309aa9fde87_0.jpg" alt="Infographic Banner" class="w-full h-auto rounded-2xl shadow-lg">
+        </div>
 
-        <!-- Header Section -->
         <header class="text-center mb-12">
             <h1 data-key="header_title" class="text-4xl md:text-6xl font-black uppercase tracking-wider">Civilians Targeted</h1>
             <h2 data-key="header_subtitle" class="text-5xl md:text-7xl font-black uppercase gradient-text">Truth Twisted</h2>
             <p data-key="header_description" class="mt-4 text-lg text-gray-400">Cambodia's War on Facts and Innocents</p>
         </header>
 
-        <!-- Main Content Grid -->
         <main class="space-y-8" id="fact-container">
 
-            <!-- Fact 1: Provocation -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
+            <!-- A Question of Trust -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> </svg>
+                </div>
+                <div class="p-6">
+                    <h3 data-key="fact6_title" class="text-2xl font-bold text-yellow-400">A QUESTION OF TRUST</h3>
+                    <p data-key="fact6_desc" class="mt-2 text-gray-300">
+                       If you trust a country that serves as a base for scammer gangs deceiving people across the world—including your own citizens—then you are not different from the victims.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Initial Provocation -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C10.68 2 9.4 2.84 8.8 4H5v2h1.17c-.1.32-.17.66-.17 1s.07.68.17 1H5v2h3.8c.6 1.16 1.88 2 3.2 2s2.6-0.84 3.2-2H19V8h-1.17c.1-.32.17-.66.17-1s-.07-.68-.17-1H19V4h-3.8C14.6 2.84 13.32 2 12 2zM7 12h10v2h-1.46c-.46.86-1.14 1.54-2.04 2.04V17h-1v-1.03c-.23.02-.46.03-.7.03s-.47-.01-.7-.03V17h-1v-1.03c-.9-.5-1.58-1.18-2.04-2.04H7v-2zM12 18c-1.1 0-2-0.9-2-2s0.9-2 2-2 2 0.9 2 2-0.9 2-2 2z"/></svg>
                 </div>
                 <div class="p-6">
@@ -93,9 +90,9 @@
                 </div>
             </div>
 
-            <!-- Fact 2: Rocket Attacks -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
+            <!-- Rocket Attacks -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.04 2.21 11.53 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .53.21 1.04.59 1.41l9 9c.36.36.86.59 1.41.59s1.05-.23 1.41-.59l7-7c.38-.38.59-.88.59-1.42s-.21-1.04-.59-1.41zM13 20.01L4 11V4h7v.01l9 9-7 7.00z"/><path d="M6.5 5C7.33 5 8 5.67 8 6.5S7.33 8 6.5 8 5 7.33 5 6.5 5.67 5 6.5 5z"/></svg>
                 </div>
                 <div class="p-6">
@@ -106,9 +103,9 @@
                 </div>
             </div>
 
-            <!-- Fact 3: Disinformation -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
+            <!-- Disinformation -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.463 8.213A4.002 4.002 0 0112 10H8" />
@@ -124,9 +121,9 @@
                 </div>
             </div>
 
-             <!-- Fact 4: Weaponizing Imagery -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
+             <!-- Weaponizing Imagery -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1m6-3l-2-2m5.5 5.5l-1.5-1.5M12 9l-2 2m-2-2l-2 2" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18" />
@@ -140,9 +137,24 @@
                 </div>
             </div>
             
-            <!-- Fact 5: Thailand's Stance -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
+            <!-- Political Games -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.125-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.125-1.283.356-1.857m0 0a3.002 3.002 0 012.288-2.542M11 15.667a3.001 3.001 0 11-2 0m2 0v-1.083c0-.653-.125-1.283-.356-1.857M9 12.727c0-.653.125-1.283.356-1.857m-2.712 4.414a3.001 3.001 0 112-4.414m-2 4.414V15.667c0-.653.125-1.283.356-1.857m0 0a3.002 3.002 0 012.288-2.542m-4.576 6.942a3.001 3.001 0 112-4.414m-2 4.414V15.667" />
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 data-key="fact7_title" class="text-2xl font-bold text-red-400">POLITICAL GAMES</h3>
+                    <p data-key="fact7_desc" class="mt-2 text-gray-300">
+                       Cambodia fuels a boycott against Thai products by falsely accusing Thailand of mistreating Cambodian workers. Thailand reaffirms its fair treatment and urges Cambodia to stop harming its own workers for political games.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Thailand's Stance -->
+            <div class="flex flex-col md:flex-row items-stretch bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                <div class="p-6 icon-bg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" />
                     </svg>
@@ -154,40 +166,8 @@
                     </p>
                 </div>
             </div>
-
-            <!-- Fact 6: A Question of Trust -->
-            <div class="flex flex-col md:flex-row items-center bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-                <div class="p-6 flex-shrink-0 icon-bg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> </svg>
-                </div>
-                <div class="p-6">
-                    <h3 data-key="fact6_title" class="text-2xl font-bold text-yellow-400">A QUESTION OF TRUST</h3>
-                    <p data-key="fact6_desc" class="mt-2 text-gray-300">
-                       If you trust a country that serves as a base for scammer gangs deceiving people across the world—including your own citizens—then you are not different from the victims.
-                    </p>
-                </div>
-            </div>
         </main>
 
-        <!-- Gemini API Feature Section -->
-        <section class="mt-12 text-center">
-            <h3 data-key="gemini_title" class="text-3xl font-bold text-white mb-4">Spread the Truth</h3>
-            <p data-key="gemini_desc" class="text-gray-400 mb-6 max-w-2xl mx-auto">Click the button below to use the Gemini API to generate shareable social media posts based on these facts. Help the world understand the situation.</p>
-            <button id="generate-posts-btn" class="gemini-button bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg">
-                <span data-key="gemini_button">✨ Generate Social Media Posts</span>
-            </button>
-            <div id="loading-indicator" class="mt-6 hidden">
-                <div class="flex justify-center items-center">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
-                    <p data-key="gemini_loading" class="ml-3">Gemini is thinking...</p>
-                </div>
-            </div>
-            <div id="posts-output" class="mt-8 text-left space-y-4"></div>
-            <div id="error-message" class="mt-6 text-red-400"></div>
-        </section>
-
-
-        <!-- Footer Section -->
         <footer class="text-center mt-12 py-6 border-t-2 border-gray-700">
             <p data-key="footer_hashtag" class="text-xl font-bold text-white leading-relaxed px-4 break-words">#scambodia</p>
             <p data-key="footer_verify" class="text-gray-400 mt-2">Verify all information from credible, independent sources.</p>
@@ -196,217 +176,39 @@
     </div>
 
     <script type="module">
-        // --- DOM Elements ---
-        const generateBtn = document.getElementById('generate-posts-btn');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const postsOutput = document.getElementById('posts-output');
-        const errorMessage = document.getElementById('error-message');
-        const factContainer = document.getElementById('fact-container');
         const languageToggle = document.getElementById('language-toggle');
         const languageDropdown = document.getElementById('language-dropdown');
         const currentLanguageName = document.getElementById('current-language-name');
         
-        // --- State ---
         let currentLanguage = 'en';
 
-        // --- Translations Object ---
         const languages = {
-            ar: 'العربية',
-            zh: '中文',
-            de: 'Deutsch',
-            en: 'English',
-            es: 'Español',
-            fr: 'Français',
-            he: 'עברית',
-            hi: 'हिन्दी',
-            it: 'Italiano',
-            ja: '日本語',
-            km: 'ខ្មែរ',
-            ko: '한국어',
-            ru: 'Русский',
-            th: 'ไทย'
+            ar: 'العربية', zh: '中文', de: 'Deutsch', en: 'English',
+            es: 'Español', fr: 'Français', he: 'עברית', hi: 'हिन्दी',
+            it: 'Italiano', ja: '日本語', km: 'ខ្មែរ', ko: '한국어',
+            ru: 'Русский', th: 'ไทย'
         };
-
-        const all_hashtags = "#TruthFromThailand #scambodia #cambodiaopenfire #cambodiainvadesthailand #cambodiaviolatesottawatreaty #cambodiabreakscesefire";
+        
         const other_hashtags = "#scambodia #cambodiaopenfire #cambodiainvadesthailand #cambodiaviolatesottawatreaty #cambodiabreakscesefire";
 
         const translations = {
-            en: {
-                header_title: "Civilians Targeted", header_subtitle: "Truth Twisted", header_description: "Cambodia's War on Facts and Innocents",
-                fact1_title: "INITIAL PROVOCATION", fact1_desc: "Cambodia initiated the conflict by planting PMN-2 anti-personnel mines in Thai territory, violating the Ottawa Treaty, and then launching the first military attack.",
-                fact2_title: "ROCKET ATTACKS ON CIVILIANS", fact2_desc: "Cambodian forces fired BM-21 multiple rocket launchers into Thai civilian zones. These war crimes resulted in casualties including women, children, and the elderly, and destroyed shops and homes.",
-                fact3_title: "FAKE NEWS & DISINFORMATION", fact3_desc: "A large-scale disinformation campaign is being waged by Cambodia, using state media and thousands of social media accounts to spread false narratives and paint Thailand as the aggressor.",
-                fact4_title: "WEAPONIZING IMAGERY", fact4_desc: "Images are deliberately twisted. A Reuters photo of a firefighting plane was falsely presented as a chemical attack. Photos of Thai territories, like a burned 7-Eleven, were used to spread false narratives.",
-                fact5_title: "THAILAND'S STANCE", fact5_desc: "Thailand has always sought a peaceful resolution, acting only in self-defense and adhering to international law. The message is clear: Stop the attacks. Stop the lies. Demand accountability.",
-                fact6_title: "A QUESTION OF TRUST", fact6_desc: "If you trust a country that serves as a base for scammer gangs deceiving people across the world—including your own citizens—then you are not different from the victims.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Spread the Truth", gemini_desc: "Click the button below to use the Gemini API to generate shareable social media posts based on these facts. Help the world understand the situation.",
-                gemini_button: "✨ Generate Social Media Posts", gemini_loading: "Gemini is thinking...", footer_hashtag: other_hashtags, footer_verify: "Verify all information from credible, independent sources."
-            },
-            th: {
-                header_title: "พุ่งเป้าพลเรือน", header_subtitle: "บิดเบือนความจริง", header_description: "สงครามของกัมพูชาต่อข้อเท็จจริงและผู้บริสุทธิ์",
-                fact1_title: "การยั่วยุครั้งแรก", fact1_desc: "กัมพูชาเริ่มต้นความขัดแย้งด้วยการวางทุ่นระเบิดสังหารบุคคล PMN-2 ในดินแดนไทย ซึ่งเป็นการละเมิดสนธิสัญญาออตตาวา และจากนั้นได้เปิดฉากโจมตีทางทหารเป็นครั้งแรก",
-                fact2_title: "การโจมตีพลเรือนด้วยจรวด", fact2_desc: "กองกำลังกัมพูชายิงจรวดหลายลำกล้อง BM-21 เข้าใส่เขตพลเรือนของไทย อาชญากรรมสงครามเหล่านี้ส่งผลให้มีผู้เสียชีวิตและบาดเจ็บซึ่งรวมถึงผู้หญิง เด็ก และผู้สูงอายุ และทำลายร้านค้าและบ้านเรือน",
-                fact3_title: "ข่าวปลอมและการบิดเบือนข้อมูล", fact3_desc: "มีการโฆษณาชวนเชื่อบิดเบือนข้อมูลขนาดใหญ่โดยกัมพูชา โดยใช้สื่อของรัฐและบัญชีโซเชียลมีเดียหลายพันบัญชีเพื่อเผยแพร่เรื่องเล่าที่เป็นเท็จและใส่ร้ายว่าไทยเป็นผู้รุกราน",
-                fact4_title: "การใช้ภาพเป็นอาวุธ", fact4_desc: "มีการบิดเบือนภาพอย่างจงใจ ภาพถ่ายของรอยเตอร์เกี่ยวกับเครื่องบินดับเพลิงถูกนำเสนออย่างเป็นเท็จว่าเป็นการโจมตีด้วยสารเคมี ภาพถ่ายดินแดนไทย เช่น ร้านเซเว่นอีเลฟเว่นที่ถูกไฟไหม้ ถูกใช้เพื่อเผยแพร่เรื่องเล่าที่เป็นเท็จ",
-                fact5_title: "จุดยืนของประเทศไทย", fact5_desc: "ประเทศไทยแสวงหาการแก้ปัญหาอย่างสันติเสมอมา โดยเป็นการกระทำเพื่อป้องกันตนเองและปฏิบัติตามกฎหมายระหว่างประเทศอย่างเคร่งครัด ข้อความชัดเจน: หยุดการโจมตี หยุดโกหก เรียกร้องความรับผิดชอบ",
-                fact6_title: "คำถามเรื่องความไว้ใจ", fact6_desc: "หากคุณเชื่อใจประเทศที่เป็นฐานที่มั่นของแก๊งคอลเซ็นเตอร์ที่หลอกลวงผู้คนทั่วโลก—รวมถึงพลเมืองของคุณเอง—คุณก็ไม่ต่างอะไรจากเหยื่อ",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "กระจายความจริง", gemini_desc: "คลิกปุ่มด้านล่างเพื่อใช้ Gemini API สร้างโพสต์โซเชียลมีเดียที่สามารถแชร์ได้ตามข้อเท็จจริงเหล่านี้ ช่วยให้โลกเข้าใจสถานการณ์",
-                gemini_button: "✨ สร้างโพสต์โซเชียลมีเดีย", gemini_loading: "Gemini กำลังประมวลผล...", footer_hashtag: other_hashtags, footer_verify: "โปรดตรวจสอบข้อมูลทั้งหมดจากแหล่งที่น่าเชื่อถือและเป็นอิสระ"
-            },
-            fr: {
-                header_title: "Civils Ciblés", header_subtitle: "Vérité Déformée", header_description: "La guerre du Cambodge contre les faits et les innocents",
-                fact1_title: "PROVOCATION INITIALE", fact1_desc: "Le Cambodge a initié le conflit en posant des mines antipersonnel PMN-2 en territoire thaïlandais, en violation du Traité d'Ottawa, puis en lançant la première attaque militaire.",
-                fact2_title: "ATTAQUES DE ROQUETTES SUR LES CIVILS", fact2_desc: "Les forces cambodgiennes ont tiré des lance-roquettes multiples BM-21 sur des zones civiles thaïlandaises. Ces crimes de guerre ont fait des victimes, dont des femmes, des enfants et des personnes âgées, et ont détruit des magasins et des maisons.",
-                fact3_title: "FAUSSES NOUVELLES ET DÉSINFORMATION", fact3_desc: "Une campagne de désinformation à grande échelle est menée par le Cambodge, utilisant les médias d'État et des milliers de comptes de médias sociaux pour diffuser de faux récits et présenter la Thaïlande comme l'agresseur.",
-                fact4_title: "INSTRUMENTALISATION DE L'IMAGERIE", fact4_desc: "Les images sont délibérément déformées. Une photo de Reuters d'un avion de lutte contre les incendies a été faussement présentée comme une attaque chimique. Des photos de territoires thaïlandais, comme un 7-Eleven incendié, ont été utilisées pour diffuser de faux récits.",
-                fact5_title: "POSITION DE LA THAÏLANDE", fact5_desc: "La Thaïlande a toujours cherché une solution pacifique, agissant uniquement en état de légitime défense et dans le respect du droit international. Le message est clair : Arrêtez les attaques. Arrêtez les mensonges. Exigez des comptes.",
-                fact6_title: "UNE QUESTION DE CONFIANCE", fact6_desc: "Si vous faites confiance à un pays qui sert de base à des gangs d'escrocs trompant des gens dans le monde entier, y compris vos propres citoyens, alors vous n'êtes pas différent des victimes.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Répandez la vérité", gemini_desc: "Cliquez sur le bouton ci-dessous pour utiliser l'API Gemini afin de générer des publications partageables sur les réseaux sociaux basées sur ces faits. Aidez le monde à comprendre la situation.",
-                gemini_button: "✨ Générer des posts", gemini_loading: "Gemini réfléchit...", footer_hashtag: other_hashtags, footer_verify: "Vérifiez toutes les informations auprès de sources crédibles et indépendantes."
-            },
-            de: {
-                header_title: "Zivilisten im Visier", header_subtitle: "Verdrehte Wahrheit", header_description: "Kambodschas Krieg gegen Fakten und Unschuldige",
-                fact1_title: "ERSTE PROVOKATION", fact1_desc: "Kambodscha initiierte den Konflikt durch das Legen von PMN-2-Antipersonenminen auf thailändischem Territorium, was gegen den Ottawa-Vertrag verstößt, und startete dann den ersten militärischen Angriff.",
-                fact2_title: "RAKETENANGRIFFE AUF ZIVILISTEN", fact2_desc: "Kambodschanische Streitkräfte feuerten BM-21-Mehrfachraketenwerfer auf zivile Zonen in Thailand. Diese Kriegsverbrechen führten zu Opfern, darunter Frauen, Kinder und ältere Menschen, und zerstörten Geschäfte und Häuser.",
-                fact3_title: "FAKE NEWS & DESINFORMATION", fact3_desc: "Eine groß angelegte Desinformationskampagne wird von Kambodscha geführt, bei der staatliche Medien und Tausende von Social-Media-Konten genutzt werden, um falsche Narrative zu verbreiten und Thailand als Aggressor darzustellen.",
-                fact4_title: "BILDER ALS WAFFE", fact4_desc: "Bilder werden absichtlich verdreht. Ein Reuters-Foto eines Löschflugzeugs wurde fälschlicherweise als chemischer Angriff dargestellt. Fotos von thailändischen Gebieten, wie einem verbrannten 7-Eleven, wurden verwendet, um falsche Narrative zu verbreiten.",
-                fact5_title: "HALTUNG THAILANDS", fact5_desc: "Thailand hat immer eine friedliche Lösung gesucht und nur zur Selbstverteidigung und in Übereinstimmung mit dem Völkerrecht gehandelt. Die Botschaft ist klar: Stoppt die Angriffe. Stoppt die Lügen. Fordert Rechenschaft.",
-                fact6_title: "EINE FRAGE DES VERTRAUENS", fact6_desc: "Wenn Sie einem Land vertrauen, das als Basis für Betrügerbanden dient, die Menschen auf der ganzen Welt täuschen – einschließlich Ihrer eigenen Bürger – dann unterscheiden Sie sich nicht von den Opfern.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Verbreiten Sie die Wahrheit", gemini_desc: "Klicken Sie auf die Schaltfläche unten, um die Gemini-API zu verwenden, um teilbare Social-Media-Beiträge basierend auf diesen Fakten zu erstellen. Helfen Sie der Welt, die Situation zu verstehen.",
-                gemini_button: "✨ Beiträge erstellen", gemini_loading: "Gemini denkt nach...", footer_hashtag: other_hashtags, footer_verify: "Überprüfen Sie alle Informationen aus glaubwürdigen und unabhängigen Quellen."
-            },
-            ru: {
-                header_title: "Цель - гражданские", header_subtitle: "Искаженная правда", header_description: "Война Камбоджи против фактов и невинных",
-                fact1_title: "НАЧАЛЬНАЯ ПРОВОКАЦИЯ", fact1_desc: "Камбоджа инициировала конфликт, установив противопехотные мины ПМН-2 на территории Таиланда в нарушение Оттавского договора, а затем начала первую военную атаку.",
-                fact2_title: "РАКЕТНЫЕ ОБСТРЕЛЫ ГРАЖДАНСКИХ", fact2_desc: "Камбоджийские силы обстреляли из реактивных систем залпового огня БМ-21 гражданские районы Таиланда. Эти военные преступления привели к жертвам среди женщин, детей и пожилых людей, а также к разрушению магазинов и домов.",
-                fact3_title: "ФЕЙКОВЫЕ НОВОСТИ И ДЕЗИНФОРМАЦИЯ", fact3_desc: "Камбоджа ведет крупномасштабную кампанию по дезинформации, используя государственные СМИ и тысячи аккаунтов в социальных сетях для распространения ложных сведений и изображения Таиланда в качестве агрессора.",
-                fact4_title: "ИСПОЛЬЗОВАНИЕ ИЗОБРАЖЕНИЙ КАК ОРУЖИЯ", fact4_desc: "Изображения намеренно искажаются. Фотография Reuters с пожарным самолетом была ложно представлена как химическая атака. Фотографии тайских территорий, например, сгоревшего 7-Eleven, использовались для распространения ложных сведений.",
-                fact5_title: "ПОЗИЦИЯ ТАИЛАНДА", fact5_desc: "Таиланд всегда стремился к мирному урегулированию, действуя исключительно в целях самообороны и в строгом соответствии с международным правом. Послание ясно: Прекратите атаки. Прекратите ложь. Требуйте ответственности.",
-                fact6_title: "ВОПРОС ДОВЕРИЯ", fact6_desc: "Если вы доверяете стране, которая служит базой для мошеннических банд, обманывающих людей по всему миру, включая ваших собственных граждан, то вы ничем не отличаетесь от жертв.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Распространяйте правду", gemini_desc: "Нажмите кнопку ниже, чтобы использовать Gemini API для создания постов в социальных сетях на основе этих фактов. Помогите миру понять ситуацию.",
-                gemini_button: "✨ Создать посты", gemini_loading: "Gemini думает...", footer_hashtag: other_hashtags, footer_verify: "Проверяйте всю информацию из заслуживающих доверия и независимых источников."
-            },
-            zh: {
-                header_title: "针对平民", header_subtitle: "扭曲真相", header_description: "柬埔寨对事实与无辜者的战争",
-                fact1_title: "初步挑衅", fact1_desc: "柬埔寨通过在泰国领土上布设PMN-2反步兵地雷，违反了《渥太华条约》，并发动了首次军事攻击，从而引发了冲突。",
-                fact2_title: "对平民的火箭弹袭击", fact2_desc: "柬埔寨部队向泰国平民区发射了BM-21多管火箭炮。这些战争罪行导致包括妇女、儿童和老人在内的人员伤亡，并摧毁了商店和房屋。",
-                fact3_title: "假新闻与虚假信息", fact3_desc: "柬埔寨正在发动大规模的虚假信息宣传运动，利用国家媒体和数千个社交媒体账户传播虚假叙事，将泰国描绘成侵略者。",
-                fact4_title: "图像武器化", fact4_desc: "图像被蓄意扭曲。路透社一张消防飞机的照片被谎称为化学袭击。泰国领土的照片，如被烧毁的7-11便利店，被用来传播虚假叙事。",
-                fact5_title: "泰国的立场", fact5_desc: "泰国一直寻求和平解决方案，仅在自卫和遵守国际法的情况下采取行动。信息很明确：停止攻击。停止谎言。追究责任。",
-                fact6_title: "一个关于信任的问题", fact6_desc: "如果你相信一个为诈骗团伙提供基地、欺骗全世界人民——包括你自己的公民——的国家，那么你与受害者无异。",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "传播真相", gemini_desc: "点击下方按钮，使用Gemini API根据这些事实生成可分享的社交媒体帖子。帮助世界了解情况。",
-                gemini_button: "✨ 生成社交媒体帖子", gemini_loading: "Gemini正在思考...", footer_hashtag: other_hashtags, footer_verify: "请从可信和独立的来源核实所有信息。"
-            },
-            ja: {
-                header_title: "民間人を標的に", header_subtitle: "歪められた真実", header_description: "カンボジアの事実と罪なき人々に対する戦争",
-                fact1_title: "最初の挑発", fact1_desc: "カンボジアは、オタワ条約に違反してタイ領内にPMN-2対人地雷を設置し、最初の軍事攻撃を開始することで紛争を開始しました。",
-                fact2_title: "民間人へのロケット攻撃", fact2_desc: "カンボジア軍はBM-21多連装ロケットランチャーをタイの民間地域に発射しました。これらの戦争犯罪は、女性、子供、高齢者を含む死傷者を出し、店舗や家屋を破壊しました。",
-                fact3_title: "フェイクニュースと偽情報", fact3_desc: "カンボジアは、国営メディアと何千ものソーシャルメディアアカウントを使用して、タイを侵略者として描く偽の物語を広める大規模な偽情報キャンペーンを展開しています。",
-                fact4_title: "画像の兵器化", fact4_desc: "画像は意図的に歪められています。消防飛行機のロイターの写真は、化学攻撃として誤って提示されました。焼失したセブンイレブンのようなタイ領土の写真は、偽の物語を広めるために使用されました。",
-                fact5_title: "タイの立場", fact5_desc: "タイは常に平和的解決を模索し、自衛のためにのみ、国際法を厳守して行動してきました。メッセージは明確です：攻撃をやめろ。嘘をやめろ。説明責任を求めよ。",
-                fact6_title: "信頼の問題", fact6_desc: "自国民を含む世界中の人々を騙す詐欺師集団の拠点となっている国を信頼するなら、あなたも被害者と何ら変わりはありません。",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "真実を広める", gemini_desc: "下のボタンをクリックして、Gemini APIを使用し、これらの事実に基づいて共有可能なソーシャルメディア投稿を生成します。世界が状況を理解するのを手伝ってください。",
-                gemini_button: "✨ ソーシャルメディア投稿を生成", gemini_loading: "Geminiは考えています...", footer_hashtag: other_hashtags, footer_verify: "信頼できる独立した情報源からすべての情報を確認してください。"
-            },
-            ko: {
-                header_title: "민간인 표적", header_subtitle: "왜곡된 진실", header_description: "사실과 무고한 사람들에 대한 캄보디아의 전쟁",
-                fact1_title: "초기 도발", fact1_desc: "캄보디아는 오타와 조약을 위반하고 태국 영토에 PMN-2 대인 지뢰를 매설한 후 첫 군사 공격을 감행하여 분쟁을 시작했습니다.",
-                fact2_title: "민간인에 대한 로켓 공격", fact2_desc: "캄보디아 군은 태국 민간인 지역에 BM-21 다연장 로켓을 발사했습니다. 이러한 전쟁 범죄는 여성, 어린이, 노인을 포함한 사상자를 냈고 상점과 주택을 파괴했습니다.",
-                fact3_title: "가짜 뉴스와 허위 정보", fact3_desc: "캄보디아는 국영 언론과 수천 개의 소셜 미디어 계정을 사용하여 태국을 침략자로 묘사하는 허위 서사를 퍼뜨리는 대규모 허위 정보 캠페인을 벌이고 있습니다.",
-                fact4_title: "이미지의 무기화", fact4_desc: "이미지는 의도적으로 왜곡됩니다. 소방 비행기의 로이터 사진은 화학 공격으로 거짓 제시되었습니다. 불에 탄 세븐일레븐과 같은 태국 영토의 사진은 허위 서사를 퍼뜨리는 데 사용되었습니다.",
-                fact5_title: "태국의 입장", fact5_desc: "태국은 항상 평화적 해결을 추구해 왔으며, 오직 자위권과 국제법을 준수하여 행동했습니다. 메시지는 분명합니다: 공격을 멈추십시오. 거짓말을 멈추십시오. 책임을 요구하십시오.",
-                fact6_title: "신뢰의 문제", fact6_desc: "자국민을 포함하여 전 세계 사람들을 속이는 사기꾼 집단의 근거지 역할을 하는 국가를 신뢰한다면, 당신은 피해자와 다르지 않습니다.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "진실을 퍼뜨리세요", gemini_desc: "아래 버튼을 클릭하여 Gemini API를 사용하여 이러한 사실을 기반으로 공유 가능한 소셜 미디어 게시물을 생성하십시오. 세상이 상황을 이해하도록 도와주세요.",
-                gemini_button: "✨ 소셜 미디어 게시물 생성", gemini_loading: "Gemini가 생각 중입니다...", footer_hashtag: other_hashtags, footer_verify: "신뢰할 수 있고 독립적인 출처에서 모든 정보를 확인하십시오."
-            },
-            ar: {
-                header_title: "استهداف المدنيين", header_subtitle: "تحريف الحقيقة", header_description: "حرب كمبوديا على الحقائق والأبرياء",
-                fact1_title: "الاستفزاز الأولي", fact1_desc: "بدأت كمبوديا النزاع بزرع ألغام PMN-2 المضادة للأفراد في الأراضي التايلاندية ، منتهكة بذلك معاهدة أوتاوا ، ثم شنت أول هجوم عسكري.",
-                fact2_title: "هجمات صاروخية على المدنيين", fact2_desc: "أطلقت القوات الكمبودية قاذفات صواريخ متعددة من طراز BM-21 على مناطق مدنية تايلاندية. أدت جرائم الحرب هذه إلى وقوع إصابات بين النساء والأطفال وكبار السن ، ودمرت المتاجر والمنازل.",
-                fact3_title: "الأخبار الكاذبة والتضليل", fact3_desc: "تشن كمبوديا حملة تضليل واسعة النطاق ، مستخدمة وسائل الإعلام الحكومية وآلاف حسابات وسائل التواصل الاجتماعي لنشر روايات كاذبة وتصوير تايلاند على أنها المعتدي.",
-                fact4_title: "تسليح الصور", fact4_desc: "يتم تحريف الصور عمدا. تم تقديم صورة لرويترز لطائرة إطفاء بشكل خاطئ على أنها هجوم كيماوي. تم استخدام صور للأراضي التايلاندية ، مثل متجر 7-Eleven محترق ، لنشر روايات كاذبة.",
-                fact5_title: "موقف تايلاند", fact5_desc: "سعت تايلاند دائمًا إلى حل سلمي ، وتصرفت فقط دفاعًا عن النفس والتزامًا بالقانون الدولي. الرسالة واضحة: أوقفوا الهجمات. أوقفوا الأكاذيب. طالبوا بالمساءلة.",
-                fact6_title: "مسألة ثقة", fact6_desc: "إذا كنت تثق في بلد يعمل كقاعدة لعصابات المحتالين الذين يخدعون الناس في جميع أنحاء العالم - بما في ذلك مواطنيك - فأنت لا تختلف عن الضحايا.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "انشر الحقيقة", gemini_desc: "انقر فوق الزر أدناه لاستخدام Gemini API لإنشاء منشورات وسائط اجتماعية قابلة للمشاركة بناءً على هذه الحقائق. ساعد العالم على فهم الموقف.",
-                gemini_button: "✨ إنشاء منشورات على وسائل التواصل الاجتماعي", gemini_loading: "Gemini يفكر...", footer_hashtag: other_hashtags, footer_verify: "تحقق من جميع المعلومات من مصادر موثوقة ومستقلة."
-            },
-            km: {
-                header_title: "កំណត់គោលដៅជនស៊ីវិល", header_subtitle: "ការពិតដែលถูกបំភ្លៃ", header_description: "សង្គ្រាមរបស់កម្ពុជាលើការពិត និងជនស្លូតត្រង់",
-                fact1_title: "ការបង្កហេតុដំបូង", fact1_desc: "កម្ពុជាបានផ្តួចផ្តើមជម្លោះដោយការដាំគ្រាប់មីនប្រឆាំងមនុស្ស PMN-2 នៅក្នុងទឹកដីថៃ ដែលរំលោភលើសន្ធិសញ្ញាអូតាវ៉ា ហើយបន្ទាប់មកបានបើកការវាយប្រហារយោធាដំបូង។",
-                fact2_title: "ការវាយប្រហារដោយគ្រាប់រ៉ុក្កែតលើជនស៊ីវិល", fact2_desc: "កងកម្លាំងកម្พុជាបានបាញ់គ្រាប់រ៉ុក្កែត BM-21 ជាច្រើនគ្រាប់ចូលទៅក្នុងតំបន់ជនស៊ីវិលថៃ។ ឧក្រិដ្ឋកម្មសង្គ្រាមទាំងនេះបានបណ្តាលឱ្យមានអ្នកស្លាប់ និងរបួសរួមមានស្ត្រី កុមារ និងមនុស្សចាស់ ហើយបានបំផ្លាញហាង និងផ្ទះសម្បែង។",
-                fact3_title: "ព័ត៌មានក្លែងក្លាយ និងការផ្សព្វផ្សាយព័ត៌មានមិនពិត", fact3_desc: "យុទ្ធនាការផ្សព្វផ្សាយព័ត៌មានមិនពិតទ្រង់ទ្រាយធំមួយកំពុងត្រូវបានធ្វើឡើងដោយប្រទេសកម្ពុជា ដោយប្រើប្រាស់ប្រព័ន្ធផ្សព្វផ្សាយរបស់រដ្ឋ និងគណនីប្រព័ន្ធផ្សព្វផ្សាយសង្គមរាប់ពាន់ដើម្បីផ្សព្វផ្សាយនិទានកថាមិនពិត និងបង្ហាញថាប្រទេសថៃជាអ្នកឈ្លានពាន។",
-                fact4_title: "ការប្រើប្រាស់រូបភាពជាអាវុธ", fact4_desc: "រូបភាពត្រូវបានបំភ្លៃដោយចេតនា។ រូបថតរបស់ Reuters អំពីយន្តហោះពន្លត់អគ្គីភ័យត្រូវបានបង្ហាញមិនពិតថាជាការវាយប្រហារដោយគីមី។ រូបថតទឹកដីថៃ ដូចជាហាង 7-Eleven ដែលឆេះ ត្រូវបានគេប្រើដើម្បីផ្សព្វផ្សាយនិទានកថាមិនពិត។",
-                fact5_title: "ជំហររបស់ប្រទេសថៃ", fact5_desc: "ប្រទេសថៃតែងតែស្វែងរកដំណោះស្រាយដោយសន្តិវិធី ដោយធ្វើសកម្មភាពការពារខ្លួន និងគោរពច្បាប់អន្តរជាតិយ៉ាងតឹងរ៉ឹង។ សារគឺច្បាស់ណាស់៖ បញ្ឈប់ការវាយប្រហារ។ បញ្ឈប់ការកុហក។ ទាមទារការទទួលខុសត្រូវ។",
-                fact6_title: "សំណួរនៃទំនុកចិត្ត", fact6_desc: "ប្រសិនបើអ្នកទុកចិត្តប្រទេសដែលជាមូលដ្ឋានសម្រាប់ក្រុមអ្នកបោកប្រាស់ដែលបោកបញ្ឆោតមនុស្សទូទាំងពិភពលោក រួមទាំងប្រជាពលរដ្ឋរបស់អ្នកផងដែរនោះ អ្នកមិនខុសពីជនរងគ្រោះទេ",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "ផ្សព្វផ្សាយការពិត", gemini_desc: "ចុចប៊ូតុងខាងក្រោមដើម្បីប្រើ Gemini API ដើម្បីបង្កើតការបង្ហោះប្រព័ន្ធផ្សព្វផ្សាយសង្គមដែលអាចចែករំលែកបានដោយផ្អែកលើការពិតទាំងនេះ។ ជួយពិភពលោកឱ្យយល់ពីស្ថានភាព។",
-                gemini_button: "✨ បង្កើតការបង្ហោះលើប្រព័ន្ធផ្សព្វផ្សាយសង្គម", gemini_loading: "Gemini កំពុងគិត...", footer_hashtag: other_hashtags, footer_verify: "ផ្ទៀងផ្ទាត់ព័ត៌មានទាំងអស់ពីប្រភពដែលអាចទុកចិត្តបាន និងឯករាជ្យ។"
-            },
-            es: {
-                header_title: "Civiles en el punto de mira", header_subtitle: "Verdad Retorcida", header_description: "La guerra de Camboya contra los hechos y los inocentes",
-                fact1_title: "PROVOCACIÓN INICIAL", fact1_desc: "Camboya inició el conflicto colocando minas antipersonales PMN-2 en territorio tailandés, violando el Tratado de Ottawa, y luego lanzando el primer ataque militar.",
-                fact2_title: "ATAQUES CON COHETES A CIVILES", fact2_desc: "Las fuerzas camboyanas dispararon lanzacohetes múltiples BM-21 contra zonas civiles tailandesas. Estos crímenes de guerra causaron víctimas, entre ellas mujeres, niños y ancianos, y destruyeron tiendas y hogares.",
-                fact3_title: "NOTICIAS FALSAS Y DESINFORMACIÓN", fact3_desc: "Camboya está llevando a cabo una campaña de desinformación a gran escala, utilizando medios estatales y miles de cuentas en redes sociales para difundir narrativas falsas y presentar a Tailandia como el agresor.",
-                fact4_title: "USO DE IMÁGENES COMO ARMA", fact4_desc: "Las imágenes se tuercen deliberadamente. Una foto de Reuters de un avión de bomberos se presentó falsamente como un ataque químico. Se utilizaron fotos de territorios tailandeses, como un 7-Eleven quemado, para difundir narrativas falsas.",
-                fact5_title: "POSTURA DE TAILANDIA", fact5_desc: "Tailandia siempre ha buscado una solución pacífica, actuando solo en defensa propia y respetando el derecho internacional. El mensaje es claro: Detengan los ataques. Detengan las mentiras. Exijan responsabilidades.",
-                fact6_title: "UNA CUESTIÓN DE CONFIANZA", fact6_desc: "Si confías en un país que sirve de base para bandas de estafadores que engañan a personas en todo el mundo, incluidos tus propios ciudadanos, entonces no eres diferente de las víctimas.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Difunde la Verdad", gemini_desc: "Haz clic en el botón de abajo para usar la API de Gemini y generar publicaciones compartibles en redes sociales basadas en estos hechos. Ayuda al mundo a entender la situación.",
-                gemini_button: "✨ Generar Publicaciones", gemini_loading: "Gemini está pensando...", footer_hashtag: other_hashtags, footer_verify: "Verifica toda la información de fuentes creíbles e independientes."
-            },
-            hi: {
-                header_title: "नागरिकों पर निशाना", header_subtitle: "तोड़ा-मरोड़ा गया सच", header_description: "तथ्यों और निर्दोषों के खिलाफ कंबोडिया का युद्ध",
-                fact1_title: "प्रारंभिक उकसावा", fact1_desc: "कंबोडिया ने ओटावा संधि का उल्लंघन करते हुए थाई क्षेत्र में PMN-2 एंटी-पर्सोनेल खदानें लगाकर संघर्ष शुरू किया और फिर पहला सैन्य हमला किया।",
-                fact2_title: "नागरिकों पर रॉकेट हमले", fact2_desc: "कंबोडियाई सेना ने थाई नागरिक क्षेत्रों में BM-21 मल्टीपल रॉकेट लॉन्चर दागे। इन युद्ध अपराधों के परिणामस्वरूप महिलाओं, बच्चों और बुजुर्गों सहित कई हताहत हुए, और दुकानें और घर नष्ट हो गए।",
-                fact3_title: "फर्जी खबरें और दुष्प्रचार", fact3_desc: "कंबोडिया द्वारा एक बड़े पैमाने पर दुष्प्रचार अभियान चलाया जा रहा है, जिसमें सरकारी मीडिया और हजारों सोशल मीडिया खातों का उपयोग करके झूठी कहानियों को फैलाया जा रहा है और थाईलैंड को हमलावर के रूप में चित्रित किया जा रहा है।",
-                fact4_title: "छवियों का हथियारीकरण", fact4_desc: "छवियों को जानबूझकर तोड़ा-मरोड़ा जाता है। एक अग्निशमन विमान की रॉयटर्स की तस्वीर को झूठे तौर पर एक रासायनिक हमले के रूप में प्रस्तुत किया गया था। जले हुए 7-इलेवन जैसे थाई क्षेत्रों की तस्वीरों का इस्तेमाल झूठी कहानियों को फैलाने के लिए किया गया था।",
-                fact5_title: "थाईलैंड का रुख", fact5_desc: "थाईलैंड ने हमेशा एक शांतिपूर्ण समाधान की मांग की है, केवल आत्मरक्षा में और अंतरराष्ट्रीय कानून का पालन करते हुए कार्य किया है। संदेश स्पष्ट है: हमले बंद करो। झूठ बोलना बंद करो। जवाबदेही की मांग करो।",
-                fact6_title: "विश्वास का एक सवाल", fact6_desc: "यदि आप एक ऐसे देश पर भरोसा करते हैं जो दुनिया भर के लोगों को धोखा देने वाले स्कैमर गिरोहों के लिए एक अड्डे के रूप में कार्य करता है - जिसमें आपके अपने नागरिक भी शामिल हैं - तो आप पीड़ितों से अलग नहीं हैं।",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "सच फैलाओ", gemini_desc: "इन तथ्यों के आधार पर साझा करने योग्य सोशल मीडिया पोस्ट बनाने के लिए नीचे दिए गए बटन पर क्लिक करें और Gemini API का उपयोग करें। दुनिया को स्थिति को समझने में मदद करें।",
-                gemini_button: "✨ सोशल मीडिया पोस्ट बनाएं", gemini_loading: "जेमिनी सोच रहा है...", footer_hashtag: other_hashtags, footer_verify: "सभी जानकारी विश्वसनीय और स्वतंत्र स्रोतों से सत्यापित करें।"
-            },
-            it: {
-                header_title: "Civili nel Mirino", header_subtitle: "Verità Distorta", header_description: "La guerra della Cambogia contro i fatti e gli innocenti",
-                fact1_title: "PROVOCAZIONE INIZIALE", fact1_desc: "La Cambogia ha iniziato il conflitto piazzando mine antiuomo PMN-2 in territorio thailandese, violando il Trattato di Ottawa, e poi lanciando il primo attacco militare.",
-                fact2_title: "ATTACCHI MISSILISTICI SUI CIVILI", fact2_desc: "Le forze cambogiane hanno sparato lanciarazzi multipli BM-21 in zone civili thailandesi. Questi crimini di guerra hanno causato vittime tra cui donne, bambini e anziani, e hanno distrutto negozi e case.",
-                fact3_title: "FAKE NEWS E DISINFORMAZIONE", fact3_desc: "Una vasta campagna di disinformazione è in corso da parte della Cambogia, utilizzando i media statali e migliaia di account sui social media per diffondere narrazioni false e dipingere la Thailandia come l'aggressore.",
-                fact4_title: "STRUMENTALIZZAZIONE DELLE IMMAGINI", fact4_desc: "Le immagini vengono deliberatamente distorte. Una foto della Reuters di un aereo antincendio è stata falsamente presentata come un attacco chimico. Foto di territori thailandesi, come un 7-Eleven bruciato, sono state usate per diffondere narrazioni false.",
-                fact5_title: "POSIZIONE DELLA THAILANDIA", fact5_desc: "La Thailandia ha sempre cercato una soluzione pacifica, agendo solo per autodifesa e nel rispetto del diritto internazionale. Il messaggio è chiaro: Fermate gli attacchi. Fermate le bugie. Chiedete responsabilità.",
-                fact6_title: "UNA QUESTIONE DI FIDUCIA", fact6_desc: "Se ti fidi di un paese che funge da base per bande di truffatori che ingannano persone in tutto il mondo, compresi i tuoi stessi cittadini, allora non sei diverso dalle vittime.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "Diffondi la Verità", gemini_desc: "Clicca il pulsante qui sotto per usare l'API Gemini per generare post condivisibili sui social media basati su questi fatti. Aiuta il mondo a capire la situazione.",
-                gemini_button: "✨ Genera Post", gemini_loading: "Gemini sta pensando...", footer_hashtag: other_hashtags, footer_verify: "Verifica tutte le informazioni da fonti credibili e indipendenti."
-            },
-            he: {
-                header_title: "אזרחים על הכוונת", header_subtitle: "אמת מעוותת", header_description: "המלחמה של קמבודיה בעובדות ובחפים מפשע",
-                fact1_title: "פרובוקציה ראשונית", fact1_desc: "קמבודיה יזמה את הסכסוך על ידי הנחת מוקשים נגד אדם מסוג PMN-2 בשטח תאילנד, תוך הפרה של אמנת אוטווה, ולאחר מכן פתחה במתקפה הצבאית הראשונה.",
-                fact2_title: "התקפות רקטות על אזרחים", fact2_desc: "כוחות קמבודיים ירו משגרי רקטות מרובים מסוג BM-21 לעבר אזורים אזרחיים בתאילנד. פשעי מלחמה אלה גרמו לנפגעים, כולל נשים, ילדים וקשישים, והרסו חנויות ובתים.",
-                fact3_title: "חדשות כזב ודיסאינפורמציה", fact3_desc: "קמבודיה מנהלת קמפיין דיסאינפורמציה רחב היקף, תוך שימוש בתקשורת ממלכתית ובאלפי חשבונות מדיה חברתית להפצת נרטיבים שקריים ולהצגת תאילנד כתוקפן.",
-                fact4_title: "שימוש בתמונות כנשק", fact4_desc: "תמונות מעוותות בכוונה. תמונה של רויטרס של מטוס כיבוי אש הוצגה באופן שקרי כהתקפה כימית. תמונות של שטחים תאילנדיים, כמו סניף 7-Eleven שרוף, שימשו להפצת נרטיבים שקריים.",
-                fact5_title: "עמדת תאילנד", fact5_desc: "תאילנד תמיד חיפשה פתרון של שלום, ופעלה רק מתוך הגנה עצמית ותוך הקפדה על החוק הבינלאומי. המסר ברור: הפסיקו את ההתקפות. הפסיקו את השקרים. דרשו דין וחשבון.",
-                fact6_title: "שאלה של אמון", fact6_desc: "אם אתם בוטחים במדינה המשמשת בסיס לכנופיות נוכלים המונות אנשים ברחבי העולם - כולל אזרחים משלכם - אז אינכם שונים מהקורבנות.",
-                top_hashtag: "#TruthFromThailand",
-                gemini_title: "הפיצו את האמת", gemini_desc: "לחץ על הכפתור למטה כדי להשתמש ב-API של Gemini ליצירת פוסטים ניתנים לשיתוף במדיה החברתית על בסיס עובדות אלה. עזרו לעולם להבין את המצב.",
-                gemini_button: "✨ צור פוסטים", gemini_loading: "Gemini חושב...", footer_hashtag: other_hashtags, footer_verify: "ודא את כל המידע ממקורות אמינים ובלתי תלויים."
-            }
+            en: { header_title: "Civilians Targeted", header_subtitle: "Truth Twisted", header_description: "Cambodia's War on Facts and Innocents", fact1_title: "INITIAL PROVOCATION", fact1_desc: "Cambodia initiated the conflict by planting PMN-2 anti-personnel mines in Thai territory, violating the Ottawa Treaty, and then launching the first military attack.", fact2_title: "ROCKET ATTACKS ON CIVILIANS", fact2_desc: "Cambodian forces fired BM-21 multiple rocket launchers into Thai civilian zones. These war crimes resulted in casualties including women, children, and the elderly, and destroyed shops and homes.", fact3_title: "FAKE NEWS & DISINFORMATION", fact3_desc: "A large-scale disinformation campaign is being waged by Cambodia, using state media and thousands of social media accounts to spread false narratives and paint Thailand as the aggressor.", fact4_title: "WEAPONIZING IMAGERY", fact4_desc: "Images are deliberately twisted. A Reuters photo of a firefighting plane was falsely presented as a chemical attack. Photos of Thai territories, like a burned 7-Eleven, were used to spread false narratives.", fact5_title: "THAILAND'S STANCE", fact5_desc: "Thailand has always sought a peaceful resolution, acting only in self-defense and adhering to international law. The message is clear: Stop the attacks. Stop the lies. Demand accountability.", fact6_title: "A QUESTION OF TRUST", fact6_desc: "If you trust a country that serves as a base for scammer gangs deceiving people across the world—including your own citizens—then you are not different from the victims.", fact7_title: "POLITICAL GAMES", fact7_desc: "Cambodia fuels a boycott against Thai products by falsely accusing Thailand of mistreating Cambodian workers. Thailand reaffirms its fair treatment and urges Cambodia to stop harming its own workers for political games.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Verify all information from credible, independent sources." },
+            th: { header_title: "พุ่งเป้าพลเรือน", header_subtitle: "บิดเบือนความจริง", header_description: "สงครามของกัมพูชาต่อข้อเท็จจริงและผู้บริสุทธิ์", fact1_title: "การยั่วยุครั้งแรก", fact1_desc: "กัมพูชาเริ่มต้นความขัดแย้งด้วยการวางทุ่นระเบิดสังหารบุคคล PMN-2 ในดินแดนไทย ซึ่งเป็นการละเมิดสนธิสัญญาออตตาวา และจากนั้นได้เปิดฉากโจมตีทางทหารเป็นครั้งแรก", fact2_title: "การโจมตีพลเรือนด้วยจรวด", fact2_desc: "กองกำลังกัมพูชายิงจรวดหลายลำกล้อง BM-21 เข้าใส่เขตพลเรือนของไทย อาชญากรรมสงครามเหล่านี้ส่งผลให้มีผู้เสียชีวิตและบาดเจ็บซึ่งรวมถึงผู้หญิง เด็ก และผู้สูงอายุ และทำลายร้านค้าและบ้านเรือน", fact3_title: "ข่าวปลอมและการบิดเบือนข้อมูล", fact3_desc: "มีการโฆษณาชวนเชื่อบิดเบือนข้อมูลขนาดใหญ่โดยกัมพูชา โดยใช้สื่อของรัฐและบัญชีโซเชียลมีเดียหลายพันบัญชีเพื่อเผยแพร่เรื่องเล่าที่เป็นเท็จและใส่ร้ายว่าไทยเป็นผู้รุกราน", fact4_title: "การใช้ภาพเป็นอาวุธ", fact4_desc: "มีการบิดเบือนภาพอย่างจงใจ ภาพถ่ายของรอยเตอร์เกี่ยวกับเครื่องบินดับเพลิงถูกนำเสนออย่างเป็นเท็จว่าเป็นการโจมตีด้วยสารเคมี ภาพถ่ายดินแดนไทย เช่น ร้านเซเว่นอีเลฟเว่นที่ถูกไฟไหม้ ถูกใช้เพื่อเผยแพร่เรื่องเล่าที่เป็นเท็จ", fact5_title: "จุดยืนของประเทศไทย", fact5_desc: "ประเทศไทยแสวงหาการแก้ปัญหาอย่างสันติเสมอมา โดยเป็นการกระทำเพื่อป้องกันตนเองและปฏิบัติตามกฎหมายระหว่างประเทศอย่างเคร่งครัด ข้อความชัดเจน: หยุดการโจมตี หยุดโกหก เรียกร้องความรับผิดชอบ", fact6_title: "คำถามเรื่องความไว้ใจ", fact6_desc: "หากคุณเชื่อใจประเทศที่เป็นฐานที่มั่นของแก๊งคอลเซ็นเตอร์ที่หลอกลวงผู้คนทั่วโลก—รวมถึงพลเมืองของคุณเอง—คุณก็ไม่ต่างอะไรจากเหยื่อ", fact7_title: "เกมการเมือง", fact7_desc: "กัมพูชาปลุกปั่นการคว่ำบาตรสินค้าไทยโดยกล่าวหาว่าไทยปฏิบัติต่อแรงงานกัมพูชาอย่างไม่เป็นธรรม ในขณะที่ไทยยืนยันการดูแลอย่างดีและเรียกร้องให้กัมพูชาหยุดทำร้ายแรงงานของตนเองเพื่อเกมการเมือง", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "โปรดตรวจสอบข้อมูลทั้งหมดจากแหล่งที่น่าเชื่อถือและเป็นอิสระ" },
+            // ... (Other languages follow the same structure)
+            fr: { header_title: "Civils Ciblés", header_subtitle: "Vérité Déformée", header_description: "La guerre du Cambodge contre les faits et les innocents", fact1_title: "PROVOCATION INITIALE", fact1_desc: "Le Cambodge a initié le conflit en posant des mines antipersonnel PMN-2 en territoire thaïlandais, en violation du Traité d'Ottawa, puis en lançant la première attaque militaire.", fact2_title: "ATTAQUES DE ROQUETTES SUR LES CIVILS", fact2_desc: "Les forces cambodgiennes ont tiré des lance-roquettes multiples BM-21 sur des zones civiles thaïlandaises. Ces crimes de guerre ont fait des victimes, dont des femmes, des enfants et des personnes âgées, et ont détruit des magasins et des maisons.", fact3_title: "FAUSSES NOUVELLES ET DÉSINFORMATION", fact3_desc: "Une campagne de désinformation à grande échelle est menée par le Cambodge, utilisant les médias d'État et des milliers de comptes de médias sociaux pour diffuser de faux récits et présenter la Thaïlande comme l'agresseur.", fact4_title: "INSTRUMENTALISATION DE L'IMAGERIE", fact4_desc: "Les images sont délibérément déformées. Une photo de Reuters d'un avion de lutte contre les incendies a été faussement présentée comme une attaque chimique. Des photos de territoires thaïlandais, comme un 7-Eleven incendié, ont été utilisées pour diffuser de faux récits.", fact5_title: "POSITION DE LA THAÏLANDE", fact5_desc: "La Thaïlande a toujours cherché une solution pacifique, agissant uniquement en état de légitime défense et dans le respect du droit international. Le message est clair : Arrêtez les attaques. Arrêtez les mensonges. Exigez des comptes.", fact6_title: "UNE QUESTION DE CONFIANCE", fact6_desc: "Si vous faites confiance à un pays qui sert de base à des gangs d'escrocs trompant des gens dans le monde entier, y compris vos propres citoyens, alors vous n'êtes pas différent des victimes.", fact7_title: "JEUX POLITIQUES", fact7_desc: "Le Cambodge alimente un boycott contre les produits thaïlandais en accusant faussement la Thaïlande de maltraiter les travailleurs cambodgiens. La Thaïlande réaffirme son traitement équitable et exhorte le Cambodge à cesser de nuire à ses propres travailleurs pour des jeux politiques.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Vérifiez toutes les informations auprès de sources crédibles et indépendantes." },
+            de: { header_title: "Zivilisten im Visier", header_subtitle: "Verdrehte Wahrheit", header_description: "Kambodschas Krieg gegen Fakten und Unschuldige", fact1_title: "ERSTE PROVOKATION", fact1_desc: "Kambodscha initiierte den Konflikt durch das Legen von PMN-2-Antipersonenminen auf thailändischem Territorium, was gegen den Ottawa-Vertrag verstößt, und startete dann den ersten militärischen Angriff.", fact2_title: "RAKETENANGRIFFE AUF ZIVILISTEN", fact2_desc: "Kambodschanische Streitkräfte feuerten BM-21-Mehrfachraketenwerfer auf zivile Zonen in Thailand. Diese Kriegsverbrechen führten zu Opfern, darunter Frauen, Kinder und ältere Menschen, und zerstörten Geschäfte und Häuser.", fact3_title: "FAKE NEWS & DESINFORMATION", fact3_desc: "Eine groß angelegte Desinformationskampagne wird von Kambodscha geführt, bei der staatliche Medien und Tausende von Social-Media-Konten genutzt werden, um falsche Narrative zu verbreiten und Thailand als Aggressor darzustellen.", fact4_title: "BILDER ALS WAFFE", fact4_desc: "Bilder werden absichtlich verdreht. Ein Reuters-Foto eines Löschflugzeugs wurde fälschlicherweise als chemischer Angriff dargestellt. Fotos von thailändischen Gebieten, wie einem verbrannten 7-Eleven, wurden verwendet, um falsche Narrative zu verbreiten.", fact5_title: "HALTUNG THAILANDS", fact5_desc: "Thailand hat immer eine friedliche Lösung gesucht und nur zur Selbstverteidigung und in Übereinstimmung mit dem Völkerrecht gehandelt. Die Botschaft ist klar: Stoppt die Angriffe. Stoppt die Lügen. Fordert Rechenschaft.", fact6_title: "EINE FRAGE DES VERTRAUENS", fact6_desc: "Wenn Sie einem Land vertrauen, das als Basis für Betrügerbanden dient, die Menschen auf der ganzen Welt täuschen – einschließlich Ihrer eigenen Bürger – dann unterscheiden Sie sich nicht von den Opfern.", fact7_title: "POLITISCHE SPIELE", fact7_desc: "Kambodscha schürt einen Boykott gegen thailändische Produkte, indem es Thailand fälschlicherweise beschuldigt, kambodschanische Arbeiter schlecht zu behandeln. Thailand bekräftigt seine faire Behandlung und fordert Kambodscha auf, aufzuhören, seinen eigenen Arbeitern für politische Spiele zu schaden.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Überprüfen Sie alle Informationen aus glaubwürdigen und unabhängigen Quellen." },
+            ru: { header_title: "Цель - гражданские", header_subtitle: "Искаженная правда", header_description: "Война Камбоджи против фактов и невинных", fact1_title: "НАЧАЛЬНАЯ ПРОВОКАЦИЯ", fact1_desc: "Камбоджа инициировала конфликт, установив противопехотные мины ПМН-2 на территории Таиланда в нарушение Оттавского договора, а затем начала первую военную атаку.", fact2_title: "РАКЕТНЫЕ ОБСТРЕЛЫ ГРАЖДАНСКИХ", fact2_desc: "Камбоджийские силы обстреляли из реактивных систем залпового огня БМ-21 гражданские районы Таиланда. Эти военные преступления привели к жертвам среди женщин, детей и пожилых людей, а также к разрушению магазинов и домов.", fact3_title: "ФЕЙКОВЫЕ НОВОСТИ И ДЕЗИНФОРМАЦИЯ", fact3_desc: "Камбоджа ведет крупномасштабную кампанию по дезинформации, используя государственные СМИ и тысячи аккаунтов в социальных сетях для распространения ложных сведений и изображения Таиланда в качестве агрессора.", fact4_title: "ИСПОЛЬЗОВАНИЕ ИЗОБРАЖЕНИЙ КАК ОРУЖИЯ", fact4_desc: "Изображения намеренно искажаются. Фотография Reuters с пожарным самолетом была ложно представлена как химическая атака. Фотографии тайских территорий, например, сгоревшего 7-Eleven, использовались для распространения ложных сведений.", fact5_title: "ПОЗИЦИЯ ТАИЛАНДА", fact5_desc: "Таиланд всегда стремился к мирному урегулированию, действуя исключительно в целях самообороны и в строгом соответствии с международным правом. Послание ясно: Прекратите атаки. Прекратите ложь. Требуйте ответственности.", fact6_title: "ВОПРОС ДОВЕРИЯ", fact6_desc: "Если вы доверяете стране, которая служит базой для мошеннических банд, обманывающих людей по всему миру, включая ваших собственных граждан, то вы ничем не отличаетесь от жертв.", fact7_title: "ПОЛИТИЧЕСКИЕ ИГРЫ", fact7_desc: "Камбоджа разжигает бойкот тайских товаров, ложно обвиняя Таиланд в плохом обращении с камбоджийскими рабочими. Таиланд подтверждает свое справедливое отношение и призывает Камбоджу прекратить вредить своим собственным рабочим ради политических игр.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Проверяйте всю информацию из заслуживающих доверия и независимых источников." },
+            zh: { header_title: "针对平民", header_subtitle: "扭曲真相", header_description: "柬埔寨对事实与无辜者的战争", fact1_title: "初步挑衅", fact1_desc: "柬埔寨通过在泰国领土上布设PMN-2反步兵地雷，违反了《渥太华条约》，并发动了首次军事攻击，从而引发了冲突。", fact2_title: "对平民的火箭弹袭击", fact2_desc: "柬埔寨部队向泰国平民区发射了BM-21多管火箭炮。这些战争罪行导致包括妇女、儿童和老人在内的人员伤亡，并摧毁了商店和房屋。", fact3_title: "假新闻与虚假信息", fact3_desc: "柬埔寨正在发动大规模的虚假信息宣传运动，利用国家媒体和数千个社交媒体账户传播虚假叙事，将泰国描绘成侵略者。", fact4_title: "图像武器化", fact4_desc: "图像被蓄意扭曲。路透社一张消防飞机的照片被谎称为化学袭击。泰国领土的照片，如被烧毁的7-11便利店，被用来传播虚假叙事。", fact5_title: "泰国的立场", fact5_desc: "泰国一直寻求和平解决方案，仅在自卫和遵守国际法的情况下采取行动。信息很明确：停止攻击。停止谎言。追究责任。", fact6_title: "一个关于信任的问题", fact6_desc: "如果你相信一个为诈骗团伙提供基地、欺骗全世界人民——包括你自己的公民——的国家，那么你与受害者无异。", fact7_title: "政治游戏", fact7_desc: "柬埔寨通过谎称泰国虐待柬埔寨工人来煽动抵制泰国产品。泰国重申其公平对待，并敦促柬埔寨停止为了政治游戏而伤害自己的工人。", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "请从可信和独立的来源核实所有信息。" },
+            ja: { header_title: "民間人を標的に", header_subtitle: "歪められた真実", header_description: "カンボジアの事実と罪なき人々に対する戦争", fact1_title: "最初の挑衅", fact1_desc: "カンボジアは、オタワ条約に違反してタイ領内にPMN-2対人地雷を設置し、最初の軍事攻撃を開始することで紛争を開始しました。", fact2_title: "民間人へのロケット攻撃", fact2_desc: "カンボジア軍はBM-21多連装ロケットランチャーをタイの民間地域に発射しました。これらの戦争犯罪は、女性、子供、高齢者を含む死傷者を出し、店舗や家屋を破壊しました。", fact3_title: "フェイクニュースと偽情報", fact3_desc: "カンボジアは、国営メディアと何千ものソーシャルメディアアカウントを使用して、タイを侵略者として描く偽の物語を広める大規模な偽情報キャンペーンを展開しています。", fact4_title: "画像の兵器化", fact4_desc: "画像は意図的に歪められています。消防飛行機のロイターの写真は、化学攻撃として誤って提示されました。焼失したセブンイレブンのようなタイ領土の写真は、偽の物語を広めるために使用されました。", fact5_title: "タイの立場", fact5_desc: "タイは常に平和的解決を模索し、自衛のためにのみ、国際法を厳守して行動してきました。メッセージは明確です：攻撃をやめろ。嘘をやめろ。説明責任を求めよ。", fact6_title: "信頼の問題", fact6_desc: "自国民を含む世界中の人々を騙す詐欺師集団の拠点となっている国を信頼するなら、あなたも被害者と何ら変わりはありません。", fact7_title: "政治ゲーム", fact7_desc: "カンボジアは、タイがカンボジア人労働者を虐待していると偽って非難することで、タイ製品に対するボイコットを煽っています。タイは公正な待遇を再確認し、カンボジアに政治ゲームのために自国の労働者を害するのをやめるよう促します。", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "信頼できる独立した情報源からすべての情報を確認してください。" },
+            ko: { header_title: "민간인 표적", header_subtitle: "왜곡된 진실", header_description: "사실과 무고한 사람들에 대한 캄보디아의 전쟁", fact1_title: "초기 도발", fact1_desc: "캄보디아는 오타와 조약을 위반하고 태국 영토에 PMN-2 대인 지뢰를 매설한 후 첫 군사 공격을 감행하여 분쟁을 시작했습니다。", fact2_title: "민간인에 대한 로켓 공격", fact2_desc: "캄보디아 군은 태국 민간인 지역에 BM-21 다연장 로켓을 발사했습니다. 이러한 전쟁 범죄는 여성, 어린이, 노인을 포함한 사상자를 냈고 상점과 주택을 파괴했습니다.", fact3_title: "가짜 뉴스와 허위 정보", fact3_desc: "캄보디아는 국영 언론과 수천 개의 소셜 미디어 계정을 사용하여 태국을 침략자로 묘사하는 허위 서사를 퍼뜨리는 대규모 허위 정보 캠페인을 벌이고 있습니다.", fact4_title: "이미지의 무기화", fact4_desc: "이미지는 의도적으로 왜곡됩니다. 소방 비행기의 로이터 사진은 화학 공격으로 거짓 제시되었습니다. 불에 탄 세븐일레븐과 같은 태국 영토의 사진은 허위 서사를 퍼뜨리는 데 사용되었습니다.", fact5_title: "태국의 입장", fact5_desc: "태국은 항상 평화적 해결을 추구해 왔으며, 오직 자위권과 국제법을 준수하여 행동했습니다. 메시지는 분명합니다: 공격을 멈추십시오. 거짓말을 멈추십시오. 책임을 요구하십시오.", fact6_title: "신뢰의 문제", fact6_desc: "자국민을 포함하여 전 세계 사람들을 속이는 사기꾼 집단의 근거지 역할을 하는 국가를 신뢰한다면, 당신은 피해자와 다르지 않습니다.", fact7_title: "정치 게임", fact7_desc: "캄보디아는 태국이 캄보디아 노동자들을 학대한다고 거짓으로 비난함으로써 태국 제품에 대한 불매 운동을 부추기고 있습니다. 태국은 공정한 대우를 재확인하고 캄보디아에 정치 게임을 위해 자국 노동자들에게 해를 끼치는 것을 중단할 것을 촉구합니다.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "신뢰할 수 있고 독립적인 출처에서 모든 정보를 확인하십시오。" },
+            ar: { header_title: "استهداف المدنيين", header_subtitle: "تحريف الحقيقة", header_description: "حرب كمبوديا على الحقائق والأبرياء", fact1_title: "الاستفزاز الأولي", fact1_desc: "بدأت كمبوديا النزاع بزرع ألغام PMN-2 المضادة للأفراد في الأراضي التايلاندية ، منتهكة بذلك معاهدة أوتاوا ، ثم شنت أول هجوم عسكري.", fact2_title: "هجمات صاروخية على المدنيين", fact2_desc: "أطلقت القوات الكمبودية قاذفات صواريخ متعددة من طراز BM-21 على مناطق مدنية تايلاندية. أدت جرائم الحرب هذه إلى وقوع إصابات بين النساء والأطفال وكبار السن ، ودمرت المتاجر والمنازل.", fact3_title: "الأخبار الكاذبة والتضليل", fact3_desc: "تشن كمبوديا حملة تضليل واسعة النطاق ، مستخدمة وسائل الإعلام الحكومية وآلاف حسابات وسائل التواصل الاجتماعي لنشر روايات كاذبة وتصوير تايلاند على أنها المعتدي.", fact4_title: "تسليح الصور", fact4_desc: "يتم تحريف الصور عمدا. تم تقديم صورة لرويترز لطائرة إطفاء بشكل خاطئ على أنها هجوم كيماوي. تم استخدام صور للأراضي التايلاندية ، مثل متجر 7-Eleven محترق ، لنشر روايات كاذبة.", fact5_title: "موقف تايلاند", fact5_desc: "سعت تايلاند دائمًا إلى حل سلمي ، وتصرفت فقط دفاعًا عن النفس والتزامًا بالقانون الدولي. الرسالة واضحة: أوقفوا الهجمات. أوقفوا الأكاذيب. طالبوا بالمساءلة.", fact6_title: "مسألة ثقة", fact6_desc: "إذا كنت تثق في بلد يعمل كقاعدة لعصابات المحتالين الذين يخدعون الناس في جميع أنحاء العالم - بما في ذلك مواطنيك - فأنت لا تختلف عن الضحايا.", fact7_title: "ألعاب سياسية", fact7_desc: "تؤجج كمبوديا مقاطعة المنتجات التايلاندية من خلال اتهام تايلاند زوراً بإساءة معاملة العمال الكمبوديين. وتؤكد تايلاند من جديد معاملتها العادلة وتحث كمبوديا على التوقف عن إيذاء عمالها من أجل الألعاب السياسية.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "تحقق من جميع المعلومات من مصادر موثوقة ومستقلة." },
+            km: { header_title: "កំណត់គោលដៅជនស៊ីវិល", header_subtitle: "ការពិតដែលถูกបំភ្លៃ", header_description: "សង្គ្រាមរបស់កម្ពុជាលើការពិត និងជនស្លូតត្រង់", fact1_title: "ការបង្កហេតុដំបូង", fact1_desc: "កម្ពុជាបានផ្តួចផ្តើមជម្លោះដោយการដាំគ្រាប់មីនប្រឆាំងមនុស្ស PMN-2 នៅក្នុងទឹកដីថៃ ដែលរំលោភលើសន្ធិសញ្ញាអូតាវ៉ា ហើយបន្ទាប់មកបានបើកការវាយប្រហារយោធាដំបូង។", fact2_title: "ការវាយប្រហារដោយគ្រាប់រ៉ុក្កែតលើជនស៊ីវិល", fact2_desc: "កងកម្លាំងកម្พុជាបានបាញ់គ្រាប់រ៉ុក្កែត BM-21 ជាច្រើនគ្រាប់ចូលទៅក្នុងតំបន់ជនស៊ីវិលថៃ។ ឧក្រិដ្ឋកម្មសង្គ្រាមទាំងនេះបានបណ្តាលឱ្យមានអ្នកស្លាប់ និងរបួសរួមមានស្ត្រី កុមារ និងមនុស្សចាស់ ហើយបានបំផ្លាញហាង និងផ្ទះសម្បែង។", fact3_title: "ព័ត៌មានក្លែងក្លាយ និងការផ្សព្វផ្សាយព័ត៌មានមិនពិត", fact3_desc: "យុទ្ធនាការផ្សព្វផ្សាយព័ត៌មានមិនពិតទ្រង់ទ្រាយធំមួយកំពុងត្រូវបានធ្វើឡើងដោយប្រទេសកម្ពុជា ដោយប្រើប្រាស់ប្រព័ន្ធផ្សព្វផ្សាយរបស់រដ្ឋ និងគណនីប្រព័ន្ធផ្សព្វផ្សាយសង្គមរាប់ពាន់ដើម្បីផ្សព្វផ្សាយនិទានកថាមិនពិត និងបង្ហាញថាប្រទេសថៃជាអ្នកឈ្លានពាន។", fact4_title: "ការប្រើប្រាស់រូបភាពជាអាវុธ", fact4_desc: "រូបភាពត្រូវបានបំភ្លៃដោយចេតនា។ រូបថតរបស់ Reuters អំពីយន្តហោះពន្លត់អគ្គីភ័យត្រូវបានបង្ហាញមិនពិតថាជាการវាយប្រហារដោយគីមី។ រូបថតទឹកដីថៃ ដូចជាហាង 7-Eleven ដែលឆេះ ត្រូវបានគេប្រើដើម្បីផ្សព្វផ្សាយនិទានកថាមិនពិត។", fact5_title: "ជំហររបស់ប្រទេសថៃ", fact5_desc: "ប្រទេសថៃតែងតែស្វែងរកដំណោះស្រាយដោយសន្តិវិធី ដោយធ្វើសកម្មភាពការពារខ្លួន និងគោរពច្បាប់អន្តរជាតិយ៉ាងតឹងរ៉ឹង។ សារគឺច្បាស់ណាស់៖ បញ្ឈប់ការវាយប្រហារ។ បញ្ឈប់ការកុហក។ ទាមទារការទទួលខុសត្រូវ។", fact6_title: "សំណួរនៃទំនុកចិត្ត", fact6_desc: "ប្រសិនបើអ្នកទុកចិត្តប្រទេសដែលជាមូលដ្ឋានសម្រាប់ក្រុមអ្នកបោកប្រាស់ដែលបោកបញ្ឆោតមនុស្សទូទាំងពិភពលោក រួមទាំងប្រជាពលរដ្ឋរបស់អ្នកផងដែរនោះ អ្នកមិនខុសពីជនរងគ្រោះទេ", fact7_title: "ល្បែងនយោបាយ", fact7_desc: "កម្ពុជា​ជំរុញ​ឲ្យ​មាន​ការ​ធ្វើ​ពហិការ​ប្រឆាំង​នឹង​ផលិតផល​ថៃ ដោយ​ចោទ​ប្រកាន់​ដោយ​មិន​ពិត​ថា​ไทย​ធ្វើ​បាប​កម្មករ​កម្ពុជា។ ថៃ​អះអាង​ជា​ថ្មី​ពី​ការ​ប្រព្រឹត្ត​ដោយ​យុត្តិធម៌​របស់​ខ្លួន ហើយ​ជំរុញ​ឲ្យ​កម្ពុជា​ឈប់​ធ្វើ​បាប​កម្មករ​របស់​ខ្លួន​ដើម្បី​ប្រយោជន៍​នយោបាយ។", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "ផ្ទៀងផ្ទាត់ព័ត៌មានទាំងអស់ពីប្រភពដែលអាចទុកចិត្តបាន និងឯករាជ្យ។" },
+            es: { header_title: "Civiles en el punto de mira", header_subtitle: "Verdad Retorcida", header_description: "La guerra de Camboya contra los hechos y los inocentes", fact1_title: "PROVOCACIÓN INICIAL", fact1_desc: "Camboya inició el conflicto colocando minas antipersonales PMN-2 en territorio tailandés, violando el Tratado de Ottawa, y luego lanzando el primer ataque militar.", fact2_title: "ATAQUES CON COHETES A CIVILES", fact2_desc: "Las fuerzas camboyanas dispararon lanzacohetes múltiples BM-21 contra zonas civiles tailandesas. Estos crímenes de guerra causaron víctimas, entre ellas mujeres, niños y ancianos, y destruyeron tiendas y hogares.", fact3_title: "NOTICIAS FALSAS Y DESINFORMACIÓN", fact3_desc: "Camboya está llevando a cabo una campaña de desinformación a gran escala, utilizando medios estatales y miles de cuentas en redes sociales para difundir narrativas falsas y presentar a Tailandia como el agresor.", fact4_title: "USO DE IMÁGENES COMO ARMA", fact4_desc: "Las imágenes se tuercen deliberadamente. Una foto de Reuters de un avión de bomberos se presentó falsamente como un ataque químico. Se utilizaron fotos de territorios tailandeses, como un 7-Eleven quemado, para difundir narrativas falsas.", fact5_title: "POSTURA DE TAILANDIA", fact5_desc: "Tailandia siempre ha buscado una solución pacífica, actuando solo en defensa propia y respetando el derecho internacional. El mensaje es claro: Detengan los ataques. Detengan las mentiras. Exijan responsabilidades.", fact6_title: "UNA CUESTIÓN DE CONFIANZA", fact6_desc: "Si confías en un país que sirve de base para bandas de estafadores que engañan a personas en todo el mundo, incluidos tus propios ciudadanos, entonces no eres diferente de las víctimas.", fact7_title: "JUEGOS POLÍTICOS", fact7_desc: "Camboya impulsa un boicot contra los productos tailandeses acusando falsamente a Tailandia de maltratar a los trabajadores camboyanos. Tailandia reafirma su trato justo e insta a Camboya a dejar de perjudicar a sus propios trabajadores por juegos políticos.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Verifica toda la información de fuentes creíbles e independientes." },
+            hi: { header_title: "नागरिकों पर निशाना", header_subtitle: "तोड़ा-मरोड़ा गया सच", header_description: "तथ्यों और निर्दोषों के खिलाफ कंबोडिया का युद्ध", fact1_title: "प्रारंभिक उकसावा", fact1_desc: "कंबोडिया ने ओटावा संधि का उल्लंघन करते हुए थाई क्षेत्र में PMN-2 एंटी-पर्सोनेल खदानें लगाकर संघर्ष शुरू किया और फिर पहला सैन्य हमला किया।", fact2_title: "नागरिकों पर रॉकेट हमले", fact2_desc: "कंबोडियाई सेना ने थाई नागरिक क्षेत्रों में BM-21 मल्टीपल रॉकेट लॉन्चर दागे। इन युद्ध अपराधों के परिणामस्वरूप महिलाओं, बच्चों और बुजुर्गों सहित कई हताहत हुए, और दुकानें और घर नष्ट हो गए।", fact3_title: "फर्जी खबरें और दुष्प्रचार", fact3_desc: "कंबोडिया द्वारा एक बड़े पैमाने पर दुष्प्रचार अभियान चलाया जा रहा है, जिसमें सरकारी मीडिया और हजारों सोशल मीडिया खातों का उपयोग करके झूठी कहानियों को फैलाया जा रहा है और थाईलैंड को हमलावर के रूप में चित्रित किया जा रहा है।", fact4_title: "छवियों का हथियारीकरण", fact4_desc: "छवियों को जानबूझकर तोड़ा-मरोड़ा जाता है। एक अग्निशमन विमान की रॉयटर्स की तस्वीर को झूठे तौर पर एक रासायनिक हमले के रूप में प्रस्तुत किया गया था। जले हुए 7-इलेवन जैसे थाई क्षेत्रों की तस्वीरों का इस्तेमाल झूठी कहानियों को फैलाने के लिए किया गया था।", fact5_title: "थाईलैंड का रुख", fact5_desc: "थाईलैंड ने हमेशा एक शांतिपूर्ण समाधान की मांग की है, केवल आत्मरक्षा में और अंतरराष्ट्रीय कानून का पालन करते हुए कार्य किया है। संदेश स्पष्ट है: हमले बंद करो। झूठ बोलना बंद करो। जवाबदेही की मांग करो।", fact6_title: "विश्वास का एक सवाल", fact6_desc: "यदि आप एक ऐसे देश पर भरोसा करते हैं जो दुनिया भर के लोगों को धोखा देने वाले स्कैमर गिरोहों के लिए एक अड्डे के रूप में कार्य करता है - जिसमें आपके अपने नागरिक भी शामिल हैं - तो आप पीड़ितों से अलग नहीं हैं।", fact7_title: "राजनीतिक खेल", fact7_desc: "कंबोडिया थाई उत्पादों के खिलाफ बहिष्कार को बढ़ावा देता है और थाईलैंड पर कम्बोडियन श्रमिकों के साथ दुर्व्यवहार करने का झूठा आरोप लगाता है। थाईलैंड अपने उचित व्यवहार की पुष्टि करता है और कंबोडिया से राजनीतिक खेलों के लिए अपने ही श्रमिकों को नुकसान पहुँचाना बंद करने का आग्रह करता है।", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "सभी जानकारी विश्वसनीय और स्वतंत्र स्रोतों से सत्यापित करें।" },
+            it: { header_title: "Civili nel Mirino", header_subtitle: "Verità Distorta", header_description: "La guerra della Cambogia contro i fatti e gli innocenti", fact1_title: "PROVOCAZIONE INIZIALE", fact1_desc: "La Cambogia ha iniziato il conflitto piazzando mine antiuomo PMN-2 in territorio thailandese, violando il Trattato di Ottawa, e poi lanciando il primo attacco militare.", fact2_title: "ATTACCHI MISSILISTICI SUI CIVILI", fact2_desc: "Le forze cambogiane hanno sparato lanciarazzi multipli BM-21 in zone civili thailandesi. Questi crimini di guerra hanno causato vittime tra cui donne, bambini e anziani, e hanno distrutto negozi e case.", fact3_title: "FAKE NEWS E DISINFORMAZIONE", fact3_desc: "Una vasta campagna di disinformazione è in corso da parte della Cambogia, utilizzando i media statali e migliaia di account sui social media per diffondere narrazioni false e dipingere la Thailandia come l'aggressore.", fact4_title: "STRUMENTALIZZAZIONE DELLE IMMAGINI", fact4_desc: "Le immagini vengono deliberatamente distorte. Una foto della Reuters di un aereo antincendio è stata falsamente presentata come un attacco chimico. Foto di territori thailandesi, come un 7-Eleven bruciato, sono state usate per diffondere narrazioni false.", fact5_title: "POSIZIONE DELLA THAILANDIA", fact5_desc: "La Thailandia ha sempre cercato una soluzione pacifica, agiendo solo per autodifesa e nel rispetto del diritto internazionale. Il messaggio è chiaro: Fermate gli attacchi. Fermate le bugie. Chiedete responsabilità.", fact6_title: "UNA QUESTIONE DI FIDUCIA", fact6_desc: "Se ti fidi di un paese che funge da base per bande di truffatori che ingannano persone in tutto il mondo, compresi i tuoi stessi cittadini, allora non sei diverso dalle vittime.", fact7_title: "GIOCHI POLITICI", fact7_desc: "La Cambogia alimenta un boicottaggio contro i prodotti thailandesi accusando falsamente la Thailandia di maltrattare i lavoratori cambogiani. La Thailandia riafferma il suo trattamento equo ed esorta la Cambogia a smettere di danneggiare i propri lavoratori per giochi politici.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "Verifica tutte le informazioni da fonti credibili e indipendenti." },
+            he: { header_title: "אזרחים על הכוונת", header_subtitle: "אמת מעוותת", header_description: "המלחמה של קמבודיה בעובדות ובחפים מפשע", fact1_title: "פרובוקציה ראשונית", fact1_desc: "קמבודיה יזמה את הסכסוך על ידי הנחת מוקשים נגד אדם מסוג PMN-2 בשטח תאילנד, תוך הפרה של אמנת אוטווה, ולאחר מכן פתחה במתקפה הצבאית הראשונה.", fact2_title: "התקפות רקטות על אזרחים", fact2_desc: "כוחות קמבודיים ירו משגרי רקטות מרובים מסוג BM-21 לעבר אזורים אזרחיים בתאילנד. פשעי מלחמה אלה גרמו לנפגעים, כולל נשים, ילדים וקשישים, והרסו חנויות ובתים.", fact3_title: "חדשות כזב ודיסאינפורמציה", fact3_desc: "קמבודיה מנהלת קמפיין דיסאינפורמציה רחב היקף, תוך שימוש בתקשורת ממלכתית ובאלפי חשבונות מדיה חברתית להפצת נרטיבים שקריים ולהצגת תאילנד כתוקפן.", fact4_title: "שימוש בתמונות כנשק", fact4_desc: "תמונות מעוותות בכוונה. תמונה של רויטרס של מטוס כיבוי אש הוצגה באופן שקרי כהתקפה כימית. תמונות של שטחים תאילנדיים, כמו סניף 7-Eleven שרוף, שימשו להפצת נרטיבים שקריים.", fact5_title: "עמדת תאילנד", fact5_desc: "תאילנד תמיד חיפשה פתרון של שלום, ופעלה רק מתוך הגנה עצמית ותוך הקפדה על החוק הבינלאומי. המסר ברור: הפסיקו את ההתקפות. הפסיקו את השקרים. דרשו דין וחשבון.", fact6_title: "שאלה של אמון", fact6_desc: "אם אתם בוטחים במדינה המשמשת בסיס לכנופיות נוכלים המונות אנשים ברחבי העולם - כולל אזרחים משלכם - אז אינכם שונים מהקורבנות.", fact7_title: "משחקים פוליטיים", fact7_desc: "קמבודיה מתדלקת חרם נגד מוצרים תאילנדיים על ידי האשמת תאילנד בכזב בהתעללות בעובדים קמבודיים. תאילנד מאשרת מחדש את יחסה ההוגן וקוראת לקמבודיה להפסיק לפגוע בעובדיה שלה למען משחקים פוליטיים.", top_hashtag: "#TruthFromThailand", footer_hashtag: other_hashtags, footer_verify: "ודא את כל המידע ממקורות אמינים ובלתי תלויים." }
         };
 
-        // --- Functions ---
-
-        /**
-         * Changes the language of the page content.
-         * @param {string} lang - The language code (e.g., 'en', 'th').
-         */
         function changeLanguage(lang) {
             if (!translations[lang]) return;
             currentLanguage = lang;
@@ -418,25 +220,27 @@
                 }
             });
 
+            document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+                const key = el.dataset.keyPlaceholder;
+                if(translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
             currentLanguageName.textContent = languages[lang];
             languageDropdown.classList.add('hidden');
         }
 
-        /**
-         * Initializes the language switcher dropdown.
-         */
         function initLanguageSwitcher() {
             languageToggle.addEventListener('click', () => {
                 languageDropdown.classList.toggle('hidden');
             });
 
-            // Populate dropdown
             const langOptionsHTML = Object.keys(languages).map(code => 
                 `<a href="#" class="block px-4 py-2 text-white hover:bg-gray-600" data-lang="${code}">${languages[code]}</a>`
             ).join('');
             languageDropdown.innerHTML = langOptionsHTML;
 
-            // Add event listeners to options
             languageDropdown.querySelectorAll('a').forEach(el => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -446,160 +250,10 @@
             });
         }
 
-        /**
-         * Extracts facts based on the currently selected language.
-         * @returns {string} A formatted string of facts.
-         */
-        function extractFacts() {
-            const langData = translations[currentLanguage];
-            return [
-                `${langData.fact1_title}: ${langData.fact1_desc}`,
-                `${langData.fact2_title}: ${langData.fact2_desc}`,
-                `${langData.fact3_title}: ${langData.fact3_desc}`,
-                `${langData.fact4_title}: ${langData.fact4_desc}`,
-                `${langData.fact5_title}: ${langData.fact5_desc}`,
-                `${langData.fact6_title}: ${langData.fact6_desc}`
-            ].join('\n');
-        }
-
-        /**
-         * Constructs the prompt for the Gemini API.
-         * @param {string} factText - The string of facts in the current language.
-         * @returns {string} The complete prompt.
-         */
-        function constructPrompt(factText) {
-            const languageName = languages[currentLanguage];
-            return `Based on the following facts, generate 3 short, impactful social media posts in ${languageName} (under 280 characters each). The posts must be objective and call for peace and truth. Include some of these hashtags: ${all_hashtags}
-
-Facts:
-${factText}
-
-Format the output as a simple text list, with each post separated by a newline. Do not add numbering or bullet points.`;
-        }
-
-        /**
-         * Handles the click event on the generate button.
-         */
-        async function handleGenerateClick() {
-            setLoading(true);
-            try {
-                const facts = extractFacts();
-                const prompt = constructPrompt(facts);
-                const generatedText = await callGeminiAPI(prompt);
-                displayPosts(generatedText);
-            } catch (error) {
-                console.error("Error generating posts:", error);
-                errorMessage.textContent = 'An error occurred while generating posts. Please try again.';
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        /**
-         * Sets the loading state for the UI.
-         * @param {boolean} isLoading - Whether to show or hide the loading indicator.
-         */
-        function setLoading(isLoading) {
-            const buttonText = generateBtn.querySelector('span');
-            if (isLoading) {
-                generateBtn.disabled = true;
-                generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                loadingIndicator.classList.remove('hidden');
-                postsOutput.innerHTML = '';
-                errorMessage.textContent = '';
-            } else {
-                generateBtn.disabled = false;
-                generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                loadingIndicator.classList.add('hidden');
-            }
-        }
-
-        /**
-         * Calls the Gemini API to generate text.
-         * @param {string} prompt - The prompt to send to the model.
-         * @returns {Promise<string>} A promise that resolves to the generated text.
-         */
-        async function callGeminiAPI(prompt) {
-            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API Key is handled by the environment
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-            
-            const payload = {
-                contents: [{ role: "user", parts: [{ text: prompt }] }]
-            };
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (!response.ok) {
-                throw new Error(`API call failed with status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            
-            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
-                return result.candidates[0].content.parts[0].text;
-            } else {
-                console.warn("Unexpected API response structure:", result);
-                throw new Error("Could not extract text from the API response.");
-            }
-        }
-
-        /**
-         * Displays the generated posts on the page.
-         * @param {string} text - The raw text from the Gemini API.
-         */
-        function displayPosts(text) {
-            const posts = text.split('\n').filter(p => p.trim() !== '');
-            postsOutput.innerHTML = posts.map(post => {
-                const cleanPost = post.replace(/^[\d.*-]\s*/, '').trim(); 
-                return `
-                    <div class="post-card bg-gray-800 p-4 rounded-lg flex justify-between items-center gap-4">
-                        <p class="flex-grow">${cleanPost}</p>
-                        <button class="copy-btn bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded" data-text="${encodeURIComponent(cleanPost)}">
-                            Copy
-                        </button>
-                    </div>
-                `;
-            }).join('');
-
-            document.querySelectorAll('.copy-btn').forEach(button => {
-                button.addEventListener('click', handleCopyClick);
-            });
-        }
-
-        /**
-         * Handles the click event for the copy button.
-         */
-        function handleCopyClick(event) {
-            const button = event.currentTarget;
-            const textToCopy = decodeURIComponent(button.dataset.text);
-            const textArea = document.createElement("textarea");
-            textArea.value = textToCopy;
-            textArea.style.position = "fixed";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                button.textContent = 'Copied!';
-                setTimeout(() => { button.textContent = 'Copy'; }, 2000);
-            } catch (err) {
-                console.error('Failed to copy text: ', err);
-                button.textContent = 'Error';
-            }
-            document.body.removeChild(textArea);
-        }
-
-        // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
             initLanguageSwitcher();
-            changeLanguage('en'); // Set default language to English
+            changeLanguage('en');
         });
-
-        generateBtn.addEventListener('click', handleGenerateClick);
 
     </script>
 </body>

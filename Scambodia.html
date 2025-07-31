@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อินโฟกราฟิก: กัมพูชา ฐานอาชญากรรมไซเบอร์และสมรภูมิข้อมูล</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 500px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-arrow {
+            content: '▶';
+            color: #0079FF;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .flow-arrow-down {
+            content: '▼';
+            color: #0079FF;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #0079FF;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        .lang-btn.active {
+            background-color: #0079FF;
+            font-weight: bold;
+        }
+        [lang="km"] body, [lang="km"] h1, [lang="km"] h2, [lang="km"] h3, [lang="km"] h4, [lang="km"] p, [lang="km"] span, [lang="km"] div, [lang="km"] button, [lang="km"] li, [lang="km"] strong, [lang="km"] textarea {
+            font-family: 'Noto Sans Khmer', 'Sarabun', sans-serif;
+        }
+        [lang="zh"] body, [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3, [lang="zh"] h4, [lang="zh"] p, [lang="zh"] span, [lang="zh"] div, [lang="zh"] button, [lang="zh"] li, [lang="zh"] strong, [lang="zh"] textarea {
+            font-family: 'Noto Sans SC', 'Sarabun', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/732febcf-a26c-4d2b-90ad-52060127b52b/922dba72-d304-4474-985e-8afca7587ac4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
+        <div id="language-switcher" class="absolute top-4 right-4 z-30">
+            <button class="lang-btn" data-lang="th">ไทย</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="zh">中文</button>
+            <button class="lang-btn" data-lang="km">ខ្មែរ</button>
+        </div>
+        <header class="relative z-20 flex flex-col items-center justify-center h-full text-white p-6">
+            <div class="container mx-auto text-center">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold" data-lang-key="main_title">อาณาจักรแห่งการหลอกลวง</h1>
+                <p class="text-lg md:text-2xl mt-4" data-lang-key="main_subtitle">บทวิเคราะห์กัมพูชา: จากฐานแก๊งคอลเซ็นเตอร์สู่สมรภูมิข้อมูลข่าวสารโลก</p>
+            </div>
+        </header>
+    </div>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="text-center py-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-6" data-lang-key="overview_title">ภาพรวมวิกฤตการณ์ระดับโลก</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-bold text-[#0079FF]">100,000+</p>
+                    <p class="text-xl mt-2" data-lang-key="overview_stat1_title">เหยื่อค้ามนุษย์</p>
+                    <p class="text-gray-600 mt-1" data-lang-key="overview_stat1_desc">ถูกบังคับใช้แรงงานในกัมพูชา (ประเมินโดย UN)</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-bold text-[#0079FF]">$12.5+ Billion</p>
+                    <p class="text-xl mt-2" data-lang-key="overview_stat2_title">รายได้ต่อปี</p>
+                    <p class="text-gray-600 mt-1" data-lang-key="overview_stat2_desc">จากอุตสาหกรรมหลอกลวงในกัมพูชา</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-5xl font-bold text-[#0079FF]">~50%</p>
+                    <p class="text-xl mt-2" data-lang-key="overview_stat3_title">ของ GDP ประเทศ</p>
+                    <p class="text-gray-600 mt-1" data-lang-key="overview_stat3_desc">คือขนาดเศรษฐกิจอาชญากรรมนี้</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 mb-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-4 text-center" data-lang-key="storm_title">กำเนิด "พายุที่สมบูรณ์แบบ"</h2>
+            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8" data-lang-key="storm_desc">การผงาดขึ้นของกัมพูชาในฐานะฐานที่มั่นของแก๊งคอลเซ็นเตอร์ไม่ได้เกิดขึ้นโดยบังเอิญ แต่เป็นผลจาก 3 ปัจจัยหลักที่เกิดขึ้นพร้อมกัน สร้างสภาวะที่เอื้อต่อการเติบโตของอุตสาหกรรมอาชญากรรมอย่างที่ไม่เคยมีมาก่อน</p>
+            <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-4">
+                <div class="text-center w-full md:w-1/4 p-4 bg-blue-50 rounded-lg">
+                    <div class="text-4xl mb-2">🇨🇳</div>
+                    <h3 class="text-xl font-semibold text-[#004AAD]" data-lang-key="storm_factor1_title">จีนปราบอาชญากรรม</h3>
+                    <p class="text-gray-600 mt-2" data-lang-key="storm_factor1_desc">ปี 2018 จีนกวาดล้างแก๊งออนไลน์ ทำให้องค์กรอาชญากรรมต้องย้ายฐานทัพ</p>
+                </div>
+                <div class="flow-arrow hidden md:block"></div>
+                <div class="flow-arrow-down md:hidden mx-auto"></div>
+                <div class="text-center w-full md:w-1/4 p-4 bg-blue-50 rounded-lg">
+                    <div class="text-4xl mb-2">🎰</div>
+                    <h3 class="text-xl font-semibold text-[#004AAD]" data-lang-key="storm_factor2_title">กัมพูชาแบนพนันออนไลน์</h3>
+                    <p class="text-gray-600 mt-2" data-lang-key="storm_factor2_desc">ปี 2019 คำสั่งแบนทิ้งอาคารกาสิโนร้างจำนวนมาก สร้างอุปทานของพื้นที่ปฏิบัติการ</p>
+                </div>
+                <div class="flow-arrow hidden md:block"></div>
+                 <div class="flow-arrow-down md:hidden mx-auto"></div>
+                <div class="text-center w-full md:w-1/4 p-4 bg-blue-50 rounded-lg">
+                    <div class="text-4xl mb-2">🦠</div>
+                    <h3 class="text-xl font-semibold text-[#004AAD]" data-lang-key="storm_factor3_title">วิกฤตโควิด-19</h3>
+                    <p class="text-gray-600 mt-2" data-lang-key="storm_factor3_desc">ปี 2020 ทำลายการท่องเที่ยว เจ้าของธุรกิจสิ้นหวังและหันไปร่วมมือกับอาชญากร</p>
+                </div>
+            </div>
+        </div>
+        
+        <section id="human-cost" class="py-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-8 text-center" data-lang-key="cost_title">ราคาที่มนุษย์ต้องจ่าย: การค้าทาสยุคใหม่</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="cost_cycle_title">วงจรแห่งการล่อลวง</h3>
+                    <p class="text-center text-gray-700 mb-6" data-lang-key="cost_cycle_desc">เหยื่อซึ่งส่วนใหญ่เป็นคนรุ่นใหม่ที่มีการศึกษา ถูกหลอกผ่านโฆษณางานปลอมบนโซเชียลมีเดีย ก่อนจะถูกกักขังและบังคับให้ทำงานใน "คอมพาวด์ทาส"</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                            <span class="text-2xl mr-4">📱</span>
+                            <div data-lang-key="cost_cycle_step1"><strong>1. โฆษณางานปลอม:</strong> เสนอตำแหน่งงานรายได้สูงบน Facebook, Instagram</div>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                            <span class="text-2xl mr-4">✈️</span>
+                            <div data-lang-key="cost_cycle_step2"><strong>2. การเดินทาง:</strong> นายหน้าจัดการเดินทางข้ามประเทศ</div>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                            <span class="text-2xl mr-4">🛂</span>
+                            <div data-lang-key="cost_cycle_step3"><strong>3. ยึดหนังสือเดินทาง:</strong> ถูกยึดเอกสารและสร้างหนี้สินท่วมหัว</div>
+                        </div>
+                        <div class="flex items-center p-3 bg-gray-50 rounded-md">
+                            <span class="text-2xl mr-4">⛓️</span>
+                            <div data-lang-key="cost_cycle_step4"><strong>4. บังคับทำงาน:</strong> ถูกทรมาน, ทุบตี, ช็อตไฟฟ้า หากไม่ทำตามเป้า</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="cost_victims_title">เหยื่อจากทั่วทุกมุมโลก</h3>
+                     <p class="text-center text-gray-700 mb-6" data-lang-key="cost_victims_desc">ปฏิบัติการนี้ลากอวนหาเหยื่อจากทั่วโลก โดยเฉพาะจากประเทศในภูมิภาคอาเซียนและเอเชียใต้</p>
+                    <div class="chart-container">
+                        <canvas id="victimOriginChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="economy" class="py-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-8 text-center" data-lang-key="economy_title">กายวิภาคของเศรษฐกิจอาชญากรรม</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="economy_gdp_title">รายได้อาชญากรรม vs. GDP ประเทศ</h3>
+                    <p class="text-center text-gray-700 mb-6" data-lang-key="economy_gdp_desc">ขนาดของเศรษฐกิจใต้ดินนี้ใหญ่โตมหาศาล เทียบเท่ากับเกือบครึ่งหนึ่งของ GDP อย่างเป็นทางการของกัมพูชาทั้งหมด ซึ่งเผยให้เห็นแรงจูงใจที่ทำให้ผู้มีอำนาจเลือกที่จะปกป้องอุตสาหกรรมนี้</p>
+                    <div class="chart-container">
+                        <canvas id="gdpComparisonChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="economy_laundering_title">ไตรอำนาจมืดแห่งการฟอกเงิน</h3>
+                    <p class="text-center text-gray-700 mb-6" data-lang-key="economy_laundering_desc">เงินที่ได้จากการหลอกลวงจะถูกฟอกผ่านเครือข่ายที่ซับซ้อน ซึ่งผสมผสานวิธีการดั้งเดิมเข้ากับเทคโนโลยีสมัยใหม่</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 border border-[#BBE1FF] rounded-lg">
+                            <span class="text-3xl mr-4">🎲</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-[#004AAD]" data-lang-key="economy_laundering_method1_title">กาสิโนและจั๊งเก็ต</h4>
+                                <p data-lang-key="economy_laundering_method1_desc">ทำหน้าที่เป็นช่องทางหลักในการฟอกเงินสดและเป็นธนาคารใต้ดิน</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 border border-[#BBE1FF] rounded-lg">
+                            <span class="text-3xl mr-4">₿</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-[#004AAD]" data-lang-key="economy_laundering_method2_title">สกุลเงินดิจิทัล</h4>
+                                <p data-lang-key="economy_laundering_method2_desc">ใช้ในการทำธุรกรรมที่รวดเร็วและยากต่อการตรวจสอบผ่านบริการผสมเหรียญ (Mixer)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 border border-[#BBE1FF] rounded-lg">
+                            <span class="text-3xl mr-4">🏦</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-[#004AAD]" data-lang-key="economy_laundering_method3_title">ธนาคารใต้ดิน</h4>
+                                <p data-lang-key="economy_laundering_method3_desc">เครือข่าย "Money Mule" เคลื่อนย้ายเงินมหาศาลข้ามพรมแดน</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="state-crime-nexus" class="py-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-8 text-center" data-lang-key="nexus_title">เครือข่ายรัฐ-อาชญากรรม: สถาปัตยกรรมแห่งการลอยนวล</h2>
+            <p class="text-center text-gray-700 max-w-4xl mx-auto mb-8" data-lang-key="nexus_desc">อุตสาหกรรมนี้ไม่ได้รุ่งเรืองเพราะรัฐอ่อนแอ แต่เพราะได้รับการคุ้มครองอย่างแข็งขันจาก "เครือข่ายรัฐ-อาชญากรรม" (State-Crime Nexus) ผ่านการคอร์รัปชันเชิงระบบและการสมรู้ร่วมคิดของเจ้าหน้าที่และกลุ่มทุนที่ใกล้ชิดชนชั้นนำ</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                 <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="nexus_cpi_title">ดัชนีคอร์รัปชัน (CPI 2023)</h3>
+                    <p class="text-center text-gray-700 mb-6" data-lang-key="nexus_cpi_desc">กัมพูชาถูกจัดอันดับให้เป็นหนึ่งในประเทศที่คอร์รัปชันสูงที่สุดในโลก และเกือบรั้งท้ายในอาเซียน</p>
+                    <div class="chart-container h-80">
+                        <canvas id="corruptionIndexChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="nexus_groups_title">กลุ่มทุนที่ถูกกล่าวหาว่าเชื่อมโยง</h3>
+                     <p class="text-center text-gray-700 mb-6" data-lang-key="nexus_groups_desc">รายงานจากนานาชาติชี้ไปที่กลุ่มบริษัทขนาดใหญ่ที่มีสายสัมพันธ์กับผู้มีอำนาจทางการเมือง ว่ามีส่วนเกี่ยวข้องกับอุตสาหกรรมอาชญากรรม</p>
+                    <ul class="space-y-3">
+                        <li class="p-3 bg-gray-50 rounded-md"><strong>Huione Group:</strong> <span data-lang-key="nexus_group1_desc">ถูกกล่าวหาว่าฟอกเงินกว่า 4 พันล้านดอลลาร์ และเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)</span></li>
+                        <li class="p-3 bg-gray-50 rounded-md"><strong>Prince Group:</strong> <span data-lang-key="nexus_group2_desc">ถูกระบุว่าเป็นที่ตั้งของปฏิบัติการหลอกลวงและค้ามนุษย์</span></li>
+                        <li class="p-3 bg-gray-50 rounded-md"><strong>LYP Group:</strong> <span data-lang-key="nexus_group3_desc">เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="info-war" class="bg-[#004AAD] text-white rounded-lg shadow-xl p-8 md:p-12 my-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center" data-lang-key="infowar_title">สมรภูมิใหม่: จากแก๊งคอลเซ็นเตอร์สู่สงครามข้อมูลข่าวสาร</h2>
+            <p class="text-center text-lg max-w-4xl mx-auto mb-10" data-lang-key="infowar_desc">ความขัดแย้งชายแดนไทย-กัมพูชาล่าสุด เผยให้เห็นวิวัฒนาการที่น่ากังวล: โครงสร้างพื้นฐานและบุคลากรจากแก๊งคอลเซ็นเตอร์ ถูกปรับเปลี่ยนเป็น "กองทัพไซเบอร์" เพื่อทำสงครามข้อมูล (Information Operation - IO) ต่อประเทศไทย</p>
+            
+            <div class="text-center mb-10">
+                <p class="text-6xl font-bold text-yellow-300">200+ Million</p>
+                <p class="text-xl mt-2" data-lang-key="infowar_stat_desc">คือจำนวนการโจมตีทางไซเบอร์ต่อสื่อไทยใน 3 วันช่วงความขัดแย้ง</p>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-center mb-6" data-lang-key="infowar_strategy_title">ยุทธศาสตร์ "ท่อดับเพลิงแห่งความเท็จ" (Firehose of Falsehood)</h3>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6">
+                <div class="flex flex-col items-center text-center p-4">
+                    <div class="text-5xl mb-3">💻</div>
+                    <h4 class="text-xl font-bold" data-lang-key="infowar_strategy1_title">1. ระดมพล</h4>
+                    <p class="text-blue-200" data-lang-key="infowar_strategy1_desc">ใช้ "พนักงาน" จากแก๊งคอลเซ็นเตอร์เป็นกองกำลัง</p>
+                </div>
+                <div class="flow-arrow text-4xl text-white hidden md:block"></div>
+                <div class="flow-arrow-down text-4xl text-white md:hidden mx-auto"></div>
+                <div class="flex flex-col items-center text-center p-4">
+                    <div class="text-5xl mb-3">🎭</div>
+                    <h4 class="text-xl font-bold" data-lang-key="infowar_strategy2_title">2. สร้างอวตาร</h4>
+                    <p class="text-blue-200" data-lang-key="infowar_strategy2_desc">สร้างบัญชีผู้ใช้ปลอมจำนวนมหาศาล</p>
+                </div>
+                <div class="flow-arrow text-4xl text-white hidden md:block"></div>
+                <div class="flow-arrow-down text-4xl text-white md:hidden mx-auto"></div>
+                <div class="flex flex-col items-center text-center p-4">
+                     <div class="text-5xl mb-3">📢</div>
+                    <h4 class="text-xl font-bold" data-lang-key="infowar_strategy3_title">3. โจมตี</h4>
+                    <p class="text-blue-200" data-lang-key="infowar_strategy3_desc">เผยแพร่ข่าวปลอม, สแปม, และ Mass Report โจมตีพื้นที่ออนไลน์ของไทย</p>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-blue-200" data-lang-key="infowar_goal">เป้าหมาย: สร้างความสับสน, บิดเบือนความจริง, และช่วงชิงความชอบธรรมในสายตาประชาคมโลก</p>
+        </section>
+        
+        <section id="gemini-tool" class="py-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-4 text-center" data-lang-key="gemini_title">เครื่องมือวิเคราะห์ความเสี่ยง ✨</h2>
+                <p class="text-center text-gray-700 max-w-3xl mx-auto mb-6" data-lang-key="gemini_desc">ได้รับข้อความน่าสงสัย? ไม่แน่ใจว่าเป็นงานจริงหรือแก๊งต้มตุ๋น? ลองใช้เครื่องมือวิเคราะห์ที่ขับเคลื่อนโดย Gemini API เพื่อประเมินความเสี่ยงเบื้องต้น</p>
+                
+                <div class="max-w-2xl mx-auto">
+                    <textarea id="userInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0079FF] focus:outline-none" rows="5" data-lang-key="gemini_placeholder" placeholder="วางข้อความที่น่าสงสัยที่นี่... เช่น 'งานง่าย รายได้ดี สนใจคลิก!'"></textarea>
+                    <button id="analyzeButton" class="mt-4 w-full bg-[#0079FF] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#005bb5] transition duration-300 flex items-center justify-center disabled:bg-gray-400">
+                        <span class="mr-2" data-lang-key="gemini_button">วิเคราะห์ด้วย Gemini</span> ✨
+                    </button>
+                </div>
+
+                <div id="loadingSpinner" class="hidden flex justify-center mt-6">
+                    <div class="loader"></div>
+                </div>
+
+                <div id="geminiResult" class="mt-6 p-4 bg-blue-50 rounded-lg border border-[#BBE1FF] min-h-[100px]">
+                    <p class="text-gray-500 text-center" data-lang-key="gemini_result_placeholder">ผลการวิเคราะห์จะปรากฏที่นี่...</p>
+                </div>
+                 <p class="text-xs text-gray-500 text-center mt-4" data-lang-key="gemini_disclaimer">ข้อจำกัดความรับผิดชอบ: เครื่องมือนี้ให้คำแนะนำเบื้องต้นโดยใช้ AI และไม่ถือเป็นคำแนะนำทางกฎหมายหรือความปลอดภัยจากผู้เชี่ยวชาญ</p>
+            </div>
+        </section>
+
+        <section id="references" class="py-12">
+            <h2 class="text-3xl font-bold text-[#004AAD] mb-8 text-center" data-lang-key="references_title">แหล่งข้อมูลอ้างอิงที่น่าเชื่อถือ</h2>
+            <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+                <ul class="list-disc list-inside space-y-3 text-gray-700">
+                    <li><b>Humanity Research Consultancy (HRC):</b> "Policies and Patterns: State-Abetted Transnational Crime in Cambodia as a Global Security Threat"</li>
+                    <li><b>Amnesty International:</b> "Cambodia: Government allows slavery, torture to flourish inside scamming compounds"</li>
+                    <li><b>United Nations (UN):</b> Reports from OHCHR and UNODC</li>
+                    <li><b>U.S. Department of State:</b> Trafficking in Persons (TIP) Report (2022, 2023, 2024)</li>
+                    <li><b>U.S. Department of the Treasury (FinCEN):</b> Sanctions under Section 311 of the USA PATRIOT Act</li>
+                    <li><b>Transparency International:</b> Corruption Perceptions Index (CPI)</li>
+                    <li><b>Global Initiative Against Transnational Organized Crime (GI-TOC):</b> "Modern slavery in the Mekong: The rise of casino-based cyber-fraud"</li>
+                    <li><b>International & Thai Media:</b> AP News, Al Jazeera, Reuters, The Nation, Bangkok Post, Prachatai, MGR Online, Matichon</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    
+    <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+            <h3 class="text-xl font-bold text-red-600 mb-4" data-lang-key="error_title">เกิดข้อผิดพลาด</h3>
+            <p id="errorMessage" class="text-gray-700 mb-6"></p>
+            <button onclick="closeErrorModal()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" data-lang-key="error_close_button">ปิด</button>
+        </div>
+    </div>
+
+    <footer class="bg-[#004AAD] text-white text-center p-4 mt-8">
+        <p data-lang-key="footer_text">จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้</p>
+    </footer>
+
+    <script>
+        const translations = {
+            th: {
+                main_title: "อาณาจักรแห่งการหลอกลวง",
+                main_subtitle: "บทวิเคราะห์กัมพูชา: จากฐานแก๊งคอลเซ็นเตอร์สู่สมรภูมิข้อมูลข่าวสารโลก",
+                overview_title: "ภาพรวมวิกฤตการณ์ระดับโลก",
+                overview_stat1_title: "เหยื่อค้ามนุษย์",
+                overview_stat1_desc: "ถูกบังคับใช้แรงงานในกัมพูชา (ประเมินโดย UN)",
+                overview_stat2_title: "รายได้ต่อปี",
+                overview_stat2_desc: "จากอุตสาหกรรมหลอกลวงในกัมพูชา",
+                overview_stat3_title: "ของ GDP ประเทศ",
+                overview_stat3_desc: "คือขนาดเศรษฐกิจอาชญากรรมนี้",
+                storm_title: "กำเนิด \"พายุที่สมบูรณ์แบบ\"",
+                storm_desc: "การผงาดขึ้นของกัมพูชาในฐานะฐานที่มั่นของแก๊งคอลเซ็นเตอร์ไม่ได้เกิดขึ้นโดยบังเอิญ แต่เป็นผลจาก 3 ปัจจัยหลักที่เกิดขึ้นพร้อมกัน สร้างสภาวะที่เอื้อต่อการเติบโตของอุตสาหกรรมอาชญากรรมอย่างที่ไม่เคยมีมาก่อน",
+                storm_factor1_title: "จีนปราบอาชญากรรม",
+                storm_factor1_desc: "ปี 2018 จีนกวาดล้างแก๊งออนไลน์ ทำให้องค์กรอาชญากรรมต้องย้ายฐานทัพ",
+                storm_factor2_title: "กัมพูชาแบนพนันออนไลน์",
+                storm_factor2_desc: "ปี 2019 คำสั่งแบนทิ้งอาคารกาสิโนร้างจำนวนมาก สร้างอุปทานของพื้นที่ปฏิบัติการ",
+                storm_factor3_title: "วิกฤตโควิด-19",
+                storm_factor3_desc: "ปี 2020 ทำลายการท่องเที่ยว เจ้าของธุรกิจสิ้นหวังและหันไปร่วมมือกับอาชญากร",
+                cost_title: "ราคาที่มนุษย์ต้องจ่าย: การค้าทาสยุคใหม่",
+                cost_cycle_title: "วงจรแห่งการล่อลวง",
+                cost_cycle_desc: "เหยื่อซึ่งส่วนใหญ่เป็นคนรุ่นใหม่ที่มีการศึกษา ถูกหลอกผ่านโฆษณางานปลอมบนโซเชียลมีเดีย ก่อนจะถูกกักขังและบังคับให้ทำงานใน \"คอมพาวด์ทาส\"",
+                cost_cycle_step1: "<strong>1. โฆษณางานปลอม:</strong> เสนอตำแหน่งงานรายได้สูงบน Facebook, Instagram",
+                cost_cycle_step2: "<strong>2. การเดินทาง:</strong> นายหน้าจัดการเดินทางข้ามประเทศ",
+                cost_cycle_step3: "<strong>3. ยึดหนังสือเดินทาง:</strong> ถูกยึดเอกสารและสร้างหนี้สินท่วมหัว",
+                cost_cycle_step4: "<strong>4. บังคับทำงาน:</strong> ถูกทรมาน, ทุบตี, ช็อตไฟฟ้า หากไม่ทำตามเป้า",
+                cost_victims_title: "เหยื่อจากทั่วทุกมุมโลก",
+                cost_victims_desc: "ปฏิบัติการนี้ลากอวนหาเหยื่อจากทั่วโลก โดยเฉพาะจากประเทศในภูมิภาคอาเซียนและเอเชียใต้",
+                economy_title: "กายวิภาคของเศรษฐกิจอาชญากรรม",
+                economy_gdp_title: "รายได้อาชญากรรม vs. GDP ประเทศ",
+                economy_gdp_desc: "ขนาดของเศรษฐกิจใต้ดินนี้ใหญ่โตมหาศาล เทียบเท่ากับเกือบครึ่งหนึ่งของ GDP อย่างเป็นทางการของกัมพูชาทั้งหมด ซึ่งเผยให้เห็นแรงจูงใจที่ทำให้ผู้มีอำนาจเลือกที่จะปกป้องอุตสาหกรรมนี้",
+                economy_laundering_title: "ไตรอำนาจมืดแห่งการฟอกเงิน",
+                economy_laundering_desc: "เงินที่ได้จากการหลอกลวงจะถูกฟอกผ่านเครือข่ายที่ซับซ้อน ซึ่งผสมผสานวิธีการดั้งเดิมเข้ากับเทคโนโลยีสมัยใหม่",
+                economy_laundering_method1_title: "กาสิโนและจั๊งเก็ต",
+                economy_laundering_method1_desc: "ทำหน้าที่เป็นช่องทางหลักในการฟอกเงินสดและเป็นธนาคารใต้ดิน",
+                economy_laundering_method2_title: "สกุลเงินดิจิทัล",
+                economy_laundering_method2_desc: "ใช้ในการทำธุรกรรมที่รวดเร็วและยากต่อการตรวจสอบผ่านบริการผสมเหรียญ (Mixer)",
+                economy_laundering_method3_title: "ธนาคารใต้ดิน",
+                economy_laundering_method3_desc: "เครือข่าย \"Money Mule\" เคลื่อนย้ายเงินมหาศาลข้ามพรมแดน",
+                nexus_title: "เครือข่ายรัฐ-อาชญากรรม: สถาปัตยกรรมแห่งการลอยนวล",
+                nexus_desc: "อุตสาหกรรมนี้ไม่ได้รุ่งเรืองเพราะรัฐอ่อนแอ แต่เพราะได้รับการคุ้มครองอย่างแข็งขันจาก \"เครือข่ายรัฐ-อาชญากรรม\" (State-Crime Nexus) ผ่านการคอร์รัปชันเชิงระบบและการสมรู้ร่วมคิดของเจ้าหน้าที่และกลุ่มทุนที่ใกล้ชิดชนชั้นนำ",
+                nexus_cpi_title: "ดัชนีคอร์รัปชัน (CPI 2023)",
+                nexus_cpi_desc: "กัมพูชาถูกจัดอันดับให้เป็นหนึ่งในประเทศที่คอร์รัปชันสูงที่สุดในโลก และเกือบรั้งท้ายในอาเซียน",
+                nexus_groups_title: "กลุ่มทุนที่ถูกกล่าวหาว่าเชื่อมโยง",
+                nexus_groups_desc: "รายงานจากนานาชาติชี้ไปที่กลุ่มบริษัทขนาดใหญ่ที่มีสายสัมพันธ์กับผู้มีอำนาจทางการเมือง ว่ามีส่วนเกี่ยวข้องกับอุตสาหกรรมอาชญากรรม",
+                nexus_group1_desc: "ถูกกล่าวหาว่าฟอกเงินกว่า 4 พันล้านดอลลาร์ และเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)",
+                nexus_group2_desc: "ถูกระบุว่าเป็นที่ตั้งของปฏิบัติการหลอกลวงและค้ามนุษย์",
+                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)",
+                infowar_title: "สมรภูมิใหม่: จากแก๊งคอลเซ็นเตอร์สู่สงครามข้อมูลข่าวสาร",
+                infowar_desc: "ความขัดแย้งชายแดนไทย-กัมพูชาล่าสุด เผยให้เห็นวิวัฒนาการที่น่ากังวล: โครงสร้างพื้นฐานและบุคลากรจากแก๊งคอลเซ็นเตอร์ ถูกปรับเปลี่ยนเป็น \"กองทัพไซเบอร์\" เพื่อทำสงครามข้อมูล (Information Operation - IO) ต่อประเทศไทย",
+                infowar_stat_desc: "คือจำนวนการโจมตีทางไซเบอร์ต่อสื่อไทยใน 3 วันช่วงความขัดแย้ง",
+                infowar_strategy_title: "ยุทธศาสตร์ \"ท่อดับเพลิงแห่งความเท็จ\" (Firehose of Falsehood)",
+                infowar_strategy1_title: "1. ระดมพล",
+                infowar_strategy1_desc: "ใช้ \"พนักงาน\" จากแก๊งคอลเซ็นเตอร์เป็นกองกำลัง",
+                infowar_strategy2_title: "2. สร้างอวตาร",
+                infowar_strategy2_desc: "สร้างบัญชีผู้ใช้ปลอมจำนวนมหาศาล",
+                infowar_strategy3_title: "3. โจมตี",
+                infowar_strategy3_desc: "เผยแพร่ข่าวปลอม, สแปม, และ Mass Report โจมตีพื้นที่ออนไลน์ของไทย",
+                infowar_goal: "เป้าหมาย: สร้างความสับสน, บิดเบือนความจริง, และช่วงชิงความชอบธรรมในสายตาประชาคมโลก",
+                gemini_title: "เครื่องมือวิเคราะห์ความเสี่ยง ✨",
+                gemini_desc: "ได้รับข้อความน่าสงสัย? ไม่แน่ใจว่าเป็นงานจริงหรือแก๊งต้มตุ๋น? ลองใช้เครื่องมือวิเคราะห์ที่ขับเคลื่อนโดย Gemini API เพื่อประเมินความเสี่ยงเบื้องต้น",
+                gemini_placeholder: "วางข้อความที่น่าสงสัยที่นี่... เช่น 'งานง่าย รายได้ดี สนใจคลิก!'",
+                gemini_button: "วิเคราะห์ด้วย Gemini",
+                gemini_result_placeholder: "ผลการวิเคราะห์จะปรากฏที่นี่...",
+                gemini_disclaimer: "ข้อจำกัดความรับผิดชอบ: เครื่องมือนี้ให้คำแนะนำเบื้องต้นโดยใช้ AI และไม่ถือเป็นคำแนะนำทางกฎหมายหรือความปลอดภัยจากผู้เชี่ยวชาญ",
+                references_title: "แหล่งข้อมูลอ้างอิงที่น่าเชื่อถือ",
+                footer_text: "จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้",
+                error_title: "เกิดข้อผิดพลาด",
+                error_close_button: "ปิด",
+                error_input_message: "กรุณาป้อนข้อความที่ต้องการวิเคราะห์",
+                error_api_message: "ไม่สามารถวิเคราะห์ข้อความได้ในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง",
+                chart_victim_title: "สัดส่วนเหยื่อ",
+                chart_victim_labels: ['อาเซียน (ไทย, เวียดนาม, อินโดฯ)', 'เอเชียใต้ (อินเดีย, บังกลาเทศ)', 'แอฟริกา', 'ละตินอเมริกา', 'อื่นๆ'],
+                chart_gdp_labels: ['GDP อย่างเป็นทางการ', 'รายได้จากอุตสาหกรรมหลอกลวง (โดยประมาณ)'],
+                chart_gdp_tooltip_base: "100% (ฐาน)",
+                chart_gdp_tooltip_scam: "~50% ของ GDP",
+                chart_cpi_title: "คะแนน CPI 2023 (เต็ม 100)",
+                chart_cpi_labels: ['สิงคโปร์', 'มาเลเซีย', 'เวียดนาม', 'ไทย', 'อินโดนีเซีย', 'ฟิลิปปินส์', 'กัมพูชา', 'เมียนมา']
+            },
+            en: {
+                main_title: "The Empire of Deceit",
+                main_subtitle: "An Analysis of Cambodia: From Scam Hub to Global Infowar Battlefield",
+                overview_title: "A Global Crisis at a Glance",
+                overview_stat1_title: "Trafficked Victims",
+                overview_stat1_desc: "Forced into labor in Cambodia (UN estimate)",
+                overview_stat2_title: "Annual Revenue",
+                overview_stat2_desc: "From the scam industry in Cambodia",
+                overview_stat3_title: "of the Nation's GDP",
+                overview_stat3_desc: "Is the size of this criminal economy",
+                storm_title: "The Birth of a \"Perfect Storm\"",
+                storm_desc: "Cambodia's rise as a scam hub was no accident. It resulted from three key factors converging, creating an unprecedentedly fertile ground for the criminal industry to flourish.",
+                storm_factor1_title: "China's Crackdown",
+                storm_factor1_desc: "In 2018, China's crackdown on online gangs forced criminal organizations to relocate.",
+                storm_factor2_title: "Cambodia's Gambling Ban",
+                storm_factor2_desc: "In 2019, the ban left numerous casino buildings vacant, creating a supply of operational spaces.",
+                storm_factor3_title: "The COVID-19 Crisis",
+                storm_factor3_desc: "In 2020, tourism collapsed, leading desperate business owners to collaborate with criminals.",
+                cost_title: "The Human Cost: Modern-Day Slavery",
+                cost_cycle_title: "The Cycle of Deception",
+                cost_cycle_desc: "Victims, mostly educated young people, are lured by fake job ads on social media, then imprisoned and forced to work in 'slave compounds.'",
+                cost_cycle_step1: "<strong>1. Fake Job Ads:</strong> Offering high-paying jobs on Facebook, Instagram.",
+                cost_cycle_step2: "<strong>2. The Journey:</strong> Brokers arrange cross-border travel.",
+                cost_cycle_step3: "<strong>3. Passport Confiscation:</strong> Documents are seized, and massive debts are fabricated.",
+                cost_cycle_step4: "<strong>4. Forced Labor:</strong> Victims are tortured, beaten, and electrocuted for failing to meet targets.",
+                cost_victims_title: "Victims from Around the Globe",
+                cost_victims_desc: "This operation casts a wide net, ensnaring victims globally, especially from ASEAN and South Asian countries.",
+                economy_title: "Anatomy of a Criminal Economy",
+                economy_gdp_title: "Criminal Revenue vs. National GDP",
+                economy_gdp_desc: "The scale of this shadow economy is immense, equivalent to nearly half of Cambodia's official GDP, revealing the powerful incentive for elites to protect it.",
+                economy_laundering_title: "The Unholy Trinity of Money Laundering",
+                economy_laundering_desc: "Scam proceeds are laundered through a sophisticated network that blends traditional methods with modern technology.",
+                economy_laundering_method1_title: "Casinos & Junkets",
+                economy_laundering_method1_desc: "Serve as the primary channel for laundering cash and as an underground banking system.",
+                economy_laundering_method2_title: "Cryptocurrency",
+                economy_laundering_method2_desc: "Used for fast, hard-to-trace transactions via coin mixing services.",
+                economy_laundering_method3_title: "Underground Banking",
+                economy_laundering_method3_desc: "Networks of 'Money Mules' move vast sums of money across borders.",
+                nexus_title: "The State-Crime Nexus: An Architecture of Impunity",
+                nexus_desc: "This industry thrives not due to a weak state, but because of active protection from a 'State-Crime Nexus' through systemic corruption and the complicity of officials and elite-connected conglomerates.",
+                nexus_cpi_title: "Corruption Perception Index (CPI 2023)",
+                nexus_cpi_desc: "Cambodia ranks as one of the most corrupt countries in the world and is near the bottom in ASEAN.",
+                nexus_groups_title: "Allegedly Linked Conglomerates",
+                nexus_groups_desc: "International reports point to large corporations with political ties as being involved in the criminal industry.",
+                nexus_group1_desc: "Accused of laundering over $4 billion and linked to the Prime Minister's relative (sanctioned by the U.S.).",
+                nexus_group2_desc: "Identified as hosting scam and human trafficking operations.",
+                nexus_group3_desc: "Linked to forced labor (owner is a senator and sanctioned by the U.S.).",
+                infowar_title: "The New Battlefield: From Scams to Information Warfare",
+                infowar_desc: "The recent Thai-Cambodian border conflict revealed a disturbing evolution: the infrastructure and personnel from scam centers are being repurposed as 'cyber armies' for Information Operations (IO) against Thailand.",
+                infowar_stat_desc: "Cyberattacks on Thai media over 3 days during the conflict.",
+                infowar_strategy_title: "The \"Firehose of Falsehood\" Strategy",
+                infowar_strategy1_title: "1. Mobilization",
+                infowar_strategy1_desc: "Using scam center 'employees' as the workforce.",
+                infowar_strategy2_title: "2. Avatar Creation",
+                infowar_strategy2_desc: "Creating massive numbers of fake user accounts.",
+                infowar_strategy3_title: "3. Attack",
+                infowar_strategy3_desc: "Spreading fake news, spam, and mass reporting to attack Thai online spaces.",
+                infowar_goal: "Goal: To create confusion, distort reality, and seize the narrative in the eyes of the global community.",
+                gemini_title: "Risk Analysis Tool ✨",
+                gemini_desc: "Received a suspicious message? Unsure if it's a real job or a scam? Use this analysis tool, powered by the Gemini API, for a preliminary risk assessment.",
+                gemini_placeholder: "Paste the suspicious message here... e.g., 'Easy job, great pay, click here to apply!'",
+                gemini_button: "Analyze with Gemini",
+                gemini_result_placeholder: "Analysis results will appear here...",
+                gemini_disclaimer: "Disclaimer: This tool provides preliminary advice using AI and does not constitute professional legal or security advice.",
+                references_title: "Credible Reference Sources",
+                footer_text: "Created: July 31, 2025 | This infographic is for educational and awareness purposes.",
+                error_title: "An Error Occurred",
+                error_close_button: "Close",
+                error_input_message: "Please enter text to analyze.",
+                error_api_message: "Could not analyze the text at this time. Please try again later.",
+                chart_victim_title: "Victim Proportions",
+                chart_victim_labels: ['ASEAN (TH, VN, ID)', 'South Asia (IN, BD)', 'Africa', 'Latin America', 'Others'],
+                chart_gdp_labels: ['Official GDP', 'Estimated Scam Industry Revenue'],
+                chart_gdp_tooltip_base: "100% (Base)",
+                chart_gdp_tooltip_scam: "~50% of GDP",
+                chart_cpi_title: "CPI Score 2023 (out of 100)",
+                chart_cpi_labels: ['Singapore', 'Malaysia', 'Vietnam', 'Thailand', 'Indonesia', 'Philippines', 'Cambodia', 'Myanmar']
+            },
+            zh: {
+                main_title: "欺诈帝国",
+                main_subtitle: "柬埔寨分析：从诈骗中心到全球信息战战场",
+                overview_title: "全球危机概览",
+                overview_stat1_title: "被贩卖的受害者",
+                overview_stat1_desc: "在柬埔寨被迫劳动（联合国估计）",
+                overview_stat2_title: "年收入",
+                overview_stat2_desc: "来自柬埔寨的诈骗产业",
+                overview_stat3_title: "占国家GDP",
+                overview_stat3_desc: "是这个犯罪经济的规模",
+                storm_title: "“完美风暴”的诞生",
+                storm_desc: "柬埔寨崛起成为诈骗中心并非偶然。这是三个关键因素交汇的结果，为犯罪产业的蓬勃发展创造了前所未有的沃土。",
+                storm_factor1_title: "中国的打击行动",
+                storm_factor1_desc: "2018年，中国对网络犯罪团伙的打击迫使犯罪组织搬迁。",
+                storm_factor2_title: "柬埔寨的赌博禁令",
+                storm_factor2_desc: "2019年，该禁令导致大量赌场建筑空置，为运营场所提供了供应。",
+                storm_factor3_title: "COVID-19危机",
+                storm_factor3_desc: "2020年，旅游业崩溃，导致绝望的企业主与犯罪分子合作。",
+                cost_title: "人的代价：现代奴隶制",
+                cost_cycle_title: "欺骗的循环",
+                cost_cycle_desc: "受害者多为受过教育的年轻人，他们被社交媒体上的虚假招聘广告所诱骗，然后被囚禁并被迫在“奴隶园区”工作。",
+                cost_cycle_step1: "<strong>1. 虚假招聘广告:</strong> 在Facebook、Instagram上提供高薪工作。",
+                cost_cycle_step2: "<strong>2. 旅程:</strong> 经纪人安排跨境旅行。",
+                cost_cycle_step3: "<strong>3. 没收护照:</strong> 证件被没收，并捏造巨额债务。",
+                cost_cycle_step4: "<strong>4. 强迫劳动:</strong> 因未能达到目标而遭受酷刑、殴打和电击。",
+                cost_victims_title: "来自全球的受害者",
+                cost_victims_desc: "该行动遍布全球，诱捕受害者，特别是来自东盟和南亚国家的受害者。",
+                economy_title: "犯罪经济剖析",
+                economy_gdp_title: "犯罪收入 vs. 国家GDP",
+                economy_gdp_desc: "这个影子经济的规模巨大，相当于柬埔寨官方GDP的近一半，揭示了精英阶层保护它的强大动机。",
+                economy_laundering_title: "洗钱的罪恶三位一体",
+                economy_laundering_desc: "诈骗所得通过一个复杂的网络进行洗钱，该网络融合了传统方法和现代技术。",
+                economy_laundering_method1_title: "赌场和中介",
+                economy_laundering_method1_desc: "作为洗钱现金和地下银行系统的主要渠道。",
+                economy_laundering_method2_title: "加密货币",
+                economy_laundering_method2_desc: "用于通过混币服务进行快速、难以追踪的交易。",
+                economy_laundering_method3_title: "地下钱庄",
+                economy_laundering_method3_desc: "“钱骡”网络跨境转移巨额资金。",
+                nexus_title: "国家-犯罪共生：有罪不罚的架构",
+                nexus_desc: "该产业的蓬勃发展并非因为国家软弱，而是因为通过系统性腐败以及官员和与精英相关的企业集团的共谋，得到了“国家-犯罪共生体”的积极保护。",
+                nexus_cpi_title: "腐败感知指数 (CPI 2023)",
+                nexus_cpi_desc: "柬埔寨是世界上最腐败的国家之一，在东盟中排名垫底。",
+                nexus_groups_title: "据称有关联的企业集团",
+                nexus_groups_desc: "国际报告指出，与政治有联系的大公司参与了该犯罪产业。",
+                nexus_group1_desc: "被指控洗钱超过40亿美元，并与首相亲属有关（受美国制裁）。",
+                nexus_group2_desc: "被确定为诈骗和人口贩卖活动的窝点。",
+                nexus_group3_desc: "与强迫劳动有关（所有者是参议员并受美国制裁）。",
+                infowar_title: "新战场：从诈骗到信息战",
+                infowar_desc: "最近的泰柬边境冲突揭示了一个令人不安的演变：诈骗中心的基础设施和人员正被重新用作针对泰国的信息战（IO）的“网络军队”。",
+                infowar_stat_desc: "冲突期间3天内对泰国媒体的网络攻击次数。",
+                infowar_strategy_title: "“谎言消防栓”策略",
+                infowar_strategy1_title: "1. 动员",
+                infowar_strategy1_desc: "利用诈骗中心的“员工”作为劳动力。",
+                infowar_strategy2_title: "2. 创建虚拟形象",
+                infowar_strategy2_desc: "创建大量虚假用户帐户。",
+                infowar_strategy3_title: "3. 攻击",
+                infowar_strategy3_desc: "传播假新闻、垃圾邮件和大规模举报来攻击泰国网络空间。",
+                infowar_goal: "目标：制造混乱，扭曲现实，并在全球社会眼中夺取话语权。",
+                gemini_title: "风险分析工具 ✨",
+                gemini_desc: "收到可疑消息？不确定是真实工作还是骗局？使用由Gemini API驱动的此分析工具进行初步风险评估。",
+                gemini_placeholder: "在此处粘贴可疑消息... 例如，“工作轻松，薪水高，点击申请！”",
+                gemini_button: "使用Gemini进行分析",
+                gemini_result_placeholder: "分析结果将显示在此处...",
+                gemini_disclaimer: "免责声明：此工具使用AI提供初步建议，不构成专业的法律或安全建议。",
+                references_title: "可靠的参考来源",
+                footer_text: "创建日期：2025年7月31日 | 此信息图表仅供教育和提高认识之用。",
+                error_title: "发生错误",
+                error_close_button: "关闭",
+                error_input_message: "请输入要分析的文本。",
+                error_api_message: "目前无法分析文本。请稍后再试。",
+                chart_victim_title: "受害者比例",
+                chart_victim_labels: ['东盟 (泰, 越, 印尼)', '南亚 (印, 孟)', '非洲', '拉丁美洲', '其他'],
+                chart_gdp_labels: ['官方GDP', '估计的诈骗产业收入'],
+                chart_gdp_tooltip_base: "100% (基准)",
+                chart_gdp_tooltip_scam: "~GDP的50%",
+                chart_cpi_title: "2023年CPI得分 (满分100)",
+                chart_cpi_labels: ['新加坡', '马来西亚', '越南', '泰国', '印度尼西亚', '菲律宾', '柬埔寨', '缅甸']
+            },
+            km: {
+                main_title: "អាណាចក្រនៃ​ការបោកប្រាស់",
+                main_subtitle: "บทวิเคราะห์អំពីកម្ពុជា៖ ពីមជ្ឈមណ្ឌលបោកប្រាស់ ទៅជាសមរភូមិព័ត៌មានសកល",
+                overview_title: "ទិដ្ឋភាពទូទៅនៃវិបត្តិសកល",
+                overview_stat1_title: "ជនរងគ្រោះនៃការជួញដូរមនុស្ស",
+                overview_stat1_desc: "ត្រូវបានបង្ខំឱ្យធ្វើការនៅកម្ពុជា (ការប៉ាន់ស្មានដោយ UN)",
+                overview_stat2_title: "ចំណូលប្រចាំปี",
+                overview_stat2_desc: "ពីឧស្សាហកម្មបោកប្រាស់នៅកម្ពុជា",
+                overview_stat3_title: "នៃ GDP របស់ប្រទេស",
+                overview_stat3_desc: "គឺជាទំហំនៃសេដ្ឋកិច្ចឧក្រិដ្ឋកម្មនេះ",
+                storm_title: "កំណើតនៃ \"ព្យុះដ៏ល្អឥតខ្ចោះ\"",
+                storm_desc: "ការលេចត្រដែតរបស់កម្ពុជាជាមជ្ឈមណ្ឌលបោកប្រាស់មិនមែនជារឿងចៃដន្យទេ។ វាជាលទ្ធផលនៃកត្តាសំខាន់ៗចំនួនបីដែលកើតឡើងព្រមគ្នា បង្កើតបានជាមូលដ្ឋានដ៏អំណោយផលដែលមិនធ្លាប់មានសម្រាប់ការរីកចម្រើននៃឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
+                storm_factor1_title: "ការបង្ក្រាបរបស់ចិន",
+                storm_factor1_desc: "ក្នុងឆ្នាំ 2018 ការបង្ក្រាបរបស់ចិនលើแก๊งអនឡាញបានបង្ខំឱ្យអង្គការឧក្រិដ្ឋកម្មផ្លាស់ប្តូរទីតាំង។",
+                storm_factor2_title: "ការហាមឃាត់ល្បែងស៊ីសងតាមអ៊ីនធឺណិតរបស់កម្ពុជា",
+                storm_factor2_desc: "ក្នុងឆ្នាំ 2019 ការហាមឃាត់នេះបានបន្សល់ទុកនូវអគារកាស៊ីណូជាច្រើនដែលទំនេរ បង្កើតការផ្គត់ផ្គង់ទីកន្លែងប្រតិបត្តិการ។",
+                storm_factor3_title: "វិបត្តិ COVID-19",
+                storm_factor3_desc: "ក្នុងឆ្នាំ 2020 វិស័យទេសចរណ៍បានដួលរលំ នាំឱ្យម្ចាស់អាជីវកម្មដែលអស់សង្ឃឹមសហការជាមួយឧក្រិដ្ឋជន។",
+                cost_title: "តម្លៃដែលមនុស្សត្រូវចំណាយ៖ ទាសភាពសម័យទំនើប",
+                cost_cycle_title: "វដ្តនៃការបោកបញ្ឆោត",
+                cost_cycle_desc: "ជនរងគ្រោះ ដែលភាគច្រើនជាយុវជនមានការអប់រំ ត្រូវបានទាក់ទាញដោយការផ្សាយពាណិជ្ជកម្មការងារក្លែងក្លាយនៅលើបណ្តាញសង្គម បន្ទាប់មកត្រូវបានចាប់ដាក់គុក និងបង្ខំឱ្យធ្វើការនៅក្នុង 'បរិវេណទាសករ'។",
+                cost_cycle_step1: "<strong>១. ការផ្សាយពាណិជ្ជកម្មការងារក្លែងក្លាយ៖</strong> ផ្តល់ជូនការងារដែលមានប្រាក់ខែខ្ពស់នៅលើ Facebook, Instagram។",
+                cost_cycle_step2: "<strong>២. ការធ្វើដំណើរ៖</strong> ឈ្មួញកណ្តាលរៀបចំការធ្វើដំណើរឆ្លងដែន។",
+                cost_cycle_step3: "<strong>៣. ការរឹបអូសលិខិតឆ្លងដែន៖</strong> ឯកសារត្រូវបានរឹបអូស ហើយបំណុលដ៏ច្រើនសន្ធឹកសន្ធាប់ត្រូវបានប្រឌិតឡើង។",
+                cost_cycle_step4: "<strong>៤. ការងារដោយបង្ខំ៖</strong> ជនរងគ្រោះត្រូវបានធ្វើទារុណកម្ម វាយដំ និងឆក់ខ្សែភ្លើងចំពោះការមិនបានសម្រេចគោលដៅ។",
+                cost_victims_title: "ជនរងគ្រោះមកពីជុំវិញពិភពលោក",
+                cost_victims_desc: "ប្រតិបត្តិការនេះបានពង្រីកបណ្តាញយ៉ាងធំទូលាយ ដោយចាប់ជនរងគ្រោះទូទាំងពិភពលោក ជាពិសេសពីបណ្តាប្រទេសអាស៊ាន និងអាស៊ីខាងត្បូង។",
+                economy_title: "កាយវិភាគសាស្ត្រនៃសេដ្ឋកិច្ចឧក្រិដ្ឋកម្ម",
+                economy_gdp_title: "ចំណូលឧក្រិដ្ឋកម្ម ទល់នឹង GDP ជាតិ",
+                economy_gdp_desc: "ទំហំនៃសេដ្ឋកិច្ចស្រមោលនេះគឺធំធេងណាស់ ដែលស្មើនឹងជិតពាក់កណ្តាលនៃ GDP ផ្លូវការរបស់កម្ពុជា ដែលបង្ហាញពីការលើកទឹកចិត្តដ៏ខ្លាំងក្លាសម្រាប់ឥស្សរជនក្នុងការការពារវា។",
+                economy_laundering_title: "ត្រីឯកភាពដ៏អាក្រក់នៃការលាងលុយ",
+                economy_laundering_desc: "ប្រាក់ចំណូលពីការបោកប្រាស់ត្រូវបានលាងសម្អាតតាមរយៈបណ្តាញដ៏ซับซ้อนមួយដែលผสมผสานវិធីសាស្រ្តបុរាណជាមួយបច្ចេកវិទ្យាទំនើប។",
+                economy_laundering_method1_title: "កាស៊ីណូ និង Junkets",
+                economy_laundering_method1_desc: "បម្រើជាช่องทางចម្បងសម្រាប់ការលាងលុយកខ្វក់ និងជាប្រព័ន្ធធនាគារក្រោមដី។",
+                economy_laundering_method2_title: "រូបិយប័ណ្ណគ្រីបតូ",
+                economy_laundering_method2_desc: "ត្រូវបានប្រើសម្រាប់ការทำธุรกรรมที่รวดเร็วและยากต่อการตรวจสอบតាមរយៈសេវាកម្មผสมកាក់។",
+                economy_laundering_method3_title: "ធនាគារក្រោមដី",
+                economy_laundering_method3_desc: "បណ្តាញ 'Money Mules' ផ្លាស់ទីប្រាក់จำนวนมหาศาลข้ามพรมแดน។",
+                nexus_title: "សម្ព័ន្ធភាពរដ្ឋ-ឧក្រិដ្ឋកម្ម៖ ស្ថាបត្យកម្មនៃនិទណ្ឌភាព",
+                nexus_desc: "ឧស្សាហកម្មនេះរីកចម្រើនមិនមែនដោយសាររដ្ឋទន់ខ្សោយនោះទេ ប៉ុន្តែដោយសារការការពារយ៉ាងសកម្មពី 'សម្ព័ន្ធភាពរដ្ឋ-ឧក្រិដ្ឋកម្ម' តាមរយៈអំពើពុករលួយជាប្រព័ន្ធ និងការสมรู้ร่วมคิดរបស់មន្ត្រី និងกลุ่มทุนที่ใกล้ชิดชนชั้นนำ។",
+                nexus_cpi_title: "សន្ទស្សន៍អំពើពុករលួយ (CPI 2023)",
+                nexus_cpi_desc: "កម្ពុជាជាប់ចំណាត់ថ្នាក់ជាប្រទេសមួយក្នុងចំណោមប្រទេសที่มีអំពើពុករលួយបំផុតនៅលើពិភពលោក និងស្ថិតនៅបាតតារាងក្នុងអាស៊ាន។",
+                nexus_groups_title: "กลุ่มทุนที่ถูกกล่าวหาว่าเชื่อมโยง",
+                nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីบริษัทធំៗที่มีสายสัมพันธ์ทางการเมืองថាមានส่วนเกี่ยวข้องกับឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
+                nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង 4 ពាន់លានដុល្លារ និងเชื่อมโยงกับญาติของนายกฯ (ถูกสหรัฐฯ คว่ำบาตร)។",
+                nexus_group2_desc: "ត្រូវបានระบุว่าเป็นទីតាំងของปฏิบัติการបោកប្រាស់และค้ามนุษย์។",
+                nexus_group3_desc: "เชื่อมโยงกับการบังคับใช้แรงงาน (เจ้าของเป็นวุฒิสมาชิกและถูกสหรัฐฯ คว่ำบาตร)។",
+                infowar_title: "សមរភូមិថ្មី៖ ពីការបោកប្រាស់ទៅសង្គ្រាមព័ត៌មាន",
+                infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះបានបង្ហាញពីការវិវត្តដ៏น่ากังวลមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុคลากรจากមជ្ឈមណ្ឌលបោកប្រាស់ត្រូវបានปรับเปลี่ยนជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងประเทศไทย។",
+                infowar_stat_desc: "ការវាយប្រហារតាមអ៊ីនធឺណិតលើប្រព័ន្ធផ្សព្វផ្សាយថៃក្នុងរយៈពេល 3 ថ្ងៃក្នុងអំឡុងពេលជម្លោះ។",
+                infowar_strategy_title: "យុទ្ធសាស្ត្រ \"ទុយោទឹកពន្លត់អគ្គីភ័យនៃភាពមិនពិត\"",
+                infowar_strategy1_title: "១. ការប្រមូលផ្តុំ",
+                infowar_strategy1_desc: "ប្រើប្រាស់ 'បុគ្គលិក' ពីមជ្ឈមណ្ឌលបោកប្រាស់ជាកម្លាំង។",
+                infowar_strategy2_title: "២. ការបង្កើតអវតារ",
+                infowar_strategy2_desc: "បង្កើតគណនីผู้ใช้ปลอมจำนวนมหาศาล។",
+                infowar_strategy3_title: "៣. ការវាយប្រហារ",
+                infowar_strategy3_desc: "ផ្សព្វផ្សាយข่าวปลอม, สแปม, และ Mass Report โจมตีพื้นที่ออนไลน์ของไทย។",
+                infowar_goal: "គោលដៅ៖ បង្កើតความสับสน, บิดเบือนความจริง, และช่วงชิงความชอบธรรมในสายตาประชาคมโลก។",
+                gemini_title: "เครื่องมือวิเคราะห์ความเสี่ยง ✨",
+                gemini_desc: "ទទួលបានข้อความน่าสงสัย? មិនแน่ใจว่าเป็นงานจริงหรือแก๊งต้มตุ๋น? ลองใช้เครื่องมือวิเคราะห์ที่ขับเคลื่อนโดย Gemini API ដើម្បីประเมินความเสี่ยงเบื้องต้น។",
+                gemini_placeholder: "วางข้อความที่น่าสงสัยที่นี่... เช่น 'งานง่าย รายได้ดี สนใจคลิก!'",
+                gemini_button: "วิเคราะห์ด้วย Gemini",
+                gemini_result_placeholder: "ผลการวิเคราะห์จะปรากฏที่นี่...",
+                gemini_disclaimer: "ការបដិសេធ៖ ឧបករណ៍នេះផ្តល់នូវคำแนะนำเบื้องต้นโดยใช้ AI និងไม่ถือเป็นคำแนะนำทางกฎหมายหรือความปลอดภัยจากผู้เชี่ยวชาญ។",
+                references_title: "ប្រភពឯកសារយោងที่น่าเชื่อถือ",
+                footer_text: "จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้។",
+                error_title: "មានបញ្ហា",
+                error_close_button: "បិទ",
+                error_input_message: "សូមបញ្ចូលអត្ថបទដើម្បីវិភាគ។",
+                error_api_message: "មិនអាចវិភាគអត្ថបទបានទេនៅពេលនេះ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។",
+                chart_victim_title: "สัดส่วนเหยื่อ",
+                chart_victim_labels: ['អាស៊ាន (ថៃ, វៀតណាម, ឥណ្ឌូនេស៊ី)', 'អាស៊ីខាងត្បូង (ឥណ្ឌា, បង់ក្លាដែស)', 'អាហ្វ្រិក', 'អាមេរិកឡាទីន', 'ផ្សេងៗ'],
+                chart_gdp_labels: ['GDP ផ្លូវការ', 'ចំណូលឧស្សាហកម្មបោកប្រាស់ (ប៉ាន់ស្មាន)'],
+                chart_gdp_tooltip_base: "100% (មូលដ្ឋាន)",
+                chart_gdp_tooltip_scam: "~50% នៃ GDP",
+                chart_cpi_title: "ពិន្ទុ CPI 2023 (ក្នុងចំណោម 100)",
+                chart_cpi_labels: ['សិង្ហបុរី', 'ម៉ាឡេស៊ី', 'វៀតណាម', 'ថៃ', 'ឥណ្ឌូនេស៊ី', 'ហ្វីលីពីន', 'កម្ពុជា', 'មីយ៉ាន់ម៉ា']
+            }
+        };
+
+        const brilliantBluesPalette = {
+            darkBlue: '#004AAD',
+            mediumBlue: '#0079FF',
+            lightBlue: '#55A6FF',
+            veryLightBlue: '#BBE1FF',
+            background: '#F0F8FF' 
+        };
+
+        let victimOriginChartInstance, gdpComparisonChartInstance, corruptionIndexChartInstance;
+
+        function wrapLabel(str, maxWidth) {
+            if (!str || str.length <= maxWidth) { return str; }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            return Array.isArray(label) ? label.join(' ') : label;
+        };
+        
+        const sharedTooltipOptions = { plugins: { tooltip: { callbacks: { title: tooltipTitleCallback } } } };
+
+        function createVictimOriginChart(labels) {
+            if (victimOriginChartInstance) victimOriginChartInstance.destroy();
+            const ctx = document.getElementById('victimOriginChart').getContext('2d');
+            victimOriginChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: [55, 25, 10, 5, 5],
+                        backgroundColor: [ brilliantBluesPalette.darkBlue, brilliantBluesPalette.mediumBlue, brilliantBluesPalette.lightBlue, brilliantBluesPalette.veryLightBlue, '#cccccc' ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' }, tooltip: sharedTooltipOptions.plugins.tooltip } }
+            });
+        }
+
+        function createGdpComparisonChart(labels, tooltipLabels) {
+            if (gdpComparisonChartInstance) gdpComparisonChartInstance.destroy();
+            const ctx = document.getElementById('gdpComparisonChart').getContext('2d');
+            gdpComparisonChartInstance = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{ data: [100, 50], backgroundColor: [ brilliantBluesPalette.lightBlue, brilliantBluesPalette.darkBlue ], borderColor: '#ffffff', borderWidth: 2 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) { label += ': '; }
+                                if (context.parsed !== null) {
+                                    label += context.label.includes(labels[0]) ? tooltipLabels.base : tooltipLabels.scam;
+                                }
+                                return label;
+                            },
+                            title: tooltipTitleCallback
+                        }}
+                    }
+                }
+            });
+        }
+
+        function createCorruptionIndexChart(labels, chartTitle) {
+            if (corruptionIndexChartInstance) corruptionIndexChartInstance.destroy();
+            const ctx = document.getElementById('corruptionIndexChart').getContext('2d');
+            const wrappedLabels = labels.map(label => wrapLabel(label, 16));
+            corruptionIndexChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: wrappedLabels,
+                    datasets: [{
+                        label: chartTitle,
+                        data: [83, 50, 41, 35, 34, 34, 22, 20],
+                        backgroundColor: brilliantBluesPalette.mediumBlue,
+                        borderColor: brilliantBluesPalette.darkBlue,
+                        borderWidth: 1
+                    }]
+                },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true, max: 100 } }, plugins: { legend: { display: false }, tooltip: sharedTooltipOptions.plugins.tooltip } }
+            });
+        }
+        
+        const errorModal = document.getElementById('errorModal');
+        const errorMessage = document.getElementById('errorMessage');
+
+        function showErrorModal(message) {
+            errorMessage.textContent = message;
+            errorModal.classList.remove('hidden');
+            errorModal.classList.add('flex');
+        }
+
+        function closeErrorModal() {
+            errorModal.classList.add('hidden');
+            errorModal.classList.remove('flex');
+        }
+
+        async function analyzeTextWithGemini(text, lang) {
+            const analyzeButton = document.getElementById('analyzeButton');
+            const resultDiv = document.getElementById('geminiResult');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            if (!text.trim()) {
+                showErrorModal(translations[lang].error_input_message);
+                return;
+            }
+
+            analyzeButton.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            resultDiv.innerHTML = '';
+
+            const prompts = {
+                th: `ในฐานะผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ที่เชี่ยวชาญด้านการหลอกลวงออนไลน์จากเอเชียตะวันออกเฉียงใต้ โปรดวิเคราะห์ข้อความต่อไปนี้เพื่อหาสัญญาณของการหลอกลวง: "${text}". โปรดระบุจุดที่น่าสงสัย (red flags) อธิบายกลยุทธ์การหลอกลวงที่น่าจะเป็นไปได้ และให้คำแนะนำที่เป็นรูปธรรม จัดรูปแบบคำตอบของคุณโดยใช้หัวข้อและรายการสัญลักษณ์ (bullet points) ที่ชัดเจน เข้าใจง่าย เป็นภาษาไทย`,
+                en: `As a cybersecurity expert specializing in Southeast Asian online scams, analyze the following message for signs of a scam: "${text}". Identify red flags, explain the likely scam tactic (e.g., romance scam, investment fraud), and provide concrete advice. Format your response in English with clear headings and bullet points.`,
+                zh: `作为一名专门研究东南亚网络诈骗的网络安全专家，请分析以下信息以寻找诈骗迹象：“${text}”。请识别危险信号，解释可能的诈骗策略（例如，爱情诈骗，投资欺诈），并提供具体建议。请使用中文清晰的标题和项目符号格式化您的回答。`,
+                km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`
+            };
+
+            const payload = { contents: [{ role: "user", parts: [{ text: prompts[lang] }] }] };
+            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
+                    let analysisText = result.candidates[0].content.parts[0].text;
+                    analysisText = analysisText
+                        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#004AAD]">$1</strong>')
+                        .replace(/\*/g, '•')
+                        .replace(/(\r\n|\n|\r)/gm, "<br>");
+                    resultDiv.innerHTML = analysisText;
+                } else {
+                    throw new Error('Invalid response structure from API.');
+                }
+            } catch (error) {
+                console.error('Gemini API call failed:', error);
+                showErrorModal(translations[lang].error_api_message);
+            }
+            
+            loadingSpinner.classList.add('hidden');
+            analyzeButton.disabled = false;
+        }
+        
+        function changeLanguage(lang) {
+            if (!translations[lang]) return;
+            
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update charts
+            const chartLang = translations[lang];
+            createVictimOriginChart(chartLang.chart_victim_labels);
+            createGdpComparisonChart(chartLang.chart_gdp_labels, { base: chartLang.chart_gdp_tooltip_base, scam: chartLang.chart_gdp_tooltip_scam });
+            createCorruptionIndexChart(chartLang.chart_cpi_labels, chartLang.chart_cpi_title);
+
+            // Update active button
+            document.querySelectorAll('#language-switcher .lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'th';
+            changeLanguage(savedLang);
+
+            document.getElementById('language-switcher').addEventListener('click', (event) => {
+                if (event.target.matches('.lang-btn')) {
+                    changeLanguage(event.target.dataset.lang);
+                }
+            });
+            
+            const analyzeButton = document.getElementById('analyzeButton');
+            const userInput = document.getElementById('userInput');
+            
+            analyzeButton.addEventListener('click', () => {
+                const currentLang = document.documentElement.lang;
+                analyzeTextWithGemini(userInput.value, currentLang);
+            });
+        });
+    </script>
+</body>
+</html>

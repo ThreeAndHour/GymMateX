@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -51,7 +51,7 @@
         }
         .lang-btn {
             padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
+            margin: 0.25rem;
             border-radius: 0.5rem;
             background-color: rgba(255, 255, 255, 0.2);
             color: white;
@@ -74,6 +74,13 @@
         [lang="es"] body, [lang="es"] h1, [lang="es"] h2, [lang="es"] h3, [lang="es"] h4, [lang="es"] p, [lang="es"] span, [lang="es"] div, [lang="es"] button, [lang="es"] li, [lang="es"] strong, [lang="es"] textarea, [lang="es"] a {
             font-family: 'Roboto', 'Sarabun', sans-serif;
         }
+        [lang="ar"] body, [lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] p, [lang="ar"] span, [lang="ar"] div, [lang="ar"] button, [lang="ar"] li, [lang="ar"] strong, [lang="ar"] textarea, [lang="ar"] a {
+            font-family: 'Noto Sans Arabic', 'Sarabun', sans-serif;
+            direction: rtl;
+        }
+        [lang="ko"] body, [lang="ko"] h1, [lang="ko"] h2, [lang="ko"] h3, [lang="ko"] h4, [lang="ko"] p, [lang="ko"] span, [lang="ko"] div, [lang="ko"] button, [lang="ko"] li, [lang="ko"] strong, [lang="ko"] textarea, [lang="ko"] a {
+            font-family: 'Noto Sans KR', 'Sarabun', sans-serif;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -89,8 +96,6 @@
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="zh">中文</button>
             <button class="lang-btn" data-lang="km">ខ្មែរ</button>
-            <button class="lang-btn" data-lang="fr">FR</button>
-            <button class="lang-btn" data-lang="es">ES</button>
         </div>
         <header class="relative z-20 flex flex-col items-center justify-center h-full text-white p-6">
             <div class="container mx-auto text-center">
@@ -165,7 +170,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-semibold text-center mb-4" data-lang-key="cost_cycle_title">วงจรแห่งการล่อลวง</h3>
-                    <p class="text-center text-gray-700 mb-6" data-lang-key="cost_cycle_desc">เหยื่อซึ่งส่วนใหญ่เป็นคนรุ่นใหม่ที่มีการศึกษา ถูกหลอกผ่านโฆษณางานปลอมบนโซเชียลมีเดีย ก่อนจะถูกกักขังและบังคับให้ทำงานใน "คอมพาวด์ทาส"</p>
+                    <p class="text-center text-gray-700 mb-6" data-lang-key="cost_cycle_desc">เหยื่อซึ่งส่วนใหญ่เป็นคนรุ่นใหม่ที่มีการศึกษา ถูกหลอกผ่านโฆษณางานปลอมบนโซเชียលมีเดีย ก่อนจะถูกกักขังและบังคับให้ทำงานใน "คอมพาวด์ทาส"</p>
                     <div class="space-y-4">
                         <div class="flex items-center p-3 bg-gray-50 rounded-md">
                             <span class="text-2xl mr-4">📱</span>
@@ -611,11 +616,11 @@
                 storm_title: "កំណើតនៃ \"ព្យុះដ៏ល្អឥតខ្ចោះ\"",
                 storm_desc: "ការលេចត្រដែតរបស់កម្ពុជាជាមជ្ឈមណ្ឌលបោកប្រាស់មិនមែនជារឿងចៃដន្យទេ។ វាជាលទ្ធផលនៃកត្តាសំខាន់ៗចំនួនបីដែលកើតឡើងព្រមគ្នា បង្កើតបានជាមូលដ្ឋានដ៏អំណោយផលដែលមិនធ្លាប់មានសម្រាប់ការរីកចម្រើននៃឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
                 storm_factor1_title: "ការបង្ក្រាបរបស់ចិន",
-                storm_factor1_desc: "ក្នុងឆ្នាំ ២០១៨ ការបង្ក្រាបរបស់ចិនលើក្រុមឧក្រិដ្ឋកម្មអនឡាញបានបង្ខំឱ្យអង្គការឧក្រិដ្ឋកម្មផ្លាស់ប្តូរទីតាំង។",
+                storm_factor1_desc: "ក្នុងឆ្នាំ ២០๑๘ ការបង្ក្រាបរបស់ចិនលើក្រុមឧក្រិដ្ឋកម្មអនឡាញបានបង្ខំឱ្យអង្គការឧក្រិដ្ឋកម្មផ្លាស់ប្តូរទីតាំង។",
                 storm_factor2_title: "កម្ពុជាហាមឃាត់ល្បែងអនឡាញ",
-                storm_factor2_desc: "ក្នុងឆ្នាំ ២០១៩ បទបញ្ជានេះបានបន្សល់ទុកនូវអគារកាស៊ីណូជាច្រើនដែលទំនេរ បង្កើតការផ្គត់ផ្គង់ទីកន្លែងប្រតិបត្តិការ។",
+                storm_factor2_desc: "ក្នុងឆ្នាំ ២០๑๙ បទបញ្ជានេះបានបន្សល់ទុកនូវអគារកាស៊ីណូជាច្រើនដែលទំនេរ បង្កើតការផ្គត់ផ្គង់ទីកន្លែងប្រតិបត្តិការ។",
                 storm_factor3_title: "វិបត្តិជំងឺកូវីដ-១៩",
-                storm_factor3_desc: "ក្នុងឆ្នាំ ២០២០ វិស័យទេសចរណ៍បានដួលរលំ ធ្វើឲ្យម្ចាស់អាជីវកម្មដែលអស់សង្ឃឹម បែរទៅសហការជាមួយឧក្រិដ្ឋជន។",
+                storm_factor3_desc: "ក្នុងឆ្នាំ ២០๒๐ វិស័យទេសចរណ៍បានដួលរលំ ធ្វើឲ្យម្ចាស់អាជីវកម្មដែលអស់សង្ឃឹម បែរទៅសហការជាមួយឧក្រិដ្ឋជន។",
                 cost_title: "តម្លៃដែលមនុស្សជាតិត្រូវបង់៖ ទាសភាពសម័យទំនើប",
                 cost_cycle_title: "វដ្តនៃការបោកបញ្ឆោត",
                 cost_cycle_desc: "ជនរងគ្រោះ ដែលភាគច្រើនជាយុវជនមានការអប់រំ ត្រូវបានទាក់ទាញដោយការផ្សាយពាណិជ្ជកម្មការងារក្លែងក្លាយនៅលើបណ្តាញសង្គម បន្ទាប់មកត្រូវបានចាប់ដាក់គុក និងបង្ខំឱ្យធ្វើការនៅក្នុង 'បរិវេណទាសករ'។",
@@ -645,9 +650,9 @@
                 nexus_groups_desc: "របាយការណ៍អន្តរជាតិបានចង្អុលបង្ហាញពីក្រុមហ៊ុនធំៗដែលមានទំនាក់ទំនងនយោបាយថាមានជាប់ពាក់ព័ន្ធនឹងឧស្សាហកម្មឧក្រិដ្ឋកម្ម។",
                 nexus_group1_desc: "ត្រូវបានចោទប្រកាន់ពីបទលាងលុយជាង ៤ ពាន់លានដុល្លារ និងមានទំនាក់ទំនងជាមួយសាច់ញាតិរបស់នាយករដ្ឋមន្ត្រី (ត្រូវបានដាក់ទណ្ឌកម្មដោយសហរដ្ឋអាមេរិក)។",
                 nexus_group2_desc: "ត្រូវបានកំណត់ថាជាទីតាំងនៃប្រតិបត្តិការបោកប្រាស់ និងការជួញដូរមនុស្ស។",
-                nexus_group3_desc: "មានទំនាក់ទំនងกับการบังคับใช้កម្លាំងពលកម្ម (ម្ចាស់គឺជាសមាជិកព្រឹទ្ធសភា និងត្រូវបានដាក់ទណ្ឌកម្មដោយសហរដ្ឋអាមេរិក)។",
+                nexus_group3_desc: "មានទំនាក់ទំនងនឹងការបង្ខំឱ្យធ្វើការ (ម្ចាស់គឺជាសមាជិកព្រឹទ្ធសភា និងត្រូវបានដាក់ទណ្ឌកម្មដោយសហរដ្ឋអាមេរិក)។",
                 infowar_title: "សមរភូមិថ្មី៖ ពីការបោកប្រាស់ទៅសង្គ្រាមព័ត៌មាន",
-                infowar_desc: "ជម្លោះព្រំដែនไทย-កម្ពុជាថ្មីៗនេះ បានបង្ហាញពីការវិវត្តដ៏น่าព្រួយបារម្ភមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុគ្គលិកពីមជ្ឈមណ្ឌលបោកប្រាស់ ត្រូវបានប្រែក្លាយជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងប្រទេសថៃ។",
+                infowar_desc: "ជម្លោះព្រំដែនកម្ពុជា-ថៃនាពេលថ្មីៗនេះ បានបង្ហាញពីការវិវត្តន៍ដ៏គួរឱ្យព្រួយបារម្ភមួយ៖ ហេដ្ឋារចនាសម្ព័ន្ធ និងបុគ្គលិកមកពីមជ្ឈមណ្ឌលបោកប្រាស់ ត្រូវបានប្រែក្លាយទៅជា 'កងទ័ពសាយប័រ' សម្រាប់ប្រតិបត្តិការព័ត៌មាន (IO) ប្រឆាំងនឹងប្រទេសថៃ។",
                 infowar_stat_desc: "ការវាយប្រហារតាមអ៊ីនធឺណិតលើប្រព័ន្ធផ្សព្វផ្សាយថៃក្នុងរយៈពេល 3 ថ្ងៃក្នុងអំឡុងពេលជម្លោះ។",
                 infowar_strategy_title: "យុទ្ធសាស្ត្រ \"ទុយោទឹកពន្លត់អគ្គីភ័យនៃភាពមិនពិត\"",
                 infowar_strategy1_title: "១. ការប្រមូលផ្តុំ",
@@ -655,11 +660,11 @@
                 infowar_strategy2_title: "២. ការបង្កើតអវតារ",
                 infowar_strategy2_desc: "បង្កើតគណនីអ្នកប្រើប្រាស់ក្លែងក្លាយយ៉ាងច្រើនសន្ធឹកសន្ធាប់។",
                 infowar_strategy3_title: "៣. ការវាយប្រហារ",
-                infowar_strategy3_desc: "ផ្សព្វផ្សាយព័ត៌មានក្លែងក្លាយ ស្ពែម និងការរាយការណ៍ទ្រង់ទ្រាយធំ ដើម្បីវាយប្រហារលើพื้นที่អនឡាញរបស់ថៃ។",
+                infowar_strategy3_desc: "ផ្សព្វផ្សាយព័ត៌មានក្លែងក្លាយ ស្ពែម និងការរាយការណ៍ទ្រង់ទ្រាយធំ ដើម្បីវាយប្រហារលើលំហអនឡាញរបស់ថៃ។",
                 infowar_goal: "គោលដៅ៖ បង្កើតភាពច្របូកច្របល់ បំភ្លៃការពិត និងដណ្តើមយកភាពស្របច្បាប់ក្នុងក្រសែភ្នែកសហគមន៍អន្តរជាតិ។",
                 gemini_title: "ឧបករណ៍វិភាគហានិភ័យ ✨",
                 gemini_desc: "ទទួលបានសារគួរឱ្យសង្ស័យមែនទេ? មិនប្រាកដថាជាការងារពិត ឬជាការបោកប្រាស់? សូមសាកល្បងប្រើឧបករណ៍វិភាគដែលដំណើរការដោយ Gemini API នេះ ដើម្បីវាយតម្លៃហានិភ័យជាបឋម។",
-                gemini_placeholder: "សូមដាក់សារដែលគួរឱ្យសងสัยនៅទីនេះ... ឧទាហរណ៍៖ 'ការងារងាយស្រួល ប្រាក់ខែខ្ពស់ ចុចទីនេះដើម្បីដាក់ពាក្យ!'",
+                gemini_placeholder: "សូមដាក់សារដែលគួរឱ្យសង្ស័យនៅទីនេះ... ឧទាហរណ៍៖ 'ការងារងាយស្រួល ប្រាក់ខែខ្ពស់ ចុចទីនេះដើម្បីដាក់ពាក្យ!'",
                 gemini_button: "វិភាគជាមួយ Gemini",
                 gemini_result_placeholder: "លទ្ធផលវិភាគនឹងបង្ហាញនៅទីនេះ...",
                 gemini_disclaimer: "ការបដិសេធ៖ ឧបករណ៍នេះផ្តល់នូវដំបូន្មានជាបឋមដោយប្រើ AI ហើយមិនមែនជាដំបូន្មានផ្នែកច្បាប់ ឬសន្តិសុខពីអ្នកជំនាញឡើយ។",
@@ -669,7 +674,7 @@
                 error_close_button: "បិទ",
                 error_input_message: "សូមបញ្ចូលអត្ថបទដើម្បីវិភាគ។",
                 error_api_message: "មិនអាចវិភាគអត្ថបទបានទេនៅពេលនេះ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។",
-                chart_victim_title: "សัดส่วนเหยื่อ",
+                chart_victim_title: "សមាមាត្រជនរងគ្រោះ",
                 chart_victim_labels: ['អាស៊ាន (ថៃ, វៀតណាម, ឥណ្ឌូនេស៊ី)', 'អាស៊ីខាងត្បូង (ឥណ្ឌា, បង់ក្លាដែស)', 'អាហ្វ្រិក', 'អាមេរិកឡាទីន', 'ផ្សេងៗ'],
                 chart_gdp_labels: ['ផលិតផលក្នុងស្រុកសរុបផ្លូវការ', 'ចំណូលឧស្សាហកម្មបោកប្រាស់ (ប៉ាន់ស្មាន)'],
                 chart_gdp_tooltip_base: "100% (មូលដ្ឋាន)",
@@ -815,7 +820,9 @@
                 zh: `作为一名专门研究东南亚网络诈骗的网络安全专家，请分析以下信息以寻找诈骗迹象：“${text}”。请识别危险信号，解释可能的诈骗策略（例如，爱情诈骗，投资欺诈），并提供具体建议。请使用中文清晰的标题和项目符号格式化您的回答。`,
                 km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`,
                 fr: `En tant qu'expert en cybersécurité spécialisé dans les escroqueries en ligne en Asie du Sud-Est, analysez le message suivant pour déceler des signes d'escroquerie : "${text}". Identifiez les signaux d'alarme, expliquez la tactique d'escroquerie probable (par exemple, arnaque sentimentale, fraude à l'investissement) et donnez des conseils concrets. Formatez votre réponse en français avec des titres clairs et des listes à puces.`,
-                es: `Como experto en ciberseguridad especializado en estafas en línea del sudeste asiático, analice el siguiente mensaje en busca de señales de estafa: "${text}". Identifique las señales de alerta, explique la táctica de estafa probable (por ejemplo, estafa romántica, fraude de inversión) y proporcione consejos concretos. Formatee su respuesta en español con encabezados claros y viñetas.`
+                es: `Como experto en ciberseguridad especializado en estafas en línea del sudeste asiático, analice el siguiente mensaje en busca de señales de estafa: "${text}". Identifique las señales de alerta, explique la táctica de estafa probable (por ejemplo, estafa romántica, fraude de inversión) y proporcione consejos concretos. Formatee su respuesta en español con encabezados claros y viñetas.`,
+                ar: `بصفتك خبيرًا في الأمن السيبراني متخصصًا في عمليات الاحتيال عبر الإنترنت في جنوب شرق آسيا، قم بتحليل الرسالة التالية بحثًا عن علامات الاحتيال: "${text}". حدد العلامات الحمراء، واشرح تكتيك الاحتيال المحتمل (على سبيل المثال، الاحتيال الرومانسي، الاحتيال الاستثماري)، وقدم نصائح ملموسة. نسق ردك باللغة العربية بعناوين واضحة ونقاط نقطية.`,
+                ko: `동남아시아 온라인 사기 전문 사이버 보안 전문가로서 다음 메시지에서 사기 징후를 분석하십시오: "${text}". 위험 신호를 식별하고, 가능한 사기 수법(예: 로맨스 스캠, 투자 사기)을 설명하고, 구체적인 조언을 제공하십시오. 명확한 제목과 글머리 기호를 사용하여 한국어로 답변을 작성하십시오.`
             };
 
             const payload = { contents: [{ role: "user", parts: [{ text: prompts[lang] }] }] };

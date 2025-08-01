@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture of Deception: An Infographic (Multilingual)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Slab:wght@700;900&family=Kanit:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B3954;
+            color: #BFD7EA;
+        }
+        .font-en { font-family: 'Inter', sans-serif; }
+        .font-th { font-family: 'Kanit', sans-serif; }
+        .font-zh { font-family: 'Noto Sans SC', sans-serif; }
+        .font-ru { font-family: 'Noto Sans', sans-serif; }
+        .font-km { font-family: 'Noto Sans Khmer', sans-serif; }
+        .title-font { font-family: 'Roboto Slab', serif; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .text-shadow-strong {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .lang-btn.active {
+            background-color: #FF6663;
+            color: white;
+            border-color: #FEB2A8;
+        }
+        .lang-btn:not(.active) {
+            background-color: #082f49;
+            color: #BFD7EA;
+        }
+        .lang-btn:not(.active):hover {
+            background-color: #073b5e;
+        }
+    </style>
+</head>
+<body class="antialiased font-en">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <div class="flex justify-between items-center mb-6">
+            <a href="https://threeandhour.github.io/GymMateX/TruthFromThai.html" class="text-blue-300 hover:text-white transition-colors text-lg" data-translate-key="home_link">&larr; Back to Main Page</a>
+            <div id="lang-switcher" class="flex space-x-2">
+                <button onclick="switchLanguage('th')" class="lang-btn font-th">TH</button>
+                <button onclick="switchLanguage('en')" class="lang-btn font-en active">EN</button>
+                <button onclick="switchLanguage('zh')" class="lang-btn font-zh">ZH</button>
+                <button onclick="switchLanguage('ru')" class="lang-btn font-ru">RU</button>
+                <button onclick="switchLanguage('km')" class="lang-btn font-km">KM</button>
+            </div>
+        </div>
+
+        <div class="mb-8 md:mb-12">
+            <img src="https://i.postimg.cc/Hxh74gSF/Image-1-8-2568-BE-at-12-45-topaz-upscale-2x.jpg" alt="Banner analyzing the situation in Cambodia" class="w-full h-auto rounded-lg shadow-2xl">
+        </div>
+
+        <header class="text-center my-12 md:my-16">
+            <h1 class="title-font text-4xl md:text-6xl font-extrabold text-white text-shadow-strong" data-translate-key="main_title">ARCHITECTURE of DECEPTION</h1>
+            <p class="mt-4 text-lg md:text-xl text-[#BFD7EA]" data-translate-key="main_subtitle">An Analysis of Cambodia's State-Crime Nexus and its Regional Impact</p>
+        </header>
+
+        <main class="space-y-20">
+
+            <section id="control" class="bg-[#082f49]/50 rounded-2xl p-6 md:p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="title-font text-3xl font-bold text-white" data-translate-key="section1_title">1. The Digital Fortress</h2>
+                    <p class="mt-2 text-[#BFD7EA] max-w-3xl mx-auto" data-translate-key="section1_desc">The Cambodian government has engineered a legal and technological framework for total information control, serving the dual purpose of suppressing dissent and shielding criminal enterprises.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg h-full">
+                        <h3 class="text-xl font-bold mb-4 text-center text-white" data-translate-key="s1_mechanism_title">Mechanism of Control</h3>
+                        <div class="space-y-4">
+                            <div class="text-center p-4 bg-gray-900/50 rounded-lg">
+                                <p class="font-semibold text-lg" data-translate-key="s1_telecom_law">2015 Telecoms Law & 2018 Prakas</p>
+                                <p class="text-sm text-[#BFD7EA]" data-translate-key="s1_telecom_desc">Legalizes warrantless surveillance and content monitoring.</p>
+                            </div>
+                            <div class="flex justify-center"><span class="text-4xl text-[#FF6663]">↓</span></div>
+                            <div class="text-center p-4 bg-gray-900/50 rounded-lg">
+                                <p class="font-semibold text-lg" data-translate-key="s1_nig_law">National Internet Gateway (NIG)</p>
+                                <p class="text-sm text-[#BFD7EA]" data-translate-key="s1_nig_desc">Centralizes all internet traffic for state monitoring and control.</p>
+                            </div>
+                            <div class="flex justify-center"><span class="text-4xl text-[#FF6663]">↓</span></div>
+                            <div class="grid grid-cols-2 gap-4 text-center text-white">
+                                <div class="p-3 bg-red-800/60 rounded-lg">
+                                    <p class="font-bold" data-translate-key="s1_suppress">Suppress Dissent</p>
+                                    <p class="text-xs text-gray-300" data-translate-key="s1_suppress_desc">Block independent media, silence critics.</p>
+                                </div>
+                                <div class="p-3 bg-blue-800/60 rounded-lg">
+                                    <p class="font-bold" data-translate-key="s1_protect">Protect Crime</p>
+                                    <p class="text-xs text-gray-300" data-translate-key="s1_protect_desc">Obstruct investigations, hide evidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg text-center h-full flex flex-col justify-center">
+                         <h3 class="text-xl font-bold text-white mb-2" data-translate-key="s1_retention_title">Mandatory Data Retention</h3>
+                         <p class="title-font text-8xl font-black text-[#FF6663]">12</p>
+                         <p class="text-3xl font-bold text-white -mt-2" data-translate-key="s1_months">MONTHS</p>
+                         <p class="text-[#BFD7EA] mt-2" data-translate-key="s1_retention_desc">ISPs are legally required to store all user traffic data, traceable to individuals, in a country with no data protection law.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="suppression" class="bg-[#082f49]/50 rounded-2xl p-6 md:p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="title-font text-3xl font-bold text-white" data-translate-key="section2_title">2. The Illusion of Order</h2>
+                    <p class="mt-2 text-[#BFD7EA] max-w-3xl mx-auto" data-translate-key="section2_desc">So-called "crackdowns" on cybercrime are performative, timed to deflect international pressure while leaving the criminal infrastructure and its masterminds untouched.</p>
+                </div>
+
+                <div class="my-8">
+                    <div class="relative w-full max-w-3xl mx-auto" style="padding-top: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" src="https://www.youtube.com/embed/QLawoMIIryM?si=ZCBjzp8Gzj7x_951" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center text-white" data-translate-key="s2_crackdown_title">Crackdown Ineffectiveness</h3>
+                        <div class="chart-container">
+                            <canvas id="crackdownEffectivenessChart"></canvas>
+                        </div>
+                        <p class="text-center mt-4 text-[#BFD7EA]" data-translate-key="s2_crackdown_desc">According to Amnesty International, the vast majority of identified scam compounds continue to operate even after being "raided" by police.</p>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center text-white" data-translate-key="s2_timeline_title">Timeline: Pressure & Performance</h3>
+                        <div class="relative border-l-4 border-red-500/30 pl-6 space-y-8">
+                            <div class="relative">
+                                <div class="absolute -left-[39px] top-1 w-6 h-6 bg-[#FF6663] rounded-full border-4 border-[#0B3954]"></div>
+                                <p class="font-bold text-white" data-translate-key="s2_un_report">Sep 2023: UN Report</p>
+                                <p class="text-sm text-[#BFD7EA]" data-translate-key="s2_un_desc">Highlights 100,000+ trafficked in Cambodia.</p>
+                                <p class="mt-1 text-sm text-[#FEB2A8]" data-translate-key="s2_mango_raid">➔ Oct 2024: Govt raids "Mango Park".</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[39px] top-1 w-6 h-6 bg-[#FF6663] rounded-full border-4 border-[#0B3954]"></div>
+                                <p class="font-bold text-white" data-translate-key="s2_tip_report">Jul 2025: Thai Tensions / US TIP Report</p>
+                                <p class="text-sm text-[#BFD7EA]" data-translate-key="s2_tip_desc">Escalating regional pressure anticipates new reports.</p>
+                                <p class="mt-1 text-sm text-[#FEB2A8]" data-translate-key="s2_nationwide_raid">➔ Jul 2025: PM orders nationwide "crackdown".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="weaponization" class="bg-[#082f49]/50 rounded-2xl p-6 md:p-8 shadow-2xl">
+                 <div class="text-center mb-8">
+                    <h2 class="title-font text-3xl font-bold text-white" data-translate-key="section3_title">3. Weaponized Information</h2>
+                    <p class="mt-2 text-[#BFD7EA] max-w-3xl mx-auto" data-translate-key="section3_desc">The state-crime nexus has evolved, transforming illicit infrastructure into a deniable tool for geopolitical conflict and information warfare.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                        <h3 class="text-xl font-bold mb-6 text-center text-white" data-translate-key="s3_army_title">From Scam Center to Cyber Army</h3>
+                        <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+                            <div class="text-center">
+                                <div class="text-6xl">📞</div>
+                                <p class="font-bold mt-2 text-white" data-translate-key="s3_criminal">Criminal Enterprise</p>
+                            </div>
+                            <div class="text-5xl text-[#FF6663] transform md:rotate-0 rotate-90 font-black">→</div>
+                            <div class="text-center">
+                                <div class="text-6xl">🛡️</div>
+                                <p class="font-bold mt-2 text-white" data-translate-key="s3_geopolitical">State Geopolitical Tool</p>
+                            </div>
+                        </div>
+                        <p class="text-center mt-6 text-[#BFD7EA]" data-translate-key="s3_army_desc">During the 2025 border conflict, scam compounds were allegedly repurposed to launch disinformation campaigns against Thailand, demonstrating a fusion of crime and statecraft.</p>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center text-white" data-translate-key="s3_silencing_title">Silencing the Messengers</h3>
+                         <p class="text-center text-[#BFD7EA] mb-4" data-translate-key="s3_silencing_desc">The state systematically targets journalists and activists who expose the scam industry, using vaguely worded "incitement" laws as a weapon.</p>
+                        <div class="chart-container">
+                            <canvas id="journalistTargetChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="economy" class="bg-[#082f49]/50 rounded-2xl p-6 md:p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="title-font text-3xl font-bold text-white" data-translate-key="section4_title">4. The Self-Cannibalizing Economy</h2>
+                    <p class="mt-2 text-[#BFD7EA] max-w-3xl mx-auto" data-translate-key="section4_desc">Prioritizing the massive profits of the criminal economy for the elite, the state actively undermines its own legitimate sectors and long-term stability.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg text-center md:col-span-2 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-white mb-2" data-translate-key="s4_shadow_title">Shadow Economy Scale</h3>
+                        <p class="title-font font-black text-6xl text-[#FF6663]">$19 Billion</p>
+                        <p class="text-lg font-semibold text-white" data-translate-key="s4_revenue">Annual Revenue (Est.)</p>
+                        <p class="text-[#BFD7EA] my-4" data-translate-key="s4_equivalent">This is equivalent to</p>
+                        <p class="title-font font-black text-6xl text-[#FF6663]">~60%</p>
+                        <p class="text-lg font-semibold text-white" data-translate-key="s4_gdp">of Cambodia's Official GDP</p>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg md:col-span-3">
+                         <h3 class="text-xl font-bold mb-4 text-center text-white" data-translate-key="s4_cannibal_title">Economic Cannibalism</h3>
+                         <p class="text-center text-[#BFD7EA] mb-4" data-translate-key="s4_cannibal_desc">Illicit revenue growth comes at the direct expense of legitimate sectors like tourism and foreign direct investment (FDI), damaging the nation's reputation.</p>
+                        <div class="chart-container h-80 md:h-[400px] max-h-[450px]">
+                            <canvas id="economicImpactChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="spillover" class="bg-[#082f49]/50 rounded-2xl p-6 md:p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="title-font text-3xl font-bold text-white" data-translate-key="section5_title">5. Regional Spillover: The Impact on Thailand</h2>
+                    <p class="mt-2 text-[#BFD7EA] max-w-3xl mx-auto" data-translate-key="section5_desc">The state-crime nexus is not a domestic issue; it actively exports crime, instability, and direct security threats to its neighbors.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-white">
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <p class="text-6xl mb-4">💸</p>
+                        <h3 class="text-xl font-bold" data-translate-key="s5_crisis_title">Financial & Social Crisis</h3>
+                        <p class="mt-2 text-sm text-[#BFD7EA]" data-translate-key="s5_crisis_desc">Massive financial losses for Thai citizens from scams, coupled with a growing cross-border human trafficking crisis as Thais are lured into forced labor.</p>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <p class="text-6xl mb-4">💥</p>
+                        <h3 class="text-xl font-bold" data-translate-key="s5_threat_title">National Security Threat</h3>
+                        <p class="mt-2 text-sm text-[#BFD7EA]" data-translate-key="s5_threat_desc">Criminal infrastructure is weaponized for information warfare against Thailand, while armed compounds on the border increase the risk of kinetic conflict.</p>
+                    </div>
+                    <div class="bg-[#0B3954] p-6 rounded-lg shadow-lg">
+                        <p class="text-6xl mb-4">🤝</p>
+                        <h3 class="text-xl font-bold" data-translate-key="s5_diplomacy_title">Corroded Diplomacy</h3>
+                        <p class="mt-2 text-sm text-[#BFD7EA]" data-translate-key="s5_diplomacy_desc">A cycle of denial and a lack of genuine cooperation from Cambodia erodes trust and hampers joint efforts to combat transnational crime.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t border-blue-900/50">
+            <div class="mb-6">
+                <a href="https://drive.google.com/file/d/1sqEoolbyibfml5NJNP2lwGWt4rTiENPf/view?usp=sharing" target="_blank" class="inline-block bg-[#FF6663] hover:bg-red-500 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105" data-translate-key="download_report">Download Full Report (PDF)</a>
+            </div>
+            <p class="text-[#BFD7EA] text-sm" data-translate-key="footer_text">Data synthesized from the "Architecture of Deception" report and associated sources. This infographic presents a summary of key findings.</p>
+            <p class="text-gray-500 text-xs mt-2" data-translate-key="last_updated"></p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                home_link: "← Back to Main Page",
+                main_title: "ARCHITECTURE of DECEPTION",
+                main_subtitle: "An Analysis of Cambodia's State-Crime Nexus and its Regional Impact",
+                section1_title: "1. The Digital Fortress",
+                section1_desc: "The Cambodian government has engineered a legal and technological framework for total information control, serving the dual purpose of suppressing dissent and shielding criminal enterprises.",
+                s1_mechanism_title: "Mechanism of Control",
+                s1_telecom_law: "2015 Telecoms Law & 2018 Prakas",
+                s1_telecom_desc: "Legalizes warrantless surveillance and content monitoring.",
+                s1_nig_law: "National Internet Gateway (NIG)",
+                s1_nig_desc: "Centralizes all internet traffic for state monitoring and control.",
+                s1_suppress: "Suppress Dissent",
+                s1_suppress_desc: "Block independent media, silence critics.",
+                s1_protect: "Protect Crime",
+                s1_protect_desc: "Obstruct investigations, hide evidence.",
+                s1_retention_title: "Mandatory Data Retention",
+                s1_months: "MONTHS",
+                s1_retention_desc: "ISPs are legally required to store all user traffic data, traceable to individuals, in a country with no data protection law.",
+                section2_title: "2. The Illusion of Order",
+                section2_desc: "So-called \"crackdowns\" on cybercrime are performative, timed to deflect international pressure while leaving the criminal infrastructure and its masterminds untouched.",
+                s2_crackdown_title: "Crackdown Ineffectiveness",
+                s2_crackdown_desc: "According to Amnesty International, the vast majority of identified scam compounds continue to operate even after being \"raided\" by police.",
+                s2_timeline_title: "Timeline: Pressure & Performance",
+                s2_un_report: "Sep 2023: UN Report",
+                s2_un_desc: "Highlights 100,000+ trafficked in Cambodia.",
+                s2_mango_raid: "➔ Oct 2024: Govt raids \"Mango Park\".",
+                s2_tip_report: "Jul 2025: Thai Tensions / US TIP Report",
+                s2_tip_desc: "Escalating regional pressure anticipates new reports.",
+                s2_nationwide_raid: "➔ Jul 2025: PM orders nationwide \"crackdown\".",
+                section3_title: "3. Weaponized Information",
+                section3_desc: "The state-crime nexus has evolved, transforming illicit infrastructure into a deniable tool for geopolitical conflict and information warfare.",
+                s3_army_title: "From Scam Center to Cyber Army",
+                s3_criminal: "Criminal Enterprise",
+                s3_geopolitical: "State Geopolitical Tool",
+                s3_army_desc: "During the 2025 border conflict, scam compounds were allegedly repurposed to launch disinformation campaigns against Thailand, demonstrating a fusion of crime and statecraft.",
+                s3_silencing_title: "Silencing the Messengers",
+                s3_silencing_desc: "The state systematically targets journalists and activists who expose the scam industry, using vaguely worded \"incitement\" laws as a weapon.",
+                section4_title: "4. The Self-Cannibalizing Economy",
+                section4_desc: "Prioritizing the massive profits of the criminal economy for the elite, the state actively undermines its own legitimate sectors and long-term stability.",
+                s4_shadow_title: "Shadow Economy Scale",
+                s4_revenue: "Annual Revenue (Est.)",
+                s4_equivalent: "This is equivalent to",
+                s4_gdp: "of Cambodia's Official GDP",
+                s4_cannibal_title: "Economic Cannibalism",
+                s4_cannibal_desc: "Illicit revenue growth comes at the direct expense of legitimate sectors like tourism and foreign direct investment (FDI), damaging the nation's reputation.",
+                section5_title: "5. Regional Spillover: The Impact on Thailand",
+                section5_desc: "The state-crime nexus is not a domestic issue; it actively exports crime, instability, and direct security threats to its neighbors.",
+                s5_crisis_title: "Financial & Social Crisis",
+                s5_crisis_desc: "Massive financial losses for Thai citizens from scams, coupled with a growing cross-border human trafficking crisis as Thais are lured into forced labor.",
+                s5_threat_title: "National Security Threat",
+                s5_threat_desc: "Criminal infrastructure is weaponized for information warfare against Thailand, while armed compounds on the border increase the risk of kinetic conflict.",
+                s5_diplomacy_title: "Corroded Diplomacy",
+                s5_diplomacy_desc: "A cycle of denial and a lack of genuine cooperation from Cambodia erodes trust and hampers joint efforts to combat transnational crime.",
+                footer_text: "Data synthesized from the \"Architecture of Deception\" report and associated sources. This infographic presents a summary of key findings.",
+                last_updated: "Last Updated: August 1, 2025",
+                download_report: "Download Full Report (PDF)",
+                chart_crackdown_op: "Remain Operational",
+                chart_crackdown_sd: "Shut Down (Allegedly)",
+                chart_journo_md: "Mech Dara (Arrested)",
+                chart_journo_rs: "Ros Sokhet (Convicted)",
+                chart_journo_ot: "Other Activists & Journalists (Harassed)",
+                chart_journo_ds: "Cases of Persecution",
+                chart_econ_rev: "Illicit Scam Revenue (Est. $B)",
+                chart_econ_fdi: "Legitimate FDI ($B)"
+            },
+            th: {
+                home_link: "← กลับสู่หน้าหลัก",
+                main_title: "สถาปัตยกรรมแห่งการลวงตา",
+                main_subtitle: "บทวิเคราะห์เครือข่ายรัฐ-อาชญากรรมของกัมพูชาและผลกระทบต่อภูมิภาค",
+                section1_title: "1. ป้อมปราการดิจิทัล",
+                section1_desc: "รัฐบาลกัมพูชาได้สร้างกรอบกฎหมายและเทคโนโลยีเพื่อควบคุมข้อมูลทั้งหมด โดยมีเป้าหมายสองประการคือการปราบปรามผู้เห็นต่างและปกป้ององค์กรอาชญากรรม",
+                s1_mechanism_title: "กลไกการควบคุม",
+                s1_telecom_law: "กฎหมายโทรคมนาคม 2015 และประกาศร่วม 2018",
+                s1_telecom_desc: "ทำให้การสอดส่องโดยไม่มีหมายศาลและการตรวจสอบเนื้อหาถูกกฎหมาย",
+                s1_nig_law: "ประตูสู่อินเทอร์เน็ตแห่งชาติ (NIG)",
+                s1_nig_desc: "รวบรวมการรับส่งข้อมูลอินเทอร์เน็ตทั้งหมดไว้ที่ศูนย์กลางเพื่อให้รัฐตรวจสอบและควบคุม",
+                s1_suppress: "ปราบปรามผู้เห็นต่าง",
+                s1_suppress_desc: "ปิดกั้นสื่ออิสระ ปิดปากผู้วิจารณ์",
+                s1_protect: "คุ้มครองอาชญากรรม",
+                s1_protect_desc: "ขัดขวางการสืบสวน ซ่อนหลักฐาน",
+                s1_retention_title: "การบังคับเก็บข้อมูล",
+                s1_months: "เดือน",
+                s1_retention_desc: "ผู้ให้บริการอินเทอร์เน็ตถูกบังคับให้เก็บข้อมูลการใช้งานทั้งหมด 12 เดือน ซึ่งสามารถสืบย้อนถึงตัวบุคคลได้ ในประเทศที่ไม่มีกฎหมายคุ้มครองข้อมูล",
+                section2_title: "2. ภาพลวงตาแห่งความสงบเรียบร้อย",
+                section2_desc: "ปฏิบัติการ 'กวาดล้าง' อาชญากรรมไซเบอร์เป็นเพียงการแสดงที่ถูกกำหนดเวลาเพื่อเบี่ยงเบนความสนใจจากนานาชาติ โดยปล่อยให้โครงสร้างอาชญากรรมและผู้บงการยังคงอยู่",
+                s2_crackdown_title: "ความไร้ประสิทธิภาพของการปราบปราม",
+                s2_crackdown_desc: "จากข้อมูลของ Amnesty International ศูนย์หลอกลวงส่วนใหญ่ยังคงดำเนินการต่อไปแม้จะเคยถูกตำรวจ 'บุกค้น' แล้วก็ตาม",
+                s2_timeline_title: "เส้นเวลา: แรงกดดันและการแสดง",
+                s2_un_report: "ก.ย. 2023: รายงาน UN",
+                s2_un_desc: "ชี้ว่ามีผู้ถูกค้ามนุษย์กว่า 100,000 คนในกัมพูชา",
+                s2_mango_raid: "➔ ต.ค. 2024: รัฐบาลบุกค้น 'แมงโก้พาร์ค'",
+                s2_tip_report: "ก.ค. 2025: ความตึงเครียดกับไทย / รายงาน TIP สหรัฐฯ",
+                s2_tip_desc: "แรงกดดันในภูมิภาคเพิ่มขึ้น คาดว่าจะมีรายงานใหม่",
+                s2_nationwide_raid: "➔ ก.ค. 2025: นายกฯ สั่ง 'กวาดล้าง' ทั่วประเทศ",
+                section3_title: "3. การใช้ข้อมูลเป็นอาวุธ",
+                section3_desc: "เครือข่ายรัฐ-อาชญากรรมได้พัฒนาไปอีกขั้น โดยเปลี่ยนโครงสร้างพื้นฐานที่ผิดกฎหมายให้กลายเป็นเครื่องมือที่รัฐสามารถปฏิเสธความรับผิดชอบได้ในความขัดแย้งทางภูมิรัฐศาสตร์และสงครามข้อมูล",
+                s3_army_title: "จากศูนย์หลอกลวงสู่กองทัพไซเบอร์",
+                s3_criminal: "องค์กรอาชญากรรม",
+                s3_geopolitical: "เครื่องมือทางภูมิรัฐศาสตร์ของรัฐ",
+                s3_army_desc: "ในช่วงความขัดแย้งชายแดนปี 2025 มีข้อกล่าวหาว่าศูนย์หลอกลวงถูกใช้เพื่อโจมตีไทยด้วยข้อมูลเท็จ ซึ่งแสดงถึงการหลอมรวมระหว่างอาชญากรรมและศิลปะแห่งรัฐ",
+                s3_silencing_title: "การปิดปากผู้ส่งสาร",
+                s3_silencing_desc: "รัฐตั้งเป้าโจมตีนักข่าวและนักเคลื่อนไหวที่เปิดโปงอุตสาหกรรมหลอกลวงอย่างเป็นระบบ โดยใช้กฎหมาย 'ยุยงปลุกปั่น' ที่คลุมเครือเป็นอาวุธ",
+                section4_title: "4. เศรษฐกิจที่กัดกร่อนตัวเอง",
+                section4_desc: "ด้วยการให้ความสำคัญกับผลกำไรมหาศาลของเศรษฐกิจอาชญากรรมสำหรับชนชั้นนำ รัฐกำลังบ่อนทำลายภาคส่วนที่ถูกกฎหมายและเสถียรภาพในระยะยาวของตนเองอย่างแข็งขัน",
+                s4_shadow_title: "ขนาดเศรษฐกิจเงา",
+                s4_revenue: "รายได้ต่อปี (ประมาณ)",
+                s4_equivalent: "ซึ่งเทียบเท่ากับ",
+                s4_gdp: "ของ GDP อย่างเป็นทางการของกัมพูชา",
+                s4_cannibal_title: "การกินเนื้อพวกเดียวกันทางเศรษฐกิจ",
+                s4_cannibal_desc: "การเติบโตของรายได้ที่ผิดกฎหมายเกิดขึ้นจากการทำลายภาคส่วนที่ถูกกฎหมาย เช่น การท่องเที่ยวและการลงทุนโดยตรงจากต่างประเทศ (FDI) ซึ่งทำลายชื่อเสียงของประเทศ",
+                section5_title: "5. ผลกระทบต่อภูมิภาค: ผลกระทบต่อประเทศไทย",
+                section5_desc: "เครือข่ายรัฐ-อาชญากรรมไม่ได้เป็นปัญหาภายในประเทศ แต่ยังส่งออกอาชญากรรม ความไม่มั่นคง และภัยคุกคามความมั่นคงโดยตรงไปยังประเทศเพื่อนบ้าน",
+                s5_crisis_title: "วิกฤตการณ์ทางการเงินและสังคม",
+                s5_crisis_desc: "ความสูญเสียทางการเงินมหาศาลของคนไทยจากการหลอกลวง ควบคู่ไปกับวิกฤตการค้ามนุษย์ข้ามพรมแดนที่เพิ่มขึ้นจากการล่อลวงคนไทยไปใช้แรงงานทาส",
+                s5_threat_title: "ภัยคุกคามความมั่นคงแห่งชาติ",
+                s5_threat_desc: "โครงสร้างพื้นฐานอาชญากรรมถูกใช้เป็นอาวุธในสงครามข้อมูลต่อต้านไทย ในขณะที่ค่ายติดอาวุธตามแนวชายแดนเพิ่มความเสี่ยงของความขัดแย้งทางทหาร",
+                s5_diplomacy_title: "การทูตที่ถูกกัดกร่อน",
+                s5_diplomacy_desc: "วงจรของการปฏิเสธและการขาดความร่วมมืออย่างจริงใจจากกัมพูชากัดกร่อนความไว้วางใจและขัดขวางความพยายามร่วมกันในการต่อสู้กับอาชญากรรมข้ามชาติ",
+                footer_text: "ข้อมูลสังเคราะห์จากรายงาน 'สถาปัตยกรรมแห่งการลวงตา' และแหล่งข้อมูลที่เกี่ยวข้อง อินโฟกราฟิกนี้นำเสนอสรุปข้อค้นพบที่สำคัญ",
+                last_updated: "อัปเดตล่าสุด: 1 สิงหาคม 2568",
+                download_report: "ดาวน์โหลดรายงานฉบับเต็ม (PDF)",
+                chart_crackdown_op: "ยังคงดำเนินการอยู่",
+                chart_crackdown_sd: "ปิดตัวลง (ตามคำกล่าวอ้าง)",
+                chart_journo_md: "เมจ ดารา (ถูกจับกุม)",
+                chart_journo_rs: "รส โสเขต (ถูกตัดสินว่าผิด)",
+                chart_journo_ot: "นักกิจกรรมและนักข่าวอื่นๆ (ถูกคุกคาม)",
+                chart_journo_ds: "กรณีการประหัตประหาร",
+                chart_econ_rev: "รายได้จากธุรกิจหลอกลวง (ประมาณ $B)",
+                chart_econ_fdi: "การลงทุนโดยตรงจากต่างประเทศที่ถูกกฎหมาย ($B)"
+            },
+            zh: {
+                home_link: "← 返回主页",
+                main_title: "欺骗的架构",
+                main_subtitle: "柬埔寨国家犯罪联系及其区域影响分析",
+                section1_title: "1. 数字堡垒",
+                section1_desc: "柬埔寨政府设计了一个法律和技术框架，用于全面信息控制，旨在压制异议和保护犯罪企业。",
+                s1_mechanism_title: "控制机制",
+                s1_telecom_law: "2015年电信法和2018年部长令",
+                s1_telecom_desc: "使无证监视和内容监控合法化。",
+                s1_nig_law: "国家互联网网关 (NIG)",
+                s1_nig_desc: "集中所有互联网流量，供国家监控。",
+                s1_suppress: "压制异议",
+                s1_suppress_desc: "封锁独立媒体，压制批评者。",
+                s1_protect: "保护犯罪",
+                s1_protect_desc: "阻碍调查，隐藏证据。",
+                s1_retention_title: "强制数据保留",
+                s1_months: "个月",
+                s1_retention_desc: "在一个没有数据保护法的国家，ISP被法律要求存储所有可追溯到个人的用户流量数据12个月。",
+                section2_title: "2. 秩序的幻觉",
+                section2_desc: "所谓的对网络犯罪的“镇压”是表演性的，旨在转移国际压力，而犯罪基础设施及其主谋却毫发无损。",
+                s2_crackdown_title: "镇压无效",
+                s2_crackdown_desc: "根据国际特赦组织的数据，绝大多数已识别的诈骗园区在被警方“突袭”后仍在继续运营。",
+                s2_timeline_title: "时间线：压力与表演",
+                s2_un_report: "2023年9月：联合国报告",
+                s2_un_desc: "指出柬埔寨有超过10万名被贩运者。",
+                s2_mango_raid: "➔ 2024年10月：政府突袭“芒果公园”。",
+                s2_tip_report: "2025年7月：泰柬紧张局势/美国TIP报告",
+                s2_tip_desc: "区域压力升级，预计将有新报告。",
+                s2_nationwide_raid: "➔ 2025年7月：首相下令全国性“镇压”。",
+                section3_title: "3. 信息武器化",
+                section3_desc: "国家与犯罪的联系已经演变，将非法基础设施转变为地缘政治冲突和信息战中可否认的工具。",
+                s3_army_title: "从诈骗中心到网络军队",
+                s3_criminal: "犯罪企业",
+                s3_geopolitical: "国家地缘政治工具",
+                s3_army_desc: "在2025年边境冲突期间，据称诈骗园区被重新利用，对泰国发动虚假信息宣传活动，展示了犯罪与治国方略的融合。",
+                s3_silencing_title: "压制信使",
+                s3_silencing_desc: "国家系统地针对揭露诈骗行业的记者和活动家，使用措辞含糊的“煽动”法作为武器。",
+                section4_title: "4. 自我蚕食的经济",
+                section4_desc: "为了精英阶层的犯罪经济巨额利润，国家积极破坏其合法的部门和长期稳定。",
+                s4_shadow_title: "影子经济规模",
+                s4_revenue: "年收入（估计）",
+                s4_equivalent: "这相当于",
+                s4_gdp: "柬埔寨官方GDP的",
+                s4_cannibal_title: "经济同类相食",
+                s4_cannibal_desc: "非法收入的增长是以旅游业和外国直接投资（FDI）等合法部门为直接代价的，损害了国家声誉。",
+                section5_title: "5. 区域蔓延：对泰国的影响",
+                section5_desc: "国家与犯罪的联系不是国内问题；它积极向邻国输出犯罪、不稳定和直接的安全威胁。",
+                s5_crisis_title: "金融与社会危机",
+                s5_crisis_desc: "泰国公民因诈骗遭受巨大经济损失，同时，由于泰国人被诱骗从事强迫劳动，跨国人口贩运危机日益严重。",
+                s5_threat_title: "国家安全威胁",
+                s5_threat_desc: "犯罪基础设施被武器化，用于对泰国的信息战，而边境的武装营地增加了军事冲突的风险。",
+                s5_diplomacy_title: "被侵蚀的外交",
+                s5_diplomacy_desc: "柬埔寨的否认循环和缺乏真诚合作，侵蚀了信任，并阻碍了打击跨国犯罪的共同努力。",
+                footer_text: "数据综合自“欺骗的架构”报告及相关来源。此信息图表总结了主要发现。",
+                last_updated: "最后更新：2025年8月1日",
+                download_report: "下载完整报告 (PDF)",
+                chart_crackdown_op: "仍在运作",
+                chart_crackdown_sd: "已关闭（据称）",
+                chart_journo_md: "梅奇·达拉（被捕）",
+                chart_journo_rs: "罗斯·索赫特（被定罪）",
+                chart_journo_ot: "其他活动家和记者（受骚扰）",
+                chart_journo_ds: "迫害案件",
+                chart_econ_rev: "非法诈骗收入（估计 $B）",
+                chart_econ_fdi: "合法外国直接投资 ($B)"
+            },
+            ru: {
+                home_link: "← На главную",
+                main_title: "АРХИТЕКТУРА ОБМАНА",
+                main_subtitle: "Анализ связи государства и преступности в Камбодже и ее регионального влияния",
+                section1_title: "1. Цифровая крепость",
+                section1_desc: "Правительство Камбоджи создало правовую и технологическую базу для полного контроля над информацией, служащую двойной цели: подавлению инакомыслия и защите криминальных предприятий.",
+                s1_mechanism_title: "Механизм контроля",
+                s1_telecom_law: "Закон о телекоммуникациях 2015 г. и Приказ 2018 г.",
+                s1_telecom_desc: "Легализует наблюдение без ордера и мониторинг контента.",
+                s1_nig_law: "Национальный интернет-шлюз (NIG)",
+                s1_nig_desc: "Централизует весь интернет-трафик для государственного мониторинга.",
+                s1_suppress: "Подавление инакомыслия",
+                s1_suppress_desc: "Блокировка независимых СМИ, замалчивание критиков.",
+                s1_protect: "Защита преступности",
+                s1_protect_desc: "Препятствование расследованиям, сокрытие улик.",
+                s1_retention_title: "Обязательное хранение данных",
+                s1_months: "МЕСЯЦЕВ",
+                s1_retention_desc: "В стране без закона о защите данных интернет-провайдеры по закону обязаны хранить все данные о трафике пользователей, отслеживаемые до конкретных лиц, в течение 12 месяцев.",
+                section2_title: "2. Иллюзия порядка",
+                section2_desc: "Так называемые «репрессии» против киберпреступности являются показными, приуроченными к отвлечению международного давления, оставляя при этом преступную инфраструктуру и ее организаторов нетронутыми.",
+                s2_crackdown_title: "Неэффективность репрессий",
+                s2_crackdown_desc: "По данным Amnesty International, подавляющее большинство выявленных мошеннических центров продолжают работать даже после «рейдов» полиции.",
+                s2_timeline_title: "Хронология: Давление и представление",
+                s2_un_report: "Сентябрь 2023: Отчет ООН",
+                s2_un_desc: "Указывает на более чем 100 000 жертв торговли людьми в Камбодже.",
+                s2_mango_raid: "➔ Октябрь 2024: Правительство проводит рейд в «Манго Парк».",
+                s2_tip_report: "Июль 2025: Напряженность с Таиландом / Отчет США о торговле людьми",
+                s2_tip_desc: "Рост регионального давления в ожидании новых отчетов.",
+                s2_nationwide_raid: "➔ Июль 2025: Премьер-министр приказывает провести общенациональные «репрессии».",
+                section3_title: "3. Информация как оружие",
+                section3_desc: "Связь государства и преступности эволюционировала, превращая незаконную инфраструктуру в инструмент для геополитических конфликтов и информационной войны, который можно отрицать.",
+                s3_army_title: "От мошеннического центра до киберармии",
+                s3_criminal: "Преступное предприятие",
+                s3_geopolitical: "Государственный геополитический инструмент",
+                s3_army_desc: "Во время пограничного конфликта 2025 года, по сообщениям, мошеннические центры были перепрофилированы для проведения дезинформационных кампаний против Таиланда, демонстрируя слияние преступности и государственного управления.",
+                s3_silencing_title: "Заставить замолчать вестников",
+                s3_silencing_desc: "Государство систематически преследует журналистов и активистов, разоблачающих мошенническую индустрию, используя расплывчатые законы о «подстрекательстве» как оружие.",
+                section4_title: "4. Самопожирающая экономика",
+                section4_desc: "Отдавая приоритет огромным прибылям криминальной экономики для элиты, государство активно подрывает свои собственные законные сектора и долгосрочную стабильность.",
+                s4_shadow_title: "Масштаб теневой экономики",
+                s4_revenue: "Годовой доход (оценка)",
+                s4_equivalent: "Это эквивалентно",
+                s4_gdp: "официального ВВП Камбоджи",
+                s4_cannibal_title: "Экономический каннибализм",
+                s4_cannibal_desc: "Рост незаконных доходов происходит за счет прямого ущерба законным секторам, таким как туризм и прямые иностранные инвестиции (ПИИ), что наносит ущерб репутации страны.",
+                section5_title: "5. Региональное распространение: Влияние на Таиланд",
+                section5_desc: "Связь государства и преступности не является внутренней проблемой; она активно экспортирует преступность, нестабильность и прямые угрозы безопасности своим соседям.",
+                s5_crisis_title: "Финансовый и социальный кризис",
+                s5_crisis_desc: "Огромные финансовые потери граждан Таиланда от мошенничества, в сочетании с растущим кризисом трансграничной торговли людьми, поскольку тайцев заманивают на принудительные работы.",
+                s5_threat_title: "Угроза национальной безопасности",
+                s5_threat_desc: "Криминальная инфраструктура используется как оружие в информационной войне против Таиланда, в то время как вооруженные комплексы на границе увеличивают риск военного конфликта.",
+                s5_diplomacy_title: "Подорванная дипломатия",
+                s5_diplomacy_desc: "Цикл отрицания и отсутствие искреннего сотрудничества со стороны Камбоджи подрывают доверие и препятствуют совместным усилиям по борьбе с транснациональной преступностью.",
+                footer_text: "Данные синтезированы из отчета «Архитектура обмана» и связанных источников. Эта инфографика представляет собой краткое изложение основных выводов.",
+                last_updated: "Последнее обновление: 1 августа 2025 г.",
+                download_report: "Скачать полный отчет (PDF)",
+                chart_crackdown_op: "Продолжают работать",
+                chart_crackdown_sd: "Закрыты (предположительно)",
+                chart_journo_md: "Меч Дара (арестован)",
+                chart_journo_rs: "Рос Сокхет (осужден)",
+                chart_journo_ot: "Другие активисты и журналисты (преследуются)",
+                chart_journo_ds: "Случаи преследования",
+                chart_econ_rev: "Доход от мошенничества (оценка $B)",
+                chart_econ_fdi: "Законные ПИИ ($B)"
+            },
+            km: {
+                home_link: "← ត្រឡប់ទៅទំព័រដើម",
+                main_title: "ស្ថាបត្យកម្មនៃការបោកប្រាស់",
+                main_subtitle: "ការវិភាគអំពីបណ្តាញរដ្ឋ-ឧក្រិដ្ឋកម្មរបស់កម្ពុជា និងផលប៉ះពាល់ក្នុងតំបន់",
+                section1_title: "១. បន្ទាយឌីជីថល",
+                section1_desc: "រដ្ឋាភិបាលកម្ពុជាបានបង្កើតក្របខ័ណ្ឌច្បាប់និងបច្ចេកវិទ្យាសម្រាប់ការត្រួតពិនិត្យព័ត៌មានទាំងស្រុង ដោយបម្រើគោលបំណងពីរគឺការបង្ក្រាបអ្នកប្រឆាំងនិងការការពារសហគ្រាសឧក្រិដ្ឋកម្ម។",
+                s1_mechanism_title: "យន្តការនៃការត្រួតពិនិត្យ",
+                s1_telecom_law: "ច្បាប់ទូរគមនាគមន៍ឆ្នាំ២០១៥ និងប្រកាសឆ្នាំ២០១៨",
+                s1_telecom_desc: "ធ្វើឱ្យការឃ្លាំមើលដោយគ្មានដីកា និងការត្រួតពិនិត្យខ្លឹមសារស្របច្បាប់។",
+                s1_nig_law: "ច្រកទ្វារអ៊ីនធឺណិតជាតិ (NIG)",
+                s1_nig_desc: "ប្រមូលផ្តុំចរាចរណ៍អ៊ីនធឺណិតទាំងអស់នៅចំណុចកណ្តាលសម្រាប់ការត្រួតពិនិត្យនិងគ្រប់គ្រងរបស់រដ្ឋ។",
+                s1_suppress: "បង្ក្រាបអ្នកប្រឆាំង",
+                s1_suppress_desc: "រារាំងប្រព័ន្ធផ្សព្វផ្សាយឯករាជ្យ បំបិទមាត់អ្នករិះគន់។",
+                s1_protect: "ការពារឧក្រិដ្ឋកម្ម",
+                s1_protect_desc: "រារាំងការស៊ើបអង្កេត លាក់បាំងភស្តុតាង។",
+                s1_retention_title: "ការរក្សាទុកទិន្នន័យជាកាតព្វកិច្ច",
+                s1_months: "ខែ",
+                s1_retention_desc: "ISP ត្រូវបានតម្រូវដោយច្បាប់ឱ្យរក្សាទុកទិន្នន័យចរាចរណ៍អ្នកប្រើប្រាស់ទាំងអស់រយៈពេល ១២ ខែ ដែលអាចតាមដានទៅដល់បុគ្គលម្នាក់ៗ នៅក្នុងប្រទេសដែលគ្មានច្បាប់ការពារទិន្នន័យ។",
+                section2_title: "២. ការបញ្ឆោតនៃសណ្តាប់ធ្នាប់",
+                section2_desc: "ប្រតិបត្តិការ 'បង្ក្រាប' ឧក្រិដ្ឋកម្មតាមអ៊ីនធឺណិត គឺគ្រាន់តែជាការសម្តែងដែលកំណត់ពេលដើម្បីបង្វែរការយកចិត្តទុកដាក់ពីអន្តរជាតិ ខណៈដែលហេដ្ឋារចនាសម្ព័ន្ធឧក្រិដ្ឋកម្មនិងមេក្លោងនៅតែមិនត្រូវបានប៉ះពាល់។",
+                s2_crackdown_title: "ភាពគ្មានប្រសិទ្ធភាពនៃការបង្ក្រាប",
+                s2_crackdown_desc: "យោងតាមអង្គការលើកលែងទោសអន្តរជាតិ បរិវេណឆបោកដែលបានកំណត់អត្តសញ្ញាណភាគច្រើននៅតែបន្តដំណើរការ ទោះបីជាធ្លាប់ត្រូវបានប៉ូលីស 'ឆ្មក់ចូល' ក៏ដោយ។",
+                s2_timeline_title: "កាលប្បវត្តិ៖ សម្ពាធ និងការសម្តែង",
+                s2_un_report: "កញ្ញា ២០២៣៖ របាយការណ៍ UN",
+                s2_un_desc: "គូសបញ្ជាក់ពីជនរងគ្រោះជាង ១០០,០០០ នាក់ដែលត្រូវបានជួញដូរនៅកម្ពុជា។",
+                s2_mango_raid: "➔ តុលា ២០២៤៖ រដ្ឋាភិបាលឆ្មក់ចូល 'Mango Park'។",
+                s2_tip_report: "កក្កដា ២០២៥៖ ភាពតានតឹងជាមួយថៃ / របាយការណ៍ TIP របស់សហរដ្ឋអាមេរិក",
+                s2_tip_desc: "សម្ពាធក្នុងតំបន់កើនឡើង ដោយរំពឹងថានឹងមានរបាយការណ៍ថ្មីៗ។",
+                s2_nationwide_raid: "➔ កក្កដា ២០២៥៖ នាយករដ្ឋមន្ត្រីបញ្ជាឱ្យមាន 'ការបង្ក្រាប' ទូទាំងប្រទេស។",
+                section3_title: "៣. ព័ត៌មានជាអាវុធ",
+                section3_desc: "បណ្តាញរដ្ឋ-ឧក្រិដ្ឋកម្មបានវិវត្ត ដោយផ្លាស់ប្តូរហេដ្ឋារចនាសម្ព័ន្ធខុសច្បាប់ទៅជាឧបករណ៍ដែលអាចបដិសេធបានសម្រាប់ជម្លោះភូមិសាស្ត្រនយោបាយនិងសង្គ្រាមព័ត៌មាន។",
+                s3_army_title: "ពីមជ្ឈមណ្ឌលឆបោកទៅជាកងទ័ពសាយប័រ",
+                s3_criminal: "សហគ្រាសឧក្រិដ្ឋកម្ម",
+                s3_geopolitical: "ឧបករណ៍ភូមិសាស្ត្រនយោបាយរបស់រដ្ឋ",
+                s3_army_desc: "ក្នុងអំឡុងពេលជម្លោះព្រំដែនឆ្នាំ ២០២៥ បរិវេណឆបោកត្រូវបានគេចោទប្រកាន់ថាបានប្រើប្រាស់ឡើងវិញដើម្បីបើកយុទ្ធនាការផ្សព្វផ្សាយព័ត៌មានមិនពិតប្រឆាំងនឹងប្រទេសថៃ ដែលបង្ហាញពីការរួមបញ្ចូលគ្នារវាងឧក្រិដ្ឋកម្មនិងសិល្បៈដឹកនាំរដ្ឋ។",
+                s3_silencing_title: "ការបំបិទមាត់អ្នកនាំសារ",
+                s3_silencing_desc: "រដ្ឋកំណត់គោលដៅជាប្រព័ន្ធទៅលើអ្នកសារព័ត៌មាននិងសកម្មជនដែលលាតត្រដាងឧស្សាហកម្មឆបោក ដោយប្រើច្បាប់ 'ញុះញង់' ដែលមានន័យមិនច្បាស់លាស់ជាអាវុធ។",
+                section4_title: "៤. សេដ្ឋកិច្ចដែលស៊ីសាច់ខ្លួនឯង",
+                section4_desc: "ដោយផ្តល់អាទិភាពដល់ប្រាក់ចំណេញដ៏មហិមារបស់សេដ្ឋកិច្ចឧក្រិដ្ឋកម្មសម្រាប់វរជន រដ្ឋកំពុងបំផ្លាញយ៉ាងសកម្មនូវវិស័យស្របច្បាប់និងស្ថិរភាពរយៈពេលវែងរបស់ខ្លួន។",
+                s4_shadow_title: "ទំហំសេដ្ឋកិច្ចស្រមោល",
+                s4_revenue: "ចំណូលប្រចាំឆ្នាំ (ប៉ាន់ស្មាន)",
+                s4_equivalent: "នេះស្មើនឹង",
+                s4_gdp: "នៃ GDP ផ្លូវការរបស់កម្ពុជា",
+                s4_cannibal_title: "ការស៊ីសាច់គ្នាឯងផ្នែកសេដ្ឋកិច្ច",
+                s4_cannibal_desc: "កំណើនចំណូលខុសច្បាប់កើតឡើងដោយការចំណាយផ្ទាល់របស់វិស័យស្របច្បាប់ដូចជាទេសចរណ៍និងការវិនិយោគផ្ទាល់ពីបរទេស (FDI) ដែលធ្វើឱ្យខូចកេរ្តិ៍ឈ្មោះរបស់ប្រទេស។",
+                section5_title: "៥. ផលប៉ះពាល់ក្នុងតំបន់៖ ផលប៉ះពាល់លើប្រទេសថៃ",
+                section5_desc: "បណ្តាញរដ្ឋ-ឧក្រិដ្ឋកម្មមិនមែនជាបញ្ហាក្នុងស្រុកទេ វាបាននាំចេញឧក្រិដ្ឋកម្ម អស្ថិរភាព និងការគំរាមកំហែងសន្តិសុខដោយផ្ទាល់ទៅកាន់ប្រទេសជិតខាង។",
+                s5_crisis_title: "វិបត្តិហិរញ្ញវត្ថុនិងសង្គម",
+                s5_crisis_desc: "ការខាតបង់ផ្នែកហិរញ្ញវត្ថុដ៏ធំសម្បើមសម្រាប់ប្រជាពលរដ្ឋថៃពីការឆបោក រួមផ្សំជាមួយនឹងវិបត្តិការជួញដូរមនុស្សឆ្លងដែនដែលកំពុងកើនឡើង ដែលបណ្តាលមកពីការទាក់ទាញជនជាតិថៃឱ្យទៅធ្វើជាពលកម្មដោយបង្ខំ។",
+                s5_threat_title: "ការគំរាមកំហែងសន្តិសុខជាតិ",
+                s5_threat_desc: "ហេដ្ឋារចនាសម្ព័ន្ធឧក្រិដ្ឋកម្មត្រូវបានប្រើជាអាវុធក្នុងសង្គ្រាមព័ត៌មានប្រឆាំងនឹងប្រទេសថៃ ខណៈដែលបរិវេណប្រដាប់អាវុធនៅតាមព្រំដែนបង្កើនហានិភ័យនៃជម្លោះយោធា។",
+                s5_diplomacy_title: "ការទូតដែលត្រូវបានបំផ្លាញ",
+                s5_diplomacy_desc: "វដ្តនៃការបដិសេធនិងការខ្វះសហប្រតិបត្តិការដោយស្មោះត្រង់ពីកម្ពុជា បានបំផ្លាញទំនុកចិត្ត និងរារាំងកិច្ចខិតខំប្រឹងប្រែងរួមគ្នាដើម្បីប្រយុទ្ធប្រឆាំងនឹងឧក្រិដ្ឋកម្មឆ្លងដែន។",
+                footer_text: "ទិន្នន័យសំយោគពីរបាយការណ៍ 'ស្ថាបត្យកម្មនៃការបោកប្រាស់' និងប្រភពពាក់ព័ន្ធ។ អ៊ីនហ្វូក្រាហ្វិកនេះបង្ហាញពីសេចក្តីសង្ខេបនៃការរកឃើញសំខាន់ៗ។",
+                last_updated: "ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ៖ ១ សីហា ២០២៥",
+                download_report: "ទាញយករបាយការណ៍ពេញ (PDF)",
+                chart_crackdown_op: "នៅតែដំណើរការ",
+                chart_crackdown_sd: "បានបិទ (តាមការអះអាង)",
+                chart_journo_md: "ម៉ិច ដារ៉ា (ត្រូវបានចាប់ខ្លួន)",
+                chart_journo_rs: "រស់ សុខេត (ត្រូវបានផ្តន្ទាទោស)",
+                chart_journo_ot: "សកម្មជននិងអ្នកសារព័ត៌មានផ្សេងទៀត (ត្រូវបានយាយី)",
+                chart_journo_ds: "ករណីនៃការធ្វើទុក្ខបុកម្នេញ",
+                chart_econ_rev: "ចំណូលពីការឆបោកខុសច្បាប់ (ប៉ាន់ស្មាន $B)",
+                chart_econ_fdi: "ការវិនិយោគផ្ទាល់ពីបរទេសស្របច្បាប់ ($B)"
+            }
+        };
+
+        let crackdownEffectivenessChart, journalistTargetChart, economicImpactChart;
+
+        const chartDefaultOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { labels: { color: '#BFD7EA', font: { family: "'Inter', sans-serif" } } },
+                tooltip: {
+                    titleFont: { family: "'Inter', sans-serif" },
+                    bodyFont: { family: "'Inter', sans-serif" },
+                    callbacks: {
+                        title: (tooltipItems) => {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { grid: { color: 'rgba(191, 215, 234, 0.1)' }, ticks: { color: '#BFD7EA', font: { family: "'Inter', sans-serif" } } },
+                y: { grid: { color: 'rgba(191, 215, 234, 0.1)' }, ticks: { color: '#BFD7EA', font: { family: "'Inter', sans-serif" } } }
+            }
+        };
+
+        const wrapLabel = (label, lang) => {
+            const maxLength = lang === 'th' || lang === 'zh' || lang === 'km' ? 10 : 16;
+            if (label.length <= maxLength) return label;
+            const words = (lang === 'zh' || lang === 'km') ? label.split('') : label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                const separator = (lang === 'zh' || lang === 'km') ? '' : ' ';
+                if ((currentLine + separator + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + separator;
+            }
+            lines.push(currentLine.trim());
+            return lines.filter(line => line.length > 0);
+        };
+        
+        function initializeCharts() {
+            crackdownEffectivenessChart = new Chart(document.getElementById('crackdownEffectivenessChart'), {
+                type: 'doughnut',
+                data: { labels: [], datasets: [{ data: [67, 33], backgroundColor: ['#FF6663', '#BFD7EA'], borderColor: '#0B3954', borderWidth: 5 }] },
+                options: { ...chartDefaultOptions, plugins: { ...chartDefaultOptions.plugins, legend: { ...chartDefaultOptions.plugins.legend, position: 'bottom' } } }
+            });
+
+            journalistTargetChart = new Chart(document.getElementById('journalistTargetChart'), {
+                type: 'bar',
+                data: { labels: [], datasets: [{ label: '', data: [1, 1, 15], backgroundColor: '#FF6663', borderRadius: 4 }] },
+                options: { ...chartDefaultOptions, indexAxis: 'y', plugins: { ...chartDefaultOptions.plugins, legend: { display: false } } }
+            });
+
+            economicImpactChart = new Chart(document.getElementById('economicImpactChart'), {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [
+                        { label: '', data: [2, 4, 8, 12, 15, 19], borderColor: '#FF6663', backgroundColor: 'rgba(255, 102, 99, 0.3)', fill: true, tension: 0.4 },
+                        { label: '', data: [3.6, 3.5, 3.4, 3.0, 2.8, 2.5], borderColor: '#BFD7EA', backgroundColor: 'rgba(191, 215, 234, 0.3)', fill: true, tension: 0.4 }
+                    ]
+                },
+                options: { ...chartDefaultOptions, plugins: { ...chartDefaultOptions.plugins, legend: { ...chartDefaultOptions.plugins.legend, position: 'bottom' } }, scales: { ...chartDefaultOptions.scales, y: { ...chartDefaultOptions.scales.y, ticks: { ...chartDefaultOptions.scales.y.ticks, callback: (value) => '$' + value + 'B' } } } }
+            });
+        }
+
+        function updateChartLanguages(lang) {
+            crackdownEffectivenessChart.data.labels = [translations[lang].chart_crackdown_op, translations[lang].chart_crackdown_sd];
+            crackdownEffectivenessChart.update();
+
+            journalistTargetChart.data.labels = [
+                wrapLabel(translations[lang].chart_journo_md, lang),
+                wrapLabel(translations[lang].chart_journo_rs, lang),
+                wrapLabel(translations[lang].chart_journo_ot, lang)
+            ];
+            journalistTargetChart.data.datasets[0].label = translations[lang].chart_journo_ds;
+            journalistTargetChart.update();
+
+            economicImpactChart.data.datasets[0].label = translations[lang].chart_econ_rev;
+            economicImpactChart.data.datasets[1].label = translations[lang].chart_econ_fdi;
+            economicImpactChart.update();
+        }
+
+        function switchLanguage(lang) {
+            document.body.className = document.body.className.replace(/font-\w+/, `font-${lang}`);
+            
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.dataset.translateKey;
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('#lang-switcher .lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`#lang-switcher .lang-btn.font-${lang}`).classList.add('active');
+            
+            updateChartLanguages(lang);
+        }
+
+        window.onload = () => {
+            initializeCharts();
+            switchLanguage('en'); 
+        };
+
+    </script>
+</body>
+</html>

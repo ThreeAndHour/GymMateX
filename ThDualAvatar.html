@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อินโฟกราฟิก: กลยุทธ์ Dual-Avatar (พร้อม Gemini AI)</title>
+    <title>Dual-Avatar Strategy Infographic (Multi-language)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Kanit', sans-serif;
+            font-family: 'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif;
             background-color: #0f172a;
             color: #e2e8f0;
         }
@@ -34,21 +34,9 @@
             border: 1px solid #334155;
             height: 100%;
         }
-        .flow-arrow {
-            color: #778DA9;
-        }
-        .flow-box {
-            border: 2px dashed #415A77;
-            background-color: rgba(65, 90, 119, 0.1);
-        }
-         .flow-line {
-            width: 2px;
-            background-color: #415A77;
-            flex-grow: 1;
-        }
-        .kpi-box {
-            background-color: #415A77;
-            color: #E0E1DD;
+        .gemini-card {
+            background-color: #0f172a;
+            border: 1px solid #475569;
         }
         .list-check {
             list-style-type: none;
@@ -72,10 +60,6 @@
             left: 0;
             color: #34d399;
             font-weight: bold;
-        }
-        .gemini-card {
-            background-color: #0f172a;
-            border: 1px solid #475569;
         }
         .loader {
             border: 4px solid rgba(255, 255, 255, 0.2);
@@ -109,43 +93,57 @@
             width: 100%;
             height: 100%;
         }
+        .lang-btn {
+            background-color: #334155;
+            color: #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid transparent;
+        }
+        .lang-btn:hover {
+            background-color: #475569;
+            color: #f1f5f9;
+        }
+        .lang-btn.active {
+            background-color: #4f46e5;
+            color: white;
+            font-weight: bold;
+            border-color: #818cf8;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-7xl">
 
-        <div class="mb-8 flex flex-wrap gap-4 justify-start">
-            <a href="https://thbho.github.io/" 
-               class="inline-block bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
-                &larr; กลับไปหน้า Home
-            </a>
-             <a href="https://threeandhour.github.io/GymMateX/EnDualAvatar.html" 
-               class="inline-block bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
-                English Version &rarr;
-            </a>
+        <!-- Header Navigation -->
+        <div class="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="https://thbho.github.io/" class="inline-block bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300" data-key="home_button"></a>
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button onclick="changeLanguage('th')" class="lang-btn" id="lang-th">ไทย</button>
+                <button onclick="changeLanguage('en')" class="lang-btn" id="lang-en">English</button>
+                <button onclick="changeLanguage('zh')" class="lang-btn" id="lang-zh">中文</button>
+                <button onclick="changeLanguage('ru')" class="lang-btn" id="lang-ru">Русский</button>
+            </div>
         </div>
-        
+
         <div class="my-8 flex justify-center">
             <img src="https://i.postimg.cc/3whthbjk/Image-304-topaz-face-text-upscale-1-7x.jpg" alt="Dual Avatar Concept Image" class="rounded-lg shadow-xl max-w-full md:max-w-2xl h-auto" onerror="this.style.display='none'">
         </div>
 
         <header class="text-center mb-16 md:mb-24">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">กลยุทธ์ Dual-Avatar: สร้างอิทธิพลสองมิติ</h1>
-            <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto">
-                ทุกแบรนด์ควรสร้าง AI อินฟลูเอนเซอร์สองประเภทที่ทำงานเสริมกัน เพื่อครอบคลุมเส้นทางการตัดสินใจของผู้บริโภคตั้งแต่การสร้างการรับรู้ไปจนถึงการสร้างความไว้วางใจ
-            </p>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4" data-key="main_title"></h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto" data-key="main_subtitle"></p>
         </header>
         
         <section id="gemini-generator" class="mb-20 md:mb-28 card rounded-xl shadow-xl p-6 md:p-8">
-            <h2 class="text-3xl font-bold text-white mb-4 text-center">✨ สร้าง Avatar ของคุณด้วย Gemini AI</h2>
-            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-8">
-                ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ
-            </p>
+            <h2 class="text-3xl font-bold text-white mb-4 text-center" data-key="gemini_title"></h2>
+            <p class="text-center text-slate-300 max-w-2xl mx-auto mb-8" data-key="gemini_subtitle"></p>
             <div class="max-w-xl mx-auto">
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="product-input" class="flex-grow bg-slate-900 text-white border border-slate-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400" placeholder="เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน">
-                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">สร้างไอเดีย Persona</button>
+                    <input type="text" id="product-input" class="flex-grow bg-slate-900 text-white border border-slate-600 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500 placeholder-slate-400" data-key-placeholder="gemini_placeholder">
+                    <button id="generate-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300" data-key="gemini_button"></button>
                 </div>
             </div>
             <div id="gemini-result" class="mt-8">
@@ -158,105 +156,95 @@
         </section>
 
         <section id="avatars" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">ประเภทของ AI อินฟลูเอนเซอร์</h2>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="avatars_title"></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 
                 <div class="card rounded-xl shadow-xl p-8 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
                     <div class="text-center">
                         <div class="text-6xl mb-4">🧠</div>
-                        <h3 class="text-2xl font-bold text-white mb-2">1. ผู้เผยแพร่หมวดหมู่</h3>
-                        <p class="font-semibold text-lg text-sky-400 mb-4">(Category Evangelist)</p>
-                        <p class="text-slate-300 mb-6">สร้าง AI ในฐานะผู้เชี่ยวชาญในหมวดหมู่สินค้าของคุณ เพื่อให้ความรู้และสร้างความน่าเชื่อถือ</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-key="evangelist_title"></h3>
+                        <p class="font-semibold text-lg text-sky-400 mb-4" data-key="evangelist_subtitle"></p>
+                        <p class="text-slate-300 mb-6" data-key="evangelist_desc"></p>
                     </div>
                     <div class="text-left mt-auto pt-6 border-t border-slate-700">
-                        <h4 class="font-bold text-white mb-3">หน้าที่หลัก:</h4>
+                        <h4 class="font-bold text-white mb-3" data-key="main_duties"></h4>
                         <ul class="list-check text-slate-300 space-y-2">
-                            <li>ผู้สร้างความน่าเชื่อถือ (The Trust Builder)</li>
-                            <li>สร้าง "Authority" ให้กับแบรนด์/หมวดหมู่</li>
-                            <li>ให้ข้อมูลเชิงลึก ตอบข้อสงสัยเชิงเหตุผล</li>
+                            <li data-key="evangelist_duty1"></li>
+                            <li data-key="evangelist_duty2"></li>
+                            <li data-key="evangelist_duty3"></li>
                         </ul>
-                        <p class="text-sm text-slate-400 mt-6">ตัวอย่าง: <strong class="text-white">"Brian นักบัญชีภาษี"</strong> ที่อธิบายเรื่องภาษีคริปโตให้เข้าใจง่าย</p>
+                        <p class="text-sm text-slate-400 mt-6"><strong class="text-white" data-key="example"></strong> <span data-key="evangelist_example"></span></p>
                     </div>
                 </div>
 
                 <div class="card rounded-xl shadow-xl p-8 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
-                     <div class="text-center">
+                    <div class="text-center">
                         <div class="text-6xl mb-4">🤝</div>
-                        <h3 class="text-2xl font-bold text-white mb-2">2. ผู้ซื้อที่มีลักษณะคล้ายกัน</h3>
-                         <p class="font-semibold text-lg text-pink-400 mb-4">(Buyer Lookalike)</p>
-                        <p class="text-slate-300 mb-6">สร้าง AI ที่เป็นตัวแทนของลูกค้าเป้าหมายของคุณ เพื่อสะท้อนปัญหาและสร้างความรู้สึกเข้าถึงได้</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-key="lookalike_title"></h3>
+                        <p class="font-semibold text-lg text-pink-400 mb-4" data-key="lookalike_subtitle"></p>
+                        <p class="text-slate-300 mb-6" data-key="lookalike_desc"></p>
                     </div>
-                     <div class="text-left mt-auto pt-6 border-t border-slate-700">
-                        <h4 class="font-bold text-white mb-3">หน้าที่หลัก:</h4>
+                    <div class="text-left mt-auto pt-6 border-t border-slate-700">
+                        <h4 class="font-bold text-white mb-3" data-key="main_duties"></h4>
                         <ul class="list-check text-slate-300 space-y-2">
-                            <li>ผู้สร้างความเชื่อมโยง (The Empathy Bridge)</li>
-                            <li>สะท้อนภาพลูกค้าเป้าหมายและ Pain Points</li>
-                            <li>สร้าง "Relatability" และสะพานทางอารมณ์</li>
+                            <li data-key="lookalike_duty1"></li>
+                            <li data-key="lookalike_duty2"></li>
+                            <li data-key="lookalike_duty3"></li>
                         </ul>
-                         <p class="text-sm text-slate-400 mt-6">ตัวอย่าง: <strong class="text-white">"ป้าสมศรี"</strong> (วัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย</p>
+                        <p class="text-sm text-slate-400 mt-6"><strong class="text-white" data-key="example"></strong> <span data-key="lookalike_example"></span></p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="global-pioneer-video" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">ตัวอย่างการใช้งานจริง</h2>
+            <h2 class="text-3xl font-bold text-white mb-8 text-center" data-key="video_title"></h2>
             <div class="max-w-4xl mx-auto">
                 <div class="video-container rounded-lg overflow-hidden shadow-xl">
                     <iframe src="https://www.youtube.com/embed/vw3D20zv990?si=JAcubaeE-Dq-1RxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="text-center text-slate-300 mt-6 max-w-3xl mx-auto space-y-4">
-                    <p>วิดีโอนี้อธิบายการใช้ AI เข้ามาช่วยในการขายและการตลาด โดยการสร้าง AI อินฟลูเอนเซอร์สองประเภท  ทั้ง "B." และ "Hour" ถูกออกแบบมาเพื่อช่วยเพิ่มยอดขาย โดยในวิดีโอจะแสดงตัวอย่างการโปรโมตสินค้าง่ายๆอย่างไอศครีม</p>
+                    <p data-key="video_desc"></p>
                 </div>
             </div>
         </section>
 
         <section id="dual-funnel" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">การทำงานร่วมกันบน Consumer Journey</h2>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="journey_title"></h2>
             <div class="max-w-3xl mx-auto">
                 <div class="relative pl-8 border-l-2 border-slate-700 space-y-16">
-                    
                     <div class="relative">
-                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
-                            <span class="text-xl">🧠</span>
-                        </div>
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900"><span class="text-xl">🧠</span></div>
                         <div class="pl-8">
-                            <h3 class="text-2xl font-bold text-white">การสร้างการรับรู้ (Awareness)</h3>
-                            <p class="mt-2 text-slate-300">ผู้เผยแพร่ให้ความรู้แก่ตลาด สร้างความเข้าใจในปัญหาและโซลูชัน</p>
-                            <p class="mt-3 font-semibold text-sky-400">ตอบคำถาม: "ทำไมฉันควรสนใจสิ่งนี้?"</p>
+                            <h3 class="text-2xl font-bold text-white" data-key="journey1_title"></h3>
+                            <p class="mt-2 text-slate-300" data-key="journey1_desc"></p>
+                            <p class="mt-3 font-semibold text-sky-400" data-key="journey1_q"></p>
                         </div>
                     </div>
-
                     <div class="relative">
-                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
-                             <span class="text-xl">🤝</span>
-                        </div>
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900"><span class="text-xl">🤝</span></div>
                         <div class="pl-8">
-                            <h3 class="text-2xl font-bold text-white">การพิจารณา (Consideration)</h3>
-                            <p class="mt-2 text-slate-300">ผู้เผยแพร่ให้ข้อมูลเชิงลึกเพื่อสร้างความน่าเชื่อถือ ในขณะที่ผู้ซื้อ Lookalike สร้างความไว้วางใจผ่านรีวิวและการใช้งานจริง</p>
+                            <h3 class="text-2xl font-bold text-white" data-key="journey2_title"></h3>
+                            <p class="mt-2 text-slate-300" data-key="journey2_desc"></p>
                         </div>
                     </div>
-
                     <div class="relative">
-                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900">
-                             <span class="text-xl">❤️</span>
-                        </div>
+                        <div class="absolute -left-[1.375rem] top-0 h-10 w-10 rounded-full bg-slate-700 flex items-center justify-center ring-8 ring-slate-900"><span class="text-xl">❤️</span></div>
                         <div class="pl-8">
-                            <h3 class="text-2xl font-bold text-white">การตัดสินใจซื้อ (Decision)</h3>
-                            <p class="mt-2 text-slate-300">ผู้ซื้อ Lookalike ขับเคลื่อนการตัดสินใจด้วยคำแนะนำที่จริงใจและโปรโมชั่น</p>
-                            <p class="mt-3 font-semibold text-pink-400">ตอบคำถาม: "แล้วมันจะช่วยให้ชีวิตฉันดีขึ้นได้อย่างไร?"</p>
+                            <h3 class="text-2xl font-bold text-white" data-key="journey3_title"></h3>
+                            <p class="mt-2 text-slate-300" data-key="journey3_desc"></p>
+                            <p class="mt-3 font-semibold text-pink-400" data-key="journey3_q"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
-             <p class="text-center text-lg text-slate-300 mt-12 max-w-3xl mx-auto">
-                <strong>ผลลัพธ์:</strong> นำพาผู้บริโภคตลอดเส้นทาง: สร้างความรู้ → สร้างความน่าเชื่อถือ → สร้างความเข้าอกเข้าใจ → ผลักดันให้เกิดการยอมรับ
+            <p class="text-center text-lg text-slate-300 mt-12 max-w-3xl mx-auto">
+                <strong data-key="journey_result_label"></strong> <span data-key="journey_result_text"></span>
             </p>
         </section>
 
         <section id="comparison" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">AI vs. มนุษย์: ข้อได้เปรียบเชิงกลยุทธ์</h2>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="chart_title"></h2>
             <div class="card rounded-xl shadow-xl p-4 md:p-8">
                 <div class="chart-container">
                     <canvas id="comparisonChart"></canvas>
@@ -265,109 +253,148 @@
         </section>
         
         <section id="case-studies" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">กรณีศึกษาในประเทศไทย</h2>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="case_studies_title"></h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card rounded-lg p-6 text-center">
                     <p class="text-4xl mb-3">📡</p>
                     <h4 class="font-bold text-white text-xl">ไอ-ไอรีน & AIS</h4>
-                    <span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้เผยแพร่</span>
-                    <p class="text-sm text-slate-300">ใช้ภาพลักษณ์ล้ำสมัยเพื่อสื่อสารเทคโนโลยี 5G สร้างความน่าเชื่อถือและให้ความรู้แก่ตลาด</p>
+                    <span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3" data-key="evangelist_tag"></span>
+                    <p class="text-sm text-slate-300" data-key="case1_desc"></p>
                 </div>
                 <div class="card rounded-lg p-6 text-center">
                     <p class="text-4xl mb-3">🏠</p>
                     <h4 class="font-bold text-white text-xl">วันนี้ & Ananda</h4>
-                    <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้ซื้อ Lookalike</span>
-                    <p class="text-sm text-slate-300">เป็นตัวแทนของลูกค้า Gen-C สะท้อนไลฟ์สไตล์คนเมืองที่เชื่อมต่อกับโลกดิจิทัล สร้างความรู้สึกเข้าถึงได้</p>
+                    <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3" data-key="lookalike_tag"></span>
+                    <p class="text-sm text-slate-300" data-key="case2_desc"></p>
                 </div>
                 <div class="card rounded-lg p-6 text-center">
-                     <p class="text-4xl mb-3">🏦</p>
+                    <p class="text-4xl mb-3">🏦</p>
                     <h4 class="font-bold text-white text-xl">เคน & เคซี่ & KBank</h4>
-                     <span class="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ไฮบริด</span>
-                    <p class="text-sm text-slate-300">คู่หูอวตารที่เป็นสินทรัพย์ของแบรนด์เอง ทำหน้าที่เป็นหน้าตาของ KBank Live สร้างบุคลิกที่ทันสมัยและเป็นมิตร</p>
+                    <span class="inline-block bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3" data-key="hybrid_tag"></span>
+                    <p class="text-sm text-slate-300" data-key="case3_desc"></p>
                 </div>
-                 <div class="card rounded-lg p-6 text-center">
-                     <p class="text-4xl mb-3">✨</p>
+                <div class="card rounded-lg p-6 text-center">
+                    <p class="text-4xl mb-3">✨</p>
                     <h4 class="font-bold text-white text-xl">กะทิ</h4>
-                     <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3">ผู้ซื้อ Lookalike</span>
-                    <p class="text-sm text-slate-300">มีบุคลิกเข้าถึงง่าย เป็นตัวของตัวเอง ทำให้ผู้บริโภครู้สึกเชื่อมโยงได้ง่าย เหมาะกับแบรนด์แฟชั่นและไลฟ์สไตล์</p>
+                    <span class="inline-block bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 mb-3" data-key="lookalike_tag"></span>
+                    <p class="text-sm text-slate-300" data-key="case4_desc"></p>
                 </div>
             </div>
         </section>
 
         <section id="recommendations" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">ข้อเสนอแนะเพื่อต่อยอด</h2>
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="recommendations_title"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <div class="card rounded-xl shadow-xl p-8">
-                    <h3 class="text-xl font-bold text-white mb-4">สร้างสะพานเชื่อมระหว่างสอง Avatars</h3>
-                    <p class="text-slate-300 mb-4">สร้างปฏิสัมพันธ์ระหว่างกันเพื่อให้โลกของพวกเขาสมจริงและน่าติดตาม</p>
+                    <h3 class="text-xl font-bold text-white mb-4" data-key="rec1_title"></h3>
+                    <p class="text-slate-300 mb-4" data-key="rec1_desc"></p>
                     <ul class="list-check text-slate-300">
-                        <li>ให้ Lookalike เรียนรู้และอ้างอิงข้อมูลจาก Evangelist</li>
-                        <li>ให้ Evangelist นำเรื่องราวของ Lookalike มาเป็น Case Study</li>
+                        <li data-key="rec1_item1"></li>
+                        <li data-key="rec1_item2"></li>
                     </ul>
                 </div>
                 <div class="card rounded-xl shadow-xl p-8">
-                    <h3 class="text-xl font-bold text-white mb-4">ออกแบบการเดินทาง (Journey) ของ Persona</h3>
-                    <p class="text-slate-300 mb-4">ทำให้อวตารมีชีวิตชีวาและเติบโตไปพร้อมกับผู้ติดตาม</p>
-                     <ul class="list-check text-slate-300">
-                        <li>Evangelist: อัปเดตความรู้และเทรนด์ใหม่ๆ เสมอ</li>
-                        <li>Lookalike: มีการ "เติบโต" จากผู้เริ่มต้นสู่ผู้ให้คำแนะนำ</li>
+                    <h3 class="text-xl font-bold text-white mb-4" data-key="rec2_title"></h3>
+                    <p class="text-slate-300 mb-4" data-key="rec2_desc"></p>
+                    <ul class="list-check text-slate-300">
+                        <li data-key="rec2_item1"></li>
+                        <li data-key="rec2_item2"></li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="podcast" class="mb-20 md:mb-28">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">ฟังแนวคิดเพิ่มเติมในรูปแบบ Podcast</h2>
+            <h2 class="text-3xl font-bold text-white mb-12 text-center" data-key="podcast_title"></h2>
             <div class="max-w-4xl mx-auto card rounded-xl shadow-xl p-6 md:p-8">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0SFsScTGpLIdTnt8jtrkdz?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </section>
 
-         <footer class="text-center border-t border-slate-700 pt-8 mt-12">
-            <p class="text-slate-400 mb-4">นี่คือการเปลี่ยนแปลงจากการสื่อสารแบบวงกว้าง (Broadcasting) ไปสู่การบ่มเพาะความสัมพันธ์ (Nurturing) ในระดับมหาศาล</p>
-            <a href="https://thbho.github.io/" 
-               class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 text-lg">
-                ดูข้อมูลเพิ่มเติมที่เว็บไซต์
-            </a>
+        <footer class="text-center border-t border-slate-700 pt-8 mt-12">
+            <p class="text-slate-400 mb-4" data-key="footer_text"></p>
+            <a href="https://thbho.github.io/" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 text-lg" data-key="footer_button"></a>
         </footer>
     </div>
 
     <script>
-        const generateBtn = document.getElementById('generate-btn');
-        const productInput = document.getElementById('product-input');
-        const loader = document.getElementById('loader');
-        const errorMessage = document.getElementById('error-message');
-        const personaOutput = document.getElementById('persona-output');
-
-        // =================================================================
-        // !! สำคัญ: กรุณาใส่ GOOGLE AI API KEY ของคุณที่นี่ก่อนใช้งาน !!
-        // คุณสามารถสร้างคีย์ได้ฟรีที่ Google AI Studio (ai.google.dev)
-        // หากไม่ใส่คีย์ ฟีเจอร์สร้าง Avatar จะไม่ทำงาน
-        // =================================================================
-        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- วาง API KEY ของคุณในเครื่องหมายคำพูดนี้
-
-        generateBtn.addEventListener('click', async () => {
-            if (!apiKey) {
-                errorMessage.textContent = 'ข้อผิดพลาด: กรุณาใส่ Gemini API Key ในโค้ดก่อนใช้งาน (มองหาตัวแปร apiKey)';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
-
-            const productCategory = productInput.value;
-            if (!productCategory.trim()) {
-                errorMessage.textContent = 'กรุณาป้อนประเภทสินค้าหรือบริการ';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
-            
-            generateBtn.disabled = true;
-            generateBtn.textContent = 'กำลังสร้าง...';
-            loader.classList.remove('hidden');
-            errorMessage.classList.add('hidden');
-            personaOutput.classList.add('hidden');
-            personaOutput.innerHTML = '';
-
-            const prompt = `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "${productCategory}", กรุณาสร้าง AI Influencer Persona 2 แบบเป็นภาษาไทย โดยแยกข้อมูลแต่ละส่วนให้ชัดเจนตามโครงสร้างที่กำหนด:
+        // --- TRANSLATION DATA ---
+        const translations = {
+            th: {
+                home_button: "&larr; กลับไปหน้า Home",
+                main_title: "กลยุทธ์ Dual-Avatar: สร้างอิทธิพลสองมิติ",
+                main_subtitle: "ทุกแบรนด์ควรสร้าง AI อินฟลูเอนเซอร์สองประเภทที่ทำงานเสริมกัน เพื่อครอบคลุมเส้นทางการตัดสินใจของผู้บริโภคตั้งแต่การสร้างการรับรู้ไปจนถึงการสร้างความไว้วางใจ",
+                gemini_title: "✨ สร้าง Avatar ของคุณด้วย Gemini AI",
+                gemini_subtitle: "ลองเปลี่ยนทฤษฎีให้เป็นภาคปฏิบัติ! เพียงป้อนประเภทสินค้าหรือบริการของคุณ แล้ว Gemini จะช่วยสร้างไอเดีย Persona สำหรับอวตารทั้งสองประเภทให้คุณ",
+                gemini_placeholder: "เช่น สกินแคร์สำหรับผิวแพ้ง่าย, คอร์สเรียนทำอาหารอิตาเลียน",
+                gemini_button: "สร้างไอเดีย Persona",
+                gemini_button_loading: "กำลังสร้าง...",
+                avatars_title: "ประเภทของ AI อินฟลูเอนเซอร์",
+                main_duties: "หน้าที่หลัก:",
+                example: "ตัวอย่าง:",
+                evangelist_title: "1. ผู้เผยแพร่หมวดหมู่",
+                evangelist_subtitle: "(Category Evangelist)",
+                evangelist_desc: "สร้าง AI ในฐานะผู้เชี่ยวชาญในหมวดหมู่สินค้าของคุณ เพื่อให้ความรู้และสร้างความน่าเชื่อถือ",
+                evangelist_duty1: "ผู้สร้างความน่าเชื่อถือ (The Trust Builder)",
+                evangelist_duty2: "สร้าง 'Authority' ให้กับแบรนด์/หมวดหมู่",
+                evangelist_duty3: "ให้ข้อมูลเชิงลึก ตอบข้อสงสัยเชิงเหตุผล",
+                evangelist_example: "\"Brian นักบัญชีภาษี\" ที่อธิบายเรื่องภาษีคริปโตให้เข้าใจง่าย",
+                lookalike_title: "2. ผู้ซื้อที่มีลักษณะคล้ายกัน",
+                lookalike_subtitle: "(Buyer Lookalike)",
+                lookalike_desc: "สร้าง AI ที่เป็นตัวแทนของลูกค้าเป้าหมายของคุณ เพื่อสะท้อนปัญหาและสร้างความรู้สึกเข้าถึงได้",
+                lookalike_duty1: "ผู้สร้างความเชื่อมโยง (The Empathy Bridge)",
+                lookalike_duty2: "สะท้อนภาพลูกค้าเป้าหมายและ Pain Points",
+                lookalike_duty3: "สร้าง 'Relatability' และสะพานทางอารมณ์",
+                lookalike_example: "\"ป้าสมศรี\" (วัย 70) ที่รีวิวการใช้แอปธนาคารสำหรับผู้สูงวัย",
+                video_title: "ตัวอย่างการใช้งานจริง",
+                video_desc: "วิดีโอนี้อธิบายการใช้ AI เข้ามาช่วยในการขายและการตลาด โดยการสร้าง AI อินฟลูเอนเซอร์สองประเภท ทั้ง \"B.\" และ \"Hour\" ถูกออกแบบมาเพื่อช่วยเพิ่มยอดขาย โดยในวิดีโอจะแสดงตัวอย่างการโปรโมตสินค้าง่ายๆอย่างไอศครีม",
+                journey_title: "การทำงานร่วมกันบน Consumer Journey",
+                journey1_title: "การสร้างการรับรู้ (Awareness)",
+                journey1_desc: "ผู้เผยแพร่ให้ความรู้แก่ตลาด สร้างความเข้าใจในปัญหาและโซลูชัน",
+                journey1_q: "ตอบคำถาม: \"ทำไมฉันควรสนใจสิ่งนี้?\"",
+                journey2_title: "การพิจารณา (Consideration)",
+                journey2_desc: "ผู้เผยแพร่ให้ข้อมูลเชิงลึกเพื่อสร้างความน่าเชื่อถือ ในขณะที่ผู้ซื้อ Lookalike สร้างความไว้วางใจผ่านรีวิวและการใช้งานจริง",
+                journey3_title: "การตัดสินใจซื้อ (Decision)",
+                journey3_desc: "ผู้ซื้อ Lookalike ขับเคลื่อนการตัดสินใจด้วยคำแนะนำที่จริงใจและโปรโมชั่น",
+                journey3_q: "ตอบคำถาม: \"แล้วมันจะช่วยให้ชีวิตฉันดีขึ้นได้อย่างไร?\"",
+                journey_result_label: "ผลลัพธ์:",
+                journey_result_text: "นำพาผู้บริโภคตลอดเส้นทาง: สร้างความรู้ → สร้างความน่าเชื่อถือ → สร้างความเข้าอกเข้าใจ → ผลักดันให้เกิดการยอมรับ",
+                chart_title: "AI vs. มนุษย์: ข้อได้เปรียบเชิงกลยุทธ์",
+                chart_labels: ['การควบคุมและความปลอดภัย', 'ความสามารถในการขยายขนาด', 'ความคุ้มค่าระยะยาว', 'อิสระในการสร้างสรรค์', 'การเชื่อมโยงทางอารมณ์', 'ความจริงแท้ที่รับรู้ได้'],
+                chart_legend_ai: "AI Influencer",
+                chart_legend_human: "Human Influencer",
+                case_studies_title: "กรณีศึกษาในประเทศไทย",
+                evangelist_tag: "ผู้เผยแพร่",
+                lookalike_tag: "ผู้ซื้อ Lookalike",
+                hybrid_tag: "ไฮบริด",
+                case1_desc: "ใช้ภาพลักษณ์ล้ำสมัยเพื่อสื่อสารเทคโนโลยี 5G สร้างความน่าเชื่อถือและให้ความรู้แก่ตลาด",
+                case2_desc: "เป็นตัวแทนของลูกค้า Gen-C สะท้อนไลฟ์สไตล์คนเมืองที่เชื่อมต่อกับโลกดิจิทัล สร้างความรู้สึกเข้าถึงได้",
+                case3_desc: "คู่หูอวตารที่เป็นสินทรัพย์ของแบรนด์เอง ทำหน้าที่เป็นหน้าตาของ KBank Live สร้างบุคลิกที่ทันสมัยและเป็นมิตร",
+                case4_desc: "มีบุคลิกเข้าถึงง่าย เป็นตัวของตัวเอง ทำให้ผู้บริโภครู้สึกเชื่อมโยงได้ง่าย เหมาะกับแบรนด์แฟชั่นและไลฟ์สไตล์",
+                recommendations_title: "ข้อเสนอแนะเพื่อต่อยอด",
+                rec1_title: "สร้างสะพานเชื่อมระหว่างสอง Avatars",
+                rec1_desc: "สร้างปฏิสัมพันธ์ระหว่างกันเพื่อให้โลกของพวกเขาสมจริงและน่าติดตาม",
+                rec1_item1: "ให้ Lookalike เรียนรู้และอ้างอิงข้อมูลจาก Evangelist",
+                rec1_item2: "ให้ Evangelist นำเรื่องราวของ Lookalike มาเป็น Case Study",
+                rec2_title: "ออกแบบการเดินทาง (Journey) ของ Persona",
+                rec2_desc: "ทำให้อวตารมีชีวิตชีวาและเติบโตไปพร้อมกับผู้ติดตาม",
+                rec2_item1: "Evangelist: อัปเดตความรู้และเทรนด์ใหม่ๆ เสมอ",
+                rec2_item2: "Lookalike: มีการ \"เติบโต\" จากผู้เริ่มต้นสู่ผู้ให้คำแนะนำ",
+                podcast_title: "ฟังแนวคิดเพิ่มเติมในรูปแบบ Podcast",
+                footer_text: "นี่คือการเปลี่ยนแปลงจากการสื่อสารแบบวงกว้าง (Broadcasting) ไปสู่การบ่มเพาะความสัมพันธ์ (Nurturing) ในระดับมหาศาล",
+                footer_button: "ดูข้อมูลเพิ่มเติมที่เว็บไซต์",
+                error_missing_key: "ข้อผิดพลาด: กรุณาใส่ Gemini API Key ในโค้ดก่อนใช้งาน",
+                error_missing_input: "กรุณาป้อนประเภทสินค้าหรือบริการ",
+                error_api: "เกิดข้อผิดพลาด",
+                error_api_generic: "ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์",
+                error_parsing: "เกิดข้อผิดพลาดในการอ่านข้อมูลจาก AI",
+                error_invalid_data: "ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI",
+                persona_evangelist_name: "ผู้เผยแพร่",
+                persona_lookalike_name: "ผู้ซื้อที่คล้ายกัน",
+                persona_bio_fallback: "ไม่มีคำอธิบาย",
+                persona_characteristics: "ลักษณะเด่น:",
+                persona_characteristics_fallback: "ไม่มีข้อมูลลักษณะเด่น",
+                gemini_prompt: `ในฐานะนักกลยุทธ์แบรนด์ สำหรับหมวดหมู่สินค้า/บริการ: "{productCategory}", กรุณาสร้าง AI Influencer Persona 2 แบบเป็นภาษาไทย โดยแยกข้อมูลแต่ละส่วนให้ชัดเจนตามโครงสร้างที่กำหนด:
 1.  "Category Evangelist":
     - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นมืออาชีพ (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
     - bio: ประวัติที่อธิบายความเชี่ยวชาญ (ประมาณ 2-3 ประโยค)
@@ -375,7 +402,417 @@
 2.  "Buyer Lookalike":
     - name: ชื่อที่สั้นและกระชับ ฟังดูเป็นกันเอง (สำคัญมาก: ห้ามนำประวัติหรือลักษณะเด่นมารวมในชื่อ)
     - bio: ประวัติที่อธิบายไลฟ์สไตล์และความเชื่อมโยงกับผลิตภัณฑ์ (ประมาณ 2-3 ประโยค)
-    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)`;
+    - characteristics: ลักษณะเด่น 3 ข้อ (เป็นรายการ)`
+            },
+            en: {
+                home_button: "&larr; Back to Home",
+                main_title: "Dual-Avatar Strategy: Creating Two-Dimensional Influence",
+                main_subtitle: "Every brand should create two complementary types of AI influencers to cover the consumer's decision journey from building awareness to establishing trust.",
+                gemini_title: "✨ Create Your Avatars with Gemini AI",
+                gemini_subtitle: "Turn theory into practice! Just enter your product or service category, and Gemini will help generate persona ideas for both avatar types.",
+                gemini_placeholder: "e.g., skincare for sensitive skin, Italian cooking course",
+                gemini_button: "Generate Personas",
+                gemini_button_loading: "Generating...",
+                avatars_title: "Types of AI Influencers",
+                main_duties: "Main Duties:",
+                example: "Example:",
+                evangelist_title: "1. Category Evangelist",
+                evangelist_subtitle: "",
+                evangelist_desc: "Create an AI as an expert in your product category to educate and build credibility.",
+                evangelist_duty1: "The Trust Builder",
+                evangelist_duty2: "Establishes 'Authority' for the brand/category",
+                evangelist_duty3: "Provides in-depth information, answers logical questions",
+                evangelist_example: "\"Brian the Tax Accountant\" who simplifies crypto tax explanations.",
+                lookalike_title: "2. Buyer Lookalike",
+                lookalike_subtitle: "",
+                lookalike_desc: "Create an AI that represents your target customer to reflect their problems and create a sense of relatability.",
+                lookalike_duty1: "The Empathy Bridge",
+                lookalike_duty2: "Reflects the target audience and their Pain Points",
+                lookalike_duty3: "Builds 'Relatability' and an emotional connection",
+                lookalike_example: "\"Aunt Mary\" (70 years old) reviewing a banking app for seniors.",
+                video_title: "Real-World Application Example",
+                video_desc: "This video explains how to use AI to assist in sales and marketing by creating two types of AI influencers. Both \"B.\" and \"Hour\" are designed to help increase sales. The video shows an example of promoting a simple product like ice cream.",
+                journey_title: "Collaboration on the Consumer Journey",
+                journey1_title: "Awareness",
+                journey1_desc: "The Evangelist educates the market, creating an understanding of the problem and solution.",
+                journey1_q: "Answers: \"Why should I care about this?\"",
+                journey2_title: "Consideration",
+                journey2_desc: "The Evangelist provides in-depth information to build credibility, while the Lookalike builds trust through reviews and real-world use.",
+                journey3_title: "Decision",
+                journey3_desc: "The Lookalike drives the decision with sincere recommendations and promotions.",
+                journey3_q: "Answers: \"How will this make my life better?\"",
+                journey_result_label: "Result:",
+                journey_result_text: "Guides the consumer through the entire journey: Build Knowledge → Establish Credibility → Create Empathy → Drive Adoption.",
+                chart_title: "AI vs. Human: Strategic Advantages",
+                chart_labels: ['Control & Safety', 'Scalability', 'Long-term Cost-Effectiveness', 'Creative Freedom', 'Emotional Connection', 'Perceived Authenticity'],
+                chart_legend_ai: "AI Influencer",
+                chart_legend_human: "Human Influencer",
+                case_studies_title: "Case Studies in Thailand",
+                evangelist_tag: "Evangelist",
+                lookalike_tag: "Lookalike",
+                hybrid_tag: "Hybrid",
+                case1_desc: "Uses a futuristic image to communicate 5G technology, building credibility and educating the market.",
+                case2_desc: "Represents Gen-C customers, reflecting an urban lifestyle connected to the digital world, creating relatability.",
+                case3_desc: "A pair of avatars owned by the brand itself, serving as the face of KBank Live, creating a modern and friendly personality.",
+                case4_desc: "Has an approachable, authentic personality, making it easy for consumers to connect with, suitable for fashion and lifestyle brands.",
+                recommendations_title: "Recommendations for Further Development",
+                rec1_title: "Build a Bridge Between the Two Avatars",
+                rec1_desc: "Create interactions between them to make their world more realistic and engaging.",
+                rec1_item1: "Have the Lookalike learn from and reference the Evangelist.",
+                rec1_item2: "Have the Evangelist use the Lookalike's story as a case study.",
+                rec2_title: "Design a Persona Journey",
+                rec2_desc: "Make the avatars dynamic and allow them to grow with their followers.",
+                rec2_item1: "Evangelist: Constantly updates knowledge with new trends.",
+                rec2_item2: "Lookalike: Shows 'growth' from a beginner to an advisor.",
+                podcast_title: "Listen to More Ideas in this Podcast",
+                footer_text: "This is the shift from mass broadcasting to nurturing relationships at scale.",
+                footer_button: "Learn More on the Website",
+                error_missing_key: "Error: Please add your Gemini API Key in the code.",
+                error_missing_input: "Please enter a product or service category.",
+                error_api: "An error occurred",
+                error_api_generic: "Did not receive valid persona data from the AI.",
+                error_parsing: "Error parsing data from AI.",
+                error_invalid_data: "Received persona data in an invalid format from the AI.",
+                persona_evangelist_name: "Evangelist",
+                persona_lookalike_name: "Lookalike",
+                persona_bio_fallback: "No description available.",
+                persona_characteristics: "Characteristics:",
+                persona_characteristics_fallback: "No characteristics data.",
+                gemini_prompt: `As a brand strategist, for the product/service category: "{productCategory}", please create 2 AI Influencer Personas in English, with each part clearly structured as follows:
+1.  "Category Evangelist":
+    - name: A short, concise, professional-sounding name (Important: Do not include bio or traits in the name).
+    - bio: A bio describing their expertise (about 2-3 sentences).
+    - characteristics: 3 key traits (as a list).
+2.  "Buyer Lookalike":
+    - name: A short, concise, friendly-sounding name (Important: Do not include bio or traits in the name).
+    - bio: A bio describing their lifestyle and connection to the product (about 2-3 sentences).
+    - characteristics: 3 key traits (as a list).`
+            },
+            zh: {
+                home_button: "&larr; 返回首页",
+                main_title: "双头像策略：创造二维影响力",
+                main_subtitle: "每个品牌都应创建两种互补的AI影响者，以覆盖从建立意识到建立信任的整个消费者决策过程。",
+                gemini_title: "✨ 使用Gemini AI创建你的头像",
+                gemini_subtitle: "将理论付诸实践！只需输入您的产品或服务类别，Gemini将帮助您为两种头像类型生成角色创意。",
+                gemini_placeholder: "例如：敏感肌肤护肤品，意大利烹饪课程",
+                gemini_button: "生成角色",
+                gemini_button_loading: "生成中...",
+                avatars_title: "AI影响者的类型",
+                main_duties: "主要职责：",
+                example: "例如：",
+                evangelist_title: "1. 品类布道者",
+                evangelist_subtitle: "(Category Evangelist)",
+                evangelist_desc: "创建一个AI作为您产品类别的专家，以进行教育并建立信誉。",
+                evangelist_duty1: "信任建立者 (The Trust Builder)",
+                evangelist_duty2: "为品牌/品类建立“权威”",
+                evangelist_duty3: "提供深度信息，回答逻辑性问题",
+                evangelist_example: "“税务会计师布莱恩”，他能简单解释加密货币税收。",
+                lookalike_title: "2. 相似购买者",
+                lookalike_subtitle: "(Buyer Lookalike)",
+                lookalike_desc: "创建一个代表您目标客户的AI，以反映他们的问题并建立亲近感。",
+                lookalike_duty1: "共情之桥 (The Empathy Bridge)",
+                lookalike_duty2: "反映目标受众及其痛点",
+                lookalike_duty3: "建立“共鸣性”和情感联系",
+                lookalike_example: "“玛丽阿姨”（70岁），评测一款为老年人设计的银行应用。",
+                video_title: "实际应用案例",
+                video_desc: "该视频介绍了如何通过创建两种类型的AI影响者来利用AI辅助销售和营销。“B.”和“Hour”都旨在帮助提高销售额。视频中展示了推广冰淇淋等简单产品的示例。",
+                journey_title: "在消费者旅程中的协作",
+                journey1_title: "认知 (Awareness)",
+                journey1_desc: "布道者教育市场，让人们理解问题和解决方案。",
+                journey1_q: "回答：“我为什么要在乎这个？”",
+                journey2_title: "考虑 (Consideration)",
+                journey2_desc: "布道者提供深度信息建立信誉，而相似购买者通过评测和实际使用建立信任。",
+                journey3_title: "决策 (Decision)",
+                journey3_desc: "相似购买者通过真诚的推荐和促销来驱动决策。",
+                journey3_q: "回答：“这如何能改善我的生活？”",
+                journey_result_label: "结果：",
+                journey_result_text: "引导消费者走完全程：建立知识 → 建立信誉 → 创造共情 → 推动采用。",
+                chart_title: "AI vs. 人类：战略优势",
+                chart_labels: ['控制与安全', '可扩展性', '长期成本效益', '创作自由', '情感联系', '感知真实性'],
+                chart_legend_ai: "AI影响者",
+                chart_legend_human: "人类影响者",
+                case_studies_title: "泰国案例研究",
+                evangelist_tag: "布道者",
+                lookalike_tag: "相似购买者",
+                hybrid_tag: "混合型",
+                case1_desc: "利用未来感形象传播5G技术，建立信誉并教育市场。",
+                case2_desc: "代表C世代客户，反映与数字世界相连的都市生活方式，创造亲近感。",
+                case3_desc: "品牌自有的一对头像，作为KBank Live的代言人，塑造了现代友好的形象。",
+                case4_desc: "具有平易近人、真实的个性，使消费者容易产生联系，适合时尚和生活方式品牌。",
+                recommendations_title: "进一步发展建议",
+                rec1_title: "在两个头像之间建立桥梁",
+                rec1_desc: "在它们之间创造互动，使它们的世界更真实、更有吸引力。",
+                rec1_item1: "让相似购买者向布道者学习并引用其信息。",
+                rec1_item2: "让布道者将相似购买者的故事作为案例研究。",
+                rec2_title: "设计角色旅程",
+                rec2_desc: "使头像充满活力，并与追随者一同成长。",
+                rec2_item1: "布道者：不断更新知识和新趋势。",
+                rec2_item2: "相似购买者：展示从初学者到顾问的“成长”。",
+                podcast_title: "收听播客获取更多想法",
+                footer_text: "这是从大众广播到大规模培养关系的转变。",
+                footer_button: "在网站上了解更多",
+                error_missing_key: "错误：请在代码中添加您的Gemini API密钥。",
+                error_missing_input: "请输入产品或服务类别。",
+                error_api: "发生错误",
+                error_api_generic: "未从AI收到有效的角色数据。",
+                error_parsing: "解析AI数据时出错。",
+                error_invalid_data: "从AI收到的角色数据格式无效。",
+                persona_evangelist_name: "布道者",
+                persona_lookalike_name: "相似购买者",
+                persona_bio_fallback: "无描述。",
+                persona_characteristics: "特点：",
+                persona_characteristics_fallback: "无特点数据。",
+                gemini_prompt: `作为品牌策略师，针对产品/服务类别：“{productCategory}”，请用中文创建2个AI影响者角色，每个部分结构清晰如下：
+1.  “品类布道者” (Category Evangelist):
+    - name: 一个简短、专业的名字（重要：不要在名字中包含简介或特征）。
+    - bio: 描述其专业知识的简介（约2-3句话）。
+    - characteristics: 3个主要特征（列表形式）。
+2.  “相似购买者” (Buyer Lookalike):
+    - name: 一个简短、友好的名字（重要：不要在名字中包含简介或特征）。
+    - bio: 描述其生活方式及与产品联系的简介（约2-3句话）。
+    - characteristics: 3个主要特征（列表形式）。`
+            },
+            ru: {
+                home_button: "&larr; Назад на главную",
+                main_title: "Стратегия двойного аватара: создание двумерного влияния",
+                main_subtitle: "Каждый бренд должен создавать два взаимодополняющих типа ИИ-инфлюенсеров, чтобы охватить весь путь принятия решения потребителем от повышения осведомленности до установления доверия.",
+                gemini_title: "✨ Создайте свои аватары с помощью Gemini AI",
+                gemini_subtitle: "Превратите теорию в практику! Просто введите категорию вашего продукта или услуги, и Gemini поможет сгенерировать идеи персон для обоих типов аватаров.",
+                gemini_placeholder: "например, уход за чувствительной кожей, курс итальянской кухни",
+                gemini_button: "Сгенерировать персоны",
+                gemini_button_loading: "Генерация...",
+                avatars_title: "Типы ИИ-инфлюенсеров",
+                main_duties: "Основные обязанности:",
+                example: "Пример:",
+                evangelist_title: "1. Евангелист категории",
+                evangelist_subtitle: "(Category Evangelist)",
+                evangelist_desc: "Создайте ИИ в качестве эксперта в вашей товарной категории для обучения и повышения доверия.",
+                evangelist_duty1: "Строитель доверия (The Trust Builder)",
+                evangelist_duty2: "Создает 'Авторитет' для бренда/категории",
+                evangelist_duty3: "Предоставляет глубокую информацию, отвечает на логические вопросы",
+                evangelist_example: "\"Брайан, налоговый бухгалтер\", который просто объясняет налоги на криптовалюту.",
+                lookalike_title: "2. Похожий покупатель",
+                lookalike_subtitle: "(Buyer Lookalike)",
+                lookalike_desc: "Создайте ИИ, который представляет вашего целевого клиента, чтобы отразить его проблемы и создать ощущение близости.",
+                lookalike_duty1: "Мост эмпатии (The Empathy Bridge)",
+                lookalike_duty2: "Отражает целевую аудиторию и ее болевые точки",
+                lookalike_duty3: "Создает 'Узнаваемость' и эмоциональную связь",
+                lookalike_example: "\"Тетя Маша\" (70 лет), делающая обзор банковского приложения для пожилых.",
+                video_title: "Пример реального применения",
+                video_desc: "Это видео объясняет, как использовать ИИ для помощи в продажах и маркетинге, создавая два типа ИИ-инфлюенсеров. И \"B.\", и \"Hour\" разработаны для увеличения продаж. В видео показан пример продвижения простого продукта, такого как мороженое.",
+                journey_title: "Совместная работа на пути потребителя",
+                journey1_title: "Осведомленность (Awareness)",
+                journey1_desc: "Евангелист просвещает рынок, создавая понимание проблемы и решения.",
+                journey1_q: "Отвечает на вопрос: \"Почему меня это должно волновать?\"",
+                journey2_title: "Рассмотрение (Consideration)",
+                journey2_desc: "Евангелист предоставляет подробную информацию для повышения доверия, в то время как Похожий покупатель строит доверие через обзоры и реальное использование.",
+                journey3_title: "Решение (Decision)",
+                journey3_desc: "Похожий покупатель подталкивает к решению с помощью искренних рекомендаций и акций.",
+                journey3_q: "Отвечает на вопрос: \"Как это улучшит мою жизнь?\"",
+                journey_result_label: "Результат:",
+                journey_result_text: "Проводит потребителя по всему пути: Создание знаний → Установление доверия → Создание эмпатии → Стимулирование принятия.",
+                chart_title: "ИИ vs. Человек: стратегические преимущества",
+                chart_labels: ['Контроль и безопасность', 'Масштабируемость', 'Долгосрочная рентабельность', 'Творческая свобода', 'Эмоциональная связь', 'Воспринимаемая подлинность'],
+                chart_legend_ai: "ИИ-инфлюенсер",
+                chart_legend_human: "Человек-инфлюенсер",
+                case_studies_title: "Кейсы в Таиланде",
+                evangelist_tag: "Евангелист",
+                lookalike_tag: "Похожий покупатель",
+                hybrid_tag: "Гибрид",
+                case1_desc: "Использует футуристический образ для коммуникации о технологии 5G, создавая доверие и обучая рынок.",
+                case2_desc: "Представляет клиентов поколения Gen-C, отражая городской образ жизни, связанный с цифровым миром, создавая узнаваемость.",
+                case3_desc: "Пара аватаров, принадлежащих самому бренду, выступающих лицом KBank Live, создавая современный и дружелюбный образ.",
+                case4_desc: "Обладает доступным, аутентичным характером, что облегчает потребителям установление связи, подходит для модных и лайфстайл-брендов.",
+                recommendations_title: "Рекомендации по дальнейшему развитию",
+                rec1_title: "Постройте мост между двумя аватарами",
+                rec1_desc: "Создайте взаимодействие между ними, чтобы сделать их мир более реалистичным и увлекательным.",
+                rec1_item1: "Пусть Похожий покупатель учится у Евангелиста и ссылается на него.",
+                rec1_item2: "Пусть Евангелист использует историю Похожего покупателя в качестве кейса.",
+                rec2_title: "Разработайте путь развития персоны",
+                rec2_desc: "Сделайте аватары динамичными и позвольте им расти вместе со своими подписчиками.",
+                rec2_item1: "Евангелист: постоянно обновляет знания и следит за трендами.",
+                rec2_item2: "Похожий покупатель: показывает 'рост' от новичка до советчика.",
+                podcast_title: "Слушайте больше идей в этом подкасте",
+                footer_text: "Это переход от массового вещания к развитию отношений в большом масштабе.",
+                footer_button: "Узнать больше на сайте",
+                error_missing_key: "Ошибка: Пожалуйста, добавьте ваш Gemini API Key в код.",
+                error_missing_input: "Пожалуйста, введите категорию продукта или услуги.",
+                error_api: "Произошла ошибка",
+                error_api_generic: "Не удалось получить данные о персонах от ИИ.",
+                error_parsing: "Ошибка при разборе данных от ИИ.",
+                error_invalid_data: "Получены данные о персонах от ИИ в неверном формате.",
+                persona_evangelist_name: "Евангелист",
+                persona_lookalike_name: "Похожий покупатель",
+                persona_bio_fallback: "Нет описания.",
+                persona_characteristics: "Характеристики:",
+                persona_characteristics_fallback: "Нет данных о характеристиках.",
+                gemini_prompt: `Как бренд-стратег, для категории продуктов/услуг: "{productCategory}", пожалуйста, создайте 2 персоны ИИ-инфлюенсеров на русском языке, с четкой структурой для каждой части:
+1.  "Евангелист категории" (Category Evangelist):
+    - name: Короткое, лаконичное, профессионально звучащее имя (Важно: не включайте биографию или черты в имя).
+    - bio: Биография, описывающая их экспертизу (около 2-3 предложений).
+    - characteristics: 3 ключевые черты (в виде списка).
+2.  "Похожий покупатель" (Buyer Lookalike):
+    - name: Короткое, лаконичное, дружелюбно звучащее имя (Важно: не включайте биографию или черты в имя).
+    - bio: Биография, описывающая их образ жизни и связь с продуктом (около 2-3 предложений).
+    - characteristics: 3 ключевые черты (в виде списка).`
+            }
+        };
+
+        // --- SCRIPT LOGIC ---
+        const generateBtn = document.getElementById('generate-btn');
+        const productInput = document.getElementById('product-input');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const personaOutput = document.getElementById('persona-output');
+        let currentLang = 'th';
+        let comparisonChart;
+
+        // =================================================================
+        // !! IMPORTANT: Please insert your GOOGLE AI API KEY here before use !!
+        // You can get a free key from Google AI Studio (ai.google.dev)
+        // The Avatar generator feature will not work without it.
+        // =================================================================
+        const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // <--- PASTE YOUR API KEY HERE
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            const content = translations[lang];
+
+            // Update all text elements
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (content[key]) {
+                    element.innerHTML = content[key];
+                }
+            });
+
+            // Update all placeholder elements
+            document.querySelectorAll('[data-key-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-key-placeholder');
+                if (content[key]) {
+                    element.placeholder = content[key];
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Update active button style
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            // Update Chart
+            renderComparisonChart(lang);
+        }
+
+        function renderComparisonChart(lang) {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            const content = translations[lang];
+
+            const wrapLabel = (label, maxLength = 16) => {
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const data = {
+                labels: content.chart_labels.map(label => wrapLabel(label)),
+                datasets: [{
+                    label: content.chart_legend_ai,
+                    data: [10, 10, 9, 10, 6, 7],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: '#3b82f6',
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#3b82f6'
+                }, {
+                    label: content.chart_legend_human,
+                    data: [4, 6, 5, 7, 10, 10],
+                    backgroundColor: 'rgba(236, 72, 153, 0.2)',
+                    borderColor: '#ec4899',
+                    pointBackgroundColor: '#ec4899',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#ec4899'
+                }]
+            };
+
+            const options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#e2e8f0', font: { family: "'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif" } } },
+                    tooltip: {
+                        titleFont: { family: "'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif" },
+                        bodyFont: { family: "'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif" },
+                        callbacks: {
+                            title: (tooltipItems) => {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(226, 232, 240, 0.2)' },
+                        grid: { color: 'rgba(226, 232, 240, 0.2)' },
+                        pointLabels: { color: '#e2e8f0', font: { size: 12, family: "'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif" } },
+                        ticks: {
+                            color: '#0f172a',
+                            backdropColor: 'rgba(226, 232, 240, 0.8)',
+                            stepSize: 2
+                        }
+                    }
+                }
+            };
+            
+            if (comparisonChart) {
+                comparisonChart.destroy();
+            }
+            comparisonChart = new Chart(ctx, { type: 'radar', data: data, options: options });
+        }
+
+
+        generateBtn.addEventListener('click', async () => {
+            const content = translations[currentLang];
+            if (!apiKey) {
+                errorMessage.textContent = content.error_missing_key;
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const productCategory = productInput.value;
+            if (!productCategory.trim()) {
+                errorMessage.textContent = content.error_missing_input;
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = content.gemini_button_loading;
+            loader.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            personaOutput.classList.add('hidden');
+            personaOutput.innerHTML = '';
+
+            const prompt = content.gemini_prompt.replace('{productCategory}', productCategory);
 
             const schema = {
                 type: "OBJECT",
@@ -385,10 +822,7 @@
                         properties: {
                             name: { type: "STRING" },
                             bio: { type: "STRING" },
-                            characteristics: {
-                                type: "ARRAY",
-                                items: { type: "STRING" }
-                            }
+                            characteristics: { type: "ARRAY", items: { type: "STRING" } }
                         },
                         required: ["name", "bio", "characteristics"]
                     },
@@ -397,20 +831,16 @@
                         properties: {
                             name: { type: "STRING" },
                             bio: { type: "STRING" },
-                            characteristics: {
-                                type: "ARRAY",
-                                items: { type: "STRING" }
-                            }
+                            characteristics: { type: "ARRAY", items: { type: "STRING" } }
                         },
-                         required: ["name", "bio", "characteristics"]
+                        required: ["name", "bio", "characteristics"]
                     }
                 }
             };
 
             try {
-                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                 const payload = {
-                    contents: chatHistory,
+                    contents: [{ role: "user", parts: [{ text: prompt }] }],
                     generationConfig: {
                         responseMimeType: "application/json",
                         responseSchema: schema
@@ -432,44 +862,40 @@
 
                 const result = await response.json();
                 
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    
+                if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
                     const jsonText = result.candidates[0].content.parts[0].text;
                     const cleanedJsonText = jsonText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
-
                     try {
                         const data = JSON.parse(cleanedJsonText);
                         displayPersonas(data);
                     } catch (parseError) {
-                        console.error('JSON Parse Error:', parseError);
-                        console.error('Malformed JSON string received:', cleanedJsonText);
-                        throw new Error(`เกิดข้อผิดพลาดในการอ่านข้อมูลจาก AI: ${parseError.message}`);
+                        console.error('JSON Parse Error:', parseError, 'Malformed JSON:', cleanedJsonText);
+                        throw new Error(content.error_parsing);
                     }
                 } else {
-                    let errorMessageText = "ไม่ได้รับข้อมูล Persona จาก AI หรือข้อมูลที่ได้รับไม่สมบูรณ์";
-                    if(result.promptFeedback && result.promptFeedback.blockReason){
-                       errorMessageText += ` (Reason: ${result.promptFeedback.blockReason})`;
+                    let errorText = content.error_api_generic;
+                    if(result.promptFeedback?.blockReason){
+                       errorText += ` (Reason: ${result.promptFeedback.blockReason})`;
                     }
-                    throw new Error(errorMessageText);
+                    throw new Error(errorText);
                 }
 
             } catch (error) {
                 console.error('Error calling Gemini API:', error);
-                errorMessage.textContent = `เกิดข้อผิดพลาด: ${error.message}. กรุณาลองใหม่อีกครั้ง`;
+                errorMessage.textContent = `${content.error_api}: ${error.message}.`;
                 errorMessage.classList.remove('hidden');
             } finally {
                 loader.classList.add('hidden');
                 generateBtn.disabled = false;
-                generateBtn.textContent = 'สร้างไอเดีย Persona';
+                generateBtn.textContent = content.gemini_button;
             }
         });
 
         function displayPersonas(data) {
+            const content = translations[currentLang];
             if (!data || typeof data !== 'object') {
                 console.error("Invalid data object received:", data);
-                errorMessage.textContent = 'ได้รับข้อมูล Persona ในรูปแบบที่ไม่ถูกต้องจาก AI';
+                errorMessage.textContent = content.error_invalid_data;
                 errorMessage.classList.remove('hidden');
                 return;
             }
@@ -479,154 +905,65 @@
 
             const evangelistChars = (Array.isArray(evangelist.characteristics) && evangelist.characteristics.length > 0)
                 ? evangelist.characteristics.map(c => `<li>${String(c)}</li>`).join('')
-                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
+                : `<li class="placeholder">${content.persona_characteristics_fallback}</li>`;
 
             const lookalikeChars = (Array.isArray(lookalike.characteristics) && lookalike.characteristics.length > 0)
                 ? lookalike.characteristics.map(c => `<li>${String(c)}</li>`).join('')
-                : '<li class="placeholder">ไม่มีข้อมูลลักษณะเด่น</li>';
+                : `<li class="placeholder">${content.persona_characteristics_fallback}</li>`;
 
             const evangelistHtml = `
                 <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🧠</div>
-                        <h3 class="text-2xl font-bold text-sky-400 mt-2 break-words">${evangelist.name || 'ผู้เผยแพร่'}</h3>
-                        <p class="font-semibold text-white">(Category Evangelist)</p>
+                        <h3 class="text-2xl font-bold text-sky-400 mt-2 break-words">${evangelist.name || content.persona_evangelist_name}</h3>
+                        <p class="font-semibold text-white">${translations[currentLang].evangelist_subtitle || '(Category Evangelist)'}</p>
                     </div>
                     <div class="flex-grow flex flex-col">
-                        <p class="text-slate-300 mb-4 break-words flex-grow">${evangelist.bio || 'ไม่มีคำอธิบาย'}</p>
+                        <p class="text-slate-300 mb-4 break-words flex-grow">${evangelist.bio || content.persona_bio_fallback}</p>
                         <div>
-                            <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                            <h4 class="font-bold text-white mb-2">${content.persona_characteristics}</h4>
                             <ul class="list-check text-slate-300">${evangelistChars}</ul>
                         </div>
                     </div>
-                </div>
-            `;
+                </div>`;
 
             const lookalikeHtml = `
                 <div class="gemini-card rounded-lg p-6 flex flex-col h-full">
                     <div class="text-center mb-4">
                         <div class="text-4xl">🤝</div>
-                        <h3 class="text-2xl font-bold text-pink-400 mt-2 break-words">${lookalike.name || 'ผู้ซื้อที่คล้ายกัน'}</h3>
-                        <p class="font-semibold text-white">(Buyer Lookalike)</p>
+                        <h3 class="text-2xl font-bold text-pink-400 mt-2 break-words">${lookalike.name || content.persona_lookalike_name}</h3>
+                        <p class="font-semibold text-white">${translations[currentLang].lookalike_subtitle || '(Buyer Lookalike)'}</p>
                     </div>
                     <div class="flex-grow flex flex-col">
-                        <p class="text-slate-300 mb-4 break-words flex-grow">${lookalike.bio || 'ไม่มีคำอธิบาย'}</p>
-                         <div>
-                            <h4 class="font-bold text-white mb-2">ลักษณะเด่น:</h4>
+                        <p class="text-slate-300 mb-4 break-words flex-grow">${lookalike.bio || content.persona_bio_fallback}</p>
+                        <div>
+                            <h4 class="font-bold text-white mb-2">${content.persona_characteristics}</h4>
                             <ul class="list-check text-slate-300">${lookalikeChars}</ul>
                         </div>
                     </div>
-                </div>
-            `;
+                </div>`;
             
             personaOutput.innerHTML = evangelistHtml + lookalikeHtml;
             personaOutput.classList.remove('hidden');
         }
 
-
-        const wrapLabel = (label, maxLength = 16) => {
-            if (label.length <= maxLength) {
-                return label;
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.split('-')[0];
+            
+            let initialLang = 'th'; // Default
+            if (savedLang && translations[savedLang]) {
+                initialLang = savedLang;
+            } else if (translations[browserLang]) {
+                initialLang = browserLang;
             }
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
-                    lines.push(currentLine);
-                    currentLine = word;
-                } else {
-                    currentLine = currentLine ? currentLine + ' ' + word : word;
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        };
-        
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-              return label.join(' ');
-            }
-            return label;
-        };
-
-        const globalChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#e2e8f0', // text-slate-200
-                        font: {
-                            family: "'Kanit', sans-serif"
-                        }
-                    }
-                },
-                tooltip: {
-                    titleFont: {
-                        family: "'Kanit', sans-serif"
-                    },
-                    bodyFont: {
-                        family: "'Kanit', sans-serif"
-                    },
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    }
-                }
-            }
-        };
-
-        const comparisonChartCtx = document.getElementById('comparisonChart').getContext('2d');
-        const comparisonChart = new Chart(comparisonChartCtx, {
-            type: 'radar',
-            data: {
-                labels: [
-                    'การควบคุมและความปลอดภัย', 
-                    'ความสามารถในการขยายขนาด', 
-                    'ความคุ้มค่าระยะยาว', 
-                    'อิสระในการสร้างสรรค์', 
-                    'การเชื่อมโยงทางอารมณ์',
-                    'ความจริงแท้ที่รับรู้ได้'
-                ].map(label => wrapLabel(label)),
-                datasets: [{
-                    label: 'AI Influencer',
-                    data: [10, 10, 9, 10, 6, 7],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)', // blue-500
-                    borderColor: '#3b82f6', // blue-500
-                    pointBackgroundColor: '#3b82f6',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#3b82f6'
-                }, {
-                    label: 'Human Influencer',
-                    data: [4, 6, 5, 7, 10, 10],
-                    backgroundColor: 'rgba(236, 72, 153, 0.2)', // pink-500
-                    borderColor: '#ec4899', // pink-500
-                    pointBackgroundColor: '#ec4899',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#ec4899'
-                }]
-            },
-            options: {
-                ...globalChartOptions,
-                scales: {
-                    r: {
-                        angleLines: { color: 'rgba(226, 232, 240, 0.2)' }, // slate-200
-                        grid: { color: 'rgba(226, 232, 240, 0.2)' },
-                        pointLabels: { color: '#e2e8f0', font: { size: 12, family: "'Kanit', sans-serif" }},
-                        ticks: {
-                            color: '#0f172a', // slate-900
-                            backdropColor: 'rgba(226, 232, 240, 0.8)',
-                            stepSize: 2
-                        }
-                    }
-                }
-            }
+            
+            changeLanguage(initialLang);
         });
+
     </script>
 </body>
 </html>
+
 

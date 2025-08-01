@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อินโฟกราฟิก: กัมพูชา ฐานอาชญากรรมไซเบอร์และสมรภูมิข้อมูล</title>
+    <title>Infographic: Cambodia - Cybercrime Hub & Infowar Battlefield</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
@@ -49,7 +49,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .lang-btn {
+        .nav-btn {
             padding: 0.5rem 1rem;
             margin: 0.25rem;
             border-radius: 0.5rem;
@@ -57,10 +57,10 @@
             color: white;
             transition: background-color 0.3s;
         }
-        .lang-btn:hover {
+        .nav-btn:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
-        .lang-btn.active {
+        .nav-btn.active {
             background-color: #0079FF;
             font-weight: bold;
         }
@@ -69,17 +69,6 @@
         }
         [lang="zh"] body, [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3, [lang="zh"] h4, [lang="zh"] p, [lang="zh"] span, [lang="zh"] div, [lang="zh"] button, [lang="zh"] li, [lang="zh"] strong, [lang="zh"] textarea, [lang="zh"] a {
             font-family: 'Noto Sans SC', 'Sarabun', sans-serif;
-        }
-        [lang="fr"] body, [lang="fr"] h1, [lang="fr"] h2, [lang="fr"] h3, [lang="fr"] h4, [lang="fr"] p, [lang="fr"] span, [lang="fr"] div, [lang="fr"] button, [lang="fr"] li, [lang="fr"] strong, [lang="fr"] textarea, [lang="fr"] a,
-        [lang="es"] body, [lang="es"] h1, [lang="es"] h2, [lang="es"] h3, [lang="es"] h4, [lang="es"] p, [lang="es"] span, [lang="es"] div, [lang="es"] button, [lang="es"] li, [lang="es"] strong, [lang="es"] textarea, [lang="es"] a {
-            font-family: 'Roboto', 'Sarabun', sans-serif;
-        }
-        [lang="ar"] body, [lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] p, [lang="ar"] span, [lang="ar"] div, [lang="ar"] button, [lang="ar"] li, [lang="ar"] strong, [lang="ar"] textarea, [lang="ar"] a {
-            font-family: 'Noto Sans Arabic', 'Sarabun', sans-serif;
-            direction: rtl;
-        }
-        [lang="ko"] body, [lang="ko"] h1, [lang="ko"] h2, [lang="ko"] h3, [lang="ko"] h4, [lang="ko"] p, [lang="ko"] span, [lang="ko"] div, [lang="ko"] button, [lang="ko"] li, [lang="ko"] strong, [lang="ko"] textarea, [lang="ko"] a {
-            font-family: 'Noto Sans KR', 'Sarabun', sans-serif;
         }
     </style>
 </head>
@@ -91,11 +80,14 @@
             Your browser does not support the video tag.
         </video>
         <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
+        <div class="absolute top-4 left-4 z-30">
+             <a href="https://threeandhour.github.io/GymMateX/TruthFromThai.html" class="nav-btn" data-lang-key="home_link">หน้าหลัก</a>
+        </div>
         <div id="language-switcher" class="absolute top-4 right-4 z-30 flex flex-wrap justify-end">
-            <button class="lang-btn" data-lang="th">ไทย</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="zh">中文</button>
-            <button class="lang-btn" data-lang="km">ខ្មែរ</button>
+            <button class="nav-btn" data-lang="th">ไทย</button>
+            <button class="nav-btn" data-lang="en">EN</button>
+            <button class="nav-btn" data-lang="zh">中文</button>
+            <button class="nav-btn" data-lang="km">ខ្មែរ</button>
         </div>
         <header class="relative z-20 flex flex-col items-center justify-center h-full text-white p-6">
             <div class="container mx-auto text-center">
@@ -353,12 +345,13 @@
     </div>
 
     <footer class="bg-[#004AAD] text-white text-center p-4 mt-8">
-        <p data-lang-key="footer_text">จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้</p>
+        <p data-lang-key="footer_text">อัปเดตล่าสุด: 1 สิงหาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้</p>
     </footer>
 
     <script>
         const translations = {
             th: {
+                home_link: "หน้าหลัก",
                 pdf_link_text_en: "ดาวน์โหลดรายงานฉบับเต็ม (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 pdf_link_text_th: "ดาวน์โหลดรายงานฉบับเต็ม (ไทย PDF)",
                 main_title: "อาณาจักรแห่งการหลอกลวง",
@@ -426,7 +419,7 @@
                 gemini_result_placeholder: "ผลการวิเคราะห์จะปรากฏที่นี่...",
                 gemini_disclaimer: "ข้อจำกัดความรับผิดชอบ: เครื่องมือนี้ให้คำแนะนำเบื้องต้นโดยใช้ AI และไม่ถือเป็นคำแนะนำทางกฎหมายหรือความปลอดภัยจากผู้เชี่ยวชาญ",
                 references_title: "แหล่งข้อมูลอ้างอิงที่น่าเชื่อถือ",
-                footer_text: "จัดทำเมื่อ: 31 กรกฎาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้",
+                footer_text: "อัปเดตล่าสุด: 1 สิงหาคม 2025 | อินโฟกราฟิกนี้สร้างขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้",
                 error_title: "เกิดข้อผิดพลาด",
                 error_close_button: "ปิด",
                 error_input_message: "กรุณาป้อนข้อความที่ต้องการวิเคราะห์",
@@ -440,6 +433,7 @@
                 chart_cpi_labels: ['สิงคโปร์', 'มาเลเซีย', 'เวียดนาม', 'ไทย', 'อินโดนีเซีย', 'ฟิลิปปินส์', 'กัมพูชา', 'เมียนมา']
             },
             en: {
+                home_link: "Home",
                 pdf_link_text_en: "Download Full Analysis Report (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 pdf_link_text_th: "",
                 main_title: "The Empire of Deceit",
@@ -507,7 +501,7 @@
                 gemini_result_placeholder: "Analysis results will appear here...",
                 gemini_disclaimer: "Disclaimer: This tool provides preliminary advice using AI and does not constitute professional legal or security advice.",
                 references_title: "Credible Reference Sources",
-                footer_text: "Created: July 31, 2025 | This infographic is for educational and awareness purposes.",
+                footer_text: "Last Updated: August 1, 2025 | This infographic is for educational and awareness purposes.",
                 error_title: "An Error Occurred",
                 error_close_button: "Close",
                 error_input_message: "Please enter text to analyze.",
@@ -521,6 +515,7 @@
                 chart_cpi_labels: ['Singapore', 'Malaysia', 'Vietnam', 'Thailand', 'Indonesia', 'Philippines', 'Cambodia', 'Myanmar']
             },
             zh: {
+                home_link: "主页",
                 pdf_link_text_en: "下载完整分析报告 (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 pdf_link_text_th: "",
                 main_title: "欺诈帝国",
@@ -588,7 +583,7 @@
                 gemini_result_placeholder: "分析结果将显示在此处...",
                 gemini_disclaimer: "免责声明：此工具使用AI提供初步建议，不构成专业的法律或安全建议。",
                 references_title: "可靠的参考来源",
-                footer_text: "创建日期：2025年7月31日 | 此信息图表仅供教育和提高认识之用。",
+                footer_text: "最后更新于：2025年8月1日 | 此信息图表仅供教育和提高认识之用。",
                 error_title: "发生错误",
                 error_close_button: "关闭",
                 error_input_message: "请输入要分析的文本。",
@@ -602,6 +597,7 @@
                 chart_cpi_labels: ['新加坡', '马来西亚', '越南', '泰国', '印度尼西亚', '菲律宾', '柬埔寨', '缅甸']
             },
             km: {
+                home_link: "ទំព័រដើម",
                 pdf_link_text_en: "ទាញយករបាយការណ៍វិភាគពេញលេញ (PDF): Cambodia, the Global Epicenter of Transnational Cybercrime",
                 pdf_link_text_th: "",
                 main_title: "អាណាចក្រនៃ​ការបោកប្រាស់",
@@ -663,13 +659,13 @@
                 infowar_strategy3_desc: "ផ្សព្វផ្សាយព័ត៌មានក្លែងក្លាយ ស្ពែម និងការរាយការណ៍ទ្រង់ទ្រាយធំ ដើម្បីវាយប្រហារលើលំហអនឡាញរបស់ថៃ។",
                 infowar_goal: "គោលដៅ៖ បង្កើតភាពច្របូកច្របល់ បំភ្លៃការពិត និងដណ្តើមយកភាពស្របច្បាប់ក្នុងក្រសែភ្នែកសហគមន៍អន្តរជាតិ។",
                 gemini_title: "ឧបករណ៍វិភាគហានិភ័យ ✨",
-                gemini_desc: "ទទួលបានសារគួរឱ្យសង្ស័យមែនទេ? មិនប្រាកដថាជាការងារពិត ឬជាការបោកប្រាស់? សូមសាកល្បងប្រើឧបករណ៍វិភាគដែលដំណើរការដោយ Gemini API នេះ ដើម្បីវាយតម្លៃហានិភ័យជាបឋម។",
-                gemini_placeholder: "សូមដាក់សារដែលគួរឱ្យសង្ស័យនៅទីនេះ... ឧទាហរណ៍៖ 'ការងារងាយស្រួល ប្រាក់ខែខ្ពស់ ចុចទីនេះដើម្បីដាក់ពាក្យ!'",
+                gemini_desc: "ទទួលបានសារគួរឱ្យសងสัยមែនទេ? មិនប្រាកដថាជាការងារពិត ឬជាការបោកប្រាស់? សូមសាកល្បងប្រើឧបករណ៍វិភាគដែលដំណើរការដោយ Gemini API នេះ ដើម្បីវាយតម្លៃហានិភ័យជាបឋម។",
+                gemini_placeholder: "សូមដាក់សារដែលគួរឱ្យសងสัยនៅទីនេះ... ឧទាហរណ៍៖ 'ការងារងាយស្រួល ប្រាក់ខែខ្ពស់ ចុចទីនេះដើម្បីដាក់ពាក្យ!'",
                 gemini_button: "វិភាគជាមួយ Gemini",
                 gemini_result_placeholder: "លទ្ធផលវិភាគនឹងបង្ហាញនៅទីនេះ...",
                 gemini_disclaimer: "ការបដិសេធ៖ ឧបករណ៍នេះផ្តល់នូវដំបូន្មានជាបឋមដោយប្រើ AI ហើយមិនមែនជាដំបូន្មានផ្នែកច្បាប់ ឬសន្តិសុខពីអ្នកជំនាញឡើយ។",
                 references_title: "ប្រភពឯកសារយោងដែលអាចទុកចិត្តបាន",
-                footer_text: "បង្កើតនៅថ្ងៃទី ៣១ ខែកក្កដា ឆ្នាំ ២០២៥ | ក្រាហ្វិកព័ត៌មាននេះបង្កើតឡើងសម្រាប់គោលបំណងអប់រំ និងការយល់ដឹង។",
+                footer_text: "ปรับปรุงล่าสุด: ១ សីហា ២០២៥ | ក្រាហ្វិកព័ត៌មាននេះបង្កើតឡើងសម្រាប់គោលបំណងអប់រំ និងការយល់ដឹង។",
                 error_title: "មានបញ្ហា",
                 error_close_button: "បិទ",
                 error_input_message: "សូមបញ្ចូលអត្ថបទដើម្បីវិភាគ។",
@@ -818,11 +814,7 @@
                 th: `ในฐานะผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ที่เชี่ยวชาญด้านการหลอกลวงออนไลน์จากเอเชียตะวันออกเฉียงใต้ โปรดวิเคราะห์ข้อความต่อไปนี้เพื่อหาสัญญาณของการหลอกลวง: "${text}". โปรดระบุจุดที่น่าสงสัย (red flags) อธิบายกลยุทธ์การหลอกลวงที่น่าจะเป็นไปได้ และให้คำแนะนำที่เป็นรูปธรรม จัดรูปแบบคำตอบของคุณโดยใช้หัวข้อและรายการสัญลักษณ์ (bullet points) ที่ชัดเจน เข้าใจง่าย เป็นภาษาไทย`,
                 en: `As a cybersecurity expert specializing in Southeast Asian online scams, analyze the following message for signs of a scam: "${text}". Identify red flags, explain the likely scam tactic (e.g., romance scam, investment fraud), and provide concrete advice. Format your response in English with clear headings and bullet points.`,
                 zh: `作为一名专门研究东南亚网络诈骗的网络安全专家，请分析以下信息以寻找诈骗迹象：“${text}”。请识别危险信号，解释可能的诈骗策略（例如，爱情诈骗，投资欺诈），并提供具体建议。请使用中文清晰的标题和项目符号格式化您的回答。`,
-                km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`,
-                fr: `En tant qu'expert en cybersécurité spécialisé dans les escroqueries en ligne en Asie du Sud-Est, analysez le message suivant pour déceler des signes d'escroquerie : "${text}". Identifiez les signaux d'alarme, expliquez la tactique d'escroquerie probable (par exemple, arnaque sentimentale, fraude à l'investissement) et donnez des conseils concrets. Formatez votre réponse en français avec des titres clairs et des listes à puces.`,
-                es: `Como experto en ciberseguridad especializado en estafas en línea del sudeste asiático, analice el siguiente mensaje en busca de señales de estafa: "${text}". Identifique las señales de alerta, explique la táctica de estafa probable (por ejemplo, estafa romántica, fraude de inversión) y proporcione consejos concretos. Formatee su respuesta en español con encabezados claros y viñetas.`,
-                ar: `بصفتك خبيرًا في الأمن السيبراني متخصصًا في عمليات الاحتيال عبر الإنترنت في جنوب شرق آسيا، قم بتحليل الرسالة التالية بحثًا عن علامات الاحتيال: "${text}". حدد العلامات الحمراء، واشرح تكتيك الاحتيال المحتمل (على سبيل المثال، الاحتيال الرومانسي، الاحتيال الاستثماري)، وقدم نصائح ملموسة. نسق ردك باللغة العربية بعناوين واضحة ونقاط نقطية.`,
-                ko: `동남아시아 온라인 사기 전문 사이버 보안 전문가로서 다음 메시지에서 사기 징후를 분석하십시오: "${text}". 위험 신호를 식별하고, 가능한 사기 수법(예: 로맨스 스캠, 투자 사기)을 설명하고, 구체적인 조언을 제공하십시오. 명확한 제목과 글머리 기호를 사용하여 한국어로 답변을 작성하십시오.`
+                km: `ក្នុងនាមជាអ្នកជំនាញផ្នែកសន្តិសុខអ៊ីនធឺណិតដែលเชี่ยวชาญលើការបោកប្រាស់តាមអ៊ីនធឺណិតនៅអាស៊ីអាគ្នេយ៍ សូមវិភាគសារខាងក្រោមដើម្បីរកមើលសញ្ញានៃការបោកប្រាស់៖ "${text}"។ សូមកំណត់អត្តសញ្ញាណธงក្រហម, ពន្យល់ពីយុទ្ធសាស្ត្របោកប្រាស់ដែលអាចកើតមាន (ឧ. ការបោកប្រាស់ស្នេហា, ការក្លែងបន្លំការវិនិយោគ) និងផ្តល់ដំបូន្មានជាក់ស្តែង។ សូមធ្វើទ្រង់ទ្រាយចម្លើយរបស់អ្នកជាភាសាខ្មែរដោយមានចំណងជើង និងចំណុចច្បាស់លាស់។`
             };
 
             const payload = { contents: [{ role: "user", parts: [{ text: prompts[lang] }] }] };
@@ -889,7 +881,7 @@
             createCorruptionIndexChart(chartLang.chart_cpi_labels, chartLang.chart_cpi_title);
 
             // Update active button
-            document.querySelectorAll('#language-switcher .lang-btn').forEach(btn => {
+            document.querySelectorAll('#language-switcher .nav-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
             
@@ -901,7 +893,7 @@
             changeLanguage(savedLang);
 
             document.getElementById('language-switcher').addEventListener('click', (event) => {
-                if (event.target.matches('.lang-btn')) {
+                if (event.target.matches('.nav-btn')) {
                     changeLanguage(event.target.dataset.lang);
                 }
             });

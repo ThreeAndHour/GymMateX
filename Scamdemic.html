@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อินโฟกราฟิก: โรคระบาดกลโกงในฐานะเครื่องมือแห่งรัฐ (หลายภาษา)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Roboto:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+Khmer:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', 'Roboto', 'Noto Sans', 'Noto Sans Khmer', sans-serif;
+            background-color: #003F5C;
+            color: #FFFFFF;
+        }
+        .lang-btn {
+            background-color: #00577C;
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin: 0 0.25rem;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background-color: #FFA600;
+            color: #003F5C;
+            font-weight: bold;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #00577C;
+            border-left: 5px solid #FFA600;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #FFA600;
+            align-self: center;
+            margin: 0 1rem;
+        }
+        .flowchart-step {
+            background-color: #00577C;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FFA600;
+            border: 3px solid #003F5C;
+        }
+        .gemini-btn {
+            background-color: #FFA600;
+            color: #003F5C;
+            transition: all 0.3s ease;
+        }
+        .gemini-btn:hover {
+            background-color: #ffc14d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 166, 0, 0.4);
+        }
+        #modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FFA600;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <div class="text-center mb-6">
+            <a href="https://threeandhour.github.io/GymMateX/TruthFromThai.html" data-key="home_link" class="text-amber-400 hover:text-amber-300 transition-colors text-xl font-bold underline"></a>
+        </div>
+
+        <div id="language-switcher" class="flex justify-center flex-wrap mb-6">
+            <button class="lang-btn" data-lang="th">ไทย</button>
+            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="zh">中文</button>
+            <button class="lang-btn" data-lang="ru">Русский</button>
+            <button class="lang-btn" data-lang="km">ខ្មែរ</button>
+        </div>
+
+        <div class="flex justify-center mb-8">
+            <img src="https://i.postimg.cc/05TgBPf8/TRUTHTHAI.gif" alt="TruthThai Logo" class="w-full max-w-sm md:max-w-md rounded-lg shadow-2xl border-2 border-amber-400/50">
+        </div>
+
+        <header class="text-center mb-12">
+            <h1 data-key="main_title" class="text-4xl md:text-5xl font-bold text-white mb-2"></h1>
+            <p data-key="main_subtitle" class="text-lg md:text-xl text-gray-300"></p>
+        </header>
+
+        <!-- YouTube Video Section -->
+        <section class="mb-16">
+            <h2 data-key="video_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+            <div class="max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden">
+                <div class="aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/0TaNBK_-X7U?si=onwZRhSNxXfWZuZ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-1" class="mb-16">
+            <h2 data-key="s1_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+            <p data-key="s1_p1" class="max-w-3xl mx-auto text-center text-gray-300 mb-10"></p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="kpi-card rounded-lg shadow-lg p-6">
+                    <h3 data-key="s1_kpi1_value" class="text-5xl font-bold text-amber-400"></h3>
+                    <p data-key="s1_kpi1_desc" class="mt-2 text-gray-200"></p>
+                </div>
+                <div class="kpi-card rounded-lg shadow-lg p-6">
+                    <h3 data-key="s1_kpi2_value" class="text-5xl font-bold text-amber-400"></h3>
+                    <p data-key="s1_kpi2_desc" class="mt-2 text-gray-200"></p>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 data-key="s1_timeline_title" class="text-2xl font-semibold text-center mb-6 text-white"></h3>
+                <div class="relative border-l-2 border-amber-400 ml-4 md:ml-0">
+                    <div class="timeline-item mb-8 pl-8 relative">
+                        <h4 data-key="s1_timeline1_date" class="font-bold text-lg text-amber-400"></h4>
+                        <p data-key="s1_timeline1_desc" class="text-gray-300"></p>
+                    </div>
+                    <div class="timeline-item mb-8 pl-8 relative">
+                        <h4 data-key="s1_timeline2_date" class="font-bold text-lg text-amber-400"></h4>
+                        <p data-key="s1_timeline2_desc" class="text-gray-300"></p>
+                    </div>
+                    <div class="timeline-item mb-8 pl-8 relative">
+                        <h4 data-key="s1_timeline3_date" class="font-bold text-lg text-amber-400"></h4>
+                        <p data-key="s1_timeline3_desc" class="text-gray-300"></p>
+                    </div>
+                    <div class="timeline-item pl-8 relative">
+                        <h4 data-key="s1_timeline4_date" class="font-bold text-lg text-amber-400"></h4>
+                        <p data-key="s1_timeline4_desc" class="text-gray-300"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2" class="mb-16">
+            <h2 data-key="s2_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+            <p data-key="s2_p1" class="max-w-3xl mx-auto text-center text-gray-300 mb-10"></p>
+            
+            <div class="bg-white/10 rounded-lg shadow-lg p-6 md:p-8">
+                <h3 data-key="s2_flow_title" class="text-2xl font-semibold text-center mb-6 text-white"></h3>
+                <div class="flex flex-col md:flex-row justify-around items-center text-center">
+                    <div class="flowchart-step rounded-lg p-4 w-full md:w-1/4 mb-4 md:mb-0">
+                        <div class="text-4xl mb-2">①</div>
+                        <h4 data-key="s2_flow1_title" class="font-bold text-lg"></h4>
+                        <p data-key="s2_flow1_desc" class="text-sm text-gray-300"></p>
+                    </div>
+                    <div class="flowchart-arrow transform rotate-90 md:rotate-0">➔</div>
+                    <div class="flowchart-step rounded-lg p-4 w-full md:w-1/4 mb-4 md:mb-0">
+                        <div class="text-4xl mb-2">②</div>
+                        <h4 data-key="s2_flow2_title" class="font-bold text-lg"></h4>
+                        <p data-key="s2_flow2_desc" class="text-sm text-gray-300"></p>
+                    </div>
+                    <div class="flowchart-arrow transform rotate-90 md:rotate-0">➔</div>
+                    <div class="flowchart-step rounded-lg p-4 w-full md:w-1/4">
+                        <div class="text-4xl mb-2">③</div>
+                        <h4 data-key="s2_flow3_title" class="font-bold text-lg"></h4>
+                        <p data-key="s2_flow3_desc" class="text-sm text-gray-300"></p>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <button id="generateFakeNewsBtn" data-key="s2_gemini_btn" class="gemini-btn font-bold py-2 px-4 rounded-lg shadow-md"></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-3" class="mb-16">
+            <h2 data-key="s3_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+            <p data-key="s3_p1" class="max-w-3xl mx-auto text-center text-gray-300 mb-10"></p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white/10 rounded-lg shadow-lg p-6">
+                    <h3 data-key="s3_chart1_title" class="text-2xl font-semibold text-center mb-4 text-white"></h3>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="gdpChart"></canvas>
+                    </div>
+                     <p data-key="s3_chart1_desc" class="text-center text-gray-300 mt-4"></p>
+                </div>
+                 <div class="bg-white/10 rounded-lg shadow-lg p-6">
+                    <h3 data-key="s3_list_title" class="text-2xl font-semibold text-center mb-4 text-white"></h3>
+                    <ul class="space-y-3 text-gray-200">
+                        <li data-key="s3_list1" class="flex items-start"><span class="text-amber-400 mr-3 text-xl">✓</span><div></div></li>
+                        <li data-key="s3_list2" class="flex items-start"><span class="text-amber-400 mr-3 text-xl">✓</span><div></div></li>
+                        <li data-key="s3_list3" class="flex items-start"><span class="text-amber-400 mr-3 text-xl">✓</span><div></div></li>
+                        <li data-key="s3_list4" class="flex items-start"><span class="text-amber-400 mr-3 text-xl">✓</span><div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="section-4" class="mb-16">
+            <h2 data-key="s4_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+             <p data-key="s4_p1" class="max-w-3xl mx-auto text-center text-gray-300 mb-10"></p>
+            <div class="bg-white/10 rounded-lg shadow-lg p-6 md:p-8">
+                <h3 data-key="s4_chart2_title" class="text-2xl font-semibold text-center mb-4 text-white"></h3>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="hacktivistChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-5" class="mb-16">
+            <h2 data-key="s5_title" class="text-3xl font-bold text-center mb-8 text-amber-400"></h2>
+            <p data-key="s5_p1" class="max-w-3xl mx-auto text-center text-gray-300 mb-10"></p>
+            <div class="bg-white/10 rounded-lg shadow-lg p-8 flex flex-col items-center">
+                <div class="text-center">
+                    <h4 data-key="s5_box1_title" class="text-xl font-bold text-white"></h4>
+                    <p data-key="s5_box1_desc" class="text-red-400"></p>
+                </div>
+                <div class="text-4xl my-4 text-red-400 transform rotate-90">⇩</div>
+                <div class="text-center bg-red-500/20 border border-red-400 rounded-lg p-4">
+                     <h4 data-key="s5_box2_title" class="text-xl font-bold text-white"></h4>
+                     <p data-key="s5_box2_desc" class="text-gray-300"></p>
+                </div>
+                 <div class="text-4xl my-4 text-red-400 transform rotate-90">⇩</div>
+                 <div class="text-center">
+                     <h4 data-key="s5_box3_title" class="text-xl font-bold text-white"></h4>
+                     <p data-key="s5_box3_desc" class="text-red-400"></p>
+                 </div>
+                 <div class="text-center mt-8">
+                    <button id="generatePolicyBtn" data-key="s5_gemini_btn" class="gemini-btn font-bold py-2 px-4 rounded-lg shadow-md"></button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-400 pt-8 border-t border-white/20">
+            <p data-key="footer_p1"></p>
+            <p data-key="footer_p2" class="text-sm mt-2"></p>
+        </footer>
+    </div>
+
+    <!-- Modal for Gemini API Response -->
+    <div id="geminiModal" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black opacity-50"></div>
+        <div id="modal-content" class="relative bg-slate-800 rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] flex flex-col transform scale-95">
+            <div class="flex justify-between items-center p-4 border-b border-slate-600">
+                <h3 id="modalTitle" class="text-xl font-semibold text-amber-400"></h3>
+                <button id="closeModalBtn" class="text-white hover:text-amber-400">&times;</button>
+            </div>
+            <div id="modalBody" class="p-6 overflow-y-auto">
+                <div class="flex justify-center items-center h-32">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            th: {
+                home_link: "กลับหน้าแรก",
+                video_title: "วิดีโอ: ภาพรวมสถานการณ์",
+                main_title: "โรคระบาดกลโกงในฐานะเครื่องมือแห่งรัฐ",
+                main_subtitle: "บทสรุปภาพสงครามข้อมูลข่าวสารของกัมพูชาต่อประเทศไทย (กรกฎาคม 2568)",
+                s1_title: "สงครามสองแนวรบ: กายภาพและดิจิทัล",
+                s1_p1: "ความขัดแย้งชายแดนในเดือนกรกฎาคม 2568 ไม่ได้จำกัดอยู่แค่การปะทะทางทหาร แต่เป็นฉากหน้าของสงครามไซเบอร์ขนาดมหึมาที่มุ่งเป้าโจมตีโครงสร้างพื้นฐานดิจิทัลและพื้นที่สาธารณะของไทย",
+                s1_kpi1_value: ">500 ล้านครั้ง",
+                s1_kpi1_desc: "คือจำนวนการโจมตีแบบ DDoS ที่พุ่งเป้าไปยังหน่วยงานรัฐและกองทัพไทยภายใน 24 ชั่วโมง",
+                s1_kpi2_value: ">218,000 คน",
+                s1_kpi2_desc: "คือจำนวนผู้พลัดถิ่นจากทั้งสองฝั่งของชายแดนอันเนื่องมาจากความรุนแรง",
+                s1_timeline_title: "ลำดับเวลาเหตุการณ์สำคัญ",
+                s1_timeline1_date: "23-24 กรกฎาคม",
+                s1_timeline1_desc: "เหตุระเบิดทุ่นระเบิดกลายเป็นชนวนเหตุการปะทะด้วยอาวุธหนักตามแนวชายแดน",
+                s1_timeline2_date: "24-27 กรกฎาคม",
+                s1_timeline2_desc: "สื่อเครือเนชั่นถูกโจมตีทางไซเบอร์กว่า 200 ล้านครั้ง ทั้ง DDoS และการระดมรีพอร์ต",
+                s1_timeline3_date: "25 กรกฎาคม",
+                s1_timeline3_desc: "รัฐบาลและกองทัพไทยเผชิญการโจมตี DDoS สูงสุดกว่า 500 ล้านครั้งในวันเดียว",
+                s1_timeline4_date: "28 กรกฎาคม",
+                s1_timeline4_desc: "มีการตกลงหยุดยิง แต่สถานการณ์ยังคงตึงเครียดด้วยข้อกล่าวหาการละเมิดจากทั้งสองฝ่าย",
+                s2_title: "กายวิภาคของการโจมตี: ยุทธวิธี \"ท่อดับเพลิงแห่งความเท็จ\"",
+                s2_p1: "ปฏิบัติการข้อมูลข่าวสาร (IO) ของกัมพูชาไม่ได้เกิดขึ้นแบบสุ่ม แต่เป็นไปตามยุทธศาสตร์ที่เรียกว่า \"Firehose of Falsehood\" ซึ่งมุ่งสร้างความสับสนและบั่นทอนความจริงด้วยข้อมูลปริมาณมหาศาล",
+                s2_flow_title: "กระบวนการโจมตี 3 ขั้นตอน",
+                s2_flow1_title: "ระดมพล",
+                s2_flow1_desc: "ใช้แรงงานทาสจากศูนย์กลโกง (Scam Center) เป็น \"กองทัพไซเบอร์\"",
+                s2_flow2_title: "สร้างอวตาร",
+                s2_flow2_desc: "ผลิตบัญชีผู้ใช้ปลอมจำนวนมหาศาลเพื่อสร้างภาพฉันทามติลวง",
+                s2_flow3_title: "โจมตี",
+                s2_flow3_desc: "ปล่อยข่าวปลอม, สแปม, และระดมรีพอร์ตเพื่อทำลายพื้นที่ออนไลน์ของไทย",
+                s2_gemini_btn: "✨ สร้างตัวอย่างข่าวปลอม",
+                s3_title: "กลไกสงคราม: \"โรคระบาดกลโกง\"",
+                s3_p1: "เบื้องหลังการโจมตีคืออุตสาหกรรมอาชญากรรมไซเบอร์มูลค่ามหาศาลที่เฟื่องฟูในกัมพูชา ซึ่งมีความสัมพันธ์แบบพึ่งพากับผู้มีอำนาจในรัฐ และถูกปรับเปลี่ยนให้เป็นเครื่องมือสงครามได้อย่างง่ายดาย",
+                s3_chart1_title: "ธุรกิจสีเทาต่อ GDP กัมพูชา",
+                s3_chart1_desc: "ธุรกิจผิดกฎหมาย รวมถึงศูนย์กลโกง อาจมีสัดส่วนสูงถึง 40% ของ GDP กัมพูชา",
+                s3_list_title: "ทำไมศูนย์กลโกงจึงเป็นอาวุธที่สมบูรณ์แบบ?",
+                s3_list1: "<strong class='text-white'>กำลังคนที่ถูกกักขัง:</strong> ควบคุมง่ายและมีจำนวนมหาศาล",
+                s3_list2: "<strong class='text-white'>เทคโนโลยีพร้อมใช้:</strong> มีคอมพิวเตอร์และอินเทอร์เน็ตความเร็วสูง",
+                s3_list3: "<strong class='text-white'>ทักษะที่ถ่ายทอดได้:</strong> การสร้างโปรไฟล์ปลอมและปฏิบัติการหมู่",
+                s3_list4: "<strong class='text-white'>การปฏิเสธความรับผิด:</strong> รัฐสามารถอ้างว่าเป็นฝีมืออาชญากรได้",
+                s4_title: "สมรภูมิแห่งไบต์: สงครามแฮกเกอร์ตอบโต้",
+                s4_p1: "ความขัดแย้งได้จุดชนวนสงครามเงาระหว่างกลุ่มแฮกเกอร์ชาตินิยมของทั้งสองฝ่าย ซึ่งเปิดฉากโจมตีตอบโต้กันอย่างดุเดือดในโลกไซเบอร์",
+                s4_chart2_title: "กลุ่มแฮกเกอร์หลักในความขัดแย้ง",
+                s5_title: "ภาวะย้อนแย้งของไทย: \"ภาวะกลืนไม่เข้าคายไม่ออกของคนโกหก\"",
+                s5_p1: "จุดอ่อนสำคัญของไทยคือการที่รัฐบาลใช้เครื่องมือและกฎหมายเดียวกันกับที่ใช้ต่อสู้ IO ต่างชาติ ในการควบคุมและปราบปรามผู้เห็นต่างในประเทศ ซึ่งบั่นทอนความน่าเชื่อถือและความไว้วางใจของประชาชน",
+                s5_box1_title: "เครื่องมือควบคุมภายในประเทศ",
+                s5_box1_desc: "พ.ร.บ. คอมพิวเตอร์ฯ, ศูนย์ต่อต้านข่าวปลอม, ทีม IO กองทัพ",
+                s5_box2_title: "บั่นทอนความไว้วางใจของประชาชน",
+                s5_box2_desc: "ไม่สามารถสร้างแนวร่วมที่เข้มแข็งเพื่อต่อต้านข้อมูลเท็จจากต่างชาติได้",
+                s5_box3_title: "ลดทอนประสิทธิภาพการป้องกันประเทศ",
+                s5_box3_desc: "เปิดช่องโหว่ให้การโจมตีทางข้อมูลข่าวสารจากภายนอกประสบความสำเร็จ",
+                s5_gemini_btn: "✨ เสนอแนะแนวทางแก้ไข",
+                footer_p1: "ข้อมูลสรุปจากรายงาน \"The Scamdemic as Statecraft: An Analysis of Cambodia's Information Warfare Against Thailand\"",
+                footer_p2: "อินโฟกราฟิกนี้จัดทำขึ้นเพื่อการศึกษาและสร้างความตระหนักรู้เกี่ยวกับความท้าทายด้านความมั่นคงไซเบอร์ในยุคดิจิทัล",
+                modal_loading_title: "กำลังสร้างเนื้อหา...",
+                modal_fakenews_title: "ตัวอย่างข่าวปลอมโดย Gemini",
+                modal_policy_title: "ข้อเสนอแนะเชิงนโยบายโดย Gemini",
+                chart_gdp_label: "สัดส่วน GDP",
+                chart_gdp_item1: "ธุรกิจสีเทาและอาชญากรรม (โดยประมาณ)",
+                chart_gdp_item2: "เศรษฐกิจส่วนอื่นๆ",
+                chart_hacker_title: "ดัชนีกิจกรรมโดยประมาณของกลุ่มแฮกเกอร์",
+                chart_hacker_cambodia: "ฝ่ายสนับสนุนกัมพูชา",
+                chart_hacker_thailand: "ฝ่ายสนับสนุนไทย",
+                gemini_prompt_fakenews: `โปรดสร้างตัวอย่างหัวข้อข่าวปลอมและคำอธิบายสั้นๆ จำนวน 3 ตัวอย่าง ที่น่าจะถูกเผยแพร่บนโซเชียลมีเดียเพื่อสร้างความไม่มั่นคงในประเทศไทย โดยอิงจากความขัดแย้งไทย-กัมพูชาในเดือนกรกฎาคม 2568 ซึ่งกัมพูชาใช้ศูนย์กลโกงเป็นเครื่องมือในสงครามข้อมูลข่าวสาร ให้มีลักษณะเร้าอารมณ์และมุ่งสร้างความโกรธแค้นและความสับสน ตอบเป็นภาษาไทย`,
+                gemini_prompt_policy: `เมื่อพิจารณาว่าการใช้กฎหมายอย่าง พ.ร.บ. คอมพิวเตอร์ฯ ของไทยกับพลเมืองของตนเองได้บ่อนทำลายความไว้วางใจของสาธารณชน ทำให้ประเทศเปราะบางต่อสงครามข้อมูลข่าวสารจากต่างชาติ โปรดเสนอแนะนโยบายที่เป็นรูปธรรม 3 ข้อสำหรับรัฐบาลไทยเพื่อแก้ไข "ภาวะกลืนไม่เข้าคายไม่ออกของคนโกหก" นี้ ข้อเสนอแนะควรมุ่งเน้นการสร้างความไว้วางใจของประชาชนขึ้นมาใหม่พร้อมกับเสริมสร้างการป้องกันทางไซเบอร์ของชาติ ตอบเป็นภาษาไทย`
+            },
+            en: {
+                home_link: "Back to Home",
+                video_title: "Video: Situation Overview",
+                main_title: "The Scamdemic as Statecraft",
+                main_subtitle: "An Analysis of Cambodia's Information Warfare Against Thailand (July 2025)",
+                s1_title: "A Two-Front War: Physical and Digital",
+                s1_p1: "The border conflict in July 2025 was not limited to military clashes but was a front for a massive cyber war targeting Thailand's digital infrastructure and public sphere.",
+                s1_kpi1_value: ">500 Million",
+                s1_kpi1_desc: "DDoS attacks targeting Thai government and military agencies within 24 hours.",
+                s1_kpi2_value: ">218,000 People",
+                s1_kpi2_desc: "Displaced from both sides of the border due to the violence.",
+                s1_timeline_title: "Timeline of Key Events",
+                s1_timeline1_date: "July 23-24",
+                s1_timeline1_desc: "A landmine explosion becomes the trigger for heavy weapons clashes along the border.",
+                s1_timeline2_date: "July 24-27",
+                s1_timeline2_desc: "Nation Group media was hit by over 200 million cyberattacks, including DDoS and mass reporting.",
+                s1_timeline3_date: "July 25",
+                s1_timeline3_desc: "The Thai government and military faced a peak of over 500 million DDoS attacks in a single day.",
+                s1_timeline4_date: "July 28",
+                s1_timeline4_desc: "A ceasefire was agreed upon, but the situation remained tense with accusations of violations from both sides.",
+                s2_title: "Anatomy of the Attack: The \"Firehose of Falsehood\" Tactic",
+                s2_p1: "Cambodia's Information Operations (IO) were not random but followed a strategy known as the \"Firehose of Falsehood,\" aimed at creating confusion and undermining truth with massive amounts of data.",
+                s2_flow_title: "3-Step Attack Process",
+                s2_flow1_title: "Mobilization",
+                s2_flow1_desc: "Using slave labor from Scam Centers as a \"cyber army.\"",
+                s2_flow2_title: "Avatar Creation",
+                s2_flow2_desc: "Producing massive numbers of fake user accounts to create a false consensus.",
+                s2_flow3_title: "Attack",
+                s2_flow3_desc: "Spreading fake news, spam, and mass reporting to disrupt Thai online spaces.",
+                s2_gemini_btn: "✨ Generate Fake News Example",
+                s3_title: "The War Machine: The \"Scamdemic\"",
+                s3_p1: "Behind the attacks is a massive cybercrime industry flourishing in Cambodia, which has a symbiotic relationship with those in power and is easily converted into a tool of war.",
+                s3_chart1_title: "Shadow Economy's Contribution to Cambodian GDP",
+                s3_chart1_desc: "Illegal businesses, including scam centers, may account for up to 40% of Cambodia's GDP.",
+                s3_list_title: "Why are Scam Centers the Perfect Weapon?",
+                s3_list1: "<strong class='text-white'>Captive Workforce:</strong> Easy to control and available in large numbers.",
+                s3_list2: "<strong class='text-white'>Ready Technology:</strong> Equipped with computers and high-speed internet.",
+                s3_list3: "<strong class='text-white'>Transferable Skills:</strong> Creating fake profiles and mass operations.",
+                s3_list4: "<strong class='text-white'>Plausible Deniability:</strong> The state can claim it's the work of criminals.",
+                s4_title: "The Battlefield of Bytes: The Hacktivist Counter-War",
+                s4_p1: "The conflict ignited a shadow war between nationalist hacktivist groups from both sides, who launched fierce counter-attacks in cyberspace.",
+                s4_chart2_title: "Key Hacktivist Groups in the Conflict",
+                s5_title: "Thailand's Paradox: The \"Liar's Dilemma\"",
+                s5_p1: "Thailand's key weakness is that the government uses the same tools and laws to fight foreign IO as it does to control and suppress domestic dissent, eroding public trust.",
+                s5_box1_title: "Tools of Domestic Control",
+                s5_box1_desc: "Computer Crime Act, Anti-Fake News Center, Military IO teams.",
+                s5_box2_title: "Erodes Public Trust",
+                s5_box2_desc: "Unable to build a strong coalition to resist foreign disinformation.",
+                s5_box3_title: "Reduces National Defense Effectiveness",
+                s5_box3_desc: "Creates vulnerabilities for successful external information attacks.",
+                s5_gemini_btn: "✨ Suggest Policy Solutions",
+                footer_p1: "Information summarized from the report \"The Scamdemic as Statecraft: An Analysis of Cambodia's Information Warfare Against Thailand\"",
+                footer_p2: "This infographic was created for educational purposes and to raise awareness about cybersecurity challenges in the digital age.",
+                modal_loading_title: "Generating content...",
+                modal_fakenews_title: "Fake News Examples by Gemini",
+                modal_policy_title: "Policy Suggestions by Gemini",
+                chart_gdp_label: "GDP Share",
+                chart_gdp_item1: "Shadow Economy & Crime (Est.)",
+                chart_gdp_item2: "Other Economic Sectors",
+                chart_hacker_title: "Estimated Activity Index of Hacker Groups",
+                chart_hacker_cambodia: "Pro-Cambodia",
+                chart_hacker_thailand: "Pro-Thailand",
+                gemini_prompt_fakenews: `Please generate 3 examples of fake news headlines and short descriptions that would likely be spread on social media to create instability in Thailand, based on the Thai-Cambodian conflict of July 2025 where Cambodia used scam centers for information warfare. The tone should be sensational and aim to provoke anger and confusion. Respond in English.`,
+                gemini_prompt_policy: `Considering that the Thai government's use of laws like the Computer Crime Act against its own citizens has eroded public trust, making the country vulnerable to foreign information warfare, please suggest 3 concrete policy recommendations for the Thai government to resolve this "Liar's Dilemma." The recommendations should focus on rebuilding public trust while strengthening national cyber defense. Respond in English.`
+            },
+            zh: {
+                home_link: "返回主页",
+                video_title: "视频：局势概览",
+                main_title: "作为国家工具的诈骗流行病",
+                main_subtitle: "柬埔寨对泰国信息战分析（2025年7月）",
+                s1_title: "双线战争：物理与数字",
+                s1_p1: "2025年7月的边境冲突不仅限于军事冲突，更是一场大规模网络战的幌子，旨在攻击泰国的基础设施和公共领域。",
+                s1_kpi1_value: ">5亿次",
+                s1_kpi1_desc: "24小时内针对泰国政府和军事机构的DDoS攻击次数。",
+                s1_kpi2_value: ">21.8万人",
+                s1_kpi2_desc: "因暴力冲突而流离失所的边境两侧人数。",
+                s1_timeline_title: "关键事件时间线",
+                s1_timeline1_date: "7月23-24日",
+                s1_timeline1_desc: "地雷爆炸事件成为沿边境发生重武器冲突的导火索。",
+                s1_timeline2_date: "7月24-27日",
+                s1_timeline2_desc: "泰国民族报集团遭受超过2亿次网络攻击，包括DDoS和大规模举报。",
+                s1_timeline3_date: "7月25日",
+                s1_timeline3_desc: "泰国政府和军方面临单日超过5亿次DDoS攻击的高峰。",
+                s1_timeline4_date: "7月28日",
+                s1_timeline4_desc: "双方达成停火协议，但局势因互相指责对方违规而持续紧张。",
+                s2_title: "攻击剖析：“谎言消防栓”战术",
+                s2_p1: "柬埔寨的信息作战（IO）并非随机，而是遵循一种名为“谎言消防栓”的策略，旨在通过海量信息制造混乱，削弱真相。",
+                s2_flow_title: "三步攻击流程",
+                s2_flow1_title: "动员",
+                s2_flow1_desc: "利用诈骗中心的奴工作为“网络军队”。",
+                s2_flow2_title: "创建虚拟形象",
+                s2_flow2_desc: "制作大量虚假用户账户，制造虚假的共识。",
+                s2_flow3_title: "攻击",
+                s2_flow3_desc: "散布假新闻、垃圾信息和大规模举报，以破坏泰国的网络空间。",
+                s2_gemini_btn: "✨ 生成假新闻示例",
+                s3_title: "战争机器：“诈骗流行病”",
+                s3_p1: "攻击背后是在柬埔寨蓬勃发展的庞大网络犯罪产业，该产业与当权者有着共生关系，并能轻易转变为战争工具。",
+                s3_chart1_title: "灰色经济对柬埔寨GDP的贡献",
+                s3_chart1_desc: "包括诈骗中心在内的非法业务可能占柬埔寨GDP高达40%。",
+                s3_list_title: "为什么诈骗中心是完美的武器？",
+                s3_list1: "<strong class='text-white'>被囚禁的劳动力：</strong>易于控制且数量庞大。",
+                s3_list2: "<strong class='text-white'>现成的技术：</strong>配备电脑和高速互联网。",
+                s3_list3: "<strong class='text-white'>可转移的技能：</strong>创建虚假个人资料和集体操作。",
+                s3_list4: "<strong class='text-white'>可推诿的责任：</strong>国家可以声称这是犯罪分子的行为。",
+                s4_title: "字节战场：黑客反击战",
+                s4_p1: "冲突点燃了双方民族主义黑客组织之间的影子战争，他们在网络空间展开了激烈的反击。",
+                s4_chart2_title: "冲突中的主要黑客组织",
+                s5_title: "泰国的悖论：“说谎者的困境”",
+                s5_p1: "泰国的关键弱点在于，政府使用与打击外国信息战相同的工具和法律来控制和镇压国内异见人士，从而削弱了公众的信任。",
+                s5_box1_title: "国内控制工具",
+                s5_box1_desc: "《计算机犯罪法》、反假新闻中心、军方信息作战团队。",
+                s5_box2_title: "削弱公众信任",
+                s5_box2_desc: "无法建立强大的联盟来抵抗外国的虚假信息。",
+                s5_box3_title: "降低国防效率",
+                s5_box3_desc: "为外部信息攻击的成功制造了漏洞。",
+                s5_gemini_btn: "✨ 提出政策建议",
+                footer_p1: "信息摘要来自报告《作为国家工具的诈骗流行病：柬埔寨对泰国信息战分析》",
+                footer_p2: "本信息图表旨在用于教育和提高对数字时代网络安全挑战的认识。",
+                modal_loading_title: "正在生成内容...",
+                modal_fakenews_title: "Gemini生成的假新闻示例",
+                modal_policy_title: "Gemini提出的政策建议",
+                chart_gdp_label: "GDP份额",
+                chart_gdp_item1: "灰色经济与犯罪（估计）",
+                chart_gdp_item2: "其他经济部门",
+                chart_hacker_title: "黑客组织活动指数估计",
+                chart_hacker_cambodia: "亲柬埔寨",
+                chart_hacker_thailand: "亲泰国",
+                gemini_prompt_fakenews: `请根据2025年7月泰柬冲突（柬埔寨利用诈骗中心进行信息战）的背景，生成3个可能在社交媒体上传播以在泰国制造不稳定的假新闻标题和简短描述。语气应耸人听闻，旨在激起愤怒和混乱。请用中文回答。`,
+                gemini_prompt_policy: `考虑到泰国政府利用《计算机犯罪法》等法律对付本国公民，削弱了公众信任，使国家易受外国信息战攻击，请为泰国政府提出3项具体政策建议，以解决这一“说谎者的困境”。建议应侧重于重建公众信任，同时加强国家网络防御。请用中文回答。`
+            },
+            ru: {
+                home_link: "На главную",
+                video_title: "Видео: Обзор ситуации",
+                main_title: "Скамедемия как государственный инструмент",
+                main_subtitle: "Анализ информационной войны Камбоджи против Таиланда (июль 2025 г.)",
+                s1_title: "Война на два фронта: физический и цифровой",
+                s1_p1: "Пограничный конфликт в июле 2025 года не ограничился военными столкновениями, а стал прикрытием для масштабной кибервойны, нацеленной на цифровую инфраструктуру и общественное пространство Таиланда.",
+                s1_kpi1_value: ">500 млн",
+                s1_kpi1_desc: "DDoS-атак, нацеленных на правительственные и военные ведомства Таиланда в течение 24 часов.",
+                s1_kpi2_value: ">218 000 чел.",
+                s1_kpi2_desc: "Перемещенных лиц с обеих сторон границы из-за насилия.",
+                s1_timeline_title: "Хронология ключевых событий",
+                s1_timeline1_date: "23-24 июля",
+                s1_timeline1_desc: "Взрыв мины стал поводом для столкновений с применением тяжелого вооружения вдоль границы.",
+                s1_timeline2_date: "24-27 июля",
+                s1_timeline2_desc: "Медиагруппа Nation подверглась более чем 200 миллионам кибератак, включая DDoS и массовые жалобы.",
+                s1_timeline3_date: "25 июля",
+                s1_timeline3_desc: "Правительство и военные Таиланда столкнулись с пиком в более чем 500 миллионов DDoS-атак за один день.",
+                s1_timeline4_date: "28 июля",
+                s1_timeline4_desc: "Было достигнуто соглашение о прекращении огня, но ситуация оставалась напряженной из-за взаимных обвинений в нарушениях.",
+                s2_title: "Анатомия атаки: тактика \"Пожарный шланг лжи\"",
+                s2_p1: "Информационные операции (ИО) Камбоджи не были случайными, а следовали стратегии, известной как \"Пожарный шланг лжи\", направленной на создание путаницы и подрыв правды с помощью огромных объемов данных.",
+                s2_flow_title: "3-этапный процесс атаки",
+                s2_flow1_title: "Мобилизация",
+                s2_flow1_desc: "Использование рабского труда из мошеннических центров в качестве \"киберармии\".",
+                s2_flow2_title: "Создание аватаров",
+                s2_flow2_desc: "Создание огромного количества поддельных аккаунтов для создания ложного консенсуса.",
+                s2_flow3_title: "Атака",
+                s2_flow3_desc: "Распространение фейковых новостей, спама и массовых жалоб для нарушения работы тайских онлайн-пространств.",
+                s2_gemini_btn: "✨ Создать пример фейковой новости",
+                s3_title: "Военная машина: \"Скамедемия\"",
+                s3_p1: "За атаками стоит огромная индустрия киберпреступности, процветающая в Камбодже, которая имеет симбиотические отношения с властью и легко превращается в инструмент войны.",
+                s3_chart1_title: "Вклад теневой экономики в ВВП Камбоджи",
+                s3_chart1_desc: "Незаконный бизнес, включая мошеннические центры, может составлять до 40% ВВП Камбоджи.",
+                s3_list_title: "Почему мошеннические центры - идеальное оружие?",
+                s3_list1: "<strong class='text-white'>Пленная рабочая сила:</strong> Легко контролировать и доступна в больших количествах.",
+                s3_list2: "<strong class='text-white'>Готовые технологии:</strong> Оснащены компьютерами и высокоскоростным интернетом.",
+                s3_list3: "<strong class='text-white'>Передаваемые навыки:</strong> Создание поддельных профилей и массовые операции.",
+                s3_list4: "<strong class='text-white'>Правдоподобное отрицание:</strong> Государство может утверждать, что это дело рук преступников.",
+                s4_title: "Поле битвы байтов: контрвойна хактивистов",
+                s4_p1: "Конфликт разжег теневую войну между националистическими хактивистскими группами с обеих сторон, которые начали ожесточенные контратаки в киберпространстве.",
+                s4_chart2_title: "Ключевые хактивистские группы в конфликте",
+                s5_title: "Парадокс Таиланда: \"Дилемма лжеца\"",
+                s5_p1: "Ключевая слабость Таиланда заключается в том, что правительство использует те же инструменты и законы для борьбы с иностранными ИО, что и для контроля и подавления внутреннего инакомыслия, подрывая общественное доверие.",
+                s5_box1_title: "Инструменты внутреннего контроля",
+                s5_box1_desc: "Закон о компьютерных преступлениях, Центр по борьбе с фейковыми новостями, военные команды ИО.",
+                s5_box2_title: "Подрывает общественное доверие",
+                s5_box2_desc: "Невозможность создать сильную коалицию для противодействия иностранной дезинформации.",
+                s5_box3_title: "Снижает эффективность национальной обороны",
+                s5_box3_desc: "Создает уязвимости для успешных внешних информационных атак.",
+                s5_gemini_btn: "✨ Предложить политические решения",
+                footer_p1: "Информация является кратким изложением отчета \"Скамедемия как государственный инструмент: анализ информационной войны Камбоджи против Таиланда\"",
+                footer_p2: "Эта инфографика была создана в образовательных целях и для повышения осведомленности о проблемах кибербезопасности в цифровую эпоху.",
+                modal_loading_title: "Генерация контента...",
+                modal_fakenews_title: "Примеры фейковых новостей от Gemini",
+                modal_policy_title: "Политические предложения от Gemini",
+                chart_gdp_label: "Доля ВВП",
+                chart_gdp_item1: "Теневая экономика и преступность (оценка)",
+                chart_gdp_item2: "Другие секторы экономики",
+                chart_hacker_title: "Примерный индекс активности хакерских групп",
+                chart_hacker_cambodia: "Про-камбоджийские",
+                chart_hacker_thailand: "Про-тайские",
+                gemini_prompt_fakenews: `Пожалуйста, создайте 3 примера заголовков фейковых новостей и их кратких описаний, которые, вероятно, будут распространяться в социальных сетях для создания нестабильности в Таиланде, основываясь на тайско-камбоджийском конфликте в июле 2025 года, где Камбоджа использовала мошеннические центры для информационной войны. Тон должен быть сенсационным и направленным на разжигание гнева и путаницы. Ответьте на русском языке.`,
+                gemini_prompt_policy: `Учитывая, что использование тайским правительством законов, таких как Закон о компьютерных преступлениях, против собственных граждан подорвало общественное доверие, делая страну уязвимой для иностранной информационной войны, пожалуйста, предложите 3 конкретные политические рекомендации для правительства Таиланда по разрешению этой "дилеммы лжеца". Рекомендации должны быть сосредоточены на восстановлении общественного доверия при одновременном укреплении национальной киберзащиты. Ответьте на русском языке.`
+            },
+            km: {
+                home_link: "ត្រឡប់ទៅទំព័រដើម",
+                video_title: "វីដេអូ៖ ទិដ្ឋភាពទូទៅនៃស្ថានការណ៍",
+                main_title: "ជំងឺរាតត្បាតបោកប្រាស់ជាឧបករណ៍រដ្ឋ",
+                main_subtitle: "ការវិភាគសង្គ្រាមព័ត៌មានរបស់កម្ពុជាប្រឆាំងនឹងថៃ (ខែកក្កដា ឆ្នាំ២០២៥)",
+                s1_title: "សង្គ្រាមពីរแนวរណសិរ្ស៖ រូបវន្ត និងឌីជីថល",
+                s1_p1: "ជម្លោះព្រំដែននៅខែកក្កដា ឆ្នាំ២០២៥ មិនត្រូវបានកំណត់ត្រឹមតែការប៉ះទង្គិចយោធានោះទេ ប៉ុន្តែជាឈុតឆាកនៃសង្គ្រាមសាយប័រដ៏ធំសម្បើមដែលផ្តោតលើហេដ្ឋារចនាសម្ព័ន្ធឌីជីថល និងលំហសាធារណៈរបស់ប្រទេសថៃ។",
+                s1_kpi1_value: ">៥០០ លានដង",
+                s1_kpi1_desc: "គឺជាចំនួននៃការវាយប្រហារប្រភេទ DDoS ដែលសំដៅលើស្ថាប័នរដ្ឋ និងកងទ័ពថៃក្នុងរយៈពេល ២៤ ម៉ោង។",
+                s1_kpi2_value: ">២១៨,០០០ នាក់",
+                s1_kpi2_desc: "គឺជាចំនួនជនភៀសខ្លួនពីព្រំដែនទាំងសងខាងដោយសារអំពើហិង្សា។",
+                s1_timeline_title: "កាលប្បវត្តិនៃព្រឹត្តិការណ៍សំខាន់ៗ",
+                s1_timeline1_date: "២៣-២៤ កក្កដា",
+                s1_timeline1_desc: "ការផ្ទុះគ្រាប់មីនបានក្លាយជាមូលហេតុនៃការប៉ះទង្គិចដោយអាវុធធុនធ្ងន់តាមបណ្តោយព្រំដែន។",
+                s1_timeline2_date: "២៤-២៧ កក្កដា",
+                s1_timeline2_desc: "ប្រព័ន្ធផ្សព្វផ្សាយ Nation Group ត្រូវបានវាយប្រហារតាមអ៊ីនធឺណិតជាង ២០០ លានដង ទាំង DDoS និងការរាយការណ៍ទ្រង់ទ្រាយធំ។",
+                s1_timeline3_date: "២៥ កក្កដា",
+                s1_timeline3_desc: "រដ្ឋាភិបាលនិងកងទ័ពថៃបានប្រឈមមុខនឹងការវាយប្រហារ DDoS រហូតដល់ជាង ៥០០ លានដងក្នុងមួយថ្ងៃ។",
+                s1_timeline4_date: "២៨ កក្កដា",
+                s1_timeline4_desc: "មានការព្រមព្រៀងหยุดបាញ់ ប៉ុន្តែស្ថានការណ៍នៅតែតានតឹងដោយសារការចោទប្រកាន់ពីការរំលោភបំពានពីភាគីទាំងសងខាង។",
+                s2_title: "កាយវិភាគសាស្ត្រនៃការវាយប្រហារ៖ យុទ្ធវិធី \"ទុយោទឹកពន្លត់អគ្គីភ័យនៃភាពមិនពិត\"",
+                s2_p1: "ប្រតិបត្តិការព័ត៌មាន (IO) របស់កម្ពុជាមិនបានកើតឡើងដោយចៃដន្យទេ ប៉ុន្តែអនុវត្តតាមយុទ្ធសាស្ត្រមួយដែលមានឈ្មោះថា \"Firehose of Falsehood\" ដែលផ្តោតលើការបង្កើតការភាន់ច្រឡំនិងការបំផ្លាញការពិតតាមរយៈข้อมูลដ៏ច្រើន។",
+                s2_flow_title: "ដំណើរការវាយប្រហារ ៣ ជំហាន",
+                s2_flow1_title: "ការកេណ្ឌ",
+                s2_flow1_desc: "ការប្រើប្រាស់កម្លាំងទាសករពីមជ្ឈមណ្ឌលបោកប្រាស់ (Scam Center) ធ្វើជា \"កងទ័ពសាយប័រ\"។",
+                s2_flow2_title: "ការបង្កើតអវតារ",
+                s2_flow2_desc: "ការបង្កើតគណនីអ្នកប្រើប្រាស់ក្លែងក្លាយយ៉ាងច្រើនដើម្បីបង្កើតការយល់ស្របក្លែងក្លាយ។",
+                s2_flow3_title: "ការវាយប្រហារ",
+                s2_flow3_desc: "ការផ្សព្វផ្សាយព័ត៌មានក្លែងក្លាយ, សារឥតបានការ, និងការរាយការណ៍ទ្រង់ទ្រាយធំដើម្បីបំផ្លាញលំហអនឡាញរបស់ថៃ។",
+                s2_gemini_btn: "✨ បង្កើតឧទាហរណ៍ព័ត៌មានក្លែងក្លាយ",
+                s3_title: "យន្តការសង្គ្រាម៖ \"ជំងឺរាតត្បាតបោកប្រាស់\"",
+                s3_p1: "នៅពីក្រោយការវាយប្រហារគឺជាឧស្សាហកម្មឧក្រិដ្ឋកម្មតាមអ៊ីនធឺណិតដ៏ធំសម្បើមដែលរីកដុះដាលនៅក្នុងប្រទេសកម្ពុជា ដែលមានទំនាក់ទំនងពឹងពាក់គ្នាជាមួយអ្នកមានអំណាចនៅក្នុងរដ្ឋ ហើយត្រូវបានប្រែក្លាយទៅជាឧបករណ៍សង្គ្រាមយ៉ាងងាយស្រួល។",
+                s3_chart1_title: "អាជីវកម្មពណ៌ប្រផេះចំពោះ GDP កម្ពុជា",
+                s3_chart1_desc: "អាជីវកម្មខុសច្បាប់ រួមទាំងមជ្ឈមណ្ឌលបោកប្រាស់ អាចមានសមាមាត្ររហូតដល់ ៤០% នៃ GDP កម្ពុជា។",
+                s3_list_title: "ហេតុអ្វីបានជាមជ្ឈមណ្ឌលបោកប្រាស់ជាអាវុធដ៏ល្អឥតខ្ចោះ?",
+                s3_list1: "<strong class='text-white'>កម្លាំងពលកម្មដែលត្រូវបានឃុំឃាំង:</strong> ងាយស្រួលគ្រប់គ្រង និងមានចំនួនច្រើន។",
+                s3_list2: "<strong class='text-white'>បច្ចេកវិទ្យាដែលត្រៀមរួចជាស្រេច:</strong> មានកុំព្យូទ័រ និងអ៊ីនធឺណិតความเร็วสูง។",
+                s3_list3: "<strong class='text-white'>ជំនាញដែលអាចផ្ទេរបាន:</strong> ការបង្កើតប្រវត្តិរូបក្លែងក្លាយ និងប្រតិបត្តិការជាក្រុម។",
+                s3_list4: "<strong class='text-white'>ការបដិសេធความรับผิด:</strong> រដ្ឋអាចអះអាងថាជាស្នាដៃរបស់ឧក្រិដ្ឋជន។",
+                s4_title: "សមរភូមិបៃต์៖ សង្គ្រាមវាយបករបស់ពួក Hacker",
+                s4_p1: "ជម្លោះបានបង្កសង្គ្រាមស្រមោលរវាងក្រុម Hacker ជាតិនិយមនៃភាគីទាំងពីរ ដែលបានបើកការវាយបកគ្នាទៅវិញទៅមកយ៉ាងខ្លាំងក្លានៅក្នុងពិភពសាយប័រ។",
+                s4_chart2_title: "ក្រុម Hacker សំខាន់ៗក្នុងជម្លោះ",
+                s5_title: "ភាពផ្ទុយគ្នារបស់ប្រទេសថៃ៖ \"ទ្វិលក្ខរបស់មនុស្សកุហក\"",
+                s5_p1: "ចំណុចខ្សោយដ៏សំខាន់របស់ប្រទេសថៃគឺរដ្ឋាភិបាលប្រើប្រាស់ឧបករណ៍ និងច្បាប់ដូចគ្នាដែលប្រើដើម្បីប្រយុទ្ធប្រឆាំងនឹង IO បរទេស ដើម្បីควบคุม និងបង្ក្រាបអ្នកប្រឆាំងក្នុងប្រទេស ដែលធ្វើឱ្យខូចដល់ភាពน่าเชื่อถือ និងទំនុកចិត្តរបស់ប្រជាជន។",
+                s5_box1_title: "ឧបករណ៍ត្រួតពិនិត្យក្នុងស្រុក",
+                s5_box1_desc: "ច្បាប់កុំព្យូទ័រ, មជ្ឈមណ្ឌលប្រឆាំងព័ត៌មានក្លែងក្លាយ, ក្រុម IO របស់កងទ័ព",
+                s5_box2_title: "ធ្វើឱ្យខូចទំនុកចិត្តរបស់ប្រជាជន",
+                s5_box2_desc: "មិនអាចបង្កើតសម្ព័ន្ធភាពរឹងមាំដើម្បីប្រឆាំងនឹងព័ត៌មានមិនពិតពីបរទេសបានទេ។",
+                s5_box3_title: "កាត់បន្ថយប្រសិទ្ធភាពការពារជាតិ",
+                s5_box3_desc: "បើកចន្លោះប្រហោងសម្រាប់ការវាយប្រហារព័ត៌មានពីខាងក្រៅឱ្យទទួលបានជោគជ័យ។",
+                s5_gemini_btn: "✨ ស្នើដំណោះស្រាយ",
+                footer_p1: "សេចក្តីសង្ខេបពីរបាយការណ៍ \"The Scamdemic as Statecraft: An Analysis of Cambodia's Information Warfare Against Thailand\"",
+                footer_p2: "អាំងហ្វ្រូក្រាហ្វិកនេះត្រូវបានបង្កើតឡើងសម្រាប់គោលបំណងអប់រំ និងដើម្បីបង្កើនការយល់ដឹងអំពីបញ្ហាប្រឈមด้านความมั่นคงសាយប័រในยุคดิจิทัล។",
+                modal_loading_title: "កំពុងបង្កើតមាតិកា...",
+                modal_fakenews_title: "ឧទាហរណ៍ព័ត៌មានក្លែងក្លាយដោយ Gemini",
+                modal_policy_title: "សំណើគោលនយោបាយដោយ Gemini",
+                chart_gdp_label: "សមាមាត្រ GDP",
+                chart_gdp_item1: "អាជីវកម្មពណ៌ប្រផេះនិងឧក្រិដ្ឋកម្ម (ប៉ាន់ស្មាន)",
+                chart_gdp_item2: "វិស័យសេដ្ឋកិច្ចផ្សេងទៀត",
+                chart_hacker_title: "សន្ទស្សន៍សកម្មភាពប៉ាន់ស្មានរបស់ក្រុម Hacker",
+                chart_hacker_cambodia: "អ្នកគាំទ្រកម្ពុជា",
+                chart_hacker_thailand: "អ្នកគាំទ្រថៃ",
+                gemini_prompt_fakenews: `សូមបង្កើតឧទាហរណ៍នៃចំណងជើងព័ត៌មានក្លែងក្លាយ និងការពិពណ៌នាខ្លីៗចំនួន ៣ ដែលទំនងជានឹងត្រូវបានផ្សព្វផ្សាយនៅលើប្រព័ន្ធផ្សព្វផ្សាយសង្គមដើម្បីបង្កើតអស្ថិរភាពនៅក្នុងប្រទេសថៃ ដោយផ្អែកលើជម្លោះថៃ-កម្ពុជានៅខែកក្កដា ឆ្នាំ២០២៥ ដែលកម្ពុជាប្រើមជ្ឈមណ្ឌលបោកប្រាស់ជាឧបករណ៍ក្នុងសង្គ្រាមព័ត៌មាន។ ត្រូវមានលក្ខណៈញុះញង់ និងមានគោលបំណងបង្កកំហឹងនិងការភាន់ច្រលំ។ ឆ្លើយតបជាភាសាខ្មែរ។`,
+                gemini_prompt_policy: `ដោយពិចារណាថាការប្រើប្រាស់ច្បាប់ដូចជាច្បាប់កុំព្យូទ័ររបស់ថៃប្រឆាំងនឹងប្រជាពលរដ្ឋរបស់ខ្លួនបានធ្វើឱ្យខូចទំនុកចិត្តរបស់សាធារណជន ដែលធ្វើឱ្យប្រទេសងាយរងគ្រោះต่อสงครามข้อมูลข่าวสารจากต่างชาติ សូមเสนอแนะគោលនយោបាយជាក់ស្តែងចំនួន ៣ សម្រាប់រដ្ឋាភិបាលថៃដើម្បីដោះស្រាយ "ទ្វិលក្ខរបស់មនុស្សកុហក" នេះ។ សំណើควรมุ่งเน้นការสร้างទំនុកចិត្តរបស់សាធារណជនឡើងវិញ ព្រមទាំងเสริมสร้างការป้องกันសាយប័ររបស់ชาติ។ ឆ្លើយតបជាភាសាខ្មែរ។`
+            }
+        };
+
+        let currentLang = 'th';
+        let gdpChartInstance, hacktivistChartInstance;
+
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.dataset.key;
+                if (translations[lang] && translations[lang][key]) {
+                    elem.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            createCharts(lang);
+        };
+
+        const createCharts = (lang) => {
+            const t = translations[lang];
+            
+            if (gdpChartInstance) gdpChartInstance.destroy();
+            const gdpCtx = document.getElementById('gdpChart').getContext('2d');
+            gdpChartInstance = new Chart(gdpCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [t.chart_gdp_item1, t.chart_gdp_item2],
+                    datasets: [{
+                        label: t.chart_gdp_label,
+                        data: [40, 60],
+                        backgroundColor: ['#FF6361', '#00577C'],
+                        borderColor: '#003F5C',
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#FFFFFF', font: { family: "'Kanit', 'Roboto', 'Noto Sans Khmer', sans-serif" } } }
+                    }
+                }
+            });
+
+            if (hacktivistChartInstance) hacktivistChartInstance.destroy();
+            const hacktivistCtx = document.getElementById('hacktivistChart').getContext('2d');
+            hacktivistChartInstance = new Chart(hacktivistCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['AnonsecKh', 'National Defensive Cambodia', 'Dark Storm Team', 'BlackEye-Thai', 'Thai Is God', 'KH Nightmare'],
+                    datasets: [{
+                        label: t.chart_hacker_cambodia,
+                        data: [100, 80, 75, 0, 0, 0],
+                        backgroundColor: '#BC5090',
+                    }, {
+                        label: t.chart_hacker_thailand,
+                        data: [0, 0, 0, 100, 90, 95],
+                        backgroundColor: '#FFA600',
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true, ticks: { color: '#FFFFFF', font: { family: "'Kanit', 'Roboto', 'Noto Sans Khmer', sans-serif" } }, grid: { color: 'rgba(255, 255, 255, 0.1)' } },
+                        y: { stacked: true, ticks: { color: '#FFFFFF', font: { family: "'Kanit', 'Roboto', 'Noto Sans Khmer', sans-serif" } }, grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'top', labels: { color: '#FFFFFF', font: { family: "'Kanit', 'Roboto', 'Noto Sans Khmer', sans-serif" } } },
+                        title: { display: true, text: t.chart_hacker_title, color: '#FFFFFF', font: { size: 16, family: "'Kanit', 'Roboto', 'Noto Sans Khmer', sans-serif" } }
+                    }
+                }
+            });
+        };
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const langButtons = document.getElementById('language-switcher');
+            langButtons.addEventListener('click', (e) => {
+                if (e.target.matches('.lang-btn')) {
+                    const lang = e.target.dataset.lang;
+                    setLanguage(lang);
+                }
+            });
+            setLanguage('th'); // Set default language
+        });
+
+        // Gemini API Integration
+        const geminiModal = document.getElementById('geminiModal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const generateFakeNewsBtn = document.getElementById('generateFakeNewsBtn');
+        const generatePolicyBtn = document.getElementById('generatePolicyBtn');
+
+        const openModal = (titleKey) => {
+            modalTitle.textContent = translations[currentLang][titleKey] || translations['en']['modal_loading_title'];
+            modalBody.innerHTML = `<div class="flex justify-center items-center h-32"><div class="loader"></div></div>`;
+            geminiModal.classList.remove('hidden');
+            geminiModal.classList.add('flex');
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalBackdrop.classList.add('opacity-50');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        };
+
+        const closeModal = () => {
+            modalBackdrop.classList.add('opacity-0');
+            modalBackdrop.classList.remove('opacity-50');
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+            setTimeout(() => {
+                geminiModal.classList.add('hidden');
+                geminiModal.classList.remove('flex');
+            }, 300);
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', closeModal);
+
+        const callGeminiAPI = async (prompt, maxRetries = 3) => {
+            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API key will be injected by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content?.parts?.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error("Invalid response structure from Gemini API");
+                    }
+                } catch (error) {
+                    console.error(`Attempt ${i + 1} failed:`, error);
+                    if (i === maxRetries - 1) return "Error calling Gemini API. Please try again.";
+                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+                }
+            }
+        };
+
+        const formatResponseText = (text) => {
+            return text.split('\n').map(p => `<p class="mb-3">${p.trim()}</p>`).join('');
+        };
+
+        generateFakeNewsBtn.addEventListener('click', async () => {
+            openModal('modal_loading_title');
+            const prompt = translations[currentLang].gemini_prompt_fakenews;
+            const responseText = await callGeminiAPI(prompt);
+            modalTitle.textContent = translations[currentLang].modal_fakenews_title;
+            modalBody.innerHTML = formatResponseText(responseText);
+        });
+
+        generatePolicyBtn.addEventListener('click', async () => {
+            openModal('modal_loading_title');
+            const prompt = translations[currentLang].gemini_prompt_policy;
+            const responseText = await callGeminiAPI(prompt);
+            modalTitle.textContent = translations[currentLang].modal_policy_title;
+            modalBody.innerHTML = formatResponseText(responseText);
+        });
+    </script>
+</body>
+</html>

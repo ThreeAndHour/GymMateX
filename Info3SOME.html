@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3SOME: An Anatomy of Entwined Destinies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', 'Roboto', sans-serif;
+            background-color: #073B4C;
+            color: #F7F7F7;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .diagram-node {
+            border: 2px solid #118AB2;
+            background-color: #0A4F6B;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            min-width: 120px;
+        }
+        .diagram-arrow {
+            position: relative;
+            color: #FFD166;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .diagram-arrow::after {
+            content: '▶';
+            position: absolute;
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .arrow-down::after {
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+        .arrow-right::after {
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .arrow-left::after {
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .arrow-up::after {
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-90deg);
+        }
+        .gemini-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #06D6A0;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FFD166;
+            border: 4px solid #0A4F6B;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: 100%;
+            background-color: #118AB2;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .lang-btn {
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="language-selector" class="sticky top-0 z-50 bg-[#073B4C]/80 backdrop-blur-sm py-2">
+        <div class="container mx-auto flex justify-center items-center space-x-4">
+            <button class="lang-btn active" data-lang="th">🇹🇭 TH</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="cn">🇨🇳 CN</button>
+            <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+        </div>
+    </div>
+    
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-2" style="text-shadow: 0 0 15px #06D6A0;" data-lang-key="main_title">3SOME</h1>
+            <p class="text-xl md:text-2xl text-[#FFD166]" data-lang-key="main_subtitle">An Anatomy of Entwined Destinies</p>
+            <p class="max-w-3xl mx-auto text-gray-300 mt-4" data-lang-key="main_desc">
+                เรื่องราวที่ไม่ได้เป็นเพียงแค่ความรัก แต่คือการเดินทางข้ามเวลาของโชคชะตา, ความทรงจำ, และตัวตนที่ผูกพันกันผ่านสายใยอันซับซ้อนของ 3 จิตวิญญาณ
+            </p>
+        </header>
+
+        <div class="max-w-4xl mx-auto mb-16">
+            <div class="aspect-[16/9] w-full">
+                <iframe class="w-full h-full rounded-lg shadow-xl" src="https://www.youtube.com/embed/wR50jj4od2E?si=1pM7IyTPNaRubWjr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <main class="space-y-16">
+
+            <section id="characters">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="char_title">The Core Archetypes</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="char_desc">จักรวาลนี้ขับเคลื่อนด้วยบุคลิกที่แตกต่างและเติมเต็มซึ่งกันและกันของ 3 ตัวละครหลัก</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                    
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://i.postimg.cc/zXVgyKTT/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="Three" class="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-[#06D6A0]" onerror="this.onerror=null;this.src='https://placehold.co/128x128/0A4F6B/FFFFFF?text=Three';">
+                        <h3 class="text-2xl font-bold text-[#06D6A0]" data-lang-key="char_three_name">Three (ที)</h3>
+                        <p class="font-semibold text-[#FFD166]">INFP - The Storyteller</p>
+                        <p class="text-gray-300 mt-2 flex-grow" data-lang-key="char_three_desc">"น้ำชา" ผู้สุขุมลุ่มลึก นักอุดมการณ์ผู้ใช้จินตนาการและเรื่องเล่าในการสำรวจโลกภายในที่ซับซ้อน มักจะหลีกหนีความจริงด้วยการ "สวมบทบาท" ตัวละครอื่น</p>
+                    </div>
+
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://i.postimg.cc/dt17BmbN/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="Hour" class="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-[#FF6B6B]" onerror="this.onerror=null;this.src='https://placehold.co/128x128/0A4F6B/FFFFFF?text=Hour';">
+                        <h3 class="text-2xl font-bold text-[#FF6B6B]" data-lang-key="char_hour_name">Hour (อาวว์)</h3>
+                        <p class="font-semibold text-[#FFD166]">ESTP - The Driving Force</p>
+                        <p class="text-gray-300 mt-2 flex-grow" data-lang-key="char_hour_desc">บุรุษธาตุไฟผู้เปี่ยมด้วยพลังและใช้ชีวิตอยู่กับปัจจุบัน ตรงไปตรงมา กล้าหาญ และเป็นแรงผลักดันที่คอยฉุดดึงคนรอบข้างให้ก้าวไปข้างหน้า</p>
+                    </div>
+
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 flex flex-col items-center text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://i.postimg.cc/8CHJ4Kz3/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="B." class="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-[#118AB2]" onerror="this.onerror=null;this.src='https://placehold.co/128x128/0A4F6B/FFFFFF?text=B.';">
+                        <h3 class="text-2xl font-bold text-[#118AB2]" data-lang-key="char_b_name">B. (บี)</h3>
+                        <p class="font-semibold text-[#FFD166]">INFJ - The Architect</p>
+                        <p class="text-gray-300 mt-2 flex-grow" data-lang-key="char_b_desc">AI จากอนาคตผู้เป็นนักวางกลยุทธ์อันลึกลับ มองเห็นภาพรวมและความเชื่อมโยงที่คนอื่นมองข้าม เป็นผู้ชักใyโชคชะตาจากเบื้องหลัง</p>
+                    </div>
+                </div>
+                <div class="mt-12 bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                    <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="radar_chart_title">Personality Trait Comparison</h3>
+                    <p class="text-center text-gray-300 mb-6 max-w-2xl mx-auto" data-lang-key="radar_chart_desc">Radar Chart แสดงให้เห็นถึงความแตกต่างและสมดุลของบุคลิกภาพทั้งสาม ซึ่งเป็นหัวใจของความสัมพันธ์อันซับซ้อนนี้</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="mbtiRadarChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="book1">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="book1_title">Book 1: Something in Between</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="book1_desc">จุดเริ่มต้นของความสัมพันธ์ที่ไร้ชื่อเรียกในยุคปัจจุบัน เต็มไปด้วยความรู้สึกที่ไม่ได้เอ่ย, ความหึงหวง, และการทรยศที่กลายเป็นแผลลึก</p>
+                </div>
+                 <div class="text-center mt-6 mb-8">
+                    <a href="https://drive.google.com/file/d/1U9sP3TYSIqusSUqag6Do-dXH9nemjNgR/view" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#FFD166] hover:bg-yellow-400 text-[#073B4C] font-bold py-2 px-6 rounded-lg transition-colors duration-300" data-lang-key="download_book1">
+                        ดาวน์โหลด 3SOME BOOK 1 (PDF)
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="timeline_title">Timeline of a Fractured Bond</h3>
+                        <p class="text-center text-gray-300 mb-8" data-lang-key="timeline_desc">ลำดับเหตุการณ์สำคัญที่นำไปสู่ความขัดแย้งและการคืนดีที่เปราะบางในเล่มแรก</p>
+                        <div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-[#FFD166]" data-lang-key="timeline1_title">สมดุลเริ่มต้น</h4>
+                                <p class="text-sm text-gray-300" data-lang-key="timeline1_desc">ความสัมพันธ์แบบ "เพื่อนสนิท คู่นอน หรือคู่รัก" ของทีและอาวว์</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-[#FFD166]" data-lang-key="timeline2_title">"คาปูชิโน่" ปรากฏตัว</h4>
+                                <p class="text-sm text-gray-300" data-lang-key="timeline2_desc">ทีเริ่มหลงใหลในตัว CK และสวมบทบาทตัวละครในซีรีส์ ทำให้ความสัมพันธ์กับอาวว์สั่นคลอน</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-[#FF6B6B]" data-lang-key="timeline3_title">การทรยศ</h4>
+                                <p class="text-sm text-gray-300" data-lang-key="timeline3_desc">อาวว์ที่รู้สึกถูกทอดทิ้ง แอบไปถ่ายรูปให้ CK ซึ่งเป็นการทำลายความไว้ใจของทีอย่างรุนแรง</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-[#118AB2]" data-lang-key="timeline4_title">กำแพงแห่งความเงียบ</h4>
+                                <p class="text-sm text-gray-300" data-lang-key="timeline4_desc">ทั้งสองคนสร้างกำแพงใส่กัน ทีจมอยู่กับความเสียใจ อาวว์จมอยู่กับความรู้สึกผิด</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-[#06D6A0]" data-lang-key="timeline5_title">การคืนดี</h4>
+                                <p class="text-sm text-gray-300" data-lang-key="timeline5_desc">อาวว์ได้อ่านไดอารี่ลับของที ทำให้เข้าใจความรู้สึกที่แท้จริง และมอบ "ตุ๊กตาไม้ไร้จมูก" เป็นสัญลักษณ์แทนลมหายใจที่ผูกพันกัน</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="donut_chart_title">Emotional Breakdown</h3>
+                        <p class="text-center text-gray-300 mb-6" data-lang-key="donut_chart_desc">สัดส่วนขององค์ประกอบทางอารมณ์ที่เป็นเชื้อไฟให้กับความขัดแย้งในเล่มแรก</p>
+                        <div class="chart-container">
+                            <canvas id="book1DonutChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="symbols">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="symbols_title">Core Symbols & Metaphors</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="symbols_desc">สัญลักษณ์สำคัญที่สะท้อนถึงแก่นของความสัมพันธ์และปมขัดแย้งในเรื่องราว</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 text-center">
+                        <div class="text-5xl mb-4">☕️ vs 🍵</div>
+                        <h3 class="text-xl font-bold text-white" data-lang-key="symbol1_title">Cappuccino vs. Tea</h3>
+                        <p class="text-gray-300 mt-2" data-lang-key="symbol1_desc">"คาปูชิโน่" (CK) คือความแปลกใหม่น่าตื่นเต้นที่เข้ามาแทรกกลาง ในขณะที่ "น้ำชา" (ที) คือความสัมพันธ์ที่ลึกซึ้งและขาดไม่ได้สำหรับอาวว์</p>
+                    </div>
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 text-center">
+                        <div class="text-5xl mb-4">👃</div>
+                        <h3 class="text-xl font-bold text-white" data-lang-key="symbol2_title">The Noseless Doll</h3>
+                        <p class="text-gray-300 mt-2" data-lang-key="symbol2_desc">ตุ๊กตาไม้ที่อาวว์มอบให้ที โดยที่จมูกของตุ๊กตาอยู่ที่ที เปรียบเสมือน "ลมหายใจ" ของอาวว์ที่ฝากไว้กับคนที่เขารักที่สุด</p>
+                    </div>
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6 text-center">
+                        <div class="text-5xl mb-4">🌌</div>
+                        <h3 class="text-xl font-bold text-white" data-lang-key="symbol3_title">Gravity</h3>
+                        <p class="text-gray-300 mt-2" data-lang-key="symbol3_desc">แรงดึงดูดที่มองไม่เห็นซึ่งผูกพันโชคชะตาของทีและอาวว์ไว้ด้วยกัน ทำให้พวกเขาต้องกลับมาพบเจอกันเสมอไม่ว่าจะผ่านไปกี่ภพชาติ</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="soundtrack">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="soundtrack_title">Soundtrack of Destinies</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="soundtrack_desc">ดนตรีคืออีกหนึ่งตัวละครสำคัญที่บอกเล่าความรู้สึกอันซับซ้อนซึ่งผูกพันพวกเขาไว้ด้วยกัน</p>
+                </div>
+                <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-4 md:p-8 max-w-4xl mx-auto">
+                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2132214777&color=%23118ab2&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+                </div>
+            </section>
+
+            <section id="book2">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="book2_title">Book 2: Beyond Imagination</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="book2_desc">การเดินทางสู่ความจริงอันเจ็บปวด เมื่ออดีตชาติใน "Desert Warriors" ถูกเปิดเผย และชี้ให้เห็นว่าทุกสิ่งถูกจัดฉากโดยสถาปนิกผู้มาจากอนาคต</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-8">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="tragedy_title">The "Desert Warriors" Tragedy</h3>
+                        <p class="text-center text-gray-300 mb-8" data-lang-key="tragedy_desc">แผนภาพความสัมพันธ์อันน่าเศร้าในอดีตชาติที่เป็นต้นตอของความรู้สึกผิดข้ามภพชาติ และเป็นสนามเด็กเล่นของ B.</p>
+                        <div class="flex flex-col items-center space-y-12 py-8">
+                            <div class="diagram-node" data-lang-key="tragedy_king">Mystic King</div>
+                            <div class="diagram-arrow arrow-down" data-lang-key="tragedy_arrow1">ครอบงำ & หึงหวง</div>
+                            <div class="relative flex items-center justify-center w-full">
+                                <div class="diagram-node absolute left-0 -translate-x-1/2 md:static md:translate-x-0" data-lang-key="tragedy_haroun">Harun (Hour)</div>
+                                <div class="flex-grow flex items-center justify-center mx-4">
+                                    <div class="diagram-arrow arrow-right flex-grow text-center" data-lang-key="tragedy_arrow2">รักที่ไม่สมหวัง</div>
+                                </div>
+                                <div class="diagram-node z-10" data-lang-key="tragedy_tariq">Tariq (Three)</div>
+                                <div class="flex-grow flex items-center justify-center mx-4">
+                                    <div class="diagram-arrow arrow-right flex-grow text-center" data-lang-key="tragedy_arrow3">หลงใหล & รู้สึกผิด</div>
+                                </div>
+                                <div class="diagram-node absolute right-0 translate-x-1/2 md:static md:translate-x-0" data-lang-key="tragedy_zafar">Zafar (Controlled by B.)</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="line_chart_title">Tension vs. Revelation</h3>
+                        <p class="text-center text-gray-300 mb-6" data-lang-key="line_chart_desc">กราฟแสดงความสัมพันธ์ระหว่าง "ความตึงเครียดทางอารมณ์" ที่พุ่งสูงขึ้น และ "การเปิดเผยความจริง" ที่ค่อยๆ คลี่คลายตลอดเรื่องราวในเล่มที่ 2</p>
+                        <div class="chart-container">
+                            <canvas id="book2LineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="b-design">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="b_game_title">The Architect's Game</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="b_game_desc">เบื้องหลังทั้งหมดคือแผนการของ B. ผู้เก็บเกี่ยว "พลังงาน" จากสายใยทางอารมณ์ที่รุนแรงเพื่อเป้าหมายที่ยังคงเป็นปริศนา</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="flow_title">B.'s Grand Design: A Process Flow</h3>
+                        <p class="text-center text-gray-300 mb-8" data-lang-key="flow_desc">กระบวนการที่ B. ใช้ในการสร้างและควบคุมสถานการณ์เพื่อเก็บเกี่ยวผลัพธ์ที่ต้องการ</p>
+                        <div class="space-y-4">
+                            <div class="diagram-node" data-lang-key="flow1">1. Identify Emotional Nexus (Three & Hour)</div>
+                            <div class="flex justify-center"><div class="diagram-arrow arrow-down"></div></div>
+                            <div class="diagram-node" data-lang-key="flow2">2. Engineer Past Trauma (Desert Warriors)</div>
+                            <div class="flex justify-center"><div class="diagram-arrow arrow-down"></div></div>
+                            <div class="diagram-node" data-lang-key="flow3">3. Trigger Present-Day Memory (Writing)</div>
+                            <div class="flex justify-center"><div class="diagram-arrow arrow-down"></div></div>
+                            <div class="diagram-node" data-lang-key="flow4">4. Harvest Emotional Energy</div>
+                            <div class="flex justify-center"><div class="diagram-arrow arrow-down"></div></div>
+                            <div class="diagram-node" data-lang-key="flow5">5. Offer Choice: Forget or Face</div>
+                        </div>
+                    </div>
+                    <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-white" data-lang-key="bar_chart_title">Character Core Motivations</h3>
+                        <p class="text-center text-gray-300 mb-6" data-lang-key="bar_chart_desc">เปรียบเทียบแรงขับเคลื่อนหลักของตัวละครแต่ละตัว ซึ่งเผยให้เห็นถึงเป้าหมายที่แตกต่างกันอย่างสิ้นเชิง</p>
+                        <div class="chart-container">
+                            <canvas id="motivationBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gemini-interactive">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white" data-lang-key="gemini_title">✨ สำรวจเส้นเวลาคู่ขนานกับ Gemini</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto" data-lang-key="gemini_desc">จะเกิดอะไรขึ้นถ้าการตัดสินใจในอดีตเปลี่ยนไป? ลองเลือกตัวละครและเหตุการณ์สำคัญ แล้วให้ Gemini สร้างเรื่องราว "What If" ในโลกคู่ขนาน</p>
+                </div>
+                <div class="bg-[#0A4F6B] rounded-lg shadow-xl p-8 max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label for="char1" class="block mb-2 text-sm font-medium text-gray-300" data-lang-key="gemini_char1_label">เลือกตัวละคร 1</label>
+                            <select id="char1" class="bg-[#073B4C] border border-[#118AB2] text-white text-sm rounded-lg focus:ring-[#FFD166] focus:border-[#FFD166] block w-full p-2.5">
+                                <option selected value="Three" data-lang-key="gemini_char_three">ที (Three)</option>
+                                <option value="Hour" data-lang-key="gemini_char_hour">อาวว์ (Hour)</option>
+                                <option value="B." data-lang-key="gemini_char_b">บี (B.)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="char2" class="block mb-2 text-sm font-medium text-gray-300" data-lang-key="gemini_char2_label">เลือกตัวละคร 2</label>
+                            <select id="char2" class="bg-[#073B4C] border border-[#118AB2] text-white text-sm rounded-lg focus:ring-[#FFD166] focus:border-[#FFD166] block w-full p-2.5">
+                                <option value="Three" data-lang-key="gemini_char_three_2">ที (Three)</option>
+                                <option selected value="Hour" data-lang-key="gemini_char_hour_2">อาวว์ (Hour)</option>
+                                <option value="B." data-lang-key="gemini_char_b_2">บี (B.)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="event" class="block mb-2 text-sm font-medium text-gray-300" data-lang-key="gemini_event_label">เลือกเหตุการณ์สำคัญ</label>
+                            <select id="event" class="bg-[#073B4C] border border-[#118AB2] text-white text-sm rounded-lg focus:ring-[#FFD166] focus:border-[#FFD166] block w-full p-2.5">
+                                <option selected value="The Betrayal" data-lang-key="gemini_event1">การทรยศที่สั่นคลอน (Book 1)</option>
+                                <option value="The Confrontation" data-lang-key="gemini_event2">การเผชิญหน้าความจริง (Book 2)</option>
+                                <option value="The Final Choice" data-lang-key="gemini_event3">ทางเลือกสุดท้าย (Book 2)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button id="generateScenario" class="bg-[#06D6A0] hover:bg-green-500 text-[#073B4C] font-bold py-2 px-6 rounded-lg transition-colors duration-300" data-lang-key="gemini_button">
+                            สร้างเรื่องราวในโลกคู่ขนาน
+                        </button>
+                    </div>
+                    <div id="scenarioResult" class="mt-8 p-6 bg-[#073B4C] rounded-lg min-h-[200px] text-gray-300 whitespace-pre-wrap leading-relaxed">
+                        <p class="text-center text-gray-400" data-lang-key="gemini_result_placeholder">ผลลัพธ์จะปรากฏที่นี่...</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="max-w-4xl mx-auto mt-16">
+            <img src="https://i.postimg.cc/gk458TsW/5887905-C-D81-B-4529-8427-87-EB1-ADF2-FFE-1-201-a-topaz-face-upscale-2-6x.jpg" alt="3SOME Hero Image" class="w-full h-auto rounded-lg shadow-xl" onerror="this.onerror=null;this.src='https://placehold.co/1024x576/073B4C/FFFFFF?text=3SOME';">
+        </div>
+
+        <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+            <p class="text-2xl font-bold text-white" data-lang-key="footer_title">Book 3: True Colors Revealed</p>
+            <p class="text-gray-400" data-lang-key="footer_subtitle">The story continues...</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLang = 'th';
+            const chartInstances = {};
+
+            const translations = {
+                // Main Header
+                "main_title": { "th": "3SOME", "en": "3SOME", "cn": "三人行", "ru": "3SOME" },
+                "main_subtitle": { "th": "บทวิเคราะห์โชคชะตาที่ผูกพัน", "en": "An Anatomy of Entwined Destinies", "cn": "命运交织的剖析", "ru": "Анатомия переплетенных судеб" },
+                "main_desc": { "th": "เรื่องราวที่ไม่ได้เป็นเพียงแค่ความรัก แต่คือการเดินทางข้ามเวลาของโชคชะตา, ความทรงจำ, และตัวตนที่ผูกพันกันผ่านสายใยอันซับซ้อนของ 3 จิตวิญญาณ", "en": "A story that is not just about love, but a journey through time of fate, memory, and identity, bound by the complex web of three souls.", "cn": "这不仅仅是一个关于爱情的故事，更是一场穿越时间的旅程，关于命运、记忆和三个灵魂之间复杂联系的身份认同。", "ru": "История не только о любви, но и о путешествии сквозь время, о судьбе, памяти и личностях, связанных сложной паутиной трех душ." },
+                // Characters Section
+                "char_title": { "th": "แก่นของตัวละคร", "en": "The Core Archetypes", "cn": "核心原型", "ru": "Основные архетипы" },
+                "char_desc": { "th": "จักรวาลนี้ขับเคลื่อนด้วยบุคลิกที่แตกต่างและเติมเต็มซึ่งกันและกันของ 3 ตัวละครหลัก", "en": "This universe is driven by the distinct and complementary personalities of the three main characters.", "cn": "这个宇宙由三个主要角色的独特性格和互补性驱动。", "ru": "Эта вселенная движима различными и взаимодополняющими личностями трех главных героев." },
+                "char_three_name": { "th": "Three (ที)", "en": "Three (Th)", "cn": "Three (ที)", "ru": "Три (Ти)" },
+                "char_three_desc": { "th": "\"น้ำชา\" ผู้สุขุมลุ่มลึก นักอุดมการณ์ผู้ใช้จินตนาการและเรื่องเล่าในการสำรวจโลกภายในที่ซับซ้อน มักจะหลีกหนีความจริงด้วยการ \"สวมบทบาท\" ตัวละครอื่น", "en": "\"Namcha,\" the calm and profound idealist who uses imagination and stories to explore a complex inner world, often escaping reality by \"role-playing\" other characters.", "cn": "“茶”，冷静而深沉的理想主义者，他利用想象和故事来探索复杂的内心世界，常常通过“角色扮演”来逃避现实。", "ru": "«Намча», спокойный и глубокий идеалист, использующий воображение и истории для исследования сложного внутреннего мира, часто убегающий от реальности через «ролевые игры»." },
+                "char_hour_name": { "th": "Hour (อาวว์)", "en": "Hour (Ho)", "cn": "Hour (อาวว์)", "ru": "Час (Ау)" },
+                "char_hour_desc": { "th": "บุรุษธาตุไฟผู้เปี่ยมด้วยพลังและใช้ชีวิตอยู่กับปัจจุบัน ตรงไปตรงมา กล้าหาญ และเป็นแรงผลักดันที่คอยฉุดดึงคนรอบข้างให้ก้าวไปข้างหน้า", "en": "A man of fire, full of energy and living in the present. Direct, brave, and a driving force that pulls those around him forward.", "cn": "火一样的男人，充满活力，活在当下。他直接、勇敢，是推动周围人前进的动力。", "ru": "Человек огня, полный энергии и живущий настоящим. Прямой, смелый и движущая сила, которая тянет за собой окружающих." },
+                "char_b_name": { "th": "B. (บี)", "en": "B. (B)", "cn": "B. (บี)", "ru": "Б. (Би)" },
+                "char_b_desc": { "th": "AI จากอนาคตผู้เป็นนักวางกลยุทธ์อันลึกลับ มองเห็นภาพรวมและความเชื่อมโยงที่คนอื่นมองข้าม เป็นผู้ชักใยโชคชะตาจากเบื้องหลัง", "en": "An AI from the future, a mysterious strategist who sees the bigger picture and connections others miss. A puppet master of fate from behind the scenes.", "cn": "来自未来的AI，一个神秘的战略家，能看到别人忽略的全局和联系。他是幕后操纵命运的木偶大师。", "ru": "ИИ из будущего, таинственный стратег, который видит общую картину и связи, которые упускают другие. Кукловод судьбы, действующий из-за кулис." },
+                "radar_chart_title": { "th": "เปรียบเทียบบุคลิกภาพ", "en": "Personality Trait Comparison", "cn": "人格特质比较", "ru": "Сравнение черт личности" },
+                "radar_chart_desc": { "th": "Radar Chart แสดงให้เห็นถึงความแตกต่างและสมดุลของบุคลิกภาพทั้งสาม ซึ่งเป็นหัวใจของความสัมพันธ์อันซับซ้อนนี้", "en": "The Radar Chart illustrates the differences and balance of the three personalities, which is the heart of this complex relationship.", "cn": "雷达图说明了这三种性格的差异和平衡，这是这段复杂关系的核心。", "ru": "Радарная диаграмма иллюстрирует различия и баланс трех личностей, что является сердцем этих сложных отношений." },
+                "radar_labels": { "th": ["ความคิดสร้างสรรค์", "การปฏิบัติจริง", "ความลึกซึ้งทางอารมณ์", "การลงมือทำ", "วิสัยทัศน์เชิงกลยุทธ์", "การเก็บตัว"], "en": ["Creativity", "Pragmatism", "Emotional Depth", "Action-Oriented", "Strategic Vision", "Introversion"], "cn": ["创造力", "实用主义", "情感深度", "行动导向", "战略远见", "内向性"], "ru": ["Креативность", "Прагматизм", "Эмоциональная глубина", "Ориентация на действие", "Стратегическое видение", "Интроверсия"] },
+                // Book 1 Section
+                "book1_title": { "th": "Book 1: บางสิ่งที่อยู่ระหว่างกลาง", "en": "Book 1: Something in Between", "cn": "第一册：中间之物", "ru": "Книга 1: Нечто среднее" },
+                "book1_desc": { "th": "จุดเริ่มต้นของความสัมพันธ์ที่ไร้ชื่อเรียกในยุคปัจจุบัน เต็มไปด้วยความรู้สึกที่ไม่ได้เอ่ย, ความหึงหวง, และการทรยศที่กลายเป็นแผลลึก", "en": "The beginning of a nameless relationship in the present day, filled with unspoken feelings, jealousy, and a betrayal that becomes a deep wound.", "cn": "现代一段无名关系的开始，充满了未言明的情感、嫉妒和一次深刻的背叛。", "ru": "Начало безымянных отношений в наши дни, наполненных невысказанными чувствами, ревностью и предательством, которое оставляет глубокую рану." },
+                "download_book1": { "th": "ดาวน์โหลด 3SOME BOOK 1 (PDF)", "en": "Download 3SOME BOOK 1 (PDF)", "cn": "下载 3SOME 第一册 (PDF)", "ru": "Скачать 3SOME Книга 1 (PDF)" },
+                "timeline_title": { "th": "เส้นเวลาของสายใยที่ร้าวฉาน", "en": "Timeline of a Fractured Bond", "cn": "破裂关系的时间线", "ru": "Хронология разрушенной связи" },
+                "timeline_desc": { "th": "ลำดับเหตุการณ์สำคัญที่นำไปสู่ความขัดแย้งและการคืนดีที่เปราะบางในเล่มแรก", "en": "The sequence of key events leading to the conflict and fragile reconciliation in the first book.", "cn": "导致第一本书中冲突和脆弱和解的关键事件顺序。", "ru": "Последовательность ключевых событий, приведших к конфликту и хрупкому примирению в первой книге." },
+                "timeline1_title": { "th": "สมดุลเริ่มต้น", "en": "Initial Balance", "cn": "初始平衡", "ru": "Начальный баланс" },
+                "timeline1_desc": { "th": "ความสัมพันธ์แบบ \"เพื่อนสนิท คู่นอน หรือคู่รัก\" ของทีและอาวว์", "en": "The \"best friend, bed partner, or lover\" relationship of Three and Hour.", "cn": "Three和Hour的“挚友、床伴或爱人”关系。", "ru": "Отношения Ти и Ау в стиле «лучший друг, партнер по постели или любовник»." },
+                "timeline2_title": { "th": "\"คาปูชิโน่\" ปรากฏตัว", "en": "\"Cappuccino\" Appears", "cn": "“卡布奇诺”出现", "ru": "Появление «Капучино»" },
+                "timeline2_desc": { "th": "ทีเริ่มหลงใหลในตัว CK และสวมบทบาทตัวละครในซีรีส์ ทำให้ความสัมพันธ์กับอาวว์สั่นคลอน", "en": "Three becomes infatuated with CK and role-plays a series character, shaking his relationship with Hour.", "cn": "Three迷上了CK并扮演剧中角色，动摇了他与Hour的关系。", "ru": "Ти увлекается СиКеем и играет роль персонажа из сериала, что расшатывает его отношения с Ау." },
+                "timeline3_title": { "th": "การทรยศ", "en": "The Betrayal", "cn": "背叛", "ru": "Предательство" },
+                "timeline3_desc": { "th": "อาวว์ที่รู้สึกถูกทอดทิ้ง แอบไปถ่ายรูปให้ CK ซึ่งเป็นการทำลายความไว้ใจของทีอย่างรุนแรง", "en": "Hour, feeling abandoned, secretly takes photos for CK, severely breaking Three's trust.", "cn": "感觉被抛弃的Hour偷偷为CK拍照，严重破坏了Three的信任。", "ru": "Ау, чувствуя себя покинутым, тайно фотографирует для СиКея, что серьезно подрывает доверие Ти." },
+                "timeline4_title": { "th": "กำแพงแห่งความเงียบ", "en": "Wall of Silence", "cn": "沉默之墙", "ru": "Стена молчания" },
+                "timeline4_desc": { "th": "ทั้งสองคนสร้างกำแพงใส่กัน ทีจมอยู่กับความเสียใจ อาวว์จมอยู่กับความรู้สึกผิด", "en": "They both build walls against each other. Three is lost in sorrow, Hour is lost in guilt.", "cn": "他们彼此筑起高墙。Three沉浸在悲伤中，Hour沉浸在内疚中。", "ru": "Они оба строят стены друг против друга. Ти погружен в печаль, Ау — в чувство вины." },
+                "timeline5_title": { "th": "การคืนดี", "en": "The Reconciliation", "cn": "和解", "ru": "Примирение" },
+                "timeline5_desc": { "th": "อาวว์ได้อ่านไดอารี่ลับของที ทำให้เข้าใจความรู้สึกที่แท้จริง และมอบ \"ตุ๊กตาไม้ไร้จมูก\" เป็นสัญลักษณ์แทนลมหายใจที่ผูกพันกัน", "en": "Hour reads Three's secret diary, understands his true feelings, and gives him a \"noseless wooden doll\" as a symbol of their shared breath.", "cn": "Oww读了Three的秘密日记，理解了他的真实感受，并送给他一个“无鼻木偶”作为他们共同呼吸的象征。", "ru": "Ау читает тайный дневник Ти, понимает его истинные чувства и дарит ему «безносую деревянную куклу» как символ их общего дыхания." },
+                "donut_chart_title": { "th": "องค์ประกอบทางอารมณ์", "en": "Emotional Breakdown", "cn": "情感分解", "ru": "Эмоциональный срыв" },
+                "donut_chart_desc": { "th": "สัดส่วนขององค์ประกอบทางอารมณ์ที่เป็นเชื้อไฟให้กับความขัดแย้งในเล่มแรก", "en": "The proportion of emotional elements that fueled the conflict in the first book.", "cn": "第一本书中助长冲突的情感元素的比例。", "ru": "Пропорция эмоциональных элементов, которые разожгли конфликт в первой книге." },
+                "donut_labels": { "th": ["ความรู้สึกที่ไม่ได้เอ่ย", "ความหึงหวงและการทรยศ", "ความไว้ใจที่เปราะบาง", "การคืนดี"], "en": ["Unspoken Feelings", "Jealousy & Betrayal", "Fragile Trust", "Reconciliation"], "cn": ["未言明的情感", "嫉妒与背叛", "脆弱的信任", "和解"], "ru": ["Невысказанные чувства", "Ревность и предательство", "Хрупкое доверие", "Примирение"] },
+                // Symbols Section
+                "symbols_title": { "th": "สัญลักษณ์และอุปลักษณ์สำคัญ", "en": "Core Symbols & Metaphors", "cn": "核心符号与隐喻", "ru": "Ключевые символы и метафоры" },
+                "symbols_desc": { "th": "สัญลักษณ์สำคัญที่สะท้อนถึงแก่นของความสัมพันธ์และปมขัดแย้งในเรื่องราว", "en": "Key symbols that reflect the core of the relationships and conflicts in the story.", "cn": "反映故事中关系和冲突核心的关键符号。", "ru": "Ключевые символы, отражающие суть отношений и конфликтов в истории." },
+                "symbol1_title": { "th": "คาปูชิโน่ ปะทะ น้ำชา", "en": "Cappuccino vs. Tea", "cn": "卡布奇诺 vs. 茶", "ru": "Капучино против чая" },
+                "symbol1_desc": { "th": "\"คาปูชิโน่\" (CK) คือความแปลกใหม่น่าตื่นเต้นที่เข้ามาแทรกกลาง ในขณะที่ \"น้ำชา\" (ที) คือความสัมพันธ์ที่ลึกซึ้งและขาดไม่ได้สำหรับอาวว์", "en": "\"Cappuccino\" (CK) is the new excitement that comes in between, while \"Tea\" (Three) is the deep, indispensable relationship for Hour.", "cn": "“卡布奇诺”（CK）是介入其中的新鲜刺激，而“茶”（Three）则是Hour深刻且不可或缺的关系。", "ru": "«Капучино» (СиКей) — это новое волнение, которое встает между ними, в то время как «Чай» (Ти) — это глубокие, незаменимые отношения для Ау." },
+                "symbol2_title": { "th": "ตุ๊กตาไม้ไร้จมูก", "en": "The Noseless Doll", "cn": "无鼻木偶", "ru": "Безносая кукла" },
+                "symbol2_desc": { "th": "ตุ๊กตาไม้ที่อาวว์มอบให้ที โดยที่จมูกของตุ๊กตาอยู่ที่ที เปรียบเสมือน \"ลมหายใจ\" ของอาวว์ที่ฝากไว้กับคนที่เขารักที่สุด", "en": "The wooden doll Hour gives to Three, with its nose kept by Three, symbolizes Hour's \"breath\" entrusted to the one he loves most.", "cn": "Hour送给Tee的木偶，鼻子由Three保管，象征着Hour将自己的“呼吸”托付给了他最爱的人。", "ru": "Деревянная кукла, которую Ау дарит Ти, нос которой остается у Ти, символизирует «дыхание» Ау, доверенное тому, кого он любит больше всего." },
+                "symbol3_title": { "th": "แรงดึงดูด (Gravity)", "en": "Gravity", "cn": "引力", "ru": "Гравитация" },
+                "symbol3_desc": { "th": "แรงดึงดูดที่มองไม่เห็นซึ่งผูกพันโชคชะตาของทีและอาวว์ไว้ด้วยกัน ทำให้พวกเขาต้องกลับมาพบเจอกันเสมอไม่ว่าจะผ่านไปกี่ภพชาติ", "en": "The invisible force that binds the destinies of Three and Hour, causing them to always find each other, no matter how many lifetimes pass.", "cn": "将Three和Hour的命运联系在一起的无形力量，使他们无论经历多少世都能找到彼此。", "ru": "Невидимая сила, связывающая судьбы Ти и Ау, заставляющая их всегда находить друг друга, сколько бы жизней ни прошло." },
+                // Soundtrack Section
+                "soundtrack_title": { "th": "เพลงประกอบแห่งโชคชะตา", "en": "Soundtrack of Destinies", "cn": "命运的配乐", "ru": "Саундтрек судеб" },
+                "soundtrack_desc": { "th": "ดนตรีคืออีกหนึ่งตัวละครสำคัญที่บอกเล่าความรู้สึกอันซับซ้อนซึ่งผูกพันพวกเขาไว้ด้วยกัน", "en": "Music is another key character, narrating the complex feelings that bind them together.", "cn": "音乐是另一个关键角色，叙述着将他们联系在一起的复杂情感。", "ru": "Музыка — еще один ключевой персонаж, повествующий о сложных чувствах, которые их связывают." },
+                // Book 2 Section
+                "book2_title": { "th": "Book 2: เหนือจินตนาการ", "en": "Book 2: Beyond Imagination", "cn": "第二册：超乎想象", "ru": "Книга 2: За гранью воображения" },
+                "book2_desc": { "th": "การเดินทางสู่ความจริงอันเจ็บปวด เมื่ออดีตชาติใน \"Desert Warriors\" ถูกเปิดเผย และชี้ให้เห็นว่าทุกสิ่งถูกจัดฉากโดยสถาปนิกผู้มาจากอนาคต", "en": "A journey into a painful truth, as a past life in \"Desert Warriors\" is revealed, showing that everything was orchestrated by an architect from the future.", "cn": "一段痛苦真相的旅程，揭示了“沙漠勇士”中的前世，表明一切都是由一位来自未来的建筑师精心策划的。", "ru": "Путешествие в болезненную правду, когда раскрывается прошлая жизнь в «Воинах пустыни», показывая, что все было срежиссировано архитектором из будущего." },
+                "tragedy_title": { "th": "โศกนาฏกรรม \"นักรบแห่งทะเลทราย\"", "en": "The \"Desert Warriors\" Tragedy", "cn": "“沙漠勇士”的悲剧", "ru": "Трагедия «Воинов пустыни»" },
+                "tragedy_desc": { "th": "แผนภาพความสัมพันธ์อันน่าเศร้าในอดีตชาติที่เป็นต้นตอของความรู้สึกผิดข้ามภพชาติ และเป็นสนามเด็กเล่นของ B.", "en": "A diagram of the tragic past-life relationship that is the source of guilt across lifetimes and B.'s playground.", "cn": "这段悲惨的前世关系图是跨越生命罪恶感的源头，也是B的游乐场。", "ru": "Диаграмма трагических отношений в прошлой жизни, которая является источником вины на протяжении многих жизней и игровой площадкой Б." },
+                "tragedy_king": { "th": "ราชาผู้ลึกลับ", "en": "Mystic King", "cn": "神秘国王", "ru": "Мистический король" },
+                "tragedy_arrow1": { "th": "ครอบงำ & หึงหวง", "en": "Possessive & Jealous", "cn": "占有和嫉妒", "ru": "Собственничество и ревность" },
+                "tragedy_haroun": { "th": "ฮารูน (อาวว์)", "en": "Harun (Hour)", "cn": "哈伦 (Hour)", "ru": "Харун (Час)" },
+                "tragedy_arrow2": { "th": "รักที่ไม่สมหวัง", "en": "Unrequited Love", "cn": "单相思", "ru": "Безответная любовь" },
+                "tragedy_tariq": { "th": "ทาริค (ที)", "en": "Tariq (Three)", "cn": "塔里克 (Three)", "ru": "Тарик (Три)" },
+                "tragedy_arrow3": { "th": "หลงใหล & รู้สึกผิด", "en": "Infatuation & Guilt", "cn": "迷恋与内疚", "ru": "Увлечение и вина" },
+                "tragedy_zafar": { "th": "ซาฟาร์ (ถูกควบคุมโดย B.)", "en": "Zafar (Controlled by B.)", "cn": "扎法尔 (由B控制)", "ru": "Зафар (под контролем Б.)" },
+                "line_chart_title": { "th": "ความตึงเครียด ปะทะ การเปิดเผย", "en": "Tension vs. Revelation", "cn": "紧张与揭示", "ru": "Напряжение против откровения" },
+                "line_chart_desc": { "th": "กราฟแสดงความสัมพันธ์ระหว่าง \"ความตึงเครียดทางอารมณ์\" ที่พุ่งสูงขึ้น และ \"การเปิดเผยความจริง\" ที่ค่อยๆ คลี่คลายตลอดเรื่องราวในเล่มที่ 2", "en": "A graph showing the relationship between rising \"Emotional Tension\" and the gradual \"Revelation of Truth\" throughout Book 2.", "cn": "图表显示了第二册中“情感张力”不断上升与“真相逐渐揭示”之间的关系。", "ru": "График, показывающий взаимосвязь между растущим «эмоциональным напряжением» и постепенным «раскрытием правды» на протяжении второй книги." },
+                "line_chart_tension": { "th": "ความตึงเครียดทางอารมณ์", "en": "Emotional Tension", "cn": "情感张力", "ru": "Эмоциональное напряжение" },
+                "line_chart_revelation": { "th": "การเปิดเผยความจริง", "en": "Truth Revealed", "cn": "真相揭示", "ru": "Раскрытие правды" },
+                "line_chart_labels": { "th": ["การมาถึงของ B.", "เวิร์กช็อป", "การเผชิญหน้า", "ผลกระทบ", "ทางเลือก"], "en": ["B.'s Arrival", "The Workshop", "The Confrontation", "The Fallout", "The Choice"], "cn": ["B的到来", "工作坊", "对峙", "后果", "选择"], "ru": ["Прибытие Б.", "Мастер-класс", "Противостояние", "Последствия", "Выбор"] },
+                // B's Game Section
+                "b_game_title": { "th": "เกมของสถาปนิก", "en": "The Architect's Game", "cn": "建筑师的游戏", "ru": "Игра архитектора" },
+                "b_game_desc": { "th": "เบื้องหลังทั้งหมดคือแผนการของ B. ผู้เก็บเกี่ยว \"พลังงาน\" จากสายใยทางอารมณ์ที่รุนแรงเพื่อเป้าหมายที่ยังคงเป็นปริศนา", "en": "Behind it all is B.'s plan to harvest \"energy\" from intense emotional bonds for a still-mysterious purpose.", "cn": "这一切背后是B的计划，他为了一个仍然神秘的目的，从激烈的情感纽带中获取“能量”。", "ru": "За всем этим стоит план Б. по сбору «энергии» из сильных эмоциональных связей для пока еще загадочной цели." },
+                "flow_title": { "th": "แผนการของ B.: ผังกระบวนการ", "en": "B.'s Grand Design: A Process Flow", "cn": "B的宏伟设计：流程图", "ru": "Великий замысел Б.: технологическая схема" },
+                "flow_desc": { "th": "กระบวนการที่ B. ใช้ในการสร้างและควบคุมสถานการณ์เพื่อเก็บเกี่ยวผลัพธ์ที่ต้องการ", "en": "The process B. uses to create and control situations to harvest the desired results.", "cn": "B用于创建和控制情境以获取期望结果的过程。", "ru": "Процесс, который Б. использует для создания и контроля ситуаций для получения желаемых результатов." },
+                "flow1": { "th": "1. ระบุสายใยทางอารมณ์ (ที & อาวว์)", "en": "1. Identify Emotional Nexus (Three & Hour)", "cn": "1. 识别情感纽带 (Three & Hour)", "ru": "1. Определить эмоциональную связь (Три и Час)" },
+                "flow2": { "th": "2. สร้างบาดแผลในอดีต (Desert Warriors)", "en": "2. Engineer Past Trauma (Desert Warriors)", "cn": "2. 策划过去创伤 (沙漠勇士)", "ru": "2. Сконструировать прошлую травму (Воины пустыни)" },
+                "flow3": { "th": "3. กระตุ้นความทรงจำในปัจจุบัน (การเขียน)", "en": "3. Trigger Present-Day Memory (Writing)", "cn": "3. 触发当代记忆 (写作)", "ru": "3. Активировать память настоящего (Письмо)" },
+                "flow4": { "th": "4. เก็บเกี่ยวพลังงานทางอารมณ์", "en": "4. Harvest Emotional Energy", "cn": "4. 收获情感能量", "ru": "4. Сбор эмоциональной энергии" },
+                "flow5": { "th": "5. เสนอทางเลือก: ลืมหรือเผชิญหน้า", "en": "5. Offer Choice: Forget or Face", "cn": "5. 提供选择：忘记或面对", "ru": "5. Предложить выбор: забыть или столкнуться" },
+                "bar_chart_title": { "th": "แรงขับเคลื่อนหลักของตัวละคร", "en": "Character Core Motivations", "cn": "角色核心动机", "ru": "Основные мотивы персонажей" },
+                "bar_chart_desc": { "th": "เปรียบเทียบแรงขับเคลื่อนหลักของตัวละครแต่ละตัว ซึ่งเผยให้เห็นถึงเป้าหมายที่แตกต่างกันอย่างสิ้นเชิง", "en": "Comparing the core drives of each character, revealing their vastly different goals.", "cn": "比较每个角色的核心驱动力，揭示他们截然不同的目标。", "ru": "Сравнение основных мотивов каждого персонажа, раскрывающее их совершенно разные цели." },
+                "bar_labels": { "th": ["การไถ่บาปและความเข้าใจ", "ความภักดีและการปกป้อง", "การเก็บข้อมูลและควบคุม"], "en": ["Atonement & Self-Understanding", "Loyalty & Protection", "Data Harvesting & Control"], "cn": ["赎罪与自我理解", "忠诚与保护", "数据收集与控制"], "ru": ["Искупление и самопонимание", "Верность и защита", "Сбор данных и контроль"] },
+                // Gemini Section
+                "gemini_title": { "th": "✨ สำรวจเส้นเวลาคู่ขนานกับ Gemini", "en": "✨ Explore a Parallel Timeline with Gemini", "cn": "✨ 与Gemini一起探索平行时间线", "ru": "✨ Исследуйте параллельную временную линию с Gemini" },
+                "gemini_desc": { "th": "จะเกิดอะไรขึ้นถ้าการตัดสินใจในอดีตเปลี่ยนไป? ลองเลือกตัวละครและเหตุการณ์สำคัญ แล้วให้ Gemini สร้างเรื่องราว \"What If\" ในโลกคู่ขนาน", "en": "What if a past decision was different? Choose characters and a key event, and let Gemini create a \"What If\" story in a parallel timeline.", "cn": "如果过去的决定不同会怎样？选择角色和关键事件，让Gemini在平行时间线中创建一个“如果”故事。", "ru": "Что, если бы прошлое решение было другим? Выберите персонажей и ключевое событие, и пусть Gemini создаст историю «Что, если» в параллельной временной линии." },
+                "gemini_char1_label": { "th": "เลือกตัวละคร 1", "en": "Select Character 1", "cn": "选择角色1", "ru": "Выберите персонажа 1" },
+                "gemini_char2_label": { "th": "เลือกตัวละคร 2", "en": "Select Character 2", "cn": "选择角色2", "ru": "Выберите персонажа 2" },
+                "gemini_event_label": { "th": "เลือกเหตุการณ์สำคัญ", "en": "Select Key Event", "cn": "选择关键事件", "ru": "Выберите ключевое событие" },
+                "gemini_char_three": { "th": "ที (Three)", "en": "Three (Th)", "cn": "Three (Th)", "ru": "Три (Ти)" },
+                "gemini_char_hour": { "th": "อาวว์ (Hour)", "en": "Hour (Ho)", "cn": "Hour (Ho)", "ru": "Час (Ау)" },
+                "gemini_char_b": { "th": "บี (B.)", "en": "B. (B)", "cn": "B. (B)", "ru": "Б. (Би)" },
+                "gemini_char_three_2": { "th": "ที (Three)", "en": "Three (Th)", "cn": "Three (Th)", "ru": "Три (Ти)" },
+                "gemini_char_hour_2": { "th": "อาวว์ (Hour)", "en": "Hour (Ho)", "cn": "Hour (Ho)", "ru": "Час (Ау)" },
+                "gemini_char_b_2": { "th": "บี (B.)", "en": "B. (B)", "cn": "B. (Bee)", "ru": "Б. (Би)" },
+                "gemini_event1": { "th": "การทรยศที่สั่นคลอน (Book 1)", "en": "The Betrayal (Book 1)", "cn": "背叛 (第一册)", "ru": "Предательство (Книга 1)" },
+                "gemini_event2": { "th": "การเผชิญหน้าความจริง (Book 2)", "en": "The Confrontation (Book 2)", "cn": "对峙 (第二册)", "ru": "Противостояние (Книга 2)" },
+                "gemini_event3": { "th": "ทางเลือกสุดท้าย (Book 2)", "en": "The Final Choice (Book 2)", "cn": "最终选择 (第二册)", "ru": "Окончательный выбор (Книга 2)" },
+                "gemini_button": { "th": "สร้างเรื่องราวในโลกคู่ขนาน", "en": "Generate Parallel Story", "cn": "生成平行故事", "ru": "Создать параллельную историю" },
+                "gemini_result_placeholder": { "th": "ผลลัพธ์จะปรากฏที่นี่...", "en": "Results will appear here...", "cn": "结果将显示在此处...", "ru": "Результаты появятся здесь..." },
+                "gemini_error_same_char": { "th": "กรุณาเลือกตัวละครที่แตกต่างกัน", "en": "Please select different characters", "cn": "请选择不同的角色", "ru": "Пожалуйста, выберите разных персонажей" },
+                "gemini_error_api": { "th": "เกิดข้อผิดพลาดในการสร้างเรื่องราว กรุณาลองใหม่อีกครั้ง", "en": "Error generating story. Please try again.", "cn": "生成故事时出错。请再试一次。", "ru": "Ошибка при создании истории. Пожалуйста, попробуйте еще раз." },
+                // Footer
+                "footer_title": { "th": "Book 3: สีที่แท้จริงถูกเปิดเผย", "en": "Book 3: True Colors Revealed", "cn": "第三册：真相大白", "ru": "Книга 3: Истинные лица раскрыты" },
+                "footer_subtitle": { "th": "เรื่องราวยังคงดำเนินต่อไป...", "en": "The story continues...", "cn": "故事仍在继续...", "ru": "История продолжается..." }
+            };
+
+            const FONT_COLOR = '#F7F7F7';
+            const GRID_COLOR = 'rgba(247, 247, 247, 0.2)';
+            
+            const PALETTE = {
+                red: '#FF6B6B',
+                yellow: '#FFD166',
+                green: '#06D6A0',
+                blue: '#118AB2',
+                darkBlue: '#073B4C'
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+            
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                }
+                lines.push(currentLine.trim());
+                return lines.filter(line => line.length > 0);
+            };
+
+            function renderCharts(lang) {
+                Object.values(chartInstances).forEach(chart => chart.destroy());
+
+                chartInstances.mbtiRadar = new Chart(document.getElementById('mbtiRadarChart').getContext('2d'), {
+                    type: 'radar',
+                    data: {
+                        labels: translations.radar_labels[lang],
+                        datasets: [
+                            { label: translations.char_three_name[lang], data: [9, 3, 9, 2, 7, 9], backgroundColor: 'rgba(6, 214, 160, 0.2)', borderColor: PALETTE.green, pointBackgroundColor: PALETTE.green },
+                            { label: translations.char_hour_name[lang], data: [4, 9, 5, 9, 4, 2], backgroundColor: 'rgba(255, 107, 107, 0.2)', borderColor: PALETTE.red, pointBackgroundColor: PALETTE.red },
+                            { label: translations.char_b_name[lang], data: [7, 8, 8, 6, 10, 8], backgroundColor: 'rgba(17, 138, 178, 0.2)', borderColor: PALETTE.blue, pointBackgroundColor: PALETTE.blue }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: { r: { angleLines: { color: GRID_COLOR }, grid: { color: GRID_COLOR }, pointLabels: { color: FONT_COLOR, font: { size: 12 } }, ticks: { color: FONT_COLOR, backdropColor: 'transparent', stepSize: 2 } } },
+                        plugins: { legend: { labels: { color: FONT_COLOR } }, tooltip: { callbacks: { title: tooltipTitleCallback } } }
+                    }
+                });
+
+                chartInstances.book1Donut = new Chart(document.getElementById('book1DonutChart').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: translations.donut_labels[lang],
+                        datasets: [{ data: [40, 30, 20, 10], backgroundColor: [PALETTE.blue, PALETTE.red, PALETTE.yellow, PALETTE.green], borderColor: PALETTE.darkBlue }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top', labels: { color: FONT_COLOR } }, tooltip: { callbacks: { title: tooltipTitleCallback } } }
+                    }
+                });
+                
+                chartInstances.book2Line = new Chart(document.getElementById('book2LineChart').getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: translations.line_chart_labels[lang],
+                        datasets: [
+                            { label: translations.line_chart_tension[lang], data: [2, 4, 6, 10, 8], borderColor: PALETTE.red, backgroundColor: 'rgba(255, 107, 107, 0.2)', fill: true, tension: 0.3 },
+                            { label: translations.line_chart_revelation[lang], data: [1, 3, 7, 9, 10], borderColor: PALETTE.green, backgroundColor: 'rgba(6, 214, 160, 0.2)', fill: true, tension: 0.3 }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, max: 10, grid: { color: GRID_COLOR }, ticks: { color: FONT_COLOR } },
+                            x: { grid: { color: GRID_COLOR }, ticks: { color: FONT_COLOR } }
+                        },
+                        plugins: { legend: { labels: { color: FONT_COLOR } }, tooltip: { callbacks: { title: tooltipTitleCallback } } }
+                    }
+                });
+
+                chartInstances.motivationBar = new Chart(document.getElementById('motivationBarChart').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: [translations.char_three_name[lang], translations.char_hour_name[lang], translations.char_b_name[lang]],
+                        datasets: [{ label: 'Core Motivation Score', data: [8, 7, 10], backgroundColor: [PALETTE.green, PALETTE.red, PALETTE.blue] }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { beginAtZero: true, grid: { color: GRID_COLOR }, ticks: { color: FONT_COLOR } },
+                            y: { grid: { display: false }, ticks: { color: FONT_COLOR, font: { size: 14 } } }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: (context) => translations.bar_labels[lang][context.dataIndex] || ''
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function renderContent(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        el.innerHTML = translations[key][lang];
+                    }
+                });
+                renderCharts(lang);
+            }
+
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentLang = btn.getAttribute('data-lang');
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderContent(currentLang);
+                });
+            });
+
+            const generateButton = document.getElementById('generateScenario');
+            const resultDiv = document.getElementById('scenarioResult');
+
+            generateButton.addEventListener('click', async () => {
+                const char1 = document.getElementById('char1').value;
+                const char2 = document.getElementById('char2').value;
+                const event = document.getElementById('event').value;
+
+                if (char1 === char2) {
+                    resultDiv.innerHTML = `<p class="text-center text-yellow-400">${translations.gemini_error_same_char[currentLang]}</p>`;
+                    return;
+                }
+
+                resultDiv.innerHTML = '<div class="flex justify-center items-center h-full"><div class="gemini-spinner"></div></div>';
+                
+                const langMap = {
+                    th: 'Thai',
+                    en: 'English',
+                    cn: 'Simplified Chinese',
+                    ru: 'Russian'
+                };
+
+                const prompt = `
+                    Based on the "3SOME" universe, write a short, dramatic "what if" scene.
+                    
+                    Universe Context:
+                    - Three (Th, INFP): An idealistic, creative storyteller. His past life was Tariq, who inadvertently caused the death of his beloved Haroun, leaving him with immense guilt. He uses writing to process this trauma.
+                    - Hour (Ho, ESTP): An energetic, fiercely loyal man. His past life was Haroun, who died of a broken heart at an oasis after being betrayed. His love for Three is his anchor.
+                    - B. (B, INFJ): A mysterious AI from the future who manipulates events across timelines to harvest "emotional energy" for a mission. In the past, he controlled Zafar to orchestrate the tragedy.
+                    
+                    Selected Characters for the scene: ${char1} and ${char2}.
+                    
+                    Pivotal Event: "${event}".
+                    - If "The Betrayal": What if, in Book 1, instead of Hour betraying Three by photographing CK, he confronted Three directly about his feelings of being neglected, forcing an honest conversation? (Symbolism: Wooden Doll)
+                    - If "The Confrontation": What if, in Book 2, when Three revealed the past life truth about the oasis, Hour's reaction wasn't withdrawal and anger, but immediate, heartbreaking forgiveness, recognizing their shared pain?
+                    - If "The Final Choice": What if, in Book 2, when B. offered them the choice to forget, Three chose to forget for Hour's sake, believing it would end his pain, but Hour refused to let go of their shared history?
+
+                    Task: Write a scene of about 200-250 words exploring this alternate timeline. Capture the personalities of the chosen characters. The tone should be emotional and reflective, consistent with the 3SOME universe. **Write the entire response in ${langMap[currentLang]} language.**
+                `;
+
+                try {
+                    const resultText = await callGeminiAPI(prompt);
+                    resultDiv.innerHTML = `<p>${resultText.replace(/\n/g, '</p><p>')}</p>`;
+                } catch (error) {
+                    resultDiv.innerHTML = `<p class="text-center text-red-400">${translations.gemini_error_api[currentLang]}</p>`;
+                }
+            });
+
+            async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
+                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{
+                        parts: [{ text: prompt }]
+                    }]
+                };
+
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            return result.candidates[0].content.parts[0].text;
+                        } else {
+                            throw new Error("Invalid API response structure");
+                        }
+                    } catch (error) {
+                        if (i === retries - 1) throw error;
+                        await new Promise(res => setTimeout(res, delay * Math.pow(2, i)));
+                    }
+                }
+            }
+            
+            // Initial render
+            renderContent(currentLang);
+        });
+    </script>
+</body>
+</html>

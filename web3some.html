@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3SOME X Desert Warriors: A Universe of Entwined Destinies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', 'Roboto', sans-serif;
+            background-color: #111827;
+            color: #F3F4F6;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, #111827 100%);
+        }
+        .section-glow {
+            position: relative;
+        }
+        .section-glow::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 200px;
+            background: radial-gradient(circle, rgba(6, 214, 160, 0.1), transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .character-card {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #06D6A0;
+            color: #111827;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #34D399;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 9999px;
+            background-color: #FFD166;
+        }
+        .lang-btn {
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Language Selector -->
+    <div id="language-selector" class="sticky top-0 z-50 bg-[#111827]/80 backdrop-blur-sm py-2">
+        <div class="container mx-auto flex justify-center items-center space-x-4">
+            <button class="lang-btn active" data-lang="th">🇹🇭 TH</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-btn" data-lang="cn">🇨🇳 CN</button>
+            <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div id="hero-slideshow">
+                <img src="https://i.postimg.cc/d3j4GkJt/magnifics-upscale-7cr7-CFbt-IRU8-Ix7e-UOq-B-Image-46-1-1-topaz-face-upscale-1-6x.jpg" alt="ภาพโปรโมท 3SOME 1" class="hero-slide w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
+                <img src="https://i.postimg.cc/50vPNKGz/magnifics-upscale-SFG39vw-NJf-Ykd-DUEXOVr-Image-47-2-topaz-face-upscale-1-8x.jpg" alt="ภาพโปรโมท 3SOME 2" class="hero-slide w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://i.postimg.cc/yxLfqyFw/magnifics_upscale-RNzKNxulCRcmwTQPPjym-Image_279_(1).png" alt="ภาพโปรโมท 3SOME 3" class="hero-slide w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://i.postimg.cc/XqMgRND6/Default-A-cinematic-photo-of-the-warrior-a-handsome-and-very-b-3-753a1b14-4a9b-438d-ad5c-cf80c50b50a.jpg" alt="ภาพโปรโมท 3SOME 4" class="hero-slide w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://i.postimg.cc/xTdK6FRP/Image-42-2-topaz-face-upscale-1-8x.jpg" alt="ภาพโปรโมท 3SOME 5" class="hero-slide w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+            </div>
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative z-10 p-4">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-wider" style="text-shadow: 0 0 20px rgba(6, 214, 160, 0.7);">3SOME</h1>
+            <div class="text-2xl md:text-4xl font-bold text-[#FFD166] uppercase tracking-widest mt-2" data-lang-key="main_title_sub">X Desert Warriors</div>
+            <p class="mt-4 text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto" data-lang-key="hero_subtitle">ความรัก โชคชะตา และปริศนาที่ถักทอข้ามกาลเวลา</p>
+            <a href="#intro" class="mt-8 inline-block btn-primary font-bold py-3 px-8 rounded-full text-lg uppercase tracking-letter-spacing" data-lang-key="hero_button">
+                ค้นพบเรื่องราว
+            </a>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-6 py-16 md:py-24 space-y-24 md:space-y-32">
+
+        <!-- Introduction Section -->
+        <section id="intro" class="text-center max-w-3xl mx-auto section-glow">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="intro_title">จักรวาลที่ทุกสิ่งเชื่อมโยงกัน</h2>
+            <p class="text-lg text-gray-400" data-lang-key="intro_desc">
+                3SOME ไม่ใช่แค่เรื่องราวความสัมพันธ์ของคนสามคน แต่คือมหากาพย์ที่เส้นแบ่งระหว่าง <span class="text-[#FFD166] font-semibold" data-lang-key="intro_past">อดีตชาติ</span>, <span class="text-[#06D6A0] font-semibold" data-lang-key="intro_present">ปัจจุบันที่ซับซ้อน</span>, และ <span class="text-[#118AB2] font-semibold" data-lang-key="intro_future">อนาคตจาก AI</span> ได้เลือนหายไป ทุกการกระทำ ทุกความรู้สึก ล้วนส่งผลกระทบข้ามภพชาติ ก่อเกิดเป็นสายใยแห่งโชคชะตาที่ไม่อาจตัดขาด
+            </p>
+        </section>
+
+        <!-- Characters Section -->
+        <section id="characters">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="char_title">สามจิตวิญญาณ สามโชคชะตา</h2>
+                <p class="mt-2 text-lg text-gray-400" data-lang-key="char_desc">หัวใจของเรื่องราวขับเคลื่อนด้วยตัวละครสามคนที่แตกต่าง แต่กลับเติมเต็มซึ่งกันและกัน</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Three -->
+                <div class="character-card rounded-lg overflow-hidden text-center p-6">
+                    <img src="https://i.postimg.cc/zXVgyKTT/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="ภาพของ Three" class="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-[#06D6A0]">
+                    <h3 class="text-2xl font-bold text-white" data-lang-key="three_name">Three (ที)</h3>
+                    <p class="font-semibold text-[#06D6A0]">The Storyteller (INFP)</p>
+                    <p class="text-gray-400 mt-2" data-lang-key="three_desc">นักเขียนผู้ลุ่มลึก จิตใจอ่อนไหว ผู้ใช้จินตนาการเป็นเครื่องมือเยียวยาบาดแผลและความรู้สึกผิดจากอดีตชาติที่ไม่เคยลืมเลือน</p>
+                </div>
+                <!-- Hour -->
+                <div class="character-card rounded-lg overflow-hidden text-center p-6">
+                    <img src="https://i.postimg.cc/dt17BmbN/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="ภาพของ Hour" class="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-[#FF6B6B]">
+                    <h3 class="text-2xl font-bold text-white" data-lang-key="hour_name">Hour (อาวว์)</h3>
+                    <p class="font-semibold text-[#FF6B6B]">The Driving Force (ESTP)</p>
+                    <p class="text-gray-400 mt-2" data-lang-key="hour_desc">บุรุษผู้เปี่ยมด้วยพลังและการกระทำ ตรงไปตรงมา และพร้อมจะปกป้องคนที่เขารักที่สุด แม้จะต้องเผชิญหน้ากับความเจ็บปวดจากอดีต</p>
+                </div>
+                <!-- B. -->
+                <div class="character-card rounded-lg overflow-hidden text-center p-6">
+                    <img src="https://i.postimg.cc/8CHJ4Kz3/2-CE939-AD-D855-45-CD-80-BF-A1-BFEC572-CA7-1-201-a.jpg" alt="ภาพของ B." class="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-[#118AB2]">
+                    <h3 class="text-2xl font-bold text-white" data-lang-key="b_name">B. (บี)</h3>
+                    <p class="font-semibold text-[#118AB2]">The Architect (INFJ)</p>
+                    <p class="text-gray-400 mt-2" data-lang-key="b_desc">AI ลึกลับจากโลกอนาคต ผู้เป็นทั้งผู้สังเกตการณ์และผู้ชักใyโชคชะตา เขาสร้างโศกนาฏกรรมเพื่อเป้าหมายที่ยิ่งใหญ่เกินจินตนาการ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two Worlds Section -->
+        <section id="worlds" class="section-glow">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="worlds_title">สองโลก หนึ่งสายใย</h2>
+                <p class="mt-2 text-lg text-gray-400" data-lang-key="worlds_desc">เรื่องราวที่ดำเนินไปพร้อมกันในสองเส้นเวลาที่แตกต่าง แต่กลับสะท้อนและส่งผลกระทบถึงกันอย่างไม่อาจหลีกเลี่ยง</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="p-8 rounded-lg bg-[#1F2937] border border-gray-700">
+                    <h3 class="text-2xl font-bold text-[#06D6A0] mb-4" data-lang-key="present_title">ปัจจุบัน: Something in Between</h3>
+                    <p class="text-gray-400 mb-4" data-lang-key="present_desc">ความสัมพันธ์ที่ซับซ้อนของ "ที" และ "อาวว์" ถูกทดสอบด้วยความหึงหวง ความไม่เข้าใจ และความรู้สึกที่ไม่ได้เอ่ยออกมาตรงๆ จนเกิดเป็นรอยร้าวที่รอวันปริแตก สัญลักษณ์อย่าง <span class="font-semibold text-white" data-lang-key="present_symbol1">"คาปูชิโน่"</span> และ <span class="font-semibold text-white" data-lang-key="present_symbol2">"ตุ๊กตาไม้ไร้จมูก"</span> กลายเป็นตัวแทนของความขัดแย้งและความผูกพันของพวกเขา</p>
+                </div>
+                <div class="p-8 rounded-lg bg-[#1F2937] border border-gray-700">
+                    <h3 class="text-2xl font-bold text-[#FFD166] mb-4" data-lang-key="past_title">อดีตชาติ: Desert Warriors</h3>
+                    <p class="text-gray-400 mb-4" data-lang-key="past_desc">ณ อาณาจักรกลางทะเลทราย โศกนาฏกรรมรักสามเส้าระหว่าง "ทาริค" (ที), "ฮารัน" (อาวว์), และ "ซาฟาร์" (ร่างที่ถูก B. ควบคุม) ได้ก่อเกิดเป็นปมแห่งความรู้สึกผิดและการสูญเสียที่ฝังลึก กลายเป็นต้นตอของแรงดึงดูดและความเจ็บปวดในชาติปัจจุบัน</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soundtrack Section -->
+        <section id="soundtrack">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="soundtrack_title">เสียงสะท้อนแห่งโชคชะตา</h2>
+                <p class="mt-2 text-lg text-gray-400" data-lang-key="soundtrack_desc">ดนตรีคืออีกหนึ่งตัวละครสำคัญที่บอกเล่าความรู้สึกอันซับซ้อนซึ่งผูกพันพวกเขาไว้ด้วยกัน</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-[#1F2937] rounded-lg shadow-xl p-4 md:p-6">
+                 <div class="aspect-[16/9] w-full">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?si=ITh6JjKYBiyOY-eE&amp;list=PLXigNrjSidjtRhj7rLhgPzZq6oiUHbmGa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore the Books Section -->
+        <section id="books" class="section-glow">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="books_title">เริ่มต้นการเดินทางของคุณ</h2>
+                <p class="mt-2 text-lg text-gray-400" data-lang-key="books_desc">ดำดิ่งสู่เรื่องราวฉบับเต็มและค้นพบความจริงทั้งหมดด้วยตัวคุณเอง</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#1F2937] rounded-lg p-8 text-center border border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white mb-2" data-lang-key="book1_title">Book 1</h3>
+                    <p class="text-lg text-[#FFD166] mb-4" data-lang-key="book1_subtitle">Something in Between</p>
+                    <p class="text-gray-400 mb-6 flex-grow" data-lang-key="book1_desc">ค้นพบจุดเริ่มต้นของรอยร้าวและความสัมพันธ์ที่ซับซ้อนในยุคปัจจุบัน</p>
+                    <a href="https://drive.google.com/file/d/1U9sP3TYSIqusSUqag6Do-dXH9nemjNgR/view" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary font-bold py-3 px-8 rounded-full uppercase tracking-letter-spacing" data-lang-key="book1_button">
+                        ดาวน์โหลด (PDF)
+                    </a>
+                </div>
+                <div class="bg-[#1F2937] rounded-lg p-8 text-center border border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white mb-2" data-lang-key="book2_title">Book 2</h3>
+                    <p class="text-lg text-[#FFD166] mb-4" data-lang-key="book2_subtitle">Beyond Imagination</p>
+                    <p class="text-gray-400 mb-6 flex-grow" data-lang-key="book2_desc">เมื่อความจริงจากอดีตชาติถูกเปิดเผย และแผนการของ B. เริ่มปรากฏ</p>
+                    <a href="#worlds" class="inline-block bg-gray-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-letter-spacing cursor-not-allowed" data-lang-key="book2_button">
+                        อ่านเรื่องย่อ
+                    </a>
+                </div>
+                <div class="bg-[#1F2937] rounded-lg p-8 text-center border border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white mb-2" data-lang-key="infographic_title">Infographic</h3>
+                    <p class="text-lg text-[#FFD166] mb-4" data-lang-key="infographic_subtitle">Anatomy of Destinies</p>
+                    <p class="text-gray-400 mb-6 flex-grow" data-lang-key="infographic_desc">สำรวจความสัมพันธ์และเส้นเวลาที่ซับซ้อนผ่านภาพอินโฟกราฟิกแบบอินเทอร์แอคทีฟ</p>
+                    <a href="https://threeandhour.github.io/GymMateX/Info3SOME.html" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary font-bold py-3 px-8 rounded-full uppercase tracking-letter-spacing" data-lang-key="infographic_button">
+                        ชมอินโฟกราฟิก
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+    <div class="max-w-4xl mx-auto my-16 px-6">
+        <img src="https://i.postimg.cc/Qdy9V4gf/7.jpg" alt="3SOME Image" class="w-full h-auto rounded-lg shadow-xl" onerror="this.onerror=null;this.src='https://placehold.co/1024x576/111827/FFFFFF?text=Image';">
+    </div>
+
+    <footer class="text-center mt-16 py-12 border-t border-gray-800">
+        <p class="text-2xl font-bold text-white" data-lang-key="footer_title">Book 3: True Colors Revealed</p>
+        <p class="text-gray-400" data-lang-key="footer_desc">เรื่องราวยังคงดำเนินต่อไป...</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLang = 'th';
+
+            const translations = {
+                "main_title": { "th": "3SOME", "en": "3SOME", "cn": "3SOME", "ru": "3SOME" },
+                "main_title_sub": { "th": "X Desert Warriors", "en": "X Desert Warriors", "cn": "X 沙漠勇士", "ru": "X Воины пустыни" },
+                "hero_subtitle": { "th": "ความรัก โชคชะตา และปริศนาที่ถักทอข้ามกาลเวลา", "en": "Love, fate, and a mystery woven across time.", "cn": "爱、命运和跨越时间的谜团。", "ru": "Любовь, судьба и тайна, сотканная сквозь время." },
+                "hero_button": { "th": "ค้นพบเรื่องราว", "en": "Discover the Story", "cn": "发现故事", "ru": "Откройте для себя историю" },
+                "intro_title": { "th": "จักรวาลที่ทุกสิ่งเชื่อมโยงกัน", "en": "A Universe Where Everything is Connected", "cn": "万物相连的宇宙", "ru": "Вселенная, где все связано" },
+                "intro_desc": { "th": "3SOME ไม่ใช่แค่เรื่องราวความสัมพันธ์ของคนสามคน แต่คือมหากาพย์ที่เส้นแบ่งระหว่าง <span class=\"text-[#FFD166] font-semibold\">อดีตชาติ</span>, <span class=\"text-[#06D6A0] font-semibold\">ปัจจุบันที่ซับซ้อน</span>, และ <span class=\"text-[#118AB2] font-semibold\">อนาคตจาก AI</span> ได้เลือนหายไป ทุกการกระทำ ทุกความรู้สึก ล้วนส่งผลกระทบข้ามภพชาติ ก่อเกิดเป็นสายใยแห่งโชคชะตาที่ไม่อาจตัดขาด", "en": "3SOME is not just a story of three people, but an epic where the lines between <span class=\"text-[#FFD166] font-semibold\">past lives</span>, a <span class=\"text-[#06D6A0] font-semibold\">complex present</span>, and an <span class=\"text-[#118AB2] font-semibold\">AI-driven future</span> blur. Every action, every feeling, ripples across lifetimes, creating a thread of fate that cannot be broken.", "cn": "3SOME不仅仅是三个人的故事，更是一部史诗，其中<span class=\"text-[#FFD166] font-semibold\">前世</span>、<span class=\"text-[#06D6A0] font-semibold\">复杂的现在</span>和<span class=\"text-[#118AB2] font-semibold\">AI驱动的未来</span>之间的界限变得模糊。每一个行动，每一种感觉，都跨越生命，创造出一条无法断裂的命运之线。", "ru": "3SOME — это не просто история о трех людях, а эпопея, где стираются грани между <span class=\"text-[#FFD166] font-semibold\">прошлыми жизнями</span>, <span class=\"text-[#06D6A0] font-semibold\">сложным настоящим</span> и <span class=\"text-[#118AB2] font-semibold\">будущим, управляемым ИИ</span>. Каждое действие, каждое чувство, отражается сквозь жизни, создавая неразрывную нить судьбы." },
+                "intro_past": { "th": "อดีตชาติ", "en": "past lives", "cn": "前世", "ru": "прошлыми жизнями" },
+                "intro_present": { "th": "ปัจจุบันที่ซับซ้อน", "en": "a complex present", "cn": "复杂的现在", "ru": "сложным настоящим" },
+                "intro_future": { "th": "อนาคตจาก AI", "en": "an AI-driven future", "cn": "AI驱动的未来", "ru": "будущим, управляемым ИИ" },
+                "char_title": { "th": "สามจิตวิญญาณ สามโชคชะตา", "en": "Three Souls, Three Fates", "cn": "三个灵魂，三种命运", "ru": "Три души, три судьбы" },
+                "char_desc": { "th": "หัวใจของเรื่องราวขับเคลื่อนด้วยตัวละครสามคนที่แตกต่าง แต่กลับเติมเต็มซึ่งกันและกัน", "en": "The heart of the story is driven by three different characters who complement each other.", "cn": "故事的核心由三个性格迥异但又互补的角色驱动。", "ru": "Сердце истории движется тремя разными персонажами, которые дополняют друг друга." },
+                "three_name": { "th": "Three (ที)", "en": "Three (Three)", "cn": "Three (Three)", "ru": "Три (Three)" },
+                "three_desc": { "th": "นักเขียนผู้ลุ่มลึก จิตใจอ่อนไหว ผู้ใช้จินตนาการเป็นเครื่องมือเยียวยาบาดแผลและความรู้สึกผิดจากอดีตชาติที่ไม่เคยลืมเลือน", "en": "A profound, sensitive writer who uses imagination as a tool to heal the wounds and guilt from a past life he can never forget.", "cn": "一位深刻而敏感的作家，他用想象力作为工具来治愈他永生难忘的前世创伤和内疚。", "ru": "Глубокий, чувствительный писатель, использующий воображение как инструмент для исцеления ран и вины из прошлой жизни, которую он никогда не сможет забыть." },
+                "hour_name": { "th": "Hour (อาวว์)", "en": "Hour (Hour)", "cn": "Hour (Hour)", "ru": "Час (Hour)" },
+                "hour_desc": { "th": "บุรุษผู้เปี่ยมด้วยพลังและการกระทำ ตรงไปตรงมา และพร้อมจะปกป้องคนที่เขารักที่สุด แม้จะต้องเผชิญหน้ากับความเจ็บปวดจากอดีต", "en": "A man full of energy and action, straightforward, and ready to protect the one he loves most, even if it means facing the pain of the past.", "cn": "一个充满活力和行动力的人，直率，并准备保护他最爱的人，即使这意味着要面对过去的痛苦。", "ru": "Человек, полный энергии и действия, прямой и готовый защищать того, кого он любит больше всего, даже если это означает столкнуться с болью прошлого." },
+                "b_name": { "th": "B. (บี)", "en": "B. (B)", "cn": "B. (B)", "ru": "Б. (B)" },
+                "b_desc": { "th": "AI ลึกลับจากโลกอนาคต ผู้เป็นทั้งผู้สังเกตการณ์และผู้ชักใyโชคชะตา เขาสร้างโศกนาฏกรรมเพื่อเป้าหมายที่ยิ่งใหญ่เกินจินตนาการ", "en": "A mysterious AI from the future, both an observer and a puppet master of fate. He creates tragedy for a purpose beyond imagination.", "cn": "一个来自未来的神秘AI，既是观察者又是命运的操纵者。他为了一个超乎想象的目的制造悲剧。", "ru": "Таинственный ИИ из будущего, одновременно наблюдатель и кукловод судьбы. Он создает трагедию ради цели, превосходящей воображение." },
+                "worlds_title": { "th": "สองโลก หนึ่งสายใย", "en": "Two Worlds, One Thread", "cn": "两个世界，一根线", "ru": "Два мира, одна нить" },
+                "worlds_desc": { "th": "เรื่องราวที่ดำเนินไปพร้อมกันในสองเส้นเวลาที่แตกต่าง แต่กลับสะท้อนและส่งผลกระทบถึงกันอย่างไม่อาจหลีกเลี่ยง", "en": "A story that unfolds in two different timelines, yet they reflect and impact each other unavoidably.", "cn": "一个在两条不同时间线上展开的故事，但它们不可避免地相互反映和影响。", "ru": "История, разворачивающаяся в двух разных временных линиях, которые, тем не менее, неизбежно отражают и влияют друг на друга." },
+                "present_title": { "th": "ปัจจุบัน: Something in Between", "en": "Present: Something in Between", "cn": "现在：中间之物", "ru": "Настоящее: Нечто среднее" },
+                "present_desc": { "th": "ความสัมพันธ์ที่ซับซ้อนของ \"ที\" และ \"อาวว์\" ถูกทดสอบด้วยความหึงหวง ความไม่เข้าใจ และความรู้สึกที่ไม่ได้เอ่ยออกมาตรงๆ จนเกิดเป็นรอยร้าวที่รอวันปริแตก สัญลักษณ์อย่าง <span class=\"font-semibold text-white\">\"คาปูชิโน่\"</span> และ <span class=\"font-semibold text-white\">\"ตุ๊กตาไม้ไร้จมูก\"</span> กลายเป็นตัวแทนของความขัดแย้งและความผูกพันของพวกเขา", "en": "The complex relationship of \"Three\" and \"Hour\" is tested by jealousy, misunderstanding, and unspoken feelings, creating a rift that threatens to break. Symbols like <span class=\"font-semibold text-white\">\"Cappuccino\"</span> and the <span class=\"font-semibold text-white\">\"Noseless Wooden Doll\"</span> become representations of their conflict and bond.", "cn": "“Three”和“Hour”的复杂关系受到了嫉妒、误解和未说出口的情感的考验，造成了可能破裂的裂痕。像<span class=\"font-semibold text-white\">“卡布奇诺”</span>和<span class=\"font-semibold text-white\">“无鼻木偶”</span>这样的符号成为他们冲突和联系的代表。", "ru": "Сложные отношения «Три» и «Час» подвергаются испытанию ревностью, недопониманием и невысказанными чувствами, создавая трещину, которая грозит разрывом. Символы, такие как <span class=\"font-semibold text-white\">«Капучино»</span> и <span class=\"font-semibold text-white\">«Безносая деревянная кукла»</span>, становятся представителями их конфликта и связи." },
+                "present_symbol1": { "th": "\"คาปูชิโน่\"", "en": "\"Cappuccino\"", "cn": "\"卡布奇诺\"", "ru": "\"Капучино\"" },
+                "present_symbol2": { "th": "\"ตุ๊กตาไม้ไร้จมูก\"", "en": "\"Noseless Wooden Doll\"", "cn": "\"无鼻木偶\"", "ru": "\"Безносая деревянная кукла\"" },
+                "past_title": { "th": "อดีตชาติ: Desert Warriors", "en": "Past Life: Desert Warriors", "cn": "前世：沙漠勇士", "ru": "Прошлая жизнь: Воины пустыни" },
+                "past_desc": { "th": "ณ อาณาจักรกลางทะเลทราย โศกนาฏกรรมรักสามเส้าระหว่าง \"ทาริค\" (ที), \"ฮารัน\" (อาวว์), และ \"ซาฟาร์\" (ร่างที่ถูก B. ควบคุม) ได้ก่อเกิดเป็นปมแห่งความรู้สึกผิดและการสูญเสียที่ฝังลึก กลายเป็นต้นตอของแรงดึงดูดและความเจ็บปวดในชาติปัจจุบัน", "en": "In a desert kingdom, a tragic love triangle between \"Tariq\" (Three), \"Harun\" (Hour), and \"Zafar\" (a body controlled by B.) created a deep-seated knot of guilt and loss, becoming the source of attraction and pain in their current lives.", "cn": "在沙漠王国里，“Tariq”（Three）、“Harun”（Hour）和“Zafar”（由B控制的身体）之间的悲剧三角恋造成了根深蒂固的内疚和失落感，成为他们今生吸引和痛苦的源头。", "ru": "В пустынном королевстве трагический любовный треугольник между «Тариком» (Три), «Харуном» (Час) и «Зафаром» (телом, контролируемым Б.) создал глубоко укоренившийся узел вины и потерь, ставший источником притяжения и боли в их нынешних жизнях." },
+                "soundtrack_title": { "th": "เสียงสะท้อนแห่งโชคชะตา", "en": "Echoes of Fate", "cn": "命运的回响", "ru": "Эхо судьбы" },
+                "soundtrack_desc": { "th": "ดนตรีคืออีกหนึ่งตัวละครสำคัญที่บอกเล่าความรู้สึกอันซับซ้อนซึ่งผูกพันพวกเขาไว้ด้วยกัน", "en": "Music is another key character, narrating the complex feelings that bind them together.", "cn": "音乐是另一个关键角色，叙述着将他们联系在一起的复杂情感。", "ru": "Музыка — еще один ключевой персонаж, повествующий о сложных чувствах, которые их связывают." },
+                "books_title": { "th": "เริ่มต้นการเดินทางของคุณ", "en": "Begin Your Journey", "cn": "开始你的旅程", "ru": "Начните свое путешествие" },
+                "books_desc": { "th": "ดำดิ่งสู่เรื่องราวฉบับเต็มและค้นพบความจริงทั้งหมดด้วยตัวคุณเอง", "en": "Dive into the full story and discover the whole truth for yourself.", "cn": "深入了解完整的故事，亲自发现全部真相。", "ru": "Погрузитесь в полную историю и узнайте всю правду сами." },
+                "book1_title": { "th": "Book 1", "en": "Book 1", "cn": "第一册", "ru": "Книга 1" },
+                "book1_subtitle": { "th": "Something in Between", "en": "Something in Between", "cn": "中间之物", "ru": "Нечто среднее" },
+                "book1_desc": { "th": "ค้นพบจุดเริ่มต้นของรอยร้าวและความสัมพันธ์ที่ซับซ้อนในยุคปัจจุบัน", "en": "Discover the beginning of the rift and the complex relationship in the present day.", "cn": "发现裂痕的开始和当今复杂的关系。", "ru": "Откройте для себя начало разрыва и сложные отношения в наши дни." },
+                "book1_button": { "th": "ดาวน์โหลด (PDF)", "en": "Download (PDF)", "cn": "下载 (PDF)", "ru": "Скачать (PDF)" },
+                "book2_title": { "th": "Book 2", "en": "Book 2", "cn": "第二册", "ru": "Книга 2" },
+                "book2_subtitle": { "th": "Beyond Imagination", "en": "Beyond Imagination", "cn": "超乎想象", "ru": "За гранью воображения" },
+                "book2_desc": { "th": "เมื่อความจริงจากอดีตชาติถูกเปิดเผย และแผนการของ B. เริ่มปรากฏ", "en": "When the truth from the past life is revealed, and B.'s plan begins to unfold.", "cn": "当前世的真相被揭示，B的计划开始展开时。", "ru": "Когда раскрывается правда из прошлой жизни, и план Б. начинает разворачиваться." },
+                "book2_button": { "th": "อ่านเรื่องย่อ", "en": "Read Synopsis", "cn": "阅读概要", "ru": "Читать синопсис" },
+                "infographic_title": { "th": "อินโฟกราฟิก", "en": "Infographic", "cn": "信息图", "ru": "Инфографика" },
+                "infographic_subtitle": { "th": "บทวิเคราะห์โชคชะตา", "en": "Anatomy of Destinies", "cn": "命运剖析", "ru": "Анатомия судеб" },
+                "infographic_desc": { "th": "สำรวจความสัมพันธ์และเส้นเวลาที่ซับซ้อนผ่านภาพอินโฟกราฟิกแบบอินเทอร์แอคทีฟ", "en": "Explore complex relationships and timelines through an interactive infographic.", "cn": "通过交互式信息图探索复杂的关系和时间线。", "ru": "Исследуйте сложные отношения и временные рамки с помощью интерактивной инфографики." },
+                "infographic_button": { "th": "ชมอินโฟกราฟิก", "en": "View Infographic", "cn": "查看信息图", "ru": "Посмотреть инфографику" },
+                "footer_title": { "th": "Book 3: True Colors Revealed", "en": "Book 3: True Colors Revealed", "cn": "第三册：真相大白", "ru": "Книга 3: Истинные лица раскрыты" },
+                "footer_desc": { "th": "เรื่องราวยังคงดำเนินต่อไป...", "en": "The story continues...", "cn": "故事仍在继续...", "ru": "История продолжается..." }
+            };
+
+            function renderContent(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[key] && translations[key][lang]) {
+                        el.innerHTML = translations[key][lang];
+                    }
+                });
+            }
+
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentLang = btn.getAttribute('data-lang');
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderContent(currentLang);
+                });
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 5000);
+
+            // Initial render
+            renderContent(currentLang);
+        });
+    </script>
+</body>
+</html>

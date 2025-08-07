@@ -142,7 +142,6 @@
                     <a href="#projects" class="hover:text-[#0079FF]" data-key="navProjects">Projects</a>
                     <a href="#pillars" class="hover:text-[#0079FF]" data-key="navPillars">Pillars</a>
                     <a href="#opportunities" class="hover:text-[#0079FF]" data-key="navOpportunities">Opportunities</a>
-                    <a href="#gemini-scenarios" class="hover:text-[#0079FF]" data-key="navScenarios">Future Scenarios</a>
                 </div>
                 <div id="language-switcher" class="flex space-x-2">
                     <button id="lang-th" class="lang-btn">TH</button>
@@ -157,7 +156,9 @@
     <main class="container mx-auto p-4 md:p-8">
 
         <section id="vision" class="text-center bg-white rounded-xl shadow-lg overflow-hidden">
-            <img src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/5f554ce8-c2f2-4e8c-a697-ef616b758814/variations/universal_upscale_0_5f554ce8-c2f2-4e8c-a697-ef616b758814_0.jpg" alt="EEC Smart City Banner" class="w-full h-auto max-h-[500px] object-cover">
+            <div class="relative w-full pt-[56.25%]"> <!-- 16:9 Aspect Ratio -->
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/AVWcFtwbkwA?si=PxaASD0zfwcqeSnj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
             <div class="p-8 md:p-12">
                 <h1 class="text-4xl md:text-6xl font-black text-[#004AAD] tracking-tight" data-key="mainTitle"></h1>
                 <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto" data-key="mainSubtitle"></p>
@@ -293,22 +294,6 @@
             </div>
         </section>
 
-        <section id="gemini-scenarios" class="mt-12 md:mt-16">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#004AAD]" data-key="scenariosTitle"></h2>
-                <p class="mt-2 text-gray-600 max-w-2xl mx-auto" data-key="scenariosSubtitle"></p>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
-                <div id="scenarioLoader" class="hidden justify-center items-center mb-4">
-                    <div class="loader"></div>
-                </div>
-                <div id="scenarioContent" class="text-gray-700 mb-6 min-h-[100px] whitespace-pre-wrap" data-key="scenarioPlaceholder">
-                </div>
-                <button id="generateScenarioBtn" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all shadow-lg text-lg" data-key="scenarioBtn">
-                </button>
-            </div>
-        </section>
-
     </main>
 
     <footer class="mt-16 bg-[#004AAD] text-white text-center p-6">
@@ -329,7 +314,6 @@
                 navProjects: 'โครงการ',
                 navPillars: '7 เสาหลัก',
                 navOpportunities: 'โอกาสลงทุน',
-                navScenarios: 'ภาพอนาคต',
                 mainTitle: 'เมืองแห่งอนาคตของประเทศไทย',
                 mainSubtitle: 'เจาะลึกแผนแม่บทมูลค่า 1.35 ล้านล้านบาทสำหรับมหานครอัจฉริยะระดับโลกที่ถูกออกแบบให้เป็น 1 ใน 10 เมืองที่น่าอยู่ที่สุดภายในปี 2037',
                 kpiInvestment: 'มูลค่าการลงทุน (บาท)',
@@ -375,13 +359,8 @@
                 opportunitiesTitle: '✨ วิเคราะห์โอกาสการลงทุนโดย Gemini',
                 opportunitiesSubtitle: 'เลือกกลุ่มอุตสาหกรรมเป้าหมายเพื่อรับการวิเคราะห์แนวโน้มและโอกาสการลงทุนใน EEC Smart City',
                 opportunitiesBtn: '✨ วิเคราะห์โอกาส',
-                scenariosTitle: '✨ จำลองภาพอนาคตโดย Gemini',
-                scenariosSubtitle: 'คลิกปุ่มด้านล่างเพื่อสร้างสรรค์เรื่องราวเกี่ยวกับชีวิตในเมืองอัจฉริยะ EEC ในปี 2040 ที่ขับเคลื่อนด้วยเทคโนโลยีและนวัตกรรม',
-                scenarioPlaceholder: 'เรื่องราวจำลองอนาคตจะปรากฏที่นี่...',
-                scenarioBtn: 'สร้างภาพอนาคต EEC 2040',
                 modalTitle: '✨ การวิเคราะห์โดย Gemini',
                 modalError: 'ขออภัย เกิดข้อผิดพลาดในการเรียกข้อมูลจาก Gemini API กรุณาลองใหม่อีกครั้ง',
-                scenarioError: 'ขออภัย เกิดข้อผิดพลาดในการสร้างเรื่องราว กรุณาลองใหม่อีกครั้ง',
                 footerDate: 'EEC Smart City Infographic | ข้อมูล ณ เดือนกรกฎาคม 2025',
                 footerCredit: 'อินโฟกราฟิกนี้ได้รับการปรับปรุงด้วย Gemini API ของ Google สำหรับการวิเคราะห์แบบไดนามิก การแสดงผลภาพสร้างขึ้นโดยใช้ HTML, CSS และ Chart.js (Canvas) ไม่มีการใช้ SVG หรือ Mermaid JS',
                 fundingChartLabels: ['ภาคเอกชน', 'รัฐวิสาหกิจ / PPPs', 'หน่วยงานภาครัฐ'],
@@ -395,7 +374,6 @@
                 navProjects: 'Projects',
                 navPillars: '7 Pillars',
                 navOpportunities: 'Opportunities',
-                navScenarios: 'Future Scenarios',
                 mainTitle: "Thailand's City of the Future",
                 mainSubtitle: 'Deconstructing the THB 1.35 Trillion blueprint for a global smart metropolis designed to be a Top 10 Livable City by 2037.',
                 kpiInvestment: 'Total Investment (THB)',
@@ -441,13 +419,8 @@
                 opportunitiesTitle: '✨ Investment Opportunity Analysis by Gemini',
                 opportunitiesSubtitle: 'Select a target industry to receive an analysis of trends and investment opportunities in the EEC Smart City.',
                 opportunitiesBtn: '✨ Analyze Opportunities',
-                scenariosTitle: '✨ Future Scenarios by Gemini',
-                scenariosSubtitle: 'Click the button below to generate a creative story about life in the EEC Smart City in 2040, driven by technology and innovation.',
-                scenarioPlaceholder: 'A simulated future story will appear here...',
-                scenarioBtn: 'Generate EEC 2040 Scenario',
                 modalTitle: '✨ Analysis by Gemini',
                 modalError: 'Sorry, an error occurred while fetching data from the Gemini API. Please try again.',
-                scenarioError: 'Sorry, an error occurred while generating the story. Please try again.',
                 footerDate: 'EEC Smart City Infographic | Data as of July 2025',
                 footerCredit: "This infographic is enhanced with Google's Gemini API for dynamic analysis. Visualizations are rendered using HTML, CSS, and Chart.js (Canvas). No SVG or Mermaid JS was used.",
                 fundingChartLabels: ['Private Sector', 'State Enterprises / PPPs', 'Government Agencies'],
@@ -461,7 +434,6 @@
                 navProjects: 'Проекты',
                 navPillars: '7 столпов',
                 navOpportunities: 'Возможности',
-                navScenarios: 'Сценарии будущего',
                 mainTitle: 'Город будущего Таиланда',
                 mainSubtitle: 'Анализ проекта стоимостью 1,35 трлн бат по созданию глобального умного мегаполиса, который к 2037 году войдет в топ-10 самых пригодных для жизни городов.',
                 kpiInvestment: 'Общий объем инвестиций (бат)',
@@ -507,13 +479,8 @@
                 opportunitiesTitle: '✨ Анализ инвестиционных возможностей от Gemini',
                 opportunitiesSubtitle: 'Выберите целевую отрасль, чтобы получить анализ тенденций и инвестиционных возможностей в Умном городе EEC.',
                 opportunitiesBtn: '✨ Анализ возможностей',
-                scenariosTitle: '✨ Сценарии будущего от Gemini',
-                scenariosSubtitle: 'Нажмите кнопку ниже, чтобы сгенерировать творческий рассказ о жизни в умном городе EEC в 2040 году, основанный на технологиях и инновациях.',
-                scenarioPlaceholder: 'Здесь появится смоделированный рассказ о будущем...',
-                scenarioBtn: 'Создать сценарий EEC 2040',
                 modalTitle: '✨ Анализ от Gemini',
                 modalError: 'К сожалению, произошла ошибка при получении данных от Gemini API. Пожалуйста, попробуйте еще раз.',
-                scenarioError: 'К сожалению, произошла ошибка при создании рассказа. Пожалуйста, попробуйте еще раз.',
                 footerDate: 'Инфографика Умного города EEC | Данные на июль 2025 г.',
                 footerCredit: 'Эта инфографика дополнена Gemini API от Google для динамического анализа. Визуализации созданы с помощью HTML, CSS и Chart.js (Canvas). SVG или Mermaid JS не использовались.',
                 fundingChartLabels: ['Частный сектор', 'Госпредприятия / ГЧП', 'Госучреждения'],
@@ -527,7 +494,6 @@
                 navProjects: '项目',
                 navPillars: '7大支柱',
                 navOpportunities: '投资机遇',
-                navScenarios: '未来情景',
                 mainTitle: '泰国的未来之城',
                 mainSubtitle: '解构价值1.35万亿泰铢的全球智能大都市蓝图，旨在到2037年成为全球十大宜居城市之一。',
                 kpiInvestment: '总投资额 (泰铢)',
@@ -573,13 +539,8 @@
                 opportunitiesTitle: '✨ Gemini 投资机遇分析',
                 opportunitiesSubtitle: '选择一个目标行业，以接收关于EEC智慧城市趋势和投资机遇的分析。',
                 opportunitiesBtn: '✨ 分析机遇',
-                scenariosTitle: '✨ Gemini 生成的未来情景',
-                scenariosSubtitle: '点击下方按钮，生成一个关于2040年由技术和创新驱动的EEC智慧城市生活的创意故事。',
-                scenarioPlaceholder: '模拟的未来故事将出现在这里...',
-                scenarioBtn: '生成EEC 2040情景',
                 modalTitle: '✨ Gemini 分析',
                 modalError: '抱歉，从Gemini API获取数据时发生错误。请重试。',
-                scenarioError: '抱歉，生成故事时发生错误。请重试。',
                 footerDate: 'EEC智慧城市信息图 | 数据截至2025年7月',
                 footerCredit: '此信息图由谷歌的Gemini API增强，用于动态分析。可视化使用HTML、CSS和Chart.js（Canvas）呈现。未使用SVG或Mermaid JS。',
                 fundingChartLabels: ['私营部门', '国有企业 / PPP', '政府机构'],
@@ -594,9 +555,6 @@
         const modalLoader = document.getElementById('modalLoader');
         const modalContent = document.getElementById('modalContent');
         
-        const scenarioLoader = document.getElementById('scenarioLoader');
-        const scenarioContent = document.getElementById('scenarioContent');
-        const generateScenarioBtn = document.getElementById('generateScenarioBtn');
         const analyzeInvestmentBtn = document.getElementById('analyze-investment-btn');
         const investmentSectorSelect = document.getElementById('investment-sector');
 
@@ -663,7 +621,7 @@
         }
 
         async function callGeminiAPI(prompt, maxRetries = 3) {
-            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
+            const apiKey = ""; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             
             let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
@@ -757,30 +715,7 @@
                 modalLoader.style.display = 'none';
             }
         }
-
-        async function handleGenerateScenario() {
-            scenarioLoader.style.display = 'flex';
-            scenarioContent.textContent = '';
-            generateScenarioBtn.disabled = true;
-            generateScenarioBtn.classList.add('opacity-50');
-
-            const langMap = { th: "Thai", en: "English", ru: "Russian", zh: "Chinese (Simplified)" };
-            const prompt = `You are a futurist and city planner. Write a short, optimistic, and creative narrative describing a day in the life of a resident in the EEC Smart City in the year 2040. The city has successfully achieved its goals of being a top 10 livable smart city and a regional financial hub. Weave in details about its "Seven Pillars" (Smart Energy, Mobility, etc.) and key business clusters. The response should be in ${langMap[currentLanguage]}.`;
-
-            try {
-                const resultText = await callGeminiAPI(prompt);
-                scenarioContent.textContent = resultText;
-            } catch (error) {
-                scenarioContent.textContent = translations[currentLanguage].scenarioError;
-                console.error('Error calling Gemini API for scenario:', error);
-            } finally {
-                scenarioLoader.style.display = 'none';
-                generateScenarioBtn.disabled = false;
-                generateScenarioBtn.classList.remove('opacity-50');
-            }
-        }
         
-        generateScenarioBtn.addEventListener('click', handleGenerateScenario);
         analyzeInvestmentBtn.addEventListener('click', handleInvestmentAnalysisClick);
         document.getElementById('lang-th').addEventListener('click', () => switchLanguage('th'));
         document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));

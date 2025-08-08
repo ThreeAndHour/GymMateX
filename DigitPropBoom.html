@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEC Digital Boom: Thailand Condo Investment Gold Rush</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+Thai:wght@400;600;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans', 'Noto Sans Thai', 'Noto Sans SC', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 40vh;
+            max-height: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #004AAD, #0079C2);
+            color: white;
+        }
+        .kpi-number {
+            font-weight: 900;
+            font-size: 3.5rem;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .section-title {
+            font-weight: 700;
+            font-size: 2.25rem;
+            color: #004AAD;
+            border-bottom: 3px solid #00AEEF;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #e0e0e0;
+            color: #333;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .lang-btn.active {
+            background-color: #0079C2;
+            color: white;
+            border-color: #004AAD;
+            font-weight: bold;
+        }
+        .lang-btn:hover:not(.active) {
+            background-color: #c7d2fe;
+        }
+        .advantage-icon {
+            font-size: 3rem;
+            line-height: 1;
+            color: #0079C2;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <h1 data-lang-key="mainTitle" class="text-xl md:text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#004AAD] to-[#00AEEF] mb-2 sm:mb-0">
+                    The EEC Digital Boom: Thailand's Condo Investment Gold Rush
+                </h1>
+                <div id="lang-switcher" class="flex space-x-2">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="th">TH</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="zh">CN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="video" class="mb-12">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="relative w-full overflow-hidden" style="padding-top: 56.25%;">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/e3mNAQbrpeY?si=eYofR1Ey8HgCkaHN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <section id="intro" class="text-center mb-12">
+            <p data-lang-key="introParagraph" class="text-lg max-w-4xl mx-auto text-gray-600">
+                A wave of multi-billion dollar investments from global tech giants is transforming Thailand's Eastern Economic Corridor (EEC) into a digital powerhouse. This infographic analyzes the data behind the boom, its impact on the local real estate market, and the opportunities for investors.
+            </p>
+        </section>
+
+        <section id="investment" class="mb-16">
+            <h2 data-lang-key="investmentTitle" class="section-title text-center">The Hyperscale Invasion: Over $13.5B Committed</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="kpi-card rounded-xl shadow-2xl p-6 flex flex-col justify-center items-center text-center">
+                    <h3 data-lang-key="totalInvestmentLabel" class="text-xl font-semibold mb-2 text-blue-200">Total Investment</h3>
+                    <p class="kpi-number">$13.5B+</p>
+                    <p data-lang-key="fromGlobalTech" class="text-blue-200">from global tech leaders</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-1 lg:col-span-2">
+                    <h3 data-lang-key="investmentChartTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">Investment by Company (USD)</h3>
+                    <p data-lang-key="investmentChartDesc" class="text-center text-gray-600 mb-4">Global tech giants are in a strategic race to establish a major presence in the EEC, validating its status as a key regional hub.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="economy" class="mb-16">
+            <h2 data-lang-key="economyTitle" class="section-title text-center">Fueling the Economy: GDP & Job Creation</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 data-lang-key="gdpTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">Projected GDP Contribution</h3>
+                    <p data-lang-key="gdpDesc" class="text-center text-gray-600 mb-4">These investments are forecast to add billions to Thailand's GDP, driving significant economic growth through wages, consumption, and secondary investments.</p>
+                    <div class="flex justify-around items-center h-full">
+                        <div class="text-center">
+                            <p class="text-5xl font-black text-[#004AAD]">$4B</p>
+                            <p class="font-semibold">Google (by 2029)</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-5xl font-black text-[#0079C2]">$10B</p>
+                            <p class="font-semibold" data-lang-key="awsGdp">AWS (over 15 yrs)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 data-lang-key="jobsTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">Annual Job Creation Supported</h3>
+                     <p data-lang-key="jobsDesc" class="text-center text-gray-600 mb-4">The boom is a major engine of employment, creating tens of thousands of roles annually, from construction to high-tech engineering.</p>
+                    <div class="flex justify-around items-center h-full">
+                        <div class="text-center">
+                            <p class="text-5xl font-black text-[#004AAD]">14,000</p>
+                            <p class="font-semibold" data-lang-key="googleJobs">Google (avg/yr)</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-5xl font-black text-[#0079C2]">11,000</p>
+                            <p class="font-semibold" data-lang-key="awsJobs">AWS (avg/yr)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="talent" class="mb-16">
+            <h2 data-lang-key="talentTitle" class="section-title text-center">The Talent Magnet: A New Professional Class</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 data-lang-key="talentChartTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">High-Skill Labor Demand (2021-2025)</h3>
+                    <p data-lang-key="talentChartDesc" class="text-center text-gray-600 mb-4">The EEC's targeted industries require a new class of highly skilled professionals, creating demand for over half a million new positions.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="talentDemandChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h4 data-lang-key="talentInfluxTitle" class="font-bold text-lg text-[#004AAD]">Influx of Global Talent</h4>
+                        <p data-lang-key="talentInfluxDesc" class="text-gray-600">A widely acknowledged skills gap necessitates attracting experienced professionals from around the world, forming the primary target market for new premium condominiums.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h4 data-lang-key="talentVisaTitle" class="font-bold text-lg text-[#004AAD]">The EEC Visa Advantage</h4>
+                        <p data-lang-key="talentVisaDesc" class="text-gray-600">A 10-year visa with a flat 17% income tax rate for qualified specialists creates a powerful incentive for high-income talent to relocate to the EEC.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-comparison" class="mb-16">
+            <h2 data-lang-key="marketCompTitle" class="section-title text-center">Pattaya's Property Boom: A Comparative Edge</h2>
+            <p data-lang-key="marketCompDesc" class="text-center text-lg max-w-4xl mx-auto text-gray-600 mb-8">
+                Pattaya's condo market is outperforming other key Thai investment hubs, offering a compelling combination of high rental yields and strong capital appreciation at a more accessible price point.
+            </p>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 data-lang-key="marketCompChartTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">Real Estate Market Snapshot (YoY)</h3>
+                <div class="chart-container" style="height: 50vh; max-height: 500px;">
+                    <canvas id="marketComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="jomtien-yields" class="mb-16">
+            <h2 data-lang-key="jomtienYieldsTitle" class="section-title text-center">Jomtien: The Epicenter of Yield</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 data-lang-key="jomtienYieldsChartTitle" class="text-xl font-bold mb-4 text-center text-[#0079C2]">Gross Rental Yields by Area (Q1 2025)</h3>
+                     <p data-lang-key="jomtienYieldsChartDesc" class="text-center text-gray-600 mb-4">Jomtien has emerged as the clear ground zero for high-yield investments, with rental returns nearly double those of traditional luxury enclaves like Wongamat.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="yieldComparisonChart"></canvas>
+                    </div>
+                </div>
+                <div class="kpi-card rounded-xl shadow-2xl p-8 text-center">
+                    <h3 data-lang-key="jomtienYieldsLabel" class="text-2xl font-semibold mb-2 text-blue-200">Jomtien 1-Bed Yield</h3>
+                    <p class="kpi-number">8.22%</p>
+                    <p data-lang-key="jomtienYieldsDesc" class="text-blue-200">This high-yield anomaly is driven by a new mix of digital nomads, long-term expats, and EEC professionals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="location-advantage" class="mb-16">
+            <h2 data-lang-key="locationTitle" class="section-title text-center">Jomtien: The Strategic Hub for EEC Living</h2>
+            <p data-lang-key="locationDesc" class="text-center text-lg max-w-4xl mx-auto text-gray-600 mb-12">
+                Jomtien's unique geographical position offers a decisive advantage, perfectly balancing professional convenience with a world-class lifestyle. It's not just a place to live; it's the strategic base for the new EEC workforce.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="advantage-icon mb-4">💼</div>
+                    <h4 data-lang-key="locationWorkTitle" class="text-xl font-bold text-[#004AAD] mb-2">Proximity to Work</h4>
+                    <p data-lang-key="locationWorkDesc" class="text-gray-600">Enjoy effortless commutes to the EEC's industrial estates and new data centers via Sukhumvit Road, giving you more time to enjoy the beachside life.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="advantage-icon mb-4">🏖️</div>
+                    <h4 data-lang-key="locationLifestyleTitle" class="text-xl font-bold text-[#004AAD] mb-2">Unmatched Lifestyle</h4>
+                    <p data-lang-key="locationLifestyleDesc" class="text-gray-600">Experience the perfect blend of a relaxed beach atmosphere and a vibrant ecosystem of international restaurants, cafes, and local markets.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="advantage-icon mb-4">🚄</div>
+                    <h4 data-lang-key="locationConnectTitle" class="text-xl font-bold text-[#004AAD] mb-2">Gateway to Connectivity</h4>
+                    <p data-lang-key="locationConnectDesc" class="text-gray-600">Strategically located near U-Tapao Airport and the future High-Speed Rail station, ensuring long-term property value and easy travel across Thailand.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="luxury-living" class="mb-16">
+            <h2 data-lang-key="luxuryTitle" class="section-title text-center">Luxury Seaview Living: A Magnet for the New Elite</h2>
+            <p data-lang-key="luxuryDesc" class="text-center text-lg max-w-4xl mx-auto text-gray-600 mb-12">
+                The influx of high-income EEC professionals has created powerful demand for properties that offer more than just a home—they seek a statement. Luxury sea-view condominiums are meeting this demand, becoming the most sought-after assets in the region.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="kpi-card rounded-xl shadow-2xl p-8 text-center md:col-span-2">
+                    <h3 data-lang-key="luxuryKPITitle" class="text-2xl font-semibold mb-2 text-blue-200">Sea-View Premium</h3>
+                    <p class="kpi-number">15%+</p>
+                    <p data-lang-key="luxuryKPIDesc" class="text-blue-200">Properties with a sea view command a significant price premium and demonstrate higher capital appreciation.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 md:col-span-3">
+                    <h4 data-lang-key="luxuryAppealTitle" class="text-2xl font-bold text-[#004AAD] mb-4">An Irresistible Draw</h4>
+                    <p data-lang-key="luxuryAppealDesc" class="text-gray-600">For the discerning new residents of the EEC, a panoramic sea view is the ultimate luxury. It represents success, tranquility, and a superior quality of life. Projects offering resort-style amenities combined with stunning vistas are not just selling a condo; they are selling an aspirational lifestyle that is in high demand.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <p data-lang-key="footerText">Data synthesized from public reports and market analysis (2024-2025). For informational purposes only.</p>
+    </footer>
+
+    <script>
+        // --- TRANSLATIONS OBJECT ---
+        const translations = {
+            en: {
+                mainTitle: "The EEC Digital Boom: Thailand's Condo Investment Gold Rush",
+                introParagraph: "A wave of multi-billion dollar investments from global tech giants is transforming Thailand's Eastern Economic Corridor (EEC) into a digital powerhouse. This infographic analyzes the data behind the boom, its impact on the local real estate market, and the opportunities for investors.",
+                investmentTitle: "The Hyperscale Invasion: Over $13.5B Committed",
+                totalInvestmentLabel: "Total Investment",
+                fromGlobalTech: "from global tech leaders",
+                investmentChartTitle: "Investment by Company (USD)",
+                investmentChartDesc: "Global tech giants are in a strategic race to establish a major presence in the EEC, validating its status as a key regional hub.",
+                investmentChartLabels: ['AWS', 'TikTok (ByteDance)', 'Galaxy Data Center', 'Google', 'Microsoft', 'GDS IDC Services'],
+                investmentChartDatasetLabel: 'Investment in USD Billions',
+                economyTitle: "Fueling the Economy: GDP & Job Creation",
+                gdpTitle: "Projected GDP Contribution",
+                gdpDesc: "These investments are forecast to add billions to Thailand's GDP, driving significant economic growth through wages, consumption, and secondary investments.",
+                awsGdp: "AWS (over 15 yrs)",
+                jobsTitle: "Annual Job Creation Supported",
+                jobsDesc: "The boom is a major engine of employment, creating tens of thousands of roles annually, from construction to high-tech engineering.",
+                googleJobs: "Google (avg/yr)",
+                awsJobs: "AWS (avg/yr)",
+                talentTitle: "The Talent Magnet: A New Professional Class",
+                talentChartTitle: "High-Skill Labor Demand (2021-2025)",
+                talentChartDesc: "The EEC's targeted industries require a new class of highly skilled professionals, creating demand for over half a million new positions.",
+                talentChartLabels: ['Digital Technology', 'Logistics', 'Robotics & Automation', 'Other Sectors'],
+                talentChartDatasetLabel: 'Labor Positions',
+                talentInfluxTitle: "Influx of Global Talent",
+                talentInfluxDesc: "A widely acknowledged skills gap necessitates attracting experienced professionals from around the world, forming the primary target market for new premium condominiums.",
+                talentVisaTitle: "The EEC Visa Advantage",
+                talentVisaDesc: "A 10-year visa with a flat 17% income tax rate for qualified specialists creates a powerful incentive for high-income talent to relocate to the EEC.",
+                marketCompTitle: "Pattaya's Property Boom: A Comparative Edge",
+                marketCompDesc: "Pattaya's condo market is outperforming other key Thai investment hubs, offering a compelling combination of high rental yields and strong capital appreciation at a more accessible price point.",
+                marketCompChartTitle: "Real Estate Market Snapshot (YoY)",
+                marketCompChartLabels: ['Pattaya/Chonburi', 'Bangkok', 'Phuket'],
+                marketCompDataset1Label: 'Avg. Price Appreciation (%)',
+                marketCompDataset2Label: 'Avg. Gross Rental Yield (%)',
+                jomtienYieldsTitle: "Jomtien: The Epicenter of Yield",
+                jomtienYieldsChartTitle: "Gross Rental Yields by Area (Q1 2025)",
+                jomtienYieldsChartDesc: "Jomtien has emerged as the clear ground zero for high-yield investments, with rental returns nearly double those of traditional luxury enclaves like Wongamat.",
+                jomtienYieldsChartLabels: ['Jomtien (2-Bed)', 'Jomtien (1-Bed)', 'Wongamat (1-Bed)'],
+                jomtienYieldsDatasetLabel: 'Gross Rental Yield %',
+                jomtienYieldsLabel: "Jomtien 1-Bed Yield",
+                jomtienYieldsDesc: "This high-yield anomaly is driven by a new mix of digital nomads, long-term expats, and EEC professionals.",
+                locationTitle: "Jomtien: The Strategic Hub for EEC Living",
+                locationDesc: "Jomtien's unique geographical position offers a decisive advantage, perfectly balancing professional convenience with a world-class lifestyle. It's not just a place to live; it's the strategic base for the new EEC workforce.",
+                locationWorkTitle: "Proximity to Work",
+                locationWorkDesc: "Enjoy effortless commutes to the EEC's industrial estates and new data centers via Sukhumvit Road, giving you more time to enjoy the beachside life.",
+                locationLifestyleTitle: "Unmatched Lifestyle",
+                locationLifestyleDesc: "Experience the perfect blend of a relaxed beach atmosphere and a vibrant ecosystem of international restaurants, cafes, and local markets.",
+                locationConnectTitle: "Gateway to Connectivity",
+                locationConnectDesc: "Strategically located near U-Tapao Airport and the future High-Speed Rail station, ensuring long-term property value and easy travel across Thailand.",
+                luxuryTitle: "Luxury Seaview Living: A Magnet for the New Elite",
+                luxuryDesc: "The influx of high-income EEC professionals has created powerful demand for properties that offer more than just a home—they seek a statement. Luxury sea-view condominiums are meeting this demand, becoming the most sought-after assets in the region.",
+                luxuryKPITitle: "Sea-View Premium",
+                luxuryKPIDesc: "Properties with a sea view command a significant price premium and demonstrate higher capital appreciation.",
+                luxuryAppealTitle: "An Irresistible Draw",
+                luxuryAppealDesc: "For the discerning new residents of the EEC, a panoramic sea view is the ultimate luxury. It represents success, tranquility, and a superior quality of life. Projects offering resort-style amenities combined with stunning vistas are not just selling a condo; they are selling an aspirational lifestyle that is in high demand.",
+                footerText: "Data synthesized from public reports and market analysis (2024-2025). For informational purposes only."
+            },
+            th: {
+                mainTitle: "EEC ดิจิทัลบูม: โอกาสทองการลงทุนคอนโดในประเทศไทย",
+                introParagraph: "คลื่นการลงทุนมูลค่าหลายพันล้านดอลลาร์จากบริษัทยักษ์ใหญ่ด้านเทคโนโลยีกำลังเปลี่ยนแปลงระเบียงเศรษฐกิจภาคตะวันออก (EEC) ของประเทศไทยให้กลายเป็นศูนย์กลางดิจิทัล อินโฟกราฟิกนี้จะวิเคราะห์ข้อมูลเบื้องหลังการเติบโต ผลกระทบต่อตลาดอสังหาริมทรัพย์ และโอกาสสำหรับนักลงทุน",
+                investmentTitle: "การรุกของยักษ์ใหญ่: เม็ดเงินลงทุนกว่า 1.35 หมื่นล้านดอลลาร์",
+                totalInvestmentLabel: "เงินลงทุนรวม",
+                fromGlobalTech: "จากบริษัทเทคโนโลยีชั้นนำระดับโลก",
+                investmentChartTitle: "เงินลงทุนแยกตามบริษัท (ดอลลาร์สหรัฐ)",
+                investmentChartDesc: "บริษัทยักษ์ใหญ่ด้านเทคโนโลยีกำลังแข่งขันกันอย่างดุเดือดเพื่อสร้างฐานที่มั่นใน EEC ซึ่งเป็นการยืนยันสถานะของพื้นที่ในฐานะศูนย์กลางสำคัญของภูมิภาค",
+                investmentChartLabels: ['AWS', 'TikTok (ByteDance)', 'Galaxy Data Center', 'Google', 'Microsoft', 'GDS IDC Services'],
+                investmentChartDatasetLabel: 'เงินลงทุน (พันล้านดอลลาร์สหรัฐ)',
+                economyTitle: "ขับเคลื่อนเศรษฐกิจ: GDP และการสร้างงาน",
+                gdpTitle: "ประมาณการผลกระทบต่อ GDP",
+                gdpDesc: "การลงทุนเหล่านี้คาดว่าจะเพิ่มมูลค่า GDP ของไทยหลายพันล้านดอลลาร์ ขับเคลื่อนการเติบโตทางเศรษฐกิจอย่างมีนัยสำคัญผ่านค่าจ้าง การบริโภค และการลงทุนทุติยภูมิ",
+                awsGdp: "AWS (ใน 15 ปี)",
+                jobsTitle: "การจ้างงานรายปีที่เกิดขึ้น",
+                jobsDesc: "การเติบโตนี้เป็นกลไกสำคัญในการจ้างงาน สร้างตำแหน่งงานหลายหมื่นตำแหน่งต่อปี ตั้งแต่งานก่อสร้างไปจนถึงวิศวกรรมไฮเทค",
+                googleJobs: "Google (เฉลี่ย/ปี)",
+                awsJobs: "AWS (เฉลี่ย/ปี)",
+                talentTitle: "แม่เหล็กดึงดูดบุคลากร: ชนชั้นวิชาชีพใหม่",
+                talentChartTitle: "ความต้องการแรงงานทักษะสูง (2564-2568)",
+                talentChartDesc: "อุตสาหกรรมเป้าหมายของ EEC ต้องการบุคลากรทักษะสูงกลุ่มใหม่ ทำให้เกิดความต้องการตำแหน่งงานกว่าครึ่งล้านตำแหน่ง",
+                talentChartLabels: ['เทคโนโลยีดิจิทัล', 'โลจิสติกส์', 'หุ่นยนต์และระบบอัตโนมัติ', 'ภาคส่วนอื่นๆ'],
+                talentChartDatasetLabel: 'ตำแหน่งงาน',
+                talentInfluxTitle: "การหลั่งไหลของบุคลากรระดับโลก",
+                talentInfluxDesc: "ช่องว่างทางทักษะที่เห็นได้ชัดทำให้จำเป็นต้องดึงดูดผู้เชี่ยวชาญที่มีประสบการณ์จากทั่วโลก ซึ่งเป็นกลุ่มเป้าหมายหลักของคอนโดมิเนียมระดับพรีเมียมโครงการใหม่ๆ",
+                talentVisaTitle: "ข้อได้เปรียบจาก EEC Visa",
+                talentVisaDesc: "วีซ่า 10 ปี พร้อมอัตราภาษีเงินได้บุคคลธรรมดาคงที่ 17% สำหรับผู้เชี่ยวชาญที่มีคุณสมบัติ เป็นแรงจูงใจสำคัญให้บุคลากรรายได้สูงย้ายมายัง EEC",
+                marketCompTitle: "ตลาดอสังหาฯ พัทยา: ความได้เปรียบเชิงเปรียบเทียบ",
+                marketCompDesc: "ตลาดคอนโดพัทยามีประสิทธิภาพเหนือกว่าศูนย์กลางการลงทุนอื่นๆ ของไทย โดยให้ผลตอบแทนค่าเช่าสูงและการเติบโตของราคาทรัพย์สินที่แข็งแกร่งในราคาที่เข้าถึงได้ง่ายกว่า",
+                marketCompChartTitle: "ภาพรวมตลาดอสังหาริมทรัพย์ (รายปี)",
+                marketCompChartLabels: ['พัทยา/ชลบุรี', 'กรุงเทพฯ', 'ภูเก็ต'],
+                marketCompDataset1Label: 'การเพิ่มขึ้นของราคาเฉลี่ย (%)',
+                marketCompDataset2Label: 'ผลตอบแทนค่าเช่าเฉลี่ย (%)',
+                jomtienYieldsTitle: "หาดจอมเทียน: ศูนย์กลางผลตอบแทน",
+                jomtienYieldsChartTitle: "ผลตอบแทนค่าเช่าตามพื้นที่ (ไตรมาส 1 ปี 2568)",
+                jomtienYieldsChartDesc: "หาดจอมเทียนกลายเป็นศูนย์กลางที่ชัดเจนสำหรับการลงทุนที่ให้ผลตอบแทนสูง โดยมีผลตอบแทนค่าเช่าสูงเกือบสองเท่าของย่านหรูดั้งเดิมอย่างวงศ์อมาตย์",
+                jomtienYieldsChartLabels: ['จอมเทียน (2 ห้องนอน)', 'จอมเทียน (1 ห้องนอน)', 'วงศ์อมาตย์ (1 ห้องนอน)'],
+                jomtienYieldsDatasetLabel: 'ผลตอบแทนค่าเช่า (%)',
+                jomtienYieldsLabel: "ผลตอบแทน 1 ห้องนอนที่จอมเทียน",
+                jomtienYieldsDesc: "ความผิดปกตินี้ขับเคลื่อนโดยกลุ่มผู้เช่าใหม่ๆ ทั้งดิจิทัลโนแมด, ชาวต่างชาติระยะยาว และบุคลากรจาก EEC",
+                locationTitle: "ทำเลแห่งอนาคต: จอมเทียน ศูนย์กลางการใช้ชีวิตแห่ง EEC",
+                locationDesc: "ที่ตั้งทางภูมิศาสตร์อันเป็นเอกลักษณ์ของหาดจอมเทียนมอบความได้เปรียบที่ชัดเจน เป็นการผสมผสานความสะดวกสบายในการทำงานเข้ากับไลฟ์สไตล์ระดับโลกได้อย่างลงตัว ที่นี่ไม่ใช่แค่ที่อยู่อาศัย แต่เป็นฐานที่มั่นเชิงกลยุทธ์สำหรับบุคลากรยุคใหม่ของ EEC",
+                locationWorkTitle: "ใกล้แหล่งงาน",
+                locationWorkDesc: "เดินทางสู่ศูนย์กลางอุตสาหกรรมและดาต้าเซ็นเตอร์ของ EEC ได้อย่างสะดวกสบายผ่านถนนสุขุมวิท ทำให้คุณมีเวลามากขึ้นเพื่อเพลิดเพลินกับชีวิตริมชายหาด",
+                locationLifestyleTitle: "ไลฟ์สไตล์ที่เหนือกว่า",
+                locationLifestyleDesc: "สัมผัสการผสมผสานที่ลงตัวระหว่างบรรยากาศชายหาดที่ผ่อนคลายกับระบบนิเวศที่คึกคักของร้านอาหารนานาชาติ คาเฟ่ และตลาดท้องถิ่น",
+                locationConnectTitle: "ประตูสู่การเชื่อมต่อ",
+                locationConnectDesc: "ตั้งอยู่ใกล้สนามบินอู่ตะเภาและสถานีรถไฟความเร็วสูงในอนาคต รับประกันมูลค่าทรัพย์สินในระยะยาวและการเดินทางที่สะดวกสบายทั่วประเทศไทย",
+                luxuryTitle: "ที่สุดแห่งการใช้ชีวิต: คอนโดหรูวิวทะเล ดึงดูดกลุ่มผู้นำยุคใหม่",
+                luxuryDesc: "การหลั่งไหลเข้ามาของบุคลากรรายได้สูงจาก EEC ได้สร้างอุปสงค์มหาศาลต่อที่อยู่อาศัยที่เป็นมากกว่าบ้าน แต่คือสัญลักษณ์แห่งความสำเร็จ คอนโดมิเนียมหรูวิวทะเลจึงกลายเป็นสินทรัพย์ที่เป็นที่ต้องการมากที่สุดในภูมิภาคเพื่อตอบสนองความต้องการนี้",
+                luxuryKPITitle: "มูลค่าเพิ่มจากวิวทะเล",
+                luxuryKPIDesc: "อสังหาริมทรัพย์ที่มองเห็นวิวทะเลมีราคาสูงกว่าอย่างมีนัยสำคัญและแสดงให้เห็นถึงการเพิ่มขึ้นของมูลค่าของสินทรัพย์ที่สูงกว่า",
+                luxuryAppealTitle: "เสน่ห์ที่ยากจะต้านทาน",
+                luxuryAppealDesc: "สำหรับผู้พักอาศัยกลุ่มใหม่ที่มีวิสัยทัศน์ใน EEC ทิวทัศน์ทะเลแบบพาโนรามาคือที่สุดแห่งความหรูหรา มันคือสัญลักษณ์ของความสำเร็จ ความสงบ และคุณภาพชีวิตที่เหนือกว่า โครงการที่มอบสิ่งอำนวยความสะดวกสไตล์รีสอร์ทพร้อมทิวทัศน์อันน่าทึ่ง ไม่ได้เป็นเพียงการขายคอนโด แต่เป็นการขายไลฟ์สไตล์ในฝันที่เป็นที่ต้องการอย่างสูง",
+                footerText: "ข้อมูลสังเคราะห์จากรายงานสาธารณะและการวิเคราะห์ตลาด (2567-2568) เพื่อเป็นข้อมูลเบื้องต้นเท่านั้น"
+            },
+            ru: {
+                mainTitle: "Цифровой бум в ВЭК: Золотая лихорадка инвестиций в кондоминиумы Таиланда",
+                introParagraph: "Волна многомиллиардных инвестиций от мировых технологических гигантов превращает Восточный экономический коридор (ВЭК) Таиланда в цифровой центр. Эта инфографика анализирует данные, лежащие в основе этого бума, его влияние на местный рынок недвижимости и возможности для инвесторов.",
+                investmentTitle: "Вторжение гигантов: более 13,5 млрд долларов инвестиций",
+                totalInvestmentLabel: "Общий объем инвестиций",
+                fromGlobalTech: "от мировых технологических лидеров",
+                investmentChartTitle: "Инвестиции по компаниям (в долларах США)",
+                investmentChartDesc: "Мировые технологические гиганты ведут стратегическую гонку за значительное присутствие в ВЭК, подтверждая его статус ключевого регионального центра.",
+                investmentChartLabels: ['AWS', 'TikTok (ByteDance)', 'Galaxy Data Center', 'Google', 'Microsoft', 'GDS IDC Services'],
+                investmentChartDatasetLabel: 'Инвестиции (в млрд долларов США)',
+                economyTitle: "Стимулирование экономики: ВВП и создание рабочих мест",
+                gdpTitle: "Прогнозируемый вклад в ВВП",
+                gdpDesc: "Прогнозируется, что эти инвестиции добавят миллиарды к ВВП Таиланда, стимулируя значительный экономический рост за счет заработной платы, потребления и вторичных инвестиций.",
+                awsGdp: "AWS (за 15 лет)",
+                jobsTitle: "Поддержка создания рабочих мест в год",
+                jobsDesc: "Бум является основным двигателем занятости, создавая десятки тысяч рабочих мест ежегодно, от строительства до высокотехнологичной инженерии.",
+                googleJobs: "Google (в среднем/год)",
+                awsJobs: "AWS (в среднем/год)",
+                talentTitle: "Магнит для талантов: новый профессиональный класс",
+                talentChartTitle: "Спрос на высококвалифицированную рабочую силу (2021-2025)",
+                talentChartDesc: "Целевые отрасли ВЭК требуют нового класса высококвалифицированных специалистов, создавая спрос на более чем полмиллиона новых должностей.",
+                talentChartLabels: ['Цифровые технологии', 'Логистика', 'Робототехника и автоматизация', 'Другие сектора'],
+                talentChartDatasetLabel: 'Рабочие места',
+                talentInfluxTitle: "Приток мировых талантов",
+                talentInfluxDesc: "Широко признанный дефицит навыков требует привлечения опытных специалистов со всего мира, которые формируют основной целевой рынок для новых премиальных кондоминиумов.",
+                talentVisaTitle: "Преимущество визы ВЭК",
+                talentVisaDesc: "10-летняя виза с фиксированной ставкой подоходного налога 17% для квалифицированных специалистов создает мощный стимул для переезда талантов с высоким доходом в ВЭК.",
+                marketCompTitle: "Имущественный бум в Паттайе: сравнительное преимущество",
+                marketCompDesc: "Рынок кондоминиумов Паттайи превосходит другие ключевые инвестиционные центры Таиланда, предлагая привлекательное сочетание высокой доходности от аренды и сильного роста капитала по более доступной цене.",
+                marketCompChartTitle: "Обзор рынка недвижимости (г/г)",
+                marketCompChartLabels: ['Паттайя/Чонбури', 'Бангкок', 'Пхукет'],
+                marketCompDataset1Label: 'Средний рост цен (%)',
+                marketCompDataset2Label: 'Средняя валовая доходность от аренды (%)',
+                jomtienYieldsTitle: "Джомтьен: эпицентр доходности",
+                jomtienYieldsChartTitle: "Валовая доходность от аренды по районам (1 кв. 2025 г.)",
+                jomtienYieldsChartDesc: "Джомтьен стал явным эпицентром высокодоходных инвестиций, где доходность от аренды почти вдвое выше, чем в традиционных элитных анклавах, таких как Вонгамат.",
+                jomtienYieldsChartLabels: ['Джомтьен (2 спальни)', 'Джомтьен (1 спальня)', 'Вонгамат (1 спальня)'],
+                jomtienYieldsDatasetLabel: 'Валовая доходность от аренды (%)',
+                jomtienYieldsLabel: "Доходность 1-комн. на Джомтьене",
+                jomtienYieldsDesc: "Эта аномально высокая доходность обусловлена новым сочетанием цифровых кочевников, долгосрочных экспатов и специалистов ВЭК.",
+                locationTitle: "Джомтьен: стратегический центр для жизни в ВЭК",
+                locationDesc: "Уникальное географическое положение Джомтьена предлагает решающее преимущество, идеально сочетая профессиональное удобство с образом жизни мирового класса. Это не просто место для жизни; это стратегическая база для новой рабочей силы ВЭК.",
+                locationWorkTitle: "Близость к работе",
+                locationWorkDesc: "Наслаждайтесь легкими поездками до промышленных зон ВЭК и новых центров обработки данных по Сукхумвит-роуд, что дает вам больше времени для наслаждения жизнью на побережье.",
+                locationLifestyleTitle: "Непревзойденный образ жизни",
+                locationLifestyleDesc: "Испытайте идеальное сочетание расслабленной пляжной атмосферы и яркой экосистемы международных ресторанов, кафе и местных рынков.",
+                locationConnectTitle: "Ворота к связям",
+                locationConnectDesc: "Стратегически расположенный рядом с аэропортом У-Тапао и будущей станцией высокоскоростной железной дороги, что обеспечивает долгосрочную стоимость недвижимости и легкое путешествие по Таиланду.",
+                luxuryTitle: "Роскошная жизнь с видом на море: магнит для новой элиты",
+                luxuryDesc: "Приток высокооплачиваемых специалистов ВЭК создал мощный спрос на недвижимость, которая предлагает больше, чем просто дом — они ищут статус. Роскошные кондоминиумы с видом на море отвечают этому спросу, становясь самыми востребованными активами в регионе.",
+                luxuryKPITitle: "Премиум за вид на море",
+                luxuryKPIDesc: "Недвижимость с видом на море имеет значительную ценовую премию и демонстрирует более высокий рост капитала.",
+                luxuryAppealTitle: "Непреодолимое влечение",
+                luxuryAppealDesc: "Для взыскательных новых жителей ВЭК панорамный вид на море — это высшая роскошь. Он олицетворяет успех, спокойствие и превосходное качество жизни. Проекты, предлагающие удобства курортного типа в сочетании с потрясающими видами, продают не просто кондо, они продают желанный образ жизни, пользующийся высоким спросом.",
+                footerText: "Данные синтезированы из публичных отчетов и анализа рынка (2024-2025). Только для информационных целей."
+            },
+            zh: {
+                mainTitle: "东部经济走廊数字热潮：泰国公寓投资黄金热",
+                introParagraph: "来自全球科技巨头的数十亿美元投资浪潮正在将泰国的东部经济走廊（EEC）转变为数字强国。本信息图分析了这股热潮背后的数据、其对当地房地产市场的影响以及投资者的机遇。",
+                investmentTitle: "巨头入侵：承诺投资超过135亿美元",
+                totalInvestmentLabel: "总投资额",
+                fromGlobalTech: "来自全球科技领袖",
+                investmentChartTitle: "各公司投资额（美元）",
+                investmentChartDesc: "全球科技巨头正在进行战略竞争，以在EEC建立重要存在，从而验证其作为关键区域中心的地位。",
+                investmentChartLabels: ['AWS', 'TikTok (字节跳动)', 'Galaxy数据中心', 'Google', 'Microsoft', 'GDS IDC Services'],
+                investmentChartDatasetLabel: '投资额（十亿美元）',
+                economyTitle: "推动经济：GDP与就业创造",
+                gdpTitle: "预计GDP贡献",
+                gdpDesc: "这些投资预计将为泰国GDP增加数十亿美元，通过工资、消费和二次投资推动显著的经济增长。",
+                awsGdp: "AWS（15年内）",
+                jobsTitle: "年度支持的就业创造",
+                jobsDesc: "这股热潮是就业的主要引擎，每年创造数以万计的岗位，从建筑到高科技工程。",
+                googleJobs: "Google（平均/年）",
+                awsJobs: "AWS（平均/年）",
+                talentTitle: "人才磁铁：新的专业阶层",
+                talentChartTitle: "高技能劳动力需求（2021-2025）",
+                talentChartDesc: "EEC的目标产业需要一个新的高技能专业人才阶层，创造了超过五十万个新职位的需求。",
+                talentChartLabels: ['数字技术', '物流', '机器人与自动化', '其他行业'],
+                talentChartDatasetLabel: '劳动岗位',
+                talentInfluxTitle: "全球人才涌入",
+                talentInfluxDesc: "公认的技能差距使得有必要从世界各地吸引经验丰富的专业人士，他们构成了新高端公寓的主要目标市场。",
+                talentVisaTitle: "EEC签证优势",
+                talentVisaDesc: "为合格专家提供10年期签证和17%的统一所得税率，为高收入人才迁往EEC创造了强大的激励。",
+                marketCompTitle: "芭堤雅房产热潮：比较优势",
+                marketCompDesc: "芭堤雅的公寓市场表现优于泰国其他主要投资中心，以更实惠的价格提供了高租金收益率和强劲资本增值的诱人组合。",
+                marketCompChartTitle: "房地产市场快照（同比）",
+                marketCompChartLabels: ['芭堤雅/春武里', '曼谷', '普吉岛'],
+                marketCompDataset1Label: '平均价格升值（%）',
+                marketCompDataset2Label: '平均总租金收益率（%）',
+                jomtienYieldsTitle: "中天海滩：收益中心",
+                jomtienYieldsChartTitle: "各地区总租金收益率（2025年第一季度）",
+                jomtienYieldsChartDesc: "中天海滩已成为高收益投资的明确中心，其租金回报率几乎是黄艾买提等传统豪华飞地的两倍。",
+                jomtienYieldsChartLabels: ['中天（2卧）', '中天（1卧）', '黄艾买提（1卧）'],
+                jomtienYieldsDatasetLabel: '总租金收益率（%）',
+                jomtienYieldsLabel: "中天1卧收益率",
+                jomtienYieldsDesc: "这种高收益异常是由数字游民、长期外籍人士和EEC专业人士的新组合驱动的。",
+                locationTitle: "中天：EEC生活的战略中心",
+                locationDesc: "中天独特的地理位置提供了决定性的优势，完美地平衡了专业便利性与世界一流的生活方式。它不仅仅是一个居住的地方，更是新EEC劳动力的战略基地。",
+                locationWorkTitle: "靠近工作地点",
+                locationWorkDesc: "通过素坤逸路轻松通勤至EEC的工业区和新数据中心，让您有更多时间享受海滨生活。",
+                locationLifestyleTitle: "无与伦比的生活方式",
+                locationLifestyleDesc: "体验轻松的海滩氛围与充满活力的国际餐厅、咖啡馆和当地市场生态系统的完美结合。",
+                locationConnectTitle: "通往互联互通的门户",
+                locationConnectDesc: "地理位置优越，靠近乌塔堡机场和未来的高铁站，确保长期房产价值和便捷的泰国境内旅行。",
+                luxuryTitle: "豪华海景生活：吸引新精英的磁石",
+                luxuryDesc: "高收入EEC专业人士的涌入，创造了对不仅仅是家，更是身份象征的房产的强大需求。豪华海景公寓正在满足这一需求，成为该地区最受追捧的资产。",
+                luxuryKPITitle: "海景溢价",
+                luxuryKPIDesc: "拥有海景的房产具有显著的价格溢价，并显示出更高的资本增值。",
+                luxuryAppealTitle: "不可抗拒的吸引力",
+                luxuryAppealDesc: "对于有眼光的EEC新居民来说，全景海景是终极奢华。它代表着成功、宁静和卓越的生活品质。提供度假式设施和壮丽景色的项目，不仅仅是销售公寓，更是在销售一种备受追捧的理想生活方式。",
+                footerText: "数据综合自公共报告和市场分析（2024-2025）。仅供参考。"
+            }
+        };
+
+        // --- GLOBAL VARIABLES & HELPERS ---
+        let investmentChartInstance, talentDemandChartInstance, marketComparisonChartInstance, yieldComparisonChartInstance;
+        const brilliantBlues = ['#004AAD', '#0079C2', '#00AEEF', '#89D6F7'];
+        const brilliantBluesBg = ['rgba(0, 74, 173, 0.7)', 'rgba(0, 121, 194, 0.7)', 'rgba(0, 174, 239, 0.7)', 'rgba(137, 214, 247, 0.7)'];
+
+        function wrapLabel(str, max_width) {
+            if (!str || str.length <= max_width) return str;
+            let wrapped = [];
+            let words = str.split(' ');
+            let current_line = '';
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                if ((current_line + word).length > max_width && current_line.length > 0) {
+                    wrapped.push(current_line.trim());
+                    current_line = '';
+                }
+                current_line += word + ' ';
+            }
+            wrapped.push(current_line.trim());
+            return wrapped;
+        }
+        
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
+                },
+                legend: { labels: { color: '#374151' } }
+            },
+            scales: {
+                y: { ticks: { color: '#374151' }, grid: { color: '#e5e7eb' } },
+                x: { ticks: { color: '#374151' }, grid: { display: false } }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        // --- CHART CREATION FUNCTIONS ---
+        function createInvestmentChart(lang) {
+            const ctx = document.getElementById('investmentChart').getContext('2d');
+            investmentChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: translations[lang].investmentChartLabels.map(l => wrapLabel(l, 16)),
+                    datasets: [{
+                        label: translations[lang].investmentChartDatasetLabel,
+                        data: [5, 3.76, 2, 1, 1, 0.78],
+                        backgroundColor: brilliantBluesBg,
+                        borderColor: brilliantBlues,
+                        borderWidth: 2
+                    }]
+                },
+                options: { ...tooltipTitleCallback }
+            });
+        }
+
+        function createTalentDemandChart(lang) {
+            const ctx = document.getElementById('talentDemandChart').getContext('2d');
+            talentDemandChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: translations[lang].talentChartLabels,
+                    datasets: [{
+                        label: translations[lang].talentChartDatasetLabel,
+                        data: [146000, 129000, 91000, 194000],
+                        backgroundColor: brilliantBlues,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    plugins: { ...tooltipTitleCallback.plugins, legend: { position: 'bottom', labels: { color: '#374151' } } },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        function createMarketComparisonChart(lang) {
+            const ctx = document.getElementById('marketComparisonChart').getContext('2d');
+            marketComparisonChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: translations[lang].marketCompChartLabels,
+                    datasets: [
+                        {
+                            label: translations[lang].marketCompDataset1Label,
+                            data: [11, 6.5, 9],
+                            backgroundColor: 'rgba(0, 74, 173, 0.7)',
+                            borderColor: '#004AAD',
+                            borderWidth: 2,
+                        },
+                        {
+                            label: translations[lang].marketCompDataset2Label,
+                            data: [8, 5, 8],
+                            backgroundColor: 'rgba(0, 174, 239, 0.7)',
+                            borderColor: '#00AEEF',
+                            borderWidth: 2,
+                        }
+                    ]
+                },
+                options: { ...tooltipTitleCallback }
+            });
+        }
+
+        function createYieldComparisonChart(lang) {
+            const ctx = document.getElementById('yieldComparisonChart').getContext('2d');
+            yieldComparisonChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: translations[lang].jomtienYieldsChartLabels,
+                    datasets: [{
+                        label: translations[lang].jomtienYieldsDatasetLabel,
+                        data: [8.31, 8.22, 4.80],
+                        backgroundColor: brilliantBluesBg,
+                        borderColor: brilliantBlues,
+                        borderWidth: 2
+                    }]
+                },
+                options: { indexAxis: 'y', ...tooltipTitleCallback }
+            });
+        }
+        
+        // --- CORE LOGIC ---
+        function recreateAllCharts(lang) {
+            if (investmentChartInstance) investmentChartInstance.destroy();
+            if (talentDemandChartInstance) talentDemandChartInstance.destroy();
+            if (marketComparisonChartInstance) marketComparisonChartInstance.destroy();
+            if (yieldComparisonChartInstance) yieldComparisonChartInstance.destroy();
+
+            createInvestmentChart(lang);
+            createTalentDemandChart(lang);
+            createMarketComparisonChart(lang);
+            createYieldComparisonChart(lang);
+        }
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            recreateAllCharts(lang);
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitcher = document.getElementById('lang-switcher');
+            langSwitcher.addEventListener('click', (e) => {
+                if (e.target.matches('.lang-btn')) {
+                    const lang = e.target.getAttribute('data-lang');
+                    switchLanguage(lang);
+                }
+            });
+
+            // Initial load in English
+            switchLanguage('en');
+        });
+
+    </script>
+</body>
+</html>

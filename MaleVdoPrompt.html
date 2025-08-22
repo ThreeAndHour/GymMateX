@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="pageTitle">NSFW Male Video Prompt Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+        html[lang="en"] body {
+            font-family: 'Inter', sans-serif;
+        }
+        .keyword-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .keyword-btn.selected {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .keyword-btn:hover:not(.selected) {
+            background-color: #3730a3;
+            color: white;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+        .loader {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #FFF;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .option-card.selected {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+        .lang-btn.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <header class="text-center mb-8 relative">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-400" data-lang-key="mainTitle">เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย</h1>
+            <p class="text-gray-400 mt-2" data-lang-key="mainSubtitle">สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพเพื่อหลีกเลี่ยงการเซ็นเซอร์</p>
+            <div class="absolute top-0 right-0 flex items-center gap-2">
+                 <div class="flex rounded-full bg-gray-700 p-1 text-sm font-semibold">
+                    <button id="lang-th-btn" class="lang-btn active px-3 py-1 rounded-full" data-lang="th">TH</button>
+                    <button id="lang-en-btn" class="lang-btn px-3 py-1 rounded-full" data-lang="en">EN</button>
+                </div>
+                <button id="reset-btn" class="bg-gray-700 hover:bg-indigo-600 text-white font-semibold p-2 rounded-full transition-colors" data-lang-key="resetTooltip" title="รีเซ็ตแอปพลิเคชัน">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Column: Prompt Builder -->
+            <div class="flex flex-col gap-6 bg-gray-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2" data-lang-key="step1Title">1. อัปโหลดภาพและบรรยายไอเดีย</h2>
+                
+                <!-- Image Upload Section -->
+                <div>
+                    <label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="uploadLabel">อัปโหลดภาพต้นฉบับ</label>
+                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-500 px-6 py-10">
+                        <div id="image-preview-container" class="text-center w-full">
+                             <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <div class="mt-4 flex text-sm justify-center leading-6 text-gray-400">
+                                <label for="image-upload-input" class="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500 px-2">
+                                    <span data-lang-key="selectFile">เลือกไฟล์</span>
+                                    <input id="image-upload-input" name="image-upload" type="file" class="sr-only" accept="image/*">
+                                </label>
+                                <p class="pl-1" data-lang-key="dragDrop">หรือลากมาวาง</p>
+                            </div>
+                            <p class="text-xs leading-5 text-gray-500" data-lang-key="fileTypes">PNG, JPG, GIF ขนาดไม่เกิน 10MB</p>
+                            <div id="image-tools" class="hidden mt-4">
+                                <button id="generate-from-image-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                    <span id="analyze-btn-text" data-lang-key="analyzeButton">วิเคราะห์ภาพเพื่อสร้างพรอมต์</span>
+                                    <span id="analyze-btn-loader" class="hidden loader"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Idea Section -->
+                <div>
+                    <label for="video-idea-input" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="ideaLabel">ไอเดีย/สิ่งที่อยากให้เกิดขึ้นต่อจากภาพนี้</label>
+                    <div class="relative">
+                        <textarea id="video-idea-input" rows="3" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 pr-28 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="ideaPlaceholder" placeholder="เช่น: slowly turns his head and smiles at the viewer..."></textarea>
+                        <button id="improve-idea-btn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1.5 px-3 rounded-md text-sm transition-colors flex items-center gap-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                            <span id="improve-btn-text" data-lang-key="improveButton">ปรับปรุง</span>
+                            <span id="improve-btn-loader" class="hidden loader"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Positive Prompts Section -->
+                <div id="positive-prompt-builder">
+                    <h3 class="text-lg font-medium text-gray-300 mb-3" data-lang-key="keywordsLabel">เลือกคีย์เวิร์ดเพิ่มเติม</h3>
+                    <div class="space-y-4">
+                        <!-- Categories will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Negative Prompts Section -->
+                <div id="negative-prompt-builder">
+                    <h3 class="text-lg font-medium text-gray-300 mb-3 mt-4" data-lang-key="negativeKeywordsLabel">พรอมต์เชิงลบ (สิ่งที่ต้องการหลีกเลี่ยง)</h3>
+                     <div class="space-y-4">
+                        <!-- Categories will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Output -->
+            <div class="flex flex-col gap-6 bg-gray-800 p-6 rounded-2xl shadow-lg h-fit sticky top-8">
+                 <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2" data-lang-key="step2Title">2. ผลลัพธ์พรอมต์ (ฉบับร่าง)</h2>
+                
+                <!-- Positive Prompt Output -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label for="positive-output" class="block text-lg font-medium text-gray-300" data-lang-key="positivePromptLabel">พรอมต์เชิงบวก</label>
+                        <button id="copy-positive" class="text-sm bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
+                    </div>
+                    <textarea id="positive-output" rows="5" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="positivePromptPlaceholder" placeholder="พรอมต์เชิงบวกที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
+                </div>
+
+                <!-- Negative Prompt Output -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label for="negative-output" class="block text-lg font-medium text-gray-300" data-lang-key="negativePromptLabel">พรอมต์เชิงลบ</label>
+                        <button id="copy-negative" class="text-sm bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
+                    </div>
+                    <textarea id="negative-output" rows="4" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="negativePromptPlaceholder" placeholder="พรอมต์เชิงลบที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
+                </div>
+
+                <!-- Section 3: Refine Prompt -->
+                <div class="mt-4">
+                    <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2 mb-4" data-lang-key="step3Title">3. ปรับปรุงพรอมต์ (ตัวเลือก)</h2>
+                    <button id="refine-prompt-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                        <span id="refine-btn-text" data-lang-key="refineButton">ปรับปรุงพรอมต์ด้วย AI</span>
+                        <span id="refine-btn-loader" class="hidden loader"></span>
+                    </button>
+                    <div id="refined-options-container" class="mt-4 space-y-3 hidden">
+                        <!-- Refined options will be injected here -->
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center text-gray-400 text-sm">
+                    <p data-lang-key="tipText">💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือ Image-to-Video ที่ไม่เซ็นเซอร์ เช่น Dzine.AI หรือ PixelDojo เพื่อผลลัพธ์ที่ดีที่สุด</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- TRANSLATIONS ---
+            const translations = {
+                th: {
+                    pageTitle: "เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย",
+                    mainTitle: "เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย",
+                    mainSubtitle: "สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพเพื่อหลีกเลี่ยงการเซ็นเซอร์",
+                    resetTooltip: "รีเซ็ตแอปพลิเคชัน",
+                    step1Title: "1. อัปโหลดภาพและบรรยายไอเดีย",
+                    uploadLabel: "อัปโหลดภาพต้นฉบับ",
+                    selectFile: "เลือกไฟล์",
+                    dragDrop: "หรือลากมาวาง",
+                    fileTypes: "PNG, JPG, GIF ขนาดไม่เกิน 10MB",
+                    analyzeButton: "วิเคราะห์ภาพเพื่อสร้างพรอมต์",
+                    ideaLabel: "ไอเดีย/สิ่งที่อยากให้เกิดขึ้นต่อจากภาพนี้",
+                    ideaPlaceholder: "เช่น: slowly turns his head and smiles at the viewer...",
+                    improveButton: "ปรับปรุง",
+                    keywordsLabel: "เลือกคีย์เวิร์ดเพิ่มเติม",
+                    negativeKeywordsLabel: "พรอมต์เชิงลบ (สิ่งที่ต้องการหลีกเลี่ยง)",
+                    step2Title: "2. ผลลัพธ์พรอมต์ (ฉบับร่าง)",
+                    positivePromptLabel: "พรอมต์เชิงบวก",
+                    copyButton: "คัดลอก",
+                    positivePromptPlaceholder: "พรอมต์เชิงบวกที่สร้างขึ้นจะปรากฏที่นี่...",
+                    negativePromptLabel: "พรอมต์เชิงลบ",
+                    negativePromptPlaceholder: "พรอมต์เชิงลบที่สร้างขึ้นจะปรากฏที่นี่...",
+                    step3Title: "3. ปรับปรุงพรอมต์ (ตัวเลือก)",
+                    refineButton: "ปรับปรุงพรอมต์ด้วย AI",
+                    tipText: "💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือ Image-to-Video ที่ไม่เซ็นเซอร์ เช่น Dzine.AI หรือ PixelDojo เพื่อผลลัพธ์ที่ดีที่สุด",
+                    copied: "คัดลอกแล้ว!",
+                    analyzing: "กำลังวิเคราะห์...",
+                    analyzed: "สร้างพรอมต์แล้ว!",
+                    error: "เกิดข้อผิดพลาด!",
+                    improving: "กำลังปรับปรุง...",
+                    improved: "ปรับปรุงแล้ว!",
+                    refining: "กำลังปรับปรุง...",
+                    refined: "ปรับปรุงแล้ว!",
+                    uploadFirst: "กรุณาอัปโหลดรูปภาพก่อน",
+                    typeIdeaFirst: "กรุณาพิมพ์ไอเดียของคุณก่อน",
+                    emptyPrompt: "พรอมต์ฉบับร่างว่างเปล่า กรุณาสร้างพรอมต์ก่อน",
+                    cat_anatomy: "ลักษณะร่างกาย / กายวิภาค",
+                    cat_action: "ท่าทาง / การกระทำ",
+                    cat_style: "สไตล์ / สุนทรียศาสตร์",
+                    cat_theme: "ธีมเกย์ / เควียร์"
+                },
+                en: {
+                    pageTitle: "NSFW Male Video Prompt Builder",
+                    mainTitle: "NSFW Male Video Prompt Builder",
+                    mainSubtitle: "Create effective Image-to-Video prompts to avoid censorship.",
+                    resetTooltip: "Reset Application",
+                    step1Title: "1. Upload Image & Describe Idea",
+                    uploadLabel: "Upload Source Image",
+                    selectFile: "Select a file",
+                    dragDrop: "or drag and drop",
+                    fileTypes: "PNG, JPG, GIF up to 10MB",
+                    analyzeButton: "Analyze Image to Create Prompt",
+                    ideaLabel: "Idea / What should happen next?",
+                    ideaPlaceholder: "e.g., slowly turns his head and smiles at the viewer...",
+                    improveButton: "Improve",
+                    keywordsLabel: "Select Additional Keywords",
+                    negativeKeywordsLabel: "Negative Prompts (What to avoid)",
+                    step2Title: "2. Prompt Output (Draft)",
+                    positivePromptLabel: "Positive Prompt",
+                    copyButton: "Copy",
+                    positivePromptPlaceholder: "The generated positive prompt will appear here...",
+                    negativePromptLabel: "Negative Prompt",
+                    negativePromptPlaceholder: "The generated negative prompt will appear here...",
+                    step3Title: "3. Refine Prompt (Optional)",
+                    refineButton: "Refine Prompt with AI",
+                    tipText: "💡 **Tip:** Use the generated prompt with uncensored Image-to-Video tools like Dzine.AI or PixelDojo for the best results.",
+                    copied: "Copied!",
+                    analyzing: "Analyzing...",
+                    analyzed: "Prompt Created!",
+                    error: "Error!",
+                    improving: "Improving...",
+                    improved: "Improved!",
+                    refining: "Refining...",
+                    refined: "Refined!",
+                    uploadFirst: "Please upload an image first",
+                    typeIdeaFirst: "Please type your idea first",
+                    emptyPrompt: "Draft prompt is empty. Please create a prompt first.",
+                    cat_anatomy: "Male Body / Anatomy",
+                    cat_action: "Action / Pose",
+                    cat_style: "Style / Aesthetics",
+                    cat_theme: "Gay / Queer Themes"
+                }
+            };
+
+            // --- DATA ---
+            const keywords = {
+                "cat_anatomy": ["muscular", "toned build", "svelte and slender", "chest hair", "stomach hair", "penis", "visible penis", "fully nude", "no clothing", "photorealistic anatomy", "athletic body", "a man"],
+                "cat_action": ["full body shot", "dynamic pose", "looking at viewer", "sensual pose", "relaxing on bed", "in the shower", "dancing"],
+                "cat_style": ["photorealistic", "hyperrealistic", "studio lighting", "dimly lit", "cinematic lighting", "soft lighting", "masterpiece", "best quality", "8k", "ultra detailed", "detailed skin texture"],
+                "cat_theme": ["two men embracing", "two lovers", "intimacy", "passionate", "kissing", "cuddling", "BL", "homoerotic"],
+                "พรอมต์เชิงลบ": ["worst quality", "low quality", "blurry", "bad anatomy", "bad hands", "bad proportions", "watermark", "text", "deformed penis", "malformed penis", "female vulva", "broken limbs", "mutation", "extra limbs", "fused fingers", "ugly", "disfigured"]
+            };
+
+            // --- STATE ---
+            let currentLang = 'th';
+            let selectedPositive = new Set();
+            let selectedNegative = new Set();
+            let imageBase64 = null;
+            let imageMimeType = null;
+
+            // --- UI ELEMENTS ---
+            const allUI = {
+                positiveBuilder: document.getElementById('positive-prompt-builder'),
+                negativeBuilder: document.getElementById('negative-prompt-builder'),
+                positiveOutput: document.getElementById('positive-output'),
+                negativeOutput: document.getElementById('negative-output'),
+                copyPositiveBtn: document.getElementById('copy-positive'),
+                copyNegativeBtn: document.getElementById('copy-negative'),
+                imageUploadInput: document.getElementById('image-upload-input'),
+                imagePreviewContainer: document.getElementById('image-preview-container'),
+                imageTools: document.getElementById('image-tools'),
+                generateFromImageBtn: document.getElementById('generate-from-image-btn'),
+                analyzeBtnText: document.getElementById('analyze-btn-text'),
+                analyzeBtnLoader: document.getElementById('analyze-btn-loader'),
+                videoIdeaInput: document.getElementById('video-idea-input'),
+                improveIdeaBtn: document.getElementById('improve-idea-btn'),
+                improveBtnText: document.getElementById('improve-btn-text'),
+                improveBtnLoader: document.getElementById('improve-btn-loader'),
+                resetBtn: document.getElementById('reset-btn'),
+                refinePromptBtn: document.getElementById('refine-prompt-btn'),
+                refineBtnText: document.getElementById('refine-btn-text'),
+                refineBtnLoader: document.getElementById('refine-btn-loader'),
+                refinedOptionsContainer: document.getElementById('refined-options-container'),
+                langThBtn: document.getElementById('lang-th-btn'),
+                langEnBtn: document.getElementById('lang-en-btn')
+            };
+
+            // --- FUNCTIONS ---
+            const setLanguage = (lang) => {
+                currentLang = lang;
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.dataset.langKey;
+                    const translation = translations[lang][key];
+                    if (translation) {
+                        if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                            el.placeholder = translation;
+                        } else if (el.hasAttribute('title')) {
+                            el.title = translation;
+                        }
+                        else {
+                            el.textContent = translation;
+                        }
+                    }
+                });
+                allUI.langThBtn.classList.toggle('active', lang === 'th');
+                allUI.langEnBtn.classList.toggle('active', lang === 'en');
+                renderKeywords(); // Re-render keywords with translated titles
+                // Re-select keywords in UI after re-render
+                document.querySelectorAll('.keyword-btn').forEach(btn => {
+                    if (selectedPositive.has(btn.dataset.keyword) || selectedNegative.has(btn.dataset.keyword)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            };
+
+            const renderKeywords = () => {
+                const positiveHtml = `
+                    <div data-category-key="cat_anatomy"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_anatomy}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_action"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_action}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_style"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_style}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_theme"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_theme}</h4><div class="flex flex-wrap gap-2"></div></div>
+                `;
+                allUI.positiveBuilder.querySelector('.space-y-4').innerHTML = positiveHtml;
+
+                const negativeHtml = `<div data-category-key="พรอมต์เชิงลบ"><div class="flex flex-wrap gap-2"></div></div>`;
+                allUI.negativeBuilder.querySelector('.space-y-4').innerHTML = negativeHtml;
+
+                for (const categoryKey in keywords) {
+                    const isNegative = categoryKey === "พรอมต์เชิงลบ";
+                    const builder = isNegative ? allUI.negativeBuilder : allUI.positiveBuilder;
+                    const container = builder.querySelector(`[data-category-key="${categoryKey}"] > div`);
+                    if (container) {
+                        keywords[categoryKey].forEach(keyword => {
+                            const btn = document.createElement('button');
+                            btn.textContent = keyword;
+                            btn.dataset.keyword = keyword;
+                            btn.dataset.type = isNegative ? 'negative' : 'positive';
+                            btn.className = 'keyword-btn border border-gray-600 text-gray-300 text-sm font-medium py-1.5 px-3 rounded-full';
+                            container.appendChild(btn);
+                        });
+                    }
+                }
+            };
+            
+            const updateOutput = () => {
+                const ideaText = allUI.videoIdeaInput.value.trim();
+                const keywordsText = [...selectedPositive].join(', ');
+                let combinedPositivePrompt = '';
+                if (keywordsText && ideaText) {
+                    combinedPositivePrompt = `${keywordsText}, ${ideaText}`;
+                } else {
+                    combinedPositivePrompt = keywordsText || ideaText;
+                }
+                allUI.positiveOutput.value = combinedPositivePrompt;
+                allUI.negativeOutput.value = [...selectedNegative].join(', ');
+            };
+            
+            const handleKeywordClick = (e) => {
+                const btn = e.target.closest('.keyword-btn');
+                if (!btn) return;
+                const { keyword, type } = btn.dataset;
+                btn.classList.toggle('selected');
+                const targetSet = type === 'positive' ? selectedPositive : selectedNegative;
+                if (targetSet.has(keyword)) {
+                    targetSet.delete(keyword);
+                } else {
+                    targetSet.add(keyword);
+                }
+                updateOutput();
+            };
+
+            const handleCopyClick = (textToCopy, button) => {
+                try {
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = textToCopy;
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempTextArea);
+
+                    const originalText = button.textContent;
+                    button.textContent = translations[currentLang].copied;
+                    setTimeout(() => { button.textContent = originalText; }, 2000);
+                } catch (err) { console.error('Could not copy text: ', err); }
+            };
+
+            const handleImageUpload = (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const dataUrl = e.target.result;
+                        const mimeTypeMatch = dataUrl.match(/^data:(image\/\w+);base64,/);
+                        if (mimeTypeMatch && mimeTypeMatch[1]) {
+                            imageMimeType = mimeTypeMatch[1];
+                            imageBase64 = dataUrl.split(',')[1];
+                        }
+                        allUI.imagePreviewContainer.innerHTML = '';
+                        const img = document.createElement('img');
+                        img.src = dataUrl;
+                        img.alt = "Image Preview";
+                        img.className = "mx-auto max-h-48 rounded-lg object-contain";
+                        allUI.imagePreviewContainer.appendChild(img);
+                        allUI.imagePreviewContainer.appendChild(allUI.imageTools);
+                        allUI.imageTools.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            const setButtonLoading = (btn, textElem, loaderElem, isLoading, textKey) => {
+                btn.disabled = isLoading;
+                textElem.textContent = translations[currentLang][textKey] || textKey;
+                if(isLoading) {
+                    loaderElem.classList.remove('hidden');
+                } else {
+                    loaderElem.classList.add('hidden');
+                }
+            };
+
+            const analyzeImageWithGemini = async () => {
+                if (!imageBase64 || !imageMimeType) { alert(translations[currentLang].uploadFirst); return; }
+                setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, true, 'analyzing');
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const prompt = `Analyze this image and generate a comma-separated list of keywords for an image-to-video AI. Describe the subject, pose, lighting, and style. Example: 'a man, muscular, looking at viewer, studio lighting, photorealistic'.`;
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }, { inlineData: { mimeType: imageMimeType, data: imageBase64 } }] }] };
+
+                try {
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+                    const result = await response.json();
+                    const generatedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (generatedText) {
+                        const baseKeywords = ["photorealistic", "best quality", "masterpiece", "ultra detailed"];
+                        const apiKeywords = generatedText.split(',').map(k => k.trim().toLowerCase()).filter(k => k);
+                        const allKeywords = [...new Set([...baseKeywords, ...apiKeywords])];
+                        selectedPositive.clear();
+                        document.querySelectorAll('#positive-prompt-builder .keyword-btn.selected').forEach(btn => btn.classList.remove('selected'));
+                        allKeywords.forEach(keyword => {
+                            selectedPositive.add(keyword);
+                            const btn = document.querySelector(`#positive-prompt-builder .keyword-btn[data-keyword="${keyword}"]`);
+                            if (btn) btn.classList.add('selected');
+                        });
+                        updateOutput();
+                        setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, false, 'analyzed');
+                        setTimeout(() => setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, false, 'analyzeButton'), 2000);
+                    } else { throw new Error("Invalid response structure from API."); }
+                } catch (error) {
+                    console.error("Error analyzing image:", error);
+                    setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, false, 'error');
+                    setTimeout(() => setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, false, 'analyzeButton'), 3000);
+                }
+            };
+
+            const improveIdeaWithGemini = async () => {
+                const userIdea = allUI.videoIdeaInput.value.trim();
+                if (!userIdea) { alert(translations[currentLang].typeIdeaFirst); return; }
+                setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, true, '');
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const keywordsContext = [...selectedPositive].join(', ');
+                const prompt = `Given the image context described by these keywords: "${keywordsContext}". Please refine the following user's idea for a video continuation to be more descriptive, grammatically correct, and coherent. User's idea: "${userIdea}". Return only the improved sentence.`;
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+                try {
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+                    const result = await response.json();
+                    const improvedText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (improvedText) {
+                        allUI.videoIdeaInput.value = improvedText.trim();
+                        updateOutput();
+                        setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, false, 'improved');
+                        setTimeout(() => setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, false, 'improveButton'), 2000);
+                    } else { throw new Error("Invalid response structure from API."); }
+                } catch (error) {
+                    console.error("Error improving idea:", error);
+                    setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, false, 'error');
+                    setTimeout(() => setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, false, 'improveButton'), 3000);
+                }
+            };
+
+            const refinePromptWithGemini = async () => {
+                const rawPrompt = allUI.positiveOutput.value.trim();
+                if (!rawPrompt) { alert(translations[currentLang].emptyPrompt); return; }
+                setButtonLoading(allUI.refinePromptBtn, allUI.refineBtnText, allUI.refineBtnLoader, true, 'refining');
+                
+                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const prompt = `You are a prompt engineering expert. Take the following raw prompt for an AI video generator and refine it into three distinct, coherent English styles. Raw prompt: "${rawPrompt}".
+                1. Clear and Direct: A straightforward, unambiguous version.
+                2. More Evocative & Detailed: A more descriptive, artistic, and detailed version.
+                3. Simple and Concise: A short, to-the-point version.`;
+
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                direct: { type: "STRING", description: "Clear and Direct version" },
+                                detailed: { type: "STRING", description: "More Evocative & Detailed version" },
+                                concise: { type: "STRING", description: "Simple and Concise version" }
+                            },
+                            required: ["direct", "detailed", "concise"]
+                        }
+                    }
+                };
+
+                try {
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+                    const result = await response.json();
+                    const optionsText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (optionsText) {
+                        const options = JSON.parse(optionsText);
+                        displayRefinedOptions(options);
+                    } else { throw new Error("Invalid JSON response from API."); }
+                } catch (error) {
+                    console.error("Error refining prompt:", error);
+                    allUI.refinedOptionsContainer.innerHTML = `<p class="text-red-400">${translations[currentLang].error}</p>`;
+                    allUI.refinedOptionsContainer.classList.remove('hidden');
+                } finally {
+                    setButtonLoading(allUI.refinePromptBtn, allUI.refineBtnText, allUI.refineBtnLoader, false, 'refineButton');
+                }
+            };
+            
+            const displayRefinedOptions = (options) => {
+                allUI.refinedOptionsContainer.innerHTML = '';
+                const styles = [
+                    { key: 'direct', title: 'Clear and Direct' },
+                    { key: 'detailed', title: 'More Evocative & Detailed' },
+                    { key: 'concise', title: 'Simple and Concise' }
+                ];
+
+                styles.forEach(style => {
+                    const card = document.createElement('div');
+                    card.className = 'option-card border border-gray-600 rounded-lg p-3 hover:border-indigo-500 transition-colors';
+                    const promptText = options[style.key];
+                    
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start gap-2">
+                            <div class="flex-grow cursor-pointer">
+                                <h4 class="font-semibold text-indigo-300">${style.title}</h4>
+                                <p class="text-gray-300 text-sm mt-1">${promptText}</p>
+                            </div>
+                            <button class="copy-refined-btn text-xs bg-gray-600 hover:bg-indigo-500 text-white font-semibold py-1 px-2 rounded-md transition-colors flex-shrink-0 self-center" data-lang-key="copyButton">${translations[currentLang].copyButton}</button>
+                        </div>
+                    `;
+
+                    card.querySelector('.flex-grow').addEventListener('click', () => {
+                        allUI.positiveOutput.value = promptText;
+                        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                        card.classList.add('selected');
+                    });
+
+                    const copyBtn = card.querySelector('.copy-refined-btn');
+                    copyBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        handleCopyClick(promptText, copyBtn);
+                    });
+
+                    allUI.refinedOptionsContainer.appendChild(card);
+                });
+                allUI.refinedOptionsContainer.classList.remove('hidden');
+            };
+
+            // --- EVENT LISTENERS ---
+            allUI.positiveBuilder.addEventListener('click', handleKeywordClick);
+            allUI.negativeBuilder.addEventListener('click', handleKeywordClick);
+            allUI.copyPositiveBtn.addEventListener('click', () => handleCopyClick(allUI.positiveOutput.value, allUI.copyPositiveBtn));
+            allUI.copyNegativeBtn.addEventListener('click', () => handleCopyClick(allUI.negativeOutput.value, allUI.copyNegativeBtn));
+            allUI.imageUploadInput.addEventListener('change', handleImageUpload);
+            allUI.generateFromImageBtn.addEventListener('click', analyzeImageWithGemini);
+            allUI.videoIdeaInput.addEventListener('input', updateOutput);
+            allUI.improveIdeaBtn.addEventListener('click', improveIdeaWithGemini);
+            allUI.resetBtn.addEventListener('click', () => { location.reload(); });
+            allUI.refinePromptBtn.addEventListener('click', refinePromptWithGemini);
+            allUI.langThBtn.addEventListener('click', () => setLanguage('th'));
+            allUI.langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+            // --- INITIALIZATION ---
+            setLanguage('th'); // Set initial language
+            const defaultNegatives = ["worst quality", "low quality", "blurry", "bad anatomy", "bad hands"];
+            document.querySelectorAll('#negative-prompt-builder .keyword-btn').forEach(btn => {
+                if (defaultNegatives.includes(btn.dataset.keyword)) {
+                    btn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

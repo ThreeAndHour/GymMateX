@@ -7,31 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Sarabun', sans-serif;
+            font-family: 'Inter', 'Sarabun', sans-serif;
         }
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
+        [lang="th"] body {
+            font-family: 'Sarabun', 'Inter', sans-serif;
         }
-        ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-        }
-        .copy-btn-icon {
-            transition: transform 0.2s ease-in-out;
-        }
-        .copy-btn:active .copy-btn-icon {
-            transform: scale(0.85);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        .copy-btn-icon { transition: transform 0.2s ease-in-out; }
+        .copy-btn:active .copy-btn-icon { transform: scale(0.85); }
         .loader, .spinner {
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -48,6 +37,10 @@
             width: 16px;
             height: 16px;
         }
+        .lang-btn-active {
+            background-color: #3b82f6;
+            color: white;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -57,9 +50,13 @@
 <body class="bg-gray-900 text-gray-200 min-h-screen">
     <div class="container mx-auto p-4 md:p-8">
         <!-- Header Section -->
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">VDO Prompt Generator</h1>
-            <p class="text-lg text-gray-400">เครื่องมือช่วยสร้าง Prompt วิดีโอจากภาพและไอเดียของคุณ</p>
+        <header class="text-center mb-8 relative">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2" data-lang-key="main_title">VDO Prompt Generator</h1>
+            <p class="text-lg text-gray-400" data-lang-key="subtitle">เครื่องมือช่วยสร้าง Prompt วิดีโอจากภาพและไอเดียของคุณ</p>
+            <div id="lang-switcher" class="absolute top-0 right-0 flex space-x-1 bg-gray-700 p-1 rounded-lg">
+                <button id="lang-th" class="lang-btn-active px-3 py-1 text-sm font-bold rounded-md">TH</button>
+                <button id="lang-en" class="px-3 py-1 text-sm font-bold rounded-md">EN</button>
+            </div>
         </header>
 
         <!-- Main Content Grid -->
@@ -68,19 +65,19 @@
             <!-- Left Column: Input Panel -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col gap-6 h-full">
                 <div>
-                    <h2 class="text-2xl font-bold mb-4 text-white">1. ใส่ข้อมูลภาพของคุณ</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-white" data-lang-key="step1_title">1. ใส่ข้อมูลภาพของคุณ</h2>
                     <!-- Image Upload Section -->
                     <div class="mb-4">
-                        <label class="block text-lg font-medium mb-2 text-gray-300">ภาพตั้งต้น</label>
+                        <label class="block text-lg font-medium mb-2 text-gray-300" data-lang-key="step1_image_label">ภาพตั้งต้น</label>
                         <div class="relative group">
                             <img id="previewImage" src="https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Man looking over city" class="w-full h-auto object-cover rounded-lg shadow-md">
                             <label for="imageUpload" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer rounded-lg">
-                                <div class="text-center text-white bg-gray-800 bg-opacity-70 px-4 py-2 rounded-lg">
+                                <div id="changeImageOverlay" class="text-center text-white bg-gray-800 bg-opacity-70 px-4 py-2 rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-upload mx-auto mb-1" viewBox="0 0 16 16">
                                       <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                       <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
                                     </svg>
-                                    <span>เปลี่ยนภาพ</span>
+                                    <span data-lang-key="change_image">เปลี่ยนภาพ</span>
                                 </div>
                             </label>
                             <input type="file" id="imageUpload" class="hidden" accept="image/*">
@@ -90,33 +87,38 @@
                     <!-- Image Description Inputs -->
                     <div class="space-y-4">
                         <div class="flex items-center justify-between">
-                            <label for="subjectDescription" class="block text-md font-medium text-gray-300">1.1 อธิบายตัวแบบหลักในภาพ</label>
+                            <label for="subjectDescription" class="block text-md font-medium text-gray-300" data-lang-key="step1_1_label">1.1 อธิบายตัวแบบหลักในภาพ</label>
                             <button id="analyzeBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold py-2 px-3 rounded-lg flex items-center gap-2 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
-                                    <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4L8 3.293a.5.5 0 1 0-.707-.707L6.586 3.293a.5.5 0 1 0 .707.707ZM5.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm-4.5.035A.5.5 0 0 0 .293 2L1.586 3.293a.5.5 0 1 0 .707.707L1 2.707ZM10.828 15.01A.5.5 0 0 0 11 14.5v-2.005a.5.5 0 0 0-1 0v2.005a.5.5 0 0 0 .828.375ZM15 11.5a.5.5 0 0 0-.5-.5h-2.005a.5.5 0 0 0 0 1h2.005a.5.5 0 0 0 .5-.5ZM5 11.5a.5.5 0 0 0-.5-.5H2.495a.5.5 0 0 0 0 1H4.5a.5.5 0 0 0 .5-.5ZM2 5.5a.5.5 0 0 0 .5.5h2.005a.5.5 0 0 0 0-1H2.5a.5.5 0 0 0-.5.5ZM1 9.5A.5.5 0 0 0 1.5 10h2.005a.5.5 0 0 0 0-1H1.5A.5.5 0 0 0 1 9.5ZM14.5 9.5a.5.5 0 0 0-.5.5h-2.005a.5.5 0 0 0 0 1h2.005a.5.5 0 0 0 .5-.5Z"/>
-                                </svg>
-                                <span id="analyzeBtnText">วิเคราะห์ภาพอัตโนมัติ</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16"><path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4L8 3.293a.5.5 0 1 0-.707-.707L6.586 3.293a.5.5 0 1 0 .707.707ZM5.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm-4.5.035A.5.5 0 0 0 .293 2L1.586 3.293a.5.5 0 1 0 .707.707L1 2.707ZM10.828 15.01A.5.5 0 0 0 11 14.5v-2.005a.5.5 0 0 0-1 0v2.005a.5.5 0 0 0 .828.375ZM15 11.5a.5.5 0 0 0-.5-.5h-2.005a.5.5 0 0 0 0 1h2.005a.5.5 0 0 0 .5-.5ZM5 11.5a.5.5 0 0 0-.5-.5H2.495a.5.5 0 0 0 0 1H4.5a.5.5 0 0 0 .5-.5ZM2 5.5a.5.5 0 0 0 .5.5h2.005a.5.5 0 0 0 0-1H2.5a.5.5 0 0 0-.5.5ZM1 9.5A.5.5 0 0 0 1.5 10h2.005a.5.5 0 0 0 0-1H1.5A.5.5 0 0 0 1 9.5ZM14.5 9.5a.5.5 0 0 0-.5.5h-2.005a.5.5 0 0 0 0 1h2.005a.5.5 0 0 0 .5-.5Z"/></svg>
+                                <span id="analyzeBtnText" data-lang-key="analyze_btn">วิเคราะห์ภาพอัตโนมัติ</span>
                                 <div id="analyzeSpinner" class="spinner hidden"></div>
                             </button>
                         </div>
                         <input type="text" id="subjectDescription" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2 text-gray-200 focus:ring-2 focus:ring-blue-500" value="A muscular Asian man wearing a white tank top">
                         
                         <div>
-                            <label for="sceneDescription" class="block text-md font-medium mb-1 text-gray-300">1.2 อธิบายฉาก/พื้นหลัง</label>
+                            <label for="sceneDescription" class="block text-md font-medium mb-1 text-gray-300" data-lang-key="step1_2_label">1.2 อธิบายฉาก/พื้นหลัง</label>
                             <input type="text" id="sceneDescription" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-2 text-gray-200 focus:ring-2 focus:ring-blue-500" value="sitting on a sofa in a modern penthouse apartment, with bokeh city lights in the background at night">
                         </div>
                     </div>
                     
                     <!-- User Idea Input -->
                     <div class="mt-6">
-                        <label for="userIdea" class="block text-lg font-medium mb-2 text-gray-300">2. ใส่ไอเดียหรือสิ่งที่อยากให้เกิดขึ้น</label>
-                        <textarea id="userIdea" rows="3" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-500 transition" placeholder="เช่น: เขากำลังคิดถึงอนาคต, กำลังตัดสินใจเรื่องสำคัญ, มองหาใครบางคน..."></textarea>
+                        <div class="flex items-center justify-between mb-2">
+                             <label for="userIdea" class="block text-lg font-medium text-gray-300" data-lang-key="step2_title">2. ใส่ไอเดียหรือสิ่งที่อยากให้เกิดขึ้น</label>
+                             <button id="improveIdeaBtn" class="bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold py-2 px-3 rounded-lg flex items-center gap-2 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.35l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.35A1.734 1.734 0 0 0 2.31 4.253l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>
+                                <span id="improveBtnText" data-lang-key="improve_btn">ปรับปรุงไอเดีย</span>
+                                <div id="improveSpinner" class="spinner hidden"></div>
+                            </button>
+                        </div>
+                        <textarea id="userIdea" rows="3" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-3 text-gray-200 focus:ring-2 focus:ring-blue-500 transition" data-lang-key="idea_placeholder" placeholder="เช่น: เขากำลังคิดถึงอนาคต, กำลังตัดสินใจเรื่องสำคัญ, มองหาใครบางคน..."></textarea>
                     </div>
                 </div>
                 
                 <!-- Generate Button -->
                 <div class="mt-auto">
-                    <button id="generateBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    <button id="generateBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-lg" data-lang-key="generate_btn">
                         สร้าง Prompts
                     </button>
                 </div>
@@ -124,13 +126,23 @@
 
             <!-- Right Column: Results Panel -->
             <div id="resultsPanel" class="bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold mb-4 text-white">3. ผลลัพธ์ Prompts ที่แนะนำ</h2>
-                <div id="resultsContainer" class="h-[600px] overflow-y-auto p-1">
-                    <!-- Initial message -->
-                    <div id="initialMessage" class="flex items-center justify-center h-full text-center text-gray-500">
-                        <p>กรุณาใส่ไอเดียของคุณในช่องด้านซ้าย<br>แล้วกดปุ่ม "สร้าง Prompts" เพื่อเริ่มต้น</p>
+                <div class="h-full flex flex-col">
+                    <h2 class="text-2xl font-bold mb-4 text-white" data-lang-key="step3_title">3. ผลลัพธ์ Prompts ที่แนะนำ</h2>
+                    <div id="resultsContainer" class="flex-grow overflow-y-auto p-1 mb-4">
+                        <!-- Initial message -->
+                        <div id="initialMessage" class="flex items-center justify-center h-full text-center text-gray-500">
+                            <p data-lang-key="initial_msg_l1">กรุณาใส่ไอเดียของคุณในช่องด้านซ้าย</p>
+                            <p data-lang-key="initial_msg_l2">แล้วกดปุ่ม "สร้าง Prompts" เพื่อเริ่มต้น</p>
+                        </div>
+                        <!-- Generated prompts will be injected here -->
                     </div>
-                    <!-- Generated prompts will be injected here -->
+                    <!-- Refined Prompts Section -->
+                    <div id="refinedPromptsSection" class="hidden flex-shrink-0">
+                         <h2 class="text-2xl font-bold mb-4 text-white border-t-2 border-gray-700 pt-4" data-lang-key="step4_title">4. ปรับปรุงและสังเคราะห์ Prompt</h2>
+                         <div id="refinedPromptsContainer" class="space-y-4">
+                            <!-- Refined prompts will be injected here -->
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,74 +150,150 @@
 
     <script>
         // --- DOM Elements ---
-        const generateBtn = document.getElementById('generateBtn');
-        const userIdeaInput = document.getElementById('userIdea');
-        const subjectDescriptionInput = document.getElementById('subjectDescription');
-        const sceneDescriptionInput = document.getElementById('sceneDescription');
-        const resultsContainer = document.getElementById('resultsContainer');
-        const imageUpload = document.getElementById('imageUpload');
-        const previewImage = document.getElementById('previewImage');
-        const initialMessage = document.getElementById('initialMessage');
-        const analyzeBtn = document.getElementById('analyzeBtn');
-        const analyzeBtnText = document.getElementById('analyzeBtnText');
-        const analyzeSpinner = document.getElementById('analyzeSpinner');
+        const allElements = {
+            generateBtn: document.getElementById('generateBtn'),
+            userIdeaInput: document.getElementById('userIdea'),
+            subjectDescriptionInput: document.getElementById('subjectDescription'),
+            sceneDescriptionInput: document.getElementById('sceneDescription'),
+            resultsContainer: document.getElementById('resultsContainer'),
+            imageUpload: document.getElementById('imageUpload'),
+            previewImage: document.getElementById('previewImage'),
+            initialMessage: document.getElementById('initialMessage'),
+            analyzeBtn: document.getElementById('analyzeBtn'),
+            analyzeBtnText: document.getElementById('analyzeBtnText'),
+            analyzeSpinner: document.getElementById('analyzeSpinner'),
+            improveIdeaBtn: document.getElementById('improveIdeaBtn'),
+            improveBtnText: document.getElementById('improveBtnText'),
+            improveSpinner: document.getElementById('improveSpinner'),
+            refinedPromptsSection: document.getElementById('refinedPromptsSection'),
+            refinedPromptsContainer: document.getElementById('refinedPromptsContainer'),
+            langThBtn: document.getElementById('lang-th'),
+            langEnBtn: document.getElementById('lang-en'),
+        };
         
         let currentFile = null;
+        let currentLang = 'th';
+
+        // --- Translation Data ---
+        const translations = {
+            en: {
+                main_title: "VDO Prompt Generator",
+                subtitle: "A tool to help you create video prompts from your images and ideas.",
+                step1_title: "1. Provide Your Image Data",
+                step1_image_label: "Source Image",
+                change_image: "Change Image",
+                step1_1_label: "1.1 Describe the main subject",
+                analyze_btn: "Analyze Image",
+                analyzing_btn: "Analyzing...",
+                step1_2_label: "1.2 Describe the scene/background",
+                step2_title: "2. Add Your Idea",
+                improve_btn: "Improve Idea",
+                improving_btn: "Improving...",
+                idea_placeholder: "e.g., He is thinking about the future, making a big decision, looking for someone...",
+                generate_btn: "Generate Prompts",
+                step3_title: "3. Recommended Prompts",
+                initial_msg_l1: "Please enter your idea on the left",
+                initial_msg_l2: "and press 'Generate Prompts' to start.",
+                step4_title: "4. Refined & Synthesized Prompts",
+                refined1_title: "1. Clear and Direct",
+                refined1_desc: "Straightforward, focuses on technical details like camera angles and lighting.",
+                refined2_title: "2. More Evocative & Story-Driven",
+                refined2_desc: "Focuses on storytelling, creating emotion, and atmosphere.",
+                refined3_title: "3. Simple and Concise",
+                refined3_desc: "Short and to the point, suitable for quick clips or simpler models.",
+                copy_tooltip: "Copy",
+                alert_idea_missing: "Please enter your idea before generating.",
+                alert_all_missing: "Please complete sections 1.1, 1.2, and 2.",
+                alert_context_missing: "Please analyze or fill in 1.1 and 1.2 to provide context for improving the idea.",
+                alert_analyze_error: "An error occurred while analyzing the image. Please try again.",
+                alert_improve_error: "An error occurred while improving the idea. Please try again.",
+                alert_upload_first: "Please upload an image first.",
+                model_veo_exp: "Focuses on narrative (thinks about...) and leverages audio generation strengths for the most complete result from Veo.",
+                model_kling_exp: "Designed to leverage long video and character coherence capabilities by scripting multi-step actions and explicitly stating 'Maintain character consistency'.",
+                model_wan_exp: "Uses technical, cinematic language that Wan 2.2 is trained to understand for high-aesthetic results.",
+                model_runway_exp: "Uses the recommended Runway prompt structure ([camera movement]: [scene]) for the most accurate interpretation. Can be further refined with tools like Motion Brush.",
+                model_leonardo_exp: "Emphasizes clear, direct camera commands (slow dolly in), which is a strength of Leonardo, ideal for use with its UI motion controls.",
+                model_hailuo_exp: "Focuses on describing emotional changes and facial expressions, which is Hailuo's specialty.",
+                model_grok_exp: "Uses short, concise, direct commands suitable for generating quick, fun, and uncomplicated clips.",
+            },
+            th: {
+                main_title: "VDO Prompt Generator",
+                subtitle: "เครื่องมือช่วยสร้าง Prompt วิดีโอจากภาพและไอเดียของคุณ",
+                step1_title: "1. ใส่ข้อมูลภาพของคุณ",
+                step1_image_label: "ภาพตั้งต้น",
+                change_image: "เปลี่ยนภาพ",
+                step1_1_label: "1.1 อธิบายตัวแบบหลักในภาพ",
+                analyze_btn: "วิเคราะห์ภาพอัตโนมัติ",
+                analyzing_btn: "กำลังวิเคราะห์...",
+                step1_2_label: "1.2 อธิบายฉาก/พื้นหลัง",
+                step2_title: "2. ใส่ไอเดียหรือสิ่งที่อยากให้เกิดขึ้น",
+                improve_btn: "ปรับปรุงไอเดีย",
+                improving_btn: "กำลังปรับปรุง...",
+                idea_placeholder: "เช่น: เขากำลังคิดถึงอนาคต, กำลังตัดสินใจเรื่องสำคัญ, มองหาใครบางคน...",
+                generate_btn: "สร้าง Prompts",
+                step3_title: "3. ผลลัพธ์ Prompts ที่แนะนำ",
+                initial_msg_l1: "กรุณาใส่ไอเดียของคุณในช่องด้านซ้าย",
+                initial_msg_l2: "แล้วกดปุ่ม 'สร้าง Prompts' เพื่อเริ่มต้น",
+                step4_title: "4. ปรับปรุงและสังเคราะห์ Prompt",
+                refined1_title: "1. ชัดเจนและตรงไปตรงมา",
+                refined1_desc: "เน้นรายละเอียดทางเทคนิค เช่น มุมกล้อง แสง",
+                refined2_title: "2. เน้นการเล่าเรื่องและสร้างอารมณ์",
+                refined2_desc: "เน้นการเล่าเรื่อง สร้างอารมณ์ และบรรยากาศ",
+                refined3_title: "3. เรียบง่ายและกระชับ",
+                refined3_desc: "สั้น กระชับ เหมาะกับการสร้างคลิปเร็วๆ หรือใช้กับโมเดลที่ไม่ซับซ้อน",
+                copy_tooltip: "คัดลอก",
+                alert_idea_missing: "กรุณาใส่ไอเดียก่อนปรับปรุงครับ",
+                alert_all_missing: "กรุณากรอกข้อมูลในช่อง 1.1, 1.2 และ 2 ให้ครบถ้วนครับ",
+                alert_context_missing: "กรุณาวิเคราะห์ภาพหรือกรอกข้อมูล 1.1 และ 1.2 เพื่อเป็นบริบทในการปรับปรุงไอเดียครับ",
+                alert_analyze_error: "เกิดข้อผิดพลาดในการวิเคราะห์ภาพ กรุณาลองใหม่อีกครั้ง",
+                alert_improve_error: "เกิดข้อผิดพลาดในการปรับปรุงไอเดีย กรุณาลองใหม่",
+                alert_upload_first: "กรุณาอัปโหลดรูปภาพก่อนครับ",
+                model_veo_exp: "เน้นการเล่าเรื่อง (thinks about...) และใช้จุดแข็งด้านการสร้างเสียง (audio should be...) เพื่อให้ได้ผลลัพธ์ที่สมบูรณ์ที่สุดจาก Veo",
+                model_kling_exp: "ออกแบบมาเพื่อใช้ประโยชน์จากความสามารถในการสร้างวิดีโอยาวและความต่อเนื่องของตัวละคร โดยกำหนดการกระทำที่มีลำดับขั้นตอน (stands up, walks over) และระบุชัดเจนว่า 'Maintain character consistency'",
+                model_wan_exp: "ใช้คำศัพท์เฉพาะทางภาพยนตร์ (cinematic, rembrandt lighting, 85mm lens, bokeh) ซึ่ง Wan 2.2 ถูกฝึกมาให้เข้าใจและสร้างผลลัพธ์ที่มีสุนทรียศาสตร์สูง",
+                model_runway_exp: "ใช้โครงสร้าง Prompt ที่ Runway แนะนำ ([camera movement]: [scene]) เพื่อการตีความที่แม่นยำที่สุด สามารถนำผลลัพธ์ไปปรับแต่งต่อด้วยเครื่องมืออย่าง Motion Brush ได้",
+                model_leonardo_exp: "เน้นการสั่งงานกล้องที่ชัดเจนและตรงไปตรงมา (slow dolly in) ซึ่งเป็นจุดแข็งของ Leonardo เหมาะกับการใช้ร่วมกับเครื่องมือควบคุมการเคลื่อนไหวใน UI",
+                model_hailuo_exp: "เน้นการอธิบายการเปลี่ยนแปลงทางอารมณ์และการแสดงออกทางสีหน้า (furrowed brow, hopeful smile) ซึ่งเป็นความสามารถพิเศษของ Hailuo",
+                model_grok_exp: "ใช้คำสั่งที่สั้น กระชับ และตรงไปตรงมา เหมาะสำหรับการสร้างคลิปสั้นๆ อย่างรวดเร็วในสไตล์ที่สนุกสนาน ไม่ซับซ้อน",
+            }
+        };
 
         // --- Data for AI Models ---
         const models = [
-            {
-                id: 'veo',
-                name: 'Google Veo 3',
-                strength: 'นักเล่าเรื่องและความเข้าใจในเสียง',
-                generatePrompt: (idea, subject, scene) => `${subject} is ${scene}. They slowly lift their head, a thoughtful expression on their face as they think about ${idea}. Cinematic, shallow depth of field, warm interior lighting. The audio should be the low hum of the city and a soft, contemplative musical score.`,
-                explanation: 'เน้นการเล่าเรื่อง (thinks about...) และใช้จุดแข็งด้านการสร้างเสียง (audio should be...) เพื่อให้ได้ผลลัพธ์ที่สมบูรณ์ที่สุดจาก Veo'
-            },
-            {
-                id: 'kling',
-                name: 'Kling 2.1',
-                strength: 'นักวิ่งมาราธอน (ความยาวและความต่อเนื่อง)',
-                generatePrompt: (idea, subject, scene) => `${subject} is ${scene}. They stand up smoothly, walk over to the large window, and place their hand on the glass, looking down at the city nightlife while contemplating ${idea}. The camera follows them in a single, steady shot for 30 seconds. Maintain character consistency throughout the entire sequence. Photorealistic, cinematic.`,
-                explanation: 'ออกแบบมาเพื่อใช้ประโยชน์จากความสามารถในการสร้างวิดีโอยาวและความต่อเนื่องของตัวละคร โดยกำหนดการกระทำที่มีลำดับขั้นตอน (stands up, walks over) และระบุชัดเจนว่า "Maintain character consistency"'
-            },
-            {
-                id: 'wan',
-                name: 'Wan 2.2',
-                strength: 'ขุมพลังโอเพนซอร์ส (เน้นคุณภาพฟิล์ม)',
-                generatePrompt: (idea, subject, scene) => `cinematic shot, ${subject} is ${scene}. They are thinking about ${idea}. high contrast lighting, rembrandt lighting on their face, shallow depth of field, 85mm lens. They slowly turn their head towards the camera with a determined look.`,
-                explanation: 'ใช้คำศัพท์เฉพาะทางภาพยนตร์ (cinematic, rembrandt lighting, 85mm lens, bokeh) ซึ่ง Wan 2.2 ถูกฝึกมาให้เข้าใจและสร้างผลลัพธ์ที่มีสุนทรียศาสตร์สูง'
-            },
-            {
-                id: 'runway',
-                name: 'Runway Gen-3',
-                strength: 'สตูดิโอสำหรับมืออาชีพ (ควบคุมละเอียด)',
-                generatePrompt: (idea, subject, scene) => `Low angle static shot: The camera is angled up at ${subject} who is ${scene}, deep in thought about ${idea}. The dramatic sky is visible.`,
-                explanation: 'ใช้โครงสร้าง Prompt ที่ Runway แนะนำ ([camera movement]: [scene]) เพื่อการตีความที่แม่นยยำที่สุด สามารถนำผลลัพธ์ไปปรับแต่งต่อด้วยเครื่องมืออย่าง Motion Brush ได้'
-            },
-            {
-                id: 'leonardo',
-                name: 'Leonardo Motion 2.0',
-                strength: 'นักแอนิเมชัน (ควบคุมกล้องแม่นยำ)',
-                generatePrompt: (idea, subject, scene) => `The subject, ${subject}, is ${scene} and thinking about ${idea}. The camera performs a slow dolly in, pushing towards their face to capture their subtle emotional shift.`,
-                explanation: 'เน้นการสั่งงานกล้องที่ชัดเจนและตรงไปตรงมา (slow dolly in) ซึ่งเป็นจุดแข็งของ Leonardo เหมาะกับการใช้ร่วมกับเครื่องมือควบคุมการเคลื่อนไหวใน UI'
-            },
-            {
-                id: 'hailuo',
-                name: 'Hailuo 02',
-                strength: 'เครื่องมือสร้างอารมณ์',
-                generatePrompt: (idea, subject, scene) => `The subject, ${subject}, is ${scene} and deep in thought about ${idea}, their brow slightly furrowed. After a moment, a small, hopeful smile appears on their lips as they find their answer.`,
-                explanation: 'เน้นการอธิบายการเปลี่ยนแปลงทางอารมณ์และการแสดงออกทางสีหน้า (furrowed brow, hopeful smile) ซึ่งเป็นความสามารถพิเศษของ Hailuo'
-            },
-            {
-                id: 'grok',
-                name: 'Grok (Imagine)',
-                strength: 'ความเร็วคือทุกสิ่ง',
-                generatePrompt: (idea, subject, scene) => `Animate this image. ${subject} is thinking about ${idea} and then they wink at the camera.`,
-                explanation: 'ใช้คำสั่งที่สั้น กระชับ และตรงไปตรงมา เหมาะสำหรับการสร้างคลิปสั้นๆ อย่างรวดเร็วในสไตล์ที่สนุกสนาน ไม่ซับซ้อน'
-            }
+            { id: 'veo', name: 'Google Veo 3', strength: 'นักเล่าเรื่องและความเข้าใจในเสียง', generatePrompt: (i, s, c) => `A cinematic shot of ${s} ${c}. ${i}. The scene has a shallow depth of field and warm interior lighting. The audio should be the low hum of the city and a soft, contemplative musical score.`, explanation_key: 'model_veo_exp' },
+            { id: 'kling', name: 'Kling 2.1', strength: 'นักวิ่งมาราธอน (ความยาวและความต่อเนื่อง)', generatePrompt: (i, s, c) => `A photorealistic, cinematic shot of ${s} ${c}. The action unfolds over 30 seconds: ${i}. The camera follows the action in a single, steady shot, maintaining character consistency throughout.`, explanation_key: 'model_kling_exp' },
+            { id: 'wan', name: 'Wan 2.2', strength: 'ขุมพลังโอเพนซอร์ส (เน้นคุณภาพฟิล์ม)', generatePrompt: (i, s, c) => `Cinematic shot, 85mm lens. ${s} ${c}. ${i}. The scene has high contrast, rembrandt lighting on their face, and a shallow depth of field.`, explanation_key: 'model_wan_exp' },
+            { id: 'runway', name: 'Runway Gen-3', strength: 'สตูดิโอสำหรับมืออาชีพ (ควบคุมละเอียด)', generatePrompt: (i, s, c) => `Low angle static shot: ${s} ${c}. ${i}.`, explanation_key: 'model_runway_exp' },
+            { id: 'leonardo', name: 'Leonardo Motion 2.0', strength: 'นักแอนิเมชัน (ควบคุมกล้องแม่นยำ)', generatePrompt: (i, s, c) => `${s} ${c}. ${i}. The camera performs a slow dolly in, pushing towards their face to capture the subtle emotional shift.`, explanation_key: 'model_leonardo_exp' },
+            { id: 'hailuo', name: 'Hailuo 02', strength: 'เครื่องมือสร้างอารมณ์', generatePrompt: (i, s, c) => `An emotional scene of ${s} ${c}. ${i}. Focus on their realistic and engaging facial expressions.`, explanation_key: 'model_hailuo_exp' },
+            { id: 'grok', name: 'Grok (Imagine)', strength: 'ความเร็วคือทุกสิ่ง', generatePrompt: (i, s, c) => `Animate this image: ${s} ${c}. ${i}.`, explanation_key: 'model_grok_exp' }
         ];
 
         // --- Functions ---
+        
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            allElements.langThBtn.classList.toggle('lang-btn-active', lang === 'th');
+            allElements.langEnBtn.classList.toggle('lang-btn-active', lang === 'en');
+
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                const translation = translations[lang][key];
+                if (translation) {
+                    if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                        el.placeholder = translation;
+                    } else {
+                        el.innerHTML = translation;
+                    }
+                }
+            });
+            // Re-render prompts if they exist
+            if (!allElements.initialMessage.style.display === 'none') {
+                handleGenerateClick(false); // Pass false to prevent showing loader
+            }
+        }
 
         function copyToClipboard(text, buttonElement) {
             const textarea = document.createElement('textarea');
@@ -227,18 +315,57 @@
             document.body.removeChild(textarea);
         }
 
-        function handleGenerateClick() {
-            const userIdea = userIdeaInput.value.trim();
-            const subjectDescription = subjectDescriptionInput.value.trim();
-            const sceneDescription = sceneDescriptionInput.value.trim();
+        function generateRefinedPrompts(idea, subject, scene) {
+            const prompts = {
+                direct: `Cinematic shot, low angle. ${subject} ${scene}. ${idea}. The camera slowly pushes in on their face. High contrast lighting, shallow depth of field.`,
+                story: `In the quiet of a penthouse high above the glittering city, ${subject} ${scene}. ${idea}. The scene is filled with a sense of solitude and momentous decision. The low hum of the city is the only sound.`,
+                simple: `Animate the image: ${subject} ${scene}. ${idea}.`
+            };
+
+            allElements.refinedPromptsSection.classList.remove('hidden');
+            allElements.refinedPromptsContainer.innerHTML = `
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-bold text-lg text-white mb-1">${translations[currentLang].refined1_title}</h4>
+                    <p class="text-sm text-gray-400 mb-2">${translations[currentLang].refined1_desc}</p>
+                    <div class="bg-gray-900 rounded-md p-3 relative">
+                        <p id="prompt-refined-direct" class="text-gray-300 pr-12">${prompts.direct}</p>
+                        <button class="copy-btn absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-full" data-prompt-id="prompt-refined-direct" title="${translations[currentLang].copy_tooltip}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill copy-btn-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z"/></svg></button>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-bold text-lg text-white mb-1">${translations[currentLang].refined2_title}</h4>
+                    <p class="text-sm text-gray-400 mb-2">${translations[currentLang].refined2_desc}</p>
+                    <div class="bg-gray-900 rounded-md p-3 relative">
+                        <p id="prompt-refined-story" class="text-gray-300 pr-12">${prompts.story}</p>
+                        <button class="copy-btn absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-full" data-prompt-id="prompt-refined-story" title="${translations[currentLang].copy_tooltip}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill copy-btn-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z"/></svg></button>
+                    </div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <h4 class="font-bold text-lg text-white mb-1">${translations[currentLang].refined3_title}</h4>
+                    <p class="text-sm text-gray-400 mb-2">${translations[currentLang].refined3_desc}</p>
+                    <div class="bg-gray-900 rounded-md p-3 relative">
+                        <p id="prompt-refined-simple" class="text-gray-300 pr-12">${prompts.simple}</p>
+                        <button class="copy-btn absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-full" data-prompt-id="prompt-refined-simple" title="${translations[currentLang].copy_tooltip}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill copy-btn-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z"/></svg></button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleGenerateClick(showLoader = true) {
+            const userIdea = allElements.userIdeaInput.value.trim();
+            const subjectDescription = allElements.subjectDescriptionInput.value.trim();
+            const sceneDescription = allElements.sceneDescriptionInput.value.trim();
 
             if (!userIdea || !subjectDescription || !sceneDescription) {
-                alert('กรุณากรอกข้อมูลในช่อง 1.1, 1.2 และ 2 ให้ครบถ้วนครับ');
+                alert(translations[currentLang].alert_all_missing);
                 return;
             }
 
-            initialMessage.style.display = 'none';
-            resultsContainer.innerHTML = `<div class="flex items-center justify-center h-full"><div class="loader"></div></div>`;
+            allElements.initialMessage.style.display = 'none';
+            allElements.refinedPromptsSection.classList.add('hidden');
+            if(showLoader) {
+                allElements.resultsContainer.innerHTML = `<div class="flex items-center justify-center h-full"><div class="loader"></div></div>`;
+            }
             
             setTimeout(() => {
                 const promptCardsHTML = models.map(model => `
@@ -247,17 +374,16 @@
                             <h3 class="text-xl font-bold text-white">${model.name}</h3>
                             <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">${model.strength}</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-3">${model.explanation}</p>
+                        <p class="text-sm text-gray-400 mb-3">${translations[currentLang][model.explanation_key]}</p>
                         <div class="bg-gray-900 rounded-md p-3 relative">
                             <p id="prompt-${model.id}" class="text-gray-300 pr-12">${model.generatePrompt(userIdea, subjectDescription, sceneDescription)}</p>
-                            <button class="copy-btn absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-full flex items-center justify-center" data-prompt-id="prompt-${model.id}" title="คัดลอก Prompt">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill copy-btn-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z"/></svg>
-                            </button>
+                            <button class="copy-btn absolute top-1/2 right-2 -translate-y-1/2 bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-full" data-prompt-id="prompt-${model.id}" title="${translations[currentLang].copy_tooltip}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-fill copy-btn-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 1.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1Zm-5 0A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1A1.5 1.5 0 0 1 9.5 4h-3A1.5 1.5 0 0 1 5 2.5v-1Zm-2 0h1v1A2.5 2.5 0 0 0 6.5 5h3A2.5 2.5 0 0 0 12 2.5v-1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2Z"/></svg></button>
                         </div>
                     </div>
                 `).join('');
                 
-                resultsContainer.innerHTML = promptCardsHTML;
+                allElements.resultsContainer.innerHTML = promptCardsHTML;
+                generateRefinedPrompts(userIdea, subjectDescription, sceneDescription);
 
                 document.querySelectorAll('.copy-btn').forEach(button => {
                     button.addEventListener('click', (e) => {
@@ -268,7 +394,7 @@
                     });
                 });
 
-            }, 1000);
+            }, showLoader ? 1000 : 0);
         }
         
         function handleImageUpload(event) {
@@ -277,11 +403,11 @@
                 currentFile = file;
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    previewImage.src = e.target.result;
-                    subjectDescriptionInput.value = "";
-                    sceneDescriptionInput.value = "";
-                    analyzeBtn.disabled = false;
-                    subjectDescriptionInput.focus();
+                    allElements.previewImage.src = e.target.result;
+                    allElements.subjectDescriptionInput.value = "";
+                    allElements.sceneDescriptionInput.value = "";
+                    allElements.analyzeBtn.disabled = false;
+                    allElements.subjectDescriptionInput.focus();
                 };
                 reader.readAsDataURL(file);
             }
@@ -289,13 +415,13 @@
 
         async function handleAnalyzeClick() {
             if (!currentFile) {
-                alert("กรุณาอัปโหลดรูปภาพก่อนครับ");
+                alert(translations[currentLang].alert_upload_first);
                 return;
             }
 
-            analyzeBtn.disabled = true;
-            analyzeBtnText.textContent = 'กำลังวิเคราะห์...';
-            analyzeSpinner.classList.remove('hidden');
+            allElements.analyzeBtn.disabled = true;
+            allElements.analyzeBtnText.textContent = translations[currentLang].analyzing_btn;
+            allElements.analyzeSpinner.classList.remove('hidden');
 
             const reader = new FileReader();
             reader.readAsDataURL(currentFile);
@@ -303,69 +429,89 @@
                 const base64Data = reader.result.split(',')[1];
                 const mimeType = currentFile.type;
 
-                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API key will be provided by the environment
+                const apiKey = ""; // API key will be provided by the environment
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                 
                 const payload = {
                   "contents": [{
                     "parts": [
-                      {"text": "Analyze this image and describe the main subject and the background. The subject description should be a concise phrase describing the person, their appearance, and clothing. The scene description should describe their action and the environment around them."},
+                      {"text": "Analyze this image and describe the main subject and the background. 1. 'subject': A concise phrase describing the main person, their appearance, and clothing (e.g., 'A muscular Asian man wearing a white tank top'). 2. 'scene': A concise phrase describing ONLY the environment and the subject's position in it (e.g., 'sitting on a sofa in a modern penthouse apartment with city lights in the background'). Do not describe the subject's actions or expressions in the scene description."},
                       {"inlineData": {"mimeType": mimeType, "data": base64Data}}
                     ]
                   }],
-                  "generationConfig": {
-                    "responseMimeType": "application/json",
-                    "responseSchema": {
-                      "type": "OBJECT",
-                      "properties": {
-                        "subject": { "type": "STRING", "description": "A concise phrase describing the main person, their appearance, and clothing." },
-                        "scene": { "type": "STRING", "description": "A concise phrase describing the person's action and the environment around them." }
-                      },
-                      "required": ["subject", "scene"]
-                    }
-                  }
+                  "generationConfig": { "responseMimeType": "application/json", "responseSchema": { "type": "OBJECT", "properties": { "subject": { "type": "STRING" }, "scene": { "type": "STRING" } }, "required": ["subject", "scene"] } }
                 };
 
                 try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-
+                    const response = await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const result = await response.json();
-                    
                     if (result.candidates && result.candidates.length > 0) {
                         const textPart = result.candidates[0].content.parts[0].text;
                         const descriptions = JSON.parse(textPart);
-                        subjectDescriptionInput.value = descriptions.subject || '';
-                        sceneDescriptionInput.value = descriptions.scene || '';
-                    } else {
-                        throw new Error("Invalid response structure from API.");
-                    }
-
+                        allElements.subjectDescriptionInput.value = descriptions.subject || '';
+                        allElements.sceneDescriptionInput.value = descriptions.scene || '';
+                    } else { throw new Error("Invalid response structure from API."); }
                 } catch (error) {
                     console.error("Error analyzing image:", error);
-                    alert("เกิดข้อผิดพลาดในการวิเคราะห์ภาพ กรุณาลองใหม่อีกครั้ง");
+                    alert(translations[currentLang].alert_analyze_error);
                 } finally {
-                    analyzeBtn.disabled = false;
-                    analyzeBtnText.textContent = 'วิเคราะห์ภาพอัตโนมัติ';
-                    analyzeSpinner.classList.add('hidden');
+                    allElements.analyzeBtn.disabled = false;
+                    allElements.analyzeBtnText.textContent = translations[currentLang].analyze_btn;
+                    allElements.analyzeSpinner.classList.add('hidden');
                 }
             };
         }
 
+        async function handleImproveIdeaClick() {
+            const rawIdea = allElements.userIdeaInput.value.trim();
+            const subject = allElements.subjectDescriptionInput.value.trim();
+            const scene = allElements.sceneDescriptionInput.value.trim();
+
+            if (!rawIdea) { alert(translations[currentLang].alert_idea_missing); return; }
+            if (!subject || !scene) { alert(translations[currentLang].alert_context_missing); return; }
+
+            allElements.improveIdeaBtn.disabled = true;
+            allElements.improveBtnText.textContent = translations[currentLang].improving_btn;
+            allElements.improveSpinner.classList.remove('hidden');
+
+            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API key will be provided by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const promptToImprove = `Given the context of a person described as '${subject}' in a scene described as '${scene}', take the following user's raw idea: '${rawIdea}'. Refine this idea into a clear, complete, and evocative sentence in English that describes a plausible action or thought for the subject. Correct any spelling or grammar mistakes. The output should be only the refined sentence.`;
+            const payload = { "contents": [{"parts": [{"text": promptToImprove}]}] };
+
+            try {
+                const response = await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0) {
+                    allElements.userIdeaInput.value = result.candidates[0].content.parts[0].text.trim();
+                } else { throw new Error("Invalid response from API."); }
+            } catch (error) {
+                console.error("Error improving idea:", error);
+                alert(translations[currentLang].alert_improve_error);
+            } finally {
+                allElements.improveIdeaBtn.disabled = false;
+                allElements.improveBtnText.textContent = translations[currentLang].improve_btn;
+                allElements.improveSpinner.classList.add('hidden');
+            }
+        }
+
         // --- Event Listeners ---
-        generateBtn.addEventListener('click', handleGenerateClick);
-        imageUpload.addEventListener('change', handleImageUpload);
-        analyzeBtn.addEventListener('click', handleAnalyzeClick);
+        allElements.generateBtn.addEventListener('click', () => handleGenerateClick(true));
+        allElements.imageUpload.addEventListener('change', handleImageUpload);
+        allElements.analyzeBtn.addEventListener('click', handleAnalyzeClick);
+        allElements.improveIdeaBtn.addEventListener('click', handleImproveIdeaClick);
+        allElements.langThBtn.addEventListener('click', () => setLanguage('th'));
+        allElements.langEnBtn.addEventListener('click', () => setLanguage('en'));
         
-        // Initially disable analyze button until a new image is uploaded
-        analyzeBtn.disabled = true;
+        // --- Initial Setup ---
+        allElements.analyzeBtn.disabled = true;
+        allElements.improveIdeaBtn.disabled = true;
+        allElements.userIdeaInput.addEventListener('input', () => {
+            allElements.improveIdeaBtn.disabled = allElements.userIdeaInput.value.trim() === '';
+        });
+        setLanguage('th'); // Set initial language
 
     </script>
 </body>

@@ -456,7 +456,7 @@
             const analyzeImageWithGemini = async () => {
                 if (!imageBase64 || !imageMimeType) { alert(translations[currentLang].uploadFirst); return; }
                 setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, true, 'analyzing');
-                const apiKey = "";
+                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
                 const prompt = `Analyze this image and generate a comma-separated list of keywords for an image-to-video AI. Describe the subject, pose, lighting, and style. Example: 'a man, muscular, looking at viewer, studio lighting, photorealistic'.`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }, { inlineData: { mimeType: imageMimeType, data: imageBase64 } }] }] };

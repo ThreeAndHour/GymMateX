@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="pageTitle">NSFW Male Video Prompt Builder</title>
+    <title data-lang-key="pageTitle">Male Character Prompt Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,12 +18,12 @@
             transition: all 0.2s ease-in-out;
         }
         .keyword-btn.selected {
-            background-color: #4f46e5;
+            background-color: #16a34a; /* green-600 */
             color: white;
-            border-color: #4f46e5;
+            border-color: #16a34a; /* green-600 */
         }
         .keyword-btn:hover:not(.selected) {
-            background-color: #3730a3;
+            background-color: #15803d; /* green-700 */
             color: white;
         }
         /* Custom scrollbar */
@@ -60,11 +60,11 @@
             }
         }
         .option-card.selected {
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 2px #4f46e5;
+            border-color: #16a34a; /* green-600 */
+            box-shadow: 0 0 0 2px #16a34a; /* green-600 */
         }
         .lang-btn.active {
-            background-color: #4f46e5;
+            background-color: #16a34a; /* green-600 */
             color: white;
         }
     </style>
@@ -73,34 +73,39 @@
 
     <div class="container mx-auto p-4 md:p-8 max-w-7xl">
         <header class="text-center mb-8 relative">
-            <h1 class="text-3xl md:text-4xl font-bold text-indigo-400" data-lang-key="mainTitle">เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย</h1>
-            <p class="text-gray-400 mt-2" data-lang-key="mainSubtitle">สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพเพื่อหลีกเลี่ยงการเซ็นเซอร์</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-green-400" data-lang-key="mainTitle">เครื่องมือสร้างพรอมต์สำหรับตัวละครชาย</h1>
+            <p class="text-gray-400 mt-2" data-lang-key="mainSubtitle">สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพสำหรับตัวละครชาย</p>
             <div class="absolute top-0 right-0 flex items-center gap-2">
                  <div class="flex rounded-full bg-gray-700 p-1 text-sm font-semibold">
                     <button id="lang-th-btn" class="lang-btn active px-3 py-1 rounded-full" data-lang="th">TH</button>
                     <button id="lang-en-btn" class="lang-btn px-3 py-1 rounded-full" data-lang="en">EN</button>
                 </div>
-                <button id="reset-btn" class="bg-gray-700 hover:bg-indigo-600 text-white font-semibold p-2 rounded-full transition-colors" data-lang-key="resetTooltip" title="รีเซ็ตแอปพลิเคชัน">
+                <button id="reset-btn" class="bg-gray-700 hover:bg-green-600 text-white font-semibold p-2 rounded-full transition-colors" data-lang-key="resetTooltip" title="รีเซ็ตแอปพลิเคชัน">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
                 </button>
             </div>
         </header>
+        
+        <div id="api-key-warning" class="hidden bg-red-800 border border-red-600 text-white px-4 py-3 rounded-lg relative mb-6" role="alert">
+            <strong class="font-bold" data-lang-key="apiKeyWarningTitle">คำเตือน: </strong>
+            <span class="block sm:inline" data-lang-key="apiKeyWarningText">ไม่พบ API Key กรุณาเพิ่ม Google AI API Key ของคุณในไฟล์โค้ดเพื่อใช้งานฟังก์ชัน AI</span>
+        </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Left Column: Prompt Builder -->
             <div class="flex flex-col gap-6 bg-gray-800 p-6 rounded-2xl shadow-lg">
-                <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2" data-lang-key="step1Title">1. อัปโหลดภาพและบรรยายไอเดีย</h2>
+                <h2 class="text-2xl font-semibold border-b-2 border-green-500 pb-2" data-lang-key="step1Title">1. อัปโหลดภาพและบรรยายไอเดีย</h2>
                 
                 <!-- Image Upload Section -->
                 <div>
                     <label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="uploadLabel">อัปโหลดภาพต้นฉบับ</label>
                     <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-500 px-6 py-10">
                         <div id="image-preview-container" class="text-center w-full">
-                             <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48" aria-hidden="true">
+                             <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                                 <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                             <div class="mt-4 flex text-sm justify-center leading-6 text-gray-400">
-                                <label for="image-upload-input" class="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-indigo-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500 px-2">
+                                <label for="image-upload-input" class="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-green-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-green-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-green-500 px-2">
                                     <span data-lang-key="selectFile">เลือกไฟล์</span>
                                     <input id="image-upload-input" name="image-upload" type="file" class="sr-only" accept="image/*">
                                 </label>
@@ -108,7 +113,7 @@
                             </div>
                             <p class="text-xs leading-5 text-gray-500" data-lang-key="fileTypes">PNG, JPG, GIF ขนาดไม่เกิน 10MB</p>
                             <div id="image-tools" class="hidden mt-4">
-                                <button id="generate-from-image-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <button id="generate-from-image-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
                                     <span id="analyze-btn-text" data-lang-key="analyzeButton">วิเคราะห์ภาพเพื่อสร้างพรอมต์</span>
                                     <span id="analyze-btn-loader" class="hidden loader"></span>
                                 </button>
@@ -121,8 +126,8 @@
                 <div>
                     <label for="video-idea-input" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="ideaLabel">ไอเดีย/สิ่งที่อยากให้เกิดขึ้นต่อจากภาพนี้</label>
                     <div class="relative">
-                        <textarea id="video-idea-input" rows="3" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 pr-28 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="ideaPlaceholder" placeholder="เช่น: slowly turns his head and smiles at the viewer..."></textarea>
-                        <button id="improve-idea-btn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1.5 px-3 rounded-md text-sm transition-colors flex items-center gap-1.5">
+                        <textarea id="video-idea-input" rows="3" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 pr-28 text-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500" data-lang-key="ideaPlaceholder" placeholder="เช่น: slowly turns his head and smiles at the viewer..."></textarea>
+                        <button id="improve-idea-btn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-700 hover:bg-green-600 text-white font-semibold py-1.5 px-3 rounded-md text-sm transition-colors flex items-center gap-1.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
                             <span id="improve-btn-text" data-lang-key="improveButton">ปรับปรุง</span>
                             <span id="improve-btn-loader" class="hidden loader"></span>
@@ -149,29 +154,29 @@
 
             <!-- Right Column: Output -->
             <div class="flex flex-col gap-6 bg-gray-800 p-6 rounded-2xl shadow-lg h-fit sticky top-8">
-                 <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2" data-lang-key="step2Title">2. ผลลัพธ์พรอมต์ (ฉบับร่าง)</h2>
+                 <h2 class="text-2xl font-semibold border-b-2 border-green-500 pb-2" data-lang-key="step2Title">2. ผลลัพธ์พรอมต์ (ฉบับร่าง)</h2>
                 
                 <!-- Positive Prompt Output -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label for="positive-output" class="block text-lg font-medium text-gray-300" data-lang-key="positivePromptLabel">พรอมต์เชิงบวก</label>
-                        <button id="copy-positive" class="text-sm bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
+                        <button id="copy-positive" class="text-sm bg-gray-700 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
                     </div>
-                    <textarea id="positive-output" rows="5" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="positivePromptPlaceholder" placeholder="พรอมต์เชิงบวกที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
+                    <textarea id="positive-output" rows="5" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500" data-lang-key="positivePromptPlaceholder" placeholder="พรอมต์เชิงบวกที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
                 </div>
 
                 <!-- Negative Prompt Output -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label for="negative-output" class="block text-lg font-medium text-gray-300" data-lang-key="negativePromptLabel">พรอมต์เชิงลบ</label>
-                        <button id="copy-negative" class="text-sm bg-gray-700 hover:bg-indigo-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
+                        <button id="copy-negative" class="text-sm bg-gray-700 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded-md transition-colors" data-lang-key="copyButton">คัดลอก</button>
                     </div>
-                    <textarea id="negative-output" rows="4" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" data-lang-key="negativePromptPlaceholder" placeholder="พรอมต์เชิงลบที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
+                    <textarea id="negative-output" rows="4" class="w-full bg-gray-900 border border-gray-600 rounded-md p-3 text-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500" data-lang-key="negativePromptPlaceholder" placeholder="พรอมต์เชิงลบที่สร้างขึ้นจะปรากฏที่นี่..."></textarea>
                 </div>
 
                 <!-- Section 3: Refine Prompt -->
                 <div class="mt-4">
-                    <h2 class="text-2xl font-semibold border-b-2 border-indigo-500 pb-2 mb-4" data-lang-key="step3Title">3. ปรับปรุงพรอมต์ (ตัวเลือก)</h2>
+                    <h2 class="text-2xl font-semibold border-b-2 border-green-500 pb-2 mb-4" data-lang-key="step3Title">3. ปรับปรุงพรอมต์ (ตัวเลือก)</h2>
                     <button id="refine-prompt-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
                         <span id="refine-btn-text" data-lang-key="refineButton">ปรับปรุงพรอมต์ด้วย AI</span>
                         <span id="refine-btn-loader" class="hidden loader"></span>
@@ -182,7 +187,7 @@
                 </div>
 
                 <div class="mt-4 text-center text-gray-400 text-sm">
-                    <p data-lang-key="tipText">💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือ Image-to-Video ที่ไม่เซ็นเซอร์เพื่อผลลัพธ์ที่ดีที่สุด</p>
+                    <p data-lang-key="tipText">💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือ Image-to-Video ที่ไม่เซ็นเซอร์ เช่น Dzine.AI หรือ PixelDojo เพื่อผลลัพธ์ที่ดีที่สุด</p>
                 </div>
             </div>
         </div>
@@ -190,12 +195,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // =================================================================================
+            // /// API KEY CONFIGURATION ///
+            // =================================================================================
+            // 1. ไปที่ https://aistudio.google.com/app/apikey เพื่อสร้าง API Key ของคุณ
+            // 2. นำ API Key ที่ได้มาวางแทนที่ "YOUR_API_KEY_HERE"
+            //
+            // 1. Go to https://aistudio.google.com/app/apikey to get your API key.
+            // 2. Paste your API key here, replacing "YOUR_API_KEY_HERE".
+            // =================================================================================
+            const USER_API_KEY = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
+            // =================================================================================
+
             // --- TRANSLATIONS ---
             const translations = {
                 th: {
-                    pageTitle: "เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย",
-                    mainTitle: "เครื่องมือสร้างพรอมต์วิดีโอ NSFW สำหรับผู้ชาย",
-                    mainSubtitle: "สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพเพื่อหลีกเลี่ยงการเซ็นเซอร์",
+                    pageTitle: "เครื่องมือสร้างพรอมต์สำหรับตัวละครชาย",
+                    mainTitle: "เครื่องมือสร้างพรอมต์สำหรับตัวละครชาย",
+                    mainSubtitle: "สร้างพรอมต์ Image-to-Video ที่มีประสิทธิภาพสำหรับตัวละครชาย",
                     resetTooltip: "รีเซ็ตแอปพลิเคชัน",
                     step1Title: "1. อัปโหลดภาพและบรรยายไอเดีย",
                     uploadLabel: "อัปโหลดภาพต้นฉบับ",
@@ -216,7 +233,7 @@
                     negativePromptPlaceholder: "พรอมต์เชิงลบที่สร้างขึ้นจะปรากฏที่นี่...",
                     step3Title: "3. ปรับปรุงพรอมต์ (ตัวเลือก)",
                     refineButton: "ปรับปรุงพรอมต์ด้วย AI",
-                    tipText: "💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือ Image-to-Video ที่ไม่เซ็นเซอร์เพื่อผลลัพธ์ที่ดีที่สุด",
+                    tipText: "💡 **เคล็ดลับ:** นำพรอมต์ที่ได้ไปใช้กับเครื่องมือสร้างสรรค์ต่างๆ เพื่อผลลัพธ์ที่ดีที่สุด",
                     copied: "คัดลอกแล้ว!",
                     analyzing: "กำลังวิเคราะห์...",
                     analyzed: "สร้างพรอมต์แล้ว!",
@@ -231,12 +248,14 @@
                     cat_anatomy: "ลักษณะร่างกาย / กายวิภาค",
                     cat_action: "ท่าทาง / การกระทำ",
                     cat_style: "สไตล์ / สุนทรียศาสตร์",
-                    cat_theme: "ธีมเกย์ / เควียร์"
+                    cat_theme: "ธีม / ความสัมพันธ์",
+                    apiKeyWarningTitle: "คำเตือน:",
+                    apiKeyWarningText: "ไม่พบ API Key กรุณาเพิ่ม Google AI API Key ของคุณในไฟล์โค้ดเพื่อใช้งานฟังก์ชัน AI"
                 },
                 en: {
-                    pageTitle: "NSFW Male Video Prompt Builder",
-                    mainTitle: "NSFW Male Video Prompt Builder",
-                    mainSubtitle: "Create effective Image-to-Video prompts to avoid censorship.",
+                    pageTitle: "Male Character Prompt Builder",
+                    mainTitle: "Male Character Prompt Builder",
+                    mainSubtitle: "Create effective Image-to-Video prompts for male characters.",
                     resetTooltip: "Reset Application",
                     step1Title: "1. Upload Image & Describe Idea",
                     uploadLabel: "Upload Source Image",
@@ -257,7 +276,7 @@
                     negativePromptPlaceholder: "The generated negative prompt will appear here...",
                     step3Title: "3. Refine Prompt (Optional)",
                     refineButton: "Refine Prompt with AI",
-                    tipText: "💡 **Tip:** Use the generated prompt with uncensored Image-to-Video tools for the best results.",
+                    tipText: "💡 **Tip:** Use the generated prompt with your favorite creative tools for the best results.",
                     copied: "Copied!",
                     analyzing: "Analyzing...",
                     analyzed: "Prompt Created!",
@@ -272,17 +291,19 @@
                     cat_anatomy: "Male Body / Anatomy",
                     cat_action: "Action / Pose",
                     cat_style: "Style / Aesthetics",
-                    cat_theme: "Gay / Queer Themes"
+                    cat_theme: "Themes / Relationships",
+                    apiKeyWarningTitle: "Warning:",
+                    apiKeyWarningText: "API Key not found. Please add your Google AI API Key in the code to use AI features."
                 }
             };
 
             // --- DATA ---
             const keywords = {
-                "cat_anatomy": ["muscular", "toned build", "svelte and slender", "chest hair", "stomach hair", "penis", "visible penis", "fully nude", "no clothing", "photorealistic anatomy", "athletic body", "a man"],
+                "cat_anatomy": ["muscular", "toned build", "svelte and slender", "chest hair", "stomach hair", "shirtless", "photorealistic anatomy", "athletic body", "a man"],
                 "cat_action": ["full body shot", "dynamic pose", "looking at viewer", "sensual pose", "relaxing on bed", "in the shower", "dancing"],
                 "cat_style": ["photorealistic", "hyperrealistic", "studio lighting", "dimly lit", "cinematic lighting", "soft lighting", "masterpiece", "best quality", "8k", "ultra detailed", "detailed skin texture"],
                 "cat_theme": ["two men embracing", "two lovers", "intimacy", "passionate", "kissing", "cuddling", "BL", "homoerotic"],
-                "พรอมต์เชิงลบ": ["worst quality", "low quality", "blurry", "bad anatomy", "bad hands", "bad proportions", "watermark", "text", "deformed penis", "malformed penis", "female vulva", "broken limbs", "mutation", "extra limbs", "fused fingers", "ugly", "disfigured"]
+                "พรอมต์เชิงลบ": ["worst quality", "low quality", "blurry", "bad anatomy", "bad hands", "bad proportions", "watermark", "text", "broken limbs", "mutation", "extra limbs", "fused fingers", "ugly", "disfigured"]
             };
 
             // --- STATE ---
@@ -316,10 +337,20 @@
                 refineBtnLoader: document.getElementById('refine-btn-loader'),
                 refinedOptionsContainer: document.getElementById('refined-options-container'),
                 langThBtn: document.getElementById('lang-th-btn'),
-                langEnBtn: document.getElementById('lang-en-btn')
+                langEnBtn: document.getElementById('lang-en-btn'),
+                apiKeyWarning: document.getElementById('api-key-warning')
             };
 
             // --- FUNCTIONS ---
+            const checkApiKey = () => {
+                if (!USER_API_KEY || USER_API_KEY === "YOUR_API_KEY_HERE") {
+                    allUI.apiKeyWarning.classList.remove('hidden');
+                    return false;
+                }
+                allUI.apiKeyWarning.classList.add('hidden');
+                return true;
+            };
+
             const setLanguage = (lang) => {
                 currentLang = lang;
                 document.documentElement.lang = lang;
@@ -350,10 +381,10 @@
 
             const renderKeywords = () => {
                 const positiveHtml = `
-                    <div data-category-key="cat_anatomy"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_anatomy}</h4><div class="flex flex-wrap gap-2"></div></div>
-                    <div data-category-key="cat_action"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_action}</h4><div class="flex flex-wrap gap-2"></div></div>
-                    <div data-category-key="cat_style"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_style}</h4><div class="flex flex-wrap gap-2"></div></div>
-                    <div data-category-key="cat_theme"><h4 class="font-semibold text-indigo-300 mb-2">${translations[currentLang].cat_theme}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_anatomy"><h4 class="font-semibold text-green-300 mb-2">${translations[currentLang].cat_anatomy}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_action"><h4 class="font-semibold text-green-300 mb-2">${translations[currentLang].cat_action}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_style"><h4 class="font-semibold text-green-300 mb-2">${translations[currentLang].cat_style}</h4><div class="flex flex-wrap gap-2"></div></div>
+                    <div data-category-key="cat_theme"><h4 class="font-semibold text-green-300 mb-2">${translations[currentLang].cat_theme}</h4><div class="flex flex-wrap gap-2"></div></div>
                 `;
                 allUI.positiveBuilder.querySelector('.space-y-4').innerHTML = positiveHtml;
 
@@ -471,10 +502,10 @@
             };
 
             const analyzeImageWithGemini = async () => {
+                if (!checkApiKey()) return;
                 if (!imageBase64 || !imageMimeType) { alert(translations[currentLang].uploadFirst); return; }
                 setButtonLoading(allUI.generateFromImageBtn, allUI.analyzeBtnText, allUI.analyzeBtnLoader, true, 'analyzing');
-                const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${USER_API_KEY}`;
                 const prompt = `Analyze this image and generate a comma-separated list of keywords for an image-to-video AI. Describe the subject, pose, lighting, and style. Example: 'a man, muscular, looking at viewer, studio lighting, photorealistic'.`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }, { inlineData: { mimeType: imageMimeType, data: imageBase64 } }] }] };
 
@@ -505,11 +536,11 @@
             };
 
             const improveIdeaWithGemini = async () => {
+                if (!checkApiKey()) return;
                 const userIdea = allUI.videoIdeaInput.value.trim();
                 if (!userIdea) { alert(translations[currentLang].typeIdeaFirst); return; }
                 setButtonLoading(allUI.improveIdeaBtn, allUI.improveBtnText, allUI.improveBtnLoader, true, '');
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${USER_API_KEY}`;
                 const keywordsContext = [...selectedPositive].join(', ');
                 const prompt = `Given the image context described by these keywords: "${keywordsContext}". Please refine the following user's idea for a video continuation to be more descriptive, grammatically correct, and coherent. User's idea: "${userIdea}". Return only the improved sentence.`;
                 const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
@@ -532,12 +563,12 @@
             };
 
             const refinePromptWithGemini = async () => {
+                if (!checkApiKey()) return;
                 const rawPrompt = allUI.positiveOutput.value.trim();
                 if (!rawPrompt) { alert(translations[currentLang].emptyPrompt); return; }
                 setButtonLoading(allUI.refinePromptBtn, allUI.refineBtnText, allUI.refineBtnLoader, true, 'refining');
                 
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${USER_API_KEY}`;
                 const prompt = `You are a prompt engineering expert. Take the following raw prompt for an AI video generator and refine it into three distinct, coherent English styles. Raw prompt: "${rawPrompt}".
                 1. Clear and Direct: A straightforward, unambiguous version.
                 2. More Evocative & Detailed: A more descriptive, artistic, and detailed version.
@@ -586,16 +617,16 @@
 
                 styles.forEach(style => {
                     const card = document.createElement('div');
-                    card.className = 'option-card border border-gray-600 rounded-lg p-3 hover:border-indigo-500 transition-colors';
+                    card.className = 'option-card border border-gray-600 rounded-lg p-3 hover:border-green-500 transition-colors';
                     const promptText = options[style.key];
                     
                     card.innerHTML = `
                         <div class="flex justify-between items-start gap-2">
                             <div class="flex-grow cursor-pointer">
-                                <h4 class="font-semibold text-indigo-300">${style.title}</h4>
+                                <h4 class="font-semibold text-green-300">${style.title}</h4>
                                 <p class="text-gray-300 text-sm mt-1">${promptText}</p>
                             </div>
-                            <button class="copy-refined-btn text-xs bg-gray-600 hover:bg-indigo-500 text-white font-semibold py-1 px-2 rounded-md transition-colors flex-shrink-0 self-center" data-lang-key="copyButton">${translations[currentLang].copyButton}</button>
+                            <button class="copy-refined-btn text-xs bg-gray-600 hover:bg-green-500 text-white font-semibold py-1 px-2 rounded-md transition-colors flex-shrink-0 self-center" data-lang-key="copyButton">${translations[currentLang].copyButton}</button>
                         </div>
                     `;
 
@@ -632,6 +663,7 @@
 
             // --- INITIALIZATION ---
             setLanguage('th'); // Set initial language
+            checkApiKey();
             const defaultNegatives = ["worst quality", "low quality", "blurry", "bad anatomy", "bad hands"];
             document.querySelectorAll('#negative-prompt-builder .keyword-btn').forEach(btn => {
                 if (defaultNegatives.includes(btn.dataset.keyword)) {

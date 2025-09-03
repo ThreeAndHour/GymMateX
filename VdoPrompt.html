@@ -263,7 +263,7 @@
             { id: 'veo', name: 'Google Veo 3', strength: 'นักเล่าเรื่องและความเข้าใจในเสียง', generatePrompt: (i, s, c) => `A cinematic shot of ${s} ${c}. ${i}. The scene has a shallow depth of field and warm interior lighting. The audio should be the low hum of the city and a soft, contemplative musical score.`, explanation_key: 'model_veo_exp' },
             { id: 'kling', name: 'Kling 2.1', strength: 'นักวิ่งมาราธอน (ความยาวและความต่อเนื่อง)', generatePrompt: (i, s, c) => `A photorealistic, cinematic shot of ${s} ${c}. The action unfolds over 30 seconds: ${i}. The camera follows the action in a single, steady shot, maintaining character consistency throughout.`, explanation_key: 'model_kling_exp' },
             { id: 'wan', name: 'Wan 2.2', strength: 'ขุมพลังโอเพนซอร์ส (เน้นคุณภาพฟิล์ม)', generatePrompt: (i, s, c) => `Cinematic shot, 85mm lens. ${s} ${c}. ${i}. The scene has high contrast, rembrandt lighting on their face, and a shallow depth of field.`, explanation_key: 'model_wan_exp' },
-            { id: 'runway', name: 'Runway Gen-3', strength: 'สตูดิโอสำหรับมืออาชีพ (ควบคุมละเอียด)', generatePrompt: (i, s, c) => `Low angle static shot: ${s} ${c}. ${i}.`, explanation_key: 'model_runway_exp' },
+            { id: 'runway', name: 'Runway Gen-4', strength: 'สตูดิโอสำหรับมืออาชีพ (ควบคุมละเอียด)', generatePrompt: (i, s, c) => `Low angle static shot: ${s} ${c}. ${i}.`, explanation_key: 'model_runway_exp' },
             { id: 'leonardo', name: 'Leonardo Motion 2.0', strength: 'นักแอนิเมชัน (ควบคุมกล้องแม่นยำ)', generatePrompt: (i, s, c) => `${s} ${c}. ${i}. The camera performs a slow dolly in, pushing towards their face to capture the subtle emotional shift.`, explanation_key: 'model_leonardo_exp' },
             { id: 'hailuo', name: 'Hailuo 02', strength: 'เครื่องมือสร้างอารมณ์', generatePrompt: (i, s, c) => `An emotional scene of ${s} ${c}. ${i}. Focus on their realistic and engaging facial expressions.`, explanation_key: 'model_hailuo_exp' },
             { id: 'grok', name: 'Grok (Imagine)', strength: 'ความเร็วคือทุกสิ่ง', generatePrompt: (i, s, c) => `Animate this image: ${s} ${c}. ${i}.`, explanation_key: 'model_grok_exp' }
@@ -475,7 +475,7 @@
             allElements.improveBtnText.textContent = translations[currentLang].improving_btn;
             allElements.improveSpinner.classList.remove('hidden');
 
-            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; // API key will be provided by the environment
+            const apiKey = "AIzaSyB-4xzcAZqUeG_H_23twHl1U-ktRHwyC50"; // API key will be provided by the environment
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             const promptToImprove = `Given the context of a person described as '${subject}' in a scene described as '${scene}', take the following user's raw idea: '${rawIdea}'. Refine this idea into a clear, complete, and evocative sentence in English that describes a plausible action or thought for the subject. Correct any spelling or grammar mistakes. The output should be only the refined sentence.`;
             const payload = { "contents": [{"parts": [{"text": promptToImprove}]}] };

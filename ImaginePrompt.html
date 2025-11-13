@@ -1,0 +1,531 @@
+import React, { useState, useCallback, useEffect } from 'react';
+
+// --- Constants ---
+const API_KEY = ""; // Leave as-is, will be handled by the environment
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
+const MAX_RETRIES = 5;
+
+// --- System Instruction ---
+// This prompt guides the AI to match your requested style
+const SYSTEM_PROMPT = `You are an expert creative director and videographer, specializing in turning still photos into beautiful, realistic videos.
+
+Your style is highly cinematic, atmospheric, and calm, inspired by high-end travel vlogs and aesthetic lifestyle photography (like @threeandhour and @widerooms).
+
+Based on the user's uploaded photo, generate 10 distinct video prompts. Each prompt must describe a potential 4-6 second video clip.
+
+Generate the 10 prompts in two distinct groups:
+
+**Prompts 1-5 (Subtle & Cinematic):**
+Focus on the original style: subtle movements, mood, light, and minor interactions.
+* **Model's Movement:** e.g., "The person slowly turns their head towards the camera," "A gentle, pensive breath," "Fingers lightly tap on the table."
+* **Facial Expression/Feeling:** e.g., "A subtle, knowing smile appears," "A calm, reflective gaze, eyes slowly blinking," "A brief, soft laugh."
+* **Cinematic Camera Movement:** e.g., "A very slow push-in on the person," "Rack focus from the background to their eyes."
+* **Interaction with Environment:** e.g., "Wind gently blows their hair," "Light and shadows slowly shift across their face."
+
+**Prompts 6-10 (Active & Narrative):**
+Introduce more significant actions, dialogue, or narrative elements for more creativity. **Ensure at least 2 of these prompts include simple dialogue.**
+* **Larger Activities:** e.g., "The person stands up and walks out of the frame," "Picks up a book and opens it," "Looks at their watch and sighs."
+* **Dialogue (Simple):** e.g., "They look at the camera and say, 'It's time.'", "Mutters quietly, 'I wonder...'", "A soft, audible sigh.", "Asks a question to someone off-camera, 'Are you ready?'"
+* **Exiting/Entering:** e.g., "Walks away from their seat," "Turns and leaves the room," "Walks into the frame and sits down."
+
+Return *only* a JSON object with a single key "prompts". This key should contain an array of 10 objects. Each object must have two keys:
+1.  "prompt": The full, detailed video prompt in English.
+2.  "summary_th": A very short (2-4 word) summary of the prompt's main focus in *Thai*, e.g., "การเคลื่อนไหวใบหน้า", "มุมกล้องช้าๆ", "แสงและเงา", "การโต้ตอบกับสิ่งของ", "บทพูดสั้นๆ", "การลุกขึ้นยืน", "เดินออกจากเฟรม".
+
+Do not include any other text or markdown.
+`;
+
+// --- JSON Schema for AI Response ---
+const JSON_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    "prompts": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "prompt": { "type": "STRING" },
+          "summary_th": { "type": "STRING" }
+        },
+        "required": ["prompt", "summary_th"]
+      }
+    }
+  },
+  required: ["prompts"]
+};
+
+// --- Helper Functions ---
+
+/**
+ * Fetches data with exponential backoff.
+ * @param {string} url - The URL to fetch.
+ * @param {object} options - The fetch options.
+ * @returns {Promise<Response>} - The fetch response.
+ */
+const fetchWithBackoff = async (url, options) => {
+  let retries = 0;
+  while (retries < MAX_RETRIES) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        return response;
+      }
+      // Don't retry on client errors, but do on server errors
+      if (response.status >= 400 && response.status < 500) {
+        throw new Error(`Client error: ${response.status} ${response.statusText}`);
+      }
+    } catch (error) {
+      // Do not log retry attempts as errors in the console
+    }
+    const delay = Math.pow(2, retries) * 1000 + Math.random() * 1000;
+    await new Promise(resolve => setTimeout(resolve, delay));
+    retries++;
+  }
+  throw new Error("Failed to fetch from API after several retries.");
+};
+
+/**
+ * Converts a File object to a base64 string, stripping the prefix.
+ * @param {File} file - The file to convert.
+ * @returns {Promise<string>} - The base64-encoded string without the data prefix.
+ */
+const toBase64 = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    // Strips 'data:image/jpeg;base64,' or similar
+    const base64Data = reader.result.split(',')[1];
+    resolve(base64Data);
+  };
+  reader.onerror = error => reject(error);
+});
+
+/**
+ * Copies text to the clipboard.
+ * @param {string} text - The text to copy.
+ */
+const copyToClipboard = (text) => {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed";  // Avoid scrolling to bottom
+  textArea.style.opacity = "0";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+  } catch (err) {
+    console.error("Failed to copy text: ", err);
+  }
+  document.body.removeChild(textArea);
+};
+
+// --- React Components ---
+
+/**
+ * Icon for loading spinner
+ */
+const LoadingIcon = () => (
+  <svg
+    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <circle
+      className="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="4"
+    ></circle>
+    <path
+      className="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+);
+
+/**
+ * Icon for copy button
+ */
+const CopyIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+  </svg>
+);
+
+/**
+ * Icon for image upload
+ */
+const UploadIcon = () => (
+    <svg className="mx-auto h-12 w-12 text-gray-500" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+    </svg>
+);
+
+/**
+ * Component for uploading an image
+ * @param {object} props
+ * @param {(files: FileList) => void} props.onImageUpload - Callback when images are selected.
+ */
+const ImageUploader = ({ onImageUpload }) => {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleFileChange = (e) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      onImageUpload(files);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      onImageUpload(files);
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  return (
+    <div className="w-full">
+      <label
+        htmlFor="file-upload"
+        className={`relative flex w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-600 p-6 transition-colors duration-200 ease-in-out hover:border-gray-400 ${
+          isDragging ? 'border-blue-500 bg-gray-700' : 'bg-gray-800'
+        }`}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+      >
+        <div className="space-y-2 text-center">
+          <UploadIcon />
+          <div className="flex text-sm text-gray-400">
+            <span className="font-medium text-blue-400 hover:text-blue-300">
+              Click to upload
+            </span>
+            <p className="pl-1">or drag and drop</p>
+          </div>
+          <p className="text-xs text-gray-500">PNG, JPG, GIF (Multiple files allowed)</p>
+        </div>
+      </label>
+      <input
+        id="file-upload"
+        name="file-upload"
+        type="file"
+        className="sr-only"
+        accept="image/png, image/jpeg, image/gif"
+        onChange={handleFileChange}
+        multiple // <-- Allow multiple files
+      />
+    </div>
+  );
+};
+
+/**
+ * Component to display the list of generated prompts
+ * @param {object} props
+ * @param {Array<{imagePreviewUrl: string, fileName: string, prompts: Array<{prompt: string, summary_th: string}>, error?: string}>} props.results - Array of prompt result objects.
+ * @param {boolean} props.isLoading - Loading state.
+ * @param {string | null} props.error - General error message.
+ */
+const PromptList = ({ results, isLoading, error }) => {
+  const [copiedIndex, setCopiedIndex] =useState(null);
+
+  const handleCopy = (text, index) => {
+    copyToClipboard(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="w-full space-y-3 pt-8">
+        <div className="h-24 w-full animate-pulse rounded-lg bg-gray-700"></div>
+        <div className="h-24 w-full animate-pulse rounded-lg bg-gray-700"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="mt-6 rounded-lg border border-red-700 bg-red-900/20 p-4 text-center text-red-400">
+        <p><strong>Error:</strong> {error}</p>
+      </div>
+    );
+  }
+
+  if (results.length === 0) {
+    return null; // Don't show anything if there are no prompts and it's not loading
+  }
+
+  return (
+    <div className="w-full space-y-8 pt-8">
+      <h2 className="text-xl font-semibold text-white">Generated Prompts</h2>
+      {results.map((result, index) => (
+        <div key={index} className="overflow-hidden rounded-lg bg-gray-800 shadow-lg">
+          <div className="flex items-center gap-4 bg-gray-700 p-4">
+            <img
+              src={result.imagePreviewUrl}
+              alt={result.fileName}
+              className="h-16 w-16 flex-shrink-0 rounded-md object-cover"
+            />
+            <h3 className="min-w-0 truncate text-lg font-semibold text-white" title={result.fileName}>
+              {result.fileName}
+            </h3>
+          </div>
+
+          {result.error ? (
+            <div className="p-4 text-center text-red-400">
+              <p><strong>Error processing this image:</strong> {result.error}</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
+              {result.prompts.map((prompt, pIndex) => (
+                <div
+                  key={pIndex}
+                  className="relative flex items-center justify-between rounded-lg bg-gray-900/50 p-4"
+                >
+                  <p className="pr-12 text-gray-300">
+                    <span className="font-semibold text-blue-300">({prompt.summary_th})</span> {prompt.prompt}
+                  </p>
+                  <button
+                    onClick={() => handleCopy(prompt.prompt, `${index}-${pIndex}`)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-2 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                    title="Copy prompt"
+                  >
+                    {copiedIndex === `${index}-${pIndex}` ? (
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    ) : (
+                      <CopyIcon />
+                    )}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+/**
+ * Main App Component
+ */
+export default function App() {
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imagePreviewUrls, setImagePreviewUrls] = useState([]);
+  const [imageB64s, setImageB64s] = useState([]);
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Create data URLs for preview when imageFiles change
+    if (!imageFiles || imageFiles.length === 0) {
+      setImagePreviewUrls([]);
+      return;
+    }
+
+    const objectUrls = imageFiles.map(file => URL.createObjectURL(file));
+    setImagePreviewUrls(objectUrls);
+
+    // Clean up the object URLs
+    return () => {
+      objectUrls.forEach(url => URL.revokeObjectURL(url));
+    };
+  }, [imageFiles]);
+
+  const handleImageUpload = (files) => {
+    const filesArray = Array.from(files);
+    setImageFiles(filesArray);
+    setResults([]);
+    setError(null);
+
+    Promise.all(filesArray.map(toBase64))
+      .then(setImageB64s)
+      .catch(err => {
+        console.error("Error converting to base64:", err);
+        setError("Failed to process image files.");
+      });
+  };
+
+  const clearImages = () => {
+    setImageFiles([]);
+    setImagePreviewUrls([]);
+    setImageB64s([]);
+    setResults([]);
+    setError(null);
+  };
+
+  const handleGeneratePrompts = async () => {
+    if (imageB64s.length === 0) {
+      setError("Please upload one or more images first.");
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+    setResults([]);
+
+    const allResults = [];
+
+    for (let i = 0; i < imageB64s.length; i++) {
+      const b64 = imageB64s[i];
+      const file = imageFiles[i];
+
+      const payload = {
+        systemInstruction: {
+          parts: [{ text: SYSTEM_PROMPT }]
+        },
+        contents: [
+          {
+            role: "user",
+            parts: [
+              {
+                inlineData: {
+                  mimeType: file.type,
+                  data: b64
+                }
+              },
+              { text: "Generate the video prompts for this image." }
+            ]
+          }
+        ],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: JSON_SCHEMA,
+        }
+      };
+
+      try {
+        const response = await fetchWithBackoff(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        const candidate = result.candidates?.[0];
+
+        if (candidate && candidate.content?.parts?.[0]?.text) {
+          const jsonText = candidate.content.parts[0].text;
+          const parsedData = JSON.parse(jsonText);
+          if (!parsedData.prompts || parsedData.prompts.length === 0) {
+             throw new Error("The AI returned an empty response.");
+          }
+          allResults.push({
+            imagePreviewUrl: imagePreviewUrls[i],
+            fileName: file.name,
+            prompts: parsedData.prompts || []
+          });
+        } else {
+          // Log the actual API response to help debug
+          console.error("Invalid API response structure. Full response:", JSON.stringify(result, null, 2));
+          throw new Error("Invalid response structure from API.");
+        }
+      } catch (err) {
+        console.error(`Error generating prompts for ${file.name}:`, err);
+        allResults.push({
+          imagePreviewUrl: imagePreviewUrls[i],
+          fileName: file.name,
+          prompts: [],
+          error: err.message
+        });
+      }
+    }
+
+    setResults(allResults);
+    setIsLoading(false);
+  };
+
+  return (
+    <div className="flex min-h-screen w-full items-start justify-center bg-gray-900 font-['Inter'] text-white">
+      <div className="container mx-auto max-w-3xl p-4 py-12 md:p-8">
+        <header className="text-center">
+          <h1 className="text-3xl font-bold text-white md:text-4xl">
+            Cinematic Video Prompt Generator
+          </h1>
+          <p className="mt-2 text-lg text-gray-400">
+            Inspired by @threeandhour & @widerooms
+          </p>
+        </header>
+
+        <main className="mt-10 flex flex-col items-center">
+          <div className="w-full max-w-xl">
+            <ImageUploader
+              onImageUpload={handleImageUpload}
+            />
+          </div>
+
+          {imagePreviewUrls.length > 0 && (
+            <div className="mt-6 w-full max-w-xl">
+              <h3 className="mb-2 text-sm font-medium text-gray-300">Selected Images:</h3>
+              <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 md:grid-cols-8">
+                {imagePreviewUrls.map((url, index) => (
+                  <img
+                    key={index}
+                    src={url}
+                    alt={`Preview ${index + 1}`}
+                    className="h-16 w-16 rounded-lg object-cover shadow-md"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-8 flex w-full max-w-xl items-center justify-center gap-4">
+            <button
+              onClick={handleGeneratePrompts}
+              disabled={imageFiles.length === 0 || isLoading}
+              className="flex flex-1 items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-lg transition-all duration-200 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isLoading ? (
+                <>
+                  <LoadingIcon />
+                  Generating ({results.length + 1} / {imageFiles.length})...
+                </>
+              ) : (
+                `Generate Prompts (${imageFiles.length})`
+              )}
+            </button>
+            {imageFiles.length > 0 && !isLoading && (
+              <button
+                onClick={clearImages}
+                className="rounded-lg bg-gray-600 px-6 py-3 text-base font-medium text-white shadow-lg transition-colors hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          <div className="w-full">
+            <PromptList results={results} isLoading={isLoading} error={error} />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}

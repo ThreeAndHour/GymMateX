@@ -3,291 +3,751 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THOR | The Aesthetic Architect</title>
+    <title>Thor Ayanundana | Official Profile</title>
+    
+    <!-- React & Tailwind Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        slate: {
-                            850: '#151e2e',
-                            900: '#0f172a',
-                            950: '#020617',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                        },
-                        electric: {
-                            500: '#3b82f6',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        display: ['Urbanist', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        /* Custom Utilities */
-        body {
-            background-color: #020617;
-            color: #cbd5e1;
-            scroll-behavior: smooth;
+        body { font-family: 'Outfit', 'Noto Sans Thai', sans-serif; background-color: #0f172a; color: #e2e8f0; }
+        .gradient-text {
+            background: linear-gradient(to right, #22d3ee, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.15); }
         
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        /* Custom Scrollbar for Gallery */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .mode-card {
-            transition: all 0.3s ease;
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
-        .mode-card:hover {
-            transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.8);
-        }
-
-        /* Hero Background */
-        .hero-bg {
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08), transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05), transparent 40%);
-        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
     </style>
 </head>
-<body class="antialiased selection:bg-electric-500 selection:text-white">
+<body>
+    <div id="root"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-display font-bold text-2xl tracking-tighter text-white">
-                THOR<span class="text-electric-500">.AI</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
-                <a href="#identity" class="hover:text-white transition">Identity</a>
-                <a href="#dynamics" class="hover:text-white transition">The Dynamic</a>
-                <a href="#targets" class="hover:text-white transition">Synergy</a>
-                <a href="#connect" class="text-gold-400 hover:text-gold-500 transition">Connect</a>
-            </div>
-        </div>
-    </nav>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden pt-20">
-        <div class="absolute top-1/4 left-0 w-96 h-96 bg-electric-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gold-400/5 rounded-full blur-3xl"></div>
+        // --- DATA CONSTANTS ---
+        const PROFILE_IMAGES = [
+            "https://i.postimg.cc/hj6T5qmk/My_Jd_1_17.jpg",
+            "https://i.postimg.cc/KjTBXsr3/Mggg_1_10.jpg",
+            "https://i.postimg.cc/QNKpWHGc/My_Jd_1_33.jpg",
+            "https://i.postimg.cc/6ptRSc73/My_Jd_1_7.jpg",
+            "https://i.postimg.cc/K8xLVfKF/My_Jd_1_10.jpg",
+            "https://i.postimg.cc/tChW2wgq/My_Jd_1_11.jpg",
+            "https://i.postimg.cc/tRnhVYQ6/Mggg_1_8.jpg",
+            "https://i.postimg.cc/nh27tm75/My_project_1_4.jpg",
+            "https://i.postimg.cc/7Yg0mdZB/My_Jd_1_27.jpg",
+            "https://i.postimg.cc/sfGpZvds/Myiui_1_4.jpg",
+            "https://i.postimg.cc/MTNVF8RK/Mggg_1_13.jpg",
+            "https://i.postimg.cc/cH2wbNYx/Mggg_1_11.jpg",
+            "https://i.postimg.cc/dt8r4p0V/My_Jd_1_19.jpg",
+            "https://i.postimg.cc/fRCXhdXj/My_JGL_1_4.jpg",
+            "https://i.postimg.cc/zG7W1hW2/ASAio_1_3.jpg"
+        ];
 
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 text-xs font-semibold text-electric-500 tracking-wide uppercase">
-                Status: Open to Strategic Connections
-            </div>
-            
-            <h1 class="font-display text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                Architecting <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-500">Aesthetics.</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-10 font-light">
-                Bridging the gap between <span class="text-white">AI Technology</span> and <span class="text-white">Physical Aesthetics</span>. <br class="hidden md:block">
-                Seeking a <strong>Loose Strategic Alliance</strong> with Smart Creatives & Fit Entrepreneurs.
-            </p>
+        // --- ICONS ---
+        const IconUser = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>;
+        const IconBriefcase = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>;
+        const IconPalette = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>;
+        const IconHeart = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>;
+        const IconMapPin = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>;
+        const IconInstagram = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>;
+        const IconTwitter = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>;
+        const IconYoutube = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>;
+        const IconGlobe = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>;
+        const IconFileText = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>;
+        const IconX = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>;
+        const IconEye = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>;
+        const IconPlay = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>;
+        const IconDumbbell = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>;
+        const IconFlame = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.6-3.3.7-1.9 2-3.2 3-3.7"/></svg>;
+        const IconLock = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>;
+        const IconBan = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>;
+        const IconInfinity = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4Z"/></svg>;
 
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <a href="#connect" class="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition flex items-center gap-2">
-                    Let's Talk Art & Anatomy <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="#dynamics" class="px-8 py-4 glass-panel text-white font-medium rounded-lg hover:bg-slate-800 transition">
-                    Explore the Dynamic
-                </a>
-            </div>
-        </div>
-    </header>
+        // --- CONTENT DATA (Bilingual) ---
+        const content = {
+            en: {
+                nav: { home: "Home", about: "About", work: "Vision", gallery: "Preview", passion: "Passion", love: "Love", contact: "Contact" },
+                hero: {
+                    greeting: "Hello, I'm",
+                    name: "Thor Ayanundana",
+                    title: "Real Estate Developer | Hybrid AI Creator",
+                    subtitle: "Connecting the physical world of Real Estate with the limitless imagination of AI.",
+                    cta: "Explore My World"
+                },
+                about: {
+                    heading: "Who I Am",
+                    desc: "An INFP executive with an artist's soul. I balance between the structured world of business and the boundless creativity of Hybrid AI.",
+                    stats: [
+                        { label: "Personality", value: "INFP (Introverted, Intuitive, Feeling, Prospecting)" },
+                        { label: "Height/Weight", value: "180 cm / 82 kg" },
+                        { label: "Physique", value: "Muscular Lean (Model Physique)" },
+                        { label: "Base", value: "Bangkok - Pattaya - Sattahip" }
+                    ],
+                    cvBtn: "Preview CV"
+                },
+                work: {
+                    heading: "Professional Vision",
+                    subheading: "Real Estate & Business Development",
+                    cards: [
+                        { title: "Real Estate & EEC", desc: "Expertise in Pattaya real estate market and the Eastern Economic Corridor (EEC) development." },
+                        { title: "Strategic Management", desc: "Years of experience in Operations, Marketing, and International Event Management." },
+                        { title: "Smart Home & Interior", desc: "Developing AI-integrated Smart Home systems and modern Interior Design solutions for future living." },
+                        { title: "Future Partners", desc: "Looking for partners to innovate in AI Tech Business and Real Estate within 2-5 years." }
+                    ]
+                },
+                passion: {
+                    heading: "The Creative Soul",
+                    subheading: "Hybrid AI & Digital Art",
+                    desc: "Founder of 'GymMateX Factory'. I create ultra-realistic Hybrid AI Personas blending real identity with fantasy.",
+                    points: [
+                        "Creating 'Hybrid AI Movies' for Gay audiences (Cinematic Storytelling).",
+                        "Collaborating with Gay Content Creators to upgrade/remaster content using AI.",
+                        "Sound Design & Music Production.",
+                        "Automating creativity with Generative AI & Veo3."
+                    ],
+                    btn: "Visit GymMateX"
+                },
+                gallery: {
+                    heading: "Work Preview",
+                    subheading: "Cinematic Hybrid AI & Motion",
+                    items: [
+                        { 
+                            isEmbed: true,
+                            title: "Hybrid AI Playlist", 
+                            desc: "Now Playing: YouTube Playlist", 
+                            embedSrc: "https://www.youtube.com/embed/videoseries?list=PLXigNrjSidjspyg1g9LP-KFI0zm02wZjz&autoplay=1&mute=1&loop=1"
+                        },
+                        { 
+                            isEmbed: true,
+                            title: "Latest Release", 
+                            desc: "Hybrid AI Music Video", 
+                            embedSrc: "https://www.youtube.com/embed/93xQKNh_4_w" 
+                        },
+                        { title: "Muscular Persona", desc: "Hyper-realistic Model Training", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
+                        { title: "Fantasy Concepts", desc: "Steampunk & Low-key Lighting", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=FANTASY+CONCEPT" },
+                        { title: "Smart Home Viz", desc: "Interior AI Design for EEC", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=INTERIOR+DESIGN" }
+                    ]
+                },
+                love: {
+                    heading: "Personal & Relationships",
+                    subheading: "Love, Sex & Deep Connections",
+                    status: "Single / Gay Versatile (Prefer Bottom)",
+                    looking: "Undefined & Organic Connection",
+                    desc: "Beyond business and AI partners, I seek a connection starting with Comfort and Chemistry without fixed definitions. Grounded in Mature understanding and respect for personal space, yet Open to developing romance and bonding naturally (Organic Growth) if feelings and timing align.",
+                    tags: ["Comfort", "Chemistry", "Mature", "Open", "Organic Growth"]
+                },
+                philosophy: {
+                    heading: "Fluid Dynamic Alliance",
+                    subheading: "THE PHILOSOPHY",
+                    desc: "We don't rely on fixed labels. Our connection shifts modes based on the vibe, necessity, and chemistry of the moment.",
+                    cards: [
+                        { icon: IconBriefcase, title: "Strategic Partner", desc: "Discussion of Real Estate visions, AI projects, and investment opportunities in EEC/Pattaya." },
+                        { icon: IconDumbbell, title: "Gym Bro", desc: "Training spotters focusing on hypertrophy, nutrition science, and bio-hacking." },
+                        { icon: IconFlame, title: "Intimate Mode", desc: "Safe, sane, and consensual pleasure. Fluid dynamics with muscular chemistry." },
+                        { icon: IconHeart, title: "Organic Romance", desc: "Allowing space for affection and deeper bonding when the feeling is mutually right." }
+                    ]
+                },
+                conduct: {
+                    heading: "Code of Conduct",
+                    items: [
+                        { icon: IconBan, title: "Zero Drama", desc: "Emotional self-regulation required." },
+                        { icon: IconLock, title: "Respect Sovereignty", desc: "Deep work & privacy respected." },
+                        { icon: IconInfinity, title: "Fluid Connection", desc: "Defined by the moment, not the label." }
+                    ]
+                },
+                footer: {
+                    contact: "Connect with me",
+                    rights: "© 2025 Thor Ayanundana. All rights reserved."
+                },
+                cvModal: {
+                    title: "Curriculum Vitae Preview",
+                    download: "Download Full PDF",
+                    close: "Close"
+                }
+            },
+            th: {
+                nav: { home: "หน้าหลัก", about: "ตัวตน", work: "วิสัยทัศน์", gallery: "ผลงาน", passion: "ความหลงใหล", love: "ความรัก", contact: "ติดต่อ" },
+                hero: {
+                    greeting: "สวัสดีครับ ผม",
+                    name: "ธอร์ (Thor)",
+                    title: "นักพัฒนาอสังหาริมทรัพย์ | ครีเอเตอร์ Hybrid AI",
+                    subtitle: "เชื่อมโยงโลกจริงของธุรกิจอสังหาฯ เข้ากับจินตนาการไร้ขีดจำกัดของ AI",
+                    cta: "ทำความรู้จักผม"
+                },
+                about: {
+                    heading: "ตัวตนของผม",
+                    desc: "ผู้บริหารที่มีจิตวิญญาณศิลปิน (INFP) ผสมผสานความเฉียบคมทางธุรกิจเข้ากับความคิดสร้างสรรค์ รักการดูแลรูปร่างและสุขภาพ",
+                    stats: [
+                        { label: "บุคลิกภาพ", value: "INFP (นักไกล่เกลี่ย - มีอุดมการณ์สูง)" },
+                        { label: "ส่วนสูง/น้ำหนัก", value: "180 ซม. / 82 กก." },
+                        { label: "รูปร่าง", value: "Muscular Lean (หุ่นนายแบบ/นักกีฬา)" },
+                        { label: "สถานที่หลัก", value: "กรุงเทพฯ - พัทยา - สัตหีบ" }
+                    ],
+                    cvBtn: "ดูประวัติ (CV)"
+                },
+                work: {
+                    heading: "วิสัยทัศน์ทางธุรกิจ",
+                    subheading: "อสังหาริมทรัพย์ & การพัฒนาธุรกิจ",
+                    cards: [
+                        { title: "Real Estate & EEC", desc: "เชี่ยวชาญตลาดอสังหาริมทรัพย์พัทยา และพื้นที่เขตพัฒนาพิเศษภาคตะวันออก (EEC)" },
+                        { title: "การบริหารจัดการ", desc: "มีประสบการณ์สูงด้าน Operations, การตลาด และการจัดงาน Event ระดับนานาชาติ" },
+                        { title: "Smart Home & Interior", desc: "มุ่งพัฒนาระบบบ้านอัจฉริยะ (AI Smart Home) และงานออกแบบตกแต่งภายในเพื่อการอยู่อาศัยยุคใหม่" },
+                        { title: "หาพันธมิตรธุรกิจ", desc: "มองหา Partner เพื่อร่วมลงทุนในธุรกิจ AI Tech และอสังหาฯ ในอีก 2-5 ปีข้างหน้า" }
+                    ]
+                },
+                passion: {
+                    heading: "จิตวิญญาณศิลปิน",
+                    subheading: "Hybrid AI & ศิลปะดิจิทัล",
+                    desc: "ผู้ก่อตั้ง 'GymMateX Factory' สร้างสรรค์ Hybrid AI Personas ที่ผสมผสานตัวตนจริงเข้ากับโลกจินตนาการ",
+                    points: [
+                        "สร้างภาพยนตร์ 'Hybrid AI Movies' สำหรับกลุ่ม Gay (เน้นงานภาพ Cinematic)",
+                        "มองหา Content Creator สาย Gay เพื่อ Collab หรือช่วย Upgrade ผลงานด้วย AI",
+                        "เชี่ยวชาญ Sound Design และทำเพลงประกอบ",
+                        "ใช้เทคโนโลยี Generative AI และ Veo3 ในการสร้างสรรค์ผลงาน"
+                    ],
+                    btn: "เยี่ยมชม GymMateX"
+                },
+                gallery: {
+                    heading: "ตัวอย่างผลงาน",
+                    subheading: "Cinematic Hybrid AI & Motion",
+                    items: [
+                        { 
+                            isEmbed: true,
+                            title: "Hybrid AI Playlist", 
+                            desc: "เล่นอัตโนมัติ (Automatic Play)", 
+                            embedSrc: "https://www.youtube.com/embed/videoseries?list=PLXigNrjSidjspyg1g9LP-KFI0zm02wZjz&autoplay=1&mute=1&loop=1"
+                        },
+                        { 
+                            isEmbed: true,
+                            title: "ผลงานล่าสุด", 
+                            desc: "มิวสิควิดีโอ Hybrid AI", 
+                            embedSrc: "https://www.youtube.com/embed/93xQKNh_4_w" 
+                        },
+                        { title: "Muscular Persona", desc: "การเทรนโมเดล AI ให้สมจริง (Fitness Model)", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
+                        { title: "Fantasy Concepts", desc: "งานศิลป์แนว Steampunk & แสง Low-key", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=FANTASY+CONCEPT" },
+                        { title: "Smart Home Viz", desc: "การออกแบบภายในยุคใหม่ด้วย AI", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=INTERIOR+DESIGN" }
+                    ]
+                },
+                love: {
+                    heading: "ความรักและความสัมพันธ์",
+                    subheading: "Love, Sex & Deep Connections",
+                    status: "โสด / Gay Versatile (Prefer Bottom)",
+                    looking: "ความสัมพันธ์แบบธรรมชาติ (Organic Growth)",
+                    desc: "นอกจาก Biz & AI Partners แล้ว ผมมองหาความสัมพันธ์ที่เริ่มต้นด้วยความสบายใจ (Comfort) และเคมีที่ตรงกัน (Chemistry) โดยไม่จำกัดรูปแบบตายตัว (Undefined) บนพื้นฐานความเข้าใจแบบผู้ใหญ่ (Mature) ที่ให้เกียรติพื้นที่ส่วนตัว แต่เปิดกว้าง (Open) ที่จะพัฒนาความโรแมนติกและความผูกพันได้ตามธรรมชาติ",
+                    tags: ["Comfort & Chemistry", "Mature", "Open", "Organic Growth", "Undefined"]
+                },
+                philosophy: {
+                    heading: "Fluid Dynamic Alliance",
+                    subheading: "ปรัชญาความสัมพันธ์",
+                    desc: "เราไม่ยึดติดกับนิยามตายตัว ความสัมพันธ์ของเราปรับเปลี่ยนโหมดไปตามบรรยากาศ ความจำเป็น และเคมี ณ ขณะนั้น",
+                    cards: [
+                        { icon: IconBriefcase, title: "คู่คิดเชิงกลยุทธ์", desc: "พูดคุยวิสัยทัศน์ด้านอสังหาฯ, โปรเจกต์ AI และโอกาสการลงทุนใน EEC/พัทยา" },
+                        { icon: IconDumbbell, title: "เพื่อนซี้เข้ายิม", desc: "ช่วยเซฟตอนเล่นเวท เน้นสร้างกล้ามเนื้อ วิทยาศาสตร์โภชนาการ และ Bio-hacking" },
+                        { icon: IconFlame, title: "โหมดความสัมพันธ์ลึกซึ้ง", desc: "ความสุขที่ปลอดภัย มีสติ และยินยอมพร้อมใจ เคมีที่ลื่นไหลกับรูปร่างที่แข็งแรง" },
+                        { icon: IconHeart, title: "ความโรแมนติกแบบธรรมชาติ", desc: "เปิดพื้นที่ให้ความรักและความผูกพันเติบโตเมื่อความรู้สึกตรงกันอย่างเป็นธรรมชาติ" }
+                    ]
+                },
+                conduct: {
+                    heading: "แนวทางปฏิบัติ (Code of Conduct)",
+                    items: [
+                        { icon: IconBan, title: "ไร้ดราม่า (Zero Drama)", desc: "ต้องรู้จักจัดการอารมณ์ตัวเองได้" },
+                        { icon: IconLock, title: "เคารพพื้นที่ส่วนตัว", desc: "ให้เกียรติเวลาทำงานลึกซึ้งและความเป็นส่วนตัว" },
+                        { icon: IconInfinity, title: "ความสัมพันธ์ที่ยืดหยุ่น", desc: "นิยามด้วยช่วงเวลา ไม่ใช่ป้ายชื่อ" }
+                    ]
+                },
+                footer: {
+                    contact: "ช่องทางติดต่อ",
+                    rights: "© 2025 Thor Ayanundana. สงวนลิขสิทธิ์"
+                },
+                cvModal: {
+                    title: "ตัวอย่างประวัติ (CV Preview)",
+                    download: "ดาวน์โหลด PDF ฉบับเต็ม",
+                    close: "ปิดหน้าต่าง"
+                }
+            }
+        };
 
-    <!-- Identity Section -->
-    <section id="identity" class="py-24 bg-slate-950 relative">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-electric-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative bg-slate-900 aspect-[4/5] rounded-2xl overflow-hidden border border-slate-800 flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=1287&auto=format&fit=crop" alt="Thor Hybrid Creator" class="object-cover w-full h-full opacity-80 hover:opacity-100 transition duration-500 grayscale hover:grayscale-0">
-                        <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-slate-950 to-transparent">
-                            <h3 class="text-2xl font-display font-bold text-white">Thor Ayanundana</h3>
-                            <p class="text-electric-500 font-mono">Developer | Bio-hacker | Artist</p>
+        const App = () => {
+            const [lang, setLang] = useState('en');
+            const [showCV, setShowCV] = useState(false);
+            const [currentImageIndex, setCurrentImageIndex] = useState(0);
+            const t = content[lang];
+
+            useEffect(() => {
+                const timer = setInterval(() => {
+                    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % PROFILE_IMAGES.length);
+                }, 3000); 
+
+                return () => clearInterval(timer);
+            }, []);
+
+            const toggleLang = () => setLang(prev => prev === 'en' ? 'th' : 'en');
+
+            return (
+                <div className="min-h-screen bg-slate-900 text-slate-200 font-sans selection:bg-pink-500 selection:text-white">
+                    
+                    {/* Navigation */}
+                    <nav className="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+                        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex items-center justify-between h-16">
+                                <span className="text-xl font-bold gradient-text tracking-widest">THOR.A</span>
+                                <div className="hidden md:block">
+                                    <div className="ml-10 flex items-baseline space-x-6">
+                                        <a href="#about" className="hover:text-cyan-400 transition text-sm">{t.nav.about}</a>
+                                        <a href="#work" className="hover:text-cyan-400 transition text-sm">{t.nav.work}</a>
+                                        <a href="#gallery" className="hover:text-cyan-400 transition text-sm flex items-center gap-1"><IconEye size={14}/> {t.nav.gallery}</a>
+                                        <a href="#passion" className="hover:text-pink-500 transition text-sm">{t.nav.passion}</a>
+                                        <a href="#love" className="hover:text-pink-500 transition text-sm">{t.nav.love}</a>
+                                        <button onClick={toggleLang} className="ml-4 px-3 py-1 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 transition text-xs font-semibold">
+                                            {lang.toUpperCase()}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="md:hidden flex items-center gap-4">
+                                     <button onClick={toggleLang} className="px-3 py-1 rounded-full border border-slate-600 text-xs font-semibold">
+                                        {lang.toUpperCase()}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <h2 class="text-4xl font-display font-bold mb-8">The Hybrid Asset</h2>
-                    <p class="text-lg text-slate-400 mb-8 leading-relaxed">
-                        I am an <strong>INFP</strong> at the core—introverted but deeply connected, grounded, and authentic. I don't seek someone to complete me, but a partner to <strong>elevate</strong> our mutual ecosystem.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 mb-10">
-                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-1">Height</div><div class="text-2xl font-display font-bold text-white">180 CM</div></div>
-                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-1">Weight</div><div class="text-2xl font-display font-bold text-white">82 KG</div></div>
-                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-1">Build</div><div class="text-2xl font-display font-bold text-white">Muscular Lean</div></div>
-                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800"><div class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-1">Role</div><div class="text-2xl font-display font-bold text-white">Versatile</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </nav>
 
-    <!-- [ADDED] SECTION 1: FLUID DYNAMIC ALLIANCE -->
-    <section id="dynamics" class="py-24 bg-slate-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-gold-400 font-bold uppercase tracking-widest mb-2 text-sm">The Philosophy</h2>
-                <h3 class="text-4xl md:text-5xl font-display font-bold text-white">Fluid Dynamic Alliance</h3>
-                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">
-                    We don't rely on fixed labels. Our connection shifts modes based on the vibe, necessity, and chemistry of the moment.
-                </p>
-            </div>
+                    {/* CV Preview Modal */}
+                    {showCV && (
+                        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+                            <div className="bg-slate-800 rounded-2xl w-full max-w-3xl shadow-2xl border border-slate-700 flex flex-col max-h-[90vh]">
+                                <div className="p-6 border-b border-slate-700 flex justify-between items-center bg-slate-800 rounded-t-2xl">
+                                    <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                                        <IconFileText /> {t.cvModal.title}
+                                    </h3>
+                                    <button onClick={() => setShowCV(false)} className="text-slate-400 hover:text-white transition">
+                                        <IconX />
+                                    </button>
+                                </div>
+                                <div className="p-8 overflow-y-auto bg-slate-100 text-slate-900 font-mono text-sm leading-relaxed">
+                                    {/* Mock CV Content based on user's real CV */}
+                                    <div className="max-w-2xl mx-auto space-y-6">
+                                        <div className="text-center border-b-2 border-slate-900 pb-4">
+                                            <h1 className="text-3xl font-bold uppercase">Techatorn Ayanundana (Thor)</h1>
+                                            <p className="text-slate-600">Operations | Sales & Marketing | Real Estate | Fitness Specialist</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <h2 className="font-bold text-lg uppercase border-b border-slate-300 mb-2">Professional Experience</h2>
+                                            
+                                            <div className="mb-4">
+                                                <div className="flex justify-between font-bold">
+                                                    <span>Real Estate Developer (Pattaya)</span>
+                                                    <span>Present</span>
+                                                </div>
+                                                <p className="italic text-slate-600">Executive Management</p>
+                                                <ul className="list-disc ml-5 mt-1 text-slate-700">
+                                                    <li>Overseeing strategic operations and business development in EEC area.</li>
+                                                    <li>Managing high-end property projects and marketing strategies.</li>
+                                                </ul>
+                                            </div>
 
-            <div class="grid md:grid-cols-4 gap-6">
-                <!-- Strategic Partner -->
-                <div class="mode-card p-8 rounded-2xl bg-slate-850 border border-slate-800 hover:border-electric-500">
-                    <div class="w-14 h-14 rounded-xl bg-slate-800 flex items-center justify-center text-electric-500 mb-6 text-2xl">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Strategic Partner</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Discussion of Real Estate visions, AI projects, and investment opportunities in EEC/Pattaya.</p>
-                </div>
+                                            <div className="mb-4">
+                                                <div className="flex justify-between font-bold">
+                                                    <span>The Legend by True Arena (Hua Hin)</span>
+                                                    <span>Previous</span>
+                                                </div>
+                                                <p className="italic text-slate-600">Operations Manager</p>
+                                                <ul className="list-disc ml-5 mt-1 text-slate-700">
+                                                    <li>Managed multi-sport facility operations (CrossFit, MMA, Golf).</li>
+                                                    <li>Organized "Legend Fight Championship" and large-scale sports events.</li>
+                                                </ul>
+                                            </div>
 
-                <!-- Gym Bro -->
-                <div class="mode-card p-8 rounded-2xl bg-slate-850 border border-slate-800 hover:border-gold-400">
-                    <div class="w-14 h-14 rounded-xl bg-slate-800 flex items-center justify-center text-gold-400 mb-6 text-2xl">
-                        <i class="fa-solid fa-dumbbell"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Gym Bro</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Training spotters focusing on hypertrophy, nutrition science, and bio-hacking.</p>
-                </div>
+                                            <div className="mb-4">
+                                                <div className="flex justify-between font-bold">
+                                                    <span>Real Estate Agent (Pattaya)</span>
+                                                    <span>2012 - 2018</span>
+                                                </div>
+                                                <p className="italic text-slate-600">Sales & Marketing Manager</p>
+                                                <ul className="list-disc ml-5 mt-1 text-slate-700">
+                                                    <li>Sole agent for major developers: The Riviera Group, Copacabana, etc.</li>
+                                                    <li>Managed sales team and international marketing campaigns.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
 
-                <!-- Intimate Mode -->
-                <div class="mode-card p-8 rounded-2xl bg-slate-850 border border-slate-800 hover:border-red-400">
-                    <div class="w-14 h-14 rounded-xl bg-slate-800 flex items-center justify-center text-red-400 mb-6 text-2xl">
-                        <i class="fa-solid fa-fire"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Intimate Mode</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Safe, sane, and consensual pleasure. Fluid dynamics with muscular chemistry.</p>
-                </div>
+                                         <div>
+                                            <h2 className="font-bold text-lg uppercase border-b border-slate-300 mb-2">Education & Certifications</h2>
+                                            <ul className="list-none space-y-1 text-slate-700">
+                                                <li><strong>Thammasat University:</strong> Bachelor of Arts (International Affairs)</li>
+                                                <li><strong>ACE Certified:</strong> Personal Trainer & Fitness Nutrition Specialist</li>
+                                                <li><strong>Photography:</strong> 9 Years Professional Experience (Canon EOS system)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-4 border-t border-slate-700 bg-slate-900 rounded-b-2xl flex justify-end gap-3">
+                                    <button onClick={() => setShowCV(false)} className="px-4 py-2 text-slate-400 hover:text-white transition">
+                                        {t.cvModal.close}
+                                    </button>
+                                    <button className="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-semibold flex items-center gap-2 shadow-lg">
+                                         <IconFileText /> {t.cvModal.download}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
-                <!-- Organic Romance -->
-                <div class="mode-card p-8 rounded-2xl bg-slate-850 border border-slate-800 hover:border-purple-400">
-                    <div class="w-14 h-14 rounded-xl bg-slate-800 flex items-center justify-center text-purple-400 mb-6 text-2xl">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Organic Romance</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Allowing space for affection and deeper bonding when the feeling is mutually right.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    {/* Hero Section */}
+                    <section className="relative pt-32 pb-20 px-4 flex flex-col lg:flex-row items-center justify-center min-h-[90vh] overflow-hidden gap-8 max-w-7xl mx-auto">
+                        {/* Background Elements */}
+                        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <!-- Target Synergy Section -->
-    <section id="targets" class="py-24 bg-slate-950 relative overflow-hidden">
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full bg-gradient-to-l from-slate-900 to-transparent opacity-50"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="mb-16">
-                <h2 class="text-4xl font-display font-bold text-white mb-6">Target Synergy <br><span class="text-slate-600">Who fits the ecosystem?</span></h2>
-            </div>
-            <div class="space-y-4">
-                <div class="group relative p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-electric-500 transition-all">
-                    <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-electric-500"></span>Gay Creators & Visionaries</h3>
-                    <p class="text-slate-400 max-w-2xl"><strong>For Collaboration:</strong> You are a content creator, artist, or influencer. Let's merge my Gen-AI tech with your production.</p>
-                </div>
-                <div class="group relative p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-gold-400 transition-all">
-                    <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-gold-400"></span>Fit Entrepreneurs</h3>
-                    <p class="text-slate-400 max-w-2xl"><strong>The Core Match:</strong> Architects, Tech Leads, or Business Owners who treat their body like a temple.</p>
-                </div>
-                <div class="group relative p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-500 transition-all">
-                    <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-slate-600"></span>High Society (Open)</h3>
-                    <p class="text-slate-400 max-w-2xl"><strong>For Connection:</strong> Investors or Elites looking for a loose, discrete, and high-value connection.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <div className="relative z-10 w-full lg:w-5/12 text-center lg:text-left">
+                            <p className="text-cyan-400 font-semibold tracking-wide mb-4 animate-fade-in-up">{t.hero.greeting}</p>
+                            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white tracking-tight">
+                                {t.hero.name}
+                            </h1>
+                            <h2 className="text-2xl md:text-3xl text-slate-400 mb-8 font-light">
+                                {t.hero.title}
+                            </h2>
+                            <p className="text-lg md:text-xl text-slate-400 max-w-2xl lg:max-w-full mx-auto lg:mx-0 mb-10 leading-relaxed">
+                                {t.hero.subtitle}
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="#gallery" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg shadow-cyan-500/25 transition transform hover:scale-105">
+                                    {t.hero.cta}
+                                </a>
+                                <button onClick={() => setShowCV(true)} className="px-8 py-3 rounded-full border border-slate-600 hover:border-cyan-400 text-slate-300 hover:text-cyan-400 transition font-semibold flex items-center justify-center gap-2">
+                                    <IconFileText /> {t.about.cvBtn}
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className="relative z-10 w-full lg:w-7/12 flex justify-center lg:justify-end animate-float">
+                            <img 
+                                src="https://i.postimg.cc/9fzvdGYB/9686DDD2-10D9-47B9-AE7B-FF77DEF2E26F.png" 
+                                alt="Thor Main Infographic" 
+                                className="w-full max-w-2xl lg:max-w-full rounded-2xl shadow-2xl shadow-cyan-500/20 border border-slate-700/50 object-cover"
+                            />
+                        </div>
+                    </section>
 
-    <!-- [ADDED] SECTION 2: CODE OF CONDUCT -->
-    <section class="py-24 bg-slate-900 border-t border-white/5">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-display font-bold text-white">Code of Conduct</h2>
-                <p class="text-slate-500 mt-2">The foundation of our loose partnership.</p>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-10 md:gap-20">
-                <!-- Rule 1 -->
-                <div class="flex items-center gap-5 text-left group">
-                    <div class="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 text-2xl group-hover:bg-red-500/20 transition">
-                        <i class="fa-solid fa-ban"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Zero Drama</h4>
-                        <p class="text-sm text-slate-400">Emotional self-regulation required.</p>
-                    </div>
+                    {/* About / Identity */}
+                    <section id="about" className="py-20 bg-slate-800/50">
+                        <div className="max-w-6xl mx-auto px-4">
+                            <div className="flex flex-col md:flex-row gap-12 items-center">
+                                <div className="w-full md:w-1/2">
+                                    <div className="relative w-full aspect-[4/5] bg-slate-700 rounded-2xl overflow-hidden shadow-2xl group">
+                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 z-10"></div>
+                                         {/* Slideshow Logic */}
+                                         {PROFILE_IMAGES.map((img, index) => (
+                                            <img 
+                                                key={index}
+                                                src={img} 
+                                                alt={`Thor Profile ${index + 1}`} 
+                                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                                            />
+                                         ))}
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/2">
+                                    <div className="flex items-center gap-2 mb-4 text-cyan-400">
+                                        <IconUser />
+                                        <span className="uppercase tracking-widest font-bold text-sm">Identity</span>
+                                    </div>
+                                    <h2 className="text-4xl font-bold mb-6 text-white">{t.about.heading}</h2>
+                                    <p className="text-slate-400 mb-8 text-lg leading-relaxed">
+                                        {t.about.desc}
+                                    </p>
+                                    
+                                    <div className="grid grid-cols-1 gap-4 mb-8">
+                                        {t.about.stats.map((stat, idx) => (
+                                            <div key={idx} className="bg-slate-900 p-4 rounded-lg border border-slate-700 flex justify-between items-center">
+                                                <span className="text-slate-400 font-medium">{stat.label}</span>
+                                                <span className="text-cyan-300 font-semibold text-right">{stat.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <button onClick={() => setShowCV(true)} className="w-full py-3 border-2 border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white rounded-xl transition flex items-center justify-center gap-2 font-semibold">
+                                        <IconFileText /> {t.about.cvBtn}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Work / Professional Vision */}
+                    <section id="work" className="py-20 bg-slate-900 relative">
+                         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-slate-800 to-transparent opacity-20"></div>
+                        <div className="max-w-6xl mx-auto px-4 relative z-10">
+                            <div className="text-center mb-16">
+                                <div className="inline-flex items-center gap-2 text-cyan-400 mb-2">
+                                    <IconBriefcase />
+                                    <span className="uppercase tracking-widest font-bold text-sm">Professional</span>
+                                </div>
+                                <h2 className="text-4xl font-bold mb-2 text-white">{t.work.heading}</h2>
+                                <p className="text-xl text-slate-400">{t.work.subheading}</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {t.work.cards.map((card, idx) => (
+                                    <div key={idx} className="card-hover bg-slate-800 p-8 rounded-xl border border-slate-700/50">
+                                        <h3 className="text-2xl font-bold mb-3 text-cyan-50">{card.title}</h3>
+                                        <p className="text-slate-400 leading-relaxed">{card.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                    
+                    {/* NEW SECTION: Gallery Preview */}
+                    <section id="gallery" className="py-20 bg-black overflow-hidden">
+                        <div className="max-w-7xl mx-auto px-4">
+                             <div className="flex justify-between items-end mb-12">
+                                <div>
+                                    <div className="inline-flex items-center gap-2 text-pink-500 mb-2">
+                                        <IconEye />
+                                        <span className="uppercase tracking-widest font-bold text-sm">Showcase</span>
+                                    </div>
+                                    <h2 className="text-4xl font-bold text-white">{t.gallery.heading}</h2>
+                                    <p className="text-slate-400 mt-2">{t.gallery.subheading}</p>
+                                </div>
+                                <div className="hidden md:flex gap-2">
+                                    {/* Decorative arrows or controls could go here */}
+                                </div>
+                            </div>
+
+                            <div className="flex gap-6 overflow-x-auto pb-8 hide-scroll snap-x">
+                                {t.gallery.items.map((item, idx) => (
+                                    <div 
+                                      key={idx} 
+                                      className={`snap-center shrink-0 w-[85vw] md:w-[600px] group relative rounded-2xl overflow-hidden border border-slate-800 block ${item.link ? 'cursor-pointer' : ''}`}
+                                    >
+                                        {item.isEmbed ? (
+                                             <div className="aspect-video bg-black w-full h-full">
+                                                <iframe 
+                                                    src={item.embedSrc} 
+                                                    title={item.title}
+                                                    className="w-full h-full" 
+                                                    frameBorder="0" 
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                    allowFullScreen>
+                                                </iframe>
+                                             </div>
+                                        ) : (
+                                            <a href={item.link || "#"} target={item.link ? "_blank" : "_self"} className="block w-full h-full">
+                                                <div className="aspect-video bg-slate-800 relative">
+                                                    <img src={item.img} alt={item.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+                                                </div>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90 pointer-events-none"></div>
+                                                <div className="absolute bottom-0 left-0 p-6 w-full pointer-events-none">
+                                                    <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-cyan-400 transition flex items-center gap-2">
+                                                        {item.title}
+                                                    </h3>
+                                                    <p className="text-slate-300 text-sm">{item.desc}</p>
+                                                </div>
+                                            </a>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Passion / Creative Soul */}
+                    <section id="passion" className="py-20 bg-slate-800/30">
+                        <div className="max-w-6xl mx-auto px-4">
+                            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 border border-pink-500/20 shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                                <div className="relative z-10">
+                                    <div className="flex flex-col md:flex-row gap-12 items-center">
+                                        <div className="w-full md:w-2/3">
+                                            <div className="inline-flex items-center gap-2 text-pink-500 mb-4">
+                                                <IconPalette />
+                                                <span className="uppercase tracking-widest font-bold text-sm">Passion</span>
+                                            </div>
+                                            <h2 className="text-4xl font-bold mb-4 text-white">{t.passion.heading}</h2>
+                                            <h3 className="text-2xl text-pink-400 mb-6 font-light">{t.passion.subheading}</h3>
+                                            <p className="text-slate-300 mb-8 text-lg">
+                                                {t.passion.desc}
+                                            </p>
+                                            <ul className="space-y-3 mb-8">
+                                                {t.passion.points.map((point, idx) => (
+                                                    <li key={idx} className="flex items-start text-slate-400">
+                                                        <span className="mr-3 text-pink-500 mt-1">▹</span>
+                                                        {point}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <a href="https://threeandhour.github.io/GymMateX/" target="_blank" className="inline-block border border-pink-500 text-pink-400 hover:bg-pink-500 hover:text-white px-8 py-3 rounded-full font-semibold transition">
+                                                {t.passion.btn}
+                                            </a>
+                                        </div>
+                                        <div className="w-full md:w-1/3 flex items-center justify-center">
+                                            <div className="w-full h-auto rounded-xl border border-pink-500/30 flex items-center justify-center relative overflow-hidden group bg-black">
+                                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-pink-900/50 z-10"></div>
+                                                 <img 
+                                                    src="https://i.postimg.cc/j27XthYk/9420DB72-D46F-4E29-8C8C-B6D4C6D615E1-1-201-a.jpg" 
+                                                    alt="Passion Visual" 
+                                                    className="w-full h-auto transition duration-500 group-hover:scale-110" 
+                                                 />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Love & Personal */}
+                    <section id="love" className="py-20">
+                        <div className="max-w-6xl mx-auto px-4">
+                            <div className="flex flex-col md:flex-row gap-12 items-stretch">
+                                
+                                {/* Left: Image */}
+                                <div className="w-full md:w-1/2">
+                                    <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-slate-700 group bg-slate-800 flex items-center">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+                                        <img 
+                                            src="https://i.postimg.cc/mg0rJN2J/Gemini-Generated-Image-tr6st2tr6st2tr6s.png" 
+                                            alt="Love & Relationships" 
+                                            className="w-full h-auto transition duration-700 group-hover:scale-105" 
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Right: Content */}
+                                <div className="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
+                                    <div className="inline-flex items-center gap-2 text-pink-500 mb-4 justify-center md:justify-start">
+                                        <IconHeart />
+                                        <span className="uppercase tracking-widest font-bold text-sm">Private Life</span>
+                                    </div>
+                                    <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">{t.love.heading}</h2>
+                                    
+                                    <div className="bg-slate-800/50 backdrop-blur rounded-2xl p-8 border border-slate-700 shadow-xl h-full flex flex-col justify-center">
+                                        <h3 className="text-2xl text-white font-semibold mb-2">{t.love.looking}</h3>
+                                        <p className="text-cyan-400 font-medium mb-6">{t.love.status}</p>
+                                        <p className="text-slate-300 text-lg mb-8 leading-relaxed italic">
+                                            "{t.love.desc}"
+                                        </p>
+                                        <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-auto">
+                                            {t.love.tags.map((tag, idx) => (
+                                                <span key={idx} className="px-4 py-2 bg-slate-900 text-slate-400 rounded-full text-sm border border-slate-700">
+                                                    #{tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Philosophy Section (Fluid Dynamic Alliance) */}
+                    <section id="philosophy" className="py-20 bg-slate-900 relative">
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-slate-900/80 pointer-events-none"></div>
+                        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+                            <div className="inline-block mb-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold tracking-widest uppercase">
+                                {t.philosophy.subheading}
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t.philosophy.heading}</h2>
+                            <p className="text-slate-400 max-w-2xl mx-auto mb-16 text-lg">
+                                {t.philosophy.desc}
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {t.philosophy.cards.map((card, idx) => (
+                                    <div key={idx} className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-slate-600 transition group hover:bg-slate-800">
+                                        <div className="w-12 h-12 rounded-xl bg-slate-700 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                                            <card.icon />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-white mb-3 text-left">{card.title}</h3>
+                                        <p className="text-slate-400 text-sm text-left leading-relaxed">
+                                            {card.desc}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Code of Conduct Section */}
+                    <section id="conduct" className="py-16 bg-slate-950 border-t border-slate-800">
+                        <div className="max-w-6xl mx-auto px-4 text-center">
+                            <h2 className="text-3xl font-bold text-white mb-12">{t.conduct.heading}</h2>
+                            <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+                                {t.conduct.items.map((item, idx) => (
+                                    <div key={idx} className="flex items-center gap-4 text-left max-w-xs mx-auto md:mx-0">
+                                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${idx === 0 ? 'bg-red-500/10 text-red-400' : idx === 1 ? 'bg-blue-500/10 text-blue-400' : 'bg-green-500/10 text-green-400'}`}>
+                                            <item.icon />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-white font-bold text-lg">{item.title}</h4>
+                                            <p className="text-slate-500 text-sm">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer / Connect */}
+                    <footer className="bg-slate-950 py-16 border-t border-slate-800">
+                        <div className="max-w-6xl mx-auto px-4 text-center">
+                            <h2 className="text-3xl font-bold text-white mb-8">{t.footer.contact}</h2>
+                            <div className="flex justify-center gap-6 mb-12">
+                                <a href="https://x.com/widerooms" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-cyan-600 hover:text-white transition text-slate-400">
+                                    <IconTwitter />
+                                </a>
+                                <a href="https://www.youtube.com/@threeandhour" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-red-600 hover:text-white transition text-slate-400">
+                                    <IconYoutube />
+                                </a>
+                                <a href="https://www.instagram.com/th_b_ho/" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-pink-600 hover:text-white transition text-slate-400">
+                                    <IconInstagram />
+                                </a>
+                                <a href="https://threeandhour.github.io/GymMateX/" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-purple-600 hover:text-white transition text-slate-400">
+                                    <IconGlobe />
+                                </a>
+                            </div>
+                            
+                            <div className="flex justify-center items-center gap-2 text-slate-500 mb-8">
+                                <IconMapPin />
+                                <span>Bangkok - Pattaya - Sattahip</span>
+                            </div>
+
+                            <p className="text-slate-600 text-sm">
+                                {t.footer.rights}
+                            </p>
+                        </div>
+                    </footer>
                 </div>
+            );
+        };
 
-                <!-- Rule 2 -->
-                <div class="flex items-center gap-5 text-left group">
-                    <div class="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-2xl group-hover:bg-blue-500/20 transition">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Respect Sovereignty</h4>
-                        <p class="text-sm text-slate-400">Deep work & privacy respected.</p>
-                    </div>
-                </div>
-
-                <!-- Rule 3 -->
-                <div class="flex items-center gap-5 text-left group">
-                    <div class="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 text-2xl group-hover:bg-green-500/20 transition">
-                        <i class="fa-solid fa-infinity"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold text-white">Fluid Connection</h4>
-                        <p class="text-sm text-slate-400">Defined by the moment, not the label.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="connect" class="py-24 bg-slate-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-8">Ready to <span class="text-electric-500">Sync?</span></h2>
-            <p class="text-xl text-slate-400 mb-12 max-w-xl mx-auto">If you resonate with the Hybrid Creator mindset and fit the profile, let's skip the small talk.</p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center">
-                <a href="#" class="px-10 py-5 bg-white text-slate-950 font-bold rounded-xl hover:bg-gold-400 hover:text-slate-900 transition transform hover:-translate-y-1 shadow-lg shadow-white/10">
-                    <i class="fa-brands fa-linkedin mr-2"></i> Connect on LinkedIn
-                </a>
-                <a href="#" class="px-10 py-5 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 transition transform hover:-translate-y-1 border border-slate-700">
-                    <i class="fa-brands fa-instagram mr-2"></i> DM for Art & Anatomy
-                </a>
-            </div>
-            <div class="mt-20 pt-8 border-t border-slate-900 text-slate-600 text-sm">
-                <p>&copy; 2025 Thor Techatorn. All Rights Reserved. | <span class="text-slate-500">Constructed by GymMateX AI</span></p>
-            </div>
-        </div>
-    </footer>
-
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>

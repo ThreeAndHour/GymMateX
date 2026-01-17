@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Convergence Economy 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Sarabun:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f172a', // slate-900
+                            800: '#1e293b', // slate-800
+                            700: '#334155', // slate-700
+                        },
+                        brand: {
+                            glow: '#3b82f6', // blue-500
+                            accent: '#06b6d4', // cyan-500
+                            dark: '#1e3a8a', // blue-900
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Sarabun', 'Noto Sans SC', 'Inter', 'sans-serif'],
+                        display: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden; /* Ensure images stay within rounded corners */
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Image Styling */
+        .card-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+            mix-blend-mode: luminosity; /* Blends nicely with dark theme */
+        }
+        
+        .glass-card:hover .card-image {
+            transform: scale(1.05);
+            opacity: 1;
+            mix-blend-mode: normal;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+        }
+
+        /* Flywheel Styles */
+        .flywheel-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        /* Decorative rings behind flywheel */
+        .flywheel-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px dashed rgba(59, 130, 246, 0.2);
+            z-index: 0;
+        }
+
+        .flywheel-circle {
+            position: relative;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .flywheel-center {
+            position: absolute;
+            z-index: 20;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .flywheel-item {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            cursor: default;
+        }
+        
+        .flywheel-item:hover {
+            transform: scale(1.15) !important;
+            z-index: 30;
+            background: #1e293b;
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Positioning items in a circle (Expanded for larger design) */
+        .item-1 { transform: translate(0, -190px); }
+        .item-2 { transform: translate(165px, -95px); }
+        .item-3 { transform: translate(165px, 95px); }
+        .item-4 { transform: translate(0, 190px); }
+        .item-5 { transform: translate(-165px, 95px); }
+        .item-6 { transform: translate(-165px, -95px); }
+
+        @media (max-width: 767px) {
+            .flywheel-wrapper { min-height: 450px; }
+            .flywheel-circle { width: 220px; height: 220px; }
+            .flywheel-item { width: 90px; height: 90px; padding: 0.5rem; }
+            .item-1 { transform: translate(0, -140px); }
+            .item-2 { transform: translate(121px, -70px); }
+            .item-3 { transform: translate(121px, 70px); }
+            .item-4 { transform: translate(0, 140px); }
+            .item-5 { transform: translate(-121px, 70px); }
+            .item-6 { transform: translate(-121px, -70px); }
+        }
+
+        /* Timeline Customization */
+        .timeline {
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, #3b82f6, #06b6d4, transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-container.left { left: 0; text-align: right; }
+        .timeline-container.right { left: 50%; text-align: left; }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #0f172a;
+            border: 4px solid #06b6d4;
+            border-radius: 50%;
+            top: 25px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+        .timeline-container.left .timeline-dot { right: -10px; }
+        .timeline-container.right .timeline-dot { left: -10px; }
+        
+        @media (max-width: 767px) {
+            .timeline::before { left: 20px; }
+            .timeline-container { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left; }
+            .timeline-container.left, .timeline-container.right { left: 0; }
+            .timeline-container.left .timeline-dot, .timeline-container.right .timeline-dot { left: 10px; right: auto; }
+        }
+
+        /* Language Button */
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            background: rgba(30, 41, 59, 0.8);
+            color: #94a3b8;
+            border: 1px solid transparent;
+        }
+        .lang-btn:hover { background: rgba(59, 130, 246, 0.2); color: white; }
+        .lang-btn.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+        }
+        
+        .spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Language Switcher -->
+    <div id="language-switcher" class="fixed top-6 right-6 z-50 flex gap-2 glass-card p-1.5 rounded-xl">
+        <button data-lang="th" class="lang-btn">TH</button>
+        <button data-lang="en" class="lang-btn">EN</button>
+        <button data-lang="ru" class="lang-btn">RU</button>
+        <button data-lang="zh" class="lang-btn">CN</button>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-8 max-w-7xl relative">
+
+        <!-- Background Hero Image (Abstract Digital) -->
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" class="hero-bg" alt="Digital World Background">
+
+        <!-- Header -->
+        <header class="text-center py-20 md:py-28 relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-500/10 blur-[100px] rounded-full -z-10"></div>
+            <h1 id="header-title" class="font-display text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 mb-6 tracking-tight drop-shadow-lg"></h1>
+            <div class="inline-block px-4 py-1 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-400 text-sm font-bold tracking-widest mb-4">UPDATED 2026 RESEARCH</div>
+            <p id="header-subtitle" class="text-xl md:text-2xl text-slate-400 font-light tracking-wide max-w-3xl mx-auto"></p>
+        </header>
+
+        <!-- Video Section (Added) -->
+        <section id="persona-video" class="mb-20 flex justify-center">
+            <div class="glass-card p-4 rounded-2xl max-w-4xl w-full border-t-2 border-t-cyan-500 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                <div class="flex items-center justify-between mb-4 px-2">
+                    <h3 class="text-cyan-400 font-bold tracking-widest uppercase text-sm">My Hybrid Persona (B. & Three)</h3>
+                    <div class="flex gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <span class="text-xs text-slate-400 uppercase">Live Simulation</span>
+                    </div>
+                </div>
+                <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 bg-black">
+                    <video class="w-full h-full object-cover" controls autoplay muted loop playsinline>
+                        <source src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/9c00b42e-ea68-4d13-9324-1d5eca7ee726/9db28cfe-ffde-4308-8c97-8912b9f3feda.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section id="intro" class="mb-20 glass-card rounded-2xl p-8 md:p-12 text-center relative overflow-hidden group">
+            <!-- Background Image for Intro -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop" class="w-full h-full object-cover opacity-10" alt="AI Human Connection">
+            </div>
+            <div class="relative z-10">
+                <p id="intro-line1" class="text-xl md:text-2xl font-light text-cyan-400 mb-6 tracking-wider uppercase"></p>
+                <h2 id="intro-quote" class="font-display text-3xl md:text-5xl font-bold mb-8 leading-tight"></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-8 rounded-full"></div>
+                <p id="intro-desc" class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed"></p>
+            </div>
+        </section>
+        
+        <!-- Flywheel Section -->
+        <section id="flywheel" class="mb-24 relative">
+            <div class="text-center mb-10">
+                <span class="text-blue-500 font-bold tracking-widest text-sm uppercase mb-2 block">Synergy Engine 2.0</span>
+                <h2 id="flywheel-title" class="font-display text-3xl md:text-4xl font-bold text-white mb-4"></h2>
+                <p id="flywheel-desc" class="text-slate-400 max-w-2xl mx-auto"></p>
+            </div>
+
+            <div class="flywheel-wrapper">
+                <!-- Decorative Rings -->
+                <div class="flywheel-ring w-[500px] h-[500px] animate-spin" style="animation-duration: 60s;"></div>
+                <div class="flywheel-ring w-[400px] h-[400px] animate-spin" style="animation-duration: 40s; border-style: dotted; opacity: 0.3;"></div>
+
+                <div class="flywheel-circle animate-float">
+                    <!-- Center Hub -->
+                    <div class="flywheel-center p-8 rounded-full text-white text-center flex flex-col justify-center items-center w-40 h-40 border-4 border-blue-900/50 backdrop-blur-sm z-20">
+                        <h3 id="flywheel-center-title" class="font-bold text-lg leading-tight mb-1"></h3>
+                        <div class="h-0.5 w-8 bg-white/50 my-1"></div>
+                        <p id="flywheel-center-desc" class="text-[10px] uppercase tracking-wider opacity-90"></p>
+                    </div>
+                    
+                    <!-- Satellites -->
+                    <div class="flywheel-item item-1">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">🧠</div>
+                        <h3 id="flywheel-item1" class="font-bold text-xs md:text-sm text-cyan-400"></h3>
+                    </div>
+                    <div class="flywheel-item item-2">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]">🔮</div>
+                        <h3 id="flywheel-item2" class="font-bold text-xs md:text-sm text-purple-400"></h3>
+                    </div>
+                    <div class="flywheel-item item-3">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">🤖</div>
+                        <h3 id="flywheel-item3" class="font-bold text-xs md:text-sm text-blue-400"></h3>
+                    </div>
+                    <div class="flywheel-item item-4">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">🔗</div>
+                        <h3 id="flywheel-item4" class="font-bold text-xs md:text-sm text-green-400"></h3>
+                    </div>
+                    <div class="flywheel-item item-5">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">🌍</div>
+                        <h3 id="flywheel-item5" class="font-bold text-xs md:text-sm text-pink-400"></h3>
+                    </div>
+                    <div class="flywheel-item item-6">
+                        <div class="text-2xl mb-1 filter drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]">💡</div>
+                        <h3 id="flywheel-item6" class="font-bold text-xs md:text-sm text-yellow-400"></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Persona Generator Section -->
+        <section id="persona-generator" class="mb-24 glass-card rounded-2xl p-0 border-t-4 border-t-cyan-500 flex flex-col md:flex-row overflow-hidden">
+            <div class="md:w-1/3 relative h-64 md:h-auto">
+                <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=2006&auto=format&fit=crop" class="w-full h-full object-cover" alt="AI Persona Concept">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[rgba(30,41,59,0.9)]"></div>
+            </div>
+            <div class="p-8 md:p-12 md:w-2/3 flex flex-col justify-center">
+                <div class="mb-8">
+                    <h2 id="generator-title" class="font-display text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400"></h2>
+                    <p id="generator-desc" class="text-slate-400 mt-2 max-w-xl"></p>
+                </div>
+                
+                <div class="w-full bg-slate-900/50 p-2 rounded-xl border border-slate-700 shadow-2xl mb-6">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="persona-input" class="flex-grow p-4 bg-transparent text-white placeholder-slate-500 focus:outline-none focus:bg-slate-800/50 rounded-lg transition" autocomplete="off">
+                        <button id="generate-btn" class="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-3 px-8 rounded-lg transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/20 whitespace-nowrap">
+                            <span id="btn-text"></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="persona-output" class="glass-card border border-slate-700 p-8 rounded-xl shadow-inner min-h-[100px] text-slate-300 leading-relaxed font-light hidden"></div>
+            </div>
+        </section>
+
+        <!-- Pillars Section (Grid) -->
+        <section id="pillars" class="mb-24">
+            <div class="text-center mb-16">
+                <span class="text-cyan-500 font-bold tracking-widest text-sm uppercase mb-2 block">Foundation</span>
+                <h2 id="pillars-title" class="font-display text-3xl md:text-4xl font-bold text-white"></h2>
+                <p id="pillars-desc" class="text-slate-400 mt-3"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1: Agentic AI -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop" class="card-image" alt="Agentic AI">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar1-title" class="text-xl font-bold text-cyan-400 mb-3 font-display"></h3>
+                        <p id="pillar1-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="chart-container h-48"><canvas id="agentAdoptionChart"></canvas></div>
+                        <p id="pillar1-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Spatial -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1626387346567-2cd2dc03e663?q=80&w=2070&auto=format&fit=crop" class="card-image" alt="VR AR Spatial Computing">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar2-title" class="text-xl font-bold text-purple-400 mb-3 font-display"></h3>
+                        <p id="pillar2-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="chart-container h-48"><canvas id="spatialComputingChart"></canvas></div>
+                        <p id="pillar2-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Robotics -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" class="card-image" alt="Humanoid Robot">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar3-title" class="text-xl font-bold text-blue-400 mb-3 font-display"></h3>
+                        <p id="pillar3-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="chart-container h-48"><canvas id="humanoidProductionChart"></canvas></div>
+                        <p id="pillar3-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+
+                <!-- Card 4: BCI -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=2070&auto=format&fit=crop" class="card-image" alt="Brain Interface">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar4-title" class="text-xl font-bold text-green-400 mb-3 font-display"></h3>
+                        <p id="pillar4-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="h-48 flex items-center justify-center bg-slate-800/30 rounded-lg">
+                            <div class="text-center">
+                                <div class="text-6xl mb-2 animate-pulse-slow">🧠</div>
+                                <p id="pillar4-tag" class="font-bold text-green-500"></p>
+                            </div>
+                        </div>
+                        <p id="pillar4-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Web3 ID -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2032&auto=format&fit=crop" class="card-image" alt="Blockchain Security">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar5-title" class="text-xl font-bold text-pink-400 mb-3 font-display"></h3>
+                        <p id="pillar5-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="h-48 flex items-center justify-center bg-slate-800/30 rounded-lg">
+                            <div class="text-center">
+                                <div class="text-6xl mb-2 animate-pulse-slow">🔐</div>
+                                <p id="pillar5-tag" class="font-bold text-pink-500"></p>
+                            </div>
+                        </div>
+                        <p id="pillar5-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Gen Worlds -->
+                <div class="glass-card rounded-2xl flex flex-col hover:-translate-y-2 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1614728853913-1e221a658a10?q=80&w=2070&auto=format&fit=crop" class="card-image" alt="Digital World">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 id="pillar6-title" class="text-xl font-bold text-yellow-400 mb-3 font-display"></h3>
+                        <p id="pillar6-desc" class="text-slate-400 text-sm mb-6 flex-grow"></p>
+                        <div class="chart-container h-48"><canvas id="generativeWorldsChart"></canvas></div>
+                        <p id="pillar6-footer" class="text-xs text-center mt-4 text-slate-500 font-mono"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section id="timeline-section" class="mb-24">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-bold tracking-widest text-sm uppercase mb-2 block">The Roadmap (2026-2031)</span>
+                <h2 id="timeline-title" class="font-display text-3xl md:text-4xl font-bold text-white"></h2>
+                <p id="timeline-desc" class="text-slate-400 mt-2"></p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-xl hover:bg-slate-800/80 transition border-l-4 border-l-blue-500">
+                        <div class="text-xs text-blue-400 font-bold mb-1">COMPLETED</div>
+                        <h2 id="timeline1-title" class="font-bold text-lg text-slate-200 mb-2"></h2>
+                        <p id="timeline1-desc" class="text-sm text-slate-400"></p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-dot !bg-cyan-500 !border-white animate-pulse"></div>
+                    <div class="glass-card p-6 rounded-xl bg-blue-900/20 border border-cyan-500/50 hover:bg-slate-800/80 transition">
+                         <div class="text-xs text-cyan-400 font-bold mb-1">CURRENT PHASE</div>
+                        <h2 id="timeline2-title" class="font-bold text-lg text-cyan-400 mb-2"></h2>
+                        <p id="timeline2-desc" class="text-sm text-slate-300"></p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-xl hover:bg-slate-800/80 transition">
+                        <h2 id="timeline3-title" class="font-bold text-lg text-blue-400 mb-2"></h2>
+                        <p id="timeline3-desc" class="text-sm text-slate-400"></p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-xl hover:bg-slate-800/80 transition">
+                        <h2 id="timeline4-title" class="font-bold text-lg text-blue-400 mb-2"></h2>
+                        <p id="timeline4-desc" class="text-sm text-slate-400"></p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-xl hover:bg-slate-800/80 transition">
+                        <h2 id="timeline5-title" class="font-bold text-lg text-purple-400 mb-2"></h2>
+                        <p id="timeline5-desc" class="text-sm text-slate-400"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radar Section -->
+        <section id="radar-section" class="mb-24 glass-card rounded-2xl p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1">
+                    <h2 id="radar-title" class="font-display text-3xl font-bold text-white mb-4"></h2>
+                    <p id="radar-desc" class="text-slate-400 leading-relaxed"></p>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
+                            <span class="text-sm text-slate-300" id="radar-legend-1">Maturity (2026)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-700"></span>
+                            <span class="text-sm text-slate-300" id="radar-legend-2">Impact (2031)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="chart-container h-[400px]"><canvas id="techRadarChart"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-12 border-t border-slate-800">
+             <div class="mb-4">
+                 <p id="footer-title" class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"></p>
+             </div>
+             <p id="footer-desc" class="text-slate-500 max-w-2xl mx-auto mb-6"></p>
+             <p id="footer-credit" class="text-xs text-slate-600 font-mono"></p>
+        </footer>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Configuration for Dark Theme
+    const FONT_FAMILY = "'Sarabun', 'Inter', sans-serif";
+    const PRIMARY_COLOR = '#06b6d4'; // Cyan-500
+    const SECONDARY_COLOR = '#3b82f6'; // Blue-500
+    const GRID_COLOR = 'rgba(148, 163, 184, 0.1)'; // Slate-400 with low opacity
+    const FONT_COLOR = '#cbd5e1'; // Slate-300
+    const TOOLTIP_BG = 'rgba(15, 23, 42, 0.9)'; // Slate-900
+
+    const translations = {
+        th: {
+            'header-title': 'The Convergence Economy 2026',
+            'header-subtitle': 'สถานะปัจจุบันและอนาคตของ Hybrid AI Persona',
+            'intro-line1': 'ในยุคที่ AI สร้างทุกสิ่งได้...',
+            'intro-quote': `<span class="block text-white">สินทรัพย์ที่หายากและมีค่าที่สุดคือ</span><span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">ความเป็นมนุษย์ที่พิสูจน์ได้</span>`,
+            'intro-desc': `Hybrid AI Persona ที่สร้างจากตัวตนจริงของคุณ คือสิ่งที่ลอกเลียนแบบไม่ได้ (Non-Fungible) และเป็น 'Proof of Humanity' ที่แท้จริงในโลกดิจิทัล นี่คือคุณค่าที่ยั่งยืนซึ่งกำลังจะเปลี่ยนทุกสิ่ง`,
+            'flywheel-title': 'Synergy Engine 2.0',
+            'flywheel-desc': 'การหลอมรวมในปี 2026 เข้มข้นขึ้น: Agent สื่อสารกันเองได้ (A2A), แว่นตา AR บางลงจนใส่ได้ทั้งวัน และหุ่นยนต์เริ่มเดินปะปนกับมนุษย์ในโรงงาน',
+            'flywheel-item1': 'Agentic Economy',
+            'flywheel-item2': 'Passthrough AR',
+            'flywheel-item3': 'Gen-3 Humanoids',
+            'flywheel-item4': 'Global Web3 ID',
+            'flywheel-item5': 'Text-to-World',
+            'flywheel-item6': 'Neural Wristbands',
+            'flywheel-center-title': 'Hybrid AI<br>Persona',
+            'flywheel-center-desc': 'OS for Reality',
+            'generator-title': '✨ สร้างสรรค์ 2026 Persona',
+            'generator-desc': 'ปี 2026 อาชีพใหม่เกิดขึ้นมากมาย ลองให้ Gemini ช่วยจินตนาการ Persona สำหรับโลกอนาคตของคุณ',
+            'generator-placeholder': 'เช่น นักออกแบบความฝัน AI, ผู้ไกล่เกลี่ยระหว่าง Agent',
+            'generator-button': 'วิเคราะห์ข้อมูล',
+            'generator-button-loading': 'กำลังประมวลผล...',
+            'pillars-title': '6 เสาหลัก (อัปเดต 2026)',
+            'pillars-desc': 'วิเคราะห์สถานะเทคโนโลยีล่าสุดและทิศทางในอีก 5 ปีข้างหน้า',
+            'pillar1-title': '1. Agentic Economy',
+            'pillar1-desc': `เราข้ามผ่าน Chatbot มาสู่ยุค <span class="font-bold text-white">"Agent-to-Agent" (A2A)</span> Persona ของคุณเจรจาธุรกิจและจัดการชีวิตแทนคุณโดยอัตโนมัติ`,
+            'pillar1-footer': '94% ขององค์กรใช้ Multi-Agent System แล้ว',
+            'pillar2-title': '2. Passthrough Spatial',
+            'pillar2-desc': `หมดยุค VR ที่ตัดขาดโลกภายนอก ปีนี้คือยุค <span class="font-bold text-white">"Passthrough"</span> ความละเอียดสูง ที่ผสาน Persona เข้ากับโลกจริงอย่างไร้รอยต่อ`,
+            'pillar2-footer': 'แว่นตา AR น้ำหนักเบาเริ่มตีตลาด Mass',
+            'pillar3-title': '3. Gen-3 Humanoids',
+            'pillar3-desc': `หุ่นยนต์ราคาต่ำกว่า $20,000 เริ่มวางขาย Persona ของคุณสามารถ <span class="font-bold text-white">"ดาวน์โหลด"</span> ลงร่างจักรกลเพื่อทำงานกายภาพได้จริง`,
+            'pillar3-footer': 'กำลังการผลิต: 500,000 ตัว/ปี',
+            'pillar4-title': '4. Consumer BCI',
+            'pillar4-desc': `ไม่ต้องผ่าตัดสมอง เทคโนโลยี <span class="font-bold text-white">"Neural Wristband"</span> อ่านสัญญาณประสาทจากข้อมือ ให้คุณสั่งงาน Persona ได้เพียงแค่ 'คิด'`,
+            'pillar4-tag': 'Thought-Control Interface',
+            'pillar4-footer': 'เริ่มใช้งานจริงในสินค้าระดับผู้บริโภค',
+            'pillar5-title': '5. Sovereign Identity',
+            'pillar5-desc': `เมื่อ Deepfake ระบาดหนัก <span class="font-bold text-white">"Proof of Personhood"</span> บน Blockchain จึงเป็น 'พาสปอร์ต' เดียวที่เชื่อถือได้ในโลก 2026`,
+            'pillar5-tag': 'The Trust Anchor',
+            'pillar5-footer': 'มาตรฐาน IEEE P7000 เริ่มบังคับใช้',
+            'pillar6-title': '6. Real-time Worlds',
+            'pillar6-desc': `ไม่ใช่แค่สร้างภาพ แต่คือการ <span class="font-bold text-white">"สร้างโลก"</span> แบบ Real-time 60fps จากคำสั่งเสียง Persona ของคุณมีบ้านที่เปลี่ยนแปลงได้ตลอดเวลา`,
+            'pillar6-footer': 'ตลาด Generative 3D โต 300% จากปี 2024',
+            'timeline-title': 'The Roadmap (2026-2031)',
+            'timeline-desc': 'ก้าวต่อไปของการวิวัฒนาการ มุ่งสู่ Digital Twin ที่สมบูรณ์แบบ',
+            'timeline1-title': '2025 (Completed): ยุคแห่งการเริ่มต้น',
+            'timeline1-desc': 'Commercial Agents เริ่มใช้งานจริง, Vision Pro เปิดตลาด Enterprise, มาตรฐาน DID ถูกร่างขึ้น',
+            'timeline2-title': '2026 (Now): มาตรฐานใหม่แห่งตัวตน',
+            'timeline2-desc': 'Protocol สื่อสารระหว่าง Agent (A2A) เสร็จสมบูรณ์, หุ่นยนต์เข้าสู่ภาคครัวเรือน, กฎหมาย AI Rights เริ่มถูกพูดถึง',
+            'timeline3-title': '2027-2028: การเชื่อมต่อทางประสาท',
+            'timeline3-desc': 'อุปกรณ์ BCI แบบสวมใส่เป็นที่นิยม, การสั่งงานด้วยความคิดเป็นเรื่องปกติ, Full Sensory VR (สัมผัส/กลิ่น)',
+            'timeline4-title': '2029: The Legal Twin',
+            'timeline4-desc': 'AI Persona ได้รับการยอมรับทางกฎหมายในการทำธุรกรรมแทนมนุษย์ 100%, การโคลนนิ่งเสียงและหน้าต้องมี License',
+            'timeline5-title': '2030+: The Singularity of Persona',
+            'timeline5-desc': 'เส้นแบ่งระหว่างตัวจริงและ Persona จางหาย มนุษย์สามารถ "อยู่" ได้หลายที่พร้อมกันผ่านร่าง AI และหุ่นยนต์',
+            'radar-title': 'ดัชนีชี้วัดเทคโนโลยี 2026',
+            'radar-desc': 'เปรียบเทียบความพร้อมใช้งานจริง (Maturity) กับผลกระทบที่จะเกิดขึ้นในอีก 5 ปี (Impact)',
+            'radar-legend-1': 'ความพร้อม 2026',
+            'radar-legend-2': 'ผลกระทบ 2031',
+            'footer-title': 'ThB.Ho: Architecting the Post-Human Economy',
+            'footer-desc': 'เราบริหารจัดการสินทรัพย์ดิจิทัลที่มีชีวิตของคุณ ในยุคที่มนุษย์และ AI หลอมรวมเป็นหนึ่ง',
+            'footer-credit': 'Updated Research 2026 based on "Biz Model | AI Hybrid Persona"',
+            'chart-agent-label': 'การใช้งาน Multi-Agent Systems',
+            'chart-agent-dataset1': 'ใช้งานแล้ว (%)',
+            'chart-agent-dataset2': 'ยังไม่ใช้',
+            'chart-spatial-labels': ['Passthrough (MR)', 'Immersive (VR)'],
+            'chart-humanoid-dataset': 'ยอดส่งมอบหุ่นยนต์ (ตัว)',
+            'chart-generative-dataset': 'มูลค่าตลาด (พันล้าน USD)',
+            'chart-radar-labels': ['A2A Economy', 'Spatial Web', 'Gen-3 Robots', 'Trust Web', 'Gen Worlds', 'Consumer BCI'],
+            'chart-radar-dataset1': 'ความพร้อม 2026',
+            'chart-radar-dataset2': 'ผลกระทบ 2031',
+        },
+        en: {
+            'header-title': 'The Convergence Economy 2026',
+            'header-subtitle': 'The State of Hybrid AI Persona: From Concept to Reality',
+            'intro-line1': 'In an era where AI can create anything...',
+            'intro-quote': `<span class="block text-white">The rarest and most valuable asset is</span><span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Provable Humanity</span>`,
+            'intro-desc': `A Hybrid AI Persona, built from your real self, is non-fungible and the true 'Proof of Humanity' in the digital world. This is the enduring value that is about to change everything.`,
+            'flywheel-title': 'Synergy Engine 2.0',
+            'flywheel-desc': 'The 2026 convergence is intense: Agents negotiate autonomously (A2A), AR glasses are all-day wear, and robots walk among us in factories.',
+            'flywheel-item1': 'Agentic Economy',
+            'flywheel-item2': 'Passthrough AR',
+            'flywheel-item3': 'Gen-3 Humanoids',
+            'flywheel-item4': 'Global Web3 ID',
+            'flywheel-item5': 'Text-to-World',
+            'flywheel-item6': 'Neural Wristbands',
+            'flywheel-center-title': 'Hybrid AI<br>Persona',
+            'flywheel-center-desc': 'OS for Reality',
+            'generator-title': '✨ Create Your 2026 Persona',
+            'generator-desc': 'New professions are emerging in 2026. Let Gemini imagine a future-proof persona for you.',
+            'generator-placeholder': 'e.g., AI Dream Designer, Agent Mediator',
+            'generator-button': 'Analyze Data',
+            'generator-button-loading': 'Processing...',
+            'pillars-title': '6 Pillars (2026 Update)',
+            'pillars-desc': 'Analyzing the latest tech status and the trajectory for the next 5 years.',
+            'pillar1-title': '1. Agentic Economy',
+            'pillar1-desc': `Moving beyond Chatbots to <span class="font-bold text-white">"Agent-to-Agent" (A2A)</span>. Your Persona negotiates business and manages life autonomously.`,
+            'pillar1-footer': '94% of enterprises run Multi-Agent Systems.',
+            'pillar2-title': '2. Passthrough Spatial',
+            'pillar2-desc': `Forget isolated VR. This is the era of high-res <span class="font-bold text-white">"Passthrough"</span>, blending your Persona seamlessly with the physical world.`,
+            'pillar2-footer': 'Lightweight AR glasses hitting mass market.',
+            'pillar3-title': '3. Gen-3 Humanoids',
+            'pillar3-desc': `Robots under $20k are shipping. Your Persona can <span class="font-bold text-white">"download"</span> into a mechanical body for physical labor.`,
+            'pillar3-footer': 'Production Capacity: 500k units/year',
+            'pillar4-title': '4. Consumer BCI',
+            'pillar4-desc': `No surgery needed. <span class="font-bold text-white">"Neural Wristbands"</span> read signals from your wrist, letting you control your Persona with just a 'thought'.`,
+            'pillar4-tag': 'Thought-Control Interface',
+            'pillar4-footer': 'Live in consumer-grade products.',
+            'pillar5-title': '5. Sovereign Identity',
+            'pillar5-desc': `With Deepfakes everywhere, <span class="font-bold text-white">"Proof of Personhood"</span> on Blockchain is the only trusted 'passport' in 2026.`,
+            'pillar5-tag': 'The Trust Anchor',
+            'pillar5-footer': 'IEEE P7000 standards enforced.',
+            'pillar6-title': '6. Real-time Worlds',
+            'pillar6-desc': `Not just images, but <span class="font-bold text-white">"World Building"</span> at 60fps via voice. Your Persona inhabits a home that changes instantly.`,
+            'pillar6-footer': 'Gen 3D market up 300% from 2024.',
+            'timeline-title': 'The Roadmap (2026-2031)',
+            'timeline-desc': 'The next step in evolution towards the perfect Digital Twin.',
+            'timeline1-title': '2025 (Completed): Foundations',
+            'timeline1-desc': 'Commercial Agents live, Vision Pro in enterprise, DID standards drafted. The infrastructure was laid.',
+            'timeline2-title': '2026 (Now): Standardization',
+            'timeline2-desc': 'Agent-to-Agent (A2A) protocols finalized, robots enter households, "AI Rights" discussions begin.',
+            'timeline3-title': '2027-2028: Neural Linkage',
+            'timeline3-desc': 'Wearable BCI mainstream, thought control becomes normal, Full Sensory VR (haptics/scent).',
+            'timeline4-title': '2029: The Legal Twin',
+            'timeline4-desc': 'AI Personas gain full legal status for transactions. Voice/Face cloning strictly licensed.',
+            'timeline5-title': '2030+: Singularity of Persona',
+            'timeline5-desc': 'The line between real and Persona blurs. Humans bilocate via AI and robotic avatars.',
+            'radar-title': 'Tech Index 2026',
+            'radar-desc': 'Comparing current real-world Maturity vs. 5-Year Impact.',
+            'radar-legend-1': 'Maturity 2026',
+            'radar-legend-2': 'Impact 2031',
+            'footer-title': 'ThB.Ho: Architecting the Post-Human Economy',
+            'footer-desc': 'Managing your living digital assets in an era where human and AI merge.',
+            'footer-credit': 'Updated Research 2026 based on "Biz Model | AI Hybrid Persona"',
+            'chart-agent-label': 'Multi-Agent System Adoption',
+            'chart-agent-dataset1': 'Deployed (%)',
+            'chart-agent-dataset2': 'Not Deployed',
+            'chart-spatial-labels': ['Passthrough (MR)', 'Immersive (VR)'],
+            'chart-humanoid-dataset': 'Robots Delivered (Units)',
+            'chart-generative-dataset': 'Market Value (Billion USD)',
+            'chart-radar-labels': ['A2A Economy', 'Spatial Web', 'Gen-3 Robots', 'Trust Web', 'Gen Worlds', 'Consumer BCI'],
+            'chart-radar-dataset1': 'Maturity 2026',
+            'chart-radar-dataset2': 'Impact 2031',
+        },
+        ru: {
+            'header-title': 'Экономика Конвергенции 2026',
+            'header-subtitle': 'Состояние Гибридной AI-Персоны: От концепции к реальности',
+            'intro-line1': '2026: Эпоха Агентного Пробуждения',
+            'intro-quote': `<span class="block text-white">Мы больше не 'ждем' будущего.</span><span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Мы живем в нем.</span>`,
+            'intro-desc': `В 2026 году Гибридные AI-Персоны — это уже не просто концепция, а 'новый стандарт' цифрового существования. Когда ИИ создает убедительную реальность, 'Доказательство Человечности' становится самым ценным активом.`,
+            'flywheel-title': 'Двигатель Синергии 2.0',
+            'flywheel-desc': 'Конвергенция 2026 года интенсивна: Агенты ведут переговоры (A2A), AR-очки носят весь день, роботы работают среди нас.',
+            'flywheel-item1': 'Экономика Агентов',
+            'flywheel-item2': 'Passthrough AR',
+            'flywheel-item3': 'Роботы Gen-3',
+            'flywheel-item4': 'Глобальный Web3 ID',
+            'flywheel-item5': 'Text-to-World',
+            'flywheel-item6': 'Нейро-браслеты',
+            'flywheel-center-title': 'Гибридная AI<br>Персона',
+            'flywheel-center-desc': 'ОС для Реальности',
+            'generator-title': '✨ Создайте Персону 2026',
+            'generator-desc': 'В 2026 году появляются новые профессии. Пусть Gemini придумает для вас персону будущего.',
+            'generator-placeholder': 'например, Архитектор снов AI, Агент-медиатор',
+            'generator-button': 'Анализ данных',
+            'generator-button-loading': 'Обработка...',
+            'pillars-title': '6 Столпов (Обновление 2026)',
+            'pillars-desc': 'Анализ текущего статуса технологий и траектории на следующие 5 лет.',
+            'pillar1-title': '1. Экономика Агентов',
+            'pillar1-desc': `Переход от Чат-ботов к <span class="font-bold text-white">"Agent-to-Agent" (A2A)</span>. Ваша Персона автономно ведет бизнес и управляет жизнью.`,
+            'pillar1-footer': '94% предприятий используют мульти-агентные системы.',
+            'pillar2-title': '2. Сквозной (Passthrough) Spatial',
+            'pillar2-desc': `Забудьте о VR. Это эра <span class="font-bold text-white">"Passthrough"</span> высокого разрешения, бесшовно соединяющего Персону с физическим миром.`,
+            'pillar2-footer': 'Легкие AR-очки выходят на массовый рынок.',
+            'pillar3-title': '3. Гуманоиды Gen-3',
+            'pillar3-desc': `Роботы дешевле $20k уже в продаже. Ваша Персона может <span class="font-bold text-white">"загрузиться"</span> в механическое тело для работы.`,
+            'pillar3-footer': 'Производство: 500 тыс. ед./год',
+            'pillar4-title': '4. Потребительский BCI',
+            'pillar4-desc': `Без операций. <span class="font-bold text-white">"Нейро-браслеты"</span> считывают сигналы с запястья, позволяя управлять Персоной силой мысли.`,
+            'pillar4-tag': 'Интерфейс Мысли',
+            'pillar4-footer': 'Работает в потребительских продуктах.',
+            'pillar5-title': '5. Суверенная Личность',
+            'pillar5-desc': `Среди дипфейков, <span class="font-bold text-white">"Proof of Personhood"</span> на блокчейне — единственный надежный 'паспорт' в 2026.`,
+            'pillar5-tag': 'Якорь Доверия',
+            'pillar5-footer': 'Стандарты IEEE P7000 внедрены.',
+            'pillar6-title': '6. Миры в реальном времени',
+            'pillar6-desc': `Не просто картинки, а <span class="font-bold text-white">"Создание Миров"</span> в 60fps голосом. Дом вашей Персоны меняется мгновенно.`,
+            'pillar6-footer': 'Рынок Gen 3D вырос на 300% с 2024.',
+            'timeline-title': 'Дорожная карта (2026-2031)',
+            'timeline-desc': 'Следующий шаг эволюции к идеальному Цифровому Двойнику.',
+            'timeline1-title': '2025 (Завершено): Фундамент',
+            'timeline1-desc': 'Коммерческие агенты, Vision Pro в бизнесе, стандарты DID. Инфраструктура заложена.',
+            'timeline2-title': '2026 (Сейчас): Стандартизация',
+            'timeline2-desc': 'Протоколы A2A готовы, роботы входят в дома, начало дискуссий о "Правах ИИ".',
+            'timeline3-title': '2027-2028: Нейросвязь',
+            'timeline3-desc': 'Носимые BCI мейнстрим, управление мыслью — норма, Полный Сенсорный VR.',
+            'timeline4-title': '2029: Юридический Двойник',
+            'timeline4-desc': 'AI-Персоны получают правовой статус для транзакций. Клонирование голоса/лица строго по лицензии.',
+            'timeline5-title': '2030+: Сингулярность Персоны',
+            'timeline5-desc': 'Грань между реальным и Персоной стирается. Люди билоцируются через ИИ и роботов.',
+            'radar-title': 'Техно-Индекс 2026',
+            'radar-desc': 'Сравнение текущей Зрелости и Влияния через 5 лет.',
+            'radar-legend-1': 'Зрелость 2026',
+            'radar-legend-2': 'Влияние 2031',
+            'footer-title': 'ThB.Ho: Архитектура Пост-Человеческой Экономики',
+            'footer-desc': 'Управление вашими живыми цифровыми активами в эпоху слияния человека и ИИ.',
+            'footer-credit': 'Обновленное исследование 2026 на основе "Biz Model | AI Hybrid Persona"',
+            'chart-agent-label': 'Внедрение Мульти-агентных систем',
+            'chart-agent-dataset1': 'Внедрено (%)',
+            'chart-agent-dataset2': 'Нет',
+            'chart-spatial-labels': ['Passthrough (MR)', 'Immersive (VR)'],
+            'chart-humanoid-dataset': 'Поставлено роботов (Ед.)',
+            'chart-generative-dataset': 'Стоимость рынка (млрд USD)',
+            'chart-radar-labels': ['Экономика A2A', 'Spatial Web', 'Роботы Gen-3', 'Trust Web', 'Gen Worlds', 'BCI'],
+            'chart-radar-dataset1': 'Зрелость 2026',
+            'chart-radar-dataset2': 'Влияние 2031',
+        },
+        zh: {
+            'header-title': '2026 融合经济 (The Convergence Economy 2026)',
+            'header-subtitle': '混合 AI 人格的现状与未来：从概念到现实',
+            'intro-line1': '2026年：代理觉醒时代',
+            'intro-quote': `<span class="block text-white">我们不再'等待'未来。</span><span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">我们正生活在其中。</span>`,
+            'intro-desc': `在2026年，混合 AI 人格不再只是一个概念；它们是数字生存的'新标准'。当 AI 能生成逼真的现实时，'人性证明'已成为唯一最有价值的资产。`,
+            'flywheel-title': '协同引擎 2.0',
+            'flywheel-desc': '2026年的融合是激烈的：代理自主谈判 (A2A)，AR 眼镜全天佩戴，机器人与我们在工厂共行。',
+            'flywheel-item1': '代理经济',
+            'flywheel-item2': '透视 AR',
+            'flywheel-item3': '第三代人形机器人',
+            'flywheel-item4': '全球 Web3 ID',
+            'flywheel-item5': '文本生成世界',
+            'flywheel-item6': '神经腕带',
+            'flywheel-center-title': '混合 AI<br>人格',
+            'flywheel-center-desc': '现实操作系统',
+            'generator-title': '✨ 创建您的 2026 人格',
+            'generator-desc': '2026年涌现了许多新职业。让 Gemini 为您构想一个面向未来的 AI 人格。',
+            'generator-placeholder': '例如：AI 梦境设计师，代理调解员',
+            'generator-button': '分析数据',
+            'generator-button-loading': '处理中...',
+            'pillars-title': '6大支柱 (2026 更新)',
+            'pillars-desc': '分析最新技术状态及未来5年的轨迹。',
+            'pillar1-title': '1. 代理经济',
+            'pillar1-desc': `超越聊天机器人，迈向 <span class="font-bold text-white">"代理对代理" (A2A)</span>。您的人格自主为您进行商业谈判和生活管理。`,
+            'pillar1-footer': '94% 的企业运行多代理系统。',
+            'pillar2-title': '2. 透视空间计算',
+            'pillar2-desc': `忘掉封闭的 VR。这是高分辨率 <span class="font-bold text-white">"透视"</span> 的时代，将您的人格与物理世界无缝融合。`,
+            'pillar2-footer': '轻量级 AR 眼镜冲击大众市场。',
+            'pillar3-title': '3. 第三代人形机器人',
+            'pillar3-desc': `低于 $20k 的机器人已发货。您的人格可以 <span class="font-bold text-white">"下载"</span> 到机械躯体中进行体力劳动。`,
+            'pillar3-footer': '产能：50万台/年',
+            'pillar4-title': '4. 消费级 BCI',
+            'pillar4-desc': `无需手术。<span class="font-bold text-white">"神经腕带"</span> 读取手腕信号，让您仅凭'意念'控制人格。`,
+            'pillar4-tag': '思维控制接口',
+            'pillar4-footer': '应用于消费级产品。',
+            'pillar5-title': '5. 主权身份',
+            'pillar5-desc': `在 Deepfakes 泛滥的时代，区块链上的 <span class="font-bold text-white">"人格证明"</span> 是2026年唯一可信的'护照'。`,
+            'pillar5-tag': '信任锚点',
+            'pillar5-footer': 'IEEE P7000 标准强制执行。',
+            'pillar6-title': '6. 实时世界',
+            'pillar6-desc': `不只是图像，而是通过语音以 60fps <span class="font-bold text-white">"构建世界"</span>。您的人格居住在一个瞬间变化的家中。`,
+            'pillar6-footer': '生成式 3D 市场较2024年增长300%。',
+            'timeline-title': '路线图 (2026-2031)',
+            'timeline-desc': '迈向完美数字孪生的进阶之路。',
+            'timeline1-title': '2025 (已完成): 基础奠定',
+            'timeline1-desc': '商业代理上线，Vision Pro 进入企业，DID 标准起草。基础设施已铺设。',
+            'timeline2-title': '2026 (现在): 标准化',
+            'timeline2-desc': '代理对代理 (A2A) 协议定稿，机器人进入家庭，开始讨论 "AI 权利"。',
+            'timeline3-title': '2027-2028: 神经连接',
+            'timeline3-desc': '可穿戴 BCI 成为主流，意念控制常态化，全感官 VR (触觉/嗅觉)。',
+            'timeline4-title': '2029: 法律孪生',
+            'timeline4-desc': 'AI 人格获得全权代理交易的法律地位。声音/面部克隆需严格许可。',
+            'timeline5-title': '2030+: 人格奇点',
+            'timeline5-desc': '真实与人格之间的界限模糊。人类通过 AI 和机器人化身实现分身。',
+            'radar-title': '2026 技术指数',
+            'radar-desc': '比较当前的现实成熟度与5年后的影响力。',
+            'radar-legend-1': '成熟度 2026',
+            'radar-legend-2': '影响力 2031',
+            'footer-title': 'ThB.Ho: 后人类经济的架构师',
+            'footer-desc': '在人机融合的时代，管理您有生命的数字资产。',
+            'footer-credit': '基于 "Biz Model | AI Hybrid Persona" 的 2026 更新研究',
+            'chart-agent-label': '多代理系统采用率',
+            'chart-agent-dataset1': '已部署 (%)',
+            'chart-agent-dataset2': '未部署',
+            'chart-spatial-labels': ['透视 (MR)', '沉浸式 (VR)'],
+            'chart-humanoid-dataset': '机器人交付量 (台)',
+            'chart-generative-dataset': '市场价值 (十亿美元)',
+            'chart-radar-labels': ['A2A 经济', '空间网络', 'G3 机器人', '信任网络', '生成世界', '消费级 BCI'],
+            'chart-radar-dataset1': '成熟度 2026',
+            'chart-radar-dataset2': '影响力 2031',
+        }
+    };
+
+    let charts = {};
+    let currentLang = 'th'; 
+
+    const wrapLabel = (label) => {
+        const maxLength = 12; // Shorter for radar chart
+        if (typeof label !== 'string' || label.length <= maxLength) return label;
+        
+        const words = label.split(' ');
+        let currentLine = '';
+        const lines = [];
+        
+        words.forEach(word => {
+            if ((currentLine + word).length > maxLength) {
+                lines.push(currentLine.trim());
+                currentLine = '';
+            }
+            currentLine += word + ' ';
+        });
+        lines.push(currentLine.trim());
+        return lines;
+    };
+
+    const defaultChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    font: { family: FONT_FAMILY, size: 12 },
+                    color: FONT_COLOR,
+                    usePointStyle: true,
+                }
+            },
+            tooltip: {
+                titleFont: { family: FONT_FAMILY, size: 14, weight: 'bold' },
+                bodyFont: { family: FONT_FAMILY, size: 12 },
+                backgroundColor: TOOLTIP_BG,
+                padding: 12,
+                cornerRadius: 8,
+                displayColors: true,
+                boxPadding: 4
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    font: { family: FONT_FAMILY },
+                    color: FONT_COLOR,
+                },
+                grid: { color: GRID_COLOR, borderDash: [4, 4] },
+                border: { display: false }
+            },
+            x: {
+                ticks: {
+                    font: { family: FONT_FAMILY },
+                    color: FONT_COLOR,
+                },
+                grid: { display: false },
+                border: { display: false }
+            }
+        }
+    };
+
+    function renderCharts(lang) {
+        const langData = translations[lang];
+        Chart.defaults.font.family = FONT_FAMILY;
+        Chart.defaults.color = FONT_COLOR;
+
+        if (charts.agentAdoptionChart) charts.agentAdoptionChart.destroy();
+        charts.agentAdoptionChart = new Chart(document.getElementById('agentAdoptionChart'), {
+            type: 'bar',
+            data: {
+                labels: [langData['chart-agent-label']],
+                datasets: [{
+                    label: langData['chart-agent-dataset1'],
+                    data: [94], // Updated 2026 stat (was 82)
+                    backgroundColor: PRIMARY_COLOR,
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }, {
+                    label: langData['chart-agent-dataset2'],
+                    data: [6],
+                    backgroundColor: '#1e293b', 
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            },
+            options: { ...defaultChartOptions, indexAxis: 'y', scales: { x: { stacked: true, display: false }, y: { stacked: true, display: false } }, plugins: { legend: { display: false } } }
+        });
+
+        if (charts.spatialComputingChart) charts.spatialComputingChart.destroy();
+        charts.spatialComputingChart = new Chart(document.getElementById('spatialComputingChart'), {
+            type: 'doughnut',
+            data: {
+                labels: langData['chart-spatial-labels'],
+                datasets: [{
+                    data: [85, 15], // Passthrough dominant in 2026
+                    backgroundColor: [PRIMARY_COLOR, '#6366f1'],
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: { 
+                ...defaultChartOptions, 
+                cutout: '70%',
+                scales: { x: { display: false }, y: { display: false } },
+                plugins: { legend: { position: 'bottom', labels: { padding: 20, color: FONT_COLOR } } }
+            }
+        });
+
+        if (charts.humanoidProductionChart) charts.humanoidProductionChart.destroy();
+        charts.humanoidProductionChart = new Chart(document.getElementById('humanoidProductionChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Figure AI', 'Tesla'],
+                datasets: [{
+                    label: langData['chart-humanoid-dataset'],
+                    data: [150000, 500000], // Updated 2026 production numbers
+                    backgroundColor: [PRIMARY_COLOR, '#8b5cf6'], 
+                    borderRadius: 6,
+                    barPercentage: 0.5
+                }]
+            },
+            options: { ...defaultChartOptions, plugins: { legend: { display: false } }, scales: { ...defaultChartOptions.scales, x: { ...defaultChartOptions.scales.x, grid: { display: false } } } }
+        });
+        
+        if (charts.generativeWorldsChart) charts.generativeWorldsChart.destroy();
+        charts.generativeWorldsChart = new Chart(document.getElementById('generativeWorldsChart'), {
+            type: 'line',
+            data: {
+                labels: ['2024', '2026', '2028', '2031'], // Timeline shift
+                datasets: [{
+                    label: langData['chart-generative-dataset'],
+                    data: [2, 12, 45, 120], // Massive growth curve for 2026
+                    fill: true,
+                    borderColor: '#eab308', // Yellow
+                    backgroundColor: (context) => {
+                        const ctx = context.chart.ctx;
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                        gradient.addColorStop(0, 'rgba(234, 179, 8, 0.4)');
+                        gradient.addColorStop(1, 'rgba(234, 179, 8, 0)');
+                        return gradient;
+                    },
+                    tension: 0.4,
+                    pointBackgroundColor: '#eab308',
+                    pointBorderColor: '#fff',
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: defaultChartOptions
+        });
+
+        if (charts.techRadarChart) charts.techRadarChart.destroy();
+        const radarLabels = langData['chart-radar-labels'].map(label => wrapLabel(label));
+        charts.techRadarChart = new Chart(document.getElementById('techRadarChart'), {
+            type: 'radar',
+            data: {
+                labels: radarLabels,
+                datasets: [{
+                    label: langData['chart-radar-dataset1'], // 2026 Maturity (High)
+                    data: [4.5, 4, 3, 3.5, 4, 2],
+                    fill: true,
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)', 
+                    borderColor: PRIMARY_COLOR,
+                    pointBackgroundColor: PRIMARY_COLOR,
+                    pointBorderColor: '#fff',
+                }, {
+                    label: langData['chart-radar-dataset2'], // 2031 Impact (Massive)
+                    data: [5, 5, 5, 5, 5, 4.5],
+                    fill: true,
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)', 
+                    borderColor: SECONDARY_COLOR,
+                    pointBackgroundColor: SECONDARY_COLOR,
+                    pointBorderColor: '#fff',
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: {
+                            font: { family: FONT_FAMILY, size: 11, weight: 'bold' },
+                            color: '#e2e8f0',
+                            padding: 10
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: 'transparent',
+                            stepSize: 1
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 5
+                    }
+                }
+            }
+        });
+    }
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        const langData = translations[lang];
+        if (!langData) return;
+
+        Object.keys(langData).forEach(key => {
+            const element = document.getElementById(key);
+            if (element) {
+                element.innerHTML = langData[key];
+            }
+        });
+        
+        document.documentElement.lang = lang;
+        document.getElementById('persona-input').placeholder = langData['generator-placeholder'];
+        document.getElementById('btn-text').textContent = langData['generator-button'];
+
+        document.getElementById('radar-legend-1').textContent = langData['radar-legend-1'];
+        document.getElementById('radar-legend-2').textContent = langData['radar-legend-2'];
+
+        renderCharts(lang);
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    document.getElementById('language-switcher').addEventListener('click', (event) => {
+        if (event.target.matches('.lang-btn')) {
+            const lang = event.target.dataset.lang;
+            changeLanguage(lang);
+        }
+    });
+
+    const generateBtn = document.getElementById('generate-btn');
+    const btnText = document.getElementById('btn-text');
+    const personaInput = document.getElementById('persona-input');
+    const personaOutput = document.getElementById('persona-output');
+
+    async function generatePersonaConcept() {
+        const userInput = personaInput.value.trim();
+        if (!userInput) {
+            personaOutput.style.display = 'block';
+            personaOutput.classList.remove('hidden');
+            personaOutput.textContent = 'Please enter an idea first.';
+            return;
+        }
+
+        const originalBtnText = btnText.textContent;
+        btnText.textContent = translations[currentLang]['generator-button-loading'];
+        generateBtn.disabled = true;
+
+        personaOutput.style.display = 'block';
+        personaOutput.classList.remove('hidden');
+        personaOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="spinner w-8 h-8 border-4 border-cyan-900 border-t-cyan-400 rounded-full"></div></div>`;
+
+        // Updated prompt to reflect 2026 context and new language support
+        const prompt = `It is the year 2026. The world has advanced with Agentic AI, Gen-3 Humanoids, and Passthrough AR. Based on this futuristic context, generate a detailed 'Hybrid AI Persona' concept for: "${userInput}". Give it a unique name. Describe its traits, functions in the 2026 economy, and how it interacts with the Metaverse. Respond in ${currentLang === 'th' ? 'Thai' : currentLang === 'ru' ? 'Russian' : currentLang === 'zh' ? 'Chinese' : 'English'}.`;
+
+        const apiKey = ""; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        let chatHistory = [];
+        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+        const payload = { contents: chatHistory };
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                personaOutput.innerHTML = `<p class="animate-pulse-slow">${text.replace(/\n/g, '<br>')}</p>`;
+            } else {
+                personaOutput.textContent = 'Sorry, I could not generate a concept. Please try again.';
+            }
+
+        } catch (error) {
+            console.error("Error calling Gemini API:", error);
+            personaOutput.textContent = 'An error occurred. Please check the console for details.';
+        } finally {
+            btnText.textContent = originalBtnText;
+            generateBtn.disabled = false;
+        }
+    }
+
+    generateBtn.addEventListener('click', generatePersonaConcept);
+    
+    personaInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            generatePersonaConcept();
+        }
+    });
+
+    changeLanguage('th');
+});
+</script>
+
+</body>
+</html>

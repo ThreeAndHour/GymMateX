@@ -158,6 +158,7 @@
             <span class="text-lg sm:text-xl font-bold tracking-tighter text-white">GymMateX <span class="text-orange-500">FANTASY</span></span>
         </div>
         
+        <!-- Language Switcher (Flags) -->
         <div class="flex items-center gap-1 sm:gap-3 bg-black/30 px-3 py-1.5 rounded-full border border-white/10">
             <button onclick="setLanguage('th')" class="lang-btn text-xl" id="lang-th" title="ไทย">🇹🇭</button>
             <button onclick="setLanguage('en')" class="lang-btn text-xl" id="lang-en" title="English">🇬🇧</button>
@@ -173,28 +174,32 @@
     <main class="pt-24 px-4 sm:px-6">
         <div class="content-container">
             
+            <!-- Hero Banner -->
             <div class="relative rounded-3xl overflow-hidden mb-12 shadow-2xl group border border-white/5">
                 <img src="https://i.postimg.cc/gk458TsW/5887905C-D81B-4529-8427-87EB1ADF2FFE_1_201_a-topaz-face-upscale-2.6x.jpg" alt="Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
 
+            <!-- Title Section -->
             <div class="text-center mb-16">
                 <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-orange-200 leading-tight" data-i18n="hero-title">
                     ปั้น AI Twin & ทะลุมิติสู่โลกแฟนตาซี
                 </h1>
-                <p id="hero-desc" class="text-lg md:text-xl text-slate-300 max-text-2xl mx-auto" data-i18n="hero-desc">
+                <p id="hero-desc" class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto" data-i18n="hero-desc">
                     สร้าง Hybrid AI Persona ที่รวมความแข็งแกร่งของร่างกายเข้ากับจินตนาการไร้ขีดจำกัด
                 </p>
             </div>
 
+            <!-- Standard Video Section (16:9 Aspect Ratio) -->
             <div class="flex justify-center mb-16 px-4">
-                <div class="relative w-full max-w-lg aspect-square glass-card overflow-hidden p-2">
+                <div class="relative w-full max-w-4xl aspect-video glass-card overflow-hidden p-2 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                     <div class="w-full h-full rounded-2xl overflow-hidden">
                         <iframe id="main-video" class="w-full h-full" src="https://www.youtube.com/embed/wR50jj4od2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
 
+            <!-- Announcement -->
             <div class="text-center mb-20">
                 <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold group">
                     <span class="underline underline-offset-4" data-i18n="latest-news">อ่านประกาศล่าสุด</span>
@@ -202,6 +207,7 @@
                 </a>
             </div>
 
+            <!-- Benefits -->
             <section class="mb-24">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-4" data-i18n="benefits-title">ก้าวข้ามขีดจำกัดเดิมๆ</h2>
@@ -227,6 +233,7 @@
                 </div>
             </section>
 
+            <!-- CTA Section -->
             <section class="mb-24 p-12 glass-card text-center bg-gradient-to-br from-orange-600/20 to-transparent">
                 <h2 class="text-3xl font-bold mb-4" data-i18n="program-title">โปรแกรมปั้น AI Persona & Fantasy</h2>
                 <p class="text-slate-300 mb-8" data-i18n="program-desc">เรียนรู้เทคนิคการผสมผสาน Physique เข้ากับโลกจินตนาการระดับ Hollywood</p>
@@ -235,6 +242,7 @@
                 </a>
             </section>
 
+            <!-- Trainers -->
             <section class="mb-24">
                 <h2 class="text-3xl font-bold text-center mb-12" data-i18n="choose-trainer">คณะผู้สร้างฝัน</h2>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -264,6 +272,7 @@
                 </div>
             </section>
 
+            <!-- AI Chat Demo -->
             <section class="mb-24 p-8 glass-card">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold mb-2" data-i18n="chat-title">✨ คุยกับ AI เหล่านักเดินทาง</h2>
@@ -290,6 +299,18 @@
                 </div>
             </section>
 
+            <!-- Sandbox -->
+            <section class="mb-24 p-12 glass-card text-center overflow-hidden relative">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold mb-4" data-i18n="sandbox-title">Project Sandbox: WIDEROOMS</h2>
+                    <p class="text-slate-300 mb-8" data-i18n="sandbox-desc">พื้นที่ลับสำหรับโปรเจกต์ทดลองสุดซี้ดที่รันโดย AI Persona</p>
+                    <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="btn-primary" data-i18n="sandbox-btn">
+                        แอบดู WIDEROOMS
+                    </a>
+                </div>
+            </section>
+
+            <!-- Community Section -->
             <section class="mb-24">
                 <h2 class="text-3xl font-bold text-center mb-12" data-i18n="comm-title">เข้าร่วม Community</h2>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -386,9 +407,9 @@
           "hero-desc": "Create a Hybrid AI Persona fusing your peak physique with cinematic imagination.",
           "latest-news": "Read latest news",
           "benefits-title": "Beyond Traditional Limits",
-          "benefits-tag": "\"Assumption any role in any era.\"",
+          "benefits-tag": "\"Assume any role in any era.\"",
           "b1-title": "Epic Fantasy Transformation",
-          "b1-desc": "Become a gladiator, desert warrior, or futuristic soldier while keeping your identity at the core.",
+          "b1-desc": "Become a gladiator, desert warrior, or futuristic hero while keeping your identity at the core.",
           "b2-title": "AI Time Traveler",
           "b2-desc": "Seamlessly transition between eras and worlds with narrative-driven AI storytelling.",
           "b3-title": "The 50/70/90 Identity",

@@ -54,7 +54,6 @@
             border-radius: 12px;
             opacity: 0.9;
             transition: opacity 0.5s;
-            /* mix-blend-mode: luminosity; Removed for better visibility */
         }
         .ai-image:hover {
             opacity: 1;
@@ -62,7 +61,6 @@
         }
         
         .hero-bg {
-            /* New High Quality Cyberpunk Background */
             background-image: url('https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=2069&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -85,7 +83,6 @@
             color: white;
             border-color: #3b82f6;
         }
-
     </style>
 </head>
 <body data-lang="th">
@@ -112,11 +109,39 @@
             <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-light mb-12" id="hero-desc">
                 เมื่อมนุษย์ต้อง "อัปเกรด" เพื่ออยู่รอดในยุค AI
             </p>
+            
+            <!-- Scroll Down Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-slate-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-20 space-y-32">
+
+        <!-- NEW VIDEO SECTION -->
+        <section class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                 <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    <span id="video-header">Introduction: Decoding Peter Thiel's Blueprint</span>
+                </h2>
+            </div>
+            <div class="glass-card p-1 rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:shadow-[0_0_50px_rgba(59,130,246,0.4)] transition-shadow duration-500">
+                <div class="relative pb-[56.25%] h-0 bg-black">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full rounded-xl"
+                        src="https://www.youtube.com/embed/QnPHE21XpLY?si=86CrdcJuOkFznMc1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
 
         <!-- Thesis Section -->
         <section class="grid md:grid-cols-2 gap-12 items-center">
@@ -130,7 +155,6 @@
                 </p>
             </div>
             <div class="glass-card p-2 rounded-2xl">
-                <!-- Image: Human Hand touching Robot Hand (Creation of Adam style) -->
                 <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=1000&auto=format&fit=crop" 
                      alt="Cyborg Concept" 
                      class="w-full h-[400px] object-cover rounded-xl shadow-2xl"
@@ -149,7 +173,7 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Neuralink: Brain/Chip -->
+                <!-- Neuralink -->
                 <div class="glass-card p-6 rounded-2xl group">
                     <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=800&auto=format&fit=crop" 
                          alt="Brain Interface" 
@@ -161,7 +185,7 @@
                     </p>
                 </div>
 
-                <!-- Nanobots: Abstract Cells/Particles -->
+                <!-- Nanobots -->
                 <div class="glass-card p-6 rounded-2xl group">
                     <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop" 
                          alt="Nanotech" 
@@ -173,7 +197,7 @@
                     </p>
                 </div>
 
-                <!-- Biosensors: Digital Eye/Scanning -->
+                <!-- Biosensors -->
                 <div class="glass-card p-6 rounded-2xl group">
                     <img src="https://images.unsplash.com/photo-1531297461136-82af022f1380?q=80&w=800&auto=format&fit=crop" 
                          alt="Cyber Eye" 
@@ -222,7 +246,7 @@
             <div class="relative max-w-4xl mx-auto pl-4 md:pl-0">
                 <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-700 md:transform md:-translate-x-1/2"></div>
 
-                <!-- 2025: Lab Research -->
+                <!-- 2025 -->
                 <div class="relative mb-12 md:flex items-center justify-between w-full">
                     <div class="md:w-[45%] md:text-right pr-8 order-1">
                         <h4 class="text-2xl font-bold text-blue-400">2020-2025</h4>
@@ -237,10 +261,9 @@
                     </div>
                 </div>
 
-                <!-- 2035: Medical -->
+                <!-- 2035 -->
                 <div class="relative mb-12 md:flex items-center justify-between w-full">
                      <div class="md:w-[45%] order-2 hidden md:block pr-8 md:text-right">
-                        <!-- Image on Left for Desktop -->
                          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=400&auto=format&fit=crop" 
                               class="rounded-lg opacity-60 hover:opacity-100 transition-opacity ml-auto"
                               onerror="this.src='https://placehold.co/400x300/1e293b/FFF?text=Medical+Tech';">
@@ -253,7 +276,7 @@
                     </div>
                 </div>
 
-                 <!-- 2045: Symbiosis/Abstract -->
+                 <!-- 2045 -->
                  <div class="relative mb-12 md:flex items-center justify-between w-full">
                     <div class="md:w-[45%] md:text-right pr-8 order-1">
                         <h4 class="text-2xl font-bold text-green-400">2045+</h4>
@@ -279,6 +302,7 @@
                 heroTag: "Humanity 2.0",
                 heroTitle2: "HUMANISM",
                 heroDesc: "เมื่อมนุษย์ต้อง \"อัปเกรด\" เพื่ออยู่รอดในยุค AI แนวคิดจาก Peter Thiel",
+                videoHeader: "บทนำ: ถอดรหัสพิมพ์เขียว Peter Thiel",
                 thesisTitle: "บทวิเคราะห์",
                 thesisSubtitle: "อัปเกรด หรือ สูญพันธุ์",
                 thesisBody: "Peter Thiel เสนอว่า การที่มนุษยชาติจะมีชีวิตรอดต่อไปได้ ไม่ใช่แค่การรักษาสภาพร่างกายเดิม แต่ต้องมีการ \"อัปเกรด\" (Transhumanism) ทั้งร่างกาย จิตใจ และจิตวิญญาณ เพื่อให้เรามีความสามารถเท่าทัน AI",
@@ -310,6 +334,7 @@
                 heroTag: "Humanity 2.0",
                 heroTitle2: "HUMANISM",
                 heroDesc: "When humans must \"Upgrade\" to survive the AI era. A concept by Peter Thiel.",
+                videoHeader: "Introduction: Decoding Peter Thiel's Blueprint",
                 thesisTitle: "The Thesis",
                 thesisSubtitle: "Upgrade or Obsolete",
                 thesisBody: "Peter Thiel suggests that for humanity to survive, mere biological preservation is not enough. We must \"Upgrade\" (Transhumanism) our bodies, minds, and spirits to keep pace with AI.",
@@ -341,6 +366,7 @@
                 heroTag: "Человечество 2.0",
                 heroTitle2: "ГУМАНИЗМ",
                 heroDesc: "Когда люди должны «обновиться», чтобы выжить в эпоху ИИ. Концепция Питера Тиля.",
+                videoHeader: "Введение: Расшифровка плана Питера Тиля",
                 thesisTitle: "Тезис",
                 thesisSubtitle: "Обновись или Устарей",
                 thesisBody: "Питер Тиль предполагает, что для выживания человечества простого биологического сохранения недостаточно. Мы должны «обновить» (Трансгуманизм) наши тела и разум, чтобы не отставать от ИИ.",
@@ -372,6 +398,7 @@
                 heroTag: "人类 2.0",
                 heroTitle2: "人机进化",
                 heroDesc: "人类必须“升级”才能在 AI 时代生存。彼得·蒂尔的理念。",
+                videoHeader: "介绍：彼得·蒂尔的蓝图解读",
                 thesisTitle: "核心论点",
                 thesisSubtitle: "升级或被淘汰",
                 thesisBody: "彼得·蒂尔认为，人类要生存下去，仅仅保持生物状态是不够的。我们必须“升级”（超人类主义）我们的身体和精神，以跟上人工智能的步伐。",
@@ -412,6 +439,7 @@
             document.getElementById('hero-tag').textContent = t.heroTag;
             document.getElementById('hero-title-2').textContent = t.heroTitle2;
             document.getElementById('hero-desc').textContent = t.heroDesc;
+            document.getElementById('video-header').textContent = t.videoHeader;
             document.getElementById('thesis-title').textContent = t.thesisTitle;
             document.getElementById('thesis-subtitle').textContent = t.thesisSubtitle;
             document.getElementById('thesis-body').textContent = t.thesisBody;

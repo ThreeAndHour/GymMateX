@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transhumanism: The Future of Evolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Fonts: Prompt (Thai), Inter (Eng), Noto Sans SC (Chinese), Roboto (Russian) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Prompt:wght@300;400;600;700&family=Rajdhani:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Prompt', 'Inter', 'Roboto', 'Noto Sans SC', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Rajdhani', 'Prompt', sans-serif;
+        }
+
+        /* Lang Specific Font Adjustments */
+        body[data-lang="ru"] { font-family: 'Roboto', sans-serif; }
+        body[data-lang="zh"] { font-family: 'Noto Sans SC', sans-serif; }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        /* Image Styling */
+        .ai-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            opacity: 0.9;
+            transition: opacity 0.5s;
+            /* mix-blend-mode: luminosity; Removed for better visibility */
+        }
+        .ai-image:hover {
+            opacity: 1;
+            mix-blend-mode: normal;
+        }
+        
+        .hero-bg {
+            /* New High Quality Cyberpunk Background */
+            background-image: url('https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Language Switcher */
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+    </style>
+</head>
+<body data-lang="th">
+
+    <!-- Language Switcher Fixed -->
+    <div class="fixed top-6 right-6 z-50 flex gap-2 glass-card p-2 rounded-full">
+        <button class="lang-btn active" onclick="setLanguage('th')">TH</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+        <button class="lang-btn" onclick="setLanguage('zh')">CN</button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg">
+        <div class="absolute inset-0 bg-slate-900/80"></div> <!-- Overlay -->
+        
+        <div class="container mx-auto px-6 text-center z-10 relative">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-green-500/50 bg-green-500/10 text-green-400 text-sm font-bold tracking-widest uppercase animate-pulse">
+                <span id="hero-tag">Humanity 2.0</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight text-white tracking-tight">
+                <span id="hero-title-1">TRANS</span><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400" id="hero-title-2">HUMANISM</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-light mb-12" id="hero-desc">
+                เมื่อมนุษย์ต้อง "อัปเกรด" เพื่ออยู่รอดในยุค AI
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-20 space-y-32">
+
+        <!-- Thesis Section -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold text-white mb-2">
+                    <span class="text-blue-500">01.</span> <span id="thesis-title">The Thesis</span>
+                </h2>
+                <h3 class="text-2xl text-slate-300" id="thesis-subtitle">Upgrade or Obsolete</h3>
+                <p class="text-slate-400 leading-relaxed text-lg" id="thesis-body">
+                    Peter Thiel เสนอว่า การที่มนุษยชาติจะมีชีวิตรอดต่อไปได้ ไม่ใช่แค่การรักษาสภาพร่างกายเดิม แต่ต้องมีการ "อัปเกรด" ทั้งร่างกายและจิตวิญญาณ เพื่อให้เท่าทัน AI
+                </p>
+            </div>
+            <div class="glass-card p-2 rounded-2xl">
+                <!-- Image: Human Hand touching Robot Hand (Creation of Adam style) -->
+                <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Cyborg Concept" 
+                     class="w-full h-[400px] object-cover rounded-xl shadow-2xl"
+                     onerror="this.src='https://placehold.co/800x600/1e293b/475569?text=Image+Not+Found';">
+                <p class="text-center text-xs text-slate-500 mt-2 italic" id="img-caption-1">Concept: Biological & Synthetic Merger</p>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    <span class="text-green-500">02.</span> <span id="tech-title">The Tech Stack</span>
+                </h2>
+                <p class="text-slate-400" id="tech-desc">Technologies driving the evolution.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Neuralink: Brain/Chip -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=800&auto=format&fit=crop" 
+                         alt="Brain Interface" 
+                         class="ai-image mb-6"
+                         onerror="this.src='https://placehold.co/600x400/1e293b/FFF?text=Brain+Chip';">
+                    <h3 class="text-xl font-bold text-white mb-2" id="card-1-title">Neuralink (BCI)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" id="card-1-desc">
+                        การฝังชิปในสมองเพื่อเชื่อมต่อความคิดเข้ากับคอมพิวเตอร์โดยตรง ทำให้สั่งการ AI ได้ด้วยความคิด
+                    </p>
+                </div>
+
+                <!-- Nanobots: Abstract Cells/Particles -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop" 
+                         alt="Nanotech" 
+                         class="ai-image mb-6"
+                         onerror="this.src='https://placehold.co/600x400/1e293b/FFF?text=Nanotech';">
+                    <h3 class="text-xl font-bold text-white mb-2" id="card-2-title">Nanobots</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" id="card-2-desc">
+                        หุ่นยนต์จิ๋วในกระแสเลือด ทำหน้าที่ซ่อมแซมเซลล์และยืดอายุขัย
+                    </p>
+                </div>
+
+                <!-- Biosensors: Digital Eye/Scanning -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <img src="https://images.unsplash.com/photo-1531297461136-82af022f1380?q=80&w=800&auto=format&fit=crop" 
+                         alt="Cyber Eye" 
+                         class="ai-image mb-6"
+                         onerror="this.src='https://placehold.co/600x400/1e293b/FFF?text=Biosensors';">
+                    <h3 class="text-xl font-bold text-white mb-2" id="card-3-title">Biosensors</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" id="card-3-desc">
+                        เซนเซอร์ตรวจสอบความรู้สึกนึกคิด Real-time นำมาซึ่งคำถามเรื่องความเป็นส่วนตัว
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats & Privacy Section -->
+        <section class="grid lg:grid-cols-2 gap-12">
+            <!-- Radar Chart -->
+            <div class="glass-card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold text-white mb-4 border-l-4 border-green-500 pl-3" id="chart-title">Human 1.0 vs 2.0</h3>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Privacy Text -->
+            <div class="flex flex-col justify-center space-y-6">
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700">
+                    <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-4" id="privacy-title">The Privacy Paradox</h3>
+                    <p class="text-slate-300 mb-4 font-light text-lg italic" id="privacy-quote">
+                        "When thoughts are no longer private."
+                    </p>
+                    <p class="text-sm text-slate-400 leading-relaxed" id="privacy-body">
+                        Biosensors may allow corporations to access emotions and thought patterns, leading to total loss of spiritual privacy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    <span class="text-purple-500">03.</span> <span id="timeline-header">Timeline Prediction</span>
+                </h2>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto pl-4 md:pl-0">
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-700 md:transform md:-translate-x-1/2"></div>
+
+                <!-- 2025: Lab Research -->
+                <div class="relative mb-12 md:flex items-center justify-between w-full">
+                    <div class="md:w-[45%] md:text-right pr-8 order-1">
+                        <h4 class="text-2xl font-bold text-blue-400">2020-2025</h4>
+                        <p class="text-white font-bold" id="t1-title">Foundation Era</p>
+                        <p class="text-slate-400 text-sm mt-2" id="t1-desc">Neuralink begins animal trials. Basic BCI research.</p>
+                    </div>
+                    <div class="absolute left-2 md:left-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-slate-900 z-10 transform md:-translate-x-1/2"></div>
+                    <div class="md:w-[45%] pl-8 order-2 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1581093588402-409f6e5ebf10?q=80&w=400&auto=format&fit=crop" 
+                             class="rounded-lg opacity-60 hover:opacity-100 transition-opacity"
+                             onerror="this.src='https://placehold.co/400x300/1e293b/FFF?text=Lab+Research';">
+                    </div>
+                </div>
+
+                <!-- 2035: Medical -->
+                <div class="relative mb-12 md:flex items-center justify-between w-full">
+                     <div class="md:w-[45%] order-2 hidden md:block pr-8 md:text-right">
+                        <!-- Image on Left for Desktop -->
+                         <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=400&auto=format&fit=crop" 
+                              class="rounded-lg opacity-60 hover:opacity-100 transition-opacity ml-auto"
+                              onerror="this.src='https://placehold.co/400x300/1e293b/FFF?text=Medical+Tech';">
+                    </div>
+                    <div class="absolute left-2 md:left-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-slate-900 z-10 transform md:-translate-x-1/2"></div>
+                    <div class="md:w-[45%] pl-8 md:pl-8 order-1 md:order-2">
+                        <h4 class="text-2xl font-bold text-purple-400">2026-2035</h4>
+                        <p class="text-white font-bold" id="t2-title">Medical Integration</p>
+                        <p class="text-slate-400 text-sm mt-2" id="t2-desc">FDA approves chips for paralysis. Therapeutic use expands.</p>
+                    </div>
+                </div>
+
+                 <!-- 2045: Symbiosis/Abstract -->
+                 <div class="relative mb-12 md:flex items-center justify-between w-full">
+                    <div class="md:w-[45%] md:text-right pr-8 order-1">
+                        <h4 class="text-2xl font-bold text-green-400">2045+</h4>
+                        <p class="text-white font-bold" id="t3-title">Full Symbiosis</p>
+                        <p class="text-slate-400 text-sm mt-2" id="t3-desc">The Singularity. Line between human and machine dissolves.</p>
+                    </div>
+                    <div class="absolute left-2 md:left-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-slate-900 z-10 transform md:-translate-x-1/2"></div>
+                    <div class="md:w-[45%] pl-8 order-2 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?q=80&w=400&auto=format&fit=crop" 
+                             class="rounded-lg opacity-60 hover:opacity-100 transition-opacity"
+                             onerror="this.src='https://placehold.co/400x300/1e293b/FFF?text=Symbiosis';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        const translations = {
+            th: {
+                heroTag: "Humanity 2.0",
+                heroTitle2: "HUMANISM",
+                heroDesc: "เมื่อมนุษย์ต้อง \"อัปเกรด\" เพื่ออยู่รอดในยุค AI แนวคิดจาก Peter Thiel",
+                thesisTitle: "บทวิเคราะห์",
+                thesisSubtitle: "อัปเกรด หรือ สูญพันธุ์",
+                thesisBody: "Peter Thiel เสนอว่า การที่มนุษยชาติจะมีชีวิตรอดต่อไปได้ ไม่ใช่แค่การรักษาสภาพร่างกายเดิม แต่ต้องมีการ \"อัปเกรด\" (Transhumanism) ทั้งร่างกาย จิตใจ และจิตวิญญาณ เพื่อให้เรามีความสามารถเท่าทัน AI",
+                techTitle: "เทคโนโลยีเปลี่ยนโลก",
+                techDesc: "เครื่องมือที่จะเปลี่ยนนิยามของความเป็นมนุษย์",
+                card1Title: "Neuralink (BCI)",
+                card1Desc: "การฝังชิปในสมองเพื่อเชื่อมต่อความคิดเข้ากับคอมพิวเตอร์โดยตรง ทำให้มนุษย์สามารถสั่งการ AI ได้ด้วย \"ความคิด\"",
+                card2Title: "Nanobots",
+                card2Desc: "หุ่นยนต์จิ๋วในกระแสเลือด ทำหน้าที่ซ่อมแซมเซลล์ คัดกรองเชื้อโรค และอาจช่วยยืดอายุขัยมนุษย์ได้",
+                card3Title: "Biosensors",
+                card3Desc: "เซนเซอร์ตรวจสอบความรู้สึกนึกคิดแบบ Real-time ซึ่งนำมาสู่ประเด็นความท้าทายเรื่องความเป็นส่วนตัว",
+                chartTitle: "เปรียบเทียบ: มนุษย์ยุคเก่า vs ใหม่",
+                privacyTitle: "ปริศนาความเป็นส่วนตัว",
+                privacyQuote: "\"เมื่อความคิดไม่ใช่เรื่องส่วนตัวอีกต่อไป\"",
+                privacyBody: "การติดตั้ง Biosensor อาจทำให้บริษัทเทคโนโลยีเข้าถึง อารมณ์ความรู้สึก และ ความคิด ของเราได้ 100% นำไปสู่การสูญเสีย Privacy ทางจิตวิญญาณ",
+                timelineHeader: "ไทม์ไลน์ในอนาคต",
+                t1Title: "ยุคแห่งการวิจัย",
+                t1Desc: "Neuralink เริ่มทดลองในลิงและหมู พัฒนาสายสื่อประสาทขนาดจิ๋ว",
+                t2Title: "ยุคแห่งการรักษา",
+                t2Desc: "FDA อนุมัติการใช้ชิปเพื่อรักษาผู้ป่วยอัมพาตและโรคทางสมอง เริ่มมีการใช้งานจริงทางการแพทย์",
+                t3Title: "ยุคแห่งการผสานรวม",
+                t3Desc: "จุดที่เส้นแบ่งระหว่างมนุษย์และ AI หายไป เรากลายเป็นส่วนหนึ่งของระบบเครือข่ายอย่างสมบูรณ์ (Singularity)",
+                imgCaption1: "คอนเซปต์: การหลอมรวมระหว่างชีวภาพและจักรกล",
+                radarLabels: ['สติปัญญา', 'สุขภาพ/อายุขัย', 'ความแข็งแกร่ง', 'ความเป็นส่วนตัว', 'ความเป็นอิสระ'],
+                radarDataset1: 'มนุษย์ธรรมชาติ',
+                radarDataset2: 'มนุษย์อัปเกรด'
+            },
+            en: {
+                heroTag: "Humanity 2.0",
+                heroTitle2: "HUMANISM",
+                heroDesc: "When humans must \"Upgrade\" to survive the AI era. A concept by Peter Thiel.",
+                thesisTitle: "The Thesis",
+                thesisSubtitle: "Upgrade or Obsolete",
+                thesisBody: "Peter Thiel suggests that for humanity to survive, mere biological preservation is not enough. We must \"Upgrade\" (Transhumanism) our bodies, minds, and spirits to keep pace with AI.",
+                techTitle: "The Tech Stack",
+                techDesc: "Tools that redefine what it means to be human.",
+                card1Title: "Neuralink (BCI)",
+                card1Desc: "Implanting chips in the brain for direct computer interface, allowing humans to control AI via thought.",
+                card2Title: "Nanobots",
+                card2Desc: "Microscopic robots in the bloodstream repairing cells, fighting pathogens, and extending lifespan.",
+                card3Title: "Biosensors",
+                card3Desc: "Real-time monitoring of thoughts and feelings, leading to significant privacy challenges.",
+                chartTitle: "Comparison: Human 1.0 vs 2.0",
+                privacyTitle: "The Privacy Paradox",
+                privacyQuote: "\"When thoughts are no longer private.\"",
+                privacyBody: "Biosensors allow tech corps to access emotions and thought patterns, leading to a total loss of spiritual privacy.",
+                timelineHeader: "Future Timeline",
+                t1Title: "Foundation Era",
+                t1Desc: "Neuralink begins animal trials. Development of neural threads.",
+                t2Title: "Therapeutic Integration",
+                t2Desc: "FDA approves chips for paralysis. Medical use expands broadly.",
+                t3Title: "Full Symbiosis",
+                t3Desc: "The Singularity. The line between biological human and machine dissolves completely.",
+                imgCaption1: "Concept: Biological & Synthetic Merger",
+                radarLabels: ['Intelligence', 'Health/Longevity', 'Strength', 'Privacy', 'Autonomy'],
+                radarDataset1: 'Natural Human',
+                radarDataset2: 'Augmented Human'
+            },
+            ru: {
+                heroTag: "Человечество 2.0",
+                heroTitle2: "ГУМАНИЗМ",
+                heroDesc: "Когда люди должны «обновиться», чтобы выжить в эпоху ИИ. Концепция Питера Тиля.",
+                thesisTitle: "Тезис",
+                thesisSubtitle: "Обновись или Устарей",
+                thesisBody: "Питер Тиль предполагает, что для выживания человечества простого биологического сохранения недостаточно. Мы должны «обновить» (Трансгуманизм) наши тела и разум, чтобы не отставать от ИИ.",
+                techTitle: "Технологии",
+                techDesc: "Инструменты, меняющие определение человека.",
+                card1Title: "Neuralink (НКИ)",
+                card1Desc: "Вживление чипов в мозг для прямого интерфейса с компьютером и управления ИИ мыслью.",
+                card2Title: "Нанороботы",
+                card2Desc: "Микроскопические роботы в крови, восстанавливающие клетки и продлевающие жизнь.",
+                card3Title: "Биосенсоры",
+                card3Desc: "Мониторинг мыслей и чувств в реальном времени, создающий проблемы конфиденциальности.",
+                chartTitle: "Сравнение: Человек 1.0 vs 2.0",
+                privacyTitle: "Парадокс Приватности",
+                privacyQuote: "\"Когда мысли больше не личные.\"",
+                privacyBody: "Биосенсоры могут позволить корпорациям получить доступ к эмоциям, что приведет к потере духовной приватности.",
+                timelineHeader: "График Будущего",
+                t1Title: "Эпоха Основания",
+                t1Desc: "Neuralink начинает испытания на животных. Разработка нейронных нитей.",
+                t2Title: "Терапевтическая Интеграция",
+                t2Desc: "FDA одобряет чипы для лечения паралича. Расширение медицинского использования.",
+                t3Title: "Полный Симбиоз",
+                t3Desc: "Сингулярность. Граница между человеком и машиной исчезает.",
+                imgCaption1: "Концепт: Слияние биологии и синтетики",
+                radarLabels: ['Интеллект', 'Здоровье', 'Сила', 'Приватность', 'Автономия'],
+                radarDataset1: 'Естественный',
+                radarDataset2: 'Улучшенный'
+            },
+            zh: {
+                heroTag: "人类 2.0",
+                heroTitle2: "人机进化",
+                heroDesc: "人类必须“升级”才能在 AI 时代生存。彼得·蒂尔的理念。",
+                thesisTitle: "核心论点",
+                thesisSubtitle: "升级或被淘汰",
+                thesisBody: "彼得·蒂尔认为，人类要生存下去，仅仅保持生物状态是不够的。我们必须“升级”（超人类主义）我们的身体和精神，以跟上人工智能的步伐。",
+                techTitle: "技术栈",
+                techDesc: "重新定义人类的工具。",
+                card1Title: "Neuralink (脑机接口)",
+                card1Desc: "在大脑中植入芯片，实现直接的计算机接口，允许人类通过思想控制 AI。",
+                card2Title: "纳米机器人",
+                card2Desc: "血液中的微型机器人，用于修复细胞、对抗病原体并延长寿命。",
+                card3Title: "生物传感器",
+                card3Desc: "实时监控思想和感觉，带来巨大的隐私挑战。",
+                chartTitle: "对比：人类 1.0 vs 2.0",
+                privacyTitle: "隐私悖论",
+                privacyQuote: "“当思想不再私密。”",
+                privacyBody: "生物传感器可能允许科技公司访问情绪和思维模式，导致精神隐私的彻底丧失。",
+                timelineHeader: "未来时间线",
+                t1Title: "基础时代",
+                t1Desc: "Neuralink 开始动物试验。神经线研发。",
+                t2Title: "医疗整合",
+                t2Desc: "FDA 批准用于瘫痪治疗的芯片。医疗用途广泛扩展。",
+                t3Title: "完全共生",
+                t3Desc: "奇点。生物人类与机器之间的界限完全消失。",
+                imgCaption1: "概念：生物与合成的融合",
+                radarLabels: ['智力', '健康/寿命', '力量', '隐私', '自主权'],
+                radarDataset1: '自然人类',
+                radarDataset2: '增强人类'
+            }
+        };
+
+        let currentLang = 'th';
+        let radarChart;
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            
+            // Update Text Content
+            document.getElementById('hero-tag').textContent = t.heroTag;
+            document.getElementById('hero-title-2').textContent = t.heroTitle2;
+            document.getElementById('hero-desc').textContent = t.heroDesc;
+            document.getElementById('thesis-title').textContent = t.thesisTitle;
+            document.getElementById('thesis-subtitle').textContent = t.thesisSubtitle;
+            document.getElementById('thesis-body').textContent = t.thesisBody;
+            document.getElementById('tech-title').textContent = t.techTitle;
+            document.getElementById('tech-desc').textContent = t.techDesc;
+            document.getElementById('card-1-title').textContent = t.card1Title;
+            document.getElementById('card-1-desc').textContent = t.card1Desc;
+            document.getElementById('card-2-title').textContent = t.card2Title;
+            document.getElementById('card-2-desc').textContent = t.card2Desc;
+            document.getElementById('card-3-title').textContent = t.card3Title;
+            document.getElementById('card-3-desc').textContent = t.card3Desc;
+            document.getElementById('chart-title').textContent = t.chartTitle;
+            document.getElementById('privacy-title').textContent = t.privacyTitle;
+            document.getElementById('privacy-quote').textContent = t.privacyQuote;
+            document.getElementById('privacy-body').textContent = t.privacyBody;
+            document.getElementById('timeline-header').textContent = t.timelineHeader;
+            document.getElementById('t1-title').textContent = t.t1Title;
+            document.getElementById('t1-desc').textContent = t.t1Desc;
+            document.getElementById('t2-title').textContent = t.t2Title;
+            document.getElementById('t2-desc').textContent = t.t2Desc;
+            document.getElementById('t3-title').textContent = t.t3Title;
+            document.getElementById('t3-desc').textContent = t.t3Desc;
+            document.getElementById('img-caption-1').textContent = t.imgCaption1;
+
+            // Update Active Button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.textContent.toLowerCase().includes(lang === 'zh' ? 'cn' : lang)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update Body Attribute for Fonts
+            document.body.setAttribute('data-lang', lang);
+
+            // Update Chart
+            updateChart(t);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            const t = translations[currentLang];
+            
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: t.radarLabels,
+                    datasets: [{
+                        label: t.radarDataset1,
+                        data: [30, 40, 30, 100, 90],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+                    }, {
+                        label: t.radarDataset2,
+                        data: [100, 95, 80, 10, 40],
+                        backgroundColor: 'rgba(236, 72, 153, 0.2)',
+                        borderColor: 'rgba(236, 72, 153, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(236, 72, 153, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: {
+                                color: '#e2e8f0',
+                                font: { size: 12, family: "'Prompt', sans-serif" }
+                            },
+                            ticks: { display: false, backdropColor: 'transparent' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e2e8f0' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(t) {
+            if (!radarChart) return;
+            radarChart.data.labels = t.radarLabels;
+            radarChart.data.datasets[0].label = t.radarDataset1;
+            radarChart.data.datasets[1].label = t.radarDataset2;
+            radarChart.update();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            setLanguage('th'); // Default to Thai
+        });
+
+    </script>
+</body>
+</html>

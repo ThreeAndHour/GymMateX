@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==========================================
+         OPEN GRAPH META TAGS FOR LINE / FACEBOOK
+    =========================================== -->
+    <meta property="og:title" content="Transhumanism: The Future of Evolution - ถอดรหัสพิมพ์เขียว Peter Thiel">
+    <meta property="og:description" content="เมื่อมนุษย์ต้อง 'อัปเกรด' เพื่ออยู่รอดในยุค AI สำรวจแนวคิด Transhumanism, Neuralink และอนาคตของมนุษยชาติ">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="article">
+
     <title>Transhumanism: The Future of Evolution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Fonts: Prompt (Thai), Inter (Eng), Noto Sans SC (Chinese), Roboto (Russian) -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Prompt:wght@300;400;600;700&family=Rajdhani:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -120,7 +131,7 @@
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-20 space-y-32">
 
-        <!-- NEW VIDEO SECTION -->
+        <!-- Video Section -->
         <section class="max-w-4xl mx-auto">
             <div class="text-center mb-8">
                  <h2 class="text-2xl font-bold text-white flex items-center justify-center gap-2">
@@ -235,7 +246,7 @@
             </div>
         </section>
 
-        <!-- Timeline -->
+        <!-- Timeline Section -->
         <section>
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-white mb-4">
@@ -293,6 +304,23 @@
             </div>
         </section>
 
+        <!-- DOWNLOAD PDF SECTION (NEW) -->
+        <section class="text-center pb-8">
+            <div class="glass-card p-8 rounded-2xl max-w-3xl mx-auto border border-blue-500/30 hover:border-blue-500/60 transition-colors">
+                <h3 class="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    <span id="pdf-title">Download Full Report</span>
+                </h3>
+                <p class="text-slate-400 mb-6 text-sm" id="pdf-desc">The Great Fusion: Transhumanism, Singularity, and the End of Biology</p>
+                <a href="https://drive.google.com/file/d/16POLTXgAahNXsh8dD2yk-yHvRX1yKiDX/view?usp=sharing" 
+                   target="_blank" 
+                   class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span id="pdf-btn">Download PDF</span>
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <script>
@@ -328,7 +356,10 @@
                 imgCaption1: "คอนเซปต์: การหลอมรวมระหว่างชีวภาพและจักรกล",
                 radarLabels: ['สติปัญญา', 'สุขภาพ/อายุขัย', 'ความแข็งแกร่ง', 'ความเป็นส่วนตัว', 'ความเป็นอิสระ'],
                 radarDataset1: 'มนุษย์ธรรมชาติ',
-                radarDataset2: 'มนุษย์อัปเกรด'
+                radarDataset2: 'มนุษย์อัปเกรด',
+                pdfTitle: "ดาวน์โหลดรายงานฉบับเต็ม",
+                pdfDesc: "The Great Fusion: บทสรุป Transhumanism, Singularity และจุดจบของชีววิทยา",
+                pdfBtn: "ดาวน์โหลด PDF"
             },
             en: {
                 heroTag: "Humanity 2.0",
@@ -360,7 +391,10 @@
                 imgCaption1: "Concept: Biological & Synthetic Merger",
                 radarLabels: ['Intelligence', 'Health/Longevity', 'Strength', 'Privacy', 'Autonomy'],
                 radarDataset1: 'Natural Human',
-                radarDataset2: 'Augmented Human'
+                radarDataset2: 'Augmented Human',
+                pdfTitle: "Download Full Report",
+                pdfDesc: "The Great Fusion: Transhumanism, Singularity, and the End of Biology",
+                pdfBtn: "Download PDF"
             },
             ru: {
                 heroTag: "Человечество 2.0",
@@ -392,7 +426,10 @@
                 imgCaption1: "Концепт: Слияние биологии и синтетики",
                 radarLabels: ['Интеллект', 'Здоровье', 'Сила', 'Приватность', 'Автономия'],
                 radarDataset1: 'Естественный',
-                radarDataset2: 'Улучшенный'
+                radarDataset2: 'Улучшенный',
+                pdfTitle: "Скачать полный отчет",
+                pdfDesc: "The Great Fusion: Трансгуманизм, Сингулярность и Конец Биологии",
+                pdfBtn: "Скачать PDF"
             },
             zh: {
                 heroTag: "人类 2.0",
@@ -424,7 +461,10 @@
                 imgCaption1: "概念：生物与合成的融合",
                 radarLabels: ['智力', '健康/寿命', '力量', '隐私', '自主权'],
                 radarDataset1: '自然人类',
-                radarDataset2: '增强人类'
+                radarDataset2: '增强人类',
+                pdfTitle: "下载完整报告",
+                pdfDesc: "The Great Fusion: 超人类主义、奇点与生物学的终结",
+                pdfBtn: "下载 PDF"
             }
         };
 
@@ -463,6 +503,11 @@
             document.getElementById('t3-title').textContent = t.t3Title;
             document.getElementById('t3-desc').textContent = t.t3Desc;
             document.getElementById('img-caption-1').textContent = t.imgCaption1;
+            
+            // PDF Translations
+            document.getElementById('pdf-title').textContent = t.pdfTitle;
+            document.getElementById('pdf-desc').textContent = t.pdfDesc;
+            document.getElementById('pdf-btn').textContent = t.pdfBtn;
 
             // Update Active Button
             document.querySelectorAll('.lang-btn').forEach(btn => {

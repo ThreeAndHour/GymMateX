@@ -1,0 +1,590 @@
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+
+// --- Constants & Options ---
+const API_KEY = ""; 
+const MAX_RETRIES = 6;
+
+// 1. Camera Movement Options (Top 5 first - Best for MV/Cinematic)
+const CAMERA_MOVEMENT_OPTIONS = [
+    "Slow cinematic arc", "Orbit 180 (Half circle)", "Slow dolly in", "Whip pan", "Drone flyover (High altitude)", 
+    "Slow dolly out", "Handheld documentary style", "Dolly Zoom (Vertigo Effect)", 
+    "360 Degree Pan", "Crane Shot / Jib Shot", "Static Shot", "Point of View (POV)", 
+    "Hyper zoom", "Reveal from behind", "Through shot", "Tilt Up/Down", 
+    "Lateral truck", "FPV drone dive"
+];
+
+// 2. Lighting Options (Top 4 first - Best for MV/Cinematic)
+const LIGHTING_OPTIONS = [
+    "Volumetric Lighting / God Rays", "Golden Hour / Blue Hour", "Rim Lighting / Edge Lighting", "Cyberpunk / Neon Noir",
+    "High Contrast / Chiaroscuro", "Softbox / Studio Lighting", "Diffused lighting", 
+    "Silhouette", "Lens flare", "Back lit / Side lit", "Neon Noir (Night)"
+];
+
+// 3. Technical Effects Options (Top 4 first - Best for MV/Cinematic)
+const TECHNICAL_OPTIONS = [
+    "Slow-motion (120fps)", "Fluid Dynamics", "Morphing / Seamless Transition", "Shallow Depth of Field (Bokeh)",
+    "Particles / Dust Motes", "Motion Blur", "Deep Depth of Field", "8k Resolution"
+];
+
+// 4. Voice Style Options (Top 3 first)
+const VOICE_OPTIONS = [
+    "Deep Emotional / Heartfelt", "Calm & Soothing", "Dramatic Movie Trailer",
+    "Professional Narration", "Energetic & Upbeat"
+];
+
+// 5. Sound Style Options (Top 3 first)
+const SOUND_OPTIONS = [
+    "Epic Cinematic Orchestral", "Cyberpunk Synthwave", "Lo-fi Chill Beats",
+    "Ambient Nature / Wildlife", "Urban City Ambience", "Suspenseful / Dark Thriller"
+];
+
+// --- System Instructions (Focused on KLING 3.0, Grok, Seedance, VEO & Artistic MV Style) ---
+
+const buildSystemPrompt = (modelName, baseInstruction) => `You are a world-class AI Video Director specializing in ${modelName}.
+PRIMARY MANDATE: 
+- Your generated prompts MUST be derived from the provided image and the user's keywords.
+- Emphasize HIGHLY ARTISTIC, CINEMATIC, and BEAUTIFUL MUSIC VIDEO (MV) aesthetics in every prompt.
+- Use the image for character/environment reference.
+- Use the 'Keywords/Plot' for action and storyline.
+- If the user leaves Camera, Lighting, or Technical options empty, YOU MUST auto-assign the best, most cinematic options that fit the plot.
+- All 'prompt' fields must be in ENGLISH ONLY.
+
+STRUCTURE: [Camera Movement] + [Subject/Action] + [Environment/Visuals] + [Lighting] + [Technical Quality] + [Audio].
+
+${baseInstruction}
+Return JSON: { "prompts": [{ "prompt": string (English Only), "summary_th": string (Thai Summary) }] } (12 items).`;
+
+const SYSTEM_PROMPTS = {
+    kling: { 
+        label: "KLING 3.0", 
+        instruction: buildSystemPrompt("KLING 3.0", "Focus on grand cinematic motion, highly artistic composition, beautiful MV-style aesthetics, and epic transitions.") 
+    },
+    grok: { 
+        label: "GROK", 
+        instruction: buildSystemPrompt("Grok's Imagine Video", "Focus on vivid, highly artistic, and beautiful cinematic storytelling. Use poetic and descriptive natural language.") 
+    },
+    seedance: { 
+        label: "SEEDANCE", 
+        instruction: buildSystemPrompt("Seedance", "Focus on beautiful Music Video (MV) aesthetics, absolute character consistency, and highly artistic visual textures.") 
+    },
+    veo: { 
+        label: "VEO", 
+        instruction: buildSystemPrompt("Veo", `Use this EXACT timeline pattern (in English): 1. SECOND 0-2: [Cinematic intro/Action]. 2. SECOND 2-4: [Artistic evolution]. 3. SECOND 4-6: [MV-style highlight]. 4. SECOND 6-8: [Beautiful resolution]. Sound throughout: [Sound style].`) 
+    },
+    mv_director: {
+        label: "MV DIRECTOR",
+        instruction: buildSystemPrompt("Music Video Director", "Focus STRICTLY on creating highly aesthetic, artistic Music Video scenes. Emphasize rhythm, beautiful lighting, and emotive cinematic framing.")
+    },
+    story: {
+        label: "STORY",
+        instruction: buildSystemPrompt("Story Mode", "Create a continuous 12-part narrative arc focusing on cinematic and artistic storytelling with a premium film look.")
+    }
+};
+
+const SYSTEM_PROMPT_TRANSLATE = `Translate cinematic prompt to Thai. Keep technical terms. Return ONLY Thai text.`;
+const SYSTEM_PROMPT_SOUND = `Generate a sound design prompt in English describing atmospheric layers and sound effects for the video scene.`;
+
+const JSON_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    "prompts": {
+      "type": "ARRAY",
+      "items": {
+        "type": "OBJECT",
+        "properties": {
+          "prompt": { "type": "STRING" },
+          "summary_th": { "type": "STRING" }
+        },
+        "required": ["prompt", "summary_th"]
+      }
+    }
+  },
+  required: ["prompts"]
+};
+
+// --- Helper Functions ---
+const getApiUrl = () => `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
+
+const fetchWithBackoff = async (url, options) => {
+  let retries = 0;
+  while (retries < MAX_RETRIES) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) return response;
+      if (response.status === 429) {
+        await new Promise(r => setTimeout(r, 30000));
+        retries++; continue;
+      }
+      throw new Error(`API Error: ${response.status}`);
+    } catch (e) {
+      if (retries === MAX_RETRIES - 1) throw e;
+      await new Promise(r => setTimeout(r, Math.pow(2, retries) * 1000));
+      retries++;
+    }
+  }
+};
+
+const copyToClipboard = (text) => {
+  const el = document.createElement('textarea');
+  el.value = text;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+
+// --- Components ---
+
+const Icon = ({ name, className }) => {
+    const icons = {
+        copy: <path d="M8 2h12a2 2 0 0 1 2 2v12m-4 4H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2Z"/>,
+        sound: (
+            <>
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+            </>
+        ),
+        trash: (
+            <>
+                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </>
+        ),
+        globe: (
+            <>
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
+            </>
+        ),
+        camera: (
+            <>
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+            </>
+        )
+    };
+    return (
+        <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {icons[name] || <circle cx="12" cy="12" r="10" />}
+        </svg>
+    );
+};
+
+export default function App() {
+    const [images, setImages] = useState([]);
+    const [results, setResults] = useState(() => {
+        const saved = localStorage.getItem('gymmatex_artistic_ai');
+        return saved ? JSON.parse(saved) : [];
+    });
+    const [loading, setLoading] = useState(false);
+    const [keywords, setKeywords] = useState("");
+    const [negPrompt, setNegPrompt] = useState("distorted, blurry, text, watermark, low quality, bad anatomy, deformed");
+    const [model, setModel] = useState('kling'); // Default to KLING 3.0
+    const [motion, setMotion] = useState(6);
+    const [aspect, setAspect] = useState("16:9");
+    
+    // Selections
+    const [selectedMovements, setSelectedMovements] = useState([]);
+    const [selectedLighting, setSelectedLighting] = useState([]);
+    const [selectedTechnical, setSelectedTechnical] = useState([]);
+    const [selectedVoice, setSelectedVoice] = useState([]);
+    const [selectedSound, setSelectedSound] = useState([]);
+    
+    const [translations, setTranslations] = useState({});
+    const [sounds, setSounds] = useState({});
+
+    useEffect(() => { localStorage.setItem('gymmatex_artistic_ai', JSON.stringify(results)); }, [results]);
+
+    const handleUpload = async (e) => {
+        const files = Array.from(e.target.files);
+        const processed = await Promise.all(files.map(async f => ({
+            name: f.name,
+            type: f.type,
+            url: URL.createObjectURL(f),
+            b64: await new Promise(res => {
+                const r = new FileReader();
+                r.readAsDataURL(f);
+                r.onload = () => res(r.result.split(',')[1]);
+            })
+        })));
+        setImages(prev => [...prev, ...processed]);
+    };
+
+    const toggleSelection = (item, state, setter, max = 3) => {
+        setter(prev => {
+            if (prev.includes(item)) return prev.filter(i => i !== item);
+            if (prev.length >= max) return prev;
+            return [...prev, item];
+        });
+    };
+
+    const generate = async () => {
+        if (!images.length) return;
+        setLoading(true);
+        const newRes = [];
+
+        for (const img of images) {
+            const currentModel = SYSTEM_PROMPTS[model];
+            const sysInstruction = currentModel ? currentModel.instruction : SYSTEM_PROMPTS.kling.instruction;
+            
+            const selectionContext = `
+              - MANDATORY CAMERA MOVEMENTS: ${selectedMovements.length ? selectedMovements.join(', ') : 'Auto-select best fit'}
+              - MANDATORY LIGHTING: ${selectedLighting.length ? selectedLighting.join(', ') : 'Auto-select best fit'}
+              - TECHNICAL EFFECTS: ${selectedTechnical.length ? selectedTechnical.join(', ') : 'Auto-select best fit'}
+              - AUDIO ELEMENTS: ${selectedVoice.join(', ')} ${selectedSound.join(', ')}
+            `;
+
+            const fullPrompt = `${sysInstruction}\n\nSTORY PLOT & KEYWORDS: ${keywords}\nUSER PREFERENCES:\n${selectionContext}\nMotion Strength: ${motion}/10\nNegative: ${negPrompt}`;
+
+            try {
+                const response = await fetchWithBackoff(getApiUrl(), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        systemInstruction: { parts: [{ text: fullPrompt }] },
+                        contents: [{ role: "user", parts: [
+                            { inlineData: { mimeType: img.type, data: img.b64 } },
+                            { text: "Generate 12 cinematic and artistic video prompts in English based on the image and plot provided." }
+                        ]}],
+                        generationConfig: { responseMimeType: "application/json", responseSchema: JSON_SCHEMA }
+                    })
+                });
+                const data = await response.json();
+                const promptsText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (promptsText) {
+                    const prompts = JSON.parse(promptsText).prompts;
+                    newRes.push({ 
+                        id: Date.now() + Math.random(), 
+                        img: img.url, 
+                        name: img.name, 
+                        prompts, 
+                        modelLabel: currentModel.label, 
+                        meta: {
+                            movements: [...selectedMovements],
+                            lighting: [...selectedLighting],
+                            voice: [...selectedVoice],
+                            sound: [...selectedSound]
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error("Generation failed:", img.name, e);
+            }
+        }
+        setResults(prev => [...newRes, ...prev]);
+        setLoading(false);
+        
+        // Reset inputs to make it easy for the next generation
+        setImages([]);
+        setKeywords("");
+    };
+
+    const action = async (type, text, id) => {
+        let sys = type === 'trans' ? SYSTEM_PROMPT_TRANSLATE : SYSTEM_PROMPT_SOUND;
+        try {
+            const res = await fetchWithBackoff(getApiUrl(), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    systemInstruction: { parts: [{ text: sys }] },
+                    contents: [{ parts: [{ text }] }]
+                })
+            });
+            const data = await res.json();
+            const output = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (type === 'trans') setTranslations(prev => ({ ...prev, [id]: output }));
+            else setSounds(prev => ({ ...prev, [id]: output }));
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    return (
+        <div className="min-h-screen bg-[#1A2421] text-[#E2E8F0] p-4 md:p-8 font-sans selection:bg-[#22D3EE]/30">
+            <div className="max-w-7xl mx-auto space-y-8">
+                
+                <header className="text-center space-y-4 py-6 relative">
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#22D3EE]/10 to-transparent blur-3xl -z-10"></div>
+                    <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-[#22D3EE] via-[#F472B6] to-[#A3B19B] bg-clip-text text-transparent tracking-tighter drop-shadow-sm">
+                        GYMMATEX AI STUDIO
+                    </h1>
+                    <p className="text-sm font-medium text-[#9CA3AF]">Cinematic & Artistic Prompts for KLING 3.0, GROK, SEEDANCE & VEO</p>
+                </header>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    {/* LEFT COLUMN: Assets & Settings */}
+                    <div className="lg:col-span-8 space-y-6">
+                        
+                        {/* 1. Subject & Story */}
+                        <div className="bg-[#24342D] p-6 md:p-8 rounded-[2rem] border border-[#344C41] shadow-xl space-y-6">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-sm font-black text-[#22D3EE] uppercase tracking-widest flex items-center gap-2">
+                                        <span className="bg-[#22D3EE]/10 text-[#22D3EE] px-2 py-0.5 rounded-md">1</span> 
+                                        Image & Story Plot
+                                    </label>
+                                    <p className="text-xs text-[#9CA3AF]">อัปโหลดภาพและเขียนสิ่งที่คุณต้องการ (ไม่เลือกหมวดอื่น AI จะจัดให้สวยๆ อัตโนมัติ)</p>
+                                </div>
+                                <input type="file" multiple onChange={handleUpload} className="hidden" id="upload" />
+                                <label htmlFor="upload" className="cursor-pointer whitespace-nowrap bg-[#06B6D4] hover:bg-[#0891B2] text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-lg shadow-black/20 active:scale-95">
+                                    + ADD IMAGES
+                                </label>
+                            </div>
+                            
+                            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide min-h-[80px]">
+                                {images.map((img, i) => (
+                                    <img key={i} src={img.url} className="h-20 w-20 rounded-xl object-cover ring-2 ring-[#344C41] shadow-md" />
+                                ))}
+                                {images.length === 0 && <div className="w-full border-2 border-dashed border-[#344C41] rounded-2xl flex items-center justify-center text-[#9CA3AF] text-xs font-medium uppercase py-6 bg-[#1E2C26]">Upload an image to start...</div>}
+                            </div>
+
+                            <textarea 
+                                value={keywords} 
+                                onChange={e => setKeywords(e.target.value)}
+                                className="w-full bg-[#1E2C26] border border-[#344C41] rounded-2xl p-5 text-sm text-white focus:ring-2 focus:ring-[#22D3EE]/30 focus:border-[#22D3EE] outline-none h-24 transition-all placeholder:text-[#6b7280]"
+                                placeholder="พิมพ์พล็อตเรื่อง หรือ Keywords สำคัญ... (เช่น The hero looking at the sunset, cinematic lighting, MV style)"
+                            />
+                        </div>
+
+                        {/* 2. Optional: Modular Grid */}
+                        <div className="bg-[#24342D] p-6 md:p-8 rounded-[2rem] border border-[#344C41] shadow-xl space-y-8">
+                            <div className="border-b border-[#344C41] pb-2 mb-4">
+                                <label className="text-sm font-black text-[#F8FAFC] uppercase tracking-widest flex items-center gap-2">
+                                    <span className="bg-[#1E2C26] text-[#9CA3AF] px-2 py-0.5 rounded-md border border-[#344C41]">2</span> 
+                                    Advanced Overrides (Optional)
+                                </label>
+                                <p className="text-xs text-[#9CA3AF] mt-1">หากไม่เลือก ระบบจะใช้ Smart Auto ตามความเหมาะสมของภาพและพล็อตเรื่อง</p>
+                            </div>
+
+                            {/* Camera Movements */}
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-center">
+                                    <label className="text-[11px] font-bold text-[#F472B6] uppercase tracking-wider">Camera Movements (Max 3)</label>
+                                    <span className="text-[10px] font-bold bg-[#1E2C26] border border-[#344C41] px-2 py-0.5 rounded text-[#9CA3AF]">{selectedMovements.length}/3</span>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {CAMERA_MOVEMENT_OPTIONS.map((move, idx) => (
+                                        <button
+                                            key={move}
+                                            onClick={() => toggleSelection(move, selectedMovements, setSelectedMovements)}
+                                            className={`text-[10px] px-3 py-1.5 rounded-lg border transition-all ${
+                                                selectedMovements.includes(move)
+                                                ? 'bg-[#06B6D4] border-[#06B6D4] text-white font-bold shadow-lg shadow-black/20' 
+                                                : idx < 5 ? 'bg-[#164e63]/40 border-[#164e63] text-[#67e8f9] hover:bg-[#164e63]/70' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:bg-[#2C3D35]'
+                                            }`}
+                                        >
+                                            {idx < 5 && "🔥 "}{move}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {/* Lighting Selection */}
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-center">
+                                        <label className="text-[11px] font-bold text-[#22D3EE] uppercase tracking-wider">Lighting (Max 2)</label>
+                                        <span className="text-[10px] font-bold bg-[#1E2C26] border border-[#344C41] px-2 py-0.5 rounded text-[#9CA3AF]">{selectedLighting.length}/2</span>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {LIGHTING_OPTIONS.map((light, idx) => (
+                                            <button
+                                                key={light}
+                                                onClick={() => toggleSelection(light, selectedLighting, setSelectedLighting, 2)}
+                                                className={`text-[10px] px-3 py-1.5 rounded-lg border transition-all ${
+                                                    selectedLighting.includes(light)
+                                                    ? 'bg-[#06B6D4] border-[#06B6D4] text-white font-bold shadow-lg shadow-black/20' 
+                                                    : idx < 4 ? 'bg-[#164e63]/40 border-[#164e63] text-[#67e8f9] hover:bg-[#164e63]/70' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:bg-[#2C3D35]'
+                                                }`}
+                                            >
+                                                {idx < 4 && "✨ "}{light}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Technical Effects */}
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-center">
+                                        <label className="text-[11px] font-bold text-[#E2E8F0] uppercase tracking-wider">Effects (Max 2)</label>
+                                        <span className="text-[10px] font-bold bg-[#1E2C26] border border-[#344C41] px-2 py-0.5 rounded text-[#9CA3AF]">{selectedTechnical.length}/2</span>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {TECHNICAL_OPTIONS.map((tech, idx) => (
+                                            <button
+                                                key={tech}
+                                                onClick={() => toggleSelection(tech, selectedTechnical, setSelectedTechnical, 2)}
+                                                className={`text-[10px] px-3 py-1.5 rounded-lg border transition-all ${
+                                                    selectedTechnical.includes(tech)
+                                                    ? 'bg-[#E2E8F0] border-[#E2E8F0] text-[#1A2421] font-bold shadow-lg shadow-black/20' 
+                                                    : idx < 4 ? 'bg-[#374151]/50 border-[#4B5563] text-[#F3F4F6] hover:bg-[#4B5563]/50' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:bg-[#2C3D35]'
+                                                }`}
+                                            >
+                                                {idx < 4 && "⚡ "}{tech}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-[#344C41] pt-6">
+                                {/* Voice Style */}
+                                <div className="space-y-3">
+                                    <label className="text-[11px] font-bold text-[#E2E8F0] uppercase tracking-wider">Voice / Narration</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {VOICE_OPTIONS.map((v, idx) => (
+                                            <button
+                                                key={v}
+                                                onClick={() => toggleSelection(v, selectedVoice, setSelectedVoice, 1)}
+                                                className={`text-[10px] px-3 py-1.5 rounded-lg border transition-all ${
+                                                    selectedVoice.includes(v)
+                                                    ? 'bg-[#EC4899] border-[#EC4899] text-white font-bold shadow-lg shadow-black/20' 
+                                                    : idx < 3 ? 'bg-[#831843]/40 border-[#831843] text-[#F9A8D4] hover:bg-[#831843]/70' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:bg-[#2C3D35]'
+                                                }`}
+                                            >
+                                                {idx < 3 ? "⭐ " : "🎙️ "}{v}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* Sound Style */}
+                                <div className="space-y-3">
+                                    <label className="text-[11px] font-bold text-[#E2E8F0] uppercase tracking-wider">Sound / Music</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {SOUND_OPTIONS.map((s, idx) => (
+                                            <button
+                                                key={s}
+                                                onClick={() => toggleSelection(s, selectedSound, setSelectedSound, 1)}
+                                                className={`text-[10px] px-3 py-1.5 rounded-lg border transition-all ${
+                                                    selectedSound.includes(s)
+                                                    ? 'bg-[#EC4899] border-[#EC4899] text-white font-bold shadow-lg shadow-black/20' 
+                                                    : idx < 3 ? 'bg-[#831843]/40 border-[#831843] text-[#F9A8D4] hover:bg-[#831843]/70' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:bg-[#2C3D35]'
+                                                }`}
+                                            >
+                                                {idx < 3 ? "🎧 " : "🎵 "}{s}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* RIGHT COLUMN: Engine & Generate */}
+                    <div className="lg:col-span-4 space-y-6">
+                        <div className="bg-[#24342D] p-6 md:p-8 rounded-[2rem] border border-[#344C41] shadow-xl space-y-6 sticky top-8">
+                            <div className="space-y-1">
+                                <label className="text-sm font-black text-[#22D3EE] uppercase tracking-widest flex items-center gap-2">
+                                    <span className="bg-[#22D3EE]/10 text-[#22D3EE] px-2 py-0.5 rounded-md">3</span> 
+                                    Target AI Engine
+                                </label>
+                                <p className="text-xs text-[#9CA3AF]">เลือกโมเดลที่ต้องการใช้งาน</p>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2">
+                                {Object.entries(SYSTEM_PROMPTS).map(([key, data]) => (
+                                    <button 
+                                        key={key} 
+                                        onClick={() => setModel(key)}
+                                        className={`py-3 px-2 rounded-xl text-[10px] font-black uppercase border transition-all ${model === key ? 'bg-[#06B6D4] border-[#06B6D4] text-white shadow-lg shadow-black/20' : 'bg-[#1E2C26] border-[#344C41] text-[#9CA3AF] hover:border-[#4B6B59]'}`}
+                                    >
+                                        {data.label}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="space-y-5 pt-4 border-t border-[#344C41]">
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wider">Aspect Ratio</label>
+                                    <select value={aspect} onChange={e => setAspect(e.target.value)} className="w-full bg-[#1E2C26] border border-[#344C41] text-white rounded-xl p-3 text-xs font-bold outline-none focus:border-[#22D3EE]">
+                                        <option value="16:9">16:9 (Landscape)</option>
+                                        <option value="9:16">9:16 (Portrait)</option>
+                                        <option value="21:9">21:9 (Cinematic)</option>
+                                        <option value="1:1">1:1 (Square)</option>
+                                    </select>
+                                </div>
+                                
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wider flex justify-between">
+                                        Motion Power <span>{motion}/10</span>
+                                    </label>
+                                    <input type="range" min="1" max="10" value={motion} onChange={e => setMotion(e.target.value)} className="w-full accent-[#22D3EE] h-1.5 bg-[#1A2421] rounded-lg appearance-none cursor-pointer" />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wider">Negative Prompt</label>
+                                    <input value={negPrompt} onChange={e => setNegPrompt(e.target.value)} className="w-full bg-[#1E2C26] border border-[#344C41] rounded-xl p-3 text-[10px] font-mono text-[#F472B6] focus:border-[#F472B6] outline-none" />
+                                </div>
+                            </div>
+
+                            <button 
+                                onClick={generate} 
+                                disabled={loading || !images.length}
+                                className="w-full bg-[#06B6D4] hover:bg-[#0891B2] py-5 rounded-2xl font-black text-sm text-white shadow-lg shadow-black/20 active:scale-95 transition-all disabled:opacity-50 disabled:grayscale flex justify-center items-center gap-2"
+                            >
+                                {loading ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                        GENERATING...
+                                    </>
+                                ) : "GENERATE PROMPTS"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Results Section */}
+                <div className="space-y-8 pb-20">
+                    {results.length > 0 && (
+                        <div className="flex items-center justify-between border-b border-[#344C41] pb-4">
+                            <h2 className="text-xl font-black text-[#F8FAFC] uppercase italic">Generated Prompts</h2>
+                            <button onClick={() => setResults([])} className="text-[10px] font-bold text-[#F472B6] uppercase tracking-widest flex items-center gap-2 hover:underline">
+                                <Icon name="trash" className="w-4 h-4" /> Clear All
+                            </button>
+                        </div>
+                    )}
+                    
+                    {results.map(res => (
+                        <div key={res.id} className="bg-[#24342D] rounded-[2rem] border border-[#344C41] overflow-hidden shadow-xl">
+                            <div className="p-6 bg-[#1E2C26]/80 border-b border-[#344C41] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div className="flex items-center gap-5">
+                                    <img src={res.img} className="h-16 w-16 rounded-xl object-cover shadow-lg ring-2 ring-[#344C41]" />
+                                    <div>
+                                        <h3 className="font-bold text-white text-sm">{res.name}</h3>
+                                        <div className="flex flex-wrap gap-2 mt-2">
+                                            <span className="text-[9px] font-black text-[#1A2421] bg-[#22D3EE] px-2 py-0.5 rounded uppercase">{res.modelLabel}</span>
+                                            {res.meta.movements.map(m => <span key={m} className="text-[8px] font-bold text-[#A3B19B] bg-[#1E2C26] border border-[#344C41] px-2 py-0.5 rounded">{m}</span>)}
+                                            {res.meta.voice.map(v => <span key={v} className="text-[8px] font-bold text-[#F472B6] bg-[#1E2C26] border border-[#831843] px-2 py-0.5 rounded">🎙️ {v}</span>)}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onClick={() => setResults(prev => prev.filter(r => r.id !== res.id))} className="self-end sm:self-auto w-8 h-8 flex items-center justify-center rounded-lg bg-[#1E2C26] text-[#9CA3AF] hover:text-[#F472B6] hover:border-[#F472B6]/50 border border-[#344C41] transition-all">
+                                    <Icon name="trash" className="w-4 h-4" />
+                                </button>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+                                {res.prompts.map((p, i) => {
+                                    const pid = `${res.id}-${i}`;
+                                    const finalPrompt = `${p.prompt} --ar ${aspect} --motion ${motion}${negPrompt ? ` --no ${negPrompt}` : ''}`;
+                                    return (
+                                        <div key={i} className="group relative bg-[#1E2C26] border border-[#344C41] rounded-2xl p-5 hover:bg-[#2C3D35] hover:border-[#22D3EE]/30 transition-all shadow-md">
+                                            <div className="flex flex-wrap items-center justify-between mb-3 gap-2">
+                                                <span className="text-[10px] bg-[#22D3EE]/10 text-[#22D3EE] px-2 py-1 rounded font-bold border border-[#22D3EE]/20">{p.summary_th}</span>
+                                                <div className="flex gap-2">
+                                                    <button onClick={() => action('trans', p.prompt, pid)} className="p-1.5 bg-[#24342D] rounded border border-[#344C41] text-[#9CA3AF] hover:text-[#22D3EE] hover:border-[#22D3EE]/50 shadow-sm transition-colors" title="Translate to Thai"><Icon name="globe" className="w-3.5 h-3.5" /></button>
+                                                    <button onClick={() => action('sound', p.prompt, pid)} className="p-1.5 bg-[#24342D] rounded border border-[#344C41] text-[#9CA3AF] hover:text-[#F472B6] hover:border-[#F472B6]/50 shadow-sm transition-colors" title="Generate Audio Prompt"><Icon name="sound" className="w-3.5 h-3.5" /></button>
+                                                    <button onClick={() => copyToClipboard(finalPrompt)} className="p-1.5 bg-[#24342D] rounded border border-[#344C41] text-[#9CA3AF] hover:text-white hover:border-[#9CA3AF] shadow-sm transition-colors" title="Copy Prompt"><Icon name="copy" className="w-3.5 h-3.5" /></button>
+                                                </div>
+                                            </div>
+                                            <p className="text-[13px] text-[#D1D5DB] leading-relaxed selection:bg-[#22D3EE]/20">{p.prompt}</p>
+                                            
+                                            {translations[pid] && <div className="mt-3 pt-3 border-t border-[#344C41] text-[11px] text-[#22D3EE] leading-relaxed">🇹🇭 {translations[pid]}</div>}
+                                            {sounds[pid] && <div className="mt-3 bg-[#EC4899]/10 p-3 rounded-xl text-[11px] text-[#F9A8D4] border-l-2 border-[#EC4899]">🎵 {sounds[pid]}</div>}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

@@ -94,9 +94,24 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+    /* Notification Animation */
+    @keyframes slide-in-right {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fade-out {
+      from { opacity: 1; }
+      to { opacity: 0; transform: translateY(-10px); }
+    }
+    .toast-enter { animation: slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .toast-exit { animation: fade-out 0.4s ease-out forwards; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
+
+  <!-- Notification Container -->
+  <div id="notification-container" class="fixed top-24 right-4 z-[60] flex flex-col gap-3 w-80 pointer-events-none"></div>
 
   <!-- Navbar -->
   <nav class="bg-red-900/20 border-b border-red-900/50 sticky top-0 z-50 backdrop-blur-md">
@@ -216,6 +231,39 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Live Video Streams (NEW FEATURE) -->
+    <div class="glass-panel rounded-xl flex flex-col overflow-hidden">
+      <div class="p-4 border-b border-slate-700/50 flex items-center justify-between bg-slate-900/50">
+        <div class="flex items-center gap-2">
+          <i data-lucide="radio-tower" class="w-5 h-5 text-red-500 animate-pulse"></i>
+          <h3 class="font-semibold text-white">Live Global Network Feeds (OSINT)</h3>
+        </div>
+        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded border border-red-500/30 uppercase tracking-wider">Live Broadcast</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-slate-800 p-1">
+        <!-- Feed 1: Al Jazeera -->
+        <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
+          <iframe src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1" 
+                  class="absolute inset-0 w-full h-full border-0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+          <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Middle East Feed (Doha)
+          </div>
+        </div>
+        <!-- Feed 2: DW News / Euro -->
+        <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
+          <iframe src="https://www.youtube.com/embed/live_stream?channel=UCknLrEdhRCp1aegoMqRaCZg&autoplay=1&mute=1" 
+                  class="absolute inset-0 w-full h-full border-0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>
+          <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Euro Intel Feed (Berlin)
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Bottom Row: Chart & News -->
@@ -716,6 +764,64 @@
       container.innerHTML = htmlContent + '<span class="text-slate-700 mx-6">|</span>' + htmlContent;
     }
 
+    // ===== ALERT NOTIFICATION SYSTEM =====
+    function showNotification(title, message, type = 'danger') {
+      const container = document.getElementById('notification-container');
+      
+      // Define styles based on type
+      let borderColor, iconColor, iconName;
+      if (type === 'danger') { borderColor = 'border-red-500'; iconColor = 'text-red-500'; iconName = 'alert-triangle'; }
+      else if (type === 'warning') { borderColor = 'border-amber-500'; iconColor = 'text-amber-500'; iconName = 'shield-alert'; }
+      else { borderColor = 'border-blue-500'; iconColor = 'text-blue-400'; iconName = 'info'; }
+
+      // Create Toast Element
+      const toast = document.createElement('div');
+      toast.className = `glass-panel border-l-4 ${borderColor} rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.5)] p-4 toast-enter flex items-start gap-3 bg-slate-900/95 pointer-events-auto`;
+      
+      toast.innerHTML = `
+        <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor} shrink-0 mt-0.5 animate-pulse"></i>
+        <div class="flex-1">
+          <h4 class="text-sm font-bold text-white tracking-wide">${title}</h4>
+          <p class="text-xs text-slate-300 mt-1 leading-snug">${message}</p>
+        </div>
+        <button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-white transition-colors">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      `;
+
+      container.appendChild(toast);
+      lucide.createIcons({ root: toast });
+
+      // Auto remove after 6 seconds
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.classList.remove('toast-enter');
+          toast.classList.add('toast-exit');
+          setTimeout(() => toast.remove(), 400); // Wait for exit animation
+        }
+      }, 6000);
+    }
+
+    // Simulate incoming intel alerts
+    function simulateIntelAlerts() {
+      const alerts = [
+        { title: "MISSILE WARNING", msg: "Multiple ballistic signatures detected originating from Kermanshah facility.", type: "danger" },
+        { title: "CYBER ATTACK", msg: "DDoS attack detected on allied water infrastructure grid.", type: "warning" },
+        { title: "AIRSPACE BREACH", msg: "Unidentified drones detected near US 5th Fleet perimeter.", type: "danger" },
+        { title: "MARKET ALERT", msg: "WTI Crude spikes rapidly following Strait of Hormuz incident reports.", type: "info" },
+        { title: "TROOP MOVEMENT", msg: "Satellite imagery confirms IRGC fast boats repositioning.", type: "warning" },
+        { title: "DEFENSE SYSTEM", msg: "Iron Dome batteries active over Tel Aviv metropolitan area.", type: "info" }
+      ];
+
+      // Randomly pop an alert every 25 seconds
+      setInterval(() => {
+        if (Math.random() > 0.3) {
+          const alert = alerts[Math.floor(Math.random() * alerts.length)];
+          showNotification(alert.title, alert.msg, alert.type);
+        }
+      }, 25000);
+    }
+
     // ===== REAL NEWS / RSS FEED =====
     async function fetchRealNews() {
       const container = document.getElementById('real-news');
@@ -817,6 +923,7 @@
       
       updateClock();
       updateSimulatedMarkets(); // Init ticker
+      simulateIntelAlerts(); // Start alert system
     };
   </script>
 </body>

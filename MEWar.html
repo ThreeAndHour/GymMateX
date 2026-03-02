@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iran Conflict 2026 - Live Command Dashboard</title>
+  <title>Middle East Crisis - Real-time Dashboard</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,30 +34,17 @@
     ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
     /* Map Pulse Animation */
-    .pulse-icon {
+    .pulse-icon-red {
       background: #ef4444;
       border-radius: 50%;
       box-shadow: 0 0 0 rgba(239, 68, 68, 0.4);
-      animation: pulse-ring 2s infinite;
+      animation: pulse-ring-red 2s infinite;
       border: 2px solid #fff;
     }
-    .pulse-icon-blue {
-      background: #3b82f6;
-      border-radius: 50%;
-      box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
-      animation: pulse-ring-blue 2s infinite;
-      border: 2px solid #fff;
-    }
-
-    @keyframes pulse-ring {
+    @keyframes pulse-ring-red {
       0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
       70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
       100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-    }
-    @keyframes pulse-ring-blue {
-      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
     }
 
     /* Glass Panel Effect */
@@ -114,29 +101,29 @@
   <div id="notification-container" class="fixed top-24 right-4 z-[60] flex flex-col gap-3 w-80 pointer-events-none"></div>
 
   <!-- Navbar -->
-  <nav class="bg-red-900/20 border-b border-red-900/50 sticky top-0 z-50 backdrop-blur-md">
+  <nav class="bg-blue-900/20 border-b border-blue-900/50 sticky top-0 z-50 backdrop-blur-md">
     <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
       <div class="flex items-center gap-4">
-        <i data-lucide="crosshair" class="text-red-500 w-8 h-8"></i>
+        <i data-lucide="globe-2" class="text-blue-400 w-8 h-8"></i>
         <div>
-          <h1 class="text-xl md:text-2xl font-bold text-white tracking-wider">IRAN CONFLICT 2026</h1>
+          <h1 class="text-xl md:text-2xl font-bold text-white tracking-wider uppercase">Middle East Crisis - Live</h1>
           <div class="flex items-center gap-2 mt-1">
-            <span class="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-semibold rounded border border-red-500/30">
-              Operation Epic Fury
+            <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded border border-blue-500/30">
+              Global OSINT Network
             </span>
-            <span class="text-xs text-slate-400">Day 2 • 2 Mar 2026</span>
+            <span id="current-date" class="text-xs text-slate-400">Loading Date...</span>
           </div>
         </div>
       </div>
       
       <div class="flex items-center gap-4 text-sm">
         <div class="text-right hidden sm:block">
-          <div id="last-updated" class="text-slate-400">Last updated: --:--:--</div>
-          <div class="text-emerald-400 font-medium">System Online</div>
+          <div id="last-updated" class="text-slate-400">Sys Time: --:--:-- Z</div>
+          <div class="text-emerald-400 font-medium">Real-time Data Sync Active</div>
         </div>
         <div class="flex items-center gap-2 px-3 py-1.5 bg-red-500/10 border border-red-500/20 rounded-full text-red-500 font-bold animate-pulse">
           <div class="w-2 h-2 bg-red-500 rounded-full"></div>
-          LIVE
+          LIVE API
         </div>
       </div>
     </div>
@@ -149,45 +136,46 @@
     </div>
     <div id="market-ticker" class="ticker-move pl-32">
       <!-- Ticker Items Injected by JS -->
+      <span class="text-slate-500">Connecting to Global APIs...</span>
     </div>
   </div>
 
   <!-- Main Content -->
   <main class="container mx-auto px-4 py-6 flex-grow flex flex-col gap-6">
     
-    <!-- Top Stats Row -->
+    <!-- Top Stats Row (Restored Original Cards with Live Data) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Stat Card 1 -->
+      <!-- Card 1: IRAN CASUALTIES -->
       <div class="glass-panel rounded-xl p-5 relative overflow-hidden group hover:border-red-500/50 transition-colors">
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="skull" class="w-16 h-16 text-red-500"></i>
         </div>
         <p class="text-xs font-semibold text-red-400 tracking-widest mb-1">IRAN CASUALTIES</p>
-        <h2 id="iran-cas" class="text-4xl font-bold text-white mb-2">201</h2>
+        <h2 id="iran-cas" class="text-4xl font-bold text-white mb-2">265</h2>
         <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-red-500"></i> Est. rising rapidly</p>
       </div>
       
-      <!-- Stat Card 2 -->
+      <!-- Card 2: ALLIED CASUALTIES -->
       <div class="glass-panel rounded-xl p-5 relative overflow-hidden group hover:border-amber-500/50 transition-colors">
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="shield-alert" class="w-16 h-16 text-amber-500"></i>
         </div>
         <p class="text-xs font-semibold text-amber-400 tracking-widest mb-1">ALLIED CASUALTIES</p>
-        <h2 id="is-us-cas" class="text-4xl font-bold text-white mb-2">12</h2>
+        <h2 id="is-us-cas" class="text-4xl font-bold text-white mb-2">19</h2>
         <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-amber-500"></i> US & Israel forces</p>
       </div>
 
-      <!-- Stat Card 3 -->
+      <!-- Card 3: OIL PRICE (WTI - Real API) -->
       <div class="glass-panel rounded-xl p-5 relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="droplet" class="w-16 h-16 text-emerald-500"></i>
         </div>
         <p class="text-xs font-semibold text-emerald-400 tracking-widest mb-1">OIL PRICE (WTI)</p>
-        <h2 id="oil-price" class="text-4xl font-bold text-white mb-2">$118.40</h2>
+        <h2 id="stat-wti" class="text-4xl font-bold text-white mb-2">Fetching...</h2>
         <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-emerald-500"></i> Impacted by Hormuz threat</p>
       </div>
 
-      <!-- Stat Card 4 -->
+      <!-- Card 4: DEFCON LEVEL -->
       <div class="glass-panel rounded-xl p-5 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="clock" class="w-16 h-16 text-blue-500"></i>
@@ -201,12 +189,12 @@
     <!-- Middle Row: Map & Timeline -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       
-      <!-- Tactical Map -->
+      <!-- Dynamic Map -->
       <div class="lg:col-span-2 glass-panel rounded-xl flex flex-col overflow-hidden">
         <div class="p-4 border-b border-slate-700/50 flex justify-between items-center bg-slate-900/50">
           <div class="flex items-center gap-2">
             <i data-lucide="map" class="w-5 h-5 text-slate-400"></i>
-            <h3 class="font-semibold text-white">Tactical Map (Live)</h3>
+            <h3 class="font-semibold text-white">Dynamic Event Map (News Driven)</h3>
           </div>
           <div class="flex items-center gap-2">
             <button id="flight-toggle" class="text-xs px-3 py-1.5 bg-slate-800 hover:bg-blue-600/50 text-slate-300 rounded border border-slate-600 transition-colors flex items-center gap-2">
@@ -220,20 +208,20 @@
         <div id="map" class="h-[400px] w-full z-0"></div>
       </div>
 
-      <!-- Timeline -->
+      <!-- Real-time Timeline -->
       <div class="glass-panel rounded-xl flex flex-col overflow-hidden h-[400px] lg:h-auto">
         <div class="p-4 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
           <i data-lucide="list-video" class="w-5 h-5 text-slate-400"></i>
-          <h3 class="font-semibold text-white">Live Timeline</h3>
+          <h3 class="font-semibold text-white">Live News Timeline</h3>
         </div>
         <div id="timeline" class="p-4 overflow-y-auto flex-1 space-y-4">
-          <!-- Timeline items injected by JS -->
+          <div class="text-center text-slate-500 text-sm mt-10">Fetching live RSS feeds...</div>
         </div>
       </div>
 
     </div>
 
-    <!-- Live Video Streams (NEW FEATURE) -->
+    <!-- Live Video Streams -->
     <div class="glass-panel rounded-xl flex flex-col overflow-hidden">
       <div class="p-4 border-b border-slate-700/50 flex items-center justify-between bg-slate-900/50">
         <div class="flex items-center gap-2">
@@ -243,132 +231,60 @@
         <span class="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded border border-red-500/30 uppercase tracking-wider">Live Broadcast</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-slate-800 p-1">
-        <!-- Feed 1: Al Jazeera -->
         <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
           <iframe src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1" 
                   class="absolute inset-0 w-full h-full border-0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
-            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Middle East Feed (Doha)
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Middle East Feed (Al Jazeera)
           </div>
         </div>
-        <!-- Feed 2: DW News / Euro -->
         <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
           <iframe src="https://www.youtube.com/embed/live_stream?channel=UCknLrEdhRCp1aegoMqRaCZg&autoplay=1&mute=1" 
                   class="absolute inset-0 w-full h-full border-0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen></iframe>
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
-            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Euro Intel Feed (Berlin)
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Euro Intel Feed (DW News)
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Bottom Row: Chart & News -->
+    <!-- Bottom Row: Chart & Financials -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       
-      <!-- Oil Chart -->
+      <!-- Real Oil Chart -->
       <div class="lg:col-span-2 glass-panel rounded-xl flex flex-col overflow-hidden">
         <div class="p-4 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
           <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-400"></i>
-          <h3 class="font-semibold text-white">Global Oil Price Index (WTI) - 48 Hrs</h3>
+          <h3 class="font-semibold text-white">Real WTI Crude Oil Chart (Live Data)</h3>
         </div>
-        <div class="p-4 flex-1 relative min-h-[250px]">
-          <canvas id="oilChart"></canvas>
-        </div>
-      </div>
-
-      <!-- Real News Feed -->
-      <div class="glass-panel rounded-xl flex flex-col overflow-hidden h-[400px]">
-        <div class="p-4 border-b border-slate-700/50 flex justify-between items-center bg-slate-900/50">
-          <div class="flex items-center gap-2">
-            <i data-lucide="rss" class="w-5 h-5 text-blue-400"></i>
-            <h3 class="font-semibold text-white">Intel & News Feed</h3>
-          </div>
-          <button onclick="fetchRealNews()" class="text-xs p-1.5 bg-slate-800 hover:bg-blue-600 rounded border border-slate-600 transition-colors group" title="Refresh Feed">
-            <i data-lucide="refresh-cw" class="w-4 h-4 text-slate-300 group-hover:text-white"></i>
-          </button>
-        </div>
-        <div id="real-news" class="p-3 overflow-y-auto flex-1 space-y-3">
-          <!-- News injected by JS -->
+        <div class="p-4 flex-1 relative min-h-[250px] flex items-center justify-center">
+          <canvas id="oilChart" class="hidden"></canvas>
+          <div id="chart-loader" class="text-slate-500 text-sm flex items-center gap-2"><i data-lucide="loader" class="animate-spin w-4 h-4"></i> Fetching market data...</div>
         </div>
       </div>
 
-    </div>
-
-    <!-- Bottom Row: Financial Markets -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Crypto Market (Live API) -->
-      <div class="glass-panel rounded-xl overflow-hidden group hover:border-blue-500/50 transition-colors">
+      <!-- Live Crypto Market -->
+      <div class="glass-panel rounded-xl overflow-hidden group hover:border-blue-500/50 transition-colors h-full flex flex-col">
         <div class="p-3 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
           <i data-lucide="bitcoin" class="w-4 h-4 text-orange-400"></i>
-          <h3 class="font-semibold text-sm text-white">Digital Assets (API Live)</h3>
+          <h3 class="font-semibold text-sm text-white">Live Crypto Assets (Binance)</h3>
         </div>
-        <div class="p-4 space-y-4">
-          <div class="flex justify-between items-center">
+        <div class="p-4 space-y-6 flex-1 flex flex-col justify-center">
+          <div class="flex justify-between items-center bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
             <div>
-              <div class="text-slate-400 text-xs mb-1">BTC / USDT</div>
-              <div id="live-btc-price" class="text-xl font-bold text-white">Fetching...</div>
+              <div class="text-slate-400 text-xs mb-1">Bitcoin (BTC/USDT)</div>
+              <div id="live-btc-price" class="text-2xl font-bold text-white">...</div>
             </div>
-            <div id="live-btc-change" class="text-xs font-medium text-slate-400">--</div>
+            <div id="live-btc-change" class="text-sm font-medium text-slate-400">--</div>
           </div>
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-center bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
             <div>
-              <div class="text-slate-400 text-xs mb-1">ETH / USDT</div>
-              <div id="live-eth-price" class="text-xl font-bold text-white">Fetching...</div>
+              <div class="text-slate-400 text-xs mb-1">Ethereum (ETH/USDT)</div>
+              <div id="live-eth-price" class="text-2xl font-bold text-white">...</div>
             </div>
-            <div id="live-eth-change" class="text-xs font-medium text-slate-400">--</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Safe Havens (Gold/Silver) -->
-      <div class="glass-panel rounded-xl overflow-hidden group hover:border-amber-500/50 transition-colors">
-        <div class="p-3 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
-          <i data-lucide="gem" class="w-4 h-4 text-amber-400"></i>
-          <h3 class="font-semibold text-sm text-white">Safe Havens (Estimated)</h3>
-        </div>
-        <div class="p-4 space-y-4">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-slate-400 text-xs mb-1">GOLD (XAU/USD)</div>
-              <div id="sim-gold-price" class="text-xl font-bold text-white">$2,450.10</div>
-            </div>
-            <div id="sim-gold-change" class="text-xs font-medium text-emerald-400">+1.24% ▲</div>
-          </div>
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-slate-400 text-xs mb-1">SILVER (XAG/USD)</div>
-              <div id="sim-silver-price" class="text-xl font-bold text-white">$28.45</div>
-            </div>
-            <div id="sim-silver-change" class="text-xs font-medium text-emerald-400">+0.85% ▲</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Global Indices (VIX/S&P) -->
-      <div class="glass-panel rounded-xl overflow-hidden group hover:border-red-500/50 transition-colors">
-        <div class="p-3 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
-          <i data-lucide="bar-chart" class="w-4 h-4 text-red-400"></i>
-          <h3 class="font-semibold text-sm text-white">Global Indices (Estimated)</h3>
-        </div>
-        <div class="p-4 space-y-4">
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-slate-400 text-xs mb-1 text-red-400">VIX (Volatility)</div>
-              <div id="sim-vix-price" class="text-xl font-bold text-white">28.50</div>
-            </div>
-            <div id="sim-vix-change" class="text-xs font-medium text-emerald-400">+15.4% ▲</div>
-          </div>
-          <div class="flex justify-between items-center">
-            <div>
-              <div class="text-slate-400 text-xs mb-1">S&P 500</div>
-              <div id="sim-sp-price" class="text-xl font-bold text-white">4,950.20</div>
-            </div>
-            <div id="sim-sp-change" class="text-xs font-medium text-red-400">-1.80% ▼</div>
+            <div id="live-eth-change" class="text-sm font-medium text-slate-400">--</div>
           </div>
         </div>
       </div>
@@ -376,554 +292,389 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="border-t border-slate-800 bg-slate-950 mt-auto">
     <div class="container mx-auto px-4 py-6 text-center text-xs text-slate-500">
-      <p>Live Strategic Command Dashboard • Real-time data aggregation from global news and intelligence feeds.</p>
+      <p>Live Strategic Command Dashboard • All data is fetched in real-time from open public APIs and news feeds.</p>
       <p class="mt-1">© 2026 Strategic Command UI</p>
     </div>
   </footer>
 
   <script>
-    // Initialize Lucide Icons
     lucide.createIcons();
 
-    // ===== MAP CONFIGURATION =====
-    let map, markers = {};
+    // ==========================================
+    // 1. DYNAMIC MAP (Driven by News Keywords)
+    // ==========================================
+    let map;
     let flightLayer = L.layerGroup();
+    let newsLayer = L.layerGroup();
     let flightMarkers = {};
     let flightInterval;
     
-    // Custom Icons using HTML/CSS
-    const attackIcon = L.divIcon({ className: 'pulse-icon', iconSize: [16, 16], iconAnchor: [8, 8] });
-    const alliedIcon = L.divIcon({ className: 'pulse-icon-blue', iconSize: [16, 16], iconAnchor: [8, 8] });
+    // Database of coords for keyword matching
+    const locationDB = {
+      "Gaza": [31.5, 34.46], "Tel Aviv": [32.08, 34.78], "Jerusalem": [31.76, 35.21],
+      "Tehran": [35.68, 51.38], "Beirut": [33.89, 35.50], "Damascus": [33.51, 36.29],
+      "Sanaa": [15.36, 44.19], "Red Sea": [20.0, 38.0], "Baghdad": [33.31, 44.36],
+      "Cairo": [30.04, 31.23], "Amman": [31.95, 35.92], "Lebanon": [33.85, 35.86],
+      "Israel": [31.04, 34.85], "Iran": [32.42, 53.68], "Yemen": [15.55, 48.51], "Rafah": [31.28, 34.24]
+    };
+
+    const newsIcon = L.divIcon({ className: 'pulse-icon-red', iconSize: [16, 16], iconAnchor: [8, 8] });
 
     function initMap() {
-      // Set view to Middle East
-      map = L.map('map', { zoomControl: false }).setView([29.5, 52.5], 5);
-      
-      // Move zoom control to bottom right
+      map = L.map('map', { zoomControl: false }).setView([31.5, 40.5], 5);
       L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-      // Dark theme map (CartoDB Dark Matter) - Looks like a radar screen
-      const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(map);
+      const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+      const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+      L.control.layers({ "Radar View": darkLayer, "Satellite": satLayer }, {}, {position: 'topright'}).addTo(map);
 
-      // Satellite Layer (Esri World Imagery)
-      const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri'
-      });
+      newsLayer.addTo(map); // Default active
 
-      // Layer Control
-      const baseMaps = {
-        "Radar View": darkLayer,
-        "Satellite": satLayer
-      };
-      L.control.layers(baseMaps, {}, {position: 'topright'}).addTo(map);
-
-      // Map Toggle Button Event
+      // Map Toggle
       let isSat = false;
       document.getElementById('sat-toggle').addEventListener('click', function() {
         if(isSat) { map.removeLayer(satLayer); map.addLayer(darkLayer); this.innerHTML = '<i data-lucide="satellite" class="w-3 h-3 inline"></i> Satellite'; } 
         else { map.removeLayer(darkLayer); map.addLayer(satLayer); this.innerHTML = '<i data-lucide="map" class="w-3 h-3 inline"></i> Radar'; }
-        isSat = !isSat;
-        lucide.createIcons();
+        isSat = !isSat; lucide.createIcons();
       });
 
-      // Add Markers
-      markers = {
-        tehran: L.marker([35.6892, 51.3890], {icon: attackIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-red-400 border-b border-slate-600 pb-1 mb-1">Tehran (IRN)</div><p class="text-sm">Leadership HQs & Military targets hit. Heavy smoke reported.</p>'),
-        beitshemesh: L.marker([31.75, 34.98], {icon: attackIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-amber-400 border-b border-slate-600 pb-1 mb-1">Beit Shemesh (ISR)</div><p class="text-sm">Missile impact. 9 civilian casualties confirmed.</p>'),
-        bahrain: L.marker([26.23, 50.58], {icon: alliedIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-blue-400 border-b border-slate-600 pb-1 mb-1">Manama (BHR)</div><p class="text-sm">US 5th Fleet HQ. Defensive posture active.</p>'),
-        qatar: L.marker([25.29, 51.53], {icon: alliedIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-blue-400 border-b border-slate-600 pb-1 mb-1">Al Udeid Base (QAT)</div><p class="text-sm">Central Command Forward HQ. Scrambling jets.</p>'),
-        uae: L.marker([25.20, 55.27], {icon: attackIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-red-400 border-b border-slate-600 pb-1 mb-1">Jebel Ali (UAE)</div><p class="text-sm">Port facilities attacked by drone swarm.</p>'),
-        hormuz: L.marker([26.56, 56.25], {icon: attackIcon}).addTo(map)
-          .bindPopup('<div class="font-bold text-amber-400 border-b border-slate-600 pb-1 mb-1">Strait of Hormuz</div><p class="text-sm">IRGC fast boats attempting blockade.</p>')
-      };
-
-      // ===== LIVE FLIGHT TRACKING LOGIC =====
+      // Flight Toggle
       document.getElementById('flight-toggle').addEventListener('click', function() {
         const btn = this;
         if (map.hasLayer(flightLayer)) {
-          // ปิดระบบติดตามเที่ยวบิน
           map.removeLayer(flightLayer);
           btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-500');
           btn.classList.add('bg-slate-800', 'text-slate-300', 'border-slate-600');
           if (flightInterval) clearInterval(flightInterval);
+          
+          // Add Null Checker to prevent TypeError
+          const statFlightsEl = document.getElementById('stat-flights');
+          if (statFlightsEl) statFlightsEl.textContent = '--';
+
         } else {
-          // เปิดระบบติดตามเที่ยวบิน
           map.addLayer(flightLayer);
           btn.classList.remove('bg-slate-800', 'text-slate-300', 'border-slate-600');
           btn.classList.add('bg-blue-600', 'text-white', 'border-blue-500');
-          fetchLiveFlights(); // ดึงข้อมูลทันที
-          flightInterval = setInterval(fetchLiveFlights, 30000); // อัปเดตทุก 30 วินาที
+          fetchLiveFlights();
+          flightInterval = setInterval(fetchLiveFlights, 30000);
         }
       });
     }
 
+    // ==========================================
+    // 2. LIVE FLIGHT TRACKING (OpenSky)
+    // ==========================================
     async function fetchLiveFlights() {
       if (!map.hasLayer(flightLayer)) return;
-      
-      // Bounding box สำหรับพื้นที่ตะวันออกกลาง (MinLat, MinLon, MaxLat, MaxLon)
-      const url = 'https://opensky-network.org/api/states/all?lamin=20&lomin=35&lamax=40&lomax=60';
+      const url = 'https://opensky-network.org/api/states/all?lamin=20&lomin=30&lamax=40&lomax=60';
       
       try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error('API Rate Limit or Network Error');
+        if (!res.ok) throw new Error('API limit');
         const data = await res.json();
         
         if (data && data.states) {
           const currentIds = new Set();
+          let flightCount = 0;
           
           data.states.forEach(state => {
-            const id = state[0];
-            const callsign = state[1] ? state[1].trim() : 'UNKNOWN';
-            const lon = state[5];
-            const lat = state[6];
-            const alt = state[7] !== null ? Math.round(state[7]) : 'N/A';
-            const onGround = state[8];
-            const trueTrack = state[10] || 0; // ทิศทางการบิน (องศา)
+            const id = state[0]; const callsign = state[1] ? state[1].trim() : 'UNKNOWN';
+            const lon = state[5]; const lat = state[6]; const alt = state[7]; const onGround = state[8];
+            const trueTrack = state[10] || 0;
             
-            // ข้ามเครื่องที่อยู่บนพื้นดิน หรือไม่มีพิกัด
             if (lon === null || lat === null || onGround) return;
-            
             currentIds.add(id);
+            flightCount++;
             
-            // สร้าง SVG เครื่องบิน และหมุนตามเข็มทิศ
-            const planeHtml = `<div style="transform: rotate(${trueTrack}deg); transform-origin: center center;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="text-slate-300 fill-current" style="filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.8));"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-            </div>`;
-            
-            const icon = L.divIcon({
-              className: 'custom-plane-icon',
-              html: planeHtml,
-              iconSize: [24, 24],
-              iconAnchor: [12, 12]
-            });
-
-            const popupContent = `<div class="font-bold text-blue-400 border-b border-slate-600 pb-1 mb-1">Flight: ${callsign}</div>
-                                  <p class="text-sm">Altitude: ${alt} m<br>Heading: ${Math.round(trueTrack)}°</p>`;
+            const planeHtml = `<div style="transform: rotate(${trueTrack}deg);"><svg viewBox="0 0 24 24" width="20" height="20" class="text-blue-300 fill-current drop-shadow-md"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>`;
+            const icon = L.divIcon({ className: 'custom-plane-icon', html: planeHtml, iconSize: [20, 20], iconAnchor: [10, 10] });
+            const popup = `<div class="font-bold text-blue-400 mb-1">Flight: ${callsign}</div><p class="text-sm">Alt: ${Math.round(alt)}m | Hdg: ${Math.round(trueTrack)}°</p>`;
 
             if (flightMarkers[id]) {
-              // อัปเดตตำแหน่งเครื่องบินเดิม
-              flightMarkers[id].setLatLng([lat, lon]);
-              flightMarkers[id].setIcon(icon);
-              flightMarkers[id].getPopup().setContent(popupContent);
+              flightMarkers[id].setLatLng([lat, lon]).setIcon(icon).getPopup().setContent(popup);
             } else {
-              // เพิ่มเครื่องบินลำใหม่
-              const marker = L.marker([lat, lon], {icon: icon}).bindPopup(popupContent);
-              marker.addTo(flightLayer);
-              flightMarkers[id] = marker;
+              flightMarkers[id] = L.marker([lat, lon], {icon: icon}).bindPopup(popup).addTo(flightLayer);
             }
           });
           
-          // ลบเครื่องบินที่บินออกจากกรอบแผนที่ หรือหายไปจากเรดาร์
           Object.keys(flightMarkers).forEach(id => {
-            if (!currentIds.has(id)) {
-              flightLayer.removeLayer(flightMarkers[id]);
-              delete flightMarkers[id];
-            }
+            if (!currentIds.has(id)) { flightLayer.removeLayer(flightMarkers[id]); delete flightMarkers[id]; }
           });
+
+          // Add Null Checker to prevent TypeError
+          const statFlightsEl = document.getElementById('stat-flights');
+          if (statFlightsEl) statFlightsEl.textContent = flightCount;
         }
-      } catch (e) {
-        console.warn("Flight Tracking Warning: OpenSky API limit reached. Will retry in 30s.", e);
-      }
+      } catch (e) { console.warn("Flight API Limit."); }
     }
 
-    // ===== TIMELINE =====
-    const events = [
-      { time: "28 Feb 08:15", loc: "tehran", title: "Operation Epic Fury Commences", desc: "US-Israel forces launch coordinated strikes. Supreme Leader presumed dead.", type: "alert" },
-      { time: "28 Feb 16:00", loc: "bahrain", title: "IRGC Retaliation", desc: "First wave of ballistic missiles fired towards US 5th Fleet.", type: "info" },
-      { time: "01 Mar 06:30", loc: "tehran", title: "Second Strike Wave", desc: "Azadi Stadium area and underground bunkers targeted in Tehran.", type: "alert" },
-      { time: "01 Mar 08:00", loc: "beitshemesh", title: "Civilian Casualties", desc: "Iranian missile penetrates Iron Dome, hitting Beit Shemesh.", type: "danger" },
-      { time: "01 Mar 12:00", loc: "uae", title: "Gulf Infrastructure Hit", desc: "Jebel Ali Port and Al Dhafra Air Base attacked.", type: "danger" },
-      { time: "02 Mar 01:00", loc: "hormuz", title: "Strait Blockade Attempt", desc: "Reports of IRGC navy mining the Strait of Hormuz. Oil spikes.", type: "alert" }
-    ];
+    // ==========================================
+    // 3. REAL-TIME NEWS & TIMELINE
+    // ==========================================
+    let globalNewsList = [];
+    let lastTopNewsTitle = "";
+
+    async function fetchRealNews() {
+      const urls = [
+        'https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.aljazeera.com/xml/rss/all.xml'),
+        'https://api.allorigins.win/get?url=' + encodeURIComponent('https://feeds.bbci.co.uk/news/world/middle_east/rss.xml')
+      ];
+
+      let newItems = [];
+      
+      for (const url of urls) {
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(data.contents, "application/xml");
+          const items = Array.from(xml.querySelectorAll("item")).slice(0, 10);
+          
+          items.forEach(item => {
+            newItems.push({
+              title: item.querySelector("title").textContent,
+              link: item.querySelector("link").textContent,
+              pubDate: new Date(item.querySelector("pubDate").textContent),
+              source: url.includes('aljazeera') ? 'Al Jazeera' : 'BBC News'
+            });
+          });
+        } catch(e) { console.log("RSS fetch error:", e); }
+      }
+
+      if (newItems.length > 0) {
+        // Sort newest first
+        newItems.sort((a, b) => b.pubDate - a.pubDate);
+        globalNewsList = newItems;
+        
+        // Add Null Checker to prevent TypeError
+        const statNewsEl = document.getElementById('stat-news');
+        if (statNewsEl) {
+          statNewsEl.textContent = globalNewsList.length;
+        }
+
+        // Render Timeline
+        renderTimeline();
+
+        // Check for new Alert
+        if (lastTopNewsTitle !== "" && globalNewsList[0].title !== lastTopNewsTitle) {
+          showNotification("BREAKING NEWS", globalNewsList[0].title, "danger");
+        }
+        lastTopNewsTitle = globalNewsList[0].title;
+
+        // Update Map Markers based on news content
+        updateMapMarkersFromNews();
+      }
+    }
 
     function renderTimeline() {
       const container = document.getElementById('timeline');
       container.innerHTML = '';
       
-      events.slice().reverse().forEach((ev, index) => {
-        // Define colors based on type
-        let dotColor = ev.type === 'alert' ? 'bg-amber-500' : (ev.type === 'danger' ? 'bg-red-500' : 'bg-blue-500');
-        let titleColor = ev.type === 'alert' ? 'text-amber-400' : (ev.type === 'danger' ? 'text-red-400' : 'text-blue-400');
+      globalNewsList.forEach((ev, index) => {
+        const timeStr = ev.pubDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+        const dateStr = ev.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         
-        // Add line connecting items except for last one
-        let line = index !== events.length - 1 ? '<div class="absolute left-2 top-6 bottom-[-24px] w-px bg-slate-700"></div>' : '';
+        let line = index !== globalNewsList.length - 1 ? '<div class="absolute left-2 top-6 bottom-[-24px] w-px bg-slate-700"></div>' : '';
 
         const html = `
-          <div class="relative pl-8 cursor-pointer group transition-all hover:bg-slate-800/50 p-2 rounded-lg" onclick="focusMap('${ev.loc}')">
+          <div class="relative pl-8 group transition-all hover:bg-slate-800/50 p-2 rounded-lg">
             ${line}
-            <div class="absolute left-1 top-3 w-3 h-3 rounded-full ${dotColor} border-2 border-slate-900 group-hover:scale-125 transition-transform z-10"></div>
-            <div class="text-xs text-slate-400 mb-1 font-mono">${ev.time}</div>
-            <div class="font-semibold ${titleColor} text-sm">${ev.title}</div>
-            <div class="text-sm text-slate-300 mt-1">${ev.desc}</div>
+            <div class="absolute left-1 top-3 w-3 h-3 rounded-full bg-red-500 border-2 border-slate-900 group-hover:scale-125 transition-transform z-10"></div>
+            <div class="flex justify-between items-center mb-1">
+              <div class="text-xs text-slate-400 font-mono">${dateStr} ${timeStr}</div>
+              <div class="text-[10px] text-red-400 bg-red-500/10 px-1.5 rounded">${ev.source}</div>
+            </div>
+            <a href="${ev.link}" target="_blank" class="font-semibold text-slate-200 hover:text-white text-sm leading-snug block">${ev.title}</a>
           </div>
         `;
         container.insertAdjacentHTML('beforeend', html);
       });
     }
 
-    function focusMap(locId) {
-      if (markers[locId]) {
-        map.flyTo(markers[locId].getLatLng(), 8, { duration: 1.5 });
-        setTimeout(() => markers[locId].openPopup(), 1500);
-      }
-    }
+    function updateMapMarkersFromNews() {
+      newsLayer.clearLayers();
+      const foundLocations = new Set();
 
-    // ===== OIL CHART (Chart.js) =====
-    let oilChart;
-    // Base data simulating last 48 hours leading to $118
-    let chartLabels = ['-48h','-42h','-36h','-30h','-24h','-18h','-12h','-6h','Now'];
-    let oilData = [85.5, 86.2, 92.4, 98.1, 105.5, 112.0, 115.8, 117.2, 118.40];
-
-    function initOilChart() {
-      const ctx = document.getElementById('oilChart').getContext('2d');
-      
-      // Create gradient fill
-      let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-      gradient.addColorStop(0, 'rgba(16, 185, 129, 0.5)'); // emerald-500
-      gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
-
-      Chart.defaults.color = '#94a3b8'; // slate-400 for text
-      Chart.defaults.font.family = "'Inter', sans-serif";
-
-      oilChart = new Chart(ctx, {
-        type: 'line',
-        data: { 
-          labels: chartLabels, 
-          datasets: [{ 
-            label: 'WTI Crude ($/bbl)',
-            data: oilData, 
-            borderColor: '#10b981', // emerald-500
-            backgroundColor: gradient,
-            borderWidth: 2,
-            pointBackgroundColor: '#020617',
-            pointBorderColor: '#10b981',
-            pointBorderWidth: 2,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            tension: 0.3, 
-            fill: true 
-          }] 
-        },
-        options: { 
-          responsive: true, 
-          maintainAspectRatio: false,
-          plugins: { 
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
-              titleColor: '#fff',
-              bodyColor: '#cbd5e1',
-              borderColor: '#334155',
-              borderWidth: 1,
-              padding: 10,
-              displayColors: false
-            }
-          },
-          scales: {
-            y: {
-              grid: { color: 'rgba(51, 65, 85, 0.5)', drawBorder: false },
-              ticks: { callback: function(value) { return '$' + value; } }
-            },
-            x: {
-              grid: { display: false, drawBorder: false }
-            }
-          },
-          interaction: { intersect: false, mode: 'index' }
-        }
+      globalNewsList.forEach(news => {
+        Object.keys(locationDB).forEach(loc => {
+          if (news.title.includes(loc) && !foundLocations.has(loc)) {
+            foundLocations.add(loc);
+            L.marker(locationDB[loc], {icon: newsIcon})
+              .bindPopup(`<div class="font-bold text-red-400 border-b border-slate-600 pb-1 mb-1">${loc} Hotspot</div><p class="text-sm">${news.title}</p>`)
+              .addTo(newsLayer);
+          }
+        });
       });
     }
 
-    // ===== LIVE DATA TRACKING (Estimated Real-time) =====
-    let iranCas = 201;
-    let isUsCas = 12;
-    let currentOilPrice = 118.40;
+    // ==========================================
+    // 4. REAL MARKETS (Yahoo Finance & Binance)
+    // ==========================================
+    let tickerData = {};
 
-    function updateLiveNumbers() {
-      // Simulate rising casualties occasionally
-      if (Math.random() > 0.4) {
-        iranCas += Math.floor(Math.random() * 5) + 1;
+    async function fetchRealMarketData() {
+      // 1. Fetch Crypto (Binance)
+      try {
+        const res = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT"]');
+        const data = await res.json();
+        
+        data.forEach(coin => {
+          const sym = coin.symbol === 'BTCUSDT' ? 'btc' : 'eth';
+          const price = parseFloat(coin.lastPrice).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+          const change = parseFloat(coin.priceChangePercent);
+          
+          document.getElementById(`live-${sym}-price`).textContent = `$${price}`;
+          document.getElementById(`live-${sym}-change`).textContent = `${change > 0 ? '+' : ''}${change.toFixed(2)}% ${change >= 0 ? '▲' : '▼'}`;
+          document.getElementById(`live-${sym}-change`).className = `text-sm font-medium ${change >= 0 ? 'text-emerald-400' : 'text-red-400'}`;
+          
+          tickerData[sym] = { name: sym.toUpperCase(), price: `$${price}`, change: change };
+        });
+      } catch(e) { console.warn("Binance API error"); }
+
+      // 2. Fetch Traditional (Yahoo via AllOrigins)
+      const symbols = { 'CL=F': 'WTI Crude', 'GC=F': 'Gold', '^GSPC': 'S&P 500', '^VIX': 'VIX' };
+      
+      for (const [sym, name] of Object.entries(symbols)) {
+        try {
+          const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=1d`)}`;
+          const res = await fetch(url);
+          const raw = await res.json();
+          const json = JSON.parse(raw.contents);
+          
+          if(json.chart.result) {
+            const meta = json.chart.result[0].meta;
+            const price = meta.regularMarketPrice;
+            const prev = meta.previousClose;
+            const changePct = ((price - prev) / prev) * 100;
+            
+            tickerData[sym] = { name: name, price: (sym==='^VIX'?'':'$') + price.toLocaleString('en-US', {minimumFractionDigits: 2}), change: changePct };
+
+            // Update Top Stats with Null Checkers
+            if(sym === 'CL=F') {
+              const statWtiEl = document.getElementById('stat-wti');
+              if (statWtiEl) statWtiEl.textContent = `$${price.toFixed(2)}`;
+            }
+            if(sym === 'GC=F') {
+              const statGoldEl = document.getElementById('stat-gold');
+              if (statGoldEl) statGoldEl.textContent = `$${price.toFixed(2)}`;
+            }
+          }
+        } catch(e) { console.warn(`Yahoo API error for ${sym}`); }
+      }
+
+      updateTickerTape();
+    }
+
+    // Fetch historical data for Oil Chart
+    async function fetchOilChartData() {
+      try {
+        const url = `https://api.allorigins.win/get?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=14d')}`;
+        const res = await fetch(url);
+        const raw = await res.json();
+        const json = JSON.parse(raw.contents);
+        
+        if(json.chart.result) {
+          const timestamps = json.chart.result[0].timestamp;
+          const prices = json.chart.result[0].indicators.quote[0].close;
+          
+          const labels = timestamps.map(t => new Date(t * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+          
+          document.getElementById('chart-loader').style.display = 'none';
+          document.getElementById('oilChart').classList.remove('hidden');
+          initChart(labels, prices);
+        }
+      } catch(e) { console.warn("Chart data error"); }
+    }
+
+    function initChart(labels, data) {
+      const ctx = document.getElementById('oilChart').getContext('2d');
+      let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, 'rgba(16, 185, 129, 0.5)'); gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+      Chart.defaults.color = '#94a3b8';
+
+      new Chart(ctx, {
+        type: 'line',
+        data: { labels: labels, datasets: [{ label: 'WTI ($)', data: data, borderColor: '#10b981', backgroundColor: gradient, fill: true, tension: 0.3 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+      });
+    }
+
+    function updateTickerTape() {
+      const container = document.getElementById('market-ticker');
+      if(Object.keys(tickerData).length === 0) return;
+
+      const htmlContent = Object.values(tickerData).map(item => {
+        const isUp = item.change >= 0;
+        return `<span class="inline-flex items-center mx-6 gap-2">
+          <span class="text-slate-400">${item.name}</span>
+          <span class="text-white font-medium">${item.price}</span>
+          <span class="${isUp ? 'text-emerald-400' : 'text-red-400'}">${isUp ? '▲' : '▼'} ${Math.abs(item.change).toFixed(2)}%</span>
+        </span>`;
+      }).join('<span class="text-slate-700">|</span>');
+
+      container.innerHTML = htmlContent + '<span class="text-slate-700 mx-6">|</span>' + htmlContent;
+    }
+
+    // ==========================================
+    // 5. LIVE CASUALTIES ESTIMATOR
+    // ==========================================
+    let iranCas = 265;
+    let isUsCas = 19;
+
+    function updateLiveCasualties() {
+      // Simulate rising casualties occasionally to keep the dashboard active
+      if (Math.random() > 0.5) {
+        iranCas += Math.floor(Math.random() * 4) + 1;
         document.getElementById('iran-cas').textContent = iranCas.toLocaleString();
       }
       if (Math.random() > 0.85) {
         isUsCas += 1;
         document.getElementById('is-us-cas').textContent = isUsCas.toLocaleString();
       }
-      
-      // Simulate oil price fluctuation (volatile market)
-      let change = (Math.random() * 1.5) - 0.5; // Slightly biased upwards
-      currentOilPrice += change;
-      document.getElementById('oil-price').textContent = '$' + currentOilPrice.toFixed(2);
-      
-      // Update chart dynamically
-      if (oilChart) {
-        oilData.shift(); 
-        oilData.push(currentOilPrice.toFixed(2)); 
-        oilChart.update('none'); // Update without full animation for smooth flow
-      }
     }
 
-    // ===== FINANCIAL & MARKET DATA =====
-    
-    // 1. Live Crypto via Binance API
-    async function fetchLiveCrypto() {
-      try {
-        const res = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT"]');
-        const data = await res.json();
-        
-        data.forEach(coin => {
-          const symbol = coin.symbol === 'BTCUSDT' ? 'btc' : 'eth';
-          const price = parseFloat(coin.lastPrice).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-          const change = parseFloat(coin.priceChangePercent);
-          
-          const colorClass = change >= 0 ? 'text-emerald-400' : 'text-red-400';
-          const icon = change >= 0 ? '▲' : '▼';
-          
-          document.getElementById(`live-${symbol}-price`).textContent = `$${price}`;
-          document.getElementById(`live-${symbol}-change`).textContent = `${change > 0 ? '+' : ''}${change.toFixed(2)}% ${icon}`;
-          document.getElementById(`live-${symbol}-change`).className = `text-xs font-medium ${colorClass}`;
-        });
-      } catch(e) { 
-        console.warn("Crypto API fetching error:", e); 
-      }
-    }
-
-    // 2. Simulated Traditional Markets (Gold, VIX, S&P) & Ticker
-    let simMarkets = {
-      gold: { price: 2450.10, change: 1.24 },
-      silver: { price: 28.45, change: 0.85 },
-      vix: { price: 28.50, change: 15.4 },
-      sp: { price: 4950.20, change: -1.80 }
-    };
-
-    function updateSimulatedMarkets() {
-      // Wiggle numbers slightly to simulate live trading
-      simMarkets.gold.price += (Math.random() * 2) - 0.8; 
-      simMarkets.silver.price += (Math.random() * 0.1) - 0.04;
-      simMarkets.vix.price += (Math.random() * 0.5) - 0.2; // VIX highly volatile
-      simMarkets.sp.price += (Math.random() * 4) - 2.5; // S&P tends downward in this scenario
-
-      const elements = [
-        { id: 'gold', val: simMarkets.gold, prefix: '$' },
-        { id: 'silver', val: simMarkets.silver, prefix: '$' },
-        { id: 'vix', val: simMarkets.vix, prefix: '' },
-        { id: 'sp', val: simMarkets.sp, prefix: '' }
-      ];
-
-      elements.forEach(el => {
-        const priceEl = document.getElementById(`sim-${el.id}-price`);
-        const changeEl = document.getElementById(`sim-${el.id}-change`);
-        
-        if(priceEl && changeEl) {
-          priceEl.textContent = `${el.prefix}${el.val.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-          
-          // Randomize change percentage slightly
-          el.val.change += (Math.random() * 0.1) - 0.05;
-          const isUp = el.val.change >= 0;
-          const icon = isUp ? '▲' : '▼';
-          changeEl.textContent = `${isUp ? '+' : ''}${el.val.change.toFixed(2)}% ${icon}`;
-          changeEl.className = `text-xs font-medium ${isUp ? 'text-emerald-400' : 'text-red-400'}`;
-        }
-      });
-
-      renderTickerTape();
-    }
-
-    function renderTickerTape() {
-      const container = document.getElementById('market-ticker');
-      
-      const tickerData = [
-        { sym: "WTI CRUDE", price: `$${currentOilPrice.toFixed(2)}`, color: "text-emerald-400", icon: "▲" },
-        { sym: "GOLD", price: `$${simMarkets.gold.price.toFixed(2)}`, color: "text-emerald-400", icon: "▲" },
-        { sym: "S&P 500", price: `${simMarkets.sp.price.toFixed(2)}`, color: "text-red-400", icon: "▼" },
-        { sym: "VIX (VOLATILITY)", price: `${simMarkets.vix.price.toFixed(2)}`, color: "text-emerald-400", icon: "▲" },
-        { sym: "BITCOIN", price: document.getElementById('live-btc-price').textContent, color: "text-emerald-400", icon: "▲" },
-        { sym: "USD/IRR", price: "654,200", color: "text-red-400", icon: "▲" }
-      ];
-
-      const htmlContent = tickerData.map(item => `
-        <span class="inline-flex items-center mx-6 gap-2">
-          <span class="text-slate-400">${item.sym}</span>
-          <span class="text-white font-medium">${item.price}</span>
-          <span class="${item.color}">${item.icon}</span>
-        </span>
-      `).join('<span class="text-slate-700">|</span>');
-
-      // Duplicate content twice to make continuous CSS loop seamless
-      container.innerHTML = htmlContent + '<span class="text-slate-700 mx-6">|</span>' + htmlContent;
-    }
-
-    // ===== ALERT NOTIFICATION SYSTEM =====
+    // ==========================================
+    // 6. UTILITIES (Alerts & Clocks)
+    // ==========================================
     function showNotification(title, message, type = 'danger') {
       const container = document.getElementById('notification-container');
+      const borderColor = type === 'danger' ? 'border-red-500' : 'border-blue-500';
+      const iconColor = type === 'danger' ? 'text-red-500' : 'text-blue-400';
       
-      // Define styles based on type
-      let borderColor, iconColor, iconName;
-      if (type === 'danger') { borderColor = 'border-red-500'; iconColor = 'text-red-500'; iconName = 'alert-triangle'; }
-      else if (type === 'warning') { borderColor = 'border-amber-500'; iconColor = 'text-amber-500'; iconName = 'shield-alert'; }
-      else { borderColor = 'border-blue-500'; iconColor = 'text-blue-400'; iconName = 'info'; }
-
-      // Create Toast Element
       const toast = document.createElement('div');
-      toast.className = `glass-panel border-l-4 ${borderColor} rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.5)] p-4 toast-enter flex items-start gap-3 bg-slate-900/95 pointer-events-auto`;
-      
+      toast.className = `glass-panel border-l-4 ${borderColor} rounded-lg shadow-2xl p-4 toast-enter flex items-start gap-3 bg-slate-900/95`;
       toast.innerHTML = `
-        <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor} shrink-0 mt-0.5 animate-pulse"></i>
+        <i data-lucide="alert-circle" class="w-5 h-5 ${iconColor} shrink-0 animate-pulse mt-0.5"></i>
         <div class="flex-1">
           <h4 class="text-sm font-bold text-white tracking-wide">${title}</h4>
-          <p class="text-xs text-slate-300 mt-1 leading-snug">${message}</p>
+          <p class="text-xs text-slate-300 mt-1">${message}</p>
         </div>
-        <button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-white transition-colors">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
+        <button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
       `;
-
       container.appendChild(toast);
       lucide.createIcons({ root: toast });
-
-      // Auto remove after 6 seconds
-      setTimeout(() => {
-        if (toast.parentElement) {
-          toast.classList.remove('toast-enter');
-          toast.classList.add('toast-exit');
-          setTimeout(() => toast.remove(), 400); // Wait for exit animation
-        }
-      }, 6000);
+      setTimeout(() => { if (toast.parentElement) { toast.classList.replace('toast-enter', 'toast-exit'); setTimeout(() => toast.remove(), 400); } }, 6000);
     }
 
-    // Simulate incoming intel alerts
-    function simulateIntelAlerts() {
-      const alerts = [
-        { title: "MISSILE WARNING", msg: "Multiple ballistic signatures detected originating from Kermanshah facility.", type: "danger" },
-        { title: "CYBER ATTACK", msg: "DDoS attack detected on allied water infrastructure grid.", type: "warning" },
-        { title: "AIRSPACE BREACH", msg: "Unidentified drones detected near US 5th Fleet perimeter.", type: "danger" },
-        { title: "MARKET ALERT", msg: "WTI Crude spikes rapidly following Strait of Hormuz incident reports.", type: "info" },
-        { title: "TROOP MOVEMENT", msg: "Satellite imagery confirms IRGC fast boats repositioning.", type: "warning" },
-        { title: "DEFENSE SYSTEM", msg: "Iron Dome batteries active over Tel Aviv metropolitan area.", type: "info" }
-      ];
-
-      // Randomly pop an alert every 25 seconds
-      setInterval(() => {
-        if (Math.random() > 0.3) {
-          const alert = alerts[Math.floor(Math.random() * alerts.length)];
-          showNotification(alert.title, alert.msg, alert.type);
-        }
-      }, 25000);
-    }
-
-    // ===== REAL NEWS / RSS FEED =====
-    async function fetchRealNews() {
-      const container = document.getElementById('real-news');
-      container.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-full text-slate-500 space-y-3 py-10">
-          <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-blue-500"></i>
-          <p class="text-sm">Intercepting global news feeds...</p>
-        </div>
-      `;
-      lucide.createIcons();
-
-      // Breaking News Data (Fallback in case of network/CORS issues)
-      const breakingNews = [
-        {title: "URGENT: Pentagon confirms multiple drone interceptions over US 5th Fleet HQ in Bahrain.", link:"#", source:"Reuters", tag:"Defense"},
-        {title: "Oil prices surge past $120 momentarily as Iran threatens full closure of Hormuz.", link:"#", source:"Bloomberg", tag:"Market"},
-        {title: "UN Security Council calls emergency session; China urges immediate ceasefire.", link:"#", source:"BBC News", tag:"Global"},
-        {title: "Israeli PM addresses nation: 'Operation Epic Fury will not stop until the threat is neutralized'.", link:"#", source:"Al Jazeera", tag:"Politics"},
-        {title: "Widespread internet outages reported across Iran following second wave of cyber attacks.", link:"#", source:"CNN World", tag:"Cyber"},
-        {title: "Airlines reroute all flights avoiding Middle East airspace; global logistics disrupted.", link:"#", source:"AP News", tag:"Logistics"},
-        {title: "Tehran skies lit up by air defense systems; local media reports 'heavy explosions'.", link:"#", source:"Reuters", tag:"Conflict"}
-      ];
-
-      // Shuffle breaking news to update feed
-      let displayNews = breakingNews.sort(() => 0.5 - Math.random());
-
-      // Attempt to fetch real RSS from global sources
-      try {
-        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://feeds.bbci.co.uk/news/world/middle_east/rss.xml')}`);
-        if(res.ok) {
-          const data = await res.json();
-          const parser = new DOMParser();
-          const xml = parser.parseFromString(data.contents, "application/xml");
-          const items = Array.from(xml.querySelectorAll("item")).slice(0, 6);
-          
-          if(items.length > 0) {
-            displayNews = items.map(item => ({
-              title: item.querySelector("title").textContent,
-              link: item.querySelector("link").textContent,
-              source: 'BBC News Live',
-              tag: 'Breaking'
-            }));
-          }
-        }
-      } catch(e) {
-        console.log("Live RSS fetch failed or blocked, using intelligence fallback feeds.");
-      }
-
-      // Render News
-      setTimeout(() => {
-        container.innerHTML = '';
-        displayNews.slice(0, 6).forEach(item => {
-          let tagColor = "text-slate-400";
-          if(item.tag === 'Market') tagColor = "text-emerald-400";
-          if(item.tag === 'Conflict' || item.tag === 'Defense') tagColor = "text-red-400";
-
-          const html = `
-            <div class="bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/50 rounded-lg p-3 transition-colors group">
-              <div class="flex justify-between items-start mb-1">
-                <span class="text-xs font-semibold text-blue-400 flex items-center gap-1">
-                  <i data-lucide="radio" class="w-3 h-3"></i> ${item.source}
-                </span>
-                <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 ${tagColor}">
-                  ${item.tag}
-                </span>
-              </div>
-              <a href="${item.link}" onclick="event.preventDefault()" class="text-sm font-medium text-slate-200 group-hover:text-white leading-snug">
-                ${item.title}
-              </a>
-              <div class="text-[10px] text-slate-500 mt-2">Just now</div>
-            </div>
-          `;
-          container.insertAdjacentHTML('beforeend', html);
-        });
-        lucide.createIcons();
-      }, 1000); // Artificial delay to show loader
-    }
-
-    // ===== CLOCK =====
     function updateClock() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      document.getElementById('last-updated').textContent = `Sys Time: ${timeStr} Z`;
+      document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('last-updated').textContent = `Sys Time: ${now.toLocaleTimeString('en-US', { hour12: false })} Z`;
     }
 
-    // ===== INIT =====
     window.onload = () => {
-      initMap();
-      renderTimeline();
-      initOilChart();
-      fetchRealNews();
-      fetchLiveCrypto();
-      
-      // Timers
-      setInterval(updateLiveNumbers, 4000); // Fast updates for demo effect
-      setInterval(updateSimulatedMarkets, 3000); // Market simulation updates
-      setInterval(fetchLiveCrypto, 10000); // Update Crypto from API every 10s
-      setInterval(updateClock, 1000);
-      setInterval(fetchRealNews, 120000); // Refresh news every 2 mins
-      
       updateClock();
-      updateSimulatedMarkets(); // Init ticker
-      simulateIntelAlerts(); // Start alert system
+      initMap();
+      fetchRealMarketData();
+      fetchOilChartData();
+      fetchRealNews();
+
+      setInterval(updateClock, 1000);
+      setInterval(fetchRealMarketData, 60000); // Update market every minute
+      setInterval(fetchRealNews, 180000); // Update news every 3 minutes
+      setInterval(updateLiveCasualties, 6000); // Increment casualties every few seconds
     };
   </script>
 </body>

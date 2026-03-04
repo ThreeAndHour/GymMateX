@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Copacabana Group</title>
+    <meta name="description"
+        content="Welcome to Copacabana Group, the developer behind Copacabana Beach Jomtien & Coral Reef, Pattaya–Jomtien condominiums redefining luxury living with complete facilities.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/pdbFfCwb/226EC476-BACF-4AFF-A104-954B9F9BC2BE.png"
+                    alt="Copacabana Group Logo" style="max-height: 50px;">
+            </a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#home" class="active" data-i18n="nav_home">HOME</a>
+                <a href="company-profile.html" data-i18n="nav_about">COMPANY PROFILE</a>
+                <div class="dropdown">
+                    <a href="#projects" class="dropbtn"><span data-i18n="nav_projects">PROJECTS</span> <i
+                            class="fas fa-chevron-down" style="font-size: 0.7em;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#projects">Copacabana Beach Jomtien</a>
+                        <a href="coralreef.html">Copacabana Coral Reef</a>
+                    </div>
+                </div>
+                <a href="#news" data-i18n="nav_news">NEWS</a>
+            </div>
+
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+                <div class="lang-switcher">
+                    <button class="lang-btn" id="lang-btn">
+                        <i class="fas fa-globe"></i> <span id="current-lang">EN</span> <i class="fas fa-chevron-down"
+                            style="font-size: 0.7em;"></i>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option" data-lang="en">English</button>
+                        <button class="lang-option" data-lang="th">ภาษาไทย</button>
+                        <button class="lang-option" data-lang="ru">Русский</button>
+                        <button class="lang-option" data-lang="zh">中文</button>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-outline nav-cta" data-i18n="nav_contact">CONTACT US</a>
+            </div>
+
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></div>
+        <div class="lang-switcher" style="margin: 20px 0;">
+            <button class="lang-btn" onclick="this.parentElement.classList.toggle('active')"
+                style="color: var(--color-dark); border-color: var(--color-dark);">
+                <i class="fas fa-globe"></i> <span>Language</span> <i class="fas fa-chevron-down"
+                    style="font-size: 0.7em;"></i>
+            </button>
+            <div class="lang-dropdown"
+                style="position: relative; box-shadow: none; margin-top: 10px; padding-left: 20px;">
+                <button class="lang-option" data-lang="en">English</button>
+                <button class="lang-option" data-lang="th">ภาษาไทย</button>
+                <button class="lang-option" data-lang="ru">Русский</button>
+                <button class="lang-option" data-lang="zh">中文</button>
+            </div>
+        </div>
+        <a href="#home" class="mobile-link" data-i18n="nav_home">HOME</a>
+        <a href="company-profile.html" class="mobile-link" data-i18n="nav_about">COMPANY PROFILE</a>
+        <a href="#projects" class="mobile-link">PROJECTS <i class="fas fa-chevron-down"
+                style="font-size: 0.7em;"></i></a>
+        <a href="coralreef.html" class="mobile-link" style="padding-left: 20px; font-size: 1rem;">- Copacabana Coral
+            Reef</a>
+        <a href="#news" class="mobile-link">NEWS</a>
+        <a href="#contact" class="mobile-link text-gold">CONTACT US</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg" id="hero-slider">
+            <div class="hero-slide active">
+                <img src="https://i.postimg.cc/1t8H6HqN/hf_20260126_065917_039a5413_5e3e_4262_a102_73aa17fe1582.jpg"
+                    alt="Copacabana Hero Photo 1">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/4drzcHVk/Make_the_building_2k_202601101631_(1).jpg"
+                    alt="Copacabana Hero Photo 2">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/vm8wdL5n/hf_20260210_073724_b3d8b1df_11ac_4cb9_b55e_279759fae5fe.jpg"
+                    alt="Copacabana Hero Photo 3">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/kMKrcH00/Change_to_the_2k_202512291200.jpg"
+                    alt="Copacabana Hero Photo 4">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/DyT9YgFr/Change_to_afternoon_2k_202512291155.jpg"
+                    alt="Copacabana Hero Photo 5">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/mr7PhHKR/3363b30c-24f7-4f10-998e-03915113f01b-topaz-sharpen-upscale-2.4x.png"
+                    alt="Copacabana Hero Photo 6">
+            </div>
+            <div class="hero-slide">
+                <img src="https://i.postimg.cc/MTDXm8WF/1595c1f9-80d0-4043-9cec-360d35d9f81d-topaz-upscale-2.3x.png"
+                    alt="Copacabana Hero Photo 7">
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h2 class="hero-subtitle fade-up" data-i18n="index_hero_welcome">Welcome to</h2>
+            <h1 class="hero-title fade-up delay-1">Copacabana Group</h1>
+            <p class="hero-description fade-up delay-2" data-i18n="index_hero_desc">Redefining luxury living with
+                complete facilities in
+                Pattaya–Jomtien.</p>
+            <div class="hero-actions fade-up delay-3">
+                <a href="#projects" class="btn-primary" data-i18n="index_hero_btn1">View Projects</a>
+                <a href="#about" class="btn-text"><span data-i18n="index_hero_btn2">Discover More</span> <i
+                        class="fas fa-chevron-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <span class="eyebrow" data-i18n="index_about_eyebrow">The Inspiration</span>
+                <h2 class="section-title" data-i18n="index_about_title">Copacabana Beach Jomtien & Coral Reef</h2>
+                <div class="separator-line"></div>
+                <p class="section-description" data-i18n="index_about_desc">Inspired by Copacabana Beach, a world-class
+                    beach in Rio De Janeiro,
+                    Brazil. This beach is the most popular and colorful beach in Brazil, with a length of 5 kilometers,
+                    which inspired the development of the project that aims to meet the needs of modern lifestyle and
+                    add color to life on Jomtien Beach happily.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text-content fade-right">
+                    <h3 class="about-heading" data-i18n="index_about_heading">Luxurious and Comfortable Space</h3>
+                    <p data-i18n="index_about_body">Discover Copacabana Group, where the beach life never ends and
+                        precious moments are yours to
+                        cherish in complete privacy. Our luxurious beachfront residences offer the perfect blend of
+                        comfort, convenience, and tranquility, allowing you to escape the hustle and bustle and immerse
+                        yourself in the beauty of coastal living.</p>
+                    <a href="https://copacabanagroup.com/projects" class="btn-outline dark mt-4"
+                        data-i18n="index_about_btn">View All Projects</a>
+                </div>
+                <div class="about-image-wrapper fade-left">
+                    <div class="about-image">
+                        <img src="https://i.postimg.cc/nVSzxspQ/Copy_of_DJI_0267.jpg" alt="Luxurious Space">
+                        <div class="experience-badge">
+                            <span class="number">2027</span>
+                            <span class="text">Coral Reef<br>Completion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Profile Section (Summary) -->
+    <section class="company-profile section-padding bg-light" id="company">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <span class="eyebrow" data-i18n="index_company_eyebrow">Our Heritage</span>
+                <h2 class="section-title" data-i18n="index_company_title">Copacabana Group</h2>
+                <div class="separator-line"></div>
+            </div>
+
+            <div class="split-section mt-6 fade-up">
+                <div class="company-text-content">
+                    <p class="text-grey mb-4" style="font-size: 1.1rem; line-height: 1.8;" data-i18n="index_company_p1">
+                        With over 20 years of experience in Eastern Thailand's luxury real estate market, Copacabana
+                        Group has evolved from a leading land brokerage into a premier high-rise condominium developer.
+                    </p>
+                    <p class="text-grey mb-4" style="font-size: 1.1rem; line-height: 1.8;" data-i18n="index_company_p2">
+                        Driven by <strong>Determination, Honesty, and Sincerity</strong>, our commitment to excellence
+                        is reflected in every project we undertake, honoring our vision to create luxurious, comfortable
+                        accommodations that exceed expectations.
+                    </p>
+                    <a href="company-profile.html" class="btn btn-outline" data-i18n="index_company_btn">Read Full
+                        Profile</a>
+                </div>
+                <div class="company-stats text-center">
+                    <div class="profile-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                        <div class="profile-card" style="padding: 1.5rem;">
+                            <h3 class="mb-2" data-i18n="index_company_stat1_title">Decades of Experience</h3>
+                            <p class="text-grey mb-0" style="font-size: 0.9rem;" data-i18n="index_company_stat1_desc">
+                                20+ Years in Luxury Real Estate</p>
+                        </div>
+                        <div class="profile-card" style="padding: 1.5rem;">
+                            <h3 class="mb-2" data-i18n="index_company_stat2_title">Award-Winning Quality</h3>
+                            <p class="text-grey mb-0" style="font-size: 0.9rem;" data-i18n="index_company_stat2_desc">
+                                Dot Property & Prix D' Excellence
+                                Awards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section-padding" id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="eyebrow" data-i18n="index_projects_eyebrow">Our Portfolio</span>
+                <h2 class="section-title" data-i18n="index_projects_title">Exceptional Residences</h2>
+                <div class="separator-line-left"></div>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="project-card reverse fade-up">
+                <div class="project-image">
+                    <img src="https://i.postimg.cc/9QpJpXMW/Copy_of_DSC09069-HDR_copy.jpg"
+                        alt="Copacabana Beach Jomtien">
+                </div>
+                <div class="project-info">
+                    <span class="project-tag" data-i18n="index_p1_tag">Ready to Move In</span>
+                    <h3 class="project-title"><img src="https://i.postimg.cc/m27dPyW1/e9d920df009b1991.png"
+                            alt="Copacabana Beach Jomtien Logo" style="max-height: 50px; margin-bottom: 10px;"></h3>
+                    <p class="project-desc" data-i18n="index_p1_desc">A luxurious beachfront condominium in Pattaya
+                        offers panoramic views of the
+                        Gulf of Thailand. It combines comfort, elegance, and world-class amenities for its residents.
+                    </p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-i18n="feature_location">Prime
+                                Location</span></li>
+                        <li><i class="fas fa-star"></i> <span data-i18n="feature_amenities">Exceptional Amenities</span>
+                        </li>
+                        <li><i class="fas fa-home"></i> <span data-i18n="feature_space">Spacious Residences</span></li>
+                        <li><i class="fas fa-gem"></i> <span data-i18n="feature_lifestyle">Lifestyle Beyond
+                                Compare</span></li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://copacabanagroup.com/projects/copacabana-jomtien/" class="btn-primary"
+                            data-i18n="btn_view_project">View
+                            Project Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card fade-up mt-8">
+                <div class="project-image">
+                    <img src="https://i.postimg.cc/DyT9YgFr/Change_to_afternoon_2k_202512291155.jpg"
+                        alt="Copacabana Coral Reef">
+                </div>
+                <div class="project-info">
+                    <span class="project-tag" data-i18n="index_p2_tag">Completing 2027</span>
+                    <h3 class="project-title"><img src="https://i.postimg.cc/R01ZKZrv/new_logo_copa2.png"
+                            alt="Copacabana Coral Reef Logo" style="max-height: 50px; margin-bottom: 10px;"></h3>
+                    <p class="project-desc" data-i18n="index_p2_desc">An exciting new development set to redefine luxury
+                        beachfront living in
+                        Pattaya. With its anticipated completion in 2027, this modern high-rise offers the perfect blend
+                        of elegance, comfort, and exclusive amenities.</p>
+                    <ul class="project-features">
+                        <li><i class="fas fa-water"></i> <span data-i18n="feature_seaside">Seaside Sanctuary</span></li>
+                        <li><i class="fas fa-star"></i> <span data-i18n="feature_exclusive">Exclusive Amenities</span>
+                        </li>
+                        <li><i class="fas fa-couch"></i> <span data-i18n="feature_elegant">Elegant Living Spaces</span>
+                        </li>
+                        <li><i class="fas fa-leaf"></i> <span data-i18n="feature_escape">A Private Escape</span></li>
+                    </ul>
+                    <div class="project-actions">
+                        <a href="https://copacabanagroup.com/projects/copacabana-coralreef/" class="btn-primary"
+                            data-i18n="btn_view_project">View
+                            Project Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Showroom -->
+    <section class="showroom section-padding">
+        <div class="showroom-bg">
+            <div class="showroom-overlay"></div>
+        </div>
+        <div class="container relative z-10 text-center">
+            <div class="showroom-content fade-up">
+                <h2 class="section-title text-white" data-i18n="index_showroom_title">Visit Our Showroom</h2>
+                <p class="showroom-desc text-white" data-i18n="index_showroom_desc">Discover the beauty of Copacabana
+                    Jomtien up close. Visit our
+                    showroom to experience the luxurious amenities and stunning design of our beachfront residences.
+                    Schedule a visit today and see why Copacabana Jomtien is the perfect choice for your beachfront
+                    lifestyle.</p>
+                <a href="https://copacabanagroup.com/register-now/" class="btn-primary white mt-4"
+                    data-i18n="btn_register_today">Register Now
+                    Today</a>
+            </div>
+
+            <div class="gallery-grid mt-8" style="opacity: 0.95;">
+                <div class="gallery-item fade-up text-left">
+                    <img src="https://i.postimg.cc/4yXDbpJx/IMG_1993.jpg" alt="Showroom Sample Room 1">
+                </div>
+                <div class="gallery-item fade-up delay-1 text-left">
+                    <img src="https://i.postimg.cc/1XPQCLKP/DSC09622_(1).jpg" alt="Showroom Sample Room 3">
+                </div>
+                <div class="gallery-item fade-up delay-2 text-left">
+                    <img src="https://i.postimg.cc/0jBQjKpN/Copy_of_DSC00029_(2).jpg" alt="Showroom Sample Room 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news section-padding" id="news">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <span class="eyebrow" data-i18n="index_news_eyebrow">Discover</span>
+                <h2 class="section-title" data-i18n="index_news_title">Latest News</h2>
+                <div class="separator-line"></div>
+                <p class="section-description" data-i18n="index_news_desc">Stay updated with the latest news, events,
+                    and developments from
+                    Copacabana Group. Discover exciting updates on our projects, lifestyle inspirations, and how we're
+                    adding vibrant colors to life on Jomtien Beach and beyond.</p>
+            </div>
+
+            <div class="news-grid">
+                <!-- News 1 (Latest Newsletter) -->
+                <a href="https://thbho.github.io/CopaNewsMar26.html" class="news-card fade-up">
+                    <div class="news-image">
+                        <img src="https://i.postimg.cc/rsChf7zs/2.png" alt="March 2026 Newsletter">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-tags"><span>newsletter</span><span>update</span></div>
+                        <h4 class="news-title">Copacabana News: March 2026</h4>
+                        <p class="text-grey mb-2" style="font-size: 0.85rem">Latest updates, construction progress, and
+                            community news.</p>
+                        <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- News 2 (Aviation City) -->
+                <a href="https://thbho.github.io/UTPCity.html" class="news-card fade-up delay-1">
+                    <div class="news-image">
+                        <img src="https://i.postimg.cc/90VvcZKj/Screenshot_2568-08-06_at_13.23.57-topaz-sharpen-upscale-1.5x-crop.jpg"
+                            alt="Aviation City News">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-tags"><span>eec</span><span>pattaya</span></div>
+                        <h4 class="news-title">เมืองการบินอู่ตะเภา : จากรันเวย์สู่มหานคร</h4>
+                        <p class="text-grey mb-2" style="font-size: 0.85rem">จิ๊กซอว์ชิ้นสำคัญของ EEC
+                            ที่จะเปลี่ยนโครงสร้างเศรษฐกิจไทยไปอีก 50 ปี</p>
+                        <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- News 3 -->
+                <a href="https://copacabanagroup.com/en/pattaya-photo-spots-lifestyle-check-in/"
+                    class="news-card fade-up delay-2">
+                    <div class="news-image-placeholder"><i class="fas fa-camera"></i></div>
+                    <div class="news-content">
+                        <div class="news-tags"><span>condo</span><span>pattaya</span></div>
+                        <h4 class="news-title">10 สถานที่ถ่ายรูปพัทยา จุดเช็กอินที่ทุกคนต้องมา</h4>
+                        <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- News 4 -->
+                <a href="https://copacabanagroup.com/en/5-jomtien-beach-attractions-lifestyle-living/"
+                    class="news-card fade-up delay-3">
+                    <div class="news-image-placeholder"><i class="fas fa-umbrella-beach"></i></div>
+                    <div class="news-content">
+                        <div class="news-tags"><span>pattaya</span><span>review</span></div>
+                        <h4 class="news-title">ย่ำผืนทราย มองทะเลสวย ไปกับ 5 ที่เที่ยวหาดจอมเทียน</h4>
+                        <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-6 fade-up">
+                <a href="https://copacabanagroup.com/news-articles/" class="btn-outline dark"
+                    data-i18n="btn_all_news">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2 class="logo text-white"><img
+                            src="https://i.postimg.cc/pdbFfCwb/226EC476-BACF-4AFF-A104-954B9F9BC2BE.png"
+                            alt="Copacabana Group Logo" style="max-height: 60px;"></h2>
+                    <p class="mt-4" data-i18n="footer_brand_desc">Redefining luxury beachfront living in Pattaya,
+                        Thailand.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 data-i18n="footer_explore">Explore More</h3>
+                    <ul>
+                        <li><a href="https://copacabanagroup.com/en/" data-i18n="footer_home">Home</a></li>
+                        <li><a href="https://copacabanagroup.com/en/about-us/" data-i18n="footer_about">About Us</a>
+                        </li>
+                        <li><a href="https://copacabanagroup.com/en/projects/" data-i18n="footer_projects">Projects</a>
+                        </li>
+                        <li><a href="https://copacabanagroup.com/en/?page_id=241" data-i18n="footer_gallery">Gallery</a>
+                        </li>
+                        <li><a href="https://copacabanagroup.com/en/news-articles/" data-i18n="footer_news">News &
+                                Articles</a></li>
+                        <li><a href="https://copacabanagroup.com/en/financing/"
+                                data-i18n="footer_financing">Financing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3 data-i18n="footer_contact">Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+6638225374">+66 (0) 38 225-374</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+6638225374">+66 (0) 38 225-374</a></li>
+                        <li><i class="fas fa-mobile-alt"></i> <a href="tel:+66959451665">+66 (0)95 945 1665 (TH, EN,
+                                CN)</a></li>
+                        <li><i class="fas fa-envelope"></i> <a
+                                href="mailto:info.coral@copacabanacoralreef.com">info.coral@copacabanacoralreef.com</a>
+                        </li>
+                    </ul>
+                    <a href="https://copacabanagroup.com/register-now" class="btn-outline mt-4"
+                        data-i18n="footer_btn_visit">Schedule a Visit
+                        Today!</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Copacabana Group, All Rights Reserved</p>
+                <div class="footer-legal">
+                    <a href="https://copacabanagroup.com/terms-condition/" data-i18n="footer_terms">Terms of Use</a>
+                    <a href="https://copacabanagroup.com/terms-condition/" data-i18n="footer_privacy">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

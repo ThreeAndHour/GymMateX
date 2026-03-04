@@ -28,12 +28,12 @@
                     colors: {
                         gold: {
                             400: '#DFB163',
-                            500: '#C59A45',
+                            500: '#CFAF70', /* Updated to match new theme */
                             600: '#A87D2E',
                         },
                         navy: {
-                            800: '#1a2b4c',
-                            900: '#0d1629',
+                            800: '#1e3a5f', /* Updated to match new theme */
+                            900: '#152842', /* Updated to match new theme */
                         }
                     }
                 }
@@ -49,14 +49,52 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-up.visible {
+        .fade-up.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         .tab-active {
-            border-bottom: 2px solid #C59A45;
-            color: #C59A45;
+            border-bottom: 2px solid #CFAF70;
+            color: #CFAF70;
             font-weight: 600;
+        }
+        
+        /* Language Dropdown Custom */
+        .lang-dropdown {
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        .group:hover .lang-dropdown {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slideshow */
+        .slide {
+            display: none;
+            animation-name: fadeTrans;
+            animation-duration: 1.5s;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fadeTrans {
+            from { opacity: .4 }
+            to { opacity: 1 }
+        }
+        .dot.active {
+            background-color: #CFAF70;
+        }
+
+        /* Gallery Image Hover */
+        .gallery-item img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
         }
     </style>
 </head>
@@ -64,36 +102,60 @@
 <body class="font-sans antialiased text-gray-800 bg-slate-50">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-navy-900/95 backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#">
-                        <img src="https://i.postimg.cc/R01ZKZrv/new_logo_copa2.png" alt="Copacabana Coral Reef Logo" class="h-12 object-contain">
+                        <img src="https://i.postimg.cc/R01ZKZrv/new_logo_copa2.png" alt="Copacabana Coral Reef Logo" class="h-12 object-contain filter brightness-0 invert">
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-800 hover:text-gold-500 font-medium transition">หน้าแรก</a>
-                    <a href="#concept" class="text-gray-800 hover:text-gold-500 font-medium transition">แนวคิดโครงการ</a>
-                    <a href="#investment" class="text-gray-800 hover:text-gold-500 font-medium transition">โอกาสการลงทุน</a>
-                    <a href="#promotion" class="text-gray-800 hover:text-gold-500 font-medium transition">โปรโมชั่น</a>
-                    <a href="#contact" class="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2 rounded-full font-medium transition shadow-lg shadow-gold-500/30">ติดต่อที่ปรึกษา</a>
+                    <a href="#home" class="text-white hover:text-gold-500 font-medium transition" data-i18n="nav_home">Home</a>
+                    <a href="#details" class="text-white hover:text-gold-500 font-medium transition" data-i18n="nav_about">Concept</a>
+                    <a href="#investment" class="text-white hover:text-gold-500 font-medium transition" data-i18n="nav_investment">Investment</a>
+                    <a href="#gallery" class="text-white hover:text-gold-500 font-medium transition" data-i18n="nav_gallery">Gallery</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="relative group">
+                        <button class="flex items-center gap-2 text-white border border-white/30 px-3 py-1.5 rounded hover:border-gold-500 hover:text-gold-500 transition">
+                            <i class="fas fa-globe"></i> <span id="current-lang">EN</span> <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-white rounded shadow-lg py-2 z-50 border border-gray-100">
+                            <button class="lang-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gold-50 hover:text-gold-600" data-lang="en">English</button>
+                            <button class="lang-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gold-50 hover:text-gold-600" data-lang="th">ภาษาไทย</button>
+                            <button class="lang-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gold-50 hover:text-gold-600" data-lang="ru">Русский</button>
+                            <button class="lang-option w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gold-50 hover:text-gold-600" data-lang="zh">中文</button>
+                        </div>
+                    </div>
+
+                    <a href="#register" class="bg-transparent border border-white text-white hover:bg-white hover:text-navy-900 px-6 py-2 rounded-none uppercase tracking-wide font-medium transition" data-i18n="nav_register">Register</a>
                 </div>
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-800 hover:text-gold-500 focus:outline-none">
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold-500 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-t border-white/10">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 text-gray-800 font-medium hover:text-gold-500">หน้าแรก</a>
-                <a href="#concept" class="block px-3 py-2 text-gray-800 font-medium hover:text-gold-500">แนวคิดโครงการ</a>
-                <a href="#investment" class="block px-3 py-2 text-gray-800 font-medium hover:text-gold-500">โอกาสการลงทุน</a>
-                <a href="#contact" class="block px-3 py-2 text-gold-500 font-medium">ติดต่อที่ปรึกษา</a>
+                <a href="#home" class="block px-3 py-2 text-white font-medium hover:text-gold-500" data-i18n="nav_home">Home</a>
+                <a href="#details" class="block px-3 py-2 text-white font-medium hover:text-gold-500" data-i18n="nav_about">Concept</a>
+                <a href="#investment" class="block px-3 py-2 text-white font-medium hover:text-gold-500" data-i18n="nav_investment">Investment</a>
+                <a href="#gallery" class="block px-3 py-2 text-white font-medium hover:text-gold-500" data-i18n="nav_gallery">Gallery</a>
+                
+                <div class="px-3 py-2">
+                    <select id="mobile-lang-select" class="w-full bg-navy-800 text-white border border-white/30 rounded px-2 py-1">
+                        <option value="en">English</option>
+                        <option value="th">ภาษาไทย</option>
+                        <option value="ru">Русский</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+                <a href="#register" class="block px-3 py-2 text-gold-500 font-medium" data-i18n="nav_register">Register</a>
             </div>
         </div>
     </nav>
@@ -105,121 +167,123 @@
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
-            <span class="block text-gold-400 font-serif italic text-xl md:text-2xl mb-4 fade-up">The Jewels of the Sea</span>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight fade-up" style="transition-delay: 100ms;">
+            <span class="block text-gold-400 font-serif italic text-xl md:text-2xl mb-4 uppercase tracking-widest fade-up" data-i18n="coral_hero_subtitle">Project 2</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight fade-up delay-100">
                 COPACABANA <br/><span class="text-gold-400">CORAL REEF</span> JOMTIEN
             </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light fade-up" style="transition-delay: 200ms;">
-                สัมผัสประสบการณ์คอนโดมิเนียมหรูดุจสวรรค์ใต้ท้องทะเล <br class="hidden md:block"/>พร้อมการันตีผลตอบแทนการลงทุน 6% ต่อปี
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light fade-up delay-200" data-i18n="coral_hero_desc">
+                Redefining luxury beachfront living in Pattaya. Anticipated completion in 2027.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up" style="transition-delay: 300ms;">
-                <a href="#investment" class="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 rounded-full font-medium transition shadow-xl shadow-gold-500/20">
-                    ดูข้อเสนอการลงทุน
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up delay-300">
+                <a href="#slideshow-section" class="bg-gold-500 hover:bg-transparent border border-gold-500 hover:text-gold-500 text-white px-8 py-4 rounded-none uppercase font-medium transition" data-i18n="coral_btn_update">
+                    Construction Update
                 </a>
-                <a href="#contact" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-medium transition">
-                    นัดหมายเยี่ยมชมโครงการ
+                <a href="#details" class="bg-transparent border border-white text-white hover:bg-white hover:text-navy-900 px-8 py-4 rounded-none uppercase font-medium transition" data-i18n="index_hero_btn2">
+                    Discover More
                 </a>
-            </div>
-            <div class="mt-16 text-white/80 text-sm font-light fade-up" style="transition-delay: 400ms;">
-                <p><i class="fas fa-clock mr-2"></i>คาดว่าจะแล้วเสร็จ: ปลายปี 2027</p>
             </div>
         </div>
     </section>
 
     <!-- Concept Section -->
-    <section id="concept" class="py-20 bg-white">
+    <section id="details" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-up">
-                <span class="text-gold-500 font-serif italic text-lg tracking-wider">Luxury Seaview Living</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">ที่สุดแห่งการใช้ชีวิตริมหาดจอมเทียน</h2>
-                <div class="w-24 h-1 bg-gold-500 mx-auto rounded-full"></div>
+                <span class="text-gold-500 font-sans uppercase tracking-[2px] text-sm font-semibold block mb-2" data-i18n="coral_details_eyebrow">The Concept</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 font-serif mb-6" data-i18n="coral_details_title">Experience the Luxury</h2>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto mb-8"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="coral_details_desc">
+                    Copacabana Coral Reef Project 2 offers the perfect blend of elegance, comfort, and exclusive amenities. Our project offers a wide range of world-class facilities designed to enhance your beachfront lifestyle.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="fade-up">
-                    <img src="https://i.postimg.cc/vm8wdL5n/hf_20260210_073724_b3d8b1df_11ac_4cb9_b55e_279759fae5fe.jpg" alt="Interior View" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center fade-up mt-12">
+                <div class="p-6">
+                    <i class="fas fa-water text-4xl text-gold-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3" data-i18n="feature_seaside_title">Seaside Sanctuary</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="feature_seaside_desc">Embrace the calming sounds of the ocean right at your doorstep.</p>
                 </div>
-                <div class="fade-up">
-                    <h3 class="text-2xl font-bold text-navy-900 mb-6 font-serif">ยกระดับคุณภาพชีวิต ด้วย Wellness & Sustainability</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        ห่างจากหาดจอมเทียนเพียง 2 นาที โคปาคาบาน่า คอรัล รีฟ ถูกออกแบบมาเพื่อตอบโจทย์ทั้งการพักผ่อนอย่างแท้จริงและชุมชนคุณภาพ (Community Living) เราใส่ใจในทุกรายละเอียดตั้งแต่การประหยัดพลังงาน ไปจนถึงการจัดการพื้นที่สีเขียวอย่างยั่งยืน
-                    </p>
-                    <ul class="space-y-4 text-gray-700">
-                        <li class="flex items-start">
-                            <i class="fas fa-gem text-gold-500 mt-1 mr-3 text-xl"></i>
-                            <div>
-                                <strong class="block text-navy-900">พื้นที่ส่วนกลางระดับ World-Class</strong>
-                                <span class="text-sm">รองรับทุกไลฟ์สไตล์ด้วยสระว่ายน้ำพาโนรามา, ฟิตเนส, และโซนพักผ่อน</span>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-leaf text-gold-500 mt-1 mr-3 text-xl"></i>
-                            <div>
-                                <strong class="block text-navy-900">Eco-Friendly & Sustainability</strong>
-                                <span class="text-sm">ระบบประหยัดพลังงานและแคมเปญ "Clean Jomtien Together"</span>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marked-alt text-gold-500 mt-1 mr-3 text-xl"></i>
-                            <div>
-                                <strong class="block text-navy-900">ศูนย์กลาง EEC & U-Tapao Aviation City</strong>
-                                <span class="text-sm">เชื่อมต่อสนามบินอู่ตะเภาและพัทยาได้อย่างรวดเร็ว รองรับการเติบโตในอนาคต</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="p-6">
+                    <i class="fas fa-star text-4xl text-gold-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3" data-i18n="feature_exclusive_title">Exclusive Amenities</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="feature_exclusive_desc">World-class facilities curated for the ultimate lifestyle.</p>
+                </div>
+                <div class="p-6">
+                    <i class="fas fa-couch text-4xl text-gold-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3" data-i18n="feature_elegant_title">Elegant Living Spaces</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="feature_elegant_desc">Meticulously designed interiors focusing on comfort and style.</p>
+                </div>
+                <div class="p-6">
+                    <i class="fas fa-leaf text-4xl text-gold-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3" data-i18n="feature_escape_title">A Private Escape</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="feature_escape_desc">Your secluded haven away from the bustling city life.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Video Presentation Section -->
+    <section class="py-24 bg-slate-50" id="video">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <span class="text-gold-500 font-sans uppercase tracking-[2px] text-sm font-semibold block mb-2" data-i18n="coral_video_eyebrow">Discover</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 font-serif mb-6" data-i18n="coral_video_title">Project Overview</h2>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="fade-up relative w-full overflow-hidden rounded-lg shadow-2xl" style="padding-top: 56.25%;">
+                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/APz4-pNTa1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Investment Section -->
-    <section id="investment" class="py-20 bg-slate-50">
+    <section id="investment" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-up">
-                <span class="text-gold-500 font-serif italic text-lg tracking-wider">High Yield Investment</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">แพ็กเกจการลงทุนที่คุ้มค่าที่สุด</h2>
-                <div class="w-24 h-1 bg-gold-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">ทางเลือกการชำระเงินที่ยืดหยุ่น พร้อมโปรแกรมการันตีผลตอบแทน (Rental Yield) 6% รองรับทั้งโควต้าชาวไทยและชาวต่างชาติ</p>
+                <span class="text-gold-500 font-sans uppercase tracking-[2px] text-sm font-semibold block mb-2" data-i18n="inv_eyebrow">High Yield Investment</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 font-serif mb-6" data-i18n="inv_title">Investment Packages</h2>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="inv_desc">Flexible payment options with a 6% Rental Yield Guarantee. Available for both Thai and Foreign quotas.</p>
             </div>
 
             <!-- Tabs -->
-            <div class="flex justify-center mb-8 fade-up">
+            <div class="flex justify-center mb-10 fade-up">
                 <div class="flex space-x-8 border-b border-gray-200">
-                    <button id="btn-thai" class="pb-4 px-2 text-lg tab-active" onclick="switchTab('thai')">Thai Quota (โควต้าไทย)</button>
-                    <button id="btn-foreign" class="pb-4 px-2 text-lg text-gray-500 hover:text-gold-500 transition" onclick="switchTab('foreign')">Foreign Quota (โควต้าต่างชาติ)</button>
+                    <button id="btn-thai" class="pb-4 px-2 text-lg tab-active" onclick="switchTab('thai')" data-i18n="inv_tab_thai">Thai Quota</button>
+                    <button id="btn-foreign" class="pb-4 px-2 text-lg text-gray-500 hover:text-gold-500 transition" onclick="switchTab('foreign')" data-i18n="inv_tab_foreign">Foreign Quota</button>
                 </div>
             </div>
 
             <!-- Thai Quota Content -->
-            <div id="content-thai" class="fade-up">
-                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-gold-500">
+            <div id="content-thai" class="fade-up is-visible">
+                <div class="bg-slate-50 rounded-lg p-8 md:p-12 border-t-4 border-gold-500 shadow-lg">
                     <div class="flex flex-col md:flex-row gap-8 items-center">
                         <div class="md:w-1/3 text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-navy-900 mb-2">Investment Option</h3>
-                            <p class="text-gray-500 mb-6">ผลตอบแทนรวมสูงสุด 18%*</p>
-                            <div class="bg-gold-50/50 p-6 rounded-xl border border-gold-100">
-                                <span class="block text-sm text-gray-500 mb-1">ค่าจอง (1 ห้องนอน)</span>
-                                <span class="text-3xl font-bold text-gold-600">100,000 <span class="text-lg">THB</span></span>
+                            <h3 class="text-2xl font-bold text-navy-900 mb-2" data-i18n="inv_thai_opt">Investment Option</h3>
+                            <p class="text-gold-600 font-semibold mb-6" data-i18n="inv_thai_return">Total Return 18%*</p>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <span class="block text-sm text-gray-500 mb-1" data-i18n="inv_booking">Reservation (1 BR)</span>
+                                <span class="text-3xl font-bold text-navy-900">100,000 <span class="text-lg">THB</span></span>
                             </div>
                         </div>
                         <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-                            <div class="bg-slate-50 p-6 rounded-xl">
-                                <h4 class="font-bold text-navy-900 flex items-center mb-4"><i class="fas fa-file-signature text-gold-500 mr-2"></i> เงื่อนไขการชำระเงิน</h4>
-                                <ul class="space-y-3 text-gray-700">
-                                    <li class="flex justify-between border-b border-gray-200 pb-2"><span>ทำสัญญา</span> <strong>15%</strong></li>
-                                    <li class="flex justify-between border-b border-gray-200 pb-2"><span>ผ่อนชำระ (30 งวด)</span> <strong>20%</strong></li>
-                                    <li class="flex justify-between pb-2"><span>โอนกรรมสิทธิ์</span> <strong>65%</strong></li>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-navy-900 mb-4 border-b pb-2" data-i18n="inv_pay_cond">Payment Condition</h4>
+                                <ul class="space-y-3 text-gray-700 text-sm">
+                                    <li class="flex justify-between"><span>Contract</span> <strong>15%</strong></li>
+                                    <li class="flex justify-between"><span>Installment (30 Mths)</span> <strong>20%</strong></li>
+                                    <li class="flex justify-between"><span>Transfer</span> <strong>65%</strong></li>
                                 </ul>
                             </div>
-                            <div class="bg-navy-900 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
-                                <div class="absolute -right-4 -top-4 opacity-10"><i class="fas fa-chart-line text-9xl"></i></div>
-                                <h4 class="font-bold text-gold-400 flex items-center mb-4 relative z-10"><i class="fas fa-hand-holding-usd mr-2"></i> การันตีผลตอบแทน</h4>
-                                <ul class="space-y-3 text-gray-300 relative z-10 text-sm">
-                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> รับ 6% ปีที่ 1 (หลังโอนและเซ็นสัญญาเช่า)</li>
-                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> รับ 6% ปีที่ 2 (หลังโอนครบ 1 ปี)</li>
-                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> รับ 6% ปีที่ 3 (หลังโอนครบ 2 ปี)</li>
+                            <div class="bg-navy-900 p-6 rounded-lg text-white shadow-md">
+                                <h4 class="font-bold text-gold-400 mb-4 border-b border-white/20 pb-2" data-i18n="inv_guarantee">Rental Guarantee</h4>
+                                <ul class="space-y-3 text-gray-300 text-sm">
+                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> <span data-i18n="inv_t_y1">6% in Year 1 (After transfer)</span></li>
+                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> <span data-i18n="inv_t_y2">6% in Year 2</span></li>
+                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> <span data-i18n="inv_t_y3">6% in Year 3</span></li>
                                 </ul>
-                                <p class="text-xs text-gray-400 mt-4 relative z-10">*ต้องทำสัญญาเช่ากับโครงการ 3 ปี</p>
+                                <p class="text-xs text-gray-400 mt-4" data-i18n="inv_t_note">*Requires 3-year rental agreement</p>
                             </div>
                         </div>
                     </div>
@@ -228,207 +292,587 @@
 
             <!-- Foreign Quota Content -->
             <div id="content-foreign" class="hidden fade-up">
-                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-gold-500">
+                <div class="bg-slate-50 rounded-lg p-8 md:p-12 border-t-4 border-gold-500 shadow-lg">
                     <div class="flex flex-col md:flex-row gap-8 items-center">
                         <div class="md:w-1/3 text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-navy-900 mb-2">Foreigner Quota</h3>
-                            <p class="text-gray-500 mb-6">Investment Option (No Discount)</p>
-                            <div class="bg-gold-50/50 p-6 rounded-xl border border-gold-100">
-                                <span class="block text-sm text-gray-500 mb-1">Reservation (1 Bedroom)</span>
-                                <span class="text-3xl font-bold text-gold-600">100,000 <span class="text-lg">THB</span></span>
+                            <h3 class="text-2xl font-bold text-navy-900 mb-2" data-i18n="inv_tab_foreign">Foreign Quota</h3>
+                            <p class="text-gold-600 font-semibold mb-6" data-i18n="inv_for_return">Total Return 12%*</p>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <span class="block text-sm text-gray-500 mb-1" data-i18n="inv_booking">Reservation (1 BR)</span>
+                                <span class="text-3xl font-bold text-navy-900">100,000 <span class="text-lg">THB</span></span>
                             </div>
                         </div>
                         <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-                            <div class="bg-slate-50 p-6 rounded-xl">
-                                <h4 class="font-bold text-navy-900 flex items-center mb-4"><i class="fas fa-file-signature text-gold-500 mr-2"></i> Payment Condition</h4>
-                                <ul class="space-y-3 text-gray-700">
-                                    <li class="flex justify-between border-b border-gray-200 pb-2"><span>Contract Signing</span> <strong>40%</strong></li>
-                                    <li class="flex justify-between border-b border-gray-200 pb-2"><span>Installment (30 Mths)</span> <strong>30%</strong></li>
-                                    <li class="flex justify-between pb-2"><span>Ownership Transfer</span> <strong>30%</strong></li>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h4 class="font-bold text-navy-900 mb-4 border-b pb-2" data-i18n="inv_pay_cond">Payment Condition</h4>
+                                <ul class="space-y-3 text-gray-700 text-sm">
+                                    <li class="flex justify-between"><span>Contract</span> <strong>40%</strong></li>
+                                    <li class="flex justify-between"><span>Installment (30 Mths)</span> <strong>30%</strong></li>
+                                    <li class="flex justify-between"><span>Transfer</span> <strong>30%</strong></li>
                                 </ul>
                             </div>
-                            <div class="bg-navy-900 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
-                                <div class="absolute -right-4 -top-4 opacity-10"><i class="fas fa-chart-pie text-9xl"></i></div>
-                                <h4 class="font-bold text-gold-400 flex items-center mb-4 relative z-10"><i class="fas fa-hand-holding-usd mr-2"></i> Return 6% for 2 Years</h4>
-                                <ul class="space-y-3 text-gray-300 relative z-10 text-sm">
-                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> 6% in 1st year (after transfer)</li>
-                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> 6% in 2nd year (1 yr after transfer)</li>
+                            <div class="bg-navy-900 p-6 rounded-lg text-white shadow-md">
+                                <h4 class="font-bold text-gold-400 mb-4 border-b border-white/20 pb-2" data-i18n="inv_guarantee">Rental Guarantee</h4>
+                                <ul class="space-y-3 text-gray-300 text-sm">
+                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> <span data-i18n="inv_t_y1">6% in Year 1 (After transfer)</span></li>
+                                    <li><i class="fas fa-check text-gold-400 mr-2"></i> <span data-i18n="inv_t_y2">6% in Year 2</span></li>
                                 </ul>
-                                <p class="text-xs text-gray-400 mt-4 relative z-10">*Sign 2-year rental agreement with project</p>
+                                <p class="text-xs text-gray-400 mt-4" data-i18n="inv_f_note">*Requires 2-year rental agreement</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-8">
-                <p class="text-sm text-gray-500">*บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขโดยไม่ต้องแจ้งให้ทราบล่วงหน้า นอกจากนี้ยังมี Option รับส่วนลด 50,000 บาท หรือสูงสุด 10% สำหรับการชำระเงินสด 100% โปรดสอบถามที่ปรึกษาเพิ่มเติม</p>
-            </div>
+            <p class="text-center text-sm text-gray-500 mt-6" data-i18n="inv_disclaimer">*Terms and conditions apply. Contact us for cash payment discounts.</p>
         </div>
     </section>
 
     <!-- Promotion Yacht Section -->
-    <section id="promotion" class="py-20 bg-navy-900 relative overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-40">
+    <section class="py-24 bg-navy-900 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-30">
             <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Yacht Background" class="w-full h-full object-cover">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between fade-up">
+            <div class="bg-navy-800/80 backdrop-blur-md border border-white/10 p-8 md:p-16 flex flex-col md:flex-row items-center justify-between fade-up">
                 <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-                    <span class="inline-block px-4 py-1 bg-gold-500 text-white font-bold text-sm rounded-full mb-4 uppercase tracking-wider">Exclusive Privilege</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-serif leading-tight">FREE<br/>LUXURY YACHT TRIP</h2>
-                    <p class="text-gray-200 text-lg mb-6 leading-relaxed">
-                        พิเศษสุดสำหรับลูกค้าที่จองโครงการ COPACABANA CORAL REEF JOMTIEN<br>รับสิทธิ์ล่องเรือยอร์ชส่วนตัวฟรีทันที! 
+                    <span class="inline-block px-3 py-1 bg-gold-500 text-white text-xs font-bold uppercase tracking-widest mb-4" data-i18n="yacht_badge">Exclusive Privilege</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 font-serif" data-i18n="yacht_title">FREE LUXURY YACHT TRIP</h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-i18n="yacht_desc">
+                        Special for customers who book COPACABANA CORAL REEF JOMTIEN. Receive complimentary private yacht trip coupons!
                     </p>
-                    <ul class="text-gray-300 space-y-2 mb-8">
-                        <li><i class="fas fa-star text-gold-400 mr-2"></i> ห้องชุด 1 ห้องนอน รับ <strong class="text-white">5 คูปอง</strong></li>
-                        <li><i class="fas fa-star text-gold-400 mr-2"></i> ห้องชุด 2-3 ห้องนอน / พูลวิลล่า รับ <strong class="text-white">8 คูปอง</strong></li>
+                    <ul class="text-gray-300 space-y-3 mb-8">
+                        <li><i class="fas fa-star text-gold-400 mr-2"></i> <span data-i18n="yacht_1br">1-Bedroom: <strong>5 Coupons</strong></span></li>
+                        <li><i class="fas fa-star text-gold-400 mr-2"></i> <span data-i18n="yacht_2br">2-3 Bedrooms/Pool Villa: <strong>8 Coupons</strong></span></li>
                     </ul>
-                    <a href="#contact" class="inline-block bg-white text-navy-900 hover:bg-gold-500 hover:text-white px-8 py-3 rounded-full font-medium transition duration-300">
-                        จองสิทธิ์รับโปรโมชั่นนี้
+                    <a href="#register" class="inline-block bg-white text-navy-900 hover:bg-gold-500 hover:text-white px-8 py-3 uppercase font-medium transition duration-300" data-i18n="coral_btn_register">
+                        Register Now
                     </a>
                 </div>
-                <div class="md:w-1/2 relative">
-                    <!-- Image Placeholder for Yacht -->
-                    <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 transform md:rotate-3 transition hover:rotate-0 duration-500">
-                        <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="" class="w-full h-full object-cover">
+                <div class="md:w-1/2">
+                    <div class="aspect-video bg-gray-200 shadow-2xl border-4 border-white/10">
+                        <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury Yacht" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-white pt-20 pb-10 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-                <div>
-                    <img src="https://i.postimg.cc/R01ZKZrv/new_logo_copa2.png" alt="Logo" class="h-16 mb-6">
-                    <p class="text-gray-500 mb-6">
-                        Redefining luxury beachfront living in Pattaya, Thailand. โคปาคาบาน่า กรุ๊ป ผู้พัฒนาอสังหาริมทรัพย์ระดับลักชูรีที่ได้รับรางวัลระดับเอเชีย
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-navy-900 hover:bg-gold-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-navy-900 hover:bg-gold-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-navy-900 hover:bg-gold-500 hover:text-white transition"><i class="fab fa-line"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-6 font-serif">ติดต่อที่ปรึกษาด้านการขาย (ThB.Ho)</h3>
-                    <ul class="space-y-4 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt mt-1 mr-3 text-gold-500"></i>
-                            <div>
-                                <a href="tel:+66959451665" class="hover:text-gold-500 transition">+66 (0)95 945 1665 (TH, EN, CN)</a><br/>
-                                <a href="tel:+6638225374" class="hover:text-gold-500 transition">+66 (0) 38 225-374</a>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-gold-500"></i>
-                            <a href="mailto:info.coral@copacabanacoralreef.com" class="hover:text-gold-500 transition">info.coral@copacabanacoralreef.com</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gold-500"></i>
-                            <span>จอมเทียน, พัทยา, ชลบุรี, ประเทศไทย</span>
-                        </li>
-                    </ul>
+    <!-- Construction Update Slideshow Section -->
+    <section class="py-24 bg-slate-50" id="slideshow-section">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <span class="text-gold-500 font-sans uppercase tracking-[2px] text-sm font-semibold block mb-2" data-i18n="coral_progress_eyebrow">Progress</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 font-serif mb-6" data-i18n="coral_btn_update">Construction Update</h2>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto mb-4"></div>
+                <p class="text-gray-600" data-i18n="coral_progress_desc">Stay informed about our latest development progress.</p>
+            </div>
+
+            <div class="slideshow-container fade-up relative mx-auto bg-navy-900 shadow-xl" style="max-width: 1000px;">
+                <!-- Slides will be injected here via JS -->
+                <div class="slide placeholder-slide active">
+                    <img src="https://i.postimg.cc/SKjs1hG1/hf_20260225_084403_3fe8108d_82cf_44d3_be84_2bfc3533f604.jpg" alt="Construction Update 1" class="w-full h-[400px] md:h-[600px] object-cover">
                 </div>
 
-                <div>
-                    <h3 class="text-lg font-bold text-navy-900 mb-6 font-serif">ลงทะเบียนรับสิทธิพิเศษ</h3>
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('ขอบคุณสำหรับการลงทะเบียน! ThB.Ho จะติดต่อกลับหาคุณโดยเร็วที่สุดครับ');">
-                        <input type="text" placeholder="ชื่อ-นามสกุล" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500" required>
-                        <input type="tel" placeholder="เบอร์โทรศัพท์" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500" required>
-                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-gold-500 text-gray-600" required>
-                            <option value="">สนใจเพื่อ...</option>
-                            <option value="investment">เพื่อการลงทุน (Investment)</option>
-                            <option value="living">เพื่ออยู่อาศัย (Living)</option>
-                        </select>
-                        <button type="submit" class="w-full bg-navy-900 hover:bg-gold-500 text-white font-medium py-3 rounded-lg transition duration-300">
-                            ลงทะเบียนรับข้อเสนอ
-                        </button>
-                    </form>
+                <!-- Controls -->
+                <a class="prev-slide absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/80 text-white p-4 cursor-pointer transition text-xl" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next-slide absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/40 hover:bg-black/80 text-white p-4 cursor-pointer transition text-xl" onclick="changeSlide(1)">&#10095;</a>
+
+                <!-- Indicators -->
+                <div class="slide-indicators absolute bottom-4 w-full text-center" id="slide-indicators">
+                    <!-- Dots will be generated here -->
                 </div>
             </div>
-            
-            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; 2026 Copacabana Group, All Rights Reserved. (Designed by ThB.Ho)</p>
+        </div>
+    </section>
+
+    <!-- Project Gallery Section -->
+    <section class="py-24 bg-white" id="gallery">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <span class="text-gold-500 font-sans uppercase tracking-[2px] text-sm font-semibold block mb-2" data-i18n="coral_gallery_eyebrow">Visuals</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-navy-900 font-serif mb-6" data-i18n="coral_gallery_title">Project Gallery</h2>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto mb-4"></div>
+                <p class="text-gray-600" data-i18n="coral_gallery_desc">Explore the elegant design and exquisite amenities of Copacabana Coral Reef.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up"><img src="https://i.postimg.cc/dQrMBXMY/e.jpg" alt="Gallery Image 1" class="w-full h-full object-cover"></div>
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up delay-100"><img src="https://i.postimg.cc/VL8xHR1n/Make_the_fitness_2k_202512291155.jpg" alt="Gallery Image 2" class="w-full h-full object-cover"></div>
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up delay-200"><img src="https://i.postimg.cc/ryx6Jb6T/Make_the_fitness_2k_202512291205.jpg" alt="Gallery Image 3" class="w-full h-full object-cover"></div>
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up"><img src="https://i.postimg.cc/mZCxwnvJ/Make_the_photo_2k_202512291206.jpg" alt="Gallery Image 4" class="w-full h-full object-cover"></div>
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up delay-100"><img src="https://i.postimg.cc/kG1W8svb/Change_the_view_2k_202512291241.jpg" alt="Gallery Image 6" class="w-full h-full object-cover"></div>
+                <div class="gallery-item overflow-hidden shadow-lg aspect-[4/3] fade-up delay-200"><img src="https://i.postimg.cc/vm8wdL5n/hf_20260210_073724_b3d8b1df_11ac_4cb9_b55e_279759fae5fe.jpg" alt="Gallery Image 11" class="w-full h-full object-cover"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration / Contact Section -->
+    <section class="py-24 bg-navy-900 relative" id="register">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-white font-serif mb-6" data-i18n="coral_register_title">Register Your Interest</h2>
+                <p class="text-gray-300 mb-10 text-lg" data-i18n="coral_register_desc">
+                    Be among the first to experience Copacabana Coral Reef. Register now to receive exclusive updates, floor plans, and priority booking information.
+                </p>
+                
+                <form class="bg-white p-8 shadow-2xl max-w-2xl mx-auto" onsubmit="event.preventDefault(); alert('Thank you for registering! ThB.Ho will contact you soon.');">
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Full Name" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gold-500" required>
+                        <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gold-500" required>
+                        <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-gold-500" required>
+                        <button type="submit" class="w-full bg-navy-900 hover:bg-gold-500 text-white font-medium py-4 uppercase tracking-widest transition duration-300" data-i18n="coral_btn_register">
+                            Register Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 pt-16 pb-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <img src="https://i.postimg.cc/R01ZKZrv/new_logo_copa2.png" alt="Logo" class="h-12 mb-6 filter brightness-0 invert">
+                    <p class="text-gray-400" data-i18n="footer_brand_desc">
+                        Setting the standard for luxury beachfront living in Eastern Thailand.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest mb-6" data-i18n="footer_contact">Contact</h4>
+                    <p class="text-gray-400 mb-2"><i class="fas fa-phone mr-3 text-gold-500"></i><a href="tel:+66959451665" class="hover:text-gold-500">+66 (0)95 945 1665</a></p>
+                    <p class="text-gray-400 mb-4"><i class="fas fa-envelope mr-3 text-gold-500"></i><a href="mailto:info.coral@copacabanacoralreef.com" class="hover:text-gold-500">info.coral@copacabanacoralreef.com</a></p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest mb-6" data-i18n="footer_explore">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-gold-500" data-i18n="footer_home">Home</a></li>
+                        <li><a href="#details" class="hover:text-gold-500" data-i18n="nav_about">Concept</a></li>
+                        <li><a href="#investment" class="hover:text-gold-500" data-i18n="nav_investment">Investment</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Copacabana Group. All Rights Reserved.</p>
                 <div class="space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-gold-500">Terms of Use</a>
-                    <a href="#" class="hover:text-gold-500">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-500" data-i18n="footer_terms">Terms of Use</a>
+                    <a href="#" class="hover:text-gold-500" data-i18n="footer_privacy">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Translations & Core Logic -->
     <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Sticky Navbar
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 10) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
+        // Dictionary combined & expanded for ThB.Ho Sales Page
+        const translations = {
+            en: {
+                nav_home: "HOME",
+                nav_about: "CONCEPT",
+                nav_investment: "INVESTMENT",
+                nav_gallery: "GALLERY",
+                nav_register: "REGISTER",
+                nav_news: "NEWS",
+                
+                coral_hero_subtitle: "Project 2",
+                coral_hero_desc: "Redefining luxury beachfront living in Pattaya. Anticipated completion in 2027.",
+                coral_btn_update: "Construction Update",
+                index_hero_btn2: "Discover More",
+                
+                coral_details_eyebrow: "The Concept",
+                coral_details_title: "Experience the Luxury",
+                coral_details_desc: "Copacabana Coral Reef Project 2 offers the perfect blend of elegance, comfort, and exclusive amenities. Our project offers a wide range of world-class facilities designed to enhance your beachfront lifestyle.",
+                feature_seaside_title: "Seaside Sanctuary",
+                feature_seaside_desc: "Embrace the calming sounds of the ocean right at your doorstep.",
+                feature_exclusive_title: "Exclusive Amenities",
+                feature_exclusive_desc: "World-class facilities curated for the ultimate lifestyle.",
+                feature_elegant_title: "Elegant Living Spaces",
+                feature_elegant_desc: "Meticulously designed interiors focusing on comfort and style.",
+                feature_escape_title: "A Private Escape",
+                feature_escape_desc: "Your secluded haven away from the bustling city life.",
+                
+                coral_video_eyebrow: "Discover",
+                coral_video_title: "Project Overview",
+                
+                inv_eyebrow: "High Yield Investment",
+                inv_title: "Investment Packages",
+                inv_desc: "Flexible payment options with a 6% Rental Yield Guarantee. Available for both Thai and Foreign quotas.",
+                inv_tab_thai: "Thai Quota",
+                inv_tab_foreign: "Foreign Quota",
+                inv_thai_opt: "Investment Option",
+                inv_thai_return: "Total Return 18%*",
+                inv_for_return: "Total Return 12%*",
+                inv_booking: "Reservation (1 BR)",
+                inv_pay_cond: "Payment Condition",
+                inv_guarantee: "Rental Guarantee",
+                inv_t_y1: "6% in Year 1 (After transfer)",
+                inv_t_y2: "6% in Year 2",
+                inv_t_y3: "6% in Year 3",
+                inv_t_note: "*Requires 3-year rental agreement",
+                inv_f_note: "*Requires 2-year rental agreement",
+                inv_disclaimer: "*Terms and conditions apply. Contact us for cash payment discounts.",
+                
+                yacht_badge: "Exclusive Privilege",
+                yacht_title: "FREE LUXURY YACHT TRIP",
+                yacht_desc: "Special for customers who book COPACABANA CORAL REEF JOMTIEN. Receive complimentary private yacht trip coupons!",
+                yacht_1br: "1-Bedroom: <strong>5 Coupons</strong>",
+                yacht_2br: "2-3 Bedrooms/Pool Villa: <strong>8 Coupons</strong>",
+                
+                coral_progress_eyebrow: "Progress",
+                
+                coral_gallery_eyebrow: "Visuals",
+                coral_gallery_title: "Project Gallery",
+                coral_gallery_desc: "Explore the elegant design and exquisite amenities of Copacabana Coral Reef.",
+                
+                coral_register_title: "Register Your Interest",
+                coral_register_desc: "Be among the first to experience Copacabana Coral Reef. Register now to receive exclusive updates, floor plans, and priority booking information.",
+                coral_btn_register: "Register Now",
+                
+                footer_brand_desc: "Setting the standard for luxury beachfront living in Eastern Thailand.",
+                footer_contact: "Contact",
+                footer_explore: "Quick Links",
+                footer_home: "Home",
+                footer_terms: "Terms of Use",
+                footer_privacy: "Privacy Policy"
+            },
+            th: {
+                nav_home: "หน้าหลัก",
+                nav_about: "แนวคิดโครงการ",
+                nav_investment: "การลงทุน",
+                nav_gallery: "แกลเลอรี",
+                nav_register: "ลงทะเบียน",
+                nav_news: "ข่าวสาร",
+                
+                coral_hero_subtitle: "โครงการ 2",
+                coral_hero_desc: "นิยามใหม่ของการใช้ชีวิตหรูริมหาดพัทยา คาดว่าจะแล้วเสร็จในปี 2027",
+                coral_btn_update: "ความคืบหน้าก่อสร้าง",
+                index_hero_btn2: "ค้นพบเพิ่มเติม",
+                
+                coral_details_eyebrow: "แนวคิด",
+                coral_details_title: "สัมผัสความหรูหรา",
+                coral_details_desc: "โคปาคาบาน่า คอรัล รีฟ 2 นำเสนอการผสมผสานที่สมบูรณ์แบบของความสง่างาม ความสะดวกสบาย และสิ่งอำนวยความสะดวกระดับโลกที่ออกแบบมาเพื่อยกระดับไลฟ์สไตล์ริมทะเลของคุณ",
+                feature_seaside_title: "สวรรค์ริมทะเล",
+                feature_seaside_desc: "โอบรับเสียงคลื่นอันเงียบสงบของมหาสมุทรที่หน้าประตูบ้านคุณ",
+                feature_exclusive_title: "สิ่งอำนวยความสะดวกระดับไฮเอนด์",
+                feature_exclusive_desc: "คัดสรรสิ่งที่ดีที่สุดเพื่อไลฟ์สไตล์เหนือระดับ",
+                feature_elegant_title: "พื้นที่พักอาศัยหรูหรา",
+                feature_elegant_desc: "การตกแต่งภายในที่ใส่ใจทุกรายละเอียด เน้นความสบายและมีสไตล์",
+                feature_escape_title: "พื้นที่ส่วนตัว",
+                feature_escape_desc: "หลีกหนีความวุ่นวาย สู่สถานที่พักผ่อนส่วนตัวของคุณ",
+                
+                coral_video_eyebrow: "ค้นพบ",
+                coral_video_title: "ภาพรวมโครงการ",
+                
+                inv_eyebrow: "ผลตอบแทนสูง",
+                inv_title: "แพ็กเกจการลงทุน",
+                inv_desc: "ทางเลือกการชำระเงินที่ยืดหยุ่น พร้อมการันตีผลตอบแทน (Rental Yield) 6% รองรับทั้งโควต้าชาวไทยและต่างชาติ",
+                inv_tab_thai: "โควต้าคนไทย",
+                inv_tab_foreign: "โควต้าต่างชาติ",
+                inv_thai_opt: "ทางเลือกการลงทุน",
+                inv_thai_return: "ผลตอบแทนรวม 18%*",
+                inv_for_return: "ผลตอบแทนรวม 12%*",
+                inv_booking: "ค่าจอง (1 ห้องนอน)",
+                inv_pay_cond: "เงื่อนไขการชำระเงิน",
+                inv_guarantee: "การันตีผลตอบแทน",
+                inv_t_y1: "รับ 6% ปีที่ 1 (หลังโอนและเซ็นสัญญาเช่า)",
+                inv_t_y2: "รับ 6% ปีที่ 2 (หลังโอนครบ 1 ปี)",
+                inv_t_y3: "รับ 6% ปีที่ 3 (หลังโอนครบ 2 ปี)",
+                inv_t_note: "*ต้องทำสัญญาเช่ากับโครงการ 3 ปี",
+                inv_f_note: "*ต้องทำสัญญาเช่ากับโครงการ 2 ปี",
+                inv_disclaimer: "*เงื่อนไขเป็นไปตามที่บริษัทกำหนด มีส่วนลดเพิ่มเติมสำหรับการชำระด้วยเงินสด",
+                
+                yacht_badge: "สิทธิพิเศษ",
+                yacht_title: "ล่องเรือยอร์ชส่วนตัวฟรี",
+                yacht_desc: "พิเศษสุดสำหรับลูกค้าที่จองโครงการ โคปาคาบาน่า คอรัล รีฟ จอมเทียน รับสิทธิ์ล่องเรือยอร์ชส่วนตัวฟรีทันที!",
+                yacht_1br: "ห้องชุด 1 ห้องนอน: <strong>รับ 5 คูปอง</strong>",
+                yacht_2br: "ห้องชุด 2-3 ห้องนอน/พูลวิลล่า: <strong>รับ 8 คูปอง</strong>",
+                
+                coral_progress_eyebrow: "ความคืบหน้า",
+                
+                coral_gallery_eyebrow: "ภาพโครงการ",
+                coral_gallery_title: "แกลเลอรี",
+                coral_gallery_desc: "สำรวจการออกแบบที่หรูหราและสิ่งอำนวยความสะดวกที่สวยงามของ โคปาคาบาน่า คอรัล รีฟ",
+                
+                coral_register_title: "ลงทะเบียนรับสิทธิพิเศษ",
+                coral_register_desc: "เป็นคนกลุ่มแรกที่ได้สัมผัส โคปาคาบาน่า คอรัล รีฟ ลงทะเบียนเพื่อรับอัปเดต ผังห้อง และสิทธิ์จองก่อนใคร",
+                coral_btn_register: "ลงทะเบียนตอนนี้",
+                
+                footer_brand_desc: "สร้างมาตรฐานใหม่สำหรับการใช้ชีวิตหรูหราริมหาดในภาคตะวันออกของไทย",
+                footer_contact: "ติดต่อเรา",
+                footer_explore: "ลิงก์ด่วน",
+                footer_home: "หน้าหลัก",
+                footer_terms: "ข้อกำหนดการใช้งาน",
+                footer_privacy: "นโยบายความเป็นส่วนตัว"
+            },
+            ru: {
+                nav_home: "ГЛАВНАЯ",
+                nav_about: "КОНЦЕПЦИЯ",
+                nav_investment: "ИНВЕСТИЦИИ",
+                nav_gallery: "ГАЛЕРЕЯ",
+                nav_register: "РЕГИСТРАЦИЯ",
+                
+                coral_hero_subtitle: "Проект 2",
+                coral_hero_desc: "Новое слово в роскошной жизни на берегу моря в Паттайе. Ожидаемое завершение в 2027.",
+                coral_btn_update: "Ход строительства",
+                index_hero_btn2: "Узнать больше",
+                
+                coral_details_eyebrow: "Концепция",
+                coral_details_title: "Ощутите роскошь",
+                coral_details_desc: "Проект Copacabana Coral Reef 2 предлагает идеальное сочетание элегантности, комфорта и эксклюзивных удобств мирового класса.",
+                feature_seaside_title: "Приморское убежище",
+                feature_seaside_desc: "Наслаждайтесь успокаивающими звуками океана.",
+                feature_exclusive_title: "Эксклюзивные удобства",
+                feature_exclusive_desc: "Удобства мирового класса для идеального образа жизни.",
+                feature_elegant_title: "Элегантные пространства",
+                feature_elegant_desc: "Интерьеры с упором на комфорт и стиль.",
+                feature_escape_title: "Личное пространство",
+                feature_escape_desc: "Ваше уединенное убежище вдали от суеты.",
+                
+                coral_video_eyebrow: "Узнайте",
+                coral_video_title: "Обзор проекта",
+                
+                inv_eyebrow: "Высокая доходность",
+                inv_title: "Инвестиционные пакеты",
+                inv_desc: "Гибкие варианты оплаты с гарантированной доходностью 6%. Доступно для тайской и иностранной квот.",
+                inv_tab_thai: "Тайская квота",
+                inv_tab_foreign: "Иностранная квота",
+                inv_thai_opt: "Инвестиция",
+                inv_thai_return: "Общий доход 18%*",
+                inv_for_return: "Общий доход 12%*",
+                inv_booking: "Бронь (1 Спальня)",
+                inv_pay_cond: "Условия оплаты",
+                inv_guarantee: "Гарантия аренды",
+                inv_t_y1: "6% в 1-й год (после передачи)",
+                inv_t_y2: "6% во 2-й год",
+                inv_t_y3: "6% в 3-й год",
+                inv_t_note: "*Требуется договор аренды на 3 года",
+                inv_f_note: "*Требуется договор аренды на 2 года",
+                inv_disclaimer: "*Применяются условия. Скидки при 100% оплате.",
+                
+                yacht_badge: "Эксклюзивная привилегия",
+                yacht_title: "БЕСПЛАТНАЯ ПРОГУЛКА НА ЯХТЕ",
+                yacht_desc: "Специально для клиентов COPACABANA CORAL REEF. Получите купоны на бесплатную поездку на частной яхте!",
+                yacht_1br: "1 Спальня: <strong>5 купонов</strong>",
+                yacht_2br: "2-3 Спальни/Вилла: <strong>8 купонов</strong>",
+                
+                coral_progress_eyebrow: "Прогресс",
+                coral_gallery_eyebrow: "Визуал",
+                coral_gallery_title: "Галерея проекта",
+                coral_gallery_desc: "Изучите элегантный дизайн Copacabana Coral Reef.",
+                
+                coral_register_title: "Зарегистрировать интерес",
+                coral_register_desc: "Станьте одним из первых. Зарегистрируйтесь сейчас, чтобы получать обновления и планировки.",
+                coral_btn_register: "Регистрация",
+                
+                footer_brand_desc: "Устанавливаем стандарты роскошной жизни в Таиланде.",
+                footer_contact: "Контакты",
+                footer_explore: "Ссылки",
+                footer_home: "Главная",
+                footer_terms: "Условия",
+                footer_privacy: "Конфиденциальность"
+            },
+            zh: {
+                nav_home: "首页",
+                nav_about: "项目概念",
+                nav_investment: "投资",
+                nav_gallery: "画廊",
+                nav_register: "注册",
+                
+                coral_hero_subtitle: "项目二期",
+                coral_hero_desc: "重新定义芭提雅海滨奢华生活。预计于2027年竣工。",
+                coral_btn_update: "建设进展",
+                index_hero_btn2: "了解更多",
+                
+                coral_details_eyebrow: "概念",
+                coral_details_title: "体验奢华",
+                coral_details_desc: "Copacabana Coral Reef 项目二期提供了优雅、舒适和独特的完美融合。提供各种世界级的设施。",
+                feature_seaside_title: "海滨庇护所",
+                feature_seaside_desc: "在您的家门口拥抱舒缓的海洋之声。",
+                feature_exclusive_title: "独家设施",
+                feature_exclusive_desc: "为极致生活方式量身定制的世界级设施。",
+                feature_elegant_title: "优雅的生活空间",
+                feature_elegant_desc: "精心设计的室内装潢，注重舒适和风格。",
+                feature_escape_title: "私人世外桃源",
+                feature_escape_desc: "远离喧嚣城市生活的私人避风港。",
+                
+                coral_video_eyebrow: "探索",
+                coral_video_title: "项目概览",
+                
+                inv_eyebrow: "高收益投资",
+                inv_title: "投资方案",
+                inv_desc: "灵活的付款选项，提供 6% 的租金收益保证。提供泰国和外国配额。",
+                inv_tab_thai: "泰国配额",
+                inv_tab_foreign: "外国配额",
+                inv_thai_opt: "投资选项",
+                inv_thai_return: "总回报 18%*",
+                inv_for_return: "总回报 12%*",
+                inv_booking: "定金 (一居室)",
+                inv_pay_cond: "付款条件",
+                inv_guarantee: "租金保证",
+                inv_t_y1: "第 1 年 6%（过户后）",
+                inv_t_y2: "第 2 年 6%",
+                inv_t_y3: "第 3 年 6%",
+                inv_t_note: "*需要签订 3 年租赁合同",
+                inv_f_note: "*需要签订 2 年租赁合同",
+                inv_disclaimer: "*适用条款和条件。全款支付可享折扣。",
+                
+                yacht_badge: "专属特权",
+                yacht_title: "免费豪华游艇之旅",
+                yacht_desc: "专为预订科帕卡巴纳珊瑚礁的客户提供。免费获赠私人游艇之旅优惠券！",
+                yacht_1br: "一居室：<strong>5 张优惠券</strong>",
+                yacht_2br: "2-3居室/别墅：<strong>8 张优惠券</strong>",
+                
+                coral_progress_eyebrow: "进度",
+                coral_gallery_eyebrow: "视觉展示",
+                coral_gallery_title: "项目画廊",
+                coral_gallery_desc: "探索优雅设计和精致设施。",
+                
+                coral_register_title: "注册您的兴趣",
+                coral_register_desc: "成为首批体验者。立即注册以获取独家更新和平面图。",
+                coral_btn_register: "立即注册",
+                
+                footer_brand_desc: "在泰国东部树立豪华海滨生活的新标准。",
+                footer_contact: "联系我们",
+                footer_explore: "快速链接",
+                footer_home: "首页",
+                footer_terms: "使用条款",
+                footer_privacy: "隐私政策"
             }
-        });
-
-        // Tab Switcher for Investment
-        function switchTab(tabId) {
-            // Update Buttons
-            document.getElementById('btn-thai').classList.remove('tab-active', 'text-gray-500');
-            document.getElementById('btn-foreign').classList.remove('tab-active', 'text-gray-500');
-            
-            if(tabId === 'thai') {
-                document.getElementById('btn-thai').classList.add('tab-active');
-                document.getElementById('btn-foreign').classList.add('text-gray-500');
-            } else {
-                document.getElementById('btn-foreign').classList.add('tab-active');
-                document.getElementById('btn-thai').classList.add('text-gray-500');
-            }
-
-            // Update Content
-            document.getElementById('content-thai').classList.add('hidden');
-            document.getElementById('content-foreign').classList.add('hidden');
-            document.getElementById('content-' + tabId).classList.remove('hidden');
-            
-            // Trigger animation
-            setTimeout(() => {
-                document.getElementById('content-' + tabId).classList.add('visible');
-            }, 50);
-        }
-
-        // Scroll Animation (Intersection Observer)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+        document.addEventListener('DOMContentLoaded', () => {
 
-        document.querySelectorAll('.fade-up').forEach((el) => {
-            observer.observe(el);
+            // Scroll Animations Observer
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => menu.classList.add('hidden'));
+            });
+
+            // Language Switcher Logic
+            const langOptions = document.querySelectorAll('.lang-option');
+            const mobileSelect = document.getElementById('mobile-lang-select');
+            const currentLangText = document.getElementById('current-lang');
+            
+            let currentLang = localStorage.getItem('copa-lang') || 'en';
+
+            const setLanguage = (lang) => {
+                if (!translations[lang]) return;
+                currentLang = lang;
+                localStorage.setItem('copa-lang', lang);
+
+                if (currentLangText) currentLangText.textContent = lang.toUpperCase();
+                if (mobileSelect) mobileSelect.value = lang;
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+            };
+
+            langOptions.forEach(opt => {
+                opt.addEventListener('click', () => setLanguage(opt.dataset.lang));
+            });
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', (e) => setLanguage(e.target.value));
+            }
+            setLanguage(currentLang); // Init lang
+
+            // Investment Tabs Switcher
+            window.switchTab = function(tabId) {
+                document.getElementById('btn-thai').classList.remove('tab-active', 'text-gray-500');
+                document.getElementById('btn-foreign').classList.remove('tab-active', 'text-gray-500');
+                
+                if(tabId === 'thai') {
+                    document.getElementById('btn-thai').classList.add('tab-active');
+                    document.getElementById('btn-foreign').classList.add('text-gray-500');
+                } else {
+                    document.getElementById('btn-foreign').classList.add('tab-active');
+                    document.getElementById('btn-thai').classList.add('text-gray-500');
+                }
+
+                document.getElementById('content-thai').classList.add('hidden');
+                document.getElementById('content-foreign').classList.add('hidden');
+                document.getElementById('content-' + tabId).classList.remove('hidden');
+                setTimeout(() => document.getElementById('content-' + tabId).classList.add('is-visible'), 50);
+            };
+
+            // Construction Slideshow Logic
+            const images = [
+                "https://i.postimg.cc/SKjs1hG1/hf_20260225_084403_3fe8108d_82cf_44d3_be84_2bfc3533f604.jpg",
+                "https://i.postimg.cc/LshXQpVC/hf_20260225_084736_85a0e4f9_1f5c_40ea_8da7_ba87e005ebea.jpg",
+                "https://i.postimg.cc/gJFWyFth/hf_20260225_040110_427ce45b_401b_478b_a2d6_07d6943e71f8.png",
+                "https://i.postimg.cc/nrmTvg5t/hf_20260224_105246_7e46e689_8fb5_4993_8efa_6fe57a91e4bd_cell_3.png"
+            ];
+
+            const container = document.querySelector('.slideshow-container');
+            const indicatorsContainer = document.getElementById('slide-indicators');
+
+            if (container && indicatorsContainer) {
+                container.querySelectorAll('.slide').forEach(el => el.remove());
+                let currentSlide = 0;
+
+                images.forEach((src, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'slide w-full h-full ' + (index === 0 ? 'active' : '');
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'w-full h-[400px] md:h-[600px] object-cover';
+                    slide.appendChild(img);
+                    container.insertBefore(slide, container.querySelector('.prev-slide'));
+
+                    const dot = document.createElement('span');
+                    dot.className = 'dot cursor-pointer h-3 w-3 mx-1 bg-white/50 rounded-full inline-block transition duration-300 hover:bg-gold-500 ' + (index === 0 ? 'active' : '');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    indicatorsContainer.appendChild(dot);
+                });
+
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.dot');
+
+                window.changeSlide = function(n) {
+                    let newIndex = currentSlide + n;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    if (newIndex < 0) newIndex = slides.length - 1;
+                    goToSlide(newIndex);
+                };
+
+                function goToSlide(n) {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active', 'bg-gold-500');
+                    dots[currentSlide].classList.add('bg-white/50');
+
+                    currentSlide = n;
+
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.remove('bg-white/50');
+                    dots[currentSlide].classList.add('active', 'bg-gold-500');
+                    resetTimer();
+                }
+
+                let slideInterval = setInterval(() => changeSlide(1), 5000);
+                function resetTimer() {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(() => changeSlide(1), 5000);
+                }
+            }
         });
-        
-        // Initial animation for active tab
-        document.getElementById('content-thai').classList.add('visible');
     </script>
 </body>
 </html>

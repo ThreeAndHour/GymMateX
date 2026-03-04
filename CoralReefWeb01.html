@@ -162,8 +162,16 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center">
-        <div class="absolute inset-0 z-0">
-            <img src="https://i.postimg.cc/DyT9YgFr/Change_to_afternoon_2k_202512291155.jpg" alt="Copacabana Coral Reef Exterior" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 z-0 bg-navy-900">
+            <!-- Hero Slideshow Images -->
+            <img src="https://i.postimg.cc/1t8H6HqN/hf_20260126_065917_039a5413_5e3e_4262_a102_73aa17fe1582.jpg" alt="Hero Slide 1" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" />
+            <img src="https://i.postimg.cc/4drzcHVk/Make_the_building_2k_202601101631_(1).jpg" alt="Hero Slide 2" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            <img src="https://i.postimg.cc/vm8wdL5n/hf_20260210_073724_b3d8b1df_11ac_4cb9_b55e_279759fae5fe.jpg" alt="Hero Slide 3" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            <img src="https://i.postimg.cc/kMKrcH00/Change_to_the_2k_202512291200.jpg" alt="Hero Slide 4" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            <img src="https://i.postimg.cc/DyT9YgFr/Change_to_afternoon_2k_202512291155.jpg" alt="Hero Slide 5" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            <img src="https://i.postimg.cc/mr7PhHKR/3363b30c-24f7-4f10-998e-03915113f01b-topaz-sharpen-upscale-2.4x.png" alt="Hero Slide 6" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            <img src="https://i.postimg.cc/MTDXm8WF/1595c1f9-80d0-4043-9cec-360d35d9f81d-topaz-upscale-2.3x.png" alt="Hero Slide 7" class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" />
+            
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
@@ -352,9 +360,9 @@
                         Register Now
                     </a>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="aspect-video bg-gray-200 shadow-2xl border-4 border-white/10">
-                        <img src="https://i.postimg.cc/BnMYws17/BE2D3F42-0B0A-42B7-A2C7-E64B09FEAA6C_1_201_a-gigapixel-high_fidelity_v2-2x.png" alt="Luxury Yacht" class="w-full h-full object-cover">
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="aspect-[3/4] w-full max-w-md bg-gray-200 shadow-2xl border-4 border-white/10">
+                        <img src="https://i.postimg.cc/J7XZnZ9V/r-pre-x-phra-xath-ty-tk-2.jpg" alt="Luxury Yacht" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -831,6 +839,21 @@
                 document.getElementById('content-' + tabId).classList.remove('hidden');
                 setTimeout(() => document.getElementById('content-' + tabId).classList.add('is-visible'), 50);
             };
+
+            // Hero Slideshow Logic
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            if (heroSlides.length > 0) {
+                let currentHeroSlide = 0;
+                setInterval(() => {
+                    heroSlides[currentHeroSlide].classList.remove('opacity-100');
+                    heroSlides[currentHeroSlide].classList.add('opacity-0');
+                    
+                    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                    
+                    heroSlides[currentHeroSlide].classList.remove('opacity-0');
+                    heroSlides[currentHeroSlide].classList.add('opacity-100');
+                }, 5000); // Change image every 5 seconds
+            }
 
             // Construction Slideshow Logic
             const images = [

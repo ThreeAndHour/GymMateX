@@ -164,9 +164,9 @@
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="skull" class="w-16 h-16 text-red-500"></i>
         </div>
-        <p class="text-xs font-semibold text-red-400 tracking-widest mb-1">IRAN CASUALTIES</p>
+        <p class="text-xs font-semibold text-red-400 tracking-widest mb-1">IRAN & PROXY CASUALTIES</p>
         <h2 id="iran-cas" class="text-4xl font-bold text-white mb-2">265</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-red-500"></i> Est. rising rapidly</p>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-red-500"></i> Live OSINT Extraction</p>
       </div>
       
       <!-- Card 2: ALLIED CASUALTIES -->
@@ -176,7 +176,7 @@
         </div>
         <p class="text-xs font-semibold text-amber-400 tracking-widest mb-1">ALLIED CASUALTIES</p>
         <h2 id="is-us-cas" class="text-4xl font-bold text-white mb-2">19</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-amber-500"></i> US & Israel forces</p>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-amber-500"></i> Live OSINT Extraction</p>
       </div>
 
       <!-- Card 3: OIL PRICE (WTI) -->
@@ -186,7 +186,7 @@
         </div>
         <p class="text-xs font-semibold text-emerald-400 tracking-widest mb-1">OIL PRICE (WTI)</p>
         <h2 id="stat-wti" class="text-4xl font-bold text-white mb-2">Fetching...</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-emerald-500"></i> Impacted by Hormuz threat</p>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-emerald-500"></i> Live Yahoo Finance API</p>
       </div>
 
       <!-- Card 4: DEFCON LEVEL -->
@@ -195,8 +195,8 @@
           <i data-lucide="clock" class="w-16 h-16 text-blue-500"></i>
         </div>
         <p class="text-xs font-semibold text-blue-400 tracking-widest mb-1">DEFCON LEVEL</p>
-        <h2 class="text-4xl font-bold text-white mb-2">2</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3 text-blue-500"></i> High Readiness</p>
+        <h2 id="defcon-level" class="text-4xl font-bold text-white mb-2">3</h2>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3 text-blue-500"></i> Based on News Threat Level</p>
       </div>
     </div>
 
@@ -455,8 +455,9 @@
         }
         lastTopNewsTitle = globalNewsList[0].title;
 
-        // Process Intelligence for Map
+        // Process Intelligence for Map & Stats
         processIntelligenceMap();
+        processOSINTData(); // <-- เรียกใช้ระบบวิเคราะห์ข้อมูลจริง
       }
     }
 
@@ -566,48 +567,100 @@
     }
 
     // ==========================================
-    // 4. REAL MARKETS (Yahoo Finance & Binance)
+    // 4. REAL MARKETS (Yahoo Finance API)
     // ==========================================
-    // (Market code remains the same as previously implemented)
-    let tickerData = {};
-
     async function fetchRealMarketData() {
-      // 2. Fetch Traditional (Yahoo via AllOrigins)
-      const symbols = { 'CL=F': 'WTI Crude' };
-      
-      for (const [sym, name] of Object.entries(symbols)) {
-        try {
-          const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=1d`)}`;
-          const res = await fetch(url);
-          const raw = await res.json();
-          const json = JSON.parse(raw.contents);
+      try {
+        const url = `https://api.allorigins.win/get?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=1d')}`;
+        const res = await fetch(url);
+        const raw = await res.json();
+        const json = JSON.parse(raw.contents);
+        
+        if(json.chart && json.chart.result && json.chart.result.length > 0) {
+          const meta = json.chart.result[0].meta;
+          const price = meta.regularMarketPrice;
+          const prev = meta.previousClose;
+          const changePct = ((price - prev) / prev) * 100;
+          const isUp = changePct >= 0;
           
-          if(json.chart.result) {
-            const price = json.chart.result[0].meta.regularMarketPrice;
-            if(sym === 'CL=F') {
-              const statWtiEl = document.getElementById('stat-wti');
-              if (statWtiEl) statWtiEl.textContent = `$${price.toFixed(2)}`;
-            }
+          // Update WTI Card
+          const statWtiEl = document.getElementById('stat-wti');
+          if (statWtiEl) statWtiEl.textContent = `$${price.toFixed(2)}`;
+
+          // Update Ticker
+          const tickerEl = document.getElementById('market-ticker');
+          if (tickerEl) {
+             const htmlContent = `
+              <span class="inline-flex items-center mx-6 gap-2">
+                <span class="text-slate-400">WTI CRUDE</span>
+                <span class="text-white font-medium">$${price.toFixed(2)}</span>
+                <span class="${isUp ? 'text-emerald-400' : 'text-red-400'}">${isUp ? '▲' : '▼'} ${Math.abs(changePct).toFixed(2)}%</span>
+              </span>
+            `;
+            // Repeat to fill the running ticker correctly
+            tickerEl.innerHTML = htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
+                                 htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
+                                 htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
+                                 htmlContent;
           }
-        } catch(e) { console.warn(`Yahoo API error`); }
+        }
+      } catch(e) { 
+        console.warn("Market API error:", e); 
       }
     }
 
     // ==========================================
-    // 5. LIVE CASUALTIES ESTIMATOR
+    // 5. LIVE OSINT CASUALTIES & THREAT ESTIMATOR (Real Data Parser)
     // ==========================================
     let iranCas = 265;
     let isUsCas = 19;
+    let processedNewsLinks = new Set(); // ป้องกันการนับข่าวซ้ำ
 
-    function updateLiveCasualties() {
-      if (Math.random() > 0.5) {
-        iranCas += Math.floor(Math.random() * 4) + 1;
-        document.getElementById('iran-cas').textContent = iranCas.toLocaleString();
-      }
-      if (Math.random() > 0.85) {
-        isUsCas += 1;
-        document.getElementById('is-us-cas').textContent = isUsCas.toLocaleString();
-      }
+    function processOSINTData() {
+      let threatScore = 0;
+
+      globalNewsList.forEach(news => {
+        const titleLower = news.title.toLowerCase();
+
+        // 1. Calculate Threat Level for DEFCON
+        if (titleLower.includes('nuclear') || titleLower.includes('world war') || titleLower.includes('ww3')) threatScore += 5;
+        if (titleLower.includes('missile') || titleLower.includes('strike') || titleLower.includes('attack')) threatScore += 2;
+        if (titleLower.includes('dead') || titleLower.includes('killed')) threatScore += 1;
+
+        // 2. Extract Casualties using Regex (ถ้ายังไม่เคยประมวลผลข่าวนี้)
+        if (!processedNewsLinks.has(news.link)) {
+          processedNewsLinks.add(news.link);
+          
+          // หาตัวเลขที่ตามด้วยคำว่า killed, dead, casualties
+          const match = titleLower.match(/(\d+)\s+(?:killed|dead|casualties|fatalities)/i);
+          
+          if (match) {
+            const num = parseInt(match[1]);
+            if (num > 0 && num < 10000) { // Sanity check ป้องกันเลขปีหรือเลขอื่น
+              // จำแนกฝ่าย
+              if (titleLower.includes('us ') || titleLower.includes('israel') || titleLower.includes('idf') || titleLower.includes('american')) {
+                isUsCas += num;
+                document.getElementById('is-us-cas').textContent = isUsCas.toLocaleString();
+                document.getElementById('is-us-cas').classList.add('text-red-400'); // Flash animation
+                setTimeout(() => document.getElementById('is-us-cas').classList.remove('text-red-400'), 1000);
+              } else {
+                iranCas += num;
+                document.getElementById('iran-cas').textContent = iranCas.toLocaleString();
+                document.getElementById('iran-cas').classList.add('text-red-400');
+                setTimeout(() => document.getElementById('iran-cas').classList.remove('text-red-400'), 1000);
+              }
+            }
+          }
+        }
+      });
+
+      // 3. Update DEFCON
+      let defcon = 3;
+      if (threatScore > 15) defcon = 1;
+      else if (threatScore > 8) defcon = 2;
+      
+      const defconEl = document.getElementById('defcon-level');
+      if (defconEl) defconEl.textContent = defcon;
     }
 
     // ==========================================
@@ -647,8 +700,7 @@
 
       setInterval(updateClock, 1000);
       setInterval(fetchRealMarketData, 60000); 
-      setInterval(fetchRealNews, 180000); 
-      setInterval(updateLiveCasualties, 6000); 
+      setInterval(fetchRealNews, 60000); // ดึงข่าวทุก 1 นาที เพื่อให้ OSINT ทำงานเร็วขึ้น
     };
   </script>
 </body>

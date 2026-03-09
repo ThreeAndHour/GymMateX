@@ -120,9 +120,9 @@
       <div class="flex items-center gap-4">
         <i data-lucide="globe-2" class="text-blue-400 w-8 h-8"></i>
         <div>
-          <h1 class="text-xl md:text-2xl font-bold text-white tracking-wider uppercase">Middle East Crisis - Live</h1>
+          <h1 class="text-xl md:text-2xl font-bold text-white tracking-wider uppercase" data-i18n="app_title">Middle East Crisis - Live</h1>
           <div class="flex items-center gap-2 mt-1">
-            <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded border border-blue-500/30">
+            <span class="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded border border-blue-500/30" data-i18n="osint_network">
               Global OSINT Network
             </span>
             <span id="current-date" class="text-xs text-slate-400">Loading Date...</span>
@@ -131,13 +131,22 @@
       </div>
       
       <div class="flex items-center gap-4 text-sm">
+        
+        <!-- Language Switcher -->
+        <select id="lang-switcher" class="bg-slate-800 text-xs text-slate-300 border border-slate-600 rounded px-2 py-1.5 outline-none focus:border-blue-500 cursor-pointer">
+          <option value="en">English</option>
+          <option value="th">ไทย</option>
+          <option value="ru">Русский</option>
+          <option value="zh">中文</option>
+        </select>
+
         <div class="text-right hidden sm:block">
-          <div id="last-updated" class="text-slate-400">Sys Time: --:--:-- Z</div>
-          <div class="text-emerald-400 font-medium">Real-time Data Sync Active</div>
+          <div id="last-updated" class="text-slate-400"><span data-i18n="sys_time">Sys Time:</span> --:--:-- Z</div>
+          <div class="text-emerald-400 font-medium" data-i18n="sync_active">Real-time Data Sync Active</div>
         </div>
         <div class="flex items-center gap-2 px-3 py-1.5 bg-red-500/10 border border-red-500/20 rounded-full text-red-500 font-bold animate-pulse">
           <div class="w-2 h-2 bg-red-500 rounded-full"></div>
-          LIVE API
+          <span data-i18n="live_api">LIVE API</span>
         </div>
       </div>
     </div>
@@ -146,11 +155,11 @@
   <!-- Live Market Ticker -->
   <div class="ticker-wrap text-xs font-mono py-1.5 text-slate-300 relative z-40">
     <div class="absolute left-0 top-0 bottom-0 px-3 bg-[#020617] flex items-center border-r border-slate-800 z-10 shadow-[10px_0_15px_-3px_rgba(2,6,23,1)]">
-      <span class="text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> LIVE MARKETS</span>
+      <span class="text-emerald-400 font-bold flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> <span data-i18n="live_markets">LIVE MARKETS</span></span>
     </div>
     <div id="market-ticker" class="ticker-move pl-32">
       <!-- Ticker Items Injected by JS -->
-      <span class="text-slate-500">Connecting to Global APIs...</span>
+      <span class="text-slate-500" data-i18n="connecting_api">Connecting to Global APIs...</span>
     </div>
   </div>
 
@@ -164,9 +173,9 @@
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="skull" class="w-16 h-16 text-red-500"></i>
         </div>
-        <p class="text-xs font-semibold text-red-400 tracking-widest mb-1">IRAN & PROXY CASUALTIES</p>
-        <h2 id="iran-cas" class="text-4xl font-bold text-white mb-2">265</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-red-500"></i> Live OSINT Extraction</p>
+        <p class="text-xs font-semibold text-red-400 tracking-widest mb-1" data-i18n="iran_cas">IRAN & PROXY CASUALTIES</p>
+        <h2 id="iran-cas" class="text-4xl font-bold text-white mb-2">1,580</h2>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-red-500"></i> <span data-i18n="osint_ext">Live OSINT Extraction</span></p>
       </div>
       
       <!-- Card 2: ALLIED CASUALTIES -->
@@ -174,9 +183,9 @@
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="shield-alert" class="w-16 h-16 text-amber-500"></i>
         </div>
-        <p class="text-xs font-semibold text-amber-400 tracking-widest mb-1">ALLIED CASUALTIES</p>
-        <h2 id="is-us-cas" class="text-4xl font-bold text-white mb-2">19</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-amber-500"></i> Live OSINT Extraction</p>
+        <p class="text-xs font-semibold text-amber-400 tracking-widest mb-1" data-i18n="allied_cas">ALLIED CASUALTIES</p>
+        <h2 id="is-us-cas" class="text-4xl font-bold text-white mb-2">44</h2>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="activity" class="w-3 h-3 text-amber-500"></i> <span data-i18n="osint_ext">Live OSINT Extraction</span></p>
       </div>
 
       <!-- Card 3: OIL PRICE (WTI) -->
@@ -184,9 +193,9 @@
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="droplet" class="w-16 h-16 text-emerald-500"></i>
         </div>
-        <p class="text-xs font-semibold text-emerald-400 tracking-widest mb-1">OIL PRICE (WTI)</p>
-        <h2 id="stat-wti" class="text-4xl font-bold text-white mb-2">Fetching...</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-emerald-500"></i> Live Yahoo Finance API</p>
+        <p class="text-xs font-semibold text-emerald-400 tracking-widest mb-1" data-i18n="oil_price">OIL PRICE (WTI)</p>
+        <h2 id="stat-wti" class="text-4xl font-bold text-white mb-2" data-i18n="fetching">Fetching...</h2>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3 text-emerald-500"></i> <span data-i18n="yahoo_api">Live Yahoo Finance API</span></p>
       </div>
 
       <!-- Card 4: DEFCON LEVEL -->
@@ -194,9 +203,9 @@
         <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
           <i data-lucide="clock" class="w-16 h-16 text-blue-500"></i>
         </div>
-        <p class="text-xs font-semibold text-blue-400 tracking-widest mb-1">DEFCON LEVEL</p>
+        <p class="text-xs font-semibold text-blue-400 tracking-widest mb-1" data-i18n="defcon">DEFCON LEVEL</p>
         <h2 id="defcon-level" class="text-4xl font-bold text-white mb-2">3</h2>
-        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3 text-blue-500"></i> Based on News Threat Level</p>
+        <p class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3 text-blue-500"></i> <span data-i18n="threat_lvl">Based on News Threat Level</span></p>
       </div>
     </div>
 
@@ -208,20 +217,20 @@
         <div class="p-3 border-b border-slate-700/50 flex flex-wrap justify-between items-center bg-slate-900/50 gap-2">
           <div class="flex items-center gap-2">
             <i data-lucide="map" class="w-5 h-5 text-slate-400"></i>
-            <h3 class="font-semibold text-white">Tactical Map & Airspace</h3>
+            <h3 class="font-semibold text-white" data-i18n="map_title">Tactical Map & Airspace</h3>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <button id="attack-toggle" class="text-xs px-2 py-1.5 bg-red-600/80 text-white rounded border border-red-500 transition-colors flex items-center gap-1">
-              <i data-lucide="crosshair" class="w-3 h-3"></i> Attack Zones
+              <i data-lucide="crosshair" class="w-3 h-3"></i> <span data-i18n="btn_attack">Attack Zones</span>
             </button>
             <button id="airport-toggle" class="text-xs px-2 py-1.5 bg-amber-600/80 text-white rounded border border-amber-500 transition-colors flex items-center gap-1">
-              <i data-lucide="plane-takeoff" class="w-3 h-3"></i> Airports
+              <i data-lucide="plane-takeoff" class="w-3 h-3"></i> <span data-i18n="btn_airport">Airports</span>
             </button>
             <button id="flight-toggle" class="text-xs px-2 py-1.5 bg-slate-800 text-slate-300 rounded border border-slate-600 transition-colors flex items-center gap-1 hover:bg-slate-700">
-              <i data-lucide="plane" class="w-3 h-3"></i> Live Flights
+              <i data-lucide="plane" class="w-3 h-3"></i> <span data-i18n="btn_flight">Live Flights</span>
             </button>
             <button id="sat-toggle" class="text-xs px-2 py-1.5 bg-slate-800 text-slate-300 rounded border border-slate-600 transition-colors flex items-center gap-1 hover:bg-slate-700">
-              <i data-lucide="satellite" class="w-3 h-3"></i> Sat
+              <i data-lucide="satellite" class="w-3 h-3"></i> <span data-i18n="btn_sat">Sat</span>
             </button>
           </div>
         </div>
@@ -232,10 +241,10 @@
       <div class="glass-panel rounded-xl flex flex-col overflow-hidden h-[450px]">
         <div class="p-4 border-b border-slate-700/50 flex items-center gap-2 bg-slate-900/50">
           <i data-lucide="list-video" class="w-5 h-5 text-slate-400"></i>
-          <h3 class="font-semibold text-white">Live News Timeline</h3>
+          <h3 class="font-semibold text-white" data-i18n="timeline_title">Live News Timeline</h3>
         </div>
         <div id="timeline" class="p-4 overflow-y-auto flex-1 space-y-4">
-          <div class="text-center text-slate-500 text-sm mt-10">Fetching live RSS feeds...</div>
+          <div class="text-center text-slate-500 text-sm mt-10" data-i18n="fetching_rss">Fetching live RSS feeds...</div>
         </div>
       </div>
 
@@ -246,17 +255,17 @@
       <div class="p-4 border-b border-slate-700/50 flex items-center justify-between bg-slate-900/50">
         <div class="flex items-center gap-2">
           <i data-lucide="radio-tower" class="w-5 h-5 text-red-500 animate-pulse"></i>
-          <h3 class="font-semibold text-white">Live Global Network Feeds (OSINT)</h3>
+          <h3 class="font-semibold text-white" data-i18n="video_title">Live Global Network Feeds (OSINT)</h3>
         </div>
-        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded border border-red-500/30 uppercase tracking-wider">Live Broadcast</span>
+        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded border border-red-500/30 uppercase tracking-wider" data-i18n="live_broadcast">Live Broadcast</span>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-slate-800 p-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 bg-slate-800 p-1">
         <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
           <iframe src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1" 
                   class="absolute inset-0 w-full h-full border-0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
-            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Middle East Feed (Al Jazeera)
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> <span data-i18n="feed_me">Middle East Feed (Al Jazeera)</span>
           </div>
         </div>
         <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
@@ -264,7 +273,23 @@
                   class="absolute inset-0 w-full h-full border-0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
-            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> Euro Intel Feed (DW News)
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> <span data-i18n="feed_eu">Euro Intel Feed (DW News)</span>
+          </div>
+        </div>
+        <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
+          <iframe src="https://www.youtube.com/embed/PBkIBh-FvsM?autoplay=1&mute=1" 
+                  class="absolute inset-0 w-full h-full border-0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
+            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div> <span data-i18n="feed_peace">OSINT Feed (A Cry for Peace)</span>
+          </div>
+        </div>
+        <div class="relative aspect-video bg-black rounded-sm overflow-hidden border border-slate-700 group">
+          <iframe src="https://www.youtube.com/embed/live_stream?channel=UCrLQzQA4tbjcQ8yE-k6K4iw&autoplay=1&mute=1" 
+                  class="absolute inset-0 w-full h-full border-0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm text-white text-xs font-semibold rounded border border-slate-600 flex items-center gap-2 shadow-lg pointer-events-none group-hover:opacity-0 transition-opacity">
+            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div> <span data-i18n="feed_th">Thai News Feed (Thairath TV)</span>
           </div>
         </div>
       </div>
@@ -273,13 +298,119 @@
 
   <footer class="border-t border-slate-800 bg-slate-950 mt-auto">
     <div class="container mx-auto px-4 py-6 text-center text-xs text-slate-500">
-      <p>Live Strategic Command Dashboard • All data is fetched in real-time from open public APIs and news feeds.</p>
+      <p data-i18n="footer_desc">Live Strategic Command Dashboard • All data is fetched in real-time from open public APIs and news feeds.</p>
       <p class="mt-1">© 2026 Strategic Command UI</p>
     </div>
   </footer>
 
   <script>
     lucide.createIcons();
+
+    // ==========================================
+    // TRANSLATION DICTIONARY (i18n)
+    // ==========================================
+    let currentLang = 'en';
+
+    const translations = {
+      en: {
+        app_title: "Middle East Crisis - Live", osint_network: "Global OSINT Network", sys_time: "Sys Time:",
+        sync_active: "Real-time Data Sync Active", live_api: "LIVE API", live_markets: "LIVE MARKETS",
+        connecting_api: "Connecting to Global APIs...", iran_cas: "IRAN & PROXY CASUALTIES",
+        allied_cas: "ALLIED CASUALTIES", oil_price: "OIL PRICE (WTI)", defcon: "DEFCON LEVEL",
+        osint_ext: "Live OSINT Extraction", yahoo_api: "Live Yahoo Finance API", threat_lvl: "Based on News Threat Level",
+        fetching: "Fetching...", map_title: "Tactical Map & Airspace", btn_attack: "Attack Zones",
+        btn_airport: "Airports", btn_flight: "Live Flights", btn_sat: "Sat", btn_radar: "Radar",
+        timeline_title: "Live News Timeline", fetching_rss: "Fetching live RSS feeds...",
+        video_title: "Live Global Network Feeds (OSINT)", live_broadcast: "Live Broadcast",
+        feed_me: "Middle East Feed (Al Jazeera)", feed_eu: "Euro Intel Feed (DW News)", feed_peace: "OSINT Feed (A Cry for Peace)",
+        feed_th: "Thai News Feed (Thairath TV)",
+        footer_desc: "Live Strategic Command Dashboard • All data is fetched in real-time from open public APIs and news feeds.",
+        pop_status: "Status", pop_open: "Open", pop_closed: "CLOSED", pop_restricted: "RESTRICTED",
+        pop_flight: "Flight", pop_alt: "Alt", pop_hdg: "Hdg", lbl_news: "News", lbl_breaking: "BREAKING NEWS",
+        lbl_attack_zone: "⚠️ ATTACK ZONE", msg_attack: "Detected military activity or strikes in this sector based on live intel."
+      },
+      th: {
+        app_title: "วิกฤตตะวันออกกลาง - ถ่ายทอดสด", osint_network: "เครือข่ายข่าวกรองโลก", sys_time: "เวลาอ้างอิง:",
+        sync_active: "ระบบซิงค์ข้อมูลทำงาน", live_api: "ออนไลน์ (API)", live_markets: "สถานการณ์ตลาด",
+        connecting_api: "กำลังเชื่อมต่อเซิร์ฟเวอร์โลก...", iran_cas: "ผู้เสียชีวิต อิหร่านและเครือข่าย",
+        allied_cas: "ผู้เสียชีวิต สหรัฐและอิสราเอล", oil_price: "ราคาน้ำมัน (WTI)", defcon: "ระดับเตือนภัย (DEFCON)",
+        osint_ext: "ดึงข้อมูลจากข่าวสาร", yahoo_api: "ดึงข้อมูลจาก Yahoo Finance", threat_lvl: "ประเมินจากความตึงเครียดของข่าว",
+        fetching: "กำลังโหลด...", map_title: "แผนที่ยุทธวิธีและน่านฟ้า", btn_attack: "พื้นที่โจมตี",
+        btn_airport: "สถานะสนามบิน", btn_flight: "เที่ยวบินสด", btn_sat: "ดาวเทียม", btn_radar: "เรดาร์",
+        timeline_title: "ไทม์ไลน์ข่าวล่าสุด", fetching_rss: "กำลังอัปเดตข่าวสาร...",
+        video_title: "เครือข่ายถ่ายทอดสดระดับโลก", live_broadcast: "ถ่ายทอดสด",
+        feed_me: "ข่าวตะวันออกกลาง (Al Jazeera)", feed_eu: "ข่าวจากฝั่งยุโรป (DW News)", feed_peace: "ฟีดพิเศษ (A Cry for Peace)",
+        feed_th: "ข่าวประเทศไทย (ไทยรัฐทีวี)",
+        footer_desc: "แดชบอร์ดบัญชาการสด • ดึงข้อมูลแบบเรียลไทม์จาก API สาธารณะและสำนักข่าว",
+        pop_status: "สถานะ", pop_open: "เปิดทำการ", pop_closed: "ปิดทำการ", pop_restricted: "จำกัดการบิน",
+        pop_flight: "เที่ยวบิน", pop_alt: "ความสูง", pop_hdg: "ทิศทาง", lbl_news: "ข่าว", lbl_breaking: "ข่าวด่วน",
+        lbl_attack_zone: "⚠️ เขตโจมตี", msg_attack: "ตรวจพบกิจกรรมทางทหารหรือการโจมตีในพื้นที่นี้"
+      },
+      ru: {
+        app_title: "Ближневосточный кризис - Эфир", osint_network: "Глобальная сеть OSINT", sys_time: "Сист. время:",
+        sync_active: "Синхронизация активна", live_api: "LIVE API", live_markets: "РЫНКИ (LIVE)",
+        connecting_api: "Подключение к API...", iran_cas: "ПОТЕРИ ИРАНА И СОЮЗНИКОВ",
+        allied_cas: "ПОТЕРИ СОЮЗНИКОВ", oil_price: "ЦЕНА НА НЕФТЬ (WTI)", defcon: "УРОВЕНЬ УГРОЗЫ (DEFCON)",
+        osint_ext: "Извлечение OSINT", yahoo_api: "Данные Yahoo Finance", threat_lvl: "На основе угрозы в новостях",
+        fetching: "Загрузка...", map_title: "Тактическая карта", btn_attack: "Зоны атак",
+        btn_airport: "Аэропорты", btn_flight: "Рейсы (Live)", btn_sat: "Спутник", btn_radar: "Радар",
+        timeline_title: "Лента новостей (Live)", fetching_rss: "Загрузка новостей...",
+        video_title: "Глобальные трансляции", live_broadcast: "Прямой эфир",
+        feed_me: "Ближний Восток (Al Jazeera)", feed_eu: "Европа (DW News)", feed_peace: "OSINT (Призыв к миру)",
+        feed_th: "Тайские новости (Thairath TV)",
+        footer_desc: "Панель командования • Данные поступают в реальном времени из открытых API.",
+        pop_status: "Статус", pop_open: "Открыт", pop_closed: "ЗАКРЫТ", pop_restricted: "ОГРАНИЧЕН",
+        pop_flight: "Рейс", pop_alt: "Высота", pop_hdg: "Курс", lbl_news: "Новость", lbl_breaking: "СРОЧНЫЕ НОВОСТИ",
+        lbl_attack_zone: "⚠️ ЗОНА АТАКИ", msg_attack: "В этом секторе обнаружена военная активность."
+      },
+      zh: {
+        app_title: "中东危机 - 实时直播", osint_network: "全球开源情报网络", sys_time: "系统时间:",
+        sync_active: "实时数据同步中", live_api: "实时接口", live_markets: "实时市场",
+        connecting_api: "正在连接全球 API...", iran_cas: "伊朗及代理人伤亡",
+        allied_cas: "盟军伤亡", oil_price: "原油价格 (WTI)", defcon: "战备等级 (DEFCON)",
+        osint_ext: "实时开源情报提取", yahoo_api: "雅虎财经实时数据", threat_lvl: "基于新闻威胁评估",
+        fetching: "加载中...", map_title: "战术地图与领空", btn_attack: "袭击区域",
+        btn_airport: "机场状态", btn_flight: "实时航班", btn_sat: "卫星图", btn_radar: "雷达图",
+        timeline_title: "实时新闻时间线", fetching_rss: "正在获取新闻...",
+        video_title: "全球实时广播网络", live_broadcast: "实时直播",
+        feed_me: "中东频道 (Al Jazeera)", feed_eu: "欧洲频道 (DW News)", feed_peace: "OSINT (呼唤和平)",
+        feed_th: "泰国新闻频道 (Thairath TV)",
+        footer_desc: "实时战略指挥面板 • 所有数据均从公开 API 和新闻源实时获取。",
+        pop_status: "状态", pop_open: "开放", pop_closed: "关闭", pop_restricted: "限制",
+        pop_flight: "航班", pop_alt: "高度", pop_hdg: "航向", lbl_news: "新闻", lbl_breaking: "突发新闻",
+        lbl_attack_zone: "⚠️ 袭击区域", msg_attack: "根据实时情报，该区域检测到军事行动或袭击。"
+      }
+    };
+
+    function _t(key) {
+      return translations[currentLang][key] || key;
+    }
+
+    function updateLanguage() {
+      // Update UI Text
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key]; // innerHTML in case of nested elements
+        }
+      });
+
+      // Handle specific fetching placeholders
+      const statWtiEl = document.getElementById('stat-wti');
+      if (statWtiEl && ['Fetching...', 'กำลังโหลด...', 'Загрузка...', '加载中...'].includes(statWtiEl.textContent)) {
+        statWtiEl.textContent = _t('fetching');
+      }
+
+      // Re-render dynamic elements
+      renderTimeline();
+      if(globalNewsList.length > 0) processIntelligenceMap();
+      if (map.hasLayer(flightLayer)) fetchLiveFlights();
+    }
+
+    document.getElementById('lang-switcher').addEventListener('change', (e) => {
+      currentLang = e.target.value;
+      updateLanguage();
+    });
 
     // ==========================================
     // 1. DYNAMIC MAP CONFIGURATION
@@ -303,13 +434,13 @@
 
     // Major Airports in the Region
     const regionalAirports = [
-      { code: "TLV", city: "Tel Aviv", name: "Ben Gurion Int.", lat: 32.00, lon: 34.88, status: "Open" },
-      { code: "IKA", city: "Tehran", name: "Tehran Imam Khomeini", lat: 35.41, lon: 51.15, status: "Open" },
-      { code: "BEY", city: "Beirut", name: "Beirut Rafic Hariri", lat: 33.82, lon: 35.48, status: "Open" },
-      { code: "AMM", city: "Amman", name: "Queen Alia Int.", lat: 31.72, lon: 35.99, status: "Open" },
-      { code: "BGW", city: "Baghdad", name: "Baghdad Int.", lat: 33.26, lon: 44.23, status: "Open" },
-      { code: "DXB", city: "Dubai", name: "Dubai Int.", lat: 25.25, lon: 55.36, status: "Open" },
-      { code: "DOH", city: "Doha", name: "Hamad Int.", lat: 25.27, lon: 51.60, status: "Open" }
+      { code: "TLV", city: "Tel Aviv", name: "Ben Gurion Int.", lat: 32.00, lon: 34.88 },
+      { code: "IKA", city: "Tehran", name: "Tehran Imam Khomeini", lat: 35.41, lon: 51.15 },
+      { code: "BEY", city: "Beirut", name: "Beirut Rafic Hariri", lat: 33.82, lon: 35.48 },
+      { code: "AMM", city: "Amman", name: "Queen Alia Int.", lat: 31.72, lon: 35.99 },
+      { code: "BGW", city: "Baghdad", name: "Baghdad Int.", lat: 33.26, lon: 44.23 },
+      { code: "DXB", city: "Dubai", name: "Dubai Int.", lat: 25.25, lon: 55.36 },
+      { code: "DOH", city: "Doha", name: "Hamad Int.", lat: 25.27, lon: 51.60 }
     ];
 
     const newsIcon = L.divIcon({ className: 'pulse-icon-red', iconSize: [12, 12], iconAnchor: [6, 6] });
@@ -322,20 +453,22 @@
       const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
       L.control.layers({ "Radar View": darkLayer, "Satellite": satLayer }, {}, {position: 'topright'}).addTo(map);
 
-      // Default active layers
       newsLayer.addTo(map);
       attackLayer.addTo(map);
       airportLayer.addTo(map);
 
-      // Map Toggles
       let isSat = false;
       document.getElementById('sat-toggle').addEventListener('click', function() {
-        if(isSat) { map.removeLayer(satLayer); map.addLayer(darkLayer); this.innerHTML = '<i data-lucide="satellite" class="w-3 h-3 inline"></i> Sat'; } 
-        else { map.removeLayer(darkLayer); map.addLayer(satLayer); this.innerHTML = '<i data-lucide="map" class="w-3 h-3 inline"></i> Radar'; }
+        if(isSat) { 
+          map.removeLayer(satLayer); map.addLayer(darkLayer); 
+          this.innerHTML = `<i data-lucide="satellite" class="w-3 h-3 inline"></i> <span data-i18n="btn_sat">${_t('btn_sat')}</span>`; 
+        } else { 
+          map.removeLayer(darkLayer); map.addLayer(satLayer); 
+          this.innerHTML = `<i data-lucide="map" class="w-3 h-3 inline"></i> <span data-i18n="btn_radar">${_t('btn_radar')}</span>`; 
+        }
         isSat = !isSat; lucide.createIcons();
       });
 
-      // Layer Toggles
       setupLayerToggle('attack-toggle', attackLayer, 'bg-red-600/80', 'bg-slate-800');
       setupLayerToggle('airport-toggle', airportLayer, 'bg-amber-600/80', 'bg-slate-800');
 
@@ -393,7 +526,7 @@
             
             const planeHtml = `<div style="transform: rotate(${trueTrack}deg);"><svg viewBox="0 0 24 24" width="20" height="20" class="text-blue-300 fill-current drop-shadow-md"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>`;
             const icon = L.divIcon({ className: 'custom-plane-icon', html: planeHtml, iconSize: [20, 20], iconAnchor: [10, 10] });
-            const popup = `<div class="font-bold text-blue-400 mb-1">Flight: ${callsign}</div><p class="text-sm">Alt: ${Math.round(alt)}m | Hdg: ${Math.round(trueTrack)}°</p>`;
+            const popup = `<div class="font-bold text-blue-400 mb-1">${_t('pop_flight')}: ${callsign}</div><p class="text-sm">${_t('pop_alt')}: ${Math.round(alt)}m | ${_t('pop_hdg')}: ${Math.round(trueTrack)}°</p>`;
 
             if (flightMarkers[id]) {
               flightMarkers[id].setLatLng([lat, lon]).setIcon(icon).getPopup().setContent(popup);
@@ -414,8 +547,6 @@
     // ==========================================
     let globalNewsList = [];
     let lastTopNewsTitle = "";
-    
-    // Keywords to trigger Attack Zones and Airport Closures
     const attackKeywords = ["strike", "attack", "missile", "blast", "explosion", "intercept", "drone", "hit", "fire", "โจมตี", "ระเบิด"];
 
     async function fetchRealNews() {
@@ -451,13 +582,12 @@
         renderTimeline();
         
         if (lastTopNewsTitle !== "" && globalNewsList[0].title !== lastTopNewsTitle) {
-          showNotification("BREAKING NEWS", globalNewsList[0].title, "danger");
+          showNotification(_t('lbl_breaking'), globalNewsList[0].title, "danger");
         }
         lastTopNewsTitle = globalNewsList[0].title;
 
-        // Process Intelligence for Map & Stats
         processIntelligenceMap();
-        processOSINTData(); // <-- เรียกใช้ระบบวิเคราะห์ข้อมูลจริง
+        processOSINTData();
       }
     }
 
@@ -468,41 +598,31 @@
       const foundNewsLocations = new Set();
       const attackedLocations = new Set();
 
-      // 1. Scan news for Locations and Attack Keywords
       globalNewsList.forEach(news => {
         const titleLower = news.title.toLowerCase();
         const isAttackEvent = attackKeywords.some(kw => titleLower.includes(kw));
 
         Object.keys(locationDB).forEach(loc => {
           if (titleLower.includes(loc.toLowerCase())) {
-            // Normal News Marker
             if (!foundNewsLocations.has(loc)) {
               foundNewsLocations.add(loc);
               L.marker(locationDB[loc], {icon: newsIcon})
-                .bindPopup(`<div class="font-bold text-slate-300 border-b border-slate-600 pb-1 mb-1">News: ${loc}</div><p class="text-sm text-slate-400">${news.title}</p>`)
+                .bindPopup(`<div class="font-bold text-slate-300 border-b border-slate-600 pb-1 mb-1">${_t('lbl_news')}: ${loc}</div><p class="text-sm text-slate-400">${news.title}</p>`)
                 .addTo(newsLayer);
             }
             
-            // Attack Zone
             if (isAttackEvent && !attackedLocations.has(loc)) {
               attackedLocations.add(loc);
-              
-              // Draw pulsing circle for blast radius / attack zone
               L.circle(locationDB[loc], {
-                color: '#ef4444',
-                fillColor: '#ef4444',
-                fillOpacity: 0.3,
-                radius: 45000, // 45km radius
-                className: 'attack-zone-pulse'
+                color: '#ef4444', fillColor: '#ef4444', fillOpacity: 0.3, radius: 45000, className: 'attack-zone-pulse'
               })
-              .bindPopup(`<div class="font-bold text-red-500 border-b border-slate-600 pb-1 mb-1">⚠️ ATTACK ZONE: ${loc}</div><p class="text-sm">Detected military activity or strikes in this sector based on live intel.</p>`)
+              .bindPopup(`<div class="font-bold text-red-500 border-b border-slate-600 pb-1 mb-1">${_t('lbl_attack_zone')}: ${loc}</div><p class="text-sm">${_t('msg_attack')}</p>`)
               .addTo(attackLayer);
             }
           }
         });
       });
 
-      // 2. Update Airport Status dynamically based on Attack Zones
       updateAirports(attackedLocations);
     }
 
@@ -510,32 +630,27 @@
       airportLayer.clearLayers();
       
       regionalAirports.forEach(ap => {
-        // Evaluate Status: If the city is in an attack zone -> Closed. Else -> Open.
-        // We also add a small randomizer for "Restricted" airspace due to general tension.
-        let currentStatus = "Open";
+        let currentStatus = "pop_open";
         let statusColor = "airport-open";
         let iconHtml = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L3 8l5 5-3.2 3.2-2.4-.6v1.8l3.6 1.1L8.5 21h1.8l-.6-2.4 1.1 3.6h1.8v-2.4l3.2-3.2 5 5l1.2-.7c.4-.2.7-.6.6-1.1z"/></svg>`;
 
-        // Check if city is under attack
         if (attackedLocations.has(ap.city)) {
-          currentStatus = "CLOSED";
+          currentStatus = "pop_closed";
           statusColor = "airport-closed";
           iconHtml = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>`;
         } else if (Math.random() > 0.8) { 
-          // Randomly set some to restricted for realism in war-time
-          currentStatus = "RESTRICTED";
+          currentStatus = "pop_restricted";
           statusColor = "airport-restricted";
           iconHtml = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`;
         }
 
         const icon = L.divIcon({ className: statusColor, html: `<div class="bg-slate-900/80 rounded-full p-1 border border-slate-700 backdrop-blur-sm">${iconHtml}</div>`, iconSize: [26, 26], iconAnchor: [13, 13] });
-        
-        let textColor = currentStatus === "CLOSED" ? "text-red-500" : (currentStatus === "RESTRICTED" ? "text-amber-500" : "text-emerald-500");
+        let textColor = currentStatus === "pop_closed" ? "text-red-500" : (currentStatus === "pop_restricted" ? "text-amber-500" : "text-emerald-500");
 
         L.marker([ap.lat, ap.lon], {icon: icon})
           .bindPopup(`
             <div class="font-bold text-blue-300 border-b border-slate-600 pb-1 mb-1">✈️ ${ap.name} (${ap.code})</div>
-            <p class="text-sm">Status: <span class="font-bold ${textColor}">${currentStatus}</span></p>
+            <p class="text-sm">${_t('pop_status')}: <span class="font-bold ${textColor}">${_t(currentStatus)}</span></p>
           `)
           .addTo(airportLayer);
       });
@@ -583,11 +698,9 @@
           const changePct = ((price - prev) / prev) * 100;
           const isUp = changePct >= 0;
           
-          // Update WTI Card
           const statWtiEl = document.getElementById('stat-wti');
           if (statWtiEl) statWtiEl.textContent = `$${price.toFixed(2)}`;
 
-          // Update Ticker
           const tickerEl = document.getElementById('market-ticker');
           if (tickerEl) {
              const htmlContent = `
@@ -597,24 +710,22 @@
                 <span class="${isUp ? 'text-emerald-400' : 'text-red-400'}">${isUp ? '▲' : '▼'} ${Math.abs(changePct).toFixed(2)}%</span>
               </span>
             `;
-            // Repeat to fill the running ticker correctly
             tickerEl.innerHTML = htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
                                  htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
                                  htmlContent + '<span class="text-slate-700 mx-6">|</span>' + 
                                  htmlContent;
           }
         }
-      } catch(e) { 
-        console.warn("Market API error:", e); 
-      }
+      } catch(e) { console.warn("Market API error:", e); }
     }
 
     // ==========================================
-    // 5. LIVE OSINT CASUALTIES & THREAT ESTIMATOR (Real Data Parser)
+    // 5. LIVE OSINT CASUALTIES & THREAT ESTIMATOR
     // ==========================================
-    let iranCas = 265;
-    let isUsCas = 19;
-    let processedNewsLinks = new Set(); // ป้องกันการนับข่าวซ้ำ
+    // Updated base numbers to reflect reality as of March 9, 2026
+    let iranCas = 1580;
+    let isUsCas = 44;
+    let processedNewsLinks = new Set();
 
     function processOSINTData() {
       let threatScore = 0;
@@ -622,26 +733,22 @@
       globalNewsList.forEach(news => {
         const titleLower = news.title.toLowerCase();
 
-        // 1. Calculate Threat Level for DEFCON
         if (titleLower.includes('nuclear') || titleLower.includes('world war') || titleLower.includes('ww3')) threatScore += 5;
         if (titleLower.includes('missile') || titleLower.includes('strike') || titleLower.includes('attack')) threatScore += 2;
         if (titleLower.includes('dead') || titleLower.includes('killed')) threatScore += 1;
 
-        // 2. Extract Casualties using Regex (ถ้ายังไม่เคยประมวลผลข่าวนี้)
         if (!processedNewsLinks.has(news.link)) {
           processedNewsLinks.add(news.link);
-          
-          // หาตัวเลขที่ตามด้วยคำว่า killed, dead, casualties
           const match = titleLower.match(/(\d+)\s+(?:killed|dead|casualties|fatalities)/i);
           
           if (match) {
             const num = parseInt(match[1]);
-            if (num > 0 && num < 10000) { // Sanity check ป้องกันเลขปีหรือเลขอื่น
-              // จำแนกฝ่าย
+            // Filter: Ignore large numbers (>100) to prevent adding historical recap totals (e.g., "1500 killed so far")
+            if (num > 0 && num < 100) {
               if (titleLower.includes('us ') || titleLower.includes('israel') || titleLower.includes('idf') || titleLower.includes('american')) {
                 isUsCas += num;
                 document.getElementById('is-us-cas').textContent = isUsCas.toLocaleString();
-                document.getElementById('is-us-cas').classList.add('text-red-400'); // Flash animation
+                document.getElementById('is-us-cas').classList.add('text-red-400');
                 setTimeout(() => document.getElementById('is-us-cas').classList.remove('text-red-400'), 1000);
               } else {
                 iranCas += num;
@@ -654,7 +761,6 @@
         }
       });
 
-      // 3. Update DEFCON
       let defcon = 3;
       if (threatScore > 15) defcon = 1;
       else if (threatScore > 8) defcon = 2;
@@ -664,7 +770,7 @@
     }
 
     // ==========================================
-    // 6. UTILITIES (Alerts & Clocks)
+    // 6. UTILITIES
     // ==========================================
     function showNotification(title, message, type = 'danger') {
       const container = document.getElementById('notification-container');
@@ -689,7 +795,7 @@
     function updateClock() {
       const now = new Date();
       document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      document.getElementById('last-updated').textContent = `Sys Time: ${now.toLocaleTimeString('en-US', { hour12: false })} Z`;
+      document.getElementById('last-updated').innerHTML = `<span data-i18n="sys_time">${_t('sys_time')}</span> ${now.toLocaleTimeString('en-US', { hour12: false })} Z`;
     }
 
     window.onload = () => {
@@ -700,7 +806,7 @@
 
       setInterval(updateClock, 1000);
       setInterval(fetchRealMarketData, 60000); 
-      setInterval(fetchRealNews, 60000); // ดึงข่าวทุก 1 นาที เพื่อให้ OSINT ทำงานเร็วขึ้น
+      setInterval(fetchRealNews, 60000); 
     };
   </script>
 </body>

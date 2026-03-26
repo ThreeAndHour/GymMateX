@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: The Near Future of Digital Identity: Hybrid AI Persona</title>
+    <title>Infographic: The Near Future of Digital Identity</title>
     
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Infographic: The Near Future of Digital Identity: Hybrid AI Persona">
@@ -16,261 +16,398 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif;
-            background-color: #F8F9FA;
+            background-color: #F0F4F8; /* Softer infographic background */
             color: #2F2F2F;
+            overflow-x: hidden;
         }
+        
+        /* Typography Helpers */
         .kanit-light { font-weight: 300; }
         .kanit-regular { font-weight: 400; }
         .kanit-semibold { font-weight: 600; }
         .kanit-bold { font-weight: 700; }
+
+        /* Infographic Card Styling */
         .tech-card {
             background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 10;
         }
         .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .tech-card-content {
-            flex-grow: 1;
+
+        /* Connecting Timeline Line (Desktop only) */
+        @media (min-width: 1024px) {
+            .timeline-container {
+                position: relative;
+            }
+            .timeline-container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                width: 4px;
+                background: linear-gradient(to bottom, #00A6ED, #7FB800, #F6511D, #FFB400, #A855F7, #EC4899);
+                transform: translateX(-50%);
+                z-index: 0;
+                border-radius: 4px;
+                opacity: 0.3;
+            }
         }
+
+        /* Language Buttons */
         .lang-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             border: 1px solid transparent;
+            font-size: 0.9rem;
         }
         .lang-btn.active {
             background-color: #00A6ED;
             color: white;
-            border-color: #00A6ED;
+            box-shadow: 0 4px 6px rgba(0, 166, 237, 0.3);
         }
         .lang-btn:not(.active) {
-            background-color: #E9ECEF;
+            background-color: white;
             color: #495057;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .lang-btn:not(.active):hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Checkbox */
+        .tech-checkbox-wrapper input:checked + div {
+            background-color: #e0f2fe;
+            border-color: #00A6ED;
+        }
+
+        /* Loader */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #00A6ED;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Decorative Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-400 opacity-5 blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-400 opacity-5 blur-[100px]"></div>
+    </div>
+
     <div class="container mx-auto p-4 md:p-8 max-w-6xl">
         
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-            <a href="https://thbho.github.io/" class="bg-gray-200 text-gray-800 kanit-semibold py-2 px-6 rounded-lg hover:bg-gray-300 transition-colors" data-translate-key="home_button">Back to Home</a>
-            <div id="language-switcher" class="flex space-x-2">
+        <!-- Navigation & Language -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-12 gap-4 animate-on-scroll">
+            <a href="https://thbho.github.io/" class="bg-white text-gray-800 kanit-semibold py-2 px-6 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100" data-translate-key="home_button">Back to Home</a>
+            <div id="language-switcher" class="flex space-x-2 bg-gray-100/50 p-1 rounded-lg backdrop-blur-sm">
+                <button class="lang-btn kanit-semibold active" data-lang="en">EN</button>
                 <button class="lang-btn kanit-semibold" data-lang="th">TH</button>
-                <button class="lang-btn kanit-semibold" data-lang="en">EN</button>
                 <button class="lang-btn kanit-semibold" data-lang="zh">ZH</button>
                 <button class="lang-btn kanit-semibold" data-lang="ru">RU</button>
             </div>
         </div>
 
-        <header class="text-center mb-16">
-            <p class="kanit-semibold text-lg text-[#00A6ED]" data-translate-key="header_supertitle">A Strategic Analysis by ThB.Ho</p>
-            <h1 class="kanit-bold text-4xl md:text-5xl text-[#2F2F2F] mb-2" data-translate-key="header_title">The Near Future of Digital Identity</h1>
-            <p class="kanit-regular text-xl md:text-2xl text-gray-600" data-translate-key="header_subtitle">Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years</p>
+        <!-- Header -->
+        <header class="text-center mb-20 animate-on-scroll">
+            <div class="inline-block px-4 py-1 rounded-full bg-blue-100 text-[#00A6ED] kanit-semibold text-sm mb-4" data-translate-key="header_supertitle">A Strategic Analysis by ThB.Ho</div>
+            <h1 class="kanit-bold text-5xl md:text-6xl text-[#1E293B] mb-4 tracking-tight leading-tight" data-translate-key="header_title">The Near Future of <br class="hidden md:block"/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00A6ED] to-purple-500">Digital Identity</span></h1>
+            <p class="kanit-regular text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto" data-translate-key="header_subtitle">Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years</p>
         </header>
 
-        <section id="hero-video" class="mb-20">
-            <div class="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-4">
-                <video class="w-full h-auto rounded-md" src="https://cdn.leonardo.ai/users/ca720662-c90e-42dc-9478-141fa405d0ea/generations/9c00b42e-ea68-4d13-9324-1d5eca7ee726/9db28cfe-ffde-4308-8c97-8912b9f3feda.mp4" autoplay loop muted playsinline></video>
+        <!-- Hero Video -->
+        <section id="hero-video" class="mb-24 animate-on-scroll">
+            <div class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-2 relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-20 -z-10"></div>
+                <video class="w-full h-auto rounded-xl object-cover" style="max-height: 500px;" src="https://astra.app/api/files/e6c80a20-4449-41ae-9964-2ad0820a7d1f" autoplay loop muted playsinline></video>
             </div>
         </section>
 
-        <section id="tech-wave" class="mb-20">
-            <h2 class="kanit-bold text-2xl md:text-3xl text-[#00A6ED] mb-10 text-center" data-translate-key="tech_wave_title">6 Tech Waves That Will Change the World & Elevate Your Persona's Value</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Tech Waves Infographic -->
+        <section id="tech-wave" class="mb-24">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="kanit-bold text-3xl md:text-4xl text-[#1E293B] mb-4" data-translate-key="tech_wave_title">6 Tech Waves Changing the World</h2>
+                <p class="text-gray-500 kanit-regular text-lg">Hover over each node to explore your Persona's role.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 timeline-container">
                 
-                <div class="tech-card border-t-4 border-[#00A6ED]">
-                    <div class="tech-card-content">
-                        <div class="text-5xl mb-4">🧠</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="agentic_ai_title">Agentic AI</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="agentic_ai_timeline">Timeline: Early Adoption (2024-2025)</p>
-                        <p class="kanit-light mb-4" data-translate-key="agentic_ai_desc">AI will no longer be a passive assistant but a proactive agent that plans and executes complex tasks for us automatically.</p>
+                <!-- Card 1 -->
+                <div class="tech-card border-t-8 border-[#00A6ED] lg:mr-8 animate-on-scroll">
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-[#00A6ED]/10 w-16 h-16 rounded-full flex items-center justify-center">🧠</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="agentic_ai_timeline">2024-2025</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="agentic_ai_title">Agentic AI</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="agentic_ai_desc">AI will no longer be a passive assistant but a proactive agent that plans and executes complex tasks for us automatically.</p>
                     </div>
-                    <div class="bg-[#00A6ED]/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="agentic_ai_role">Persona's Role: The <span class="kanit-bold">"Brain & Identity"</span> of the Agent, ensuring all decisions reflect your unique character.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card border-t-4 border-[#7FB800]">
-                    <div class="tech-card-content">
-                        <div class="text-5xl mb-4">👓</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="vrar_title">Immersive VR/AR</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="vrar_timeline">Timeline: Mainstream Growth (2025-2027)</p>
-                        <p class="kanit-light mb-4" data-translate-key="vrar_desc">AI glasses and virtual reality will become our primary interface for work and social life, replacing traditional screens.</p>
-                    </div>
-                    <div class="bg-[#7FB800]/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="vrar_role">Persona's Role: Your <span class="kanit-bold">"Body & Representation"</span> in the digital realm, enabling realistic interaction.</p>
+                    <div class="bg-gray-50 border-l-4 border-[#00A6ED] p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="agentic_ai_role">Persona's Role: The <span class="kanit-bold text-[#00A6ED]">"Brain & Identity"</span> of the Agent, ensuring decisions reflect your character.</p>
                     </div>
                 </div>
 
-                <div class="tech-card border-t-4 border-[#F6511D]">
-                    <div class="tech-card-content">
-                        <div class="text-5xl mb-4">🤖</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="humanoid_title">Humanoid Robots</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="humanoid_timeline">Timeline: Initial Deployment (2026-2028)</p>
-                        <p class="kanit-light mb-4" data-translate-key="humanoid_desc">Human-like robots will begin to enter the service sector, working alongside or on behalf of humans.</p>
+                <!-- Card 2 -->
+                <div class="tech-card border-t-8 border-[#7FB800] lg:ml-8 lg:mt-16 animate-on-scroll">
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-[#7FB800]/10 w-16 h-16 rounded-full flex items-center justify-center">👓</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="vrar_timeline">2025-2027</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="vrar_title">Immersive VR/AR</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="vrar_desc">AI glasses and virtual reality will become our primary interface for work and social life, replacing traditional screens.</p>
                     </div>
-                    <div class="bg-[#F6511D]/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="humanoid_role">Persona's Role: The <span class="kanit-bold">"Soul"</span> downloaded into a robot, providing services with your personal style.</p>
-                    </div>
-                </div>
-
-                <div class="tech-card border-t-4 border-[#FFB400]">
-                     <div class="tech-card-content">
-                        <div class="text-5xl mb-4">🔗</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="bci_title">Neuralink (BCI)</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="bci_timeline">Timeline: Wider Trials (2028+)</p>
-                        <p class="kanit-light mb-4" data-translate-key="bci_desc">Direct brain-computer interface technology will advance significantly, reinforcing the need for a digital identity.</p>
-                    </div>
-                    <div class="bg-[#FFB400]/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="bci_role">Persona's Role: The <span class="kanit-bold">"Connection-Ready Digital Self"</span> prepared for this future technology.</p>
+                    <div class="bg-gray-50 border-l-4 border-[#7FB800] p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="vrar_role">Persona's Role: Your <span class="kanit-bold text-[#7FB800]">"Body & Representation"</span> in the digital realm.</p>
                     </div>
                 </div>
 
-                <div class="tech-card border-t-4 border-purple-500">
-                     <div class="tech-card-content">
-                        <div class="text-5xl mb-4">🛡️</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="decentralized_title">Decentralized Identity</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="decentralized_timeline">Timeline: Gradual Integration (2025-2028)</p>
-                        <p class="kanit-light mb-4" data-translate-key="decentralized_desc">Owning and controlling your digital identity via blockchain technology will become the new standard.</p>
+                <!-- Card 3 -->
+                <div class="tech-card border-t-8 border-[#F6511D] lg:mr-8 animate-on-scroll">
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-[#F6511D]/10 w-16 h-16 rounded-full flex items-center justify-center">🤖</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="humanoid_timeline">2026-2028</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="humanoid_title">Humanoid Robots</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="humanoid_desc">Human-like robots will begin to enter the service sector, working alongside or on behalf of humans.</p>
                     </div>
-                    <div class="bg-purple-500/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="decentralized_role">Persona's Role: A true <span class="kanit-bold">"Digital Asset"</span> that you genuinely own, usable across any platform.</p>
+                    <div class="bg-gray-50 border-l-4 border-[#F6511D] p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="humanoid_role">Persona's Role: The <span class="kanit-bold text-[#F6511D]">"Soul"</span> downloaded into a robot, providing services in your style.</p>
                     </div>
                 </div>
 
-                <div class="tech-card border-t-4 border-pink-500">
-                    <div class="tech-card-content">
-                        <div class="text-5xl mb-4">✨</div>
-                        <h3 class="kanit-bold text-2xl mb-2" data-translate-key="gen_worlds_title">Generative Worlds</h3>
-                        <p class="kanit-semibold text-sm text-gray-500 mb-3" data-translate-key="gen_worlds_timeline">Timeline: Emerging Platforms (2026-2027)</p>
-                        <p class="kanit-light mb-4" data-translate-key="gen_worlds_desc">We will be able to instantly create virtual worlds or private rooms from our imagination using simple commands.</p>
+                <!-- Card 4 -->
+                <div class="tech-card border-t-8 border-[#FFB400] lg:ml-8 lg:mt-16 animate-on-scroll">
+                     <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-[#FFB400]/10 w-16 h-16 rounded-full flex items-center justify-center">🔗</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="bci_timeline">2028+</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="bci_title">Neuralink (BCI)</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="bci_desc">Direct brain-computer interface technology will advance significantly, reinforcing the need for a digital identity.</p>
                     </div>
-                    <div class="bg-pink-500/10 p-3 rounded-lg mt-auto">
-                        <p class="kanit-semibold" data-translate-key="gen_worlds_role">Persona's Role: The <span class="kanit-bold">"Creator"</span> who conjures unique environments and experiences.</p>
+                    <div class="bg-gray-50 border-l-4 border-[#FFB400] p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="bci_role">Persona's Role: The <span class="kanit-bold text-[#FFB400]">"Connection-Ready Digital Self"</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="tech-card border-t-8 border-purple-500 lg:mr-8 animate-on-scroll">
+                     <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-purple-500/10 w-16 h-16 rounded-full flex items-center justify-center">🛡️</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="decentralized_timeline">2025-2028</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="decentralized_title">Decentralized Identity</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="decentralized_desc">Owning and controlling your digital identity via blockchain technology will become the new standard.</p>
+                    </div>
+                    <div class="bg-gray-50 border-l-4 border-purple-500 p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="decentralized_role">Persona's Role: A true <span class="kanit-bold text-purple-500">"Digital Asset"</span> that you genuinely own.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="tech-card border-t-8 border-pink-500 lg:ml-8 lg:mt-16 animate-on-scroll">
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-5xl bg-pink-500/10 w-16 h-16 rounded-full flex items-center justify-center">✨</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="gen_worlds_timeline">2026-2027</span>
+                        </div>
+                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="gen_worlds_title">Generative Worlds</h3>
+                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="gen_worlds_desc">We will be able to instantly create virtual worlds or private rooms from our imagination using simple commands.</p>
+                    </div>
+                    <div class="bg-gray-50 border-l-4 border-pink-500 p-4 rounded-r-lg mt-auto">
+                        <p class="kanit-regular text-gray-700" data-translate-key="gen_worlds_role">Persona's Role: The <span class="kanit-bold text-pink-500">"Creator"</span> who conjures unique environments.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="gemini-feature" class="mb-20">
-            <div class="tech-card">
-                <h2 class="kanit-bold text-2xl md:text-3xl text-[#00A6ED] mb-4 text-center" data-translate-key="gemini_title">✨ Visualize Your Future with Gemini AI</h2>
-                <p class="kanit-light text-center text-lg mb-6 max-w-3xl mx-auto" data-translate-key="gemini_subtitle">Select the technologies that interest you (1 to 3 choices), and let Gemini AI generate a scenario showing how your Hybrid AI Persona will play a role in the future.</p>
+        <!-- Interactive AI Generator Feature -->
+        <section id="gemini-feature" class="mb-24 animate-on-scroll">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+                <!-- Background Decoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-100 to-transparent rounded-full -mr-20 -mt-20 opacity-50 pointer-events-none"></div>
+
+                <div class="text-center mb-10">
+                    <div class="inline-flex items-center justify-center p-3 bg-blue-50 text-blue-500 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                    <h2 class="kanit-bold text-3xl md:text-4xl text-[#1E293B] mb-4" data-translate-key="gemini_title">Visualize Your Future</h2>
+                    <p class="kanit-regular text-gray-500 text-lg max-w-2xl mx-auto" data-translate-key="gemini_subtitle">Select the technologies that interest you (1 to 3 choices), and let AI generate a scenario showing how your Hybrid AI Persona will play a role.</p>
+                </div>
                 
-                <div id="tech-options" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Agentic AI" class="form-checkbox h-5 w-5 text-[#00A6ED] rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_agentic">Agentic AI</span>
+                <div id="tech-options" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Agentic AI" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">🧠</span>
+                            <span data-translate-key="tech_option_agentic">Agentic AI</span>
+                        </div>
                     </label>
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Immersive VR/AR" class="form-checkbox h-5 w-5 text-[#7FB800] rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_vrar">VR/AR</span>
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Immersive VR/AR" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">👓</span>
+                            <span data-translate-key="tech_option_vrar">VR/AR</span>
+                        </div>
                     </label>
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Humanoid Robots" class="form-checkbox h-5 w-5 text-[#F6511D] rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_humanoids">Humanoids</span>
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Humanoid Robots" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">🤖</span>
+                            <span data-translate-key="tech_option_humanoids">Humanoids</span>
+                        </div>
                     </label>
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Neuralink (BCI)" class="form-checkbox h-5 w-5 text-[#FFB400] rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_bci">Neuralink</span>
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Neuralink (BCI)" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">🔗</span>
+                            <span data-translate-key="tech_option_bci">Neuralink</span>
+                        </div>
                     </label>
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Decentralized Identity" class="form-checkbox h-5 w-5 text-purple-500 rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_web3">Web3 Identity</span>
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Decentralized Identity" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">🛡️</span>
+                            <span data-translate-key="tech_option_web3">Web3 Identity</span>
+                        </div>
                     </label>
-                    <label class="flex items-center space-x-2 p-3 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors">
-                        <input type="checkbox" name="tech" value="Generative Worlds" class="form-checkbox h-5 w-5 text-pink-500 rounded">
-                        <span class="kanit-regular" data-translate-key="tech_option_gen_worlds">Gen Worlds</span>
+                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                        <input type="checkbox" name="tech" value="Generative Worlds" class="sr-only">
+                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
+                            <span class="block text-2xl mb-1">✨</span>
+                            <span data-translate-key="tech_option_gen_worlds">Gen Worlds</span>
+                        </div>
                     </label>
                 </div>
 
-                <button id="generate-button" class="w-full md:w-auto mx-auto bg-[#00A6ED] text-white kanit-semibold py-3 px-8 rounded-lg shadow-md hover:bg-[#0095D5] transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00A6ED]" data-translate-key="generate_button">
-                    Generate Scenario
-                </button>
+                <div class="text-center">
+                    <button id="generate-button" class="bg-gradient-to-r from-[#00A6ED] to-blue-600 text-white kanit-bold py-3 px-10 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        <span data-translate-key="generate_button">Generate Scenario</span>
+                    </button>
+                </div>
 
-                <div id="scenario-result" class="mt-8 p-6 bg-gray-50 rounded-lg min-h-[150px] kanit-light text-lg whitespace-pre-wrap leading-relaxed">
-                    <p class="text-gray-500" data-translate-key="gemini_placeholder">The result will appear here...</p>
+                <div id="scenario-result" class="mt-10 p-6 md:p-8 bg-[#F8FAFC] border border-gray-200 rounded-xl min-h-[150px] kanit-regular text-lg text-gray-700 leading-relaxed shadow-inner hidden">
+                    <div id="scenario-content">
+                        <p class="text-gray-400 text-center italic" data-translate-key="gemini_placeholder">The result will appear here...</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="conclusion" class="mb-16">
-            <div class="bg-white rounded-lg shadow-lg p-6 md:p-10">
-                <h2 class="kanit-bold text-2xl md:text-3xl text-[#00A6ED] mb-8 text-center" data-translate-key="conclusion_title">Strategic Conclusion: 3 Truths of the Future</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div>
-                        <div class="text-6xl mb-3">🚀</div>
-                        <h3 class="kanit-semibold text-xl" data-translate-key="truth_1_title">Tech is Arriving Faster Than We Think</h3>
-                        <p class="kanit-light" data-translate-key="truth_1_desc">Development is exponential. What was impossible 5 years ago will be commonplace in the next 5 years.</p>
+        <!-- Conclusion -->
+        <section id="conclusion" class="mb-16 animate-on-scroll">
+            <div class="bg-[#1E293B] text-white rounded-2xl shadow-2xl p-8 md:p-12">
+                <h2 class="kanit-bold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-12 text-center" data-translate-key="conclusion_title">3 Truths of the Future</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                    <div class="p-4">
+                        <div class="text-6xl mb-6 transform transition hover:scale-110">🚀</div>
+                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_1_title">Tech Arrives Faster</h3>
+                        <p class="kanit-light text-gray-300" data-translate-key="truth_1_desc">Development is exponential. What was impossible 5 years ago will be commonplace in the next 5 years.</p>
                     </div>
-                    <div>
-                        <div class="text-6xl mb-3">🌐</div>
-                        <h3 class="kanit-semibold text-xl" data-translate-key="truth_2_title">Personas Will Be Everywhere</h3>
-                        <p class="kanit-light" data-translate-key="truth_2_desc">As interfaces shift (from screens to VR/AR), the need for a persistent, unified digital identity will become essential.</p>
+                    <div class="p-4">
+                        <div class="text-6xl mb-6 transform transition hover:scale-110">🌐</div>
+                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_2_title">Personas Are Everywhere</h3>
+                        <p class="kanit-light text-gray-300" data-translate-key="truth_2_desc">As interfaces shift to VR/AR, a persistent, unified digital identity becomes essential.</p>
                     </div>
-                    <div>
-                        <div class="text-6xl mb-3">💎</div>
-                        <h3 class="kanit-semibold text-xl" data-translate-key="truth_3_title">"You" are the Invaluable Asset</h3>
-                        <p class="kanit-light" data-translate-key="truth_3_desc">In a world where anyone can generate a generic AI, the rarest and most valuable asset is authenticity that cannot be replicated.</p>
+                    <div class="p-4">
+                        <div class="text-6xl mb-6 transform transition hover:scale-110">💎</div>
+                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_3_title">"You" Are Invaluable</h3>
+                        <p class="kanit-light text-gray-300" data-translate-key="truth_3_desc">When anyone can generate a generic AI, your authentic, unreplicable self is the rarest asset.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <footer class="text-center mt-16 pt-8 border-t border-gray-300">
-            <p class="kanit-bold text-xl text-[#2F2F2F]" data-translate-key="footer_conclusion">Investing in a Hybrid AI Persona today is the most critical investment for the future that is already arriving.</p>
-            <p class="kanit-light text-gray-500 mt-2" data-translate-key="footer_signature">ThB.Ho - The Architect of Tomorrow © 2025</p>
+        <footer class="text-center mt-20 pt-10 border-t border-gray-200 animate-on-scroll">
+            <p class="kanit-semibold text-xl text-gray-800 max-w-2xl mx-auto mb-4" data-translate-key="footer_conclusion">Investing in a Hybrid AI Persona today is the most critical investment for the future that is already arriving.</p>
+            <p class="kanit-light text-gray-400" data-translate-key="footer_signature">ThB.Ho - The Architect of Tomorrow © 2026</p>
         </footer>
 
     </div>
 
     <script>
+        // Use empty string. API key provided securely by the runtime environment
+        const apiKey = ""; 
+
         let currentLang = 'en';
 
+        // Updated translations emphasizing simple language and formatting
         const translations = {
             en: {
                 home_button: "Back to Home",
                 header_supertitle: "A Strategic Analysis by ThB.Ho",
-                header_title: "The Near Future of Digital Identity",
+                header_title: "The Near Future of",
                 header_subtitle: "Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years",
-                tech_wave_title: "6 Tech Waves That Will Change the World & Elevate Your Persona's Value",
+                tech_wave_title: "6 Tech Waves Changing the World",
                 agentic_ai_title: "Agentic AI",
-                agentic_ai_timeline: "Timeline: Early Adoption (2024-2025)",
-                agentic_ai_desc: "AI will no longer be a passive assistant but a proactive agent that plans and executes complex tasks for us automatically.",
-                agentic_ai_role: `Persona's Role: The <span class="kanit-bold">"Brain & Identity"</span> of the Agent, ensuring all decisions reflect your unique character.`,
+                agentic_ai_timeline: "2024-2025",
+                agentic_ai_desc: "AI will act on your behalf, automatically planning and completing tasks instead of just waiting for instructions.",
+                agentic_ai_role: `Persona's Role: The <span class="kanit-bold text-[#00A6ED]">"Brain & Identity"</span> of the Agent.`,
                 vrar_title: "Immersive VR/AR",
-                vrar_timeline: "Timeline: Mainstream Growth (2025-2027)",
-                vrar_desc: "AI glasses and virtual reality will become our primary interface for work and social life, replacing traditional screens.",
-                vrar_role: `Persona's Role: Your <span class="kanit-bold">"Body & Representation"</span> in the digital realm, enabling realistic interaction.`,
+                vrar_timeline: "2025-2027",
+                vrar_desc: "Smart glasses and VR will replace phones and screens as our main way to work and connect.",
+                vrar_role: `Persona's Role: Your <span class="kanit-bold text-[#7FB800]">"Body & Representation"</span> online.`,
                 humanoid_title: "Humanoid Robots",
-                humanoid_timeline: "Timeline: Initial Deployment (2026-2028)",
-                humanoid_desc: "Human-like robots will begin to enter the service sector, working alongside or on behalf of humans.",
-                humanoid_role: `Persona's Role: The <span class="kanit-bold">"Soul"</span> downloaded into a robot, providing services with your personal style.`,
+                humanoid_timeline: "2026-2028",
+                humanoid_desc: "Robots that look and move like humans will start working in services and homes.",
+                humanoid_role: `Persona's Role: The <span class="kanit-bold text-[#F6511D]">"Soul"</span> downloaded into a robot.`,
                 bci_title: "Neuralink (BCI)",
-                bci_timeline: "Timeline: Wider Trials (2028+)",
-                bci_desc: "Direct brain-computer interface technology will advance significantly, reinforcing the need for a digital identity.",
-                bci_role: `Persona's Role: The <span class="kanit-bold">"Connection-Ready Digital Self"</span> prepared for this future technology.`,
-                decentralized_title: "Decentralized Identity",
-                decentralized_timeline: "Timeline: Gradual Integration (2025-2028)",
-                decentralized_desc: "Owning and controlling your digital identity via blockchain technology will become the new standard.",
-                decentralized_role: `Persona's Role: A true <span class="kanit-bold">"Digital Asset"</span> that you genuinely own, usable across any platform.`,
+                bci_timeline: "2028+",
+                bci_desc: "Direct brain-to-computer connections will make controlling digital things as easy as thinking.",
+                bci_role: `Persona's Role: The <span class="kanit-bold text-[#FFB400]">"Connection-Ready Digital Self"</span>.`,
+                decentralized_title: "Web3 Identity",
+                decentralized_timeline: "2025-2028",
+                decentralized_desc: "You will truly own your digital identity via blockchain, taking it safely to any app or platform.",
+                decentralized_role: `Persona's Role: A true <span class="kanit-bold text-purple-500">"Digital Asset"</span> you own.`,
                 gen_worlds_title: "Generative Worlds",
-                gen_worlds_timeline: "Timeline: Emerging Platforms (2026-2027)",
-                gen_worlds_desc: "We will be able to instantly create virtual worlds or private rooms from our imagination using simple commands.",
-                gen_worlds_role: `Persona's Role: The <span class="kanit-bold">"Creator"</span> who conjures unique environments and experiences.`,
-                gemini_title: "✨ Visualize Your Future with Gemini AI",
-                gemini_subtitle: "Select the technologies that interest you (1 to 3 choices), and let Gemini AI generate a scenario showing how your Hybrid AI Persona will play a role in the future.",
+                gen_worlds_timeline: "2026-2027",
+                gen_worlds_desc: "You will instantly create private 3D virtual rooms and worlds just by describing them.",
+                gen_worlds_role: `Persona's Role: The <span class="kanit-bold text-pink-500">"Creator"</span> of unique spaces.`,
+                gemini_title: "Visualize Your Future",
+                gemini_subtitle: "Pick 1 to 3 technologies below. AI will create a quick story showing how your 'Hybrid AI Persona' will help you in the future.",
                 tech_option_agentic: "Agentic AI",
                 tech_option_vrar: "VR/AR",
                 tech_option_humanoids: "Humanoids",
@@ -279,192 +416,218 @@
                 tech_option_gen_worlds: "Gen Worlds",
                 generate_button: "Generate Scenario",
                 gemini_placeholder: "The result will appear here...",
-                conclusion_title: "Strategic Conclusion: 3 Truths of the Future",
-                truth_1_title: "Tech is Arriving Faster Than We Think",
-                truth_1_desc: "Development is exponential. What was impossible 5 years ago will be commonplace in the next 5 years.",
-                truth_2_title: "Personas Will Be Everywhere",
-                truth_2_desc: "As interfaces shift (from screens to VR/AR), the need for a persistent, unified digital identity will become essential.",
-                truth_3_title: `"You" are the Invaluable Asset`,
-                truth_3_desc: "In a world where anyone can generate a generic AI, the rarest and most valuable asset is authenticity that cannot be replicated.",
-                footer_conclusion: "Investing in a Hybrid AI Persona today is the most critical investment for the future that is already arriving.",
-                footer_signature: "ThB.Ho - The Architect of Tomorrow © 2025",
-                gemini_prompt_template: `Based on the convergence of the following technologies: {techs}. Generate a short, imaginative, and detailed story (in English, approximately 150-200 words) about how a person's 'Hybrid AI Persona' (a digital twin with their unique personality and memories) would be used in daily life or work in the next 3-5 years. The story should be optimistic, inspiring, and focus on the human benefits. Start the story directly without any introductory phrases.`,
-                gemini_loading: "Visualizing your future with Gemini AI... Please wait.",
-                gemini_error_select_one: "Please select at least one technology.",
-                gemini_error_select_three: "Please select a maximum of three technologies.",
-                gemini_error_api: "An error occurred while generating the scenario. Please try again."
+                conclusion_title: "3 Truths of the Future",
+                truth_1_title: "Tech Arrives Faster",
+                truth_1_desc: "Progress is speeding up. What felt impossible 5 years ago will be normal in 5 years.",
+                truth_2_title: "Personas Are Everywhere",
+                truth_2_desc: "As we move into VR/AR, having one main, trusted digital self will be necessary.",
+                truth_3_title: `"You" Are Invaluable`,
+                truth_3_desc: "When AI is everywhere, your real personality and human authenticity become the most valuable things.",
+                footer_conclusion: "Creating your Hybrid AI Persona today prepares you for the world of tomorrow.",
+                footer_signature: "ThB.Ho - The Architect of Tomorrow © 2026",
+                gemini_prompt_template: `Based on the following technologies: {techs}. Write a short, simple, and inspiring story (in English, max 150 words) about how a person uses their 'Hybrid AI Persona' in daily life in 3 years. Use simple language. If the output has multiple points, use bullet points for readability. Start the story immediately.`,
+                gemini_loading: "Generating your future vision... Please wait.",
+                gemini_error_select_one: "Please select at least 1 technology.",
+                gemini_error_select_three: "Please select a maximum of 3 technologies.",
+                gemini_error_api: "An error occurred. Please try again later."
             },
             th: {
-                home_button: "กลับสู่หน้า Home",
+                home_button: "กลับสู่หน้าหลัก",
                 header_supertitle: "บทวิเคราะห์เชิงกลยุทธ์ by ThB.Ho",
-                header_title: "อนาคตอันใกล้ของตัวตนดิจิทัล",
-                header_subtitle: "ทำไม Hybrid AI Persona คือสินทรัพย์ที่สำคัญที่สุดของคุณในอีก 3-5 ปีข้างหน้า",
-                tech_wave_title: "6 คลื่นเทคโนโลยีที่จะเปลี่ยนโลกและยกระดับคุณค่าของ Persona",
-                agentic_ai_title: "Agentic AI",
-                agentic_ai_timeline: "ไทม์ไลน์: เริ่มใช้งาน (2567-2568)",
-                agentic_ai_desc: "AI จะไม่ใช่แค่ผู้ช่วยรอรับคำสั่ง แต่จะเป็น \"ตัวแทน\" ที่คิดและวางแผนจัดการเรื่องซับซ้อนให้เราโดยอัตโนมัติ",
-                agentic_ai_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"สมองและตัวตน"</span> ของ Agent เพื่อให้ทุกการตัดสินใจสะท้อนความเป็นคุณ`,
-                vrar_title: "Immersive VR/AR",
-                vrar_timeline: "ไทม์ไลน์: เติบโตสู่กระแสหลัก (2568-2570)",
-                vrar_desc: "แว่นตา AI และโลกเสมือน (VR) จะกลายเป็น Interface หลักในการทำงานและเข้าสังคม แทนที่หน้าจอแบบเดิมๆ",
-                vrar_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"ร่างกายและภาพแทน"</span> ของคุณในโลกดิจิทัล เพื่อการมีปฏิสัมพันธ์ที่สมจริง`,
-                humanoid_title: "หุ่นยนต์ Humanoid",
-                humanoid_timeline: "ไทม์ไลน์: เริ่มใช้งานจริง (2569-2571)",
-                humanoid_desc: "หุ่นยนต์ที่มีรูปร่างเหมือนมนุษย์จะเริ่มเข้ามามีบทบาทในภาคบริการ ทำงานร่วมกับหรือทำงานแทนมนุษย์",
-                humanoid_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"จิตวิญญาณ"</span> ที่ดาวน์โหลดเข้าไปในหุ่นยนต์ เพื่อให้บริการด้วยสไตล์ที่เป็นคุณ`,
-                bci_title: "Neuralink (BCI)",
-                bci_timeline: "ไทม์ไลน์: ทดลองในวงกว้าง (2571+)",
-                bci_desc: "เทคโนโลยีการเชื่อมต่อสมองเข้ากับคอมพิวเตอร์โดยตรงจะก้าวหน้าขึ้นอย่างมาก ตอกย้ำความจำเป็นในการมีตัวตนดิจิทัล",
-                bci_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"ตัวตนดิจิทัลที่พร้อมเชื่อมต่อ"</span> กับเทคโนโลยีแห่งอนาคตนี้`,
-                decentralized_title: "Decentralized Identity",
-                decentralized_timeline: "ไทม์ไลน์: การผสมผสานอย่างค่อยเป็นค่อยไป (2568-2571)",
-                decentralized_desc: "การเป็นเจ้าของและควบคุมอัตลักษณ์ดิจิทัลของตนเองผ่านเทคโนโลยีบล็อกเชนจะกลายเป็นมาตรฐานใหม่",
-                decentralized_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"สินทรัพย์ดิจิทัล"</span> ที่คุณเป็นเจ้าของอย่างแท้จริง นำไปใช้ข้ามแพลตฟอร์มได้อย่างอิสระ`,
-                gen_worlds_title: "Generative Worlds",
-                gen_worlds_timeline: "ไทม์ไลน์: แพลตฟอร์มเกิดใหม่ (2569-2570)",
-                gen_worlds_desc: "เราจะสามารถสร้างโลกเสมือนหรือห้องส่วนตัวขึ้นมาได้ทันทีตามจินตนาการ เพียงแค่ใช้คำสั่งง่ายๆ",
-                gen_worlds_role: `บทบาทของ Persona: เป็น <span class="kanit-bold">"ผู้สร้างสรรค์"</span> ที่เนรมิตสภาพแวดล้อมและประสบการณ์ที่ไม่เหมือนใคร`,
-                gemini_title: "✨ สร้างภาพอนาคตของคุณด้วย Gemini AI",
-                gemini_subtitle: "เลือกเทคโนโลยีที่คุณสนใจ (ตั้งแต่ 1 ถึง 3 อย่าง) แล้วให้ Gemini AI สร้างสถานการณ์จำลองให้เห็นว่า Hybrid AI Persona ของคุณจะมีบทบาทอย่างไรในอนาคต",
-                tech_option_agentic: "Agentic AI",
+                header_title: "อนาคตอันใกล้ของ",
+                header_subtitle: "ทำไม AI ตัวแทนของคุณ (Hybrid AI Persona) ถึงสำคัญที่สุดในอีก 3-5 ปีข้างหน้า",
+                tech_wave_title: "6 เทคโนโลยีที่จะเปลี่ยนโลก",
+                agentic_ai_title: "AI ผู้ช่วยอัจฉริยะ",
+                agentic_ai_timeline: "2567-2568",
+                agentic_ai_desc: "AI จะคิดและทำงานแทนเราโดยอัตโนมัติ ไม่ใช่แค่รอรับคำสั่งอีกต่อไป",
+                agentic_ai_role: `บทบาท: <span class="kanit-bold text-[#00A6ED]">"สมองและตัวตน"</span> เพื่อให้ AI ตัดสินใจในแบบของคุณ`,
+                vrar_title: "โลกเสมือนจริง (VR/AR)",
+                vrar_timeline: "2568-2570",
+                vrar_desc: "แว่นตาอัจฉริยะจะมาแทนที่หน้าจอมือถือ เป็นช่องทางหลักในการทำงานและเข้าสังคม",
+                vrar_role: `บทบาท: <span class="kanit-bold text-[#7FB800]">"ร่างกายดิจิทัล"</span> ของคุณในโลกออนไลน์`,
+                humanoid_title: "หุ่นยนต์คล้ายมนุษย์",
+                humanoid_timeline: "2569-2571",
+                humanoid_desc: "หุ่นยนต์จะเข้ามาช่วยทำงานบริการและงานบ้าน ร่วมกับมนุษย์มากขึ้น",
+                humanoid_role: `บทบาท: <span class="kanit-bold text-[#F6511D]">"จิตวิญญาณ"</span> ที่ใส่เข้าไปในหุ่นยนต์เพื่อทำงานสไตล์คุณ`,
+                bci_title: "เชื่อมสมองกับคอมพิวเตอร์",
+                bci_timeline: "2571+",
+                bci_desc: "สั่งงานอุปกรณ์ต่างๆ ด้วยความคิดโดยตรง ผ่านการเชื่อมต่อสมองเข้ากับคอมพิวเตอร์",
+                bci_role: `บทบาท: <span class="kanit-bold text-[#FFB400]">"ตัวตนที่พร้อมเชื่อมต่อ"</span> ตลอดเวลา`,
+                decentralized_title: "ตัวตนดิจิทัลที่แท้จริง (Web3)",
+                decentralized_timeline: "2568-2571",
+                decentralized_desc: "คุณจะเป็นเจ้าของข้อมูลตัวเองอย่างปลอดภัยผ่านบล็อกเชน และใช้ได้กับทุกแอป",
+                decentralized_role: `บทบาท: <span class="kanit-bold text-purple-500">"ทรัพย์สินดิจิทัล"</span> ที่คุณเป็นเจ้าของอย่างแท้จริง`,
+                gen_worlds_title: "สร้างโลกด้วย AI",
+                gen_worlds_timeline: "2569-2570",
+                gen_worlds_desc: "สร้างห้องจำลองหรือโลก 3 มิติส่วนตัวได้ทันที แค่ใช้คำสั่งบอก AI ว่าต้องการอะไร",
+                gen_worlds_role: `บทบาท: <span class="kanit-bold text-pink-500">"ผู้สร้าง"</span> พื้นที่ส่วนตัวที่ไม่เหมือนใคร`,
+                gemini_title: "จำลองภาพอนาคตของคุณ",
+                gemini_subtitle: "เลือกเทคโนโลยีที่สนใจ (1-3 ข้อ) แล้วให้ AI เขียนเรื่องสั้นๆ ว่าคุณจะใช้ Hybrid AI Persona อย่างไรในอนาคต",
+                tech_option_agentic: "AI ผู้ช่วย",
                 tech_option_vrar: "VR/AR",
                 tech_option_humanoids: "หุ่นยนต์",
-                tech_option_bci: "Neuralink",
-                tech_option_web3: "Web3 Identity",
-                tech_option_gen_worlds: "Gen Worlds",
-                generate_button: "สร้างสถานการณ์จำลอง",
-                gemini_placeholder: "ผลลัพธ์จะปรากฏที่นี่...",
-                conclusion_title: "บทสรุปเชิงกลยุทธ์: 3 ความจริงแห่งอนาคต",
-                truth_1_title: "เทคโนโลยีมาเร็วกว่าที่คิด",
-                truth_1_desc: "การพัฒนาเป็นไปในลักษณะก้าวกระโดด สิ่งที่เป็นไปไม่ได้เมื่อ 5 ปีก่อน กำลังจะกลายเป็นเรื่องปกติในอีก 5 ปีข้างหน้า",
-                truth_2_title: "Persona จะอยู่ทุกที่",
-                truth_2_desc: "เมื่อ Interface เปลี่ยนไป (จากจอสู่ VR/AR) ความต้องการ \"ตัวตนดิจิทัลที่ถาวรและเป็นหนึ่งเดียว\" จะกลายเป็นสิ่งจำเป็น",
-                truth_3_title: `"ความเป็นคุณ" คือสิ่งที่ประเมินค่าไม่ได้`,
-                truth_3_desc: "ในโลกที่ใครๆ ก็สร้าง AI ได้ สินทรัพย์ที่หายากและมีค่าที่สุดคือ \"ความจริงแท้\" ที่ไม่สามารถลอกเลียนแบบได้",
-                footer_conclusion: "การลงทุนสร้าง Hybrid AI Persona ในวันนี้ คือการสร้างสินทรัพย์ดิจิทัลที่สำคัญที่สุดสำหรับอนาคตที่กำลังจะมาถึง",
-                footer_signature: "ThB.Ho - The Architect of Tomorrow © 2568",
-                gemini_prompt_template: `จากข้อมูลการบรรจบกันของเทคโนโลยีต่อไปนี้: {techs} จงสร้างเรื่องราวสั้นๆ ที่เปี่ยมด้วยจินตนาการและมีรายละเอียด (เป็นภาษาไทย ความยาวประมาณ 150-200 คำ) เกี่ยวกับ 'Hybrid AI Persona' (ฝาแฝดดิจิทัลที่มีบุคลิกและความทรงจำเฉพาะตัว) ของบุคคลหนึ่งว่าจะถูกนำมาใช้ในชีวิตประจำวันหรือการทำงานในอีก 3-5 ปีข้างหน้าอย่างไร เรื่องราวควรมองโลกในแง่ดี สร้างแรงบันดาลใจ และมุ่งเน้นประโยชน์ต่อมนุษย์ เริ่มเรื่องโดยไม่ต้องมีคำนำ`,
-                gemini_loading: "กำลังสร้างภาพอนาคตด้วย Gemini AI... กรุณารอสักครู่",
-                gemini_error_select_one: "กรุณาเลือกเทคโนโลยีอย่างน้อย 1 อย่าง",
-                gemini_error_select_three: "กรุณาเลือกเทคโนโลยีไม่เกิน 3 อย่าง",
-                gemini_error_api: "เกิดข้อผิดพลาดในการสร้างสถานการณ์จำลอง กรุณาลองใหม่อีกครั้ง"
+                tech_option_bci: "เชื่อมสมอง",
+                tech_option_web3: "Web3",
+                tech_option_gen_worlds: "สร้างโลก AI",
+                generate_button: "สร้างเรื่องราว",
+                gemini_placeholder: "ผลลัพธ์จะแสดงตรงนี้...",
+                conclusion_title: "3 ความจริงแห่งอนาคต",
+                truth_1_title: "เทคโนโลยีมาไวกว่าที่คิด",
+                truth_1_desc: "สิ่งที่เป็นไปไม่ได้เมื่อ 5 ปีก่อน จะกลายเป็นเรื่องปกติในอีก 5 ปีข้างหน้า",
+                truth_2_title: "ตัวตนดิจิทัลจะอยู่ทุกที่",
+                truth_2_desc: "เมื่อเราเข้าสู่โลก VR/AR เราจำเป็นต้องมีตัวตนดิจิทัลที่ชัดเจนและน่าเชื่อถือ",
+                truth_3_title: `"ความเป็นคุณ" มีค่าที่สุด`,
+                truth_3_desc: "ในยุคที่สร้าง AI ได้ง่ายๆ สิ่งที่หายากและมีค่าที่สุดคือ ความเป็นมนุษย์ที่ลอกเลียนแบบไม่ได้",
+                footer_conclusion: "เตรียมสร้าง Hybrid AI Persona ไว้ตั้งแต่วันนี้ เพื่อรับมือกับอนาคต",
+                footer_signature: "ThB.Ho - สถาปนิกแห่งอนาคต © 2569",
+                gemini_prompt_template: `จากเทคโนโลยีต่อไปนี้: {techs}. ช่วยแต่งเรื่องสั้นๆ ให้แรงบันดาลใจ (ภาษาไทย ใช้ภาษาเข้าใจง่าย ความยาวไม่เกิน 150 คำ) ว่าคนๆ นึง จะใช้ 'Hybrid AI Persona' (AI ตัวแทนของเขา) ในชีวิตประจำวันยังไงในอีก 3 ปีข้างหน้า หากมีหลายประเด็นให้ใช้ Bullet points เพื่อให้อ่านง่าย เริ่มต้นเล่าเรื่องได้เลยไม่ต้องเกริ่นนำ`,
+                gemini_loading: "กำลังจำลองอนาคต... รอสักครู่นะครับ",
+                gemini_error_select_one: "กรุณาเลือกเทคโนโลยีอย่างน้อย 1 ข้อครับ",
+                gemini_error_select_three: "กรุณาเลือกเทคโนโลยีไม่เกิน 3 ข้อครับ",
+                gemini_error_api: "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งครับ"
             },
             zh: {
                 home_button: "返回首页",
                 header_supertitle: "ThB.Ho 战略分析",
                 header_title: "数字身份的近期未来",
                 header_subtitle: "为什么混合AI人设是您在未来3-5年内最关键的资产",
-                tech_wave_title: "6大技术浪潮将改变世界并提升您人设的价值",
+                tech_wave_title: "6大改变世界的技术浪潮",
                 agentic_ai_title: "智能代理AI",
-                agentic_ai_timeline: "时间线：早期采用 (2024-2025)",
-                agentic_ai_desc: "AI将不再是被动的助手，而是能为我们自动规划和执行复杂任务的主动代理。",
-                agentic_ai_role: `人设角色：代理的<span class="kanit-bold">“大脑与身份”</span>，确保所有决策都反映您独特的个性。`,
+                agentic_ai_timeline: "2024-2025",
+                agentic_ai_desc: "AI将代表您行动，自动规划和完成任务，而不再仅仅等待指令。",
+                agentic_ai_role: `人设角色：代理的<span class="kanit-bold text-[#00A6ED]">“大脑与身份”</span>。`,
                 vrar_title: "沉浸式VR/AR",
-                vrar_timeline: "时间线：主流增长 (2025-2027)",
-                vrar_desc: "AI眼镜和虚拟现实将成为我们工作和社交的主要界面，取代传统屏幕。",
-                vrar_role: `人设角色：您在数字领域的<span class="kanit-bold">“身体与代表”</span>，实现逼真的互动。`,
+                vrar_timeline: "2025-2027",
+                vrar_desc: "智能眼镜和VR将取代手机，成为我们工作和连接的主要方式。",
+                vrar_role: `人设角色：您在数字领域的<span class="kanit-bold text-[#7FB800]">“身体与代表”</span>。`,
                 humanoid_title: "人形机器人",
-                humanoid_timeline: "时间线：初步部署 (2026-2028)",
-                humanoid_desc: "类人机器人将开始进入服务行业，与人类协同工作或代为工作。",
-                humanoid_role: `人设角色：下载到机器人中的<span class="kanit-bold">“灵魂”</span>，以您的个人风格提供服务。`,
-                bci_title: "Neuralink (BCI)",
-                bci_timeline: "时间线：更广泛的试验 (2028+)",
-                bci_desc: "直接的脑机接口技术将取得重大进展，强化了数字身份的需求。",
-                bci_role: `人设角色：为这项未来技术做好准备的<span class="kanit-bold">“连接就绪的数字自我”</span>。`,
-                decentralized_title: "去中心化身份",
-                decentralized_timeline: "时间线：逐步整合 (2025-2028)",
-                decentralized_desc: "通过区块链技术拥有和控制自己的数字身份将成为新标准。",
-                decentralized_role: `人设角色：一个您真正拥有的<span class="kanit-bold">“数字资产”</span>，可在任何平台上使用。`,
+                humanoid_timeline: "2026-2028",
+                humanoid_desc: "外观和动作像人的机器人将开始在服务和家庭中工作。",
+                humanoid_role: `人设角色：下载到机器人中的<span class="kanit-bold text-[#F6511D]">“灵魂”</span>。`,
+                bci_title: "脑机接口 (BCI)",
+                bci_timeline: "2028+",
+                bci_desc: "直接的大脑到计算机连接将使控制数字设备像思考一样简单。",
+                bci_role: `人设角色：<span class="kanit-bold text-[#FFB400]">“随时准备连接的数字自我”</span>。`,
+                decentralized_title: "Web3身份",
+                decentralized_timeline: "2025-2028",
+                decentralized_desc: "通过区块链，您将真正拥有自己的数字身份，安全地应用于任何平台。",
+                decentralized_role: `人设角色：一个您真正拥有的<span class="kanit-bold text-purple-500">“数字资产”</span>。`,
                 gen_worlds_title: "生成式世界",
-                gen_worlds_timeline: "时间线：新兴平台 (2026-2027)",
-                gen_worlds_desc: "我们将能够通过简单的命令，立即从我们的想象中创造出虚拟世界或私人房间。",
-                gen_worlds_role: `人设角色：召唤独特环境和体验的<span class="kanit-bold">“创造者”</span>。`,
-                gemini_title: "✨ 用Gemini AI构想您的未来",
-                gemini_subtitle: "选择您感兴趣的技术（1到3个选项），让Gemini AI生成一个场景，展示您的混合AI人设在未来将扮演的角色。",
-                tech_option_agentic: "智能代理AI",
+                gen_worlds_timeline: "2026-2027",
+                gen_worlds_desc: "只需描述，您就可以立即创建私人的3D虚拟房间和世界。",
+                gen_worlds_role: `人设角色：独特空间的<span class="kanit-bold text-pink-500">“创造者”</span>。`,
+                gemini_title: "构想您的未来",
+                gemini_subtitle: "选择1到3项技术。AI将快速生成一个故事，展示您的“混合AI人设”未来将如何帮助您。",
+                tech_option_agentic: "代理AI",
                 tech_option_vrar: "VR/AR",
                 tech_option_humanoids: "人形机器人",
-                tech_option_bci: "Neuralink",
+                tech_option_bci: "脑机接口",
                 tech_option_web3: "Web3身份",
-                tech_option_gen_worlds: "生成式世界",
+                tech_option_gen_worlds: "生成世界",
                 generate_button: "生成场景",
                 gemini_placeholder: "结果将显示在这里...",
-                conclusion_title: "战略结论：未来的3个真理",
-                truth_1_title: "技术来得比我们想象的要快",
-                truth_1_desc: "发展是指数级的。5年前不可能的事情，在未来5年将变得司空见惯。",
-                truth_2_title: "人设将无处不在",
-                truth_2_desc: "随着界面从屏幕转向VR/AR，对持久、统一的数字身份的需求将变得至关重要。",
-                truth_3_title: `“你”是无价的资产`,
-                truth_3_desc: "在一个任何人都可以生成通用AI的世界里，最稀有和最宝贵的资产是无法复制的真实性。",
-                footer_conclusion: "今天投资混合AI人设是为已经到来的未来进行的最关键的投资。",
-                footer_signature: "ThB.Ho - 明日的建筑师 © 2025",
-                gemini_prompt_template: `基于以下技术的融合：{techs}。生成一个简短、富有想象力和详细的故事（中文，约150-200字），描述一个人的“混合AI人设”（一个拥有其独特个性和记忆的数字孪生）在未来3-5年内将如何在日常生活或工作中使用。故事应该乐观、鼓舞人心，并关注于人类的利益。直接开始故事，不要任何介绍性短语。`,
-                gemini_loading: "正在用Gemini AI构想您的未来... 请稍候。",
-                gemini_error_select_one: "请至少选择一项技术。",
-                gemini_error_select_three: "请最多选择三项技术。",
-                gemini_error_api: "生成场景时发生错误。请重试。"
+                conclusion_title: "未来的3个真理",
+                truth_1_title: "技术来得更快",
+                truth_1_desc: "进步在加速。5年前觉得不可能的事，5年后将变得平常。",
+                truth_2_title: "人设无处不在",
+                truth_2_desc: "随着我们进入VR/AR时代，拥有一个统一、受信任的数字自我将是必需的。",
+                truth_3_title: `“你”是无价的`,
+                truth_3_desc: "当AI随处可见时，你真实的个性和人类的真实性将成为最宝贵的东西。",
+                footer_conclusion: "今天创建您的混合AI人设，为即将到来的明天做好准备。",
+                footer_signature: "ThB.Ho - 明日的建筑师 © 2026",
+                gemini_prompt_template: `基于以下技术：{techs}。写一个简短、简单的励志故事（中文，最多150字），描述一个人在3年后如何在日常生活中使用他们的“混合AI人设”。使用简单的语言。如果有多个重点，请使用项目符号。直接开始故事。`,
+                gemini_loading: "正在生成您的未来愿景...请稍候。",
+                gemini_error_select_one: "请至少选择1项技术。",
+                gemini_error_select_three: "最多只能选择3项技术。",
+                gemini_error_api: "发生错误，请稍后重试。"
             },
             ru: {
-                home_button: "Вернуться на главную",
+                home_button: "На главную",
                 header_supertitle: "Стратегический анализ от ThB.Ho",
-                header_title: "Ближайшее будущее цифровой идентичности",
-                header_subtitle: "Почему гибридная AI-персона - ваш самый важный актив в ближайшие 3-5 лет",
-                tech_wave_title: "6 технологических волн, которые изменят мир и повысят ценность вашей персоны",
+                header_title: "Ближайшее будущее",
+                header_subtitle: "Почему Гибридная AI-Персона - ваш самый важный актив в ближайшие 3-5 лет",
+                tech_wave_title: "6 технологий, меняющих мир",
                 agentic_ai_title: "Агентный ИИ",
-                agentic_ai_timeline: "Сроки: Раннее внедрение (2024-2025)",
-                agentic_ai_desc: "ИИ больше не будет пассивным помощником, а станет проактивным агентом, который планирует и выполняет сложные задачи за нас автоматически.",
-                agentic_ai_role: `Роль персоны: <span class="kanit-bold">«Мозг и идентичность»</span> агента, гарантирующая, что все решения отражают ваш уникальный характер.`,
+                agentic_ai_timeline: "2024-2025",
+                agentic_ai_desc: "ИИ будет действовать от вашего имени, автоматически планируя и выполняя задачи.",
+                agentic_ai_role: `Роль Персоны: <span class="kanit-bold text-[#00A6ED]">«Мозг и Идентичность»</span> агента.`,
                 vrar_title: "Иммерсивный VR/AR",
-                vrar_timeline: "Сроки: Массовый рост (2025-2027)",
-                vrar_desc: "Очки с ИИ и виртуальная реальность станут нашим основным интерфейсом для работы и общественной жизни, заменяя традиционные экраны.",
-                vrar_role: `Роль персоны: Ваше <span class="kanit-bold">«Тело и представительство»</span> в цифровом мире, обеспечивающее реалистичное взаимодействие.`,
-                humanoid_title: "Гуманоидные роботы",
-                humanoid_timeline: "Сроки: Начальное развертывание (2026-2028)",
-                humanoid_desc: "Человекоподобные роботы начнут проникать в сферу услуг, работая вместе с людьми или вместо них.",
-                humanoid_role: `Роль персоны: <span class="kanit-bold">«Душа»</span>, загруженная в робота, для предоставления услуг в вашем личном стиле.`,
-                bci_title: "Neuralink (BCI)",
-                bci_timeline: "Сроки: Более широкие испытания (2028+)",
-                bci_desc: "Технология прямого интерфейса мозг-компьютер значительно продвинется, усиливая потребность в цифровой идентичности.",
-                bci_role: `Роль персоны: <span class="kanit-bold">«Готовое к подключению цифровое Я»</span>, подготовленное к этой будущей технологии.`,
-                decentralized_title: "Децентрализованная идентичность",
-                decentralized_timeline: "Сроки: Постепенная интеграция (2025-2028)",
-                decentralized_desc: "Владение и контроль над своей цифровой идентичностью с помощью технологии блокчейн станет новым стандартом.",
-                decentralized_role: `Роль персоны: Настоящий <span class="kanit-bold">«Цифровой актив»</span>, которым вы действительно владеете и который можно использовать на любой платформе.`,
+                vrar_timeline: "2025-2027",
+                vrar_desc: "Умные очки и VR заменят телефоны как основной способ работы и общения.",
+                vrar_role: `Роль Персоны: Ваше <span class="kanit-bold text-[#7FB800]">«Тело»</span> в сети.`,
+                humanoid_title: "Роботы-гуманоиды",
+                humanoid_timeline: "2026-2028",
+                humanoid_desc: "Человекоподобные роботы начнут работать в сфере услуг и дома.",
+                humanoid_role: `Роль Персоны: <span class="kanit-bold text-[#F6511D]">«Душа»</span>, загруженная в робота.`,
+                bci_title: "Нейроинтерфейсы",
+                bci_timeline: "2028+",
+                bci_desc: "Прямая связь мозга с компьютером сделает управление цифровым миром легким как мысль.",
+                bci_role: `Роль Персоны: <span class="kanit-bold text-[#FFB400]">«Готовое к подключению Я»</span>.`,
+                decentralized_title: "Web3 Идентичность",
+                decentralized_timeline: "2025-2028",
+                decentralized_desc: "Вы будете полностью владеть своей цифровой личностью через блокчейн.",
+                decentralized_role: `Роль Персоны: Настоящий <span class="kanit-bold text-purple-500">«Цифровой актив»</span>.`,
                 gen_worlds_title: "Генеративные миры",
-                gen_worlds_timeline: "Сроки: Новые платформы (2026-2027)",
-                gen_worlds_desc: "Мы сможем мгновенно создавать виртуальные миры или частные комнаты из нашего воображения с помощью простых команд.",
-                gen_worlds_role: `Роль персоны: <span class="kanit-bold">«Создатель»</span>, который создает уникальные среды и впечатления.`,
-                gemini_title: "✨ Визуализируйте свое будущее с Gemini AI",
-                gemini_subtitle: "Выберите интересующие вас технологии (от 1 до 3), и пусть Gemini AI сгенерирует сценарий, показывающий, какую роль ваша гибридная AI-персона будет играть в будущем.",
+                gen_worlds_timeline: "2026-2027",
+                gen_worlds_desc: "Вы сможете мгновенно создавать 3D-миры, просто описывая их словами.",
+                gen_worlds_role: `Роль Персоны: <span class="kanit-bold text-pink-500">«Создатель»</span> пространств.`,
+                gemini_title: "Визуализируйте будущее",
+                gemini_subtitle: "Выберите 1-3 технологии. ИИ создаст короткую историю о том, как ваша AI-Персона поможет вам в будущем.",
                 tech_option_agentic: "Агентный ИИ",
                 tech_option_vrar: "VR/AR",
                 tech_option_humanoids: "Гуманоиды",
-                tech_option_bci: "Neuralink",
+                tech_option_bci: "Нейроинтерфейс",
                 tech_option_web3: "Web3 ID",
                 tech_option_gen_worlds: "Ген. миры",
                 generate_button: "Создать сценарий",
                 gemini_placeholder: "Результат появится здесь...",
-                conclusion_title: "Стратегический вывод: 3 истины будущего",
-                truth_1_title: "Технологии приходят быстрее, чем мы думаем",
-                truth_1_desc: "Развитие идет по экспоненте. То, что было невозможно 5 лет назад, станет обыденностью в ближайшие 5 лет.",
-                truth_2_title: "Персоны будут повсюду",
-                truth_2_desc: "По мере смены интерфейсов (от экранов к VR/AR) потребность в постоянной, единой цифровой идентичности станет необходимостью.",
-                truth_3_title: `«Вы» — бесценный актив`,
-                truth_3_desc: "В мире, где каждый может создать общий ИИ, самым редким и ценным активом является подлинность, которую невозможно скопировать.",
-                footer_conclusion: "Инвестиции в гибридную AI-персону сегодня — это самая важная инвестиция в будущее, которое уже наступает.",
-                footer_signature: "ThB.Ho - Архитектор завтрашнего дня © 2025",
-                gemini_prompt_template: `На основе конвергенции следующих технологий: {techs}. Создайте короткий, образный и подробный рассказ (на русском языке, примерно 150-200 слов) о том, как «гибридная AI-персона» человека (цифровой двойник с его уникальной личностью и воспоминаниями) будет использоваться в повседневной жизни или на работе в ближайшие 3-5 лет. Рассказ должен быть оптимистичным, вдохновляющим и сосредоточенным на пользе для человека. Начните рассказ без вступительных фраз.`,
-                gemini_loading: "Визуализируем ваше будущее с помощью Gemini AI... Пожалуйста, подождите.",
-                gemini_error_select_one: "Пожалуйста, выберите хотя бы одну технологию.",
-                gemini_error_select_three: "Пожалуйста, выберите не более трех технологий.",
-                gemini_error_api: "Произошла ошибка при создании сценария. Пожалуйста, попробуйте еще раз."
+                conclusion_title: "3 Истины Будущего",
+                truth_1_title: "Технологии ближе",
+                truth_1_desc: "То, что казалось невозможным 5 лет назад, станет нормой через 5 лет.",
+                truth_2_title: "Персоны повсюду",
+                truth_2_desc: "В мире VR/AR единая и надежная цифровая личность станет необходимостью.",
+                truth_3_title: `"Вы" бесценны`,
+                truth_3_desc: "Когда ИИ везде, ваша человеческая подлинность - самый редкий актив.",
+                footer_conclusion: "Создание вашей Гибридной AI-Персоны сегодня готовит вас к завтрашнему дню.",
+                footer_signature: "ThB.Ho - Архитектор завтрашнего дня © 2026",
+                gemini_prompt_template: `На основе технологий: {techs}. Напишите простую, вдохновляющую историю (на русском, до 150 слов) о том, как человек использует свою 'Гибридную AI-Персону' в быту через 3 года. Используйте простой язык. Если есть несколько пунктов, используйте маркеры. Начните историю сразу.`,
+                gemini_loading: "Генерируем ваше будущее... Пожалуйста, подождите.",
+                gemini_error_select_one: "Выберите хотя бы 1 технологию.",
+                gemini_error_select_three: "Выберите не более 3 технологий.",
+                gemini_error_api: "Произошла ошибка. Попробуйте позже."
             }
         };
 
         const generateButton = document.getElementById('generate-button');
         const resultDiv = document.getElementById('scenario-result');
+        const resultContent = document.getElementById('scenario-content');
         const techCheckboxes = document.querySelectorAll('input[name="tech"]');
         const languageSwitcher = document.getElementById('language-switcher');
+
+        // Scroll Animation Logic using Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Format Markdown-lite logic (Handles basic bold and bullets generated by Gemini)
+        function formatText(text) {
+            let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            formatted = formatted.replace(/\n\*/g, '<br/>•');
+            formatted = formatted.replace(/\n-/g, '<br/>•');
+            return formatted;
+        }
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -478,7 +641,6 @@
                 }
             });
 
-            // Update active button style
             languageSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
                 if (btn.getAttribute('data-lang') === lang) {
                     btn.classList.add('active');
@@ -495,68 +657,86 @@
             }
         });
 
-        generateButton.addEventListener('click', () => {
+        // Delay helper for exponential backoff
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+
+        // API Fetch with Exponential Backoff
+        async function fetchGeminiWithRetry(url, options, retries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    if (i === retries - 1) throw error; // Re-throw if last retry fails
+                    await delay(delays[i]); // Wait silently before retrying
+                }
+            }
+        }
+
+        generateButton.addEventListener('click', async () => {
             const selectedTechs = Array.from(techCheckboxes)
                 .filter(checkbox => checkbox.checked)
                 .map(checkbox => checkbox.value);
 
+            resultDiv.classList.remove('hidden');
+
             if (selectedTechs.length === 0) {
-                resultDiv.innerHTML = `<p class="text-red-500">${translations[currentLang].gemini_error_select_one}</p>`;
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_select_one}</p>`;
                 return;
             }
             if (selectedTechs.length > 3) {
-                resultDiv.innerHTML = `<p class="text-red-500">${translations[currentLang].gemini_error_select_three}</p>`;
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_select_three}</p>`;
                 return;
             }
 
-            resultDiv.innerHTML = `<p class="text-gray-500">${translations[currentLang].gemini_loading}</p>`;
+            resultContent.innerHTML = `<div class="flex items-center justify-center text-blue-600"><span class="loader"></span><p class="kanit-semibold">${translations[currentLang].gemini_loading}</p></div>`;
             generateButton.disabled = true;
-            generateButton.classList.add('opacity-50', 'cursor-not-allowed');
+            generateButton.classList.add('opacity-70', 'cursor-wait');
 
             const promptTemplate = translations[currentLang].gemini_prompt_template;
             const prompt = promptTemplate.replace('{techs}', selectedTechs.join(', '));
             
-            const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { contents: chatHistory };
-            const apiKey = "AIzaSyDj_fOvwZ80qfWaryvy5FNjSiyKt1wAF04"; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            // Using the designated preview model as required
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(result => {
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: "You are an optimistic futurist. Respond clearly and concisely. If the explanation is long, break it down into bullet points." }] }
+            };
+            
+            try {
+                const result = await fetchGeminiWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
                     const text = result.candidates[0].content.parts[0].text;
-                    resultDiv.innerHTML = `<p>${text.trim()}</p>`;
+                    resultContent.innerHTML = `<div class="prose max-w-none text-gray-700">${formatText(text.trim())}</div>`;
                 } else {
-                    throw new Error("Invalid response structure from API");
+                    throw new Error("Invalid response format");
                 }
-            })
-            .catch(error => {
-                console.error("Error calling Gemini API:", error);
-                resultDiv.innerHTML = `<p class="text-red-500">${translations[currentLang].gemini_error_api}</p>`;
-            })
-            .finally(() => {
+            } catch (error) {
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_api}</p>`;
+            } finally {
                 generateButton.disabled = false;
-                generateButton.classList.remove('opacity-50', 'cursor-not-allowed');
-            });
+                generateButton.classList.remove('opacity-70', 'cursor-wait');
+                
+                // Ensure result box is styled properly once loaded
+                resultDiv.classList.add('bg-white');
+                resultDiv.classList.remove('bg-[#F8FAFC]');
+            }
         });
 
-        // Initial load
+        // Initialize translations
         document.addEventListener('DOMContentLoaded', () => {
-            changeLanguage('en'); // Set default language to English
+            changeLanguage('en'); 
         });
     </script>
 </body>
 </html>
-

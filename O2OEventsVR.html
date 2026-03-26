@@ -79,56 +79,77 @@
         <button onclick="setLang('cn')" id="btn-cn" class="px-4 py-1.5 text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">CN</button>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with 2-Column Layout -->
     <header class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-vr-dark to-vr-dark pt-28 pb-20 px-6 sm:px-12 lg:px-24 border-b border-slate-800/50">
-        <div class="max-w-6xl mx-auto relative z-10 text-center md:text-left">
-            <div class="inline-flex items-center px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-vr-gold uppercase rounded-full bg-vr-gold/10 border border-vr-gold/20">
-                <i data-lucide="crown" class="w-4 h-4 mr-2"></i> 
-                <span class="th">อาณาจักรความบันเทิงระดับพรีเมียม</span>
-                <span class="en">Premium Adult Entertainment</span>
-                <span class="cn">高级成人娱乐</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-                GymMateX <br>
-                <span class="gradient-text">
-                    <span class="th">สัมผัสโลกเสมือนสุดล้ำ</span>
-                    <span class="en">The Ultimate Virtual Reality</span>
-                    <span class="cn">终极虚拟现实体验</span>
-                </span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed mx-auto md:mx-0">
-                <span class="th">แพลตฟอร์มที่เชื่อมโลกจริง (อีเวนต์หรูและฟิตเนส) เข้ากับโลกดิจิทัล เปลี่ยนคนจริงให้กลายเป็น "AI คู่หูเสมือน" (Digital Twin) พร้อมประสบการณ์ VR ที่สมจริงจนคุณสัมผัสได้</span>
-                <span class="en">A platform that connects the real world (luxury events & fitness) with the digital world. We turn real people into "Virtual AI Companions" (Digital Twins) with VR experiences you can actually feel.</span>
-                <span class="cn">一个连接现实世界（豪华活动和健身）与数字世界的平台。我们将真人转化为“虚拟AI伴侣”（数字孪生），提供触手可及的真实VR体验。</span>
-            </p>
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm max-w-4xl mx-auto md:mx-0">
-                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-primary/50">
-                    <i data-lucide="globe-2" class="w-6 h-6 text-vr-primary mb-3"></i>
-                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Concept</p>
-                    <p class="font-semibold text-white">Real to Virtual World</p>
+            <!-- Left Content: Text & Badges -->
+            <div class="lg:w-[55%] text-center lg:text-left">
+                <div class="inline-flex items-center px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-vr-gold uppercase rounded-full bg-vr-gold/10 border border-vr-gold/20">
+                    <i data-lucide="crown" class="w-4 h-4 mr-2"></i> 
+                    <span class="th">อาณาจักรความบันเทิงระดับพรีเมียม</span>
+                    <span class="en">Premium Adult Entertainment</span>
+                    <span class="cn">高级成人娱乐</span>
                 </div>
-                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-secondary/50">
-                    <i data-lucide="users" class="w-6 h-6 text-vr-secondary mb-3"></i>
-                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Target Market</p>
-                    <p class="font-semibold text-white">Premium LGBTQ+ (Gay)</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-gold/50">
-                    <i data-lucide="shield-check" class="w-6 h-6 text-vr-gold mb-3"></i>
-                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Core Value</p>
-                    <p class="font-semibold text-white">Privacy & Luxury</p>
-                </div>
-                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-accent/50">
-                    <i data-lucide="rocket" class="w-6 h-6 text-vr-accent mb-3"></i>
-                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Revenue Target (Yr 3)</p>
-                    <p class="font-semibold text-white">$3 Million USD</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                    GymMateX <br>
+                    <span class="gradient-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl block mt-2">
+                        <span class="th">สัมผัสโลกเสมือนสุดล้ำ</span>
+                        <span class="en">The Ultimate Virtual Reality</span>
+                        <span class="cn">终极虚拟现实体验</span>
+                    </span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0">
+                    <span class="th">แพลตฟอร์มที่เชื่อมโลกจริง (อีเวนต์หรูและฟิตเนส) เข้ากับโลกดิจิทัล เปลี่ยนคนจริงให้กลายเป็น "AI คู่หูเสมือน" (Digital Twin) พร้อมประสบการณ์ VR ที่สมจริงจนคุณสัมผัสได้</span>
+                    <span class="en">A platform that connects the real world (luxury events & fitness) with the digital world. We turn real people into "Virtual AI Companions" (Digital Twins) with VR experiences you can actually feel.</span>
+                    <span class="cn">一个连接现实世界（豪华活动和健身）与数字世界的平台。我们将真人转化为“虚拟AI伴侣”（数字孪生），提供触手可及的真实VR体验。</span>
+                </p>
+                
+                <!-- 4 Highlight Cards in 2x2 Grid -->
+                <div class="grid grid-cols-2 gap-4 text-sm max-w-xl mx-auto lg:mx-0">
+                    <div class="glass-card p-4 md:p-5 rounded-xl border-t-2 border-t-vr-primary/50 text-left">
+                        <i data-lucide="globe-2" class="w-5 h-5 text-vr-primary mb-2"></i>
+                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Concept</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">Real to Virtual</p>
+                    </div>
+                    <div class="glass-card p-4 md:p-5 rounded-xl border-t-2 border-t-vr-secondary/50 text-left">
+                        <i data-lucide="users" class="w-5 h-5 text-vr-secondary mb-2"></i>
+                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Target Market</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">Premium Gay</p>
+                    </div>
+                    <div class="glass-card p-4 md:p-5 rounded-xl border-t-2 border-t-vr-gold/50 text-left">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-vr-gold mb-2"></i>
+                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Core Value</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">Privacy & Luxury</p>
+                    </div>
+                    <div class="glass-card p-4 md:p-5 rounded-xl border-t-2 border-t-vr-accent/50 text-left">
+                        <i data-lucide="rocket" class="w-5 h-5 text-vr-accent mb-2"></i>
+                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Revenue (Yr 3)</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">$3 Million USD</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Right Content: Overview Image -->
+            <div class="lg:w-[45%] w-full relative mt-8 lg:mt-0">
+                <!-- Glowing Backlight Effect -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-vr-primary/30 to-vr-secondary/30 blur-[60px] rounded-[3rem] transform scale-95 pointer-events-none"></div>
+                
+                <!-- Main Image -->
+                <div class="relative rounded-[2rem] p-2 bg-slate-800/40 border border-slate-700/50 backdrop-blur-sm shadow-[0_30px_60px_rgba(0,0,0,0.6)] transform hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://i.postimg.cc/RZdyMpgg/dddd_GYM.png" alt="GymMateX Ecosystem Overview" class="w-full h-auto rounded-[1.5rem] object-cover" />
+                    
+                    <!-- Decorative corner accents -->
+                    <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-vr-primary/50 rounded-tl-[2rem]"></div>
+                    <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-vr-secondary/50 rounded-br-[2rem]"></div>
+                </div>
+            </div>
+
         </div>
         
         <!-- Abstract Background Elements -->
-        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[500px] h-[500px] rounded-full bg-vr-primary/10 blur-[100px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-[500px] h-[500px] rounded-full bg-vr-secondary/10 blur-[100px] pointer-events-none"></div>
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[500px] h-[500px] rounded-full bg-vr-primary/5 blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-[500px] h-[500px] rounded-full bg-vr-secondary/5 blur-[120px] pointer-events-none"></div>
     </header>
 
     <!-- Main Content -->
@@ -204,7 +225,7 @@
             </div>
         </section>
 
-        <!-- Product Levels (Simplified) -->
+        <!-- Product Levels (3 Columns + Master Video Showcase) -->
         <section>
             <div class="text-center mb-16">
                 <span class="text-vr-primary font-bold tracking-widest uppercase text-sm">Experiences</span>
@@ -213,89 +234,129 @@
                     <span class="en">3 Levels of Digital Intimacy</span>
                     <span class="cn">3 个数字亲密关系层级</span>
                 </h2>
-                <p class="text-slate-400 mt-4">
-                    <span class="th">ออกแบบมาเพื่อตอบโจทย์ตั้งแต่ต้องการเพื่อนคุย ไปจนถึงความสัมพันธ์ที่ลึกซึ้งที่สุด</span>
-                    <span class="en">Designed for everything from a simple chat to the deepest interactive connection.</span>
-                    <span class="cn">专为从简单的聊天到最深层次的互动连接而设计。</span>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                    <span class="th">ออกแบบมาเพื่อตอบโจทย์ตั้งแต่ต้องการเพื่อนคุย ไปจนถึงความสัมพันธ์ที่ลึกซึ้งที่สุด พร้อมรับชมวิดีโอตัวอย่างของทุกระดับได้ในเพลย์ลิสต์ด้านล่าง</span>
+                    <span class="en">Designed for everything from a simple chat to the deepest interactive connection. Watch the showcase playlist below.</span>
+                    <span class="cn">专为从简单的聊天到最深层次的互动连接而设计。请观看下方的展示播放列表。</span>
                 </p>
             </div>
 
-            <div class="space-y-8">
-                <!-- Level G & R in Grid -->
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Level G -->
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-green-500/20 overflow-hidden hover:border-green-500/50 transition-all duration-300 shadow-lg flex flex-col">
-                        <div class="p-8 flex-grow">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="bg-green-500/10 w-14 h-14 rounded-2xl flex items-center justify-center border border-green-500/20">
-                                    <span class="text-2xl font-bold text-green-400">G</span>
-                                </div>
-                                <div class="text-right">
-                                    <h3 class="text-xl font-bold text-white">General</h3>
-                                    <p class="text-sm text-green-400 font-semibold uppercase tracking-wider">Companionship</p>
-                                </div>
-                            </div>
-                            <ul class="text-sm space-y-3 text-slate-300 mb-6">
-                                <li class="flex items-start"><i data-lucide="message-square" class="w-4 h-4 text-green-400 mr-3 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span></li>
-                                <li class="flex items-start"><i data-lucide="dumbbell" class="w-4 h-4 text-green-400 mr-3 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span></li>
-                            </ul>
+            <!-- The 3 Cards -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <!-- Level G -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-green-500/20 overflow-hidden hover:border-green-500/50 transition-all duration-300 shadow-lg flex flex-col p-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="bg-green-500/10 w-16 h-16 rounded-2xl flex items-center justify-center border border-green-500/20">
+                            <span class="text-3xl font-bold text-green-400">G</span>
                         </div>
-                        <div class="p-6 bg-black/40 border-t border-slate-700/50 flex justify-center">
-                            <div class="relative w-full max-w-[240px] rounded-xl overflow-hidden bg-black aspect-[9/16] ring-1 ring-white/10">
-                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/W7IaYj6Jzcs" title="Companionship Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
+                        <div class="text-right">
+                            <h3 class="text-xl font-bold text-white">General</h3>
+                            <p class="text-sm text-green-400 font-semibold uppercase tracking-wider">Companionship</p>
                         </div>
                     </div>
+                    <div class="flex-grow">
+                        <ul class="text-sm space-y-4 text-slate-300 mb-8">
+                            <li class="flex items-start"><i data-lucide="message-square" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span></li>
+                            <li class="flex items-start"><i data-lucide="dumbbell" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-700/50 mt-auto">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Focus</h4>
+                        <p class="text-sm text-slate-300">
+                            <span class="th">เน้น AI ภาษาที่ตอบสนองเก่งและเป็นธรรมชาติ</span>
+                            <span class="en">Focus on natural, highly responsive Language AI</span>
+                            <span class="cn">专注于自然、高响应的语言AI</span>
+                        </p>
+                    </div>
+                </div>
 
-                    <!-- Level R -->
-                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-orange-500/20 overflow-hidden hover:border-orange-500/50 transition-all duration-300 shadow-lg flex flex-col">
-                        <div class="p-8 flex-grow">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="bg-orange-500/10 w-14 h-14 rounded-2xl flex items-center justify-center border border-orange-500/20">
-                                    <span class="text-2xl font-bold text-orange-400">R</span>
-                                </div>
-                                <div class="text-right">
-                                    <h3 class="text-xl font-bold text-white">Restricted</h3>
-                                    <p class="text-sm text-orange-400 font-semibold uppercase tracking-wider">Romantic</p>
-                                </div>
-                            </div>
-                            <ul class="text-sm space-y-3 text-slate-300 mb-6">
-                                <li class="flex items-start"><i data-lucide="heart" class="w-4 h-4 text-orange-400 mr-3 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดโรแมนติก</span><span class="en">Virtual Dating & Romantic Private Dinners</span><span class="cn">虚拟约会和浪漫私人晚餐</span></li>
-                                <li class="flex items-start"><i data-lucide="eye" class="w-4 h-4 text-orange-400 mr-3 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span></li>
-                            </ul>
+                <!-- Level R -->
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-orange-500/20 overflow-hidden hover:border-orange-500/50 transition-all duration-300 shadow-lg flex flex-col p-8 relative">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-orange-400 to-orange-600"></div>
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="bg-orange-500/10 w-16 h-16 rounded-2xl flex items-center justify-center border border-orange-500/20">
+                            <span class="text-3xl font-bold text-orange-400">R</span>
                         </div>
-                        <div class="p-6 bg-black/40 border-t border-slate-700/50 flex justify-center">
-                            <div class="relative w-full max-w-[240px] rounded-xl overflow-hidden bg-black aspect-[9/16] ring-1 ring-white/10">
-                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/RTw-R4PDcRs" title="Romantic Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
+                        <div class="text-right">
+                            <h3 class="text-xl font-bold text-white">Restricted</h3>
+                            <p class="text-sm text-orange-400 font-semibold uppercase tracking-wider">Romantic</p>
                         </div>
+                    </div>
+                    <div class="flex-grow">
+                        <ul class="text-sm space-y-4 text-slate-300 mb-8">
+                            <li class="flex items-start"><i data-lucide="heart" class="w-5 h-5 text-orange-400 mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดโรแมนติก</span><span class="en">Virtual Dating & Romantic Private Dinners</span><span class="cn">虚拟约会和浪漫私人晚餐</span></li>
+                            <li class="flex items-start"><i data-lucide="eye" class="w-5 h-5 text-orange-400 mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-slate-700/50 mt-auto">
+                        <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Focus</h4>
+                        <p class="text-sm text-slate-300">
+                            <span class="th">เน้นแอนิเมชันและ Motion Capture ท่าทางที่ดึงดูด</span>
+                            <span class="en">Focus on attractive animations and Motion Capture</span>
+                            <span class="cn">专注于吸引人的动画和动作捕捉</span>
+                        </p>
                     </div>
                 </div>
 
                 <!-- Level X (Flagship) -->
-                <div class="bg-gradient-to-br from-[#1a1120] to-[#2d1b2e] rounded-3xl border-2 border-vr-accent/30 overflow-hidden hover:border-vr-accent/60 transition-all duration-300 shadow-[0_10px_40px_rgba(244,63,94,0.15)]">
-                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rose-500 via-purple-500 to-rose-500"></div>
-                    <div class="p-8 md:p-12">
-                        <div class="flex flex-col md:flex-row gap-8 items-center">
-                            <div class="md:w-1/3 text-center md:text-left">
-                                <div class="bg-vr-accent/10 w-20 h-20 rounded-3xl flex items-center justify-center border border-vr-accent/30 mx-auto md:mx-0 mb-6 shadow-[0_0_20px_rgba(244,63,94,0.2)]">
-                                    <span class="text-4xl font-black text-vr-accent">X</span>
-                                </div>
-                                <h3 class="text-3xl font-bold text-white mb-2">The Premium</h3>
-                                <p class="text-sm text-vr-accent font-bold uppercase tracking-widest mb-6">Full Intimacy</p>
-                                <ul class="text-sm space-y-4 text-slate-300 text-left">
-                                    <li class="flex items-start"><i data-lucide="flame" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0"></i> <span class="th">ประสบการณ์ 18+ ที่สมจริงเหมือนได้อยู่ด้วยกันจริงๆ</span><span class="en">Hyper-realistic 18+ experiences, feeling like you are truly together.</span><span class="cn">超逼真的18+体验，感觉就像真正相聚一样。</span></li>
-                                    <li class="flex items-start"><i data-lucide="radio" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0"></i> <span class="th">โต้ตอบได้และเชื่อมต่อกับ "อุปกรณ์เสริม" ให้คุณรับรู้ถึงการสัมผัส</span><span class="en">Interactive content synced with smart toys for a real sense of touch.</span><span class="cn">与智能玩具同步的互动内容，带来真实的触感。</span></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="md:w-2/3 w-full">
-                                <div class="relative w-full rounded-2xl overflow-hidden bg-black aspect-video ring-2 ring-white/5 shadow-2xl">
-                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/U_8-x13EbjA" title="Full Intimacy Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
+                <div class="bg-gradient-to-br from-[#1a1120] to-[#2d1b2e] rounded-3xl border-2 border-vr-accent/40 overflow-hidden hover:border-vr-accent/70 transition-all duration-300 shadow-[0_10px_30px_rgba(244,63,94,0.15)] flex flex-col p-8 relative transform hover:-translate-y-2">
+                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-rose-500 via-purple-500 to-rose-500"></div>
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-vr-accent/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-8 relative z-10">
+                        <div class="bg-vr-accent/20 w-16 h-16 rounded-2xl flex items-center justify-center border border-vr-accent/40 shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+                            <span class="text-3xl font-black text-vr-accent">X</span>
+                        </div>
+                        <div class="text-right">
+                            <h3 class="text-xl font-bold text-white">The Premium</h3>
+                            <p class="text-sm text-vr-accent font-bold uppercase tracking-wider">Full Intimacy</p>
                         </div>
                     </div>
+                    <div class="flex-grow relative z-10">
+                        <ul class="text-sm space-y-4 text-slate-300 mb-8">
+                            <li class="flex items-start"><i data-lucide="flame" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">ประสบการณ์ 18+ ที่สมจริงเหมือนได้อยู่ด้วยกันจริงๆ</span><span class="en">Hyper-realistic 18+ experiences, feeling like you are truly together.</span><span class="cn">超逼真的18+体验，感觉就像真正相聚一样。</span></li>
+                            <li class="flex items-start"><i data-lucide="radio" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">โต้ตอบได้และเชื่อมต่อกับ "อุปกรณ์เสริม" ให้คุณรับรู้ถึงการสัมผัส</span><span class="en">Interactive content synced with smart toys for a real sense of touch.</span><span class="cn">与智能玩具同步的互动内容，带来真实的触感。</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-vr-accent/20 mt-auto relative z-10">
+                        <h4 class="text-xs font-semibold text-vr-accent uppercase tracking-wider mb-2">Tech Focus</h4>
+                        <p class="text-sm text-slate-200">
+                            <span class="th">Full-body tracking และ Haptic feedback integration</span>
+                            <span class="en">Full-body tracking & Haptic feedback integration</span>
+                            <span class="cn">全身追踪和触觉反馈集成</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Master Video Playlist Showcase -->
+            <div class="glass-card p-6 md:p-8 rounded-[2rem] border border-vr-primary/30 shadow-[0_20px_50px_rgba(139,92,246,0.15)] relative overflow-hidden">
+                <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-vr-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+                <div class="absolute -right-32 -top-32 w-96 h-96 bg-vr-secondary/10 rounded-full blur-[80px] pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 relative z-10">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white flex items-center">
+                            <i data-lucide="play-circle" class="w-6 h-6 mr-3 text-vr-primary"></i>
+                            <span class="th">วิดีโอตัวอย่างประสบการณ์ทั้ง 3 ระดับ</span>
+                            <span class="en">All Levels Video Showcase</span>
+                            <span class="cn">全层级视频展示</span>
+                        </h3>
+                        <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+                            <span class="th">รับชมตัวอย่างจำลองจากฝั่งแว่น VR (POV) เพื่อให้เห็นภาพระดับ Companionship, Romantic และ Full Intimacy</span>
+                            <span class="en">Watch POV simulations directly from the VR headset, showcasing Companionship, Romantic, and Full Intimacy.</span>
+                            <span class="cn">直接从 VR 头显观看 POV 模拟，展示陪伴、浪漫和完全亲密体验。</span>
+                        </p>
+                    </div>
+                    <a href="https://youtube.com/playlist?list=PLXigNrjSidjsa09V-NmMfeLzpMXDrcLBx" target="_blank" class="text-xs font-semibold text-white bg-gradient-to-r from-vr-primary to-blue-600 hover:from-vr-primary/80 hover:to-blue-600/80 px-5 py-2.5 rounded-full transition-all flex items-center shadow-lg hover:shadow-vr-primary/30 flex-shrink-0">
+                        <span class="th">เปิด Playlist บน YouTube</span>
+                        <span class="en">Open Playlist on YouTube</span>
+                        <span class="cn">在 YouTube 上打开播放列表</span>
+                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="relative w-full rounded-2xl overflow-hidden bg-black aspect-video ring-1 ring-white/10 shadow-2xl z-10">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLXigNrjSidjsa09V-NmMfeLzpMXDrcLBx" title="GymMateX 3 Levels Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,37 +15,50 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Kanit', 'Noto Sans', 'Noto Sans SC', sans-serif;
-            background-color: #F0F4F8; /* Softer infographic background */
-            color: #2F2F2F;
+            font-family: 'Kanit', 'Inter', sans-serif;
+            background-color: #FAFAFB;
+            color: #1F2937;
             overflow-x: hidden;
         }
         
         /* Typography Helpers */
         .kanit-light { font-weight: 300; }
         .kanit-regular { font-weight: 400; }
+        .kanit-medium { font-weight: 500; }
         .kanit-semibold { font-weight: 600; }
         .kanit-bold { font-weight: 700; }
 
-        /* Infographic Card Styling */
-        .tech-card {
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-            padding: 2rem;
+        /* Modern Glass Card Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
             position: relative;
             z-index: 10;
+            overflow: hidden;
         }
-        .tech-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--card-gradient, linear-gradient(90deg, #e2e8f0, #cbd5e1));
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(var(--glow-color, 0,0,0), 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         /* Connecting Timeline Line (Desktop only) */
@@ -53,47 +66,49 @@
             .timeline-container {
                 position: relative;
             }
-            .timeline-container::before {
+            .timeline-container::after {
                 content: '';
                 position: absolute;
-                top: 0;
-                bottom: 0;
+                top: 50px;
+                bottom: 50px;
                 left: 50%;
-                width: 4px;
-                background: linear-gradient(to bottom, #00A6ED, #7FB800, #F6511D, #FFB400, #A855F7, #EC4899);
+                width: 2px;
+                background: linear-gradient(to bottom, transparent, #00A6ED, #7FB800, #F6511D, #FFB400, #A855F7, transparent);
                 transform: translateX(-50%);
                 z-index: 0;
-                border-radius: 4px;
                 opacity: 0.3;
             }
         }
 
-        /* Language Buttons */
+        /* Language Buttons - iOS Segmented Control Style */
+        .lang-switcher-container {
+            background: rgba(226, 232, 240, 0.6);
+            padding: 4px;
+            border-radius: 9999px;
+            display: inline-flex;
+            backdrop-filter: blur(10px);
+        }
         .lang-btn {
-            padding: 0.4rem 0.8rem;
-            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            color: #475569;
+            font-weight: 600;
         }
         .lang-btn.active {
-            background-color: #00A6ED;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 166, 237, 0.3);
-        }
-        .lang-btn:not(.active) {
             background-color: white;
-            color: #495057;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: #0f172a;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .lang-btn:not(.active):hover {
-            background-color: #f1f5f9;
+            color: #0f172a;
         }
 
         /* Scroll Animations */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .animate-on-scroll.is-visible {
@@ -101,23 +116,45 @@
             transform: translateY(0);
         }
 
-        /* Custom Checkbox */
+        /* Custom Checkbox as Pills */
         .tech-checkbox-wrapper input:checked + div {
-            background-color: #e0f2fe;
-            border-color: #00A6ED;
+            background-image: linear-gradient(135deg, #00A6ED, #3b82f6);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+        }
+        .tech-checkbox-wrapper input:checked + div .emoji-bg {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Ambient Background Animations */
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
         }
 
         /* Loader */
         .loader {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #00A6ED;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             animation: spin 1s linear infinite;
             display: inline-block;
             vertical-align: middle;
-            margin-right: 10px;
+            margin-right: 8px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -125,213 +162,228 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative">
 
-    <!-- Decorative Background Elements -->
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-400 opacity-5 blur-[100px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-400 opacity-5 blur-[100px]"></div>
+    <!-- Ambient Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="ambient-orb bg-blue-400 w-[500px] h-[500px] top-[-10%] left-[-10%]"></div>
+        <div class="ambient-orb bg-purple-400 w-[400px] h-[400px] bottom-[10%] right-[-5%]" style="animation-delay: -5s;"></div>
+        <div class="ambient-orb bg-cyan-300 w-[300px] h-[300px] top-[40%] left-[20%] opacity-20" style="animation-delay: -10s;"></div>
     </div>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
-        
-        <!-- Navigation & Language -->
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-12 gap-4 animate-on-scroll">
-            <a href="https://thbho.github.io/" class="bg-white text-gray-800 kanit-semibold py-2 px-6 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100" data-translate-key="home_button">Back to Home</a>
-            <div id="language-switcher" class="flex space-x-2 bg-gray-100/50 p-1 rounded-lg backdrop-blur-sm">
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/60 border-b border-gray-200/50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-8 max-w-6xl py-3 flex justify-between items-center">
+            <a href="https://thbho.github.io/AIGymmateXFactory.html" class="group flex items-center gap-2 bg-white/80 text-gray-700 kanit-medium py-2 px-5 rounded-full shadow-sm hover:shadow hover:bg-white transition-all border border-gray-200/60" data-translate-key="home_button">
+                <span class="text-lg group-hover:-translate-x-1 transition-transform duration-300">←</span> Back
+            </a>
+            
+            <div id="language-switcher" class="lang-switcher-container">
                 <button class="lang-btn kanit-semibold active" data-lang="en">EN</button>
                 <button class="lang-btn kanit-semibold" data-lang="th">TH</button>
                 <button class="lang-btn kanit-semibold" data-lang="zh">ZH</button>
                 <button class="lang-btn kanit-semibold" data-lang="ru">RU</button>
             </div>
         </div>
+    </nav>
 
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl mt-8">
+        
         <!-- Header -->
-        <header class="text-center mb-20 animate-on-scroll">
-            <div class="inline-block px-4 py-1 rounded-full bg-blue-100 text-[#00A6ED] kanit-semibold text-sm mb-4" data-translate-key="header_supertitle">A Strategic Analysis by ThB.Ho</div>
-            <h1 class="kanit-bold text-5xl md:text-6xl text-[#1E293B] mb-4 tracking-tight leading-tight" data-translate-key="header_title">The Near Future of <br class="hidden md:block"/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00A6ED] to-purple-500">Digital Identity</span></h1>
-            <p class="kanit-regular text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto" data-translate-key="header_subtitle">Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years</p>
+        <header class="text-center mb-24 animate-on-scroll">
+            <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-white/80 border border-blue-100 shadow-sm text-blue-600 kanit-medium text-sm mb-6 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span data-translate-key="header_supertitle">A Strategic Analysis by ThB.Ho</span>
+            </div>
+            <h1 class="kanit-bold text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight leading-tight" data-translate-key="header_title">
+                The Near Future of <br class="hidden md:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600">Digital Identity</span>
+            </h1>
+            <p class="kanit-regular text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed" data-translate-key="header_subtitle">Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years</p>
         </header>
 
         <!-- Hero Video -->
-        <section id="hero-video" class="mb-24 animate-on-scroll">
-            <div class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-2 relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-20 -z-10"></div>
-                <video class="w-full h-auto rounded-xl object-cover" style="max-height: 500px;" src="https://astra.app/api/files/e6c80a20-4449-41ae-9964-2ad0820a7d1f" autoplay loop muted playsinline></video>
+        <section id="hero-video" class="mb-32 animate-on-scroll">
+            <div class="w-full max-w-5xl mx-auto relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-white rounded-3xl p-2 shadow-2xl ring-1 ring-gray-900/5">
+                    <video class="w-full h-auto rounded-2xl object-cover max-h-[550px]" src="https://astra.app/api/files/e6c80a20-4449-41ae-9964-2ad0820a7d1f" autoplay loop muted playsinline></video>
+                </div>
             </div>
         </section>
 
         <!-- Tech Waves Infographic -->
-        <section id="tech-wave" class="mb-24">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="kanit-bold text-3xl md:text-4xl text-[#1E293B] mb-4" data-translate-key="tech_wave_title">6 Tech Waves Changing the World</h2>
-                <p class="text-gray-500 kanit-regular text-lg">Hover over each node to explore your Persona's role.</p>
+        <section id="tech-wave" class="mb-32">
+            <div class="text-center mb-20 animate-on-scroll">
+                <h2 class="kanit-bold text-3xl md:text-5xl text-slate-900 mb-4" data-translate-key="tech_wave_title">6 Tech Waves Changing the World</h2>
+                <p class="text-slate-500 kanit-regular text-lg" data-translate-key="tech_wave_subtitle">Hover over each concept to explore your Persona's role.</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 timeline-container">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 timeline-container">
                 
                 <!-- Card 1 -->
-                <div class="tech-card border-t-8 border-[#00A6ED] lg:mr-8 animate-on-scroll">
+                <div class="glass-card lg:mr-8 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #00A6ED, #60A5FA); --glow-color: 0, 166, 237;">
                     <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-[#00A6ED]/10 w-16 h-16 rounded-full flex items-center justify-center">🧠</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="agentic_ai_timeline">2024-2025</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-blue-100">🧠</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="agentic_ai_timeline">2024-2025</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="agentic_ai_title">Agentic AI</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="agentic_ai_desc">AI will no longer be a passive assistant but a proactive agent that plans and executes complex tasks for us automatically.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="agentic_ai_title">Agentic AI</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="agentic_ai_desc">AI will no longer be a passive assistant but a proactive agent that plans and executes complex tasks for us automatically.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-[#00A6ED] p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="agentic_ai_role">Persona's Role: The <span class="kanit-bold text-[#00A6ED]">"Brain & Identity"</span> of the Agent, ensuring decisions reflect your character.</p>
+                    <div class="bg-blue-50/50 backdrop-blur-md rounded-xl p-5 border border-blue-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="agentic_ai_role">Persona's Role: The <span class="kanit-bold text-[#00A6ED]">"Brain & Identity"</span> of the Agent.</p>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="tech-card border-t-8 border-[#7FB800] lg:ml-8 lg:mt-16 animate-on-scroll">
+                <div class="glass-card lg:ml-8 lg:mt-24 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #7FB800, #34D399); --glow-color: 127, 184, 0;">
                     <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-[#7FB800]/10 w-16 h-16 rounded-full flex items-center justify-center">👓</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="vrar_timeline">2025-2027</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-green-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-green-100">👓</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="vrar_timeline">2025-2027</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="vrar_title">Immersive VR/AR</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="vrar_desc">AI glasses and virtual reality will become our primary interface for work and social life, replacing traditional screens.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="vrar_title">Immersive VR/AR</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="vrar_desc">Smart glasses and virtual reality will become our primary interface for work and social life, replacing traditional screens.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-[#7FB800] p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="vrar_role">Persona's Role: Your <span class="kanit-bold text-[#7FB800]">"Body & Representation"</span> in the digital realm.</p>
+                    <div class="bg-green-50/50 backdrop-blur-md rounded-xl p-5 border border-green-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="vrar_role">Persona's Role: Your <span class="kanit-bold text-[#7FB800]">"Body & Representation"</span> online.</p>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="tech-card border-t-8 border-[#F6511D] lg:mr-8 animate-on-scroll">
+                <div class="glass-card lg:mr-8 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #F6511D, #FB923C); --glow-color: 246, 81, 29;">
                     <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-[#F6511D]/10 w-16 h-16 rounded-full flex items-center justify-center">🤖</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="humanoid_timeline">2026-2028</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-orange-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-orange-100">🤖</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="humanoid_timeline">2026-2028</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="humanoid_title">Humanoid Robots</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="humanoid_desc">Human-like robots will begin to enter the service sector, working alongside or on behalf of humans.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="humanoid_title">Humanoid Robots</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="humanoid_desc">Human-like robots will begin to enter the service sector, working alongside or on behalf of humans.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-[#F6511D] p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="humanoid_role">Persona's Role: The <span class="kanit-bold text-[#F6511D]">"Soul"</span> downloaded into a robot, providing services in your style.</p>
+                    <div class="bg-orange-50/50 backdrop-blur-md rounded-xl p-5 border border-orange-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="humanoid_role">Persona's Role: The <span class="kanit-bold text-[#F6511D]">"Soul"</span> downloaded into a robot.</p>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="tech-card border-t-8 border-[#FFB400] lg:ml-8 lg:mt-16 animate-on-scroll">
+                <div class="glass-card lg:ml-8 lg:mt-24 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #FFB400, #FBBF24); --glow-color: 255, 180, 0;">
                      <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-[#FFB400]/10 w-16 h-16 rounded-full flex items-center justify-center">🔗</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="bci_timeline">2028+</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-yellow-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-yellow-100">🔗</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="bci_timeline">2028+</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="bci_title">Neuralink (BCI)</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="bci_desc">Direct brain-computer interface technology will advance significantly, reinforcing the need for a digital identity.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="bci_title">Neuralink (BCI)</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="bci_desc">Direct brain-computer interface technology will advance significantly, reinforcing the need for a digital identity.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-[#FFB400] p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="bci_role">Persona's Role: The <span class="kanit-bold text-[#FFB400]">"Connection-Ready Digital Self"</span>.</p>
+                    <div class="bg-yellow-50/50 backdrop-blur-md rounded-xl p-5 border border-yellow-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="bci_role">Persona's Role: The <span class="kanit-bold text-[#FFB400]">"Connection-Ready Digital Self"</span>.</p>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="tech-card border-t-8 border-purple-500 lg:mr-8 animate-on-scroll">
+                <div class="glass-card lg:mr-8 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #A855F7, #C084FC); --glow-color: 168, 85, 247;">
                      <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-purple-500/10 w-16 h-16 rounded-full flex items-center justify-center">🛡️</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="decentralized_timeline">2025-2028</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-purple-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-purple-100">🛡️</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="decentralized_timeline">2025-2028</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="decentralized_title">Decentralized Identity</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="decentralized_desc">Owning and controlling your digital identity via blockchain technology will become the new standard.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="decentralized_title">Decentralized Identity</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="decentralized_desc">Owning and controlling your digital identity via blockchain technology will become the new standard.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-purple-500 p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="decentralized_role">Persona's Role: A true <span class="kanit-bold text-purple-500">"Digital Asset"</span> that you genuinely own.</p>
+                    <div class="bg-purple-50/50 backdrop-blur-md rounded-xl p-5 border border-purple-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="decentralized_role">Persona's Role: A true <span class="kanit-bold text-purple-500">"Digital Asset"</span> that you genuinely own.</p>
                     </div>
                 </div>
 
                 <!-- Card 6 -->
-                <div class="tech-card border-t-8 border-pink-500 lg:ml-8 lg:mt-16 animate-on-scroll">
+                <div class="glass-card lg:ml-8 lg:mt-24 animate-on-scroll flex flex-col p-8" style="--card-gradient: linear-gradient(90deg, #EC4899, #F472B6); --glow-color: 236, 72, 153;">
                     <div class="flex-grow">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-5xl bg-pink-500/10 w-16 h-16 rounded-full flex items-center justify-center">✨</div>
-                            <span class="text-xs font-bold px-3 py-1 bg-gray-100 text-gray-500 rounded-full" data-translate-key="gen_worlds_timeline">2026-2027</span>
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="text-4xl bg-pink-50 w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner border border-pink-100">✨</div>
+                            <span class="text-xs font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full" data-translate-key="gen_worlds_timeline">2026-2027</span>
                         </div>
-                        <h3 class="kanit-bold text-2xl mb-2 text-[#1E293B]" data-translate-key="gen_worlds_title">Generative Worlds</h3>
-                        <p class="kanit-light text-gray-600 mb-6 text-lg leading-relaxed" data-translate-key="gen_worlds_desc">We will be able to instantly create virtual worlds or private rooms from our imagination using simple commands.</p>
+                        <h3 class="kanit-bold text-2xl mb-3 text-slate-900" data-translate-key="gen_worlds_title">Generative Worlds</h3>
+                        <p class="kanit-light text-slate-600 mb-8 text-lg leading-relaxed" data-translate-key="gen_worlds_desc">We will be able to instantly create virtual worlds or private rooms from our imagination using simple commands.</p>
                     </div>
-                    <div class="bg-gray-50 border-l-4 border-pink-500 p-4 rounded-r-lg mt-auto">
-                        <p class="kanit-regular text-gray-700" data-translate-key="gen_worlds_role">Persona's Role: The <span class="kanit-bold text-pink-500">"Creator"</span> who conjures unique environments.</p>
+                    <div class="bg-pink-50/50 backdrop-blur-md rounded-xl p-5 border border-pink-100/50 mt-auto">
+                        <p class="kanit-regular text-slate-700" data-translate-key="gen_worlds_role">Persona's Role: The <span class="kanit-bold text-pink-500">"Creator"</span> who conjures unique environments.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Interactive AI Generator Feature -->
-        <section id="gemini-feature" class="mb-24 animate-on-scroll">
-            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
-                <!-- Background Decoration -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-100 to-transparent rounded-full -mr-20 -mt-20 opacity-50 pointer-events-none"></div>
+        <section id="gemini-feature" class="mb-32 animate-on-scroll">
+            <div class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl p-8 md:p-14 border border-white relative overflow-hidden">
+                
+                <!-- Inner glow -->
+                <div class="absolute top-[-50px] right-[-50px] w-96 h-96 bg-blue-400/20 rounded-full blur-[80px] pointer-events-none"></div>
+                <div class="absolute bottom-[-50px] left-[-50px] w-96 h-96 bg-purple-400/20 rounded-full blur-[80px] pointer-events-none"></div>
 
-                <div class="text-center mb-10">
-                    <div class="inline-flex items-center justify-center p-3 bg-blue-50 text-blue-500 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                    </div>
-                    <h2 class="kanit-bold text-3xl md:text-4xl text-[#1E293B] mb-4" data-translate-key="gemini_title">Visualize Your Future</h2>
-                    <p class="kanit-regular text-gray-500 text-lg max-w-2xl mx-auto" data-translate-key="gemini_subtitle">Select the technologies that interest you (1 to 3 choices), and let AI generate a scenario showing how your Hybrid AI Persona will play a role.</p>
+                <div class="text-center mb-12 relative z-10">
+                    <h2 class="kanit-bold text-3xl md:text-5xl text-slate-900 mb-4" data-translate-key="gemini_title">Visualize Your Future</h2>
+                    <p class="kanit-regular text-slate-500 text-lg max-w-2xl mx-auto" data-translate-key="gemini_subtitle">Select the technologies that interest you (1 to 3 choices), and let AI generate a scenario showing how your Hybrid AI Persona will play a role.</p>
                 </div>
                 
-                <div id="tech-options" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                <div id="tech-options" class="flex flex-wrap justify-center gap-4 mb-10 relative z-10">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Agentic AI" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">🧠</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">🧠</span>
                             <span data-translate-key="tech_option_agentic">Agentic AI</span>
                         </div>
                     </label>
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Immersive VR/AR" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">👓</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">👓</span>
                             <span data-translate-key="tech_option_vrar">VR/AR</span>
                         </div>
                     </label>
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Humanoid Robots" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">🤖</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">🤖</span>
                             <span data-translate-key="tech_option_humanoids">Humanoids</span>
                         </div>
                     </label>
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Neuralink (BCI)" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">🔗</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">🔗</span>
                             <span data-translate-key="tech_option_bci">Neuralink</span>
                         </div>
                     </label>
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Decentralized Identity" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">🛡️</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">🛡️</span>
                             <span data-translate-key="tech_option_web3">Web3 Identity</span>
                         </div>
                     </label>
-                    <label class="tech-checkbox-wrapper relative cursor-pointer group">
+                    <label class="tech-checkbox-wrapper cursor-pointer group">
                         <input type="checkbox" name="tech" value="Generative Worlds" class="sr-only">
-                        <div class="p-4 bg-gray-50 border-2 border-transparent rounded-xl transition-all group-hover:bg-gray-100 text-center kanit-semibold text-gray-700">
-                            <span class="block text-2xl mb-1">✨</span>
+                        <div class="flex items-center gap-3 py-3 px-6 bg-slate-50 border border-slate-200 rounded-full transition-all duration-300 text-slate-600 kanit-medium hover:bg-slate-100 hover:border-slate-300">
+                            <span class="emoji-bg flex items-center justify-center w-8 h-8 rounded-full bg-white shadow-sm text-lg transition-colors">✨</span>
                             <span data-translate-key="tech_option_gen_worlds">Gen Worlds</span>
                         </div>
                     </label>
                 </div>
 
-                <div class="text-center">
-                    <button id="generate-button" class="bg-gradient-to-r from-[#00A6ED] to-blue-600 text-white kanit-bold py-3 px-10 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all focus:outline-none focus:ring-4 focus:ring-blue-300">
-                        <span data-translate-key="generate_button">Generate Scenario</span>
+                <div class="text-center relative z-10">
+                    <button id="generate-button" class="group relative inline-flex items-center justify-center gap-2 bg-slate-900 text-white kanit-semibold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300/50 overflow-hidden">
+                        <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                        <span class="relative flex items-center gap-2" data-translate-key="generate_button">
+                            Generate Scenario
+                        </span>
+                        <svg class="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </button>
                 </div>
 
-                <div id="scenario-result" class="mt-10 p-6 md:p-8 bg-[#F8FAFC] border border-gray-200 rounded-xl min-h-[150px] kanit-regular text-lg text-gray-700 leading-relaxed shadow-inner hidden">
+                <div id="scenario-result" class="mt-12 p-8 md:p-10 bg-white/50 backdrop-blur-md border border-slate-100 rounded-3xl min-h-[150px] kanit-regular text-lg text-slate-700 leading-relaxed shadow-sm hidden relative z-10">
                     <div id="scenario-content">
-                        <p class="text-gray-400 text-center italic" data-translate-key="gemini_placeholder">The result will appear here...</p>
+                        <p class="text-slate-400 text-center italic" data-translate-key="gemini_placeholder">The result will appear here...</p>
                     </div>
                 </div>
             </div>
@@ -339,31 +391,36 @@
 
         <!-- Conclusion -->
         <section id="conclusion" class="mb-16 animate-on-scroll">
-            <div class="bg-[#1E293B] text-white rounded-2xl shadow-2xl p-8 md:p-12">
-                <h2 class="kanit-bold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-12 text-center" data-translate-key="conclusion_title">3 Truths of the Future</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                    <div class="p-4">
-                        <div class="text-6xl mb-6 transform transition hover:scale-110">🚀</div>
-                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_1_title">Tech Arrives Faster</h3>
-                        <p class="kanit-light text-gray-300" data-translate-key="truth_1_desc">Development is exponential. What was impossible 5 years ago will be commonplace in the next 5 years.</p>
+            <div class="bg-slate-900 text-white rounded-[2.5rem] shadow-2xl p-10 md:p-16 relative overflow-hidden">
+                <!-- Abstract dark background shapes -->
+                <div class="absolute top-[-10%] right-[-5%] w-64 h-64 bg-blue-600/30 rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-[-10%] left-[-5%] w-64 h-64 bg-purple-600/30 rounded-full blur-[80px]"></div>
+
+                <h2 class="kanit-bold text-3xl md:text-5xl text-white mb-16 text-center relative z-10" data-translate-key="conclusion_title">3 Truths of the Future</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
+                    <div class="p-2">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 border border-white/10 text-4xl mb-6 backdrop-blur-sm shadow-xl transform transition hover:scale-110 hover:-rotate-3">🚀</div>
+                        <h3 class="kanit-semibold text-2xl mb-4 text-white" data-translate-key="truth_1_title">Tech Arrives Faster</h3>
+                        <p class="kanit-light text-slate-400 text-lg" data-translate-key="truth_1_desc">Development is exponential. What was impossible 5 years ago will be commonplace in the next 5 years.</p>
                     </div>
-                    <div class="p-4">
-                        <div class="text-6xl mb-6 transform transition hover:scale-110">🌐</div>
-                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_2_title">Personas Are Everywhere</h3>
-                        <p class="kanit-light text-gray-300" data-translate-key="truth_2_desc">As interfaces shift to VR/AR, a persistent, unified digital identity becomes essential.</p>
+                    <div class="p-2">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 border border-white/10 text-4xl mb-6 backdrop-blur-sm shadow-xl transform transition hover:scale-110 hover:-rotate-3">🌐</div>
+                        <h3 class="kanit-semibold text-2xl mb-4 text-white" data-translate-key="truth_2_title">Personas Are Everywhere</h3>
+                        <p class="kanit-light text-slate-400 text-lg" data-translate-key="truth_2_desc">As interfaces shift to VR/AR, a persistent, unified digital identity becomes essential.</p>
                     </div>
-                    <div class="p-4">
-                        <div class="text-6xl mb-6 transform transition hover:scale-110">💎</div>
-                        <h3 class="kanit-semibold text-xl mb-3 text-cyan-300" data-translate-key="truth_3_title">"You" Are Invaluable</h3>
-                        <p class="kanit-light text-gray-300" data-translate-key="truth_3_desc">When anyone can generate a generic AI, your authentic, unreplicable self is the rarest asset.</p>
+                    <div class="p-2">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 border border-white/10 text-4xl mb-6 backdrop-blur-sm shadow-xl transform transition hover:scale-110 hover:-rotate-3">💎</div>
+                        <h3 class="kanit-semibold text-2xl mb-4 text-white" data-translate-key="truth_3_title">"You" Are Invaluable</h3>
+                        <p class="kanit-light text-slate-400 text-lg" data-translate-key="truth_3_desc">When anyone can generate a generic AI, your authentic, unreplicable self is the rarest asset.</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <footer class="text-center mt-20 pt-10 border-t border-gray-200 animate-on-scroll">
-            <p class="kanit-semibold text-xl text-gray-800 max-w-2xl mx-auto mb-4" data-translate-key="footer_conclusion">Investing in a Hybrid AI Persona today is the most critical investment for the future that is already arriving.</p>
-            <p class="kanit-light text-gray-400" data-translate-key="footer_signature">ThB.Ho - The Architect of Tomorrow © 2026</p>
+        <footer class="text-center mt-24 pt-10 pb-8 border-t border-slate-200 animate-on-scroll">
+            <p class="kanit-semibold text-xl text-slate-800 max-w-2xl mx-auto mb-4" data-translate-key="footer_conclusion">Investing in a Hybrid AI Persona today is the most critical investment for the future that is already arriving.</p>
+            <p class="kanit-light text-slate-400" data-translate-key="footer_signature">ThB.Ho - The Architect of Tomorrow © 2026</p>
         </footer>
 
     </div>
@@ -377,11 +434,12 @@
         // Updated translations emphasizing simple language and formatting
         const translations = {
             en: {
-                home_button: "Back to Home",
+                home_button: "Back",
                 header_supertitle: "A Strategic Analysis by ThB.Ho",
                 header_title: "The Near Future of",
                 header_subtitle: "Why a Hybrid AI Persona is Your Most Critical Asset in the Next 3-5 Years",
                 tech_wave_title: "6 Tech Waves Changing the World",
+                tech_wave_subtitle: "Hover over each concept to explore your Persona's role.",
                 agentic_ai_title: "Agentic AI",
                 agentic_ai_timeline: "2024-2025",
                 agentic_ai_desc: "AI will act on your behalf, automatically planning and completing tasks instead of just waiting for instructions.",
@@ -426,17 +484,18 @@
                 footer_conclusion: "Creating your Hybrid AI Persona today prepares you for the world of tomorrow.",
                 footer_signature: "ThB.Ho - The Architect of Tomorrow © 2026",
                 gemini_prompt_template: `Based on the following technologies: {techs}. Write a short, simple, and inspiring story (in English, max 150 words) about how a person uses their 'Hybrid AI Persona' in daily life in 3 years. Use simple language. If the output has multiple points, use bullet points for readability. Start the story immediately.`,
-                gemini_loading: "Generating your future vision... Please wait.",
+                gemini_loading: "Generating your future vision...",
                 gemini_error_select_one: "Please select at least 1 technology.",
                 gemini_error_select_three: "Please select a maximum of 3 technologies.",
                 gemini_error_api: "An error occurred. Please try again later."
             },
             th: {
-                home_button: "กลับสู่หน้าหลัก",
+                home_button: "กลับหน้าหลัก",
                 header_supertitle: "บทวิเคราะห์เชิงกลยุทธ์ by ThB.Ho",
                 header_title: "อนาคตอันใกล้ของ",
                 header_subtitle: "ทำไม AI ตัวแทนของคุณ (Hybrid AI Persona) ถึงสำคัญที่สุดในอีก 3-5 ปีข้างหน้า",
                 tech_wave_title: "6 เทคโนโลยีที่จะเปลี่ยนโลก",
+                tech_wave_subtitle: "เลื่อนเมาส์ไปที่แต่ละไอเดียเพื่อดูบทบาท AI ของคุณ",
                 agentic_ai_title: "AI ผู้ช่วยอัจฉริยะ",
                 agentic_ai_timeline: "2567-2568",
                 agentic_ai_desc: "AI จะคิดและทำงานแทนเราโดยอัตโนมัติ ไม่ใช่แค่รอรับคำสั่งอีกต่อไป",
@@ -469,7 +528,7 @@
                 tech_option_bci: "เชื่อมสมอง",
                 tech_option_web3: "Web3",
                 tech_option_gen_worlds: "สร้างโลก AI",
-                generate_button: "สร้างเรื่องราว",
+                generate_button: "จำลองอนาคตของคุณ",
                 gemini_placeholder: "ผลลัพธ์จะแสดงตรงนี้...",
                 conclusion_title: "3 ความจริงแห่งอนาคต",
                 truth_1_title: "เทคโนโลยีมาไวกว่าที่คิด",
@@ -481,17 +540,18 @@
                 footer_conclusion: "เตรียมสร้าง Hybrid AI Persona ไว้ตั้งแต่วันนี้ เพื่อรับมือกับอนาคต",
                 footer_signature: "ThB.Ho - สถาปนิกแห่งอนาคต © 2569",
                 gemini_prompt_template: `จากเทคโนโลยีต่อไปนี้: {techs}. ช่วยแต่งเรื่องสั้นๆ ให้แรงบันดาลใจ (ภาษาไทย ใช้ภาษาเข้าใจง่าย ความยาวไม่เกิน 150 คำ) ว่าคนๆ นึง จะใช้ 'Hybrid AI Persona' (AI ตัวแทนของเขา) ในชีวิตประจำวันยังไงในอีก 3 ปีข้างหน้า หากมีหลายประเด็นให้ใช้ Bullet points เพื่อให้อ่านง่าย เริ่มต้นเล่าเรื่องได้เลยไม่ต้องเกริ่นนำ`,
-                gemini_loading: "กำลังจำลองอนาคต... รอสักครู่นะครับ",
+                gemini_loading: "กำลังจำลองภาพอนาคตของคุณ...",
                 gemini_error_select_one: "กรุณาเลือกเทคโนโลยีอย่างน้อย 1 ข้อครับ",
                 gemini_error_select_three: "กรุณาเลือกเทคโนโลยีไม่เกิน 3 ข้อครับ",
                 gemini_error_api: "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งครับ"
             },
             zh: {
-                home_button: "返回首页",
+                home_button: "返回",
                 header_supertitle: "ThB.Ho 战略分析",
                 header_title: "数字身份的近期未来",
                 header_subtitle: "为什么混合AI人设是您在未来3-5年内最关键的资产",
                 tech_wave_title: "6大改变世界的技术浪潮",
+                tech_wave_subtitle: "将鼠标悬停在每个概念上以探索您的人设角色。",
                 agentic_ai_title: "智能代理AI",
                 agentic_ai_timeline: "2024-2025",
                 agentic_ai_desc: "AI将代表您行动，自动规划和完成任务，而不再仅仅等待指令。",
@@ -536,17 +596,18 @@
                 footer_conclusion: "今天创建您的混合AI人设，为即将到来的明天做好准备。",
                 footer_signature: "ThB.Ho - 明日的建筑师 © 2026",
                 gemini_prompt_template: `基于以下技术：{techs}。写一个简短、简单的励志故事（中文，最多150字），描述一个人在3年后如何在日常生活中使用他们的“混合AI人设”。使用简单的语言。如果有多个重点，请使用项目符号。直接开始故事。`,
-                gemini_loading: "正在生成您的未来愿景...请稍候。",
+                gemini_loading: "正在生成您的未来愿景...",
                 gemini_error_select_one: "请至少选择1项技术。",
                 gemini_error_select_three: "最多只能选择3项技术。",
                 gemini_error_api: "发生错误，请稍后重试。"
             },
             ru: {
-                home_button: "На главную",
+                home_button: "Назад",
                 header_supertitle: "Стратегический анализ от ThB.Ho",
                 header_title: "Ближайшее будущее",
                 header_subtitle: "Почему Гибридная AI-Персона - ваш самый важный актив в ближайшие 3-5 лет",
                 tech_wave_title: "6 технологий, меняющих мир",
+                tech_wave_subtitle: "Наведите курсор на каждую концепцию, чтобы узнать роль вашей Персоны.",
                 agentic_ai_title: "Агентный ИИ",
                 agentic_ai_timeline: "2024-2025",
                 agentic_ai_desc: "ИИ будет действовать от вашего имени, автоматически планируя и выполняя задачи.",
@@ -591,7 +652,7 @@
                 footer_conclusion: "Создание вашей Гибридной AI-Персоны сегодня готовит вас к завтрашнему дню.",
                 footer_signature: "ThB.Ho - Архитектор завтрашнего дня © 2026",
                 gemini_prompt_template: `На основе технологий: {techs}. Напишите простую, вдохновляющую историю (на русском, до 150 слов) о том, как человек использует свою 'Гибридную AI-Персону' в быту через 3 года. Используйте простой язык. Если есть несколько пунктов, используйте маркеры. Начните историю сразу.`,
-                gemini_loading: "Генерируем ваше будущее... Пожалуйста, подождите.",
+                gemini_loading: "Генерируем ваше будущее...",
                 gemini_error_select_one: "Выберите хотя бы 1 технологию.",
                 gemini_error_select_three: "Выберите не более 3 технологий.",
                 gemini_error_api: "Произошла ошибка. Попробуйте позже."
@@ -621,11 +682,12 @@
 
         document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Format Markdown-lite logic (Handles basic bold and bullets generated by Gemini)
+        // Format Markdown-lite logic
         function formatText(text) {
-            let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            formatted = formatted.replace(/\n\*/g, '<br/>•');
-            formatted = formatted.replace(/\n-/g, '<br/>•');
+            let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900">$1</strong>');
+            // Check if there are bullet points, if so handle them nicely
+            formatted = formatted.replace(/\n\*\s/g, '<br/>• ');
+            formatted = formatted.replace(/\n-\s/g, '<br/>• ');
             return formatted;
         }
 
@@ -685,15 +747,15 @@
             resultDiv.classList.remove('hidden');
 
             if (selectedTechs.length === 0) {
-                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_select_one}</p>`;
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold text-center">${translations[currentLang].gemini_error_select_one}</p>`;
                 return;
             }
             if (selectedTechs.length > 3) {
-                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_select_three}</p>`;
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold text-center">${translations[currentLang].gemini_error_select_three}</p>`;
                 return;
             }
 
-            resultContent.innerHTML = `<div class="flex items-center justify-center text-blue-600"><span class="loader"></span><p class="kanit-semibold">${translations[currentLang].gemini_loading}</p></div>`;
+            resultContent.innerHTML = `<div class="flex items-center justify-center text-blue-600 py-4"><span class="loader border-t-blue-600"></span><p class="kanit-medium">${translations[currentLang].gemini_loading}</p></div>`;
             generateButton.disabled = true;
             generateButton.classList.add('opacity-70', 'cursor-wait');
 
@@ -717,19 +779,19 @@
 
                 if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
                     const text = result.candidates[0].content.parts[0].text;
-                    resultContent.innerHTML = `<div class="prose max-w-none text-gray-700">${formatText(text.trim())}</div>`;
+                    resultContent.innerHTML = `<div class="prose prose-slate max-w-none">${formatText(text.trim())}</div>`;
                 } else {
                     throw new Error("Invalid response format");
                 }
             } catch (error) {
-                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold">${translations[currentLang].gemini_error_api}</p>`;
+                resultContent.innerHTML = `<p class="text-red-500 kanit-semibold text-center">${translations[currentLang].gemini_error_api}</p>`;
             } finally {
                 generateButton.disabled = false;
                 generateButton.classList.remove('opacity-70', 'cursor-wait');
                 
-                // Ensure result box is styled properly once loaded
+                // Style the result box to look elegant
                 resultDiv.classList.add('bg-white');
-                resultDiv.classList.remove('bg-[#F8FAFC]');
+                resultDiv.classList.remove('bg-white/50');
             }
         });
 

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymMateX VR: Business Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        vr: {
+                            dark: '#0a0f1d',
+                            card: '#162032',
+                            primary: '#8b5cf6', // Purple
+                            secondary: '#06b6d4', // Cyan
+                            accent: '#f43f5e', // Rose
+                            gold: '#fbbf24' // Luxury Gold
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0f1d;
+            color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #8b5cf6, #06b6d4, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-gold {
+            background: linear-gradient(to right, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #8b5cf6;
+            border: 4px solid #0a0f1d;
+        }
+        .timeline-line {
+            border-left: 2px solid #2a3b54;
+            position: relative;
+        }
+        .glass-card {
+            background: rgba(22, 32, 50, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Language Toggle Logic */
+        body.lang-th .en, body.lang-th .cn { display: none !important; }
+        body.lang-en .th, body.lang-en .cn { display: none !important; }
+        body.lang-cn .th, body.lang-cn .en { display: none !important; }
+    </style>
+</head>
+<body class="antialiased min-h-screen lang-th selection:bg-vr-primary selection:text-white">
+
+    <!-- Floating Language Toggle -->
+    <div class="fixed top-4 right-4 md:top-6 md:right-8 z-50 bg-slate-900/90 backdrop-blur-md border border-slate-700 rounded-full p-1 flex gap-1 shadow-[0_0_20px_rgba(139,92,246,0.2)]">
+        <button onclick="setLang('th')" id="btn-th" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-vr-primary text-white transition-all shadow-md">TH</button>
+        <button onclick="setLang('en')" id="btn-en" class="px-4 py-1.5 text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">EN</button>
+        <button onclick="setLang('cn')" id="btn-cn" class="px-4 py-1.5 text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">CN</button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-vr-dark to-vr-dark pt-28 pb-20 px-6 sm:px-12 lg:px-24 border-b border-slate-800/50">
+        <div class="max-w-6xl mx-auto relative z-10 text-center md:text-left">
+            <div class="inline-flex items-center px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-vr-gold uppercase rounded-full bg-vr-gold/10 border border-vr-gold/20">
+                <i data-lucide="crown" class="w-4 h-4 mr-2"></i> 
+                <span class="th">อาณาจักรความบันเทิงระดับพรีเมียม</span>
+                <span class="en">Premium Adult Entertainment</span>
+                <span class="cn">高级成人娱乐</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                GymMateX <br>
+                <span class="gradient-text">
+                    <span class="th">สัมผัสโลกเสมือนสุดล้ำ</span>
+                    <span class="en">The Ultimate Virtual Reality</span>
+                    <span class="cn">终极虚拟现实体验</span>
+                </span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed mx-auto md:mx-0">
+                <span class="th">แพลตฟอร์มที่เชื่อมโลกจริง (อีเวนต์หรูและฟิตเนส) เข้ากับโลกดิจิทัล เปลี่ยนคนจริงให้กลายเป็น "AI คู่หูเสมือน" (Digital Twin) พร้อมประสบการณ์ VR ที่สมจริงจนคุณสัมผัสได้</span>
+                <span class="en">A platform that connects the real world (luxury events & fitness) with the digital world. We turn real people into "Virtual AI Companions" (Digital Twins) with VR experiences you can actually feel.</span>
+                <span class="cn">一个连接现实世界（豪华活动和健身）与数字世界的平台。我们将真人转化为“虚拟AI伴侣”（数字孪生），提供触手可及的真实VR体验。</span>
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm max-w-4xl mx-auto md:mx-0">
+                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-primary/50">
+                    <i data-lucide="globe-2" class="w-6 h-6 text-vr-primary mb-3"></i>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Concept</p>
+                    <p class="font-semibold text-white">Real to Virtual World</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-secondary/50">
+                    <i data-lucide="users" class="w-6 h-6 text-vr-secondary mb-3"></i>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Target Market</p>
+                    <p class="font-semibold text-white">Premium LGBTQ+ (Gay)</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-gold/50">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-vr-gold mb-3"></i>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Core Value</p>
+                    <p class="font-semibold text-white">Privacy & Luxury</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl border-t-2 border-t-vr-accent/50">
+                    <i data-lucide="rocket" class="w-6 h-6 text-vr-accent mb-3"></i>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">Revenue Target (Yr 3)</p>
+                    <p class="font-semibold text-white">$3 Million USD</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[500px] h-[500px] rounded-full bg-vr-primary/10 blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-[500px] h-[500px] rounded-full bg-vr-secondary/10 blur-[100px] pointer-events-none"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 sm:px-12 lg:px-24 py-20 space-y-32">
+
+        <!-- O2O Ecosystem (Simplified) -->
+        <section>
+            <div class="text-center mb-16">
+                <span class="text-vr-primary font-bold tracking-widest uppercase text-sm">How It Works</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">
+                    <span class="th">จากคนจริง สู่ตัวตนดิจิทัล</span>
+                    <span class="en">From Real People to Digital Companions</span>
+                    <span class="cn">从真人到数字伴侣</span>
+                </h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                    <span class="th">เราไม่ได้สร้างแค่แอป แต่เรามีอีเวนต์คัดเลือกคนจริงๆ เพื่อนำมาสร้างเป็นตัวละคร AI ให้แฟนๆ ทั่วโลกได้ใกล้ชิด</span>
+                    <span class="en">We don't just build an app. We host exclusive real-world events to cast models, then turn them into AI characters for fans worldwide to interact with.</span>
+                    <span class="cn">我们不仅开发应用，还举办独家现实活动来挑选模特，然后将他们变成AI角色，供全球粉丝互动。</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Step 1: Offline -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 border border-slate-600 group-hover:border-vr-secondary transition-colors">
+                        <span class="text-xl font-bold text-vr-secondary">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">
+                        <span class="th">อีเวนต์คัดเลือก (The Casting)</span>
+                        <span class="en">The Casting Event</span>
+                        <span class="cn">现场选角活动</span>
+                    </h3>
+                    <h4 class="text-sm text-vr-secondary mb-4 font-semibold uppercase tracking-wide">Real-World Action</h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start"><i data-lucide="users" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">คัดเลือกนายแบบผ่านกิจกรรมฟิตเนสสุดเอ็กซ์คลูซีฟ</span><span class="en">Selecting top models through exclusive fitness activities.</span><span class="cn">通过独家健身活动挑选顶级模特。</span></li>
+                        <li class="flex items-start"><i data-lucide="ticket" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">ลูกค้าระดับ VIP สามารถซื้อตั๋วเข้าชมงานจริงได้</span><span class="en">VIP clients can buy tickets to watch the casting live.</span><span class="cn">VIP客户可购买门票观看现场试镜。</span></li>
+                    </ul>
+                </div>
+
+                <!-- Step 2: Bridge -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 border border-slate-600 group-hover:border-vr-gold transition-colors">
+                        <span class="text-xl font-bold text-vr-gold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">
+                        <span class="th">ทริปส่วนตัว (Wellness Trips)</span>
+                        <span class="en">Private Wellness Trips</span>
+                        <span class="cn">私人健康之旅</span>
+                    </h3>
+                    <h4 class="text-sm text-vr-gold mb-4 font-semibold uppercase tracking-wide">Data Collection</h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start"><i data-lucide="camera" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">ทริปสุดหรูเพื่อถ่ายทำและบันทึกข้อมูลท่าทาง เสียง และนิสัย</span><span class="en">Luxury trips to film and record their movements, voice, and personality.</span><span class="cn">豪华旅行，拍摄并记录他们的动作、声音和性格。</span></li>
+                        <li class="flex items-start"><i data-lucide="star" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">ปาร์ตี้ส่วนตัวและกิจกรรมสุดพิเศษสำหรับผู้ชนะ</span><span class="en">Private parties and special activities for the casting winners.</span><span class="cn">为获胜者举办的私人派对和特别活动。</span></li>
+                    </ul>
+                </div>
+
+                <!-- Step 3: Online -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center mb-6 border border-slate-600 group-hover:border-vr-primary transition-colors">
+                        <span class="text-xl font-bold text-vr-primary">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">
+                        <span class="th">ตัวตนดิจิทัล (AI Persona & VR)</span>
+                        <span class="en">Virtual AI Persona & VR</span>
+                        <span class="cn">虚拟AI角色与VR</span>
+                    </h3>
+                    <h4 class="text-sm text-vr-primary mb-4 font-semibold uppercase tracking-wide">Global Platform</h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-start"><i data-lucide="bot" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">เปลี่ยนนายแบบให้เป็น AI ที่โต้ตอบได้ 24 ชั่วโมงในโลก VR</span><span class="en">Transforming models into AI companions available 24/7 in VR.</span><span class="cn">将模特转化为VR中全天候可互动的AI伴侣。</span></li>
+                        <li class="flex items-start"><i data-lucide="smartphone" class="w-4 h-4 text-slate-500 mr-2 mt-0.5"></i> <span class="th">แฟนคลับทั่วโลกสามารถสมัครสมาชิกเพื่อใกล้ชิดคนโปรด</span><span class="en">Fans globally can subscribe to get close to their favorites.</span><span class="cn">全球粉丝可以订阅以亲近他们最喜欢的角色。</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Levels (Simplified) -->
+        <section>
+            <div class="text-center mb-16">
+                <span class="text-vr-primary font-bold tracking-widest uppercase text-sm">Experiences</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">
+                    <span class="th">3 ระดับความใกล้ชิด</span>
+                    <span class="en">3 Levels of Digital Intimacy</span>
+                    <span class="cn">3 个数字亲密关系层级</span>
+                </h2>
+                <p class="text-slate-400 mt-4">
+                    <span class="th">ออกแบบมาเพื่อตอบโจทย์ตั้งแต่ต้องการเพื่อนคุย ไปจนถึงความสัมพันธ์ที่ลึกซึ้งที่สุด</span>
+                    <span class="en">Designed for everything from a simple chat to the deepest interactive connection.</span>
+                    <span class="cn">专为从简单的聊天到最深层次的互动连接而设计。</span>
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Level G & R in Grid -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Level G -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-green-500/20 overflow-hidden hover:border-green-500/50 transition-all duration-300 shadow-lg flex flex-col">
+                        <div class="p-8 flex-grow">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="bg-green-500/10 w-14 h-14 rounded-2xl flex items-center justify-center border border-green-500/20">
+                                    <span class="text-2xl font-bold text-green-400">G</span>
+                                </div>
+                                <div class="text-right">
+                                    <h3 class="text-xl font-bold text-white">General</h3>
+                                    <p class="text-sm text-green-400 font-semibold uppercase tracking-wider">Companionship</p>
+                                </div>
+                            </div>
+                            <ul class="text-sm space-y-3 text-slate-300 mb-6">
+                                <li class="flex items-start"><i data-lucide="message-square" class="w-4 h-4 text-green-400 mr-3 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span></li>
+                                <li class="flex items-start"><i data-lucide="dumbbell" class="w-4 h-4 text-green-400 mr-3 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span></li>
+                            </ul>
+                        </div>
+                        <div class="p-6 bg-black/40 border-t border-slate-700/50 flex justify-center">
+                            <div class="relative w-full max-w-[240px] rounded-xl overflow-hidden bg-black aspect-[9/16] ring-1 ring-white/10">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/W7IaYj6Jzcs" title="Companionship Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Level R -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border border-orange-500/20 overflow-hidden hover:border-orange-500/50 transition-all duration-300 shadow-lg flex flex-col">
+                        <div class="p-8 flex-grow">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="bg-orange-500/10 w-14 h-14 rounded-2xl flex items-center justify-center border border-orange-500/20">
+                                    <span class="text-2xl font-bold text-orange-400">R</span>
+                                </div>
+                                <div class="text-right">
+                                    <h3 class="text-xl font-bold text-white">Restricted</h3>
+                                    <p class="text-sm text-orange-400 font-semibold uppercase tracking-wider">Romantic</p>
+                                </div>
+                            </div>
+                            <ul class="text-sm space-y-3 text-slate-300 mb-6">
+                                <li class="flex items-start"><i data-lucide="heart" class="w-4 h-4 text-orange-400 mr-3 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดโรแมนติก</span><span class="en">Virtual Dating & Romantic Private Dinners</span><span class="cn">虚拟约会和浪漫私人晚餐</span></li>
+                                <li class="flex items-start"><i data-lucide="eye" class="w-4 h-4 text-orange-400 mr-3 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span></li>
+                            </ul>
+                        </div>
+                        <div class="p-6 bg-black/40 border-t border-slate-700/50 flex justify-center">
+                            <div class="relative w-full max-w-[240px] rounded-xl overflow-hidden bg-black aspect-[9/16] ring-1 ring-white/10">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/RTw-R4PDcRs" title="Romantic Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level X (Flagship) -->
+                <div class="bg-gradient-to-br from-[#1a1120] to-[#2d1b2e] rounded-3xl border-2 border-vr-accent/30 overflow-hidden hover:border-vr-accent/60 transition-all duration-300 shadow-[0_10px_40px_rgba(244,63,94,0.15)]">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rose-500 via-purple-500 to-rose-500"></div>
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="md:w-1/3 text-center md:text-left">
+                                <div class="bg-vr-accent/10 w-20 h-20 rounded-3xl flex items-center justify-center border border-vr-accent/30 mx-auto md:mx-0 mb-6 shadow-[0_0_20px_rgba(244,63,94,0.2)]">
+                                    <span class="text-4xl font-black text-vr-accent">X</span>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white mb-2">The Premium</h3>
+                                <p class="text-sm text-vr-accent font-bold uppercase tracking-widest mb-6">Full Intimacy</p>
+                                <ul class="text-sm space-y-4 text-slate-300 text-left">
+                                    <li class="flex items-start"><i data-lucide="flame" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0"></i> <span class="th">ประสบการณ์ 18+ ที่สมจริงเหมือนได้อยู่ด้วยกันจริงๆ</span><span class="en">Hyper-realistic 18+ experiences, feeling like you are truly together.</span><span class="cn">超逼真的18+体验，感觉就像真正相聚一样。</span></li>
+                                    <li class="flex items-start"><i data-lucide="radio" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0"></i> <span class="th">โต้ตอบได้และเชื่อมต่อกับ "อุปกรณ์เสริม" ให้คุณรับรู้ถึงการสัมผัส</span><span class="en">Interactive content synced with smart toys for a real sense of touch.</span><span class="cn">与智能玩具同步的互动内容，带来真实的触感。</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="md:w-2/3 w-full">
+                                <div class="relative w-full rounded-2xl overflow-hidden bg-black aspect-video ring-2 ring-white/5 shadow-2xl">
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/U_8-x13EbjA" title="Full Intimacy Reference" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Overview (Simplified Layman Terms) -->
+        <section>
+            <div class="text-center mb-16">
+                <span class="text-vr-secondary font-bold tracking-widest uppercase text-sm">Future Technology</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2">
+                    <span class="th">เทคโนโลยีแห่งอนาคตที่นำมาใช้</span>
+                    <span class="en">The Technology Behind the Magic</span>
+                    <span class="cn">魔法背后的未来技术</span>
+                </h2>
+                <p class="text-slate-400 mt-4 max-w-3xl mx-auto">
+                    <span class="th">เราใช้เทคโนโลยีล้ำสมัยเพื่อหลอกสมองของคุณให้รู้สึกว่า โลกเสมือนตรงหน้าคือความจริง</span>
+                    <span class="en">We use cutting-edge technology to trick your brain into feeling that the virtual world in front of you is reality.</span>
+                    <span class="cn">我们利用尖端技术欺骗您的大脑，让您感觉眼前的虚拟世界就是现实。</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Tech 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-500/10 rounded-lg mr-4"><i data-lucide="glasses" class="w-6 h-6 text-blue-400"></i></div>
+                        <h3 class="text-xl font-bold text-white">
+                            <span class="th">ภาพคมชัดระดับ 8K VR</span>
+                            <span class="en">Ultra-Clear 8K VR</span>
+                            <span class="cn">超清晰 8K VR</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        <span class="th">ภาพสวยสมจริง ไร้จุดสะดุดตารบกวน ให้ความรู้สึกเหมือนคุณได้ไปยืนอยู่ตรงสถานที่นั้นจริงๆ</span>
+                        <span class="en">Lifelike, flawless visuals that make you feel like you are physically standing right there.</span>
+                        <span class="cn">逼真无瑕的视觉效果，让您感觉仿佛身临其境。</span>
+                    </p>
+                </div>
+
+                <!-- Tech 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-rose-500/10 rounded-lg mr-4"><i data-lucide="activity" class="w-6 h-6 text-rose-400"></i></div>
+                        <h3 class="text-xl font-bold text-white">
+                            <span class="th">ระบบสัมผัสอัจฉริยะ (AI Touch)</span>
+                            <span class="en">Smart AI Touch</span>
+                            <span class="cn">智能 AI 触觉</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        <span class="th">AI จะวิเคราะห์ภาพวิดีโอและสั่งการให้อุปกรณ์เสริมสั่นตอบสนองได้อย่างแม่นยำตามการเคลื่อนไหว</span>
+                        <span class="en">AI analyzes the video and perfectly syncs the smart device vibrations with every on-screen movement.</span>
+                        <span class="cn">AI 分析视频，使智能设备的震动与屏幕上的每一个动作完美同步。</span>
+                    </p>
+                </div>
+
+                <!-- Tech 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-emerald-500/10 rounded-lg mr-4"><i data-lucide="wifi" class="w-6 h-6 text-emerald-400"></i></div>
+                        <h3 class="text-xl font-bold text-white">
+                            <span class="th">เชื่อมต่อไร้ความหน่วง (Zero Lag)</span>
+                            <span class="en">Zero Lag Connection</span>
+                            <span class="cn">零延迟连接</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        <span class="th">รองรับเทคโนโลยีอินเทอร์เน็ตแห่งอนาคต (6G) ทำให้ภาพ เสียง และการสัมผัสเกิดขึ้นพร้อมกันแบบไม่มีสะดุด</span>
+                        <span class="en">Preparing for future 6G tech to ensure visuals, sound, and touch happen instantly without any delay.</span>
+                        <span class="cn">为未来的 6G 技术做准备，确保视觉、声音和触觉瞬间同步，毫无延迟。</span>
+                    </p>
+                </div>
+
+                <!-- Tech 4 -->
+                <div class="glass-card p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-purple-500/10 rounded-lg mr-4"><i data-lucide="brain" class="w-6 h-6 text-purple-400"></i></div>
+                        <h3 class="text-xl font-bold text-white">
+                            <span class="th">อนาคต: สั่งการด้วยคลื่นสมอง</span>
+                            <span class="en">Future: Brain-Computer Link</span>
+                            <span class="cn">未来：脑机连接</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        <span class="th">เราเตรียมพร้อมสำหรับอนาคต ที่คุณอาจรับรู้ถึง "การสัมผัสในโลกเสมือน" ได้โดยตรงผ่านการส่งสัญญาณคลื่นสมอง</span>
+                        <span class="en">We are ready for a future where you might feel "virtual touch" directly through brain signal interfaces.</span>
+                        <span class="cn">我们为未来做好了准备，您可能会通过脑信号接口直接感受到“虚拟触摸”。</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Fantasy Scenes & AI VDO Gen (Simplified) -->
+        <section class="relative">
+            <div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden border border-emerald-500/30">
+                <!-- Background flair -->
+                <div class="absolute -right-20 -top-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="lg:w-1/2">
+                        <div class="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-bold tracking-wider text-emerald-400 uppercase rounded-full bg-emerald-400/10 border border-emerald-400/20">
+                            <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i> Custom Environments
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
+                            <span class="th">ฉากหลังในจินตนาการ</span>
+                            <span class="en">Infinite Fantasy Scenes</span>
+                            <span class="cn">无限奇幻场景</span>
+                        </h3>
+                        <p class="text-slate-300 mb-8 text-base leading-relaxed">
+                            <span class="th">เราใช้เทคโนโลยี AI เพื่อสร้าง "ฉากจำลอง 3 มิติ" ให้คุณได้เลือกบรรยากาศตามใจชอบ อ้างอิงจากคอนเซปต์ <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a> เพื่อสร้างโลกส่วนตัวของคุณเอง</span>
+                            <span class="en">We use AI to generate stunning "3D environments" allowing you to choose any mood or setting. Inspired by <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a> to build your private world.</span>
+                            <span class="cn">我们利用AI生成令人惊叹的“3D环境”，让您可以选择任何心情或场景。灵感来自 <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a>，打造您的私人世界。</span>
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
+                                <i data-lucide="map" class="w-6 h-6 text-emerald-400 mb-2"></i>
+                                <h4 class="font-bold text-white text-sm mb-1">Time & Locations</h4>
+                                <p class="text-xs text-slate-400"><span class="th">ข้ามเวลาสู่อดีต หรือโลกอนาคตล้ำยุค</span><span class="en">Time travel to past or futuristic worlds</span></p>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50">
+                                <i data-lucide="users-2" class="w-6 h-6 text-emerald-400 mb-2"></i>
+                                <h4 class="font-bold text-white text-sm mb-1">NPCs & Crowds</h4>
+                                <p class="text-xs text-slate-400"><span class="th">มีผู้คนพลุกพล่าน หรือส่วนตัวแบบ 1 ต่อ 1</span><span class="en">Simulate crowds or go private 1-on-1</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 w-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider flex items-center">
+                                <i data-lucide="video" class="w-4 h-4 mr-2"></i> AI VDO Gen Gallery
+                            </h4>
+                            <a href="https://youtube.com/playlist?list=PLXigNrjSidjvZtGKhEPsZRRL_nEPSVgoy" target="_blank" class="text-xs text-slate-300 hover:text-emerald-400 flex items-center transition bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 hover:bg-slate-700">
+                                YouTube <i data-lucide="external-link" class="w-3 h-3 ml-1.5"></i>
+                            </a>
+                        </div>
+                        <div class="relative w-full overflow-hidden rounded-2xl border border-slate-700 shadow-[0_0_30px_rgba(16,185,129,0.15)] bg-black aspect-video">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLXigNrjSidjvZtGKhEPsZRRL_nEPSVgoy" title="GymMateX Fantasy Scenes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy & Revenue (Simplified Layman Terms) -->
+        <section class="grid lg:grid-cols-2 gap-8">
+            <!-- Privacy & Security -->
+            <div class="bg-gradient-to-br from-[#1c1614] to-[#2a1b18] p-8 md:p-10 rounded-3xl border border-vr-gold/30 shadow-[0_10px_30px_rgba(251,191,36,0.05)]">
+                <div class="inline-flex items-center px-3 py-1 mb-6 text-xs font-bold tracking-widest text-vr-gold uppercase rounded-full bg-vr-gold/10 border border-vr-gold/20">
+                    <i data-lucide="shield" class="w-3 h-3 mr-1.5"></i> 100% Safe & Secure
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-white">
+                    <span class="gradient-gold">
+                        <span class="th">ความเป็นส่วนตัวคือความหรูหราสูงสุด</span>
+                        <span class="en">Privacy as the Ultimate Luxury</span>
+                        <span class="cn">隐私是终极奢华</span>
+                    </span>
+                </h3>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-vr-gold/10 flex items-center justify-center flex-shrink-0 border border-vr-gold/20 mt-1">
+                            <i data-lucide="fingerprint" class="w-5 h-5 text-vr-gold"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base mb-1">
+                                <span class="th">ระบบยืนยันตัวตนขั้นสูง</span>
+                                <span class="en">Advanced Verification</span>
+                                <span class="cn">高级身份验证</span>
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">เรามีระบบตรวจสอบอายุและความยินยอมอย่างเข้มงวด เพื่อให้มั่นใจว่าเป็นพื้นที่สำหรับผู้ใหญ่เท่านั้น ปลอดภัยจากปัญหาทางกฎหมาย</span>
+                                <span class="en">We use strict age and consent verification systems to ensure an adults-only space, keeping everyone legally safe.</span>
+                                <span class="cn">我们使用严格的年龄和同意验证系统以确保仅限成人的空间，确保每个人的法律安全。</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-vr-gold/10 flex items-center justify-center flex-shrink-0 border border-vr-gold/20 mt-1">
+                            <i data-lucide="lock" class="w-5 h-5 text-vr-gold"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base mb-1">
+                                <span class="th">พื้นที่ลับเฉพาะ (Safe Space)</span>
+                                <span class="en">Confidential Safe Space</span>
+                                <span class="cn">机密的安全空间</span>
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">ปกป้องข้อมูลความลับของคุณ 100% ตั้งแต่การจัดงานจริง (ห้ามใช้มือถือ) ไปจนถึงการเข้ารหัสแอปพลิเคชันอย่างแน่นหนา</span>
+                                <span class="en">100% protection of your secrets, from phone-free offline events to fully encrypted application data.</span>
+                                <span class="cn">100% 保护您的秘密，从禁止使用手机的线下活动到完全加密的应用程序数据。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-vr-gold/10 flex items-center justify-center flex-shrink-0 border border-vr-gold/20 mt-1">
+                            <i data-lucide="heart-pulse" class="w-5 h-5 text-vr-gold"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base mb-1">
+                                <span class="th">AI ดูแลสุขภาพผู้เล่น</span>
+                                <span class="en">AI Health Monitor</span>
+                                <span class="cn">AI 健康监控</span>
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">มีระบบแจ้งเตือนให้พักสายตาทุกๆ 40 นาที เพื่อป้องกันการติด VR มากเกินไป ให้คุณสนุกได้อย่างปลอดภัยและสุขภาพดี</span>
+                                <span class="en">System reminds you to take a break every 40 minutes to prevent VR addiction, keeping you safe and healthy.</span>
+                                <span class="cn">系统会提醒您每 40 分钟休息一次，防止沉迷VR，让您安全健康地享受。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Model -->
+            <div class="bg-slate-800/50 p-8 md:p-10 rounded-3xl border border-slate-700">
+                <div class="inline-flex items-center px-3 py-1 mb-6 text-xs font-bold tracking-widest text-slate-300 uppercase rounded-full bg-slate-700 border border-slate-600">
+                    <i data-lucide="trending-up" class="w-3 h-3 mr-1.5"></i> Business Model
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-white">
+                    Revenue Streams
+                </h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-vr-secondary mb-2 border-l-2 border-vr-secondary pl-3 text-lg">B2C (Consumer)</h4>
+                        <ul class="text-sm text-slate-300 space-y-2 ml-3">
+                            <li>• <b>Subscriptions:</b> <span class="th">เก็บรายเดือนเพื่อเข้าใช้งานแอปพลิเคชัน</span><span class="en">Monthly access to the application</span><span class="cn">应用包月访问</span></li>
+                            <li>• <b>Pay-Per-Experience:</b> <span class="th">ซื้อประสบการณ์ทริปเสมือนจริงแบบ Exclusive (Level X)</span><span class="en">Buy exclusive virtual trips (Level X)</span><span class="cn">购买独家虚拟旅行（级别X）</span></li>
+                            <li>• <b>Event Fees:</b> <span class="th">ขายตั๋วเข้าร่วมงานแคสติ้งและทริปในโลกจริง</span><span class="en">Tickets for real-world Casting & Wellness Trips</span><span class="cn">现实世界试镜和健康之旅的门票</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-700/50">
+                        <h4 class="font-bold text-vr-primary mb-2 border-l-2 border-vr-primary pl-3 text-lg">B2B (Creator Economy)</h4>
+                        <ul class="text-sm text-slate-300 space-y-2 ml-3">
+                            <li>• <b>Agency Model:</b> <span class="th">รับจ้างสร้าง AI ให้กับครีเอเตอร์/นายแบบคนอื่นๆ แล้วแบ่งรายได้</span><span class="en">Create AI models for other creators/models and share revenue.</span><span class="cn">为其他创作者/模特创建AI模型并分享收益。</span></li>
+                            <li>• <b>Sponsorships:</b> <span class="th">รับสปอนเซอร์จากแบรนด์สินค้าหรู ฟิตเนส และอุปกรณ์ไฮเทค</span><span class="en">Sponsorships from luxury brands, fitness, and tech companies.</span><span class="cn">来自奢侈品牌、健身和科技公司的赞助。</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Perfect Storm (Future Vision & Exponential Growth) -->
+        <section class="relative py-10">
+            <!-- Glow Effect -->
+            <div class="absolute inset-0 bg-gradient-to-r from-vr-primary/20 via-transparent to-vr-secondary/20 blur-3xl opacity-60 rounded-[3rem] pointer-events-none"></div>
+            
+            <div class="glass-card p-10 md:p-14 rounded-[3rem] relative z-10 border-t border-vr-primary/40 shadow-[0_20px_60px_rgba(139,92,246,0.15)] text-center">
+                <div class="inline-flex items-center px-4 py-2 mb-6 text-xs font-bold tracking-widest text-vr-primary uppercase rounded-full bg-vr-primary/10 border border-vr-primary/30">
+                    <i data-lucide="rocket" class="w-4 h-4 mr-2"></i> The Perfect Storm
+                </div>
+                
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 text-white leading-tight">
+                    <span class="th">ทำไมธุรกิจนี้ถึงจะเติบโตอย่าง <span class="gradient-text">ก้าวกระโดด?</span></span>
+                    <span class="en">Why Will This Business Grow <span class="gradient-text">Exponentially?</span></span>
+                    <span class="cn">为什么这项业务会 <span class="gradient-text">呈指数级增长？</span></span>
+                </h2>
+                
+                <p class="text-slate-300 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-16 italic border-l-4 border-vr-primary pl-6 text-left md:text-center md:border-l-0 md:pl-0">
+                    <span class="th">"เมื่อความเร็วระดับ 6G บรรจบกับศูนย์ข้อมูลระดับโลก และผู้คนโหยหาเซฟโซนส่วนตัว... นี่คือจุดเริ่มต้นของธุรกิจที่ไม่มีวิกฤติใดหยุดยั้งได้"</span>
+                    <span class="en">"When 6G speeds meet world-class data centers, and humans crave ultimate private safe zones... a crisis-proof business is born."</span>
+                    <span class="cn">“当6G速度遇上世界级数据中心，人们渴望终极私人安全区时……一个不受危机影响的业务就诞生了。”</span>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12 text-left">
+                    <!-- Pillar 1: Tech Infrastructure -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-slate-900/80 p-8 rounded-2xl border border-slate-700 h-full">
+                            <i data-lucide="cpu" class="w-10 h-10 text-cyan-400 mb-6"></i>
+                            <h3 class="text-xl font-bold text-white mb-4">
+                                <span class="th">ก้าวกระโดดทางเทคโนโลยี</span>
+                                <span class="en">Technological Leap</span>
+                                <span class="cn">技术飞跃</span>
+                            </h3>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">ภายใน 3-5 ปี การมาถึงของเครือข่าย <b>6G</b> และ <b>"AI Data Center ระดับโลก"</b> ในพื้นที่ EEC ของไทย จะปลดล็อกการประมวลผลให้ไร้ความหน่วง แว่น VR และอุปกรณ์สัมผัสจะมีราคาถูกลง เข้าถึงง่ายขึ้น และมอบความสมจริงจนสมองแยกไม่ออกระหว่างโลกจริงกับโลกเสมือน</span>
+                                <span class="en">Within 3-5 years, <b>6G networks</b> and <b>global AI Data Centers</b> in Thailand's EEC will unlock zero-latency processing. VR and haptic gear will become affordable, highly accessible, and so realistic the brain cannot distinguish it from reality.</span>
+                                <span class="cn">在3-5年内，泰国EEC地区的 <b>6G网络</b> 和 <b>全球AI数据中心</b> 将解锁零延迟处理。VR和触觉设备将变得更便宜、更容易普及，且逼真到大脑无法区分现实与虚拟。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2: Human Behavior -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-slate-900/80 p-8 rounded-2xl border border-slate-700 h-full">
+                            <i data-lucide="user-check" class="w-10 h-10 text-purple-400 mb-6"></i>
+                            <h3 class="text-xl font-bold text-white mb-4">
+                                <span class="th">ยุคแห่งความสุขส่วนบุคคล</span>
+                                <span class="en">Hyper-Individualism</span>
+                                <span class="cn">超个人主义</span>
+                            </h3>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">มนุษย์ยุคใหม่โหยหา <b>"ความเป็นส่วนตัวขั้นสุด" (Hyper-Individualism)</b> ผู้คนเลือกที่จะมีความสุขในพื้นที่ปลอดภัย (Safe Zone) ของตัวเอง การมี AI คู่หูที่พร้อมรับฟังและตอบสนองได้ทุกความปรารถนา จะกลายเป็นปัจจัยพื้นฐานใหม่ในการใช้ชีวิต</span>
+                                <span class="en">Modern society craves <b>"Hyper-Individualism."</b> People increasingly choose to find happiness within their personal Safe Zones. Having an AI companion that listens and caters to every desire will become a new fundamental lifestyle need.</span>
+                                <span class="cn">现代社会渴望 <b>“超个人主义”</b>。人们越来越倾向于在个人的安全区内寻找快乐。拥有一个倾听并满足每一个欲望的AI伴侣将成为一种新的基本生活方式需求。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: Crisis Proof -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-slate-900/80 p-8 rounded-2xl border border-slate-700 h-full">
+                            <i data-lucide="shield-check" class="w-10 h-10 text-emerald-400 mb-6"></i>
+                            <h3 class="text-xl font-bold text-white mb-4">
+                                <span class="th">ธุรกิจที่ทนทานต่อทุกวิกฤติ</span>
+                                <span class="en">Crisis-Proof Economy</span>
+                                <span class="cn">抗危机经济</span>
+                            </h3>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <span class="th">เพราะขับเคลื่อนด้วยความต้องการพื้นฐานส่วนลึกสุดของมนุษย์ (Basic Human Needs & Intimacy) ผสานกับรูปแบบแพลตฟอร์มดิจิทัลไร้พรมแดน ธุรกิจนี้จึงมีภูมิคุ้มกันต่อความผันผวนทางเศรษฐกิจ ภูมิรัฐศาสตร์ หรือแม้แต่โรคระบาด พร้อมทำกำไรอย่างต่อเนื่องในทุกสภาวะโลก</span>
+                                <span class="en">Driven by our deepest human needs (Intimacy) and a borderless digital platform, this business is highly immune to economic downturns, geopolitical tensions, or pandemics, ready to generate continuous profit in any global climate.</span>
+                                <span class="cn">受人类最深层需求（亲密关系）和无边界数字平台的驱动，该业务对经济衰退、地缘政治紧张或流行病具有高度免疫力，随时准备在任何全球气候下持续盈利。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Timeline Infographic -->
+        <section class="glass-card p-8 md:p-12 rounded-3xl">
+            <div class="mb-16 text-center md:text-left">
+                <h2 class="text-3xl font-bold inline-block border-b-2 border-vr-secondary pb-2 text-white">Roadmap to Launch (2026-2029)</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl">
+                    <span class="th">แผนงาน 3 ปีของเรา เพื่อรอให้เทคโนโลยีแว่น VR ถูกลงและคนทั่วไปเข้าถึงได้ง่ายขึ้น (Mass Adoption)</span>
+                    <span class="en">Our 3-year plan to wait for VR headset technology to become more affordable and accessible to everyone.</span>
+                    <span class="cn">我们的3年计划：等待VR头显技术变得更便宜，让每个人都能轻松访问。</span>
+                </p>
+            </div>
+
+            <div class="ml-4 md:ml-8 pl-8 md:pl-12 timeline-line space-y-16">
+                <!-- Year 1 -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-xl hover:-translate-y-1 transition-transform">
+                        <span class="text-vr-primary font-bold text-sm tracking-widest uppercase mb-2 block">Phase 1 (2026)</span>
+                        <h3 class="text-2xl font-bold mb-4 text-white">
+                            <span class="th">ช่วงเริ่มต้นสร้างต้นแบบ</span>
+                            <span class="en">Pre-Launch & Prototyping</span>
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm md:text-base">
+                            <li>
+                                <span class="th">สร้าง <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-secondary transition font-semibold underline underline-offset-4">"ThB.Ho"</a> เป็น AI Prototype ตัวแรกเพื่อทดสอบระบบ</span>
+                                <span class="en">Create <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-secondary transition font-semibold underline underline-offset-4">"ThB.Ho"</a> as the first AI Prototype for system testing.</span>
+                                <span class="text-xs text-slate-400 ml-1">(Th : Three, B. : B., Ho : Hour)</span>
+                            </li>
+                            <li>
+                                <span class="th">เตรียมความพร้อมด้านกฎหมายและความเป็นส่วนตัว</span>
+                                <span class="en">Prepare legal frameworks and privacy protocols.</span>
+                            </li>
+                            <li>
+                                <span class="th">โปรโมตและให้ความรู้เรื่อง AI ผ่านเพจ <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-secondary transition font-semibold underline underline-offset-4">GymMateX Factory</a></span>
+                                <span class="en">Promote and educate about AI via the <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-secondary transition font-semibold underline underline-offset-4">GymMateX Factory</a> page.</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Added Agile R&D Note for Phase 1 -->
+                        <div class="mt-6 p-3 md:p-4 bg-vr-primary/10 border border-vr-primary/30 rounded-xl">
+                            <p class="text-xs md:text-sm text-vr-primary font-semibold flex items-start">
+                                <i data-lucide="refresh-cw" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>
+                                    <span class="th"><b>Agile R&D Phase:</b> ยังอยู่ในช่วงทดลองและมีความยืดหยุ่นสูง พร้อมปรับเปลี่ยนโมเดลและฟีเจอร์ได้ตลอดเวลา เพื่อให้สอดรับกับการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและเทคโนโลยี</span>
+                                    <span class="en"><b>Agile R&D Phase:</b> Experimental and highly flexible. Ready to continuously adapt business models and features in response to rapid market and technological shifts.</span>
+                                    <span class="cn"><b>敏捷研发阶段：</b> 处于实验和高度灵活期。随时准备根据快速变化的市场和技术调整业务模型和功能。</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year 2 -->
+                <div class="relative">
+                    <div class="timeline-dot" style="background-color: #06b6d4;"></div>
+                    <div class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-xl hover:-translate-y-1 transition-transform">
+                        <span class="text-vr-secondary font-bold text-sm tracking-widest uppercase mb-2 block">Phase 2 (2027)</span>
+                        <h3 class="text-2xl font-bold mb-4 text-white">
+                            <span class="th">จัดอีเวนต์และทดสอบระบบจำกัดกลุ่ม</span>
+                            <span class="en">Event Launch & Closed Beta</span>
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm md:text-base">
+                            <li>
+                                <span class="th">เริ่มจัดงานคัดเลือกนายแบบในโลกจริง (Casting Event) เพื่อสร้างกระแส</span>
+                                <span class="en">Host real-world model Casting Events to build hype.</span>
+                            </li>
+                            <li>
+                                <span class="th">ทดสอบเชื่อมต่อวิดีโอกับอุปกรณ์สั่นสะเทือนอัจฉริยะ ให้ภาพและการสัมผัสตรงกัน</span>
+                                <span class="en">Test syncing videos with smart vibration devices for realistic touch.</span>
+                            </li>
+                            <li>
+                                <span class="th">เปิดแอปพลิเคชันให้แฟนคลับกลุ่มแรกเข้ามาทดลองเล่นเพื่อเก็บคำติชม</span>
+                                <span class="en">Open the app for early fans to test and gather feedback.</span>
+                            </li>
+                        </ul>
+                        
+                        <!-- Added Agile R&D Note for Phase 2 -->
+                        <div class="mt-6 p-3 md:p-4 bg-vr-secondary/10 border border-vr-secondary/30 rounded-xl">
+                            <p class="text-xs md:text-sm text-vr-secondary font-semibold flex items-start">
+                                <i data-lucide="refresh-cw" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>
+                                    <span class="th"><b>Agile R&D Phase:</b> ยังอยู่ในช่วงทดลองและมีความยืดหยุ่นสูง พร้อมปรับเปลี่ยนโมเดลและฟีเจอร์ได้ตลอดเวลา เพื่อให้สอดรับกับการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและเทคโนโลยี</span>
+                                    <span class="en"><b>Agile R&D Phase:</b> Experimental and highly flexible. Ready to continuously adapt business models and features in response to rapid market and technological shifts.</span>
+                                    <span class="cn"><b>敏捷研发阶段：</b> 处于实验和高度灵活期。随时准备根据快速变化的市场和技术调整业务模型和功能。</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year 3 -->
+                <div class="relative">
+                    <div class="timeline-dot" style="background-color: #10b981;"></div>
+                    <div class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border border-slate-700 shadow-xl hover:-translate-y-1 transition-transform">
+                        <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase mb-2 block">Phase 3 (2028-2029)</span>
+                        <h3 class="text-2xl font-bold mb-4 text-white">
+                            <span class="th">เปิดตัวธุรกิจและขยายตลาด</span>
+                            <span class="en">Commercial Scaling ($3M Target)</span>
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm md:text-base">
+                            <li>
+                                <span class="th">**Official Launch** เปิดให้สมัครสมาชิกเข้าใช้งานทั่วโลก</span>
+                                <span class="en">**Official Launch** Open for global subscriptions.</span>
+                            </li>
+                            <li>
+                                <span class="th">เปิดรับนายแบบและครีเอเตอร์ดังๆ เข้ามาสร้างตัวตนดิจิทัลในแอปของเรา</span>
+                                <span class="en">Onboard famous models and creators to build their digital selves in our app.</span>
+                            </li>
+                            <li>
+                                <span class="th">ขยายฐานลูกค้าไปทั่วโลก รองรับอินเทอร์เน็ตความเร็วสูง 6G ในอนาคต</span>
+                                <span class="en">Expand the customer base globally, ready to support high-speed 6G internet.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- References & Active Prototypes -->
+        <section class="pt-8 border-t border-slate-800">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-2">Current Prototypes & References</h2>
+                <p class="text-slate-400">
+                    <span class="th">ผลงานที่เปิดใช้งานจริงและแนวคิดอ้างอิงสำหรับการพัฒนาในอนาคต</span>
+                    <span class="en">Live prototypes and reference concepts for future development.</span>
+                    <span class="cn">实时运行的原型和未来发展的参考概念。</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Link 1: Active Prototype -->
+                <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="glass-card p-6 rounded-xl hover:border-vr-primary hover:-translate-y-2 transition duration-300 group block relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-vr-primary group-hover:w-full group-hover:opacity-10 transition-all duration-500"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="bot" class="w-8 h-8 text-vr-primary"></i>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-vr-primary transition"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-primary transition-colors">AI GymMateX Factory</h4>
+                    <ul class="text-sm text-slate-400 space-y-1">
+                        <li><span class="th">• ทดลองคุยกับ AI ต้นแบบ</span><span class="en">• Chat with current AI</span></li>
+                        <li><span class="th">• เรียนรู้การสร้าง AI เบื้องต้น</span><span class="en">• Learn AI creation</span></li>
+                    </ul>
+                </a>
+
+                <!-- Link 2: Future HAP -->
+                <a href="https://threeandhour.github.io/GymMateX/EnFutureHAP.html" target="_blank" class="glass-card p-6 rounded-xl hover:border-vr-secondary hover:-translate-y-2 transition duration-300 group block relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-vr-secondary group-hover:w-full group-hover:opacity-10 transition-all duration-500"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="book-open" class="w-8 h-8 text-vr-secondary"></i>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-vr-secondary transition"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-secondary transition-colors">The Future of AI</h4>
+                    <ul class="text-sm text-slate-400 space-y-1">
+                        <li><span class="th">• พิมพ์เขียวแห่งอนาคต</span><span class="en">• Blueprint of the future</span></li>
+                        <li><span class="th">• ศักยภาพของ AI Persona</span><span class="en">• Potential of AI Personas</span></li>
+                    </ul>
+                </a>
+
+                <!-- Link 3: Dual Avatar -->
+                <a href="https://threeandhour.github.io/GymMateX/ThDualAvatar.html" target="_blank" class="glass-card p-6 rounded-xl hover:border-emerald-400 hover:-translate-y-2 transition duration-300 group block relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-emerald-400 group-hover:w-full group-hover:opacity-10 transition-all duration-500"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-emerald-400"></i>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 transition"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2 text-white group-hover:text-emerald-400 transition-colors">Dual-Avatar Strategy</h4>
+                    <ul class="text-sm text-slate-400 space-y-1">
+                        <li><span class="th">• การสร้างตัวตนออนไลน์คู่ขนาน</span><span class="en">• Parallel identity strategy</span></li>
+                        <li><span class="th">• เชื่อมโลกจริงและเสมือน</span><span class="en">• Bridging real and virtual</span></li>
+                    </ul>
+                </a>
+
+                <!-- Link 4: Creator Profile -->
+                <a href="https://threeandhour.github.io/GymMateX/THOR3SOME.html" target="_blank" class="glass-card p-6 rounded-xl hover:border-vr-gold hover:-translate-y-2 transition duration-300 group block relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-vr-gold group-hover:w-full group-hover:opacity-10 transition-all duration-500"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="user-circle" class="w-8 h-8 text-vr-gold"></i>
+                        <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-vr-gold transition"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-gold transition-colors">Creator Profile (Thor)</h4>
+                    <ul class="text-sm text-slate-400 space-y-1">
+                        <li><span class="th">• ทำความรู้จักผู้ก่อตั้ง</span><span class="en">• Meet the founder</span></li>
+                        <li><span class="th">• จุดเริ่มต้น GymMateX</span><span class="en">• Origins of GymMateX</span></li>
+                    </ul>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-900/50 pt-12 pb-8 text-center">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-6 text-white tracking-wide">GymMate<span class="text-vr-accent">X</span></h2>
+            <p class="text-slate-500 text-sm mb-6 max-w-xl mx-auto">
+                <span class="th">แพลตฟอร์มความบันเทิงระดับพรีเมียมที่ผสานโลกความจริง (Casting & Wellness) เข้ากับโลกเสมือน (Digital Twin & VR) อย่างสมบูรณ์แบบ</span>
+                <span class="en">A premium entertainment platform seamlessly bridging the real world (Casting & Wellness) with the virtual world (Digital Twin & VR).</span>
+            </p>
+            <p class="text-slate-600 text-xs">
+                <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="hover:text-slate-300 transition font-semibold">GymMateX Factory</a> &copy; 2026-2029 | The Future of Hybrid AI
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Language Toggle Script
+        function setLang(lang) {
+            const body = document.body;
+            const btnTh = document.getElementById('btn-th');
+            const btnEn = document.getElementById('btn-en');
+            const btnCn = document.getElementById('btn-cn');
+            const btns = { th: btnTh, en: btnEn, cn: btnCn };
+
+            // Reset classes
+            body.classList.remove('lang-th', 'lang-en', 'lang-cn');
+            body.classList.add('lang-' + lang);
+
+            // Update button styles
+            Object.keys(btns).forEach(key => {
+                if (key === lang) {
+                    btns[key].classList.add('bg-vr-primary', 'text-white', 'shadow-[0_0_10px_rgba(139,92,246,0.5)]');
+                    btns[key].classList.remove('text-slate-400', 'bg-transparent');
+                } else {
+                    btns[key].classList.remove('bg-vr-primary', 'text-white', 'shadow-[0_0_10px_rgba(139,92,246,0.5)]');
+                    btns[key].classList.add('text-slate-400', 'bg-transparent');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

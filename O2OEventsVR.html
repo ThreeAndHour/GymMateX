@@ -354,8 +354,18 @@
             <!-- The 3 Cards -->
             <div class="grid lg:grid-cols-3 gap-8 mb-12">
                 <!-- Level G -->
-                <div class="level-card bg-gradient-to-br from-slate-900 to-black rounded-3xl border border-vr-secondary/20 overflow-hidden hover:border-vr-secondary/50 flex flex-col p-8 group">
-                    <div class="flex items-center justify-between mb-8">
+                <div onclick="openVideoModal('https://pikaso.cdnpk.net/private/production/3622906625/8320a73a-777a-43e0-b20b-fbdb67c1beaa-0.mp4?token=exp=1774742400~hmac=387260f8c79aafe414506527b44dd7f554308aaffc8b8b462575e98e789bafd2')" class="level-card bg-gradient-to-br from-slate-900 to-black rounded-3xl border border-vr-secondary/20 overflow-hidden hover:border-vr-secondary/50 flex flex-col p-8 group relative cursor-pointer">
+                    <!-- Background Video Hover Effect -->
+                    <video src="https://pikaso.cdnpk.net/private/production/3622906625/8320a73a-777a-43e0-b20b-fbdb67c1beaa-0.mp4?token=exp=1774742400~hmac=387260f8c79aafe414506527b44dd7f554308aaffc8b8b462575e98e789bafd2" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0 pointer-events-none" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    
+                    <!-- Play Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
+                        <div class="bg-black/60 p-4 rounded-full backdrop-blur-md border border-vr-secondary/50 shadow-[0_0_20px_rgba(100,116,139,0.5)]">
+                            <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-8 relative z-10">
                         <div class="bg-vr-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center border border-vr-secondary/20 group-hover:bg-vr-secondary/20 transition-colors">
                             <span class="text-3xl font-bold text-vr-secondary">G</span>
                         </div>
@@ -364,13 +374,13 @@
                             <p class="text-sm text-vr-secondary font-semibold uppercase tracking-wider">Companionship</p>
                         </div>
                     </div>
-                    <div class="flex-grow">
+                    <div class="flex-grow relative z-10">
                         <ul class="text-sm space-y-4 text-slate-300 mb-8">
                             <li class="flex items-start"><i data-lucide="message-square" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span><span class="es">Consejería de vida y chat (IA conversacional humana)</span></li>
                             <li class="flex items-start"><i data-lucide="activity" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span><span class="es">Entrenador Personal de Fitness en VR</span></li>
                         </ul>
                     </div>
-                    <div class="pt-6 border-t border-slate-800 mt-auto">
+                    <div class="pt-6 border-t border-slate-800 mt-auto relative z-10">
                         <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Tech Focus</h4>
                         <p class="text-sm text-slate-400">
                             <span class="th">เน้น AI ภาษาที่ตอบสนองเก่งและเป็นธรรมชาติ</span>
@@ -382,9 +392,20 @@
                 </div>
 
                 <!-- Level R -->
-                <div class="level-card bg-gradient-to-br from-slate-900 to-black rounded-3xl border border-vr-accent/20 overflow-hidden hover:border-vr-accent/50 flex flex-col p-8 relative group">
-                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-vr-secondary to-vr-accent"></div>
-                    <div class="flex items-center justify-between mb-8">
+                <div onclick="openVideoModal('https://pikaso.cdnpk.net/private/production/3691596757/85e54731-430e-4017-922c-993e4f807450-0.mp4?token=exp=1774742400~hmac=f68e6a8cdf37f4b332f893ed2c95113a39ab00e1966ab94587d66c10a533d77f')" class="level-card bg-gradient-to-br from-slate-900 to-black rounded-3xl border border-vr-accent/20 overflow-hidden hover:border-vr-accent/50 flex flex-col p-8 relative group cursor-pointer">
+                    <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-vr-secondary to-vr-accent z-20"></div>
+                    
+                    <!-- Background Video Hover Effect -->
+                    <video src="https://pikaso.cdnpk.net/private/production/3691596757/85e54731-430e-4017-922c-993e4f807450-0.mp4?token=exp=1774742400~hmac=f68e6a8cdf37f4b332f893ed2c95113a39ab00e1966ab94587d66c10a533d77f" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0 pointer-events-none" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+
+                    <!-- Play Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
+                        <div class="bg-black/60 p-4 rounded-full backdrop-blur-md border border-vr-accent/50 shadow-[0_0_20px_rgba(234,179,8,0.5)]">
+                            <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-8 relative z-10">
                         <div class="bg-vr-accent/10 w-16 h-16 rounded-2xl flex items-center justify-center border border-vr-accent/20 group-hover:bg-vr-accent/20 transition-colors">
                             <span class="text-3xl font-bold text-vr-accent">R</span>
                         </div>
@@ -393,13 +414,13 @@
                             <p class="text-sm text-vr-accent font-semibold uppercase tracking-wider">Romantic</p>
                         </div>
                     </div>
-                    <div class="flex-grow">
+                    <div class="flex-grow relative z-10">
                         <ul class="text-sm space-y-4 text-slate-300 mb-8">
                             <li class="flex items-start"><i data-lucide="moon" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดลึกลับ</span><span class="en">Virtual Dating & Mysterious Private Dinners</span><span class="cn">虚拟约会和神秘私人晚餐</span><span class="es">Citas Virtuales y Cenas Privadas Misteriosas</span></li>
                             <li class="flex items-start"><i data-lucide="eye" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span><span class="es">Movimientos suaves y realistas capturados de personas reales</span></li>
                         </ul>
                     </div>
-                    <div class="pt-6 border-t border-slate-800 mt-auto">
+                    <div class="pt-6 border-t border-slate-800 mt-auto relative z-10">
                         <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Tech Focus</h4>
                         <p class="text-sm text-slate-400">
                             <span class="th">เน้นแอนิเมชันและ Motion Capture ท่าทางที่ดึงดูด</span>
@@ -411,9 +432,20 @@
                 </div>
 
                 <!-- Level X (Flagship) -->
-                <div class="level-card bg-gradient-to-br from-[#120a05] to-[#0a0502] rounded-3xl border-2 border-vr-primary/40 overflow-hidden hover:border-vr-primary/70 flex flex-col p-8 relative group">
-                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-orange-600 via-vr-primary to-orange-600"></div>
-                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-vr-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div onclick="openVideoModal('https://pikaso.cdnpk.net/private/production/3651843186/d1d054fe-c715-41c6-b927-a973d9ca887b-0.mp4?token=exp=1774742400~hmac=fe34a9c11aee902040a56a9799da29501bae77e8f1772729ce0f602e9b5ef64b')" class="level-card bg-gradient-to-br from-[#120a05] to-[#0a0502] rounded-3xl border-2 border-vr-primary/40 overflow-hidden hover:border-vr-primary/70 flex flex-col p-8 relative group cursor-pointer">
+                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-orange-600 via-vr-primary to-orange-600 z-20"></div>
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-vr-primary/10 rounded-full blur-2xl pointer-events-none z-10"></div>
+                    
+                    <!-- Background Video Hover Effect -->
+                    <video src="https://pikaso.cdnpk.net/private/production/3651843186/d1d054fe-c715-41c6-b927-a973d9ca887b-0.mp4?token=exp=1774742400~hmac=fe34a9c11aee902040a56a9799da29501bae77e8f1772729ce0f602e9b5ef64b" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-50 transition-opacity duration-500 z-0 pointer-events-none" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+
+                    <!-- Play Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
+                        <div class="bg-black/60 p-4 rounded-full backdrop-blur-md border border-vr-primary/50 shadow-[0_0_20px_rgba(249,115,22,0.5)]">
+                            <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
+                        </div>
+                    </div>
+
                     <div class="flex items-center justify-between mb-8 relative z-10">
                         <div class="bg-vr-primary/20 w-16 h-16 rounded-2xl flex items-center justify-center border border-vr-primary/40 shadow-[0_0_15px_rgba(249,115,22,0.3)] group-hover:bg-vr-primary/30 transition-colors">
                             <span class="text-3xl font-black text-vr-primary">X</span>
@@ -1063,6 +1095,19 @@
 
     </main>
 
+    <!-- Video Modal Overlay -->
+    <div id="videoModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm opacity-0 hidden transition-opacity duration-300">
+        <div class="relative w-full max-w-4xl mx-4 md:mx-auto">
+            <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-slate-400 hover:text-white transition-colors flex items-center">
+                <span class="mr-2 text-sm font-bold tracking-widest uppercase">Close</span>
+                <i data-lucide="x-circle" class="w-8 h-8"></i>
+            </button>
+            <div class="relative pt-[56.25%] bg-black rounded-2xl overflow-hidden border border-slate-800 shadow-[0_0_50px_rgba(249,115,22,0.2)]">
+                <video id="modalVideo" class="absolute inset-0 w-full h-full object-contain" controls autoplay playsinline></video>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="border-t border-slate-900 bg-black pt-12 pb-8 text-center">
         <div class="max-w-6xl mx-auto px-6">
@@ -1083,6 +1128,32 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Video Modal Logic
+        function openVideoModal(videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            video.src = videoUrl;
+            modal.classList.remove('hidden');
+            // Small delay to trigger opacity transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+            }, 10);
+            video.play();
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                video.pause();
+                video.src = "";
+            }, 300);
+        }
 
         // Language Toggle Script
         function setLang(lang) {

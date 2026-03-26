@@ -23,14 +23,15 @@
     
     <style>
         :root {
-            --bg-primary: #0c4160;
-            --bg-secondary: #16527a;
-            --bg-dark: #082d43;
-            --accent-color: #f97316;
-            --accent-hover: #ea580c;
-            --text-main: #f0f8ff;
-            --text-muted: #cbd5e1;
-            --border-ui: rgba(255, 255, 255, 0.1);
+            /* Minimalist & Masculine Dark Theme */
+            --bg-primary: #09090b; /* Deep Zinc / Obsidian */
+            --bg-secondary: #18181b; /* Dark Gray */
+            --bg-dark: #000000; /* Pure Black */
+            --accent-color: #ea580c; /* Sharp Orange */
+            --accent-hover: #c2410c;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --border-ui: rgba(255, 255, 255, 0.05); /* Very thin, clean border */
         }
 
         body {
@@ -38,88 +39,96 @@
             background-color: var(--bg-primary);
             color: var(--text-main);
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
         .font-cursive { font-family: 'Mali', cursive; }
 
         nav {
-            background: rgba(12, 65, 96, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(9, 9, 11, 0.9);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-ui);
             z-index: 1000;
         }
 
         .content-container {
-            max-width: 1000px;
+            max-width: 900px; /* Slightly tighter width for minimalist feel */
             margin: 0 auto;
         }
 
+        /* Clean, sharp card instead of heavy glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
+            background: var(--bg-secondary);
             border: 1px solid var(--border-ui);
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px; /* Sharper corners */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(249, 115, 22, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(234, 88, 12, 0.3); /* Subtle orange glow on hover */
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8);
         }
 
+        /* Minimalist Buttons */
         .btn-primary {
             background-color: var(--accent-color);
             color: white;
-            padding: 12px 32px;
-            border-radius: 12px;
+            padding: 12px 36px;
+            border-radius: 8px; /* Structured button */
             font-weight: 600;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
             display: inline-block;
         }
 
         .btn-primary:hover {
             background-color: var(--accent-hover);
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(234, 88, 12, 0.4);
         }
 
         .btn-outline {
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
             padding: 10px 30px;
-            border-radius: 12px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
             display: inline-block;
         }
 
         .btn-outline:hover {
-            background-color: var(--accent-color);
-            color: white;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: rgba(234, 88, 12, 0.05);
         }
 
+        /* Sleek Chat UI */
         #chat-window {
             background: var(--bg-dark);
-            border-radius: 16px 16px 0 0;
+            border-radius: 12px 12px 0 0;
             scrollbar-width: thin;
+            scrollbar-color: var(--bg-secondary) var(--bg-dark);
         }
 
         .chat-msg {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             padding: 12px 16px;
-            border-radius: 12px;
+            border-radius: 8px;
             max-width: 85%;
+            word-wrap: break-word;
+            line-height: 1.5;
         }
 
-        .chat-msg.persona { background: rgba(255, 255, 255, 0.1); align-self: flex-start; }
+        .chat-msg.persona { background: var(--bg-secondary); border: 1px solid var(--border-ui); align-self: flex-start; }
         .chat-msg.user { background: var(--accent-color); color: white; align-self: flex-end; margin-left: auto; }
 
         #loading-indicator {
             display: none;
-            width: 20px; height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 18px; height: 18px;
+            border: 2px solid rgba(255,255,255,0.1);
             border-radius: 50%;
             border-top-color: var(--accent-color);
             animation: spin 1s linear infinite;
@@ -128,15 +137,15 @@
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .lang-btn {
-            opacity: 0.4;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.3;
+            transition: all 0.3s ease;
             filter: grayscale(1);
             transform: scale(0.9);
         }
         .lang-btn.active {
             opacity: 1;
             filter: grayscale(0);
-            transform: scale(1.15);
+            transform: scale(1.1);
         }
 
         .community-icon-card {
@@ -144,218 +153,309 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             padding: 1.5rem;
             text-align: center;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+        .community-icon-card:hover {
+            border-color: var(--border-ui);
+            background: var(--bg-secondary);
+        }
+
+        /* Clean Inputs */
+        input, textarea {
+            background-color: var(--bg-dark) !important;
+            border: 1px solid var(--border-ui) !important;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: var(--accent-color) !important;
+            box-shadow: none !important;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Fixed Header -->
-    <nav class="fixed top-0 left-0 w-full px-4 sm:px-8 py-3 flex justify-between items-center">
+    <nav class="fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
-            <span class="text-lg sm:text-xl font-bold tracking-tighter text-white">GymMateX <span class="text-orange-500">FANTASY</span></span>
+            <span class="text-xl font-bold tracking-widest text-white uppercase">GymMate<span class="text-orange-600">X</span></span>
         </div>
         
         <!-- Language Switcher (Flags) -->
-        <div class="flex items-center gap-1 sm:gap-3 bg-black/30 px-3 py-1.5 rounded-full border border-white/10">
-            <button onclick="setLanguage('th')" class="lang-btn text-xl" id="lang-th" title="ไทย">🇹🇭</button>
-            <button onclick="setLanguage('en')" class="lang-btn text-xl" id="lang-en" title="English">🇬🇧</button>
-            <button onclick="setLanguage('ru')" class="lang-btn text-xl" id="lang-ru" title="Русский">🇷🇺</button>
-            <button onclick="setLanguage('zh')" class="lang-btn text-xl" id="lang-zh" title="中文">🇨🇳</button>
+        <div class="flex items-center gap-3 bg-black/50 px-4 py-2 rounded-full border border-white/5">
+            <button onclick="setLanguage('th')" class="lang-btn text-lg" id="lang-th" title="ไทย">🇹🇭</button>
+            <button onclick="setLanguage('en')" class="lang-btn text-lg" id="lang-en" title="English">🇬🇧</button>
+            <button onclick="setLanguage('ru')" class="lang-btn text-lg" id="lang-ru" title="Русский">🇷🇺</button>
+            <button onclick="setLanguage('zh')" class="lang-btn text-lg" id="lang-zh" title="中文">🇨🇳</button>
         </div>
 
         <div class="hidden md:flex items-center gap-6">
-            <a href="https://thbho.github.io/AIGymmateXFactory.html" class="text-sm font-medium hover:text-orange-500 transition-colors" data-i18n="nav-general">General</a>
+            <a href="https://thbho.github.io/AIGymmateXFactory.html" class="text-xs font-semibold tracking-widest uppercase hover:text-orange-500 transition-colors text-zinc-400" data-i18n="nav-general">General</a>
         </div>
     </nav>
 
-    <main class="pt-24 px-4 sm:px-6">
+    <main class="pt-32 px-4 sm:px-6">
         <div class="content-container">
             
             <!-- Hero Banner -->
-            <div class="relative rounded-3xl overflow-hidden mb-12 shadow-2xl group border border-white/5">
-                <img src="https://i.postimg.cc/gk458TsW/5887905C-D81B-4529-8427-87EB1ADF2FFE_1_201_a-topaz-face-upscale-2.6x.jpg" alt="Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="relative rounded-2xl overflow-hidden mb-16 border border-white/5 group bg-black">
+                <img src="https://i.postimg.cc/gk458TsW/5887905C-D81B-4529-8427-87EB1ADF2FFE_1_201_a-topaz-face-upscale-2.6x.jpg" alt="Banner" class="w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105 group-hover:opacity-100">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
             </div>
 
             <!-- Title Section -->
-            <div class="text-center mb-16">
-                <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-orange-200 leading-tight" data-i18n="hero-title">
+            <div class="text-center mb-20">
+                <p class="text-orange-600 font-semibold tracking-widest text-xs uppercase mb-4" data-i18n="hero-tag">Welcome to the Evolution</p>
+                <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight leading-tight" data-i18n="hero-title">
                     ปั้น AI Twin & ทะลุมิติสู่โลกแฟนตาซี
                 </h1>
-                <p id="hero-desc" class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto" data-i18n="hero-desc">
+                <p id="hero-desc" class="text-base md:text-lg text-zinc-400 max-w-xl mx-auto font-light leading-relaxed" data-i18n="hero-desc">
                     สร้าง Hybrid AI Persona ที่รวมความแข็งแกร่งของร่างกายเข้ากับจินตนาการไร้ขีดจำกัด
                 </p>
             </div>
 
-            <!-- Standard Video Section (16:9 Aspect Ratio) -->
-            <div class="flex justify-center mb-16 px-4">
-                <div class="relative w-full max-w-4xl aspect-video glass-card overflow-hidden p-2 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <div class="w-full h-full rounded-2xl overflow-hidden">
-                        <iframe id="main-video" class="w-full h-full" src="https://www.youtube.com/embed/wR50jj4od2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
+            <!-- Standard Video Section -->
+            <div class="flex justify-center mb-24">
+                <div class="w-full aspect-video rounded-xl overflow-hidden border border-zinc-800 bg-black shadow-2xl relative">
+                    <iframe id="main-video" class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/wR50jj4od2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
 
             <!-- Announcement -->
-            <div class="text-center mb-20">
-                <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold group">
-                    <span class="underline underline-offset-4" data-i18n="latest-news">อ่านประกาศล่าสุด</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            <div class="text-center mb-32 flex justify-center">
+                <a href="https://thbho.github.io/ThAnnouncement.html" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-orange-600 transition-all text-sm font-medium">
+                    <span class="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
+                    <span data-i18n="latest-news">อ่านประกาศล่าสุด</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </a>
             </div>
 
             <!-- Benefits -->
-            <section class="mb-24">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-4" data-i18n="benefits-title">ก้าวข้ามขีดจำกัดเดิมๆ</h2>
-                    <p class="font-cursive text-2xl text-orange-400" data-i18n="benefits-tag">"เป็นใครก็ได้ ในยุคสมัยไหนก็ได้"</p>
+            <section class="mb-32">
+                <div class="text-center mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight" data-i18n="benefits-title">ก้าวข้ามขีดจำกัดเดิมๆ</h2>
+                    <p class="font-cursive text-xl text-orange-600" data-i18n="benefits-tag">"เป็นใครก็ได้ ในยุคสมัยไหนก็ได้"</p>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-3 gap-6">
                     <div class="p-8 glass-card">
-                        <div class="text-orange-500 text-3xl mb-4">⚔️</div>
-                        <h3 class="text-xl font-bold mb-3 text-orange-200" data-i18n="b1-title">Epic Fantasy Transformation</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="b1-desc">แปลงโฉมเป็นกลาดิเอเตอร์ นักรบทะเลทราย หรือฮีโร่ในโลกอนาคต โดยยังรักษาตัวตนของคุณไว้ที่ศูนย์กลาง</p>
+                        <div class="text-zinc-600 text-2xl mb-6">01</div>
+                        <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b1-title">Epic Fantasy Transformation</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="b1-desc">แปลงโฉมเป็นกลาดิเอเตอร์ นักรบทะเลทราย หรือฮีโร่ในโลกอนาคต โดยยังรักษาตัวตนของคุณไว้ที่ศูนย์กลาง</p>
                     </div>
                     <div class="p-8 glass-card">
-                        <div class="text-orange-500 text-3xl mb-4">⌛</div>
-                        <h3 class="text-xl font-bold mb-3 text-orange-200" data-i18n="b2-title">AI Time Traveler</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="b2-desc">ข้ามข้ามมิติเวลาและสถานที่ด้วยเทคโนโลยี AI สร้างเรื่องราวต่อเนื่องที่ Generator ทั่วไปทำไม่ได้</p>
+                        <div class="text-zinc-600 text-2xl mb-6">02</div>
+                        <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b2-title">AI Time Traveler</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="b2-desc">ข้ามมิติเวลาและสถานที่ด้วยเทคโนโลยี AI สร้างเรื่องราวต่อเนื่องที่ Generator ทั่วไปทำไม่ได้</p>
                     </div>
                     <div class="p-8 glass-card">
-                        <div class="text-orange-500 text-3xl mb-4">🧬</div>
-                        <h3 class="text-xl font-bold mb-3 text-orange-200" data-i18n="b3-title">The 50/70/90 Identity</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="b3-desc">กฎแห่งการสร้าง Persona: ใบหน้า 50%, ร่างกาย 70%, และเสียง 90% เพื่อเอกลักษณ์ที่สมบูรณ์แบบ</p>
+                        <div class="text-zinc-600 text-2xl mb-6">03</div>
+                        <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b3-title">The 50/70/90 Identity</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="b3-desc">กฎแห่งการสร้าง Persona: ใบหน้า 50%, ร่างกาย 70%, และเสียง 90% เพื่อเอกลักษณ์ที่สมบูรณ์แบบ</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Gallery Section -->
+            <section class="mb-32">
+                <div class="text-center mb-16">
+                    <p class="text-orange-600 font-semibold tracking-widest text-xs uppercase mb-4" data-i18n="gallery-tag">Showcase</p>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-white" data-i18n="gallery-title">แฟ้มผลงานข้ามมิติ</h2>
+                    <p class="text-zinc-400 font-light" data-i18n="gallery-desc">ตัวอย่างการผสานร่างจริงเข้ากับโลกแฟนตาซี</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Video 1 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3564672487/cbb1a568-f98a-4efc-961f-62a630359862-0.mp4?token=exp=1774742400~hmac=27c057842bd1a98a8689caf53d2bf5eadb7e1d19c7d161509c23bd3e0f5e1496" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3564696697/8b963e5b-1534-43c2-8533-857856d44e88-0.mp4?token=exp=1774742400~hmac=f749c47d6cd49f6ed6d93f027c95d059f5b54219d66a55d3d1ac2f269858036b" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <!-- Video 3 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3561859329/6545225a-52d9-43fe-9034-298d2b487dc4-0.mp4?token=exp=1774742400~hmac=a5ac6b6e78f786085bde3c7b51c223686a5c82611834624545bb2c437ec26738" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <!-- Video 4 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3625676693/1b101073-ea04-4ed6-af50-89808c67d45b-0.mp4?token=exp=1774742400~hmac=8f67b970b489478a3be2759fa07d889e04909e7b9517fe2eed96c1d982356fbb" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <!-- Video 5 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3625860440/3d05677d-713e-45ed-85a8-bfb3643ca348-0.mp4?token=exp=1774742400~hmac=8b9e921e720d7dadf5570ab42f29f6ee4088c5e10933c0d96d4b8ca4c1319631" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <!-- Video 6 -->
+                    <div class="relative rounded-xl overflow-hidden border border-zinc-800 bg-black group aspect-[3/4] shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700">
+                            <source src="https://pikaso.cdnpk.net/private/production/3625682474/20dd1eb0-22b5-4972-a4f2-2c4238edeeea-0.mp4?token=exp=1774742400~hmac=cdb80b05959bbce1e20eb940befdaa73f672e97ebc1ea8cf3bde92229a43a4cd" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 border border-white/0 group-hover:border-orange-500/50 transition-colors duration-500 rounded-xl pointer-events-none"></div>
                     </div>
                 </div>
             </section>
 
             <!-- CTA Section -->
-            <section class="mb-24 p-12 glass-card text-center bg-gradient-to-br from-orange-600/20 to-transparent">
-                <h2 class="text-3xl font-bold mb-4" data-i18n="program-title">โปรแกรมปั้น AI Persona & Fantasy</h2>
-                <p class="text-slate-300 mb-8" data-i18n="program-desc">เรียนรู้เทคนิคการผสมผสาน Physique เข้ากับโลกจินตนาการระดับ Hollywood</p>
-                <a href="https://threeandhour.github.io/GymMateX/ThInfoG.html" target="_blank" class="btn-primary" data-i18n="view-schedule">
-                    ดูตารางเรียนทั้งหมด
-                </a>
-            </section>
-
-            <!-- Trainers -->
-            <section class="mb-24">
-                <h2 class="text-3xl font-bold text-center mb-12" data-i18n="choose-trainer">คณะผู้สร้างฝัน</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="glass-card p-6 text-center border-t-4 border-orange-400">
-                        <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="Three" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-orange-500 object-cover">
-                        <h3 class="text-xl font-bold mb-1">Three (Tarig)</h3>
-                        <p class="text-orange-400 text-sm font-semibold mb-4" data-i18n="t1-role">Desert Warrior & Storyteller</p>
-                        <p class="text-xs text-slate-300 leading-relaxed italic" data-i18n="t1-quote">"AI คือคู่หูที่จะปลดปล่อยจินตนาการ สร้าง Persona ที่เต็มไปด้วยเสน่ห์จากโอเอซิสที่สาบสูญ"</p>
-                    </div>
-                    <div class="glass-card p-6 text-center border-t-4 border-orange-500">
-                        <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="B" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-orange-600 object-cover">
-                        <h3 class="text-xl font-bold mb-1">B. (Zafar)</h3>
-                        <p class="text-orange-500 text-sm font-semibold mb-4" data-i18n="t2-role">The Time Traveler & Strategist</p>
-                        <p class="text-xs text-slate-300 leading-relaxed italic" data-i18n="t2-quote">"การข้ามเวลาทำได้ใน 3 วินาที ผมจะสอนวิธีเปลี่ยนตัวตนคุณสู่ยุคสมัยที่ไร้ขีดจำกัด"</p>
-                    </div>
-                    <div class="glass-card p-6 text-center border-t-4 border-orange-300">
-                        <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="Hour" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-orange-400 object-cover">
-                        <h3 class="text-xl font-bold mb-1">Hour (Harun)</h3>
-                        <p class="text-orange-300 text-sm font-semibold mb-4" data-i18n="t3-role">The Showstopper & Action Master</p>
-                        <p class="text-xs text-slate-300 leading-relaxed italic" data-i18n="t3-quote">"ทฤษฎีคืออดีต! มาสร้างผลลัพธ์ที่จับต้องได้ ปั้นตำนานที่โลกต้องจารึกกันดีกว่า"</p>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <a href="https://threeandhour.github.io/GymMateX/Th3Trainers.html" target="_blank" class="btn-outline" data-i18n="all-profiles">
-                        ส่องโปรไฟล์ผู้สร้างทั้งหมด
+            <section class="mb-32 p-12 glass-card text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-600/10 to-transparent pointer-events-none"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold mb-4 text-white" data-i18n="program-title">โปรแกรมปั้น AI Persona & Fantasy</h2>
+                    <p class="text-zinc-400 mb-8 font-light" data-i18n="program-desc">เรียนรู้เทคนิคการผสมผสาน Physique เข้ากับโลกจินตนาการระดับ Hollywood</p>
+                    <a href="https://threeandhour.github.io/GymMateX/ThInfoG.html" target="_blank" class="btn-primary" data-i18n="view-schedule">
+                        ดูตารางเรียนทั้งหมด
                     </a>
                 </div>
             </section>
 
-            <!-- AI Chat Demo -->
-            <section class="mb-24 p-8 glass-card">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold mb-2" data-i18n="chat-title">✨ คุยกับ AI เหล่านักเดินทาง</h2>
-                    <p class="text-slate-400" data-i18n="chat-desc">เลือกเทรนเนอร์ที่คุณต้องการปรึกษาเรื่องการสร้างตำนาน</p>
-                </div>
-
-                <div class="flex justify-center gap-3 mb-8 flex-wrap">
-                    <button class="persona-btn px-5 py-2.5 rounded-xl border border-white/10 hover:border-orange-500 transition-all text-xs font-bold uppercase" data-persona="tee">Tee (Tarig)</button>
-                    <button class="persona-btn px-5 py-2.5 rounded-xl border border-white/10 hover:border-orange-500 transition-all text-xs font-bold uppercase" data-persona="b">B. (Zafar)</button>
-                    <button class="persona-btn px-5 py-2.5 rounded-xl border border-white/10 hover:border-orange-500 transition-all text-xs font-bold uppercase" data-persona="hour">Hour (Harun)</button>
-                </div>
-
-                <div class="max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-inner bg-black/30 p-1">
-                    <div id="chat-window" class="h-80 overflow-y-auto p-4 flex flex-col">
-                        <div class="persona chat-msg persona text-sm" data-i18n="chat-placeholder">ทักทายเหล่านักรบของคุณ...</div>
+            <!-- Trainers -->
+            <section class="mb-32">
+                <h2 class="text-2xl font-bold text-center mb-16 tracking-tight" data-i18n="choose-trainer">คณะผู้สร้างฝัน</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Trainer 1 -->
+                    <div class="p-6 glass-card text-center group">
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <img src="https://i.postimg.cc/8kWC94dK/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-1.jpg" alt="Three" class="w-full h-full rounded-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ring-1 ring-zinc-800 group-hover:ring-orange-600">
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-white">Three (Tarig)</h3>
+                        <p class="text-zinc-500 text-xs tracking-widest uppercase mb-4" data-i18n="t1-role">Desert Warrior</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="t1-quote">"AI คือคู่หูที่จะปลดปล่อยจินตนาการ สร้าง Persona ที่เต็มไปด้วยเสน่ห์จากโอเอซิสที่สาบสูญ"</p>
                     </div>
-                    <div class="p-4 bg-white/5 border-t border-white/10 flex gap-2 items-center">
-                        <input type="text" id="chat-input" placeholder="พิมพ์ข้อความ..." class="flex-grow bg-transparent border-none focus:ring-0 text-sm py-2" disabled data-i18n="input-placeholder">
+                    <!-- Trainer 2 -->
+                    <div class="p-6 glass-card text-center group">
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <img src="https://i.postimg.cc/vmdHqmp6/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-3.jpg" alt="B" class="w-full h-full rounded-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ring-1 ring-zinc-800 group-hover:ring-orange-600">
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-white">B. (Zafar)</h3>
+                        <p class="text-zinc-500 text-xs tracking-widest uppercase mb-4" data-i18n="t2-role">Time Traveler</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="t2-quote">"การข้ามเวลาทำได้ใน 3 วินาที ผมจะสอนวิธีเปลี่ยนตัวตนคุณสู่ยุคสมัยที่ไร้ขีดจำกัด"</p>
+                    </div>
+                    <!-- Trainer 3 -->
+                    <div class="p-6 glass-card text-center group">
+                        <div class="relative w-24 h-24 mx-auto mb-6">
+                            <img src="https://i.postimg.cc/3x23vTdr/magnifics-upscale-w-YE3-Zij-Wt4-Og8oz-SRKPs-Image-45-2.jpg" alt="Hour" class="w-full h-full rounded-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ring-1 ring-zinc-800 group-hover:ring-orange-600">
+                        </div>
+                        <h3 class="text-lg font-bold mb-1 text-white">Hour (Harun)</h3>
+                        <p class="text-zinc-500 text-xs tracking-widest uppercase mb-4" data-i18n="t3-role">Action Master</p>
+                        <p class="text-sm text-zinc-400 leading-relaxed font-light" data-i18n="t3-quote">"ทฤษฎีคืออดีต! มาสร้างผลลัพธ์ที่จับต้องได้ ปั้นตำนานที่โลกต้องจารึกกันดีกว่า"</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://threeandhour.github.io/GymMateX/Th3Trainers.html" target="_blank" class="text-sm text-zinc-400 hover:text-orange-500 transition-colors uppercase tracking-widest font-semibold" data-i18n="all-profiles">
+                        ส่องโปรไฟล์ผู้สร้างทั้งหมด <span class="ml-1">→</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- AI Chat Demo (Clean Terminal Style) -->
+            <section class="mb-32">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-bold mb-2 tracking-tight" data-i18n="chat-title">คุยกับ AI เหล่านักเดินทาง</h2>
+                    <p class="text-zinc-500 text-sm font-light" data-i18n="chat-desc">เลือกเทรนเนอร์ที่คุณต้องการปรึกษาเรื่องการสร้างตำนาน</p>
+                </div>
+
+                <div class="flex justify-center gap-2 mb-8 flex-wrap">
+                    <button class="persona-btn px-6 py-2 rounded-full border border-zinc-800 text-zinc-400 hover:text-white hover:border-orange-600 transition-all text-xs font-semibold uppercase tracking-wider" data-persona="tee">Tee (Tarig)</button>
+                    <button class="persona-btn px-6 py-2 rounded-full border border-zinc-800 text-zinc-400 hover:text-white hover:border-orange-600 transition-all text-xs font-semibold uppercase tracking-wider" data-persona="b">B. (Zafar)</button>
+                    <button class="persona-btn px-6 py-2 rounded-full border border-zinc-800 text-zinc-400 hover:text-white hover:border-orange-600 transition-all text-xs font-semibold uppercase tracking-wider" data-persona="hour">Hour (Harun)</button>
+                </div>
+
+                <div class="max-w-2xl mx-auto rounded-xl border border-zinc-800 bg-black overflow-hidden shadow-2xl">
+                    <div class="bg-zinc-900/50 px-4 py-3 border-b border-zinc-800 flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
+                        <span class="ml-2 text-xs text-zinc-600 font-mono tracking-widest">SECURE_CHANNEL</span>
+                    </div>
+                    <div id="chat-window" class="h-80 overflow-y-auto p-6 flex flex-col space-y-4 bg-transparent rounded-none">
+                        <div class="chat-msg persona text-sm font-light text-zinc-300" data-i18n="chat-placeholder">เชื่อมต่อระบบ... ทักทายเหล่านักรบของคุณ</div>
+                    </div>
+                    <div class="p-4 bg-zinc-900 border-t border-zinc-800 flex gap-3 items-center">
+                        <input type="text" id="chat-input" placeholder="พิมพ์ข้อความ..." class="flex-grow bg-black rounded-md px-4 py-2.5 text-sm text-white focus:outline-none" disabled data-i18n="input-placeholder">
                         <div id="loading-indicator"></div>
-                        <button id="send-chat-btn" class="p-2 text-orange-500 hover:text-orange-400 disabled:opacity-30" disabled>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                        <button id="send-chat-btn" class="p-2.5 bg-orange-600 text-white rounded-md hover:bg-orange-700 disabled:opacity-30 disabled:bg-zinc-800 transition-all" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                         </button>
                     </div>
                 </div>
             </section>
 
             <!-- Sandbox -->
-            <section class="mb-24 p-12 glass-card text-center overflow-hidden relative">
+            <section class="mb-32 p-12 rounded-2xl border border-zinc-800 bg-zinc-900 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-800/50 via-zinc-900 to-zinc-900 pointer-events-none"></div>
                 <div class="relative z-10">
-                    <h2 class="text-3xl font-bold mb-4" data-i18n="sandbox-title">Project Sandbox: WIDEROOMS</h2>
-                    <p class="text-slate-300 mb-8" data-i18n="sandbox-desc">พื้นที่ลับสำหรับโปรเจกต์ทดลองสุดซี้ดที่รันโดย AI Persona</p>
-                    <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="btn-primary" data-i18n="sandbox-btn">
-                        แอบดู WIDEROOMS
+                    <p class="text-orange-600 text-xs font-bold tracking-widest uppercase mb-3">Top Secret</p>
+                    <h2 class="text-3xl font-bold mb-4 text-white" data-i18n="sandbox-title">Project Sandbox: WIDEROOMS</h2>
+                    <p class="text-zinc-400 mb-8 font-light" data-i18n="sandbox-desc">พื้นที่ลับสำหรับโปรเจกต์ทดลองสุดซี้ดที่รันโดย AI Persona</p>
+                    <a href="https://thbho.github.io/ThWiderooms.html" target="_blank" class="btn-outline border-zinc-700 text-zinc-300 hover:border-white hover:text-white bg-black/50" data-i18n="sandbox-btn">
+                        Enter Sandbox
                     </a>
                 </div>
             </section>
 
-            <!-- Community Section -->
-            <section class="mb-24">
-                <h2 class="text-3xl font-bold text-center mb-12" data-i18n="comm-title">เข้าร่วม Community</h2>
+            <!-- Community Section (Minimalist Icons) -->
+            <section class="mb-32">
+                <h2 class="text-xl font-bold text-center mb-10 tracking-tight text-white" data-i18n="comm-title">เข้าร่วม Community</h2>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <a href="https://x.com/widerooms" target="_blank" class="glass-card community-icon-card hover:bg-white/10 transition-all">
-                        <svg class="w-8 h-8 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-                        <span class="text-xs font-semibold text-slate-300">X @widerooms</span>
+                    <a href="https://x.com/widerooms" target="_blank" class="glass-card community-icon-card">
+                        <svg class="w-6 h-6 text-zinc-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider">X</span>
                     </a>
-                    <a href="https://www.youtube.com/@threeandhour" target="_blank" class="glass-card community-icon-card hover:bg-white/10 transition-all">
-                        <svg class="w-8 h-8 mb-2 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-                        <span class="text-xs font-semibold text-slate-300">YouTube</span>
+                    <a href="https://www.youtube.com/@threeandhour" target="_blank" class="glass-card community-icon-card">
+                        <svg class="w-6 h-6 text-zinc-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                        <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider">YouTube</span>
                     </a>
-                    <a href="https://www.instagram.com/th_b_ho/" target="_blank" class="glass-card community-icon-card hover:bg-white/10 transition-all">
-                        <svg class="w-8 h-8 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.225-.148-4.771-1.664-4.919-4.919-.058-1.265-.069-1.644-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg>
-                        <span class="text-xs font-semibold text-slate-300">Instagram</span>
+                    <a href="https://www.instagram.com/th_b_ho/" target="_blank" class="glass-card community-icon-card">
+                        <svg class="w-6 h-6 text-zinc-400 hover:text-pink-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.225-.148-4.771-1.664-4.919-4.919-.058-1.265-.069-1.644-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg>
+                        <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider">Instagram</span>
                     </a>
-                    <a href="https://soundcloud.com/thho-8445239" target="_blank" class="glass-card community-icon-card hover:bg-white/10 transition-all">
-                        <svg class="w-8 h-8 mb-2 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.525h.525V8.1s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V17.525zm1.575-1.5h.525V9.45s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V16.025zm1.575 1.125h.525V7.125s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v10.925zm1.575-2.25h.525v-5.25s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v6.15zm1.575 2.625h.525v-8.4s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v9.3zm1.575-1.875h.525V9.675s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v6.75zm1.575 1.5h.525v-7.125s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V16.5z"></path></svg>
-                        <span class="text-xs font-semibold text-slate-300" data-i18n="soundcloud-btn">Music & OST</span>
+                    <a href="https://soundcloud.com/thho-8445239" target="_blank" class="glass-card community-icon-card">
+                        <svg class="w-6 h-6 text-zinc-400 hover:text-orange-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.525h.525V8.1s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V17.525zm1.575-1.5h.525V9.45s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V16.025zm1.575 1.125h.525V7.125s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v10.925zm1.575-2.25h.525v-5.25s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v6.15zm1.575 2.625h.525v-8.4s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v9.3zm1.575-1.875h.525V9.675s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525v6.75zm1.575 1.5h.525v-7.125s0-.225-.15-.375c-.15-.15-.375-.15-.375-.15h-.525V16.5z"></path></svg>
+                        <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider" data-i18n="soundcloud-btn">Music</span>
                     </a>
-                    <a href="https://open.spotify.com/show/4eghaMBiCWOvUygLqAMmhY?si=54d602d91e9745b7" target="_blank" class="glass-card community-icon-card hover:bg-white/10 transition-all">
-                        <svg class="w-8 h-8 mb-2 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.49 17.31c-.216.354-.678.468-1.03.252-2.825-1.728-6.38-2.112-10.57-1.155-.405.093-.816-.165-.908-.57-.093-.404.165-.815.57-.908 4.584-1.047 8.514-.615 11.666 1.314.354.216.468.678.252 1.03zm1.114-3.26c-.272.443-.847.583-1.29.31-3.23-1.986-8.15-2.56-11.964-1.402-.497.15-1.026-.13-1.176-.628-.15-.497.13-1.026.628-1.176 4.356-1.322 9.774-.666 13.5 1.62.442.272.582.847.31 1.29zm.095-3.393c-3.87-2.3-10.26-2.512-13.99-1.38-.594.18-1.223-.153-1.403-.747-.18-.594.153-1.223.747-1.403 4.29-1.3 11.35-1.05 15.8 1.59.53.316.71 1 .394 1.53-.316.53-1 0-1.53.394z"></path></svg>
-                        <span class="text-xs font-semibold text-slate-300" data-i18n="social-sp">Podcast</span>
+                    <a href="https://open.spotify.com/show/4eghaMBiCWOvUygLqAMmhY?si=54d602d91e9745b7" target="_blank" class="glass-card community-icon-card">
+                        <svg class="w-6 h-6 text-zinc-400 hover:text-green-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.49 17.31c-.216.354-.678.468-1.03.252-2.825-1.728-6.38-2.112-10.57-1.155-.405.093-.816-.165-.908-.57-.093-.404.165-.815.57-.908 4.584-1.047 8.514-.615 11.666 1.314.354.216.468.678.252 1.03zm1.114-3.26c-.272.443-.847.583-1.29.31-3.23-1.986-8.15-2.56-11.964-1.402-.497.15-1.026-.13-1.176-.628-.15-.497.13-1.026.628-1.176 4.356-1.322 9.774-.666 13.5 1.62.442.272.582.847.31 1.29zm.095-3.393c-3.87-2.3-10.26-2.512-13.99-1.38-.594.18-1.223-.153-1.403-.747-.18-.594.153-1.223.747-1.403 4.29-1.3 11.35-1.05 15.8 1.59.53.316.71 1 .394 1.53-.316.53-1 0-1.53.394z"></path></svg>
+                        <span class="text-xs font-medium text-zinc-500 uppercase tracking-wider" data-i18n="social-sp">Podcast</span>
                     </a>
                 </div>
             </section>
 
-            <footer class="border-t border-white/10 pt-16 pb-20">
-                <div class="grid md:grid-cols-2 gap-12 mb-20">
-                    <div class="p-8 glass-card border-none bg-white/5">
-                        <h2 class="text-2xl font-bold mb-6" data-i18n="contact-title">สนใจ? ทักมาสิ!</h2>
-                        <form id="contact-form-th" action="https://formspree.io/f/mnnvbyyo" method="POST" class="space-y-4 mb-8">
-                            <input type="text" name="name" placeholder="ชื่อของคุณ" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-orange-500 outline-none" required data-i18n="name-placeholder">
-                            <input type="text" name="contact" placeholder="Line / เบอร์โทร" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-orange-500 outline-none" required data-i18n="contact-placeholder">
-                            <textarea name="message" rows="3" placeholder="ฝากความฝันของคุณไว้..." class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-orange-500 outline-none" required data-i18n="msg-placeholder"></textarea>
-                            <button type="submit" class="btn-primary w-full" data-i18n="submit-btn">ส่งข้อมูล</button>
+            <footer class="border-t border-zinc-800 pt-16 pb-12">
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <h2 class="text-xl font-bold mb-6 text-white" data-i18n="contact-title">สนใจ? ทักมาสิ!</h2>
+                        <form id="contact-form-th" action="https://formspree.io/f/mnnvbyyo" method="POST" class="space-y-4">
+                            <input type="text" name="name" placeholder="ชื่อของคุณ" class="w-full rounded-md px-4 py-3 outline-none text-sm" required data-i18n="name-placeholder">
+                            <input type="text" name="contact" placeholder="Line / เบอร์โทร" class="w-full rounded-md px-4 py-3 outline-none text-sm" required data-i18n="contact-placeholder">
+                            <textarea name="message" rows="4" placeholder="ฝากความฝันของคุณไว้..." class="w-full rounded-md px-4 py-3 outline-none text-sm" required data-i18n="msg-placeholder"></textarea>
+                            <button type="submit" class="w-full bg-white text-black font-semibold py-3 rounded-md hover:bg-orange-500 hover:text-white transition-colors text-sm uppercase tracking-widest" data-i18n="submit-btn">ส่งข้อมูล</button>
                         </form>
-                        <p id="form-status-th" class="mb-6 text-xs text-center"></p>
+                        <p id="form-status-th" class="mt-4 text-xs text-orange-500"></p>
                     </div>
                     
-                    <div class="glass-card overflow-hidden">
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9VMIX4XNkNrOXWjb8y1AvxBzJu8N4X4pHL5pPhE9J0PrGlw/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <div class="rounded-xl overflow-hidden border border-zinc-800 bg-black">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9VMIX4XNkNrOXWjb8y1AvxBzJu8N4X4pHL5pPhE9J0PrGlw/viewform?embedded=true" width="100%" height="450" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     </div>
                 </div>
 
-                <div class="mt-12 text-center text-xs text-slate-500">
+                <div class="text-center text-xs text-zinc-600 font-mono">
                     &copy; 2026 AI GymMateX FIT & Fantasy | Hybrid AI Studio | threeandhour@gmail.com
                 </div>
             </footer>
@@ -366,6 +466,7 @@
       const i18n = {
         th: {
           "nav-general": "General",
+          "hero-tag": "Welcome to the Evolution",
           "hero-title": "ปั้น AI Twin & ทะลุมิติสู่โลกแฟนตาซี",
           "hero-desc": "สร้าง Hybrid AI Persona ที่รวมความแข็งแกร่งของร่างกายเข้ากับจินตนาการไร้ขีดจำกัด",
           "latest-news": "อ่านประกาศล่าสุด",
@@ -377,32 +478,39 @@
           "b2-desc": "ข้ามข้ามมิติเวลาและสถานที่ด้วยเทคโนโลยี AI สร้างเรื่องราวต่อเนื่องที่ Hollywood ยังต้องทึ่ง",
           "b3-title": "The 50/70/90 Identity",
           "b3-desc": "กฎแห่งการสร้าง Persona: ใบหน้า 50%, ร่างกาย 70%, และเสียง 90% เพื่อเอกลักษณ์ที่สมบูรณ์",
+          "gallery-tag": "Showcase",
+          "gallery-title": "แฟ้มผลงานข้ามมิติ",
+          "gallery-desc": "ตัวอย่างการผสานร่างจริงเข้ากับโลกแฟนตาซี",
           "program-title": "โปรแกรมปั้น AI Persona & Fantasy",
           "program-desc": "เรียนรู้เทคนิคการผสมผสาน Physique เข้ากับโลกจินตนาการระดับมืออาชีพ",
           "view-schedule": "ดูตารางเรียนทั้งหมด",
           "choose-trainer": "คณะผู้สร้างฝัน",
-          "t1-role": "Desert Warrior & Storyteller",
+          "t1-role": "Desert Warrior",
           "t1-quote": "\"AI คือคู่หูที่จะปลดปล่อยจินตนาการ สร้าง Persona จากโอเอซิสที่สาบสูญ\"",
-          "t2-role": "The Time Traveler & Strategist",
+          "t2-role": "Time Traveler",
           "t2-quote": "\"การข้ามเวลาทำได้ใน 3 วินาที ผมจะพาคุณสู่ยุคสมัยที่ไร้ขีดจำกัด\"",
-          "t3-role": "The Showstopper & Action Master",
+          "t3-role": "Action Master",
           "t3-quote": "\"ทฤษฎีคืออดีต! มาปั้นตำนานที่โลกต้องจารึกกันดีกว่า\"",
           "all-profiles": "ส่องโปรไฟล์ผู้สร้างทั้งหมด",
-          "chat-title": "✨ คุยกับ AI เหล่านักเดินทาง",
+          "chat-title": "คุยกับ AI เหล่านักเดินทาง",
           "chat-desc": "เลือกเทรนเนอร์ที่คุณต้องการปรึกษาเรื่องการสร้างตำนาน",
-          "chat-placeholder": "ทักทายเหล่านักรบของคุณ...",
+          "chat-placeholder": "เชื่อมต่อระบบ... ทักทายเหล่านักรบของคุณ",
           "input-placeholder": "พิมพ์ข้อความ...",
+          "sandbox-title": "Project Sandbox: WIDEROOMS",
+          "sandbox-desc": "พื้นที่ลับสำหรับโปรเจกต์ทดลองสุดซี้ดที่รันโดย AI Persona",
+          "sandbox-btn": "Enter Sandbox",
           "contact-title": "สนใจ? ทักมาสิ!",
           "name-placeholder": "ชื่อของคุณ",
           "contact-placeholder": "Line / เบอร์โทร",
           "msg-placeholder": "ฝากความฝันของคุณไว้...",
           "submit-btn": "ส่งข้อมูล",
           "comm-title": "เข้าร่วม Community",
-          "soundcloud-btn": "Music & OST",
+          "soundcloud-btn": "Music",
           "social-sp": "Podcast"
         },
         en: {
           "nav-general": "General",
+          "hero-tag": "Welcome to the Evolution",
           "hero-title": "Sculpt AI Twin & Fantasy Legacy",
           "hero-desc": "Create a Hybrid AI Persona fusing your peak physique with cinematic imagination.",
           "latest-news": "Read latest news",
@@ -414,32 +522,39 @@
           "b2-desc": "Seamlessly transition between eras and worlds with narrative-driven AI storytelling.",
           "b3-title": "The 50/70/90 Identity",
           "b3-desc": "Our Golden Rule: 50% Face, 70% Body, 90% Voice for an enhanced, authentic persona.",
+          "gallery-tag": "Showcase",
+          "gallery-title": "Multiverse Gallery",
+          "gallery-desc": "Examples of blending reality with fantasy realms.",
           "program-title": "AI Persona & Fantasy Sculpting",
           "program-desc": "Master the art of cinematic storytelling and physical aesthetic enhancement.",
           "view-schedule": "View Full Schedule",
           "choose-trainer": "Meet the Creators",
-          "t1-role": "The Storyteller (Tarig)",
+          "t1-role": "The Storyteller",
           "t1-quote": "\"AI is your partner to release imagination. Let's create an enchanting persona.\"",
-          "t2-role": "The Strategist (Zafar)",
+          "t2-role": "The Strategist",
           "t2-quote": "\"You can be anyone within 3 seconds. I'll show you the power of time travel.\"",
-          "t3-role": "The Showstopper (Harun)",
+          "t3-role": "The Showstopper",
           "t3-quote": "\"Theory is boring! Let's get results. Build a legend the world remembers.\"",
           "all-profiles": "View Creator Profiles",
-          "chat-title": "✨ Chat with Time Travelers",
+          "chat-title": "Chat with Time Travelers",
           "chat-desc": "Pick your guide and ask about your digital transformation.",
-          "chat-placeholder": "Say hi to your warriors...",
+          "chat-placeholder": "System connected... Say hi to your warriors",
           "input-placeholder": "Type message...",
+          "sandbox-title": "Project Sandbox: WIDEROOMS",
+          "sandbox-desc": "A secret space for experimental projects run by AI Personas.",
+          "sandbox-btn": "Enter Sandbox",
           "contact-title": "Interested? Join us!",
           "name-placeholder": "Your Name",
           "contact-placeholder": "Line / Phone",
           "msg-placeholder": "Tell us your dream...",
           "submit-btn": "Submit",
           "comm-title": "Join Community",
-          "soundcloud-btn": "Music & OST",
+          "soundcloud-btn": "Music",
           "social-sp": "Podcast"
         },
         ru: {
             "nav-general": "Главная",
+            "hero-tag": "Добро пожаловать в эволюцию",
             "hero-title": "Создай AI-двойника и Фэнтези-легенду",
             "hero-desc": "Гибридная AI-персона: слияние идеального тела и кинематографичного воображения.",
             "latest-news": "Последние новости",
@@ -451,32 +566,39 @@
             "b2-desc": "Легко переходите между эпохами с помощью повествовательного AI-сторителлинга.",
             "b3-title": "Идентичность 50/70/90",
             "b3-desc": "Наше правило: 50% лица, 70% тела, 90% голоса для идеальной персоны.",
+            "gallery-tag": "Showcase",
+            "gallery-title": "Галерея Мультивселенной",
+            "gallery-desc": "Примеры слияния реальности с фэнтези.",
             "program-title": "Скульптура AI и Фэнтези",
             "program-desc": "Освойте искусство кинематографичного сторителлинга и эстетики тела.",
             "view-schedule": "Посмотреть расписание",
             "choose-trainer": "Познакомьтесь с создателями",
-            "t1-role": "Сказочник (INFP)",
+            "t1-role": "Сказочник",
             "t1-quote": "\"AI — ваш партнер в воображении. Создадим чарующую персону.\"",
-            "t2-role": "Стратег (INFJ)",
+            "t2-role": "Стратег",
             "t2-quote": "\"Вы можете стать кем угодно за 3 секунды. Я покажу вам силу времени.\"",
-            "t3-role": "Шоустоппер (ESTP)",
+            "t3-role": "Шоустоппер",
             "t3-quote": "\"Теория скучна! Давайте делать результат. Создайте легенду.\"",
             "all-profiles": "Профили создателей",
-            "chat-title": "✨ Чат с путешественниками",
+            "chat-title": "Чат с путешественниками",
             "chat-desc": "Выберите проводника и спросите о своей трансформации.",
-            "chat-placeholder": "Поприветствуйте воинов...",
+            "chat-placeholder": "Система подключена... Поприветствуйте воинов",
             "input-placeholder": "Ваше сообщение...",
+            "sandbox-title": "Project Sandbox: WIDEROOMS",
+            "sandbox-desc": "Секретное пространство для экспериментальных проектов.",
+            "sandbox-btn": "Войти",
             "contact-title": "Интересно? Пишите!",
             "name-placeholder": "Ваше имя",
             "contact-placeholder": "Line / Телефон",
             "msg-placeholder": "Расскажите о своей мечте...",
             "submit-btn": "Отправить",
             "comm-title": "Сообщество",
-            "soundcloud-btn": "Музыка & OST",
+            "soundcloud-btn": "Музыка",
             "social-sp": "Подкаст"
         },
         zh: {
             "nav-general": "主页",
+            "hero-tag": "欢迎来到进化时代",
             "hero-title": "塑造 AI 孪生身与奇幻传奇",
             "hero-desc": "打造混合型 AI 人格，将您的巅峰体魄与电影般的想象力融合。",
             "latest-news": "查看最新动态",
@@ -488,32 +610,39 @@
             "b2-desc": "借助叙事驱动的 AI 故事讲述，在不同时代和世界之间无缝切换。",
             "b3-title": "50/70/90 身份法则",
             "b3-desc": "我们的黄金法则：50% 面部、70% 身体、90% 声音，打造完美人格。",
+            "gallery-tag": "Showcase",
+            "gallery-title": "多元宇宙画廊",
+            "gallery-desc": "将现实与奇幻领域融合的例子。",
             "program-title": "AI 人格与奇幻塑造计划",
             "program-desc": "掌握电影叙事艺术和身体美学增强技术。",
             "view-schedule": "查看完整日程",
             "choose-trainer": "会见创作者",
-            "t1-role": "讲故事的人 (Tarig)",
+            "t1-role": "讲故事的人",
             "t1-quote": "\"AI 是释放想象力的伙伴。让我们创造一个迷人的人格。\"",
-            "t2-role": "战略家 (Zafar)",
+            "t2-role": "战略家",
             "t2-quote": "\"您可以在 3 秒内成为任何人。我将向您展示时空旅行的力量。\"",
-            "t3-role": "风云人物 (Harun)",
+            "t3-role": "风云人物",
             "t3-quote": "\"理论很无聊！我们要的是结果。塑造一个被世界铭记的传奇。\"",
             "all-profiles": "查看创作者资料",
-            "chat-title": "✨ 与时空旅行者聊天",
+            "chat-title": "与时空旅行者聊天",
             "chat-desc": "选择您的向导并询问您的数字转型。",
-            "chat-placeholder": "向您的武士打个招呼...",
+            "chat-placeholder": "系统已连接... 向您的武士打个招呼",
             "input-placeholder": "输入消息...",
+            "sandbox-title": "Project Sandbox: WIDEROOMS",
+            "sandbox-desc": "AI 人格运行的实验性项目秘密空间。",
+            "sandbox-btn": "进入沙盒",
             "contact-title": "感兴趣？加入我们！",
             "name-placeholder": "您的姓名",
             "contact-placeholder": "Line / 电话",
             "msg-placeholder": "告诉我们您的梦想...",
             "submit-btn": "提交",
             "comm-title": "加入社区",
-            "soundcloud-btn": "音乐 & OST",
+            "soundcloud-btn": "音乐",
             "social-sp": "播客"
         }
       };
 
+      // Language Switcher
       function setLanguage(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         const btn = document.getElementById(`lang-${lang}`);
@@ -533,6 +662,7 @@
 
       setLanguage('th');
 
+      // Contact Form Handler
       const formTh = document.getElementById("contact-form-th");
       async function handleSubmitTh(event) {
         event.preventDefault();
@@ -545,13 +675,13 @@
         }).then(response => {
           if (response.ok) {
             status.innerHTML = "Dreams shared! / ส่งข้อมูลแล้ว!";
-            status.className = "mt-4 text-xs text-center text-orange-400";
             formTh.reset();
           }
         });
       }
-      formTh.addEventListener("submit", handleSubmitTh);
+      if(formTh) formTh.addEventListener("submit", handleSubmitTh);
 
+      // Chat Application Logic
       const personaBtns = document.querySelectorAll('.persona-btn');
       const chatWindow = document.getElementById('chat-window');
       const chatInput = document.getElementById('chat-input');
@@ -560,53 +690,36 @@
 
       let activePersona = null;
       const personas = {
-          tee: { name: 'Tarig', prompt: "You are 'Three' as Tarig from Desert Warriors. Artistic, mystical storyteller.", color: '#fb923c' },
-          b: { name: 'Zafar', prompt: "You are 'B.' as Zafar, the Great Time Traveler. Wise, calm, strategic.", color: '#f97316' },
-          hour: { name: 'Harun', prompt: "You are 'Hour' as Harun, the Desert Showstopper. Energetic, direct, action-oriented.", color: '#fdba74' }
+          tee: { name: 'Tarig', prompt: "You are 'Three' as Tarig from Desert Warriors. Artistic, mystical storyteller. Speak briefly.", color: '#ea580c' },
+          b: { name: 'Zafar', prompt: "You are 'B.' as Zafar, the Great Time Traveler. Wise, calm, strategic. Speak briefly.", color: '#ea580c' },
+          hour: { name: 'Harun', prompt: "You are 'Hour' as Harun, the Desert Showstopper. Energetic, direct, action-oriented. Speak briefly.", color: '#ea580c' }
       };
 
+      // Handle Persona Selection
       personaBtns.forEach(btn => {
           btn.addEventListener('click', () => {
-              personaBtns.forEach(b => b.classList.remove('border-orange-500', 'bg-orange-500/10'));
-              btn.classList.add('border-orange-500', 'bg-orange-500/10');
+              personaBtns.forEach(b => {
+                  b.classList.remove('border-orange-600', 'text-white', 'bg-zinc-900');
+                  b.classList.add('border-zinc-800', 'text-zinc-400');
+              });
+              btn.classList.remove('border-zinc-800', 'text-zinc-400');
+              btn.classList.add('border-orange-600', 'text-white', 'bg-zinc-900');
+              
               activePersona = btn.dataset.persona;
               chatInput.disabled = false;
               sendBtn.disabled = false;
               chatWindow.innerHTML = '';
-              chatInput.placeholder = `Talking with ${personas[activePersona].name}...`;
+              chatInput.placeholder = `[SECURE] Talking with ${personas[activePersona].name}...`;
+              chatInput.focus();
           });
       });
 
-      async function callGemini(question) {
-        const fullPrompt = `${personas[activePersona].prompt}\n\nQuestion: ${question}`;
-        const payload = { contents: [{ parts: [{ text: fullPrompt }] }] };
-        loadingIndicator.style.display = 'block';
-        sendBtn.disabled = true;
-        try {
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const result = await response.json();
-            const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "...";
-            addMessage(text, 'persona');
-        } catch (error) {
-            addMessage("The oasis connection is weak...", 'persona');
-        } finally {
-            loadingIndicator.style.display = 'none';
-            sendBtn.disabled = false;
-            chatInput.focus();
-        }
-      }
-
+      // Append Messages to Chat
       function addMessage(text, type) {
         const div = document.createElement('div');
-        div.className = `chat-msg ${type} text-sm`;
+        div.className = `chat-msg ${type} text-sm shadow-sm`;
         if (type === 'persona') {
-            div.innerHTML = `<span class="font-bold block mb-1" style="color: ${personas[activePersona].color}">${personas[activePersona].name}</span> ${text}`;
+            div.innerHTML = `<span class="font-bold block mb-1 text-xs uppercase tracking-widest text-zinc-500">${personas[activePersona].name}</span> ${text}`;
         } else {
             div.textContent = text;
         }
@@ -614,6 +727,54 @@
         chatWindow.scrollTop = chatWindow.scrollHeight;
       }
 
+      // Exponential Backoff Fetch
+      async function fetchWithRetry(url, options, maxRetries = 5) {
+          const delays = [1000, 2000, 4000, 8000, 16000];
+          for (let i = 0; i < maxRetries; i++) {
+              try {
+                  const response = await fetch(url, options);
+                  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                  return await response.json();
+              } catch (error) {
+                  if (i === maxRetries - 1) throw error;
+                  await new Promise(resolve => setTimeout(resolve, delays[i]));
+              }
+          }
+      }
+
+      // Gemini API Call
+      async function callGemini(question) {
+        const fullPrompt = `${personas[activePersona].prompt}\n\nUser: ${question}`;
+        const payload = { 
+            contents: [{ parts: [{ text: fullPrompt }] }] 
+        };
+
+        loadingIndicator.style.display = 'block';
+        sendBtn.disabled = true;
+
+        try {
+            const apiKey = ""; // The execution environment provides the key at runtime
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const result = await fetchWithRetry(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "The connection was lost in time...";
+            addMessage(text, 'persona');
+        } catch (error) {
+            console.error("Gemini API Error:", error);
+            addMessage("The oasis connection is weak right now. Please try again.", 'persona');
+        } finally {
+            loadingIndicator.style.display = 'none';
+            sendBtn.disabled = false;
+            chatInput.focus();
+        }
+      }
+
+      // Event Listeners for Chat
       const handleSend = () => {
           const val = chatInput.value.trim();
           if (val && activePersona) {
@@ -622,8 +783,11 @@
               chatInput.value = '';
           }
       };
+      
       sendBtn.addEventListener('click', handleSend);
-      chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+      chatInput.addEventListener('keypress', (e) => { 
+          if (e.key === 'Enter') handleSend(); 
+      });
     </script>
 </body>
 </html>

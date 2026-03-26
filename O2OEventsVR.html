@@ -87,19 +87,21 @@
             box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8);
         }
         
-        /* Language Toggle Logic */
-        body.lang-th .en, body.lang-th .cn { display: none !important; }
-        body.lang-en .th, body.lang-en .cn { display: none !important; }
-        body.lang-cn .th, body.lang-cn .en { display: none !important; }
+        /* Language Toggle Logic for 4 Languages */
+        body.lang-th .en, body.lang-th .cn, body.lang-th .es { display: none !important; }
+        body.lang-en .th, body.lang-en .cn, body.lang-en .es { display: none !important; }
+        body.lang-cn .th, body.lang-cn .en, body.lang-cn .es { display: none !important; }
+        body.lang-es .th, body.lang-es .en, body.lang-es .cn { display: none !important; }
     </style>
 </head>
 <body class="antialiased min-h-screen lang-th selection:bg-vr-primary selection:text-white">
 
-    <!-- Floating Language Toggle -->
+    <!-- Floating Language Toggle (Added ES) -->
     <div class="fixed top-4 right-4 md:top-6 md:right-8 z-50 bg-black/90 backdrop-blur-md border border-zinc-800 rounded-full p-1 flex gap-1 shadow-[0_0_20px_rgba(225,29,72,0.2)]">
-        <button onclick="setLang('th')" id="btn-th" class="px-4 py-1.5 text-sm font-semibold rounded-full bg-vr-primary text-white transition-all shadow-md">TH</button>
-        <button onclick="setLang('en')" id="btn-en" class="px-4 py-1.5 text-sm font-semibold rounded-full text-zinc-400 hover:text-white transition-all">EN</button>
-        <button onclick="setLang('cn')" id="btn-cn" class="px-4 py-1.5 text-sm font-semibold rounded-full text-zinc-400 hover:text-white transition-all">CN</button>
+        <button onclick="setLang('th')" id="btn-th" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full bg-vr-primary text-white transition-all shadow-md">TH</button>
+        <button onclick="setLang('en')" id="btn-en" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-zinc-400 hover:text-white transition-all">EN</button>
+        <button onclick="setLang('cn')" id="btn-cn" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-zinc-400 hover:text-white transition-all">CN</button>
+        <button onclick="setLang('es')" id="btn-es" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-zinc-400 hover:text-white transition-all">ES</button>
     </div>
 
     <!-- Hero Section -->
@@ -113,6 +115,7 @@
                     <span class="th">อาณาจักรความบันเทิงระดับพรีเมียม</span>
                     <span class="en">Premium Adult Entertainment</span>
                     <span class="cn">高级成人娱乐</span>
+                    <span class="es">Entretenimiento para Adultos Premium</span>
                 </div>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight text-white">
                     GymMateX <br>
@@ -120,12 +123,14 @@
                         <span class="th">สัมผัสโลกเสมือนสุดล้ำ</span>
                         <span class="en">The Ultimate Virtual Reality</span>
                         <span class="cn">终极虚拟现实体验</span>
+                        <span class="es">La Realidad Virtual Definitiva</span>
                     </span>
                 </h1>
                 <p class="text-base sm:text-lg text-zinc-400 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
                     <span class="th">แพลตฟอร์มที่เชื่อมโลกจริง (อีเวนต์หรูและฟิตเนส) เข้ากับโลกดิจิทัล เปลี่ยนคนจริงให้เป็น <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Persona</a> หรือ Digital Twin พร้อมประสบการณ์ VR ที่สมจริงจนคุณสัมผัสได้</span>
                     <span class="en">A platform that connects the real world (luxury events & fitness) with the digital world. We turn real people into <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Personas</a> or Digital Twins with VR experiences you can actually feel.</span>
                     <span class="cn">一个连接现实世界（豪华活动和健身）与数字世界的平台。我们将真人转化为 <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">混合AI角色 (Hybrid AI Persona)</a> 或数字孪生，提供触手可及的真实VR体验。</span>
+                    <span class="es">Una plataforma que conecta el mundo real (eventos de lujo y fitness) con el mundo digital. Convertimos a personas reales en <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Personas</a> o Gemelos Digitales con experiencias de realidad virtual que realmente puedes sentir.</span>
                 </p>
                 
                 <!-- 4 Highlight Cards in 2x2 Grid -->
@@ -133,22 +138,30 @@
                     <div class="glass-card p-4 rounded-xl border-t-2 border-t-vr-primary/60 text-left hover:bg-vr-primary/5 transition-colors">
                         <i data-lucide="flame" class="w-5 h-5 text-vr-primary mb-2"></i>
                         <p class="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">Concept</p>
-                        <p class="font-semibold text-white text-xs md:text-sm">Real to Virtual</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">
+                            <span class="th">Real to Virtual</span><span class="en">Real to Virtual</span><span class="cn">Real to Virtual</span><span class="es">Real a Virtual</span>
+                        </p>
                     </div>
                     <div class="glass-card p-4 rounded-xl border-t-2 border-t-vr-accent/60 text-left hover:bg-vr-accent/5 transition-colors">
                         <i data-lucide="users" class="w-5 h-5 text-vr-accent mb-2"></i>
                         <p class="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">Target Market</p>
-                        <p class="font-semibold text-white text-xs md:text-sm">Premium Gay</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">
+                            <span class="th">Premium Individual</span><span class="en">Premium Individual</span><span class="cn">高端个人 (Premium Individual)</span><span class="es">Individuo Premium</span>
+                        </p>
                     </div>
                     <div class="glass-card p-4 rounded-xl border-t-2 border-t-vr-gold/60 text-left hover:bg-vr-gold/5 transition-colors">
                         <i data-lucide="shield-check" class="w-5 h-5 text-vr-gold mb-2"></i>
                         <p class="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">Core Value</p>
-                        <p class="font-semibold text-white text-xs md:text-sm">Privacy & Luxury</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">
+                            <span class="th">Privacy & Luxury</span><span class="en">Privacy & Luxury</span><span class="cn">Privacy & Luxury</span><span class="es">Privacidad y Lujo</span>
+                        </p>
                     </div>
                     <div class="glass-card p-4 rounded-xl border-t-2 border-t-vr-secondary/60 text-left hover:bg-vr-secondary/5 transition-colors">
                         <i data-lucide="activity" class="w-5 h-5 text-vr-secondary mb-2"></i>
                         <p class="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">Revenue (Yr 3)</p>
-                        <p class="font-semibold text-white text-xs md:text-sm">$3 Million USD</p>
+                        <p class="font-semibold text-white text-xs md:text-sm">
+                            <span class="th">$3 Million USD</span><span class="en">$3 Million USD</span><span class="cn">$3 Million USD</span><span class="es">$3 Millones USD</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -182,11 +195,13 @@
                     <span class="th">เปลี่ยนคนจริงให้เป็น Hybrid AI Persona หรือ Digital Twin</span>
                     <span class="en">From Real People to Hybrid AI Persona or Digital Twin</span>
                     <span class="cn">从真人到混合AI角色或数字孪生</span>
+                    <span class="es">De Personas Reales a Hybrid AI Persona o Gemelo Digital</span>
                 </h2>
                 <p class="text-zinc-400 mt-4 max-w-2xl mx-auto">
                     <span class="th">เราไม่ได้สร้างแค่แอป แต่เรามีอีเวนต์คัดเลือกคนจริงๆ เพื่อนำมาสร้างเป็นตัวละคร AI ให้แฟนๆ ทั่วโลกได้ใกล้ชิด</span>
                     <span class="en">We don't just build an app. We host exclusive real-world events to cast models, then turn them into AI characters for fans worldwide to interact with.</span>
                     <span class="cn">我们不仅开发应用，还举办独家现实活动来挑选模特，然后将他们变成AI角色，供全球粉丝互动。</span>
+                    <span class="es">No solo creamos una aplicación. Organizamos eventos exclusivos en el mundo real para elegir modelos y luego los convertimos en personajes de IA para que los fans de todo el mundo interactúen con ellos.</span>
                 </p>
             </div>
 
@@ -210,11 +225,12 @@
                         <span class="th">อีเวนต์คัดเลือก (The Casting)</span>
                         <span class="en">The Casting Event</span>
                         <span class="cn">现场选角活动</span>
+                        <span class="es">El Evento de Casting</span>
                     </h3>
                     <h4 class="text-sm text-vr-accent mb-4 font-semibold uppercase tracking-wide">Real-World Action</h4>
                     <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-start"><i data-lucide="dumbbell" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">คัดเลือกนายแบบผ่านกิจกรรมฟิตเนสสุดเอ็กซ์คลูซีฟ</span><span class="en">Selecting top models through exclusive fitness activities.</span><span class="cn">通过独家健身活动挑选顶级模特。</span></li>
-                        <li class="flex items-start"><i data-lucide="ticket" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ลูกค้าระดับ VIP สามารถซื้อตั๋วเข้าชมงานจริงได้</span><span class="en">VIP clients can buy tickets to watch the casting live.</span><span class="cn">VIP客户可购买门票观看现场试镜。</span></li>
+                        <li class="flex items-start"><i data-lucide="dumbbell" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">คัดเลือกนายแบบผ่านกิจกรรมฟิตเนสสุดเอ็กซ์คลูซีฟ</span><span class="en">Selecting top models through exclusive fitness activities.</span><span class="cn">通过独家健身活动挑选顶级模特。</span><span class="es">Seleccionando a los mejores modelos a través de actividades de fitness exclusivas.</span></li>
+                        <li class="flex items-start"><i data-lucide="ticket" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ลูกค้าระดับ VIP สามารถซื้อตั๋วเข้าชมงานจริงได้</span><span class="en">VIP clients can buy tickets to watch the casting live.</span><span class="cn">VIP客户可购买门票观看现场试镜。</span><span class="es">Los clientes VIP pueden comprar boletos para ver el casting en vivo.</span></li>
                     </ul>
                 </div>
 
@@ -227,11 +243,12 @@
                         <span class="th">ทริปส่วนตัว (Wellness Trips)</span>
                         <span class="en">Private Wellness Trips</span>
                         <span class="cn">私人健康之旅</span>
+                        <span class="es">Viajes de Bienestar Privados</span>
                     </h3>
                     <h4 class="text-sm text-vr-gold mb-4 font-semibold uppercase tracking-wide">Data Collection</h4>
                     <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-start"><i data-lucide="camera" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ทริปสุดหรูเพื่อถ่ายทำและบันทึกข้อมูลท่าทาง เสียง และนิสัย</span><span class="en">Luxury trips to film and record their movements, voice, and personality.</span><span class="cn">豪华旅行，拍摄并记录他们的动作、声音和性格。</span></li>
-                        <li class="flex items-start"><i data-lucide="glass-water" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ปาร์ตี้ส่วนตัวและกิจกรรมสุดพิเศษสำหรับผู้ชนะ</span><span class="en">Private parties and special activities for the casting winners.</span><span class="cn">为获胜者举办的私人派对和特别活动。</span></li>
+                        <li class="flex items-start"><i data-lucide="camera" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ทริปสุดหรูเพื่อถ่ายทำและบันทึกข้อมูลท่าทาง เสียง และนิสัย</span><span class="en">Luxury trips to film and record their movements, voice, and personality.</span><span class="cn">豪华旅行，拍摄并记录他们的动作、声音和性格。</span><span class="es">Viajes de lujo para filmar y grabar sus movimientos, voz y personalidad.</span></li>
+                        <li class="flex items-start"><i data-lucide="glass-water" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">ปาร์ตี้ส่วนตัวและกิจกรรมสุดพิเศษสำหรับผู้ชนะ</span><span class="en">Private parties and special activities for the casting winners.</span><span class="cn">为获胜者举办的私人派对和特别活动。</span><span class="es">Fiestas privadas y actividades especiales para los ganadores del casting.</span></li>
                     </ul>
                 </div>
 
@@ -244,11 +261,12 @@
                         <span class="th">ตัวตนดิจิทัล (AI Persona & VR)</span>
                         <span class="en">Virtual AI Persona & VR</span>
                         <span class="cn">虚拟AI角色与VR</span>
+                        <span class="es">AI Persona Virtual y VR</span>
                     </h3>
                     <h4 class="text-sm text-vr-primary mb-4 font-semibold uppercase tracking-wide">Global Platform</h4>
                     <ul class="space-y-3 text-sm text-zinc-400">
-                        <li class="flex items-start"><i data-lucide="bot" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">เปลี่ยนนายแบบให้เป็น AI ที่โต้ตอบได้ 24 ชั่วโมงในโลก VR</span><span class="en">Transforming models into AI companions available 24/7 in VR.</span><span class="cn">将模特转化为VR中全天候可互动的AI伴侣。</span></li>
-                        <li class="flex items-start"><i data-lucide="smartphone" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">แฟนคลับทั่วโลกสามารถสมัครสมาชิกเพื่อใกล้ชิดคนโปรด</span><span class="en">Fans globally can subscribe to get close to their favorites.</span><span class="cn">全球粉丝可以订阅以亲近他们最喜欢的角色。</span></li>
+                        <li class="flex items-start"><i data-lucide="bot" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">เปลี่ยนนายแบบให้เป็น AI ที่โต้ตอบได้ 24 ชั่วโมงในโลก VR</span><span class="en">Transforming models into AI companions available 24/7 in VR.</span><span class="cn">将模特转化为VR中全天候可互动的AI伴侣。</span><span class="es">Transformando modelos en compañeros de IA disponibles 24/7 en VR.</span></li>
+                        <li class="flex items-start"><i data-lucide="smartphone" class="w-4 h-4 text-zinc-600 mr-2 mt-0.5"></i> <span class="th">แฟนคลับทั่วโลกสามารถสมัครสมาชิกเพื่อใกล้ชิดคนโปรด</span><span class="en">Fans globally can subscribe to get close to their favorites.</span><span class="cn">全球粉丝可以订阅以亲近他们最喜欢的角色。</span><span class="es">Los fans de todo el mundo pueden suscribirse para acercarse a sus favoritos.</span></li>
                     </ul>
                 </div>
             </div>
@@ -262,11 +280,13 @@
                     <span class="th">3 ระดับความใกล้ชิด</span>
                     <span class="en">3 Levels of Digital Intimacy</span>
                     <span class="cn">3 个数字亲密关系层级</span>
+                    <span class="es">3 Niveles de Intimidad Digital</span>
                 </h2>
                 <p class="text-zinc-400 mt-4 max-w-2xl mx-auto">
                     <span class="th">ออกแบบมาเพื่อตอบโจทย์ตั้งแต่ต้องการเพื่อนคุย ไปจนถึงความสัมพันธ์ที่ลึกซึ้งที่สุด พร้อมรับชมวิดีโอตัวอย่างของทุกระดับได้ในเพลย์ลิสต์ด้านล่าง</span>
                     <span class="en">Designed for everything from a simple chat to the deepest interactive connection. Watch the showcase playlist below.</span>
                     <span class="cn">专为从简单的聊天到最深层次的互动连接而设计。请观看下方的展示播放列表。</span>
+                    <span class="es">Diseñado para todo, desde una simple charla hasta la conexión interactiva más profunda. Mira la lista de reproducción a continuación.</span>
                 </p>
             </div>
 
@@ -285,8 +305,8 @@
                     </div>
                     <div class="flex-grow">
                         <ul class="text-sm space-y-4 text-zinc-300 mb-8">
-                            <li class="flex items-start"><i data-lucide="message-square" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span></li>
-                            <li class="flex items-start"><i data-lucide="activity" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span></li>
+                            <li class="flex items-start"><i data-lucide="message-square" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เพื่อนคุย ปรึกษาปัญหาชีวิต (AI ตอบโต้เหมือนคนจริง)</span><span class="en">Life counseling & Chat (Human-like AI conversationalist)</span><span class="cn">生活咨询与聊天（像真人一样的AI对话）</span><span class="es">Consejería de vida y chat (IA conversacional humana)</span></li>
+                            <li class="flex items-start"><i data-lucide="activity" class="w-5 h-5 text-vr-secondary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">เทรนเนอร์ฟิตเนสส่วนตัวในโลก VR</span><span class="en">Private VR Fitness Trainer</span><span class="cn">VR私人健身教练</span><span class="es">Entrenador Personal de Fitness en VR</span></li>
                         </ul>
                     </div>
                     <div class="pt-6 border-t border-zinc-800 mt-auto">
@@ -295,6 +315,7 @@
                             <span class="th">เน้น AI ภาษาที่ตอบสนองเก่งและเป็นธรรมชาติ</span>
                             <span class="en">Focus on natural, highly responsive Language AI</span>
                             <span class="cn">专注于自然、高响应的语言AI</span>
+                            <span class="es">Enfoque en IA de lenguaje natural y altamente receptiva</span>
                         </p>
                     </div>
                 </div>
@@ -313,8 +334,8 @@
                     </div>
                     <div class="flex-grow">
                         <ul class="text-sm space-y-4 text-zinc-300 mb-8">
-                            <li class="flex items-start"><i data-lucide="moon" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดลึกลับ</span><span class="en">Virtual Dating & Mysterious Private Dinners</span><span class="cn">虚拟约会和神秘私人晚餐</span></li>
-                            <li class="flex items-start"><i data-lucide="eye" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span></li>
+                            <li class="flex items-start"><i data-lucide="moon" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">จำลองการเดท และดินเนอร์ส่วนตัวสุดลึกลับ</span><span class="en">Virtual Dating & Mysterious Private Dinners</span><span class="cn">虚拟约会和神秘私人晚餐</span><span class="es">Citas Virtuales y Cenas Privadas Misteriosas</span></li>
+                            <li class="flex items-start"><i data-lucide="eye" class="w-5 h-5 text-vr-accent mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">การเคลื่อนไหวที่นุ่มนวลสมจริง จากท่าทางคนจริง</span><span class="en">Smooth, realistic movements captured from real people</span><span class="cn">捕捉真人动作的流畅逼真动作</span><span class="es">Movimientos suaves y realistas capturados de personas reales</span></li>
                         </ul>
                     </div>
                     <div class="pt-6 border-t border-zinc-800 mt-auto">
@@ -323,6 +344,7 @@
                             <span class="th">เน้นแอนิเมชันและ Motion Capture ท่าทางที่ดึงดูด</span>
                             <span class="en">Focus on attractive animations and Motion Capture</span>
                             <span class="cn">专注于吸引人的动画和动作捕捉</span>
+                            <span class="es">Enfoque en animaciones atractivas y captura de movimiento</span>
                         </p>
                     </div>
                 </div>
@@ -342,8 +364,8 @@
                     </div>
                     <div class="flex-grow relative z-10">
                         <ul class="text-sm space-y-4 text-zinc-300 mb-8">
-                            <li class="flex items-start"><i data-lucide="flame" class="w-5 h-5 text-vr-primary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">ประสบการณ์ 18+ ที่สมจริง เร้าใจ เหมือนสัมผัสได้จริง</span><span class="en">Hyper-realistic, passionate 18+ experiences.</span><span class="cn">超逼真、充满激情的18+体验。</span></li>
-                            <li class="flex items-start"><i data-lucide="radio" class="w-5 h-5 text-vr-primary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">โต้ตอบได้และเชื่อมต่อกับ "อุปกรณ์เสริม" Haptic</span><span class="en">Interactive content synced with Haptic smart toys.</span><span class="cn">与触觉智能玩具同步的互动内容。</span></li>
+                            <li class="flex items-start"><i data-lucide="flame" class="w-5 h-5 text-vr-primary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">ประสบการณ์ 18+ ที่สมจริง เร้าใจ เหมือนสัมผัสได้จริง</span><span class="en">Hyper-realistic, passionate 18+ experiences.</span><span class="cn">超逼真、充满激情的18+体验。</span><span class="es">Experiencias +18 hiperrealistas y apasionadas.</span></li>
+                            <li class="flex items-start"><i data-lucide="radio" class="w-5 h-5 text-vr-primary mr-3 flex-shrink-0 mt-0.5"></i> <span class="th">โต้ตอบได้และเชื่อมต่อกับ "อุปกรณ์เสริม" Haptic</span><span class="en">Interactive content synced with Haptic smart toys.</span><span class="cn">与触觉智能玩具同步的互动内容。</span><span class="es">Contenido interactivo sincronizado con juguetes inteligentes hápticos.</span></li>
                         </ul>
                     </div>
                     <div class="pt-6 border-t border-vr-primary/20 mt-auto relative z-10">
@@ -352,6 +374,7 @@
                             <span class="th">Full-body tracking และ Haptic feedback integration</span>
                             <span class="en">Full-body tracking & Haptic feedback integration</span>
                             <span class="cn">全身追踪和触觉反馈集成</span>
+                            <span class="es">Seguimiento de cuerpo completo e integración de retroalimentación háptica</span>
                         </p>
                     </div>
                 </div>
@@ -369,17 +392,20 @@
                             <span class="th">วิดีโอตัวอย่างประสบการณ์ทั้ง 3 ระดับ</span>
                             <span class="en">All Levels Video Showcase</span>
                             <span class="cn">全层级视频展示</span>
+                            <span class="es">Muestra de Video de Todos los Niveles</span>
                         </h3>
                         <p class="text-sm text-zinc-400 mt-2 max-w-2xl">
                             <span class="th">รับชมตัวอย่างจำลองจากฝั่งแว่น VR (POV) เพื่อให้เห็นภาพระดับ Companionship, Romantic และ Full Intimacy</span>
                             <span class="en">Watch POV simulations directly from the VR headset, showcasing Companionship, Romantic, and Full Intimacy.</span>
                             <span class="cn">直接从 VR 头显观看 POV 模拟，展示陪伴、浪漫和完全亲密体验。</span>
+                            <span class="es">Mira simulaciones POV directamente desde el visor de realidad virtual, mostrando Compañerismo, Romántico y Plena Intimidad.</span>
                         </p>
                     </div>
                     <a href="https://youtube.com/playlist?list=PLXigNrjSidjsa09V-NmMfeLzpMXDrcLBx" target="_blank" class="text-xs font-semibold text-white bg-gradient-to-r from-vr-primary to-rose-700 hover:from-vr-primary/80 hover:to-rose-700/80 px-5 py-2.5 rounded-full transition-all flex items-center shadow-[0_0_15px_rgba(225,29,72,0.3)] flex-shrink-0 border border-vr-primary/50">
                         <span class="th">เปิด Playlist บน YouTube</span>
                         <span class="en">Open Playlist on YouTube</span>
                         <span class="cn">在 YouTube 上打开播放列表</span>
+                        <span class="es">Abrir lista de reproducción en YouTube</span>
                         <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                     </a>
                 </div>
@@ -398,11 +424,13 @@
                     <span class="th">เทคโนโลยีแห่งอนาคตที่นำมาใช้</span>
                     <span class="en">The Technology Behind the Magic</span>
                     <span class="cn">魔法背后的未来技术</span>
+                    <span class="es">La Tecnología Detrás de la Magia</span>
                 </h2>
                 <p class="text-zinc-400 mt-4 max-w-3xl mx-auto">
                     <span class="th">เราใช้เทคโนโลยีล้ำสมัยเพื่อหลอกสมองของคุณให้รู้สึกว่า โลกเสมือนตรงหน้าคือความจริง</span>
                     <span class="en">We use cutting-edge technology to trick your brain into feeling that the virtual world in front of you is reality.</span>
                     <span class="cn">我们利用尖端技术欺骗您的大脑，让您感觉眼前的虚拟世界就是现实。</span>
+                    <span class="es">Utilizamos tecnología de punta para engañar a tu cerebro y que sienta que el mundo virtual frente a ti es la realidad.</span>
                 </p>
             </div>
 
@@ -415,12 +443,14 @@
                             <span class="th">ภาพคมชัดระดับ 8K VR</span>
                             <span class="en">Ultra-Clear 8K VR</span>
                             <span class="cn">超清晰 8K VR</span>
+                            <span class="es">8K VR Ultra Claro</span>
                         </h3>
                     </div>
                     <p class="text-sm text-zinc-400 leading-relaxed mb-4">
                         <span class="th">ภาพสวยสมจริง ไร้จุดสะดุดตารบกวน ให้ความรู้สึกเหมือนคุณได้ไปยืนอยู่ตรงสถานที่นั้นจริงๆ</span>
                         <span class="en">Lifelike, flawless visuals that make you feel like you are physically standing right there.</span>
                         <span class="cn">逼真无瑕的视觉效果，让您感觉仿佛身临其境。</span>
+                        <span class="es">Imágenes realistas e impecables que te hacen sentir como si estuvieras parado allí mismo.</span>
                     </p>
                 </div>
 
@@ -432,12 +462,14 @@
                             <span class="th">ระบบสัมผัสอัจฉริยะ (AI Touch)</span>
                             <span class="en">Smart AI Touch</span>
                             <span class="cn">智能 AI 触觉</span>
+                            <span class="es">Toque Inteligente de IA</span>
                         </h3>
                     </div>
                     <p class="text-sm text-zinc-400 leading-relaxed mb-4">
                         <span class="th">AI จะวิเคราะห์ภาพวิดีโอและสั่งการให้อุปกรณ์เสริมสั่นตอบสนองได้อย่างแม่นยำตามจังหวะร่างกาย</span>
                         <span class="en">AI analyzes the video and perfectly syncs the smart device vibrations with every bodily movement.</span>
                         <span class="cn">AI 分析视频，使智能设备的震动与屏幕上的每一个身体动作完美同步。</span>
+                        <span class="es">La IA analiza el video y sincroniza perfectamente las vibraciones del dispositivo inteligente con cada movimiento corporal.</span>
                     </p>
                 </div>
 
@@ -449,12 +481,14 @@
                             <span class="th">เชื่อมต่อไร้ความหน่วง (Zero Lag)</span>
                             <span class="en">Zero Lag Connection</span>
                             <span class="cn">零延迟连接</span>
+                            <span class="es">Conexión Sin Demora (Zero Lag)</span>
                         </h3>
                     </div>
                     <p class="text-sm text-zinc-400 leading-relaxed mb-4">
                         <span class="th">รองรับเทคโนโลยีอินเทอร์เน็ตแห่งอนาคต (6G) ทำให้ภาพ เสียง และการสัมผัสเกิดขึ้นพร้อมกันแบบปลอดภัยและไร้สะดุด</span>
                         <span class="en">Preparing for future 6G tech to ensure visuals, sound, and touch happen instantly and safely without any delay.</span>
                         <span class="cn">为未来的 6G 技术做准备，确保视觉、声音和触觉瞬间且安全地同步。</span>
+                        <span class="es">Preparándonos para la futura tecnología 6G para garantizar que las imágenes, el sonido y el tacto ocurran de forma instantánea y segura sin demora.</span>
                     </p>
                 </div>
 
@@ -466,12 +500,14 @@
                             <span class="th">อนาคต: สั่งการด้วยคลื่นสมอง</span>
                             <span class="en">Future: Brain-Computer Link</span>
                             <span class="cn">未来：脑机连接</span>
+                            <span class="es">Futuro: Enlace Cerebro-Computadora</span>
                         </h3>
                     </div>
                     <p class="text-sm text-zinc-400 leading-relaxed mb-4">
                         <span class="th">เราเตรียมพร้อมสำหรับอนาคต ที่คุณอาจรับรู้ถึง "การสัมผัสลึกลับในโลกเสมือน" ได้โดยตรงผ่านสมอง</span>
                         <span class="en">We are ready for a future where you might feel "mysterious virtual touch" directly through brain interfaces.</span>
                         <span class="cn">我们为未来做好了准备，您可能会通过大脑接口直接感受到“神秘的虚拟触摸”。</span>
+                        <span class="es">Estamos listos para un futuro en el que podrías sentir un "toque virtual misterioso" directamente a través de interfaces cerebrales.</span>
                     </p>
                 </div>
             </div>
@@ -493,23 +529,35 @@
                             <span class="th">ฉากหลังในจินตนาการ</span>
                             <span class="en">Infinite Fantasy Scenes</span>
                             <span class="cn">无限奇幻场景</span>
+                            <span class="es">Escenas de Fantasía Infinitas</span>
                         </h3>
                         <p class="text-zinc-300 mb-8 text-base leading-relaxed">
                             <span class="th">เราใช้เทคโนโลยี AI เพื่อสร้าง "ฉากจำลอง 3 มิติ" ให้คุณได้เลือกบรรยากาศตามใจชอบ อ้างอิงจากคอนเซปต์ <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a> เพื่อสร้างโลกส่วนตัวของคุณเอง</span>
                             <span class="en">We use AI to generate stunning "3D environments" allowing you to choose any mood or setting. Inspired by <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a> to build your private world.</span>
                             <span class="cn">我们利用AI生成令人惊叹的“3D环境”，让您可以选择任何心情或场景。灵感来自 <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a>，打造您的私人世界。</span>
+                            <span class="es">Usamos IA para generar impresionantes "entornos 3D" que te permiten elegir cualquier ambiente o escenario. Inspirado en <a href="https://threeandhour.github.io/GymMateX/" target="_blank" class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4 font-semibold transition">Fitness & Fantasy</a> para construir tu mundo privado.</span>
                         </p>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-zinc-900/60 p-4 rounded-xl border border-zinc-700/50">
                                 <i data-lucide="map" class="w-6 h-6 text-emerald-400 mb-2"></i>
                                 <h4 class="font-bold text-white text-sm mb-1">Time & Locations</h4>
-                                <p class="text-xs text-zinc-400"><span class="th">ข้ามเวลาสู่อดีต หรือโลกอนาคตล้ำยุค</span><span class="en">Time travel to past or futuristic worlds</span></p>
+                                <p class="text-xs text-zinc-400">
+                                    <span class="th">ข้ามเวลาสู่อดีต หรือโลกอนาคตล้ำยุค</span>
+                                    <span class="en">Time travel to past or futuristic worlds</span>
+                                    <span class="cn">穿越到过去或未来世界</span>
+                                    <span class="es">Viaja en el tiempo al pasado o a mundos futuristas</span>
+                                </p>
                             </div>
                             <div class="bg-zinc-900/60 p-4 rounded-xl border border-zinc-700/50">
                                 <i data-lucide="users-2" class="w-6 h-6 text-emerald-400 mb-2"></i>
                                 <h4 class="font-bold text-white text-sm mb-1">NPCs & Crowds</h4>
-                                <p class="text-xs text-zinc-400"><span class="th">มีผู้คนพลุกพล่าน หรือส่วนตัวแบบ 1 ต่อ 1</span><span class="en">Simulate crowds or go private 1-on-1</span></p>
+                                <p class="text-xs text-zinc-400">
+                                    <span class="th">มีผู้คนพลุกพล่าน หรือส่วนตัวแบบ 1 ต่อ 1</span>
+                                    <span class="en">Simulate crowds or go private 1-on-1</span>
+                                    <span class="cn">模拟人群或选择1对1私密环境</span>
+                                    <span class="es">Simula multitudes o elige algo privado 1 a 1</span>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -543,6 +591,7 @@
                         <span class="th">ความเป็นส่วนตัวคือความหรูหราสูงสุด</span>
                         <span class="en">Privacy as the Ultimate Luxury</span>
                         <span class="cn">隐私是终极奢华</span>
+                        <span class="es">La Privacidad como el Máximo Lujo</span>
                     </span>
                 </h3>
                 
@@ -556,11 +605,13 @@
                                 <span class="th">ระบบยืนยันตัวตนขั้นสูง</span>
                                 <span class="en">Advanced Verification</span>
                                 <span class="cn">高级身份验证</span>
+                                <span class="es">Verificación Avanzada</span>
                             </h4>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">เรามีระบบตรวจสอบอายุและความยินยอมอย่างเข้มงวด เพื่อให้มั่นใจว่าเป็นพื้นที่สำหรับผู้ใหญ่เท่านั้น ปลอดภัยจากปัญหาทางกฎหมาย</span>
                                 <span class="en">We use strict age and consent verification systems to ensure an adults-only space, keeping everyone legally safe.</span>
                                 <span class="cn">我们使用严格的年龄和同意验证系统以确保仅限成人的空间，确保每个人的法律安全。</span>
+                                <span class="es">Usamos estrictos sistemas de verificación de edad y consentimiento para garantizar un espacio solo para adultos, manteniendo a todos legalmente seguros.</span>
                             </p>
                         </div>
                     </div>
@@ -574,11 +625,13 @@
                                 <span class="th">พื้นที่ลับเฉพาะ (Safe Space)</span>
                                 <span class="en">Confidential Safe Space</span>
                                 <span class="cn">机密的安全空间</span>
+                                <span class="es">Espacio Seguro y Confidencial</span>
                             </h4>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">ปกป้องข้อมูลความลับของคุณ 100% ตั้งแต่การจัดงานจริง (ห้ามใช้มือถือ) ไปจนถึงการเข้ารหัสแอปพลิเคชันอย่างแน่นหนา</span>
                                 <span class="en">100% protection of your secrets, from phone-free offline events to fully encrypted application data.</span>
                                 <span class="cn">100% 保护您的秘密，从禁止使用手机的线下活动到完全加密的应用程序数据。</span>
+                                <span class="es">Protección 100% de tus secretos, desde eventos fuera de línea sin teléfonos hasta datos de la aplicación totalmente encriptados.</span>
                             </p>
                         </div>
                     </div>
@@ -592,11 +645,13 @@
                                 <span class="th">AI ดูแลสุขภาพผู้เล่น (Healthy)</span>
                                 <span class="en">AI Health Monitor</span>
                                 <span class="cn">AI 健康监控</span>
+                                <span class="es">Monitor de Salud de IA</span>
                             </h4>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">มีระบบแจ้งเตือนให้พักสายตาทุกๆ 40 นาที เพื่อป้องกันการติด VR มากเกินไป ให้คุณสนุกได้อย่างปลอดภัยและมีสุขภาพดี</span>
                                 <span class="en">System reminds you to take a break every 40 minutes to prevent VR addiction, keeping you safe and healthy.</span>
                                 <span class="cn">系统会提醒您每 40 分钟休息一次，防止沉迷VR，让您安全健康地享受。</span>
+                                <span class="es">El sistema te recuerda que tomes un descanso cada 40 minutos para prevenir la adicción a la realidad virtual, manteniéndote seguro y saludable.</span>
                             </p>
                         </div>
                     </div>
@@ -616,16 +671,16 @@
                     <div>
                         <h4 class="font-bold text-vr-secondary mb-2 border-l-2 border-vr-secondary pl-3 text-lg">B2C (Consumer)</h4>
                         <ul class="text-sm text-zinc-300 space-y-2 ml-3">
-                            <li>• <b>Subscriptions:</b> <span class="th">เก็บรายเดือนเพื่อเข้าใช้งานแอปพลิเคชัน</span><span class="en">Monthly access to the app</span><span class="cn">应用包月访问</span></li>
-                            <li>• <b>Pay-Per-Experience:</b> <span class="th">ซื้อประสบการณ์ทริปเสมือนจริงแบบ Exclusive (Level X)</span><span class="en">Buy exclusive virtual trips (Level X)</span><span class="cn">购买独家虚拟旅行（级别X）</span></li>
-                            <li>• <b>Event Fees:</b> <span class="th">ขายตั๋วเข้าร่วมงานแคสติ้งในโลกจริง</span><span class="en">Tickets for real-world Casting Events</span><span class="cn">现实世界试镜门票</span></li>
+                            <li>• <b>Subscriptions:</b> <span class="th">เก็บรายเดือนเพื่อเข้าใช้งานแอปพลิเคชัน</span><span class="en">Monthly access to the app</span><span class="cn">应用包月访问</span><span class="es">Acceso mensual a la aplicación</span></li>
+                            <li>• <b>Pay-Per-Experience:</b> <span class="th">ซื้อประสบการณ์ทริปเสมือนจริงแบบ Exclusive (Level X)</span><span class="en">Buy exclusive virtual trips (Level X)</span><span class="cn">购买独家虚拟旅行（级别X）</span><span class="es">Compra viajes virtuales exclusivos (Nivel X)</span></li>
+                            <li>• <b>Event Fees:</b> <span class="th">ขายตั๋วเข้าร่วมงานแคสติ้งในโลกจริง</span><span class="en">Tickets for real-world Casting Events</span><span class="cn">现实世界试镜门票</span><span class="es">Entradas para eventos de casting del mundo real</span></li>
                         </ul>
                     </div>
                     <div class="pt-4 border-t border-zinc-800">
                         <h4 class="font-bold text-vr-primary mb-2 border-l-2 border-vr-primary pl-3 text-lg">B2B (Creator Economy)</h4>
                         <ul class="text-sm text-zinc-300 space-y-2 ml-3">
-                            <li>• <b>Agency Model:</b> <span class="th">รับสร้าง AI ให้ครีเอเตอร์/นายแบบคนอื่นๆ แล้วแบ่งรายได้</span><span class="en">Create AI models for others and share revenue.</span><span class="cn">为其他创作者创建AI模型并分享收益。</span></li>
-                            <li>• <b>Sponsorships:</b> <span class="th">รับสปอนเซอร์จากแบรนด์สินค้าหรู และฟิตเนส</span><span class="en">Sponsorships from luxury and fitness brands.</span><span class="cn">来自奢侈品和健身品牌的赞助。</span></li>
+                            <li>• <b>Agency Model:</b> <span class="th">รับสร้าง AI ให้ครีเอเตอร์/นายแบบคนอื่นๆ แล้วแบ่งรายได้</span><span class="en">Create AI models for others and share revenue.</span><span class="cn">为其他创作者创建AI模型并分享收益。</span><span class="es">Crea modelos de IA para otros y comparte los ingresos.</span></li>
+                            <li>• <b>Sponsorships:</b> <span class="th">รับสปอนเซอร์จากแบรนด์สินค้าหรู และฟิตเนส</span><span class="en">Sponsorships from luxury and fitness brands.</span><span class="cn">来自奢侈品和健身品牌的赞助。</span><span class="es">Patrocinios de marcas de lujo y fitness.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -646,12 +701,14 @@
                     <span class="th">ทำไมธุรกิจนี้ถึงจะเติบโตอย่าง <span class="gradient-text">ก้าวกระโดด?</span></span>
                     <span class="en">Why Will This Business Grow <span class="gradient-text">Exponentially?</span></span>
                     <span class="cn">为什么这项业务会 <span class="gradient-text">呈指数级增长？</span></span>
+                    <span class="es">¿Por Qué Este Negocio Crecerá <span class="gradient-text">Exponencialmente?</span></span>
                 </h2>
                 
                 <p class="text-zinc-300 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed mb-16 italic border-l-4 border-vr-primary pl-6 text-left md:text-center md:border-l-0 md:pl-0">
                     <span class="th">"เมื่อความเร็วระดับ 6G บรรจบกับศูนย์ข้อมูลระดับโลก และผู้คนโหยหาเซฟโซนส่วนตัว... นี่คือจุดเริ่มต้นของธุรกิจที่ไม่มีวิกฤติใดหยุดยั้งได้"</span>
                     <span class="en">"When 6G speeds meet world-class data centers, and humans crave ultimate private safe zones... a crisis-proof business is born."</span>
                     <span class="cn">“当6G速度遇上世界级数据中心，人们渴望终极私人安全区时……一个不受危机影响的业务就诞生了。”</span>
+                    <span class="es">"Cuando las velocidades 6G se combinan con centros de datos de clase mundial, y los humanos anhelan las mejores zonas seguras privadas... nace un negocio a prueba de crisis."</span>
                 </p>
 
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 text-left">
@@ -664,11 +721,13 @@
                                 <span class="th">ก้าวกระโดดทางเทคโนโลยี</span>
                                 <span class="en">Technological Leap</span>
                                 <span class="cn">技术飞跃</span>
+                                <span class="es">Salto Tecnológico</span>
                             </h3>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">ภายใน 3-5 ปี การมาถึงของเครือข่าย <b>6G</b> และ <b>"AI Data Center ระดับโลก"</b> ในพื้นที่ EEC ของไทย จะปลดล็อกการประมวลผล แว่น VR และอุปกรณ์สัมผัสจะมีราคาถูกลง เข้าถึงง่ายขึ้น และสมจริงขั้นสุด</span>
                                 <span class="en">Within 3-5 years, <b>6G networks</b> and <b>global AI Data Centers</b> in Thailand's EEC will unlock zero-latency processing. VR and haptic gear will become affordable and highly accessible.</span>
                                 <span class="cn">在3-5年内，泰国EEC地区的 <b>6G网络</b> 和 <b>全球AI数据中心</b> 将解锁零延迟处理。VR和触觉设备将变得更便宜、更容易普及。</span>
+                                <span class="es">En 3-5 años, las redes <b>6G</b> y los <b>centros de datos globales de IA</b> en el EEC de Tailandia desbloquearán el procesamiento sin demora. La realidad virtual y el equipo háptico serán asequibles y altamente accesibles.</span>
                             </p>
                         </div>
                     </div>
@@ -682,11 +741,13 @@
                                 <span class="th">ยุคแห่งความสุขส่วนบุคคล</span>
                                 <span class="en">Hyper-Individualism</span>
                                 <span class="cn">超个人主义</span>
+                                <span class="es">Hiperindividualismo</span>
                             </h3>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">มนุษย์ยุคใหม่โหยหา <b>"ความเป็นส่วนตัวขั้นสุด"</b> ผู้คนเลือกที่จะมีความสุขในพื้นที่ปลอดภัย (Safe Zone) การมี AI คู่หูที่พร้อมตอบสนอง จะกลายเป็นปัจจัยพื้นฐานใหม่ในการใช้ชีวิต</span>
                                 <span class="en">Modern society craves <b>"Hyper-Individualism."</b> People find happiness within their personal Safe Zones. Having an AI companion will become a new fundamental lifestyle need.</span>
                                 <span class="cn">现代社会渴望 <b>“超个人主义”</b>。人们在个人的安全区内寻找快乐。拥有一个AI伴侣将成为一种新的基本生活方式需求。</span>
+                                <span class="es">La sociedad moderna anhela el <b>"hiperindividualismo"</b>. Las personas encuentran la felicidad dentro de sus Zonas Seguras personales. Tener un compañero de IA se convertirá en una nueva necesidad de estilo de vida fundamental.</span>
                             </p>
                         </div>
                     </div>
@@ -700,11 +761,13 @@
                                 <span class="th">ธุรกิจที่ทนทานต่อทุกวิกฤติ</span>
                                 <span class="en">Crisis-Proof Economy</span>
                                 <span class="cn">抗危机经济</span>
+                                <span class="es">Economía a Prueba de Crisis</span>
                             </h3>
                             <p class="text-sm text-zinc-400 leading-relaxed">
                                 <span class="th">เพราะขับเคลื่อนด้วยความต้องการส่วนลึกสุดของมนุษย์ ผสานกับแพลตฟอร์มดิจิทัลไร้พรมแดน ธุรกิจนี้จึงมีภูมิคุ้มกันต่อความผันผวนทางเศรษฐกิจ พร้อมทำกำไรต่อเนื่องในทุกสภาวะโลก</span>
                                 <span class="en">Driven by deepest human needs and a borderless digital platform, this business is highly immune to economic downturns, ready to generate continuous profit.</span>
                                 <span class="cn">受人类最深层需求和无边界数字平台的驱动，该业务对经济衰退具有高度免疫力，随时准备持续盈利。</span>
+                                <span class="es">Impulsado por las necesidades humanas más profundas y una plataforma digital sin fronteras, este negocio es altamente inmune a las recesiones económicas, listo para generar ganancias continuas.</span>
                             </p>
                         </div>
                     </div>
@@ -715,11 +778,17 @@
         <!-- Roadmap Timeline Infographic -->
         <section class="glass-card p-8 md:p-12 rounded-3xl">
             <div class="mb-16 text-center md:text-left">
-                <h2 class="text-3xl font-bold inline-block border-b-2 border-vr-secondary pb-2 text-white">Roadmap to Launch (2026-2029)</h2>
+                <h2 class="text-3xl font-bold inline-block border-b-2 border-vr-secondary pb-2 text-white">
+                    <span class="th">Roadmap to Launch (2026-2029)</span>
+                    <span class="en">Roadmap to Launch (2026-2029)</span>
+                    <span class="cn">Roadmap to Launch (2026-2029)</span>
+                    <span class="es">Hoja de Ruta de Lanzamiento (2026-2029)</span>
+                </h2>
                 <p class="text-zinc-400 mt-4 max-w-2xl">
                     <span class="th">แผนงาน 3 ปีของเรา เพื่อรอให้เทคโนโลยีแว่น VR ถูกลงและคนทั่วไปเข้าถึงได้ง่ายขึ้น (Mass Adoption)</span>
                     <span class="en">Our 3-year plan to wait for VR headset technology to become more affordable and accessible to everyone.</span>
                     <span class="cn">我们的3年计划：等待VR头显技术变得更便宜，让每个人都能轻松访问。</span>
+                    <span class="es">Nuestro plan de 3 años para esperar a que la tecnología de los visores de realidad virtual sea más asequible y accesible para todos.</span>
                 </p>
             </div>
 
@@ -732,20 +801,28 @@
                         <h3 class="text-2xl font-bold mb-4 text-white">
                             <span class="th">ช่วงเริ่มต้นสร้างต้นแบบ</span>
                             <span class="en">Pre-Launch & Prototyping</span>
+                            <span class="cn">Pre-Launch & Prototyping</span>
+                            <span class="es">Pre-Lanzamiento y Prototipado</span>
                         </h3>
                         <ul class="list-disc list-inside space-y-2 text-zinc-300 text-sm md:text-base">
                             <li>
                                 <span class="th">สร้าง <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">"ThB.Ho"</a> เป็น AI Prototype ตัวแรกเพื่อทดสอบระบบ</span>
                                 <span class="en">Create <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">"ThB.Ho"</a> as the first AI Prototype for system testing.</span>
+                                <span class="cn">Create <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">"ThB.Ho"</a> as the first AI Prototype for system testing.</span>
+                                <span class="es">Crear <a href="https://thbho.github.io/EngInstructors.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">"ThB.Ho"</a> como el primer prototipo de IA para pruebas del sistema.</span>
                                 <span class="text-xs text-zinc-500 ml-1">(Th : Three, B. : B., Ho : Hour)</span>
                             </li>
                             <li>
                                 <span class="th">เตรียมความพร้อมด้านกฎหมายและความเป็นส่วนตัว</span>
                                 <span class="en">Prepare legal frameworks and privacy protocols.</span>
+                                <span class="cn">Prepare legal frameworks and privacy protocols.</span>
+                                <span class="es">Preparar marcos legales y protocolos de privacidad.</span>
                             </li>
                             <li>
                                 <span class="th">โปรโมตและให้ความรู้เรื่อง AI ผ่านเพจ <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">GymMateX Factory</a></span>
                                 <span class="en">Promote and educate about AI via the <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">GymMateX Factory</a> page.</span>
+                                <span class="cn">Promote and educate about AI via the <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">GymMateX Factory</a> page.</span>
+                                <span class="es">Promover y educar sobre la IA a través de la página de <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent transition font-semibold underline underline-offset-4">GymMateX Factory</a>.</span>
                             </li>
                         </ul>
                         
@@ -754,9 +831,10 @@
                             <p class="text-xs md:text-sm text-vr-primary font-semibold flex items-start">
                                 <i data-lucide="refresh-cw" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <span>
-                                    <span class="th"><b>Agile R&D Phase:</b> ยังอยู่ในช่วงทดลองและมีความยืดหยุ่นสูง พร้อมปรับเปลี่ยนโมเดลและฟีเจอร์ได้ตลอดเวลา เพื่อให้สอดรับกับการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและเทคโนโลยี</span>
-                                    <span class="en"><b>Agile R&D Phase:</b> Experimental and highly flexible. Ready to continuously adapt business models and features in response to rapid market and technological shifts.</span>
-                                    <span class="cn"><b>敏捷研发阶段：</b> 处于实验和高度灵活期。随时准备根据快速变化的市场和技术调整业务模型和功能。</span>
+                                    <span class="th"><b>Agile R&D Phase:</b> ยืดหยุ่นสูง พร้อมปรับโมเดลและฟีเจอร์ตามเทรนด์ตลาดและเทคโนโลยีใหม่ๆ เสมอ</span>
+                                    <span class="en"><b>Agile R&D Phase:</b> Highly flexible. Ready to pivot models and features alongside rapid tech trends.</span>
+                                    <span class="cn"><b>敏捷研发阶段：</b> 高度灵活，随时随市场与技术趋势调整模型与功能。</span>
+                                    <span class="es"><b>Fase de I+D Ágil:</b> Altamente flexible, listo para adaptar modelos según las tendencias tecnológicas.</span>
                                 </span>
                             </p>
                         </div>
@@ -771,19 +849,27 @@
                         <h3 class="text-2xl font-bold mb-4 text-white">
                             <span class="th">จัดอีเวนต์และทดสอบระบบจำกัดกลุ่ม</span>
                             <span class="en">Event Launch & Closed Beta</span>
+                            <span class="cn">Event Launch & Closed Beta</span>
+                            <span class="es">Lanzamiento de Eventos y Beta Cerrada</span>
                         </h3>
                         <ul class="list-disc list-inside space-y-2 text-zinc-300 text-sm md:text-base">
                             <li>
                                 <span class="th">เริ่มจัดงานคัดเลือกนายแบบในโลกจริง (Casting Event) เพื่อสร้างกระแส</span>
                                 <span class="en">Host real-world model Casting Events to build hype.</span>
+                                <span class="cn">Host real-world model Casting Events to build hype.</span>
+                                <span class="es">Organizar eventos de casting de modelos del mundo real para generar expectación.</span>
                             </li>
                             <li>
                                 <span class="th">ทดสอบเชื่อมต่อวิดีโอกับอุปกรณ์สั่นสะเทือนอัจฉริยะ ให้ภาพและการสัมผัสตรงกัน</span>
                                 <span class="en">Test syncing videos with smart vibration devices for realistic touch.</span>
+                                <span class="cn">Test syncing videos with smart vibration devices for realistic touch.</span>
+                                <span class="es">Probar la sincronización de videos con dispositivos de vibración inteligente para un toque realista.</span>
                             </li>
                             <li>
                                 <span class="th">เปิดแอปพลิเคชันให้แฟนคลับกลุ่มแรกเข้ามาทดลองเล่นเพื่อเก็บคำติชม</span>
                                 <span class="en">Open the app for early fans to test and gather feedback.</span>
+                                <span class="cn">Open the app for early fans to test and gather feedback.</span>
+                                <span class="es">Abrir la aplicación para que los primeros fans prueben y recopilen comentarios.</span>
                             </li>
                         </ul>
                         
@@ -792,9 +878,10 @@
                             <p class="text-xs md:text-sm text-vr-accent font-semibold flex items-start">
                                 <i data-lucide="refresh-cw" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <span>
-                                    <span class="th"><b>Agile R&D Phase:</b> ยังอยู่ในช่วงทดลองและมีความยืดหยุ่นสูง พร้อมปรับเปลี่ยนโมเดลและฟีเจอร์ได้ตลอดเวลา เพื่อให้สอดรับกับการเปลี่ยนแปลงอย่างรวดเร็วของตลาดและเทคโนโลยี</span>
-                                    <span class="en"><b>Agile R&D Phase:</b> Experimental and highly flexible. Ready to continuously adapt business models and features in response to rapid market and technological shifts.</span>
-                                    <span class="cn"><b>敏捷研发阶段：</b> 处于实验和高度灵活期。随时准备根据快速变化的市场和技术调整业务模型和功能。</span>
+                                    <span class="th"><b>Agile R&D Phase:</b> ยืดหยุ่นสูง พร้อมปรับโมเดลและฟีเจอร์ตามเทรนด์ตลาดและเทคโนโลยีใหม่ๆ เสมอ</span>
+                                    <span class="en"><b>Agile R&D Phase:</b> Highly flexible. Ready to pivot models and features alongside rapid tech trends.</span>
+                                    <span class="cn"><b>敏捷研发阶段：</b> 高度灵活，随时随市场与技术趋势调整模型与功能。</span>
+                                    <span class="es"><b>Fase de I+D Ágil:</b> Altamente flexible, listo para adaptar modelos según las tendencias tecnológicas.</span>
                                 </span>
                             </p>
                         </div>
@@ -809,19 +896,27 @@
                         <h3 class="text-2xl font-bold mb-4 text-white">
                             <span class="th">เปิดตัวธุรกิจและขยายตลาด</span>
                             <span class="en">Commercial Scaling ($3M Target)</span>
+                            <span class="cn">Commercial Scaling ($3M Target)</span>
+                            <span class="es">Escalado Comercial (Meta de $3M)</span>
                         </h3>
                         <ul class="list-disc list-inside space-y-2 text-zinc-300 text-sm md:text-base">
                             <li>
                                 <span class="th">**Official Launch** เปิดให้สมัครสมาชิกเข้าใช้งานทั่วโลก</span>
                                 <span class="en">**Official Launch** Open for global subscriptions.</span>
+                                <span class="cn">**Official Launch** Open for global subscriptions.</span>
+                                <span class="es">**Lanzamiento Oficial** Abierto para suscripciones globales.</span>
                             </li>
                             <li>
                                 <span class="th">เปิดรับนายแบบและครีเอเตอร์ดังๆ เข้ามาสร้างตัวตนดิจิทัลในแอปของเรา</span>
                                 <span class="en">Onboard famous models and creators to build their digital selves in our app.</span>
+                                <span class="cn">Onboard famous models and creators to build their digital selves in our app.</span>
+                                <span class="es">Incorporar modelos y creadores famosos para construir su yo digital en nuestra aplicación.</span>
                             </li>
                             <li>
                                 <span class="th">ขยายฐานลูกค้าไปทั่วโลก รองรับอินเทอร์เน็ตความเร็วสูง 6G ในอนาคต</span>
                                 <span class="en">Expand the customer base globally, ready to support high-speed 6G internet.</span>
+                                <span class="cn">Expand the customer base globally, ready to support high-speed 6G internet.</span>
+                                <span class="es">Expandir la base de clientes a nivel mundial, listos para admitir Internet 6G de alta velocidad.</span>
                             </li>
                         </ul>
                     </div>
@@ -832,11 +927,17 @@
         <!-- References & Active Prototypes -->
         <section class="pt-8 border-t border-zinc-900">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-2">Current Prototypes & References</h2>
+                <h2 class="text-3xl font-bold text-white mb-2">
+                    <span class="th">Current Prototypes & References</span>
+                    <span class="en">Current Prototypes & References</span>
+                    <span class="cn">Current Prototypes & References</span>
+                    <span class="es">Prototipos Actuales y Referencias</span>
+                </h2>
                 <p class="text-zinc-500">
                     <span class="th">ผลงานที่เปิดใช้งานจริงและแนวคิดอ้างอิงสำหรับการพัฒนาในอนาคต</span>
                     <span class="en">Live prototypes and reference concepts for future development.</span>
                     <span class="cn">实时运行的原型和未来发展的参考概念。</span>
+                    <span class="es">Prototipos funcionales y conceptos de referencia para el desarrollo futuro.</span>
                 </p>
             </div>
             
@@ -850,8 +951,8 @@
                     </div>
                     <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-primary transition-colors">AI GymMateX Factory</h4>
                     <ul class="text-sm text-zinc-400 space-y-1">
-                        <li><span class="th">• ทดลองคุยกับ AI ต้นแบบ</span><span class="en">• Chat with current AI</span></li>
-                        <li><span class="th">• เรียนรู้การสร้าง AI เบื้องต้น</span><span class="en">• Learn AI creation</span></li>
+                        <li><span class="th">• ทดลองคุยกับ AI ต้นแบบ</span><span class="en">• Chat with current AI</span><span class="cn">• Chat with current AI</span><span class="es">• Chatea con la IA actual</span></li>
+                        <li><span class="th">• เรียนรู้การสร้าง AI เบื้องต้น</span><span class="en">• Learn AI creation</span><span class="cn">• Learn AI creation</span><span class="es">• Aprende la creación de IA</span></li>
                     </ul>
                 </a>
 
@@ -864,8 +965,8 @@
                     </div>
                     <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-accent transition-colors">The Future of AI</h4>
                     <ul class="text-sm text-zinc-400 space-y-1">
-                        <li><span class="th">• พิมพ์เขียวแห่งอนาคต</span><span class="en">• Blueprint of the future</span></li>
-                        <li><span class="th">• ศักยภาพของ AI Persona</span><span class="en">• Potential of AI Personas</span></li>
+                        <li><span class="th">• พิมพ์เขียวแห่งอนาคต</span><span class="en">• Blueprint of the future</span><span class="cn">• Blueprint of the future</span><span class="es">• Plano del futuro</span></li>
+                        <li><span class="th">• ศักยภาพของ AI Persona</span><span class="en">• Potential of AI Personas</span><span class="cn">• Potential of AI Personas</span><span class="es">• Potencial de las AI Personas</span></li>
                     </ul>
                 </a>
 
@@ -878,8 +979,8 @@
                     </div>
                     <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-secondary transition-colors">Dual-Avatar Strategy</h4>
                     <ul class="text-sm text-zinc-400 space-y-1">
-                        <li><span class="th">• การสร้างตัวตนออนไลน์คู่ขนาน</span><span class="en">• Parallel identity strategy</span></li>
-                        <li><span class="th">• เชื่อมโลกจริงและเสมือน</span><span class="en">• Bridging real and virtual</span></li>
+                        <li><span class="th">• การสร้างตัวตนออนไลน์คู่ขนาน</span><span class="en">• Parallel identity strategy</span><span class="cn">• Parallel identity strategy</span><span class="es">• Estrategia de identidad paralela</span></li>
+                        <li><span class="th">• เชื่อมโลกจริงและเสมือน</span><span class="en">• Bridging real and virtual</span><span class="cn">• Bridging real and virtual</span><span class="es">• Uniendo lo real y lo virtual</span></li>
                     </ul>
                 </a>
 
@@ -892,8 +993,8 @@
                     </div>
                     <h4 class="font-bold text-lg mb-2 text-white group-hover:text-vr-gold transition-colors">Creator Profile (Thor)</h4>
                     <ul class="text-sm text-zinc-400 space-y-1">
-                        <li><span class="th">• ทำความรู้จักผู้ก่อตั้ง</span><span class="en">• Meet the founder</span></li>
-                        <li><span class="th">• จุดเริ่มต้น GymMateX</span><span class="en">• Origins of GymMateX</span></li>
+                        <li><span class="th">• ทำความรู้จักผู้ก่อตั้ง</span><span class="en">• Meet the founder</span><span class="cn">• Meet the founder</span><span class="es">• Conoce al fundador</span></li>
+                        <li><span class="th">• จุดเริ่มต้น GymMateX</span><span class="en">• Origins of GymMateX</span><span class="cn">• Origins of GymMateX</span><span class="es">• Orígenes de GymMateX</span></li>
                     </ul>
                 </a>
             </div>
@@ -908,6 +1009,8 @@
             <p class="text-zinc-500 text-sm mb-6 max-w-xl mx-auto">
                 <span class="th">แพลตฟอร์มความบันเทิงระดับพรีเมียมที่ผสานโลกความจริง (Casting & Wellness) เข้ากับโลกเสมือน (Digital Twin & VR) อย่างสมบูรณ์แบบ</span>
                 <span class="en">A premium entertainment platform seamlessly bridging the real world (Casting & Wellness) with the virtual world (Digital Twin & VR).</span>
+                <span class="cn">一个优质娱乐平台，将现实世界（试镜和健康）与虚拟世界（数字孪生和VR）完美融合。</span>
+                <span class="es">Una plataforma de entretenimiento premium que une a la perfección el mundo real (Casting y Bienestar) con el mundo virtual (Gemelo Digital y VR).</span>
             </p>
             <p class="text-zinc-600 text-xs">
                 <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="hover:text-zinc-300 transition font-semibold">GymMateX Factory</a> &copy; 2026-2029 | The Future of Hybrid AI
@@ -925,10 +1028,11 @@
             const btnTh = document.getElementById('btn-th');
             const btnEn = document.getElementById('btn-en');
             const btnCn = document.getElementById('btn-cn');
-            const btns = { th: btnTh, en: btnEn, cn: btnCn };
+            const btnEs = document.getElementById('btn-es');
+            const btns = { th: btnTh, en: btnEn, cn: btnCn, es: btnEs };
 
             // Reset classes
-            body.classList.remove('lang-th', 'lang-en', 'lang-cn');
+            body.classList.remove('lang-th', 'lang-en', 'lang-cn', 'lang-es');
             body.classList.add('lang-' + lang);
 
             // Update button styles

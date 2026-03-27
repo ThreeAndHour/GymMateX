@@ -115,7 +115,7 @@
         body.lang-es .th, body.lang-es .en, body.lang-es .cn { display: none !important; }
     </style>
 </head>
-<body class="antialiased min-h-screen lang-th selection:bg-vr-primary selection:text-white">
+<body class="antialiased min-h-screen lang-th selection:bg-vr-primary selection:text-white select-none" oncontextmenu="return false;">
 
     <!-- Floating Language Toggle -->
     <div class="fixed top-4 right-4 md:top-6 md:right-8 z-50 bg-slate-950/90 backdrop-blur-md border border-slate-800 rounded-full p-1 flex gap-1 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
@@ -123,6 +123,12 @@
         <button onclick="setLang('en')" id="btn-en" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">EN</button>
         <button onclick="setLang('cn')" id="btn-cn" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">CN</button>
         <button onclick="setLang('es')" id="btn-es" class="px-3 md:px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full text-slate-400 hover:text-white transition-all">ES</button>
+    </div>
+
+    <!-- Confidential Floating Badge -->
+    <div class="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-50 bg-red-950/90 backdrop-blur-md border border-red-600/50 rounded-full px-3 py-1.5 md:px-4 md:py-2 flex items-center shadow-[0_0_15px_rgba(220,38,38,0.4)] pointer-events-none">
+        <i data-lucide="lock" class="w-3 h-3 md:w-4 md:h-4 text-red-500 mr-2"></i>
+        <span class="text-[10px] md:text-xs font-bold text-red-500 tracking-widest uppercase">Strictly Confidential</span>
     </div>
 
     <!-- Hero Section -->
@@ -154,13 +160,30 @@
                         <span class="cn">终极虚拟现实体验</span>
                         <span class="es">La Realidad Virtual Definitiva</span>
                     </h2>
-                    <p class="text-base sm:text-lg text-slate-400 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
+                    <p class="text-base sm:text-lg text-slate-400 max-w-xl mb-8 leading-relaxed mx-auto lg:mx-0">
                         <span class="th">แพลตฟอร์มที่เชื่อมโลกจริง (อีเวนต์หรูและฟิตเนส) เข้ากับโลกดิจิทัล เปลี่ยนคนจริงให้เป็น <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Persona</a> หรือ Digital Twin พร้อมประสบการณ์ VR ที่สมจริงจนคุณสัมผัสได้</span>
                         <span class="en">A platform that connects the real world (luxury events & fitness) with the digital world. We turn real people into <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Personas</a> or Digital Twins with VR experiences you can actually feel.</span>
                         <span class="cn">一个连接现实世界（豪华活动和健身）与数字世界的平台。我们将真人转化为 <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">混合AI角色 (Hybrid AI Persona)</a> 或数字孪生，提供触手可及的真实VR体验。</span>
                         <span class="es">Una plataforma que conecta el mundo real (eventos de lujo y fitness) con el mundo digital. Convertimos a personas reales en <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="text-vr-primary hover:text-vr-accent underline underline-offset-4 transition-colors font-semibold">Hybrid AI Personas</a> o Gemelos Digitales con experiencias de realidad virtual que realmente puedes sentir.</span>
                     </p>
                     
+                    <!-- Confidential Warning Box -->
+                    <div class="mb-10 p-4 bg-red-950/30 border border-red-800/50 rounded-xl backdrop-blur-sm max-w-xl mx-auto lg:mx-0 relative overflow-hidden text-left">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-600"></div>
+                        <div class="flex items-start">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="text-red-500 font-bold text-sm uppercase tracking-widest mb-1">Confidential & Proprietary</h4>
+                                <p class="text-xs text-red-300/80 leading-relaxed">
+                                    <span class="th">เอกสารนี้เป็นความลับทางธุรกิจ ห้ามนำไปเผยแพร่ คัดลอก หรือส่งต่อให้บุคคลอื่นโดยไม่ได้รับอนุญาตเด็ดขาด</span>
+                                    <span class="en">This document contains confidential trade secrets. Do not distribute, copy, or share without explicit permission.</span>
+                                    <span class="cn">本文件包含机密商业机密。未经明确许可，严禁分发、复制或共享。</span>
+                                    <span class="es">Este documento contiene secretos comerciales confidenciales. No distribuir, copiar ni compartir sin permiso.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 4 Highlight Cards in 2x2 Grid -->
                     <div class="grid grid-cols-2 gap-4 text-sm max-w-lg mx-auto lg:mx-0">
                         <div class="glass-card p-4 rounded-xl border-t-2 border-t-vr-primary/60 text-left hover:bg-vr-primary/10 transition-colors">
@@ -1294,6 +1317,18 @@
                 activeBtn.className = "px-6 py-3 rounded-full font-bold transition-all border-2 border-blue-500 bg-blue-500/20 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)]";
             }
         }
+
+        // Confidentiality Protection Scripts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+P (Print), Ctrl+S (Save), Ctrl+C (Copy)
+            if (e.ctrlKey && (e.key === 'p' || e.key === 's' || e.key === 'c')) {
+                e.preventDefault();
+            }
+            // Prevent Mac Command+P, Command+S, Command+C
+            if (e.metaKey && (e.key === 'p' || e.key === 's' || e.key === 'c')) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>

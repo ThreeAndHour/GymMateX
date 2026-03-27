@@ -717,8 +717,8 @@
             <!-- Video Grid (Updated to Vertical Layout) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Video 1 -->
-                <div onclick="openVideoModal('https://pikaso.cdnpk.net/private/production/3564672487/cbb1a568-f98a-4efc-961f-62a630359862-0.mp4?token=exp=1774742400~hmac=27c057842bd1a98a8689caf53d2bf5eadb7e1d19c7d161509c23bd3e0f5e1496')" class="glass-card rounded-2xl overflow-hidden relative group cursor-pointer aspect-[3/4] border border-slate-700 hover:border-vr-accent transition-all duration-300 shadow-lg hover:shadow-[0_10px_30px_rgba(234,179,8,0.2)] transform hover:-translate-y-1">
-                    <video src="https://pikaso.cdnpk.net/private/production/3564672487/cbb1a568-f98a-4efc-961f-62a630359862-0.mp4?token=exp=1774742400~hmac=27c057842bd1a98a8689caf53d2bf5eadb7e1d19c7d161509c23bd3e0f5e1496" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 z-0" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                <div onclick="openVideoModal('https://astra.app/api/files/4efe09ae-260b-4c1d-86a8-7f94c24826e7')" class="glass-card rounded-2xl overflow-hidden relative group cursor-pointer aspect-[3/4] border border-slate-700 hover:border-vr-accent transition-all duration-300 shadow-lg hover:shadow-[0_10px_30px_rgba(234,179,8,0.2)] transform hover:-translate-y-1">
+                    <video src="https://astra.app/api/files/4efe09ae-260b-4c1d-86a8-7f94c24826e7" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 z-0" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none bg-black/20">
                         <div class="bg-black/60 p-4 rounded-full backdrop-blur-md border border-vr-accent/50 shadow-[0_0_20px_rgba(234,179,8,0.5)]">
                             <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
@@ -1235,6 +1235,28 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
+        // Safely handle background video playback to prevent Unhandled Rejection errors
+        document.addEventListener('DOMContentLoaded', () => {
+            const hoverVideos = document.querySelectorAll('video[onmouseover]');
+            hoverVideos.forEach(vid => {
+                // Remove unsafe inline handlers
+                vid.removeAttribute('onmouseover');
+                vid.removeAttribute('onmouseout');
+                
+                // Add safe JS event listeners using the parent card
+                const card = vid.parentElement;
+                card.addEventListener('mouseenter', () => {
+                    let p = vid.play();
+                    if (p !== undefined) {
+                        p.catch(e => console.warn('Hover video play failed:', e));
+                    }
+                });
+                card.addEventListener('mouseleave', () => {
+                    vid.pause();
+                });
+            });
+        });
+
         // Video Modal Logic
         function openVideoModal(videoUrl) {
             const modal = document.getElementById('videoModal');
@@ -1246,7 +1268,14 @@
                 modal.classList.remove('opacity-0');
                 modal.classList.add('opacity-100');
             }, 10);
-            video.play();
+            
+            // Safely play video and catch any support/load errors
+            let playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.warn('Modal video play failed:', error);
+                });
+            }
         }
 
         function closeVideoModal() {

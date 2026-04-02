@@ -246,17 +246,17 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    <!-- Video 1 -->
+                    <!-- Video 1 (Updated Link) -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
-                            <source src="https://astra.app/api/files/019d4c3a-52fc-75ac-914a-5f5548cd5bc1" type="video/mp4">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                            <source src="https://astra.app/api/files/019d4d21-0a21-770c-ada7-43e867d8d43f" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
                     </div>
 
                     <!-- Video 2 -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
                             <source src="https://astra.app/api/files/019d4c73-ffea-724c-86ee-69af69cf56f5" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -264,7 +264,7 @@
 
                     <!-- Video 3 -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
                             <source src="https://astra.app/api/files/019d4c5a-5f03-77d4-bf66-d24dcf3e3fb9" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -272,7 +272,7 @@
 
                     <!-- Video 4 -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
                             <source src="https://astra.app/api/files/019d4c3e-0417-7732-8042-444664bc4d7d" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -280,7 +280,7 @@
 
                     <!-- Video 5 -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
                             <source src="https://astra.app/api/files/019d4c44-6593-7189-abe0-d422a624b13b" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -288,7 +288,7 @@
 
                     <!-- Video 6 -->
                     <div class="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-amber-500/20 bg-stone-800 group">
-                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
+                        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-1000">
                             <source src="https://astra.app/api/files/019d4c87-39d5-774b-9c78-c61420960c3c" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent pointer-events-none"></div>
@@ -1137,8 +1137,8 @@
             }
 
             // Wellness Auto Image Slider Logic
-            const wellnessSlides = document.querySelectorAll('.wellness-slide');
-            let currentWellnessIndex = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const constSlides = document.querySelectorAll('.const-slide');
             if (wellnessSlides.length > 0) {
                 setInterval(() => {
                     wellnessSlides[currentWellnessIndex].style.opacity = 0;
@@ -1146,6 +1146,20 @@
                     wellnessSlides[currentWellnessIndex].style.opacity = 1;
                 }, 4000); // 4 seconds for wellness slider
             }
+
+            // Force Video Autoplay script for Strict Browsers (Safari/iOS)
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.muted = true;
+                video.setAttribute('playsinline', '');
+                let playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.warn("Video autoplay prevented:", error);
+                        // Optional: Add a play button overlay here if needed in the future
+                    });
+                }
+            });
         });
     </script>
 </body>

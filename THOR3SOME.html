@@ -38,6 +38,12 @@
             100% { transform: translateY(0px); }
         }
         .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
     </style>
 </head>
 <body>
@@ -50,6 +56,13 @@
         const PROFILE_IMAGES = [
             "https://i.postimg.cc/hj6T5qmk/My_Jd_1_17.jpg",
             "https://i.postimg.cc/KjTBXsr3/Mggg_1_10.jpg",
+            "https://i.postimg.cc/SxjKXcxk/magnifics_upscale_precision_t_JQiqy_Xh_Ynp5yvi1a_M7A_853E950F_7B97_4B1A_BFE2_CBCDCE15316A_1_105_c.png",
+            "https://i.postimg.cc/nc3zc3pH/magnifics_upscale_precision_i_Z0r_Dng_Obz4g_VCKf_CHGS_B81F0FAB_596D_4020_92A9_B7D032FB598A.png",
+            "https://i.postimg.cc/CLh5g3yz/magnifics_upscale_precision_9W98hkkctuv_W9NZf_Npl_L_1B1F944A_F299_42D4_A3EA_7F051FBD146E.png",
+            "https://i.postimg.cc/5Ns0Nsbf/magnifics_upscale_precision_XP1Lu_FGcd_Qfm_UNcipod_X_CAF454D6_B5CF_4D34_AFE2_A54AABBEA1C9.png",
+            "https://i.postimg.cc/mghrc7gz/magnifics_upscale_precision_8w_Tm_ATb_Jm_E9fd_Ye_UQ8b6_F4BCB166_8475_47F0_B8B5_0B042AD57094_1_105_c.png",
+            "https://i.postimg.cc/XJKNM8QC/magnifics_upscale_precision_0u0VMLf_Fiy_Q2XS4L71f_U_83ABDA92_59A5_40F1_9E62_C19B67239F28_1_201_a.png",
+            "https://i.postimg.cc/FRbFtZDZ/magnifics_upscale_precision_z_MAh_Fntnb_EB2VRMh_CEe_M_D6960A50_5376_4E75_B93F_FA5C0109E0C7_1_102_a.png",
             "https://i.postimg.cc/QNKpWHGc/My_Jd_1_33.jpg",
             "https://i.postimg.cc/6ptRSc73/My_Jd_1_7.jpg",
             "https://i.postimg.cc/K8xLVfKF/My_Jd_1_10.jpg",
@@ -88,12 +101,12 @@
         // --- CONTENT DATA (Bilingual) ---
         const content = {
             en: {
-                nav: { home: "Home", about: "About", work: "Vision", gallery: "Preview", passion: "Passion", love: "Love", contact: "Contact" },
+                nav: { home: "Home", about: "About", work: "Vision", gallery: "Preview", passion: "Passion", love: "Connect", contact: "Contact" },
                 hero: {
                     greeting: "Hello, I'm",
                     name: "Thor Ayanundana",
                     title: "Real Estate Developer | Hybrid AI Creator",
-                    subtitle: "Connecting the physical world of Real Estate with the limitless imagination of AI.",
+                    subtitle: "Connecting the physical world of EEC Real Estate & Aviation City with the limitless imagination of Next-Gen Cinematic AI Video.",
                     cta: "Explore My World"
                 },
                 about: {
@@ -102,7 +115,7 @@
                     stats: [
                         { label: "Personality", value: "INFP (Introverted, Intuitive, Feeling, Prospecting)" },
                         { label: "Height/Weight", value: "180 cm / 82 kg" },
-                        { label: "Physique", value: "Muscular Lean (Model Physique)" },
+                        { label: "Physique", value: "Muscular Lean (Fitness Focus)" },
                         { label: "Base", value: "Bangkok - Pattaya - Sattahip" }
                     ],
                     cvBtn: "Preview CV"
@@ -111,27 +124,27 @@
                     heading: "Professional Vision",
                     subheading: "Real Estate & Business Development",
                     cards: [
-                        { title: "Real Estate & EEC", desc: "Expertise in Pattaya real estate market and the Eastern Economic Corridor (EEC) development." },
-                        { title: "Strategic Management", desc: "Years of experience in Operations, Marketing, and International Event Management." },
+                        { title: "EEC & Aviation City", desc: "Focusing on the U-Tapao Aerotropolis and the upcoming 15,000-rai EECiti 'Smart City & Entertainment Hub'." },
+                        { title: "AI-Driven Marketing", desc: "Leveraging cutting-edge Generative AI Video to create immersive and highly converting property presentations." },
                         { title: "Smart Home & Interior", desc: "Developing AI-integrated Smart Home systems and modern Interior Design solutions for future living." },
-                        { title: "Future Partners", desc: "Looking for partners to innovate in AI Tech Business and Real Estate within 2-5 years." }
+                        { title: "Tech Macro-Strategy", desc: "Applying global insights like the 'Musconomy' (SpaceX + xAI ecosystem) to future-proof local real estate investments." }
                     ]
                 },
                 passion: {
-                    heading: "The Creative Soul",
-                    subheading: "Hybrid AI & Digital Art",
-                    desc: "Founder of 'GymMateX Factory'. I create ultra-realistic Hybrid AI Personas blending real identity with fantasy.",
+                    heading: "The Creative Engine",
+                    subheading: "Generative AI, Architecture & Sound Design",
+                    desc: "Beyond real estate operations, I am a Hybrid AI Creator and founder of 'GymMateX Factory'. I bridge advanced tech with artistic vision to revolutionize digital storytelling.",
                     points: [
-                        "Creating 'Hybrid AI Movies' for Gay audiences (Cinematic Storytelling).",
-                        "Collaborating with Gay Content Creators to upgrade/remaster content using AI.",
-                        "Sound Design & Music Production.",
-                        "Automating creativity with Generative AI & Veo3."
+                        "Cinematic AI Production: Directing high-fidelity AI movies and content using state-of-the-art tools (Sora, Veo, Gen-3).",
+                        "Real Estate & Architecture Viz: Generating immersive smart home concepts and AI-driven marketing materials for mega-projects.",
+                        "GymMateX & Persona Design: Training specialized AI models to create ultra-realistic digital talents and characters.",
+                        "Soundscapes & Automation: Composing original music, sound design, and leveraging AI to streamline creative workflows."
                     ],
                     btn: "Visit GymMateX"
                 },
                 gallery: {
                     heading: "Work Preview",
-                    subheading: "Cinematic Hybrid AI & Motion",
+                    subheading: "Cinematic Hybrid AI & Macro Trends",
                     items: [
                         { 
                             isEmbed: true,
@@ -145,41 +158,41 @@
                             desc: "Hybrid AI Music Video", 
                             embedSrc: "https://www.youtube.com/embed/93xQKNh_4_w" 
                         },
-                        { title: "Muscular Persona", desc: "Hyper-realistic Model Training", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
-                        { title: "Fantasy Concepts", desc: "Steampunk & Low-key Lighting", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=FANTASY+CONCEPT" },
-                        { title: "Smart Home Viz", desc: "Interior AI Design for EEC", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=INTERIOR+DESIGN" }
+                        { title: "Digital Persona", desc: "Hyper-realistic Model Training", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
+                        { title: "Tech & Biology Fusion", desc: "Visualizing the 2045 Singularity Event", img: "https://i.postimg.cc/rp7BgkLH/Create-image-to-2k-202602201422.jpg", link: "https://threeandhour.github.io/GymMateX/TransHuman.html" },
+                        { title: "Aerotropolis Vision", desc: "U-Tapao Aviation City Masterplan", img: "https://i.postimg.cc/90VvcZKj/Screenshot_2568-08-06_at_13.23.57-topaz-sharpen-upscale-1.5x-crop.jpg", link: "https://thbho.github.io/UTPCity.html" }
                     ]
                 },
                 love: {
-                    heading: "Personal & Relationships",
-                    subheading: "Love, Sex & Deep Connections",
-                    status: "Single / Gay Versatile (Prefer Bottom)",
-                    looking: "Undefined & Organic Connection",
-                    desc: "Beyond business and AI partners, I seek a connection starting with Comfort and Chemistry without fixed definitions. Grounded in Mature understanding and respect for personal space, yet Open to developing romance and bonding naturally (Organic Growth) if feelings and timing align.",
-                    tags: ["Comfort", "Chemistry", "Mature", "Open", "Organic Growth"]
+                    heading: "Personal Dynamics",
+                    subheading: "Meaningful Connections & Lifestyle",
+                    status: "Independent / Open to Authentic Connections",
+                    looking: "Comfort, Chemistry & Organic Growth",
+                    desc: "Beyond business and creative projects, I value connections that begin with genuine comfort and aligned energy, free from rigid expectations. I believe in mature understanding, respecting personal ambitions, while remaining open to deeper bonds that develop naturally when the timing and chemistry are right.",
+                    tags: ["Comfort", "Aligned Energy", "Mature", "Open-Minded", "Organic Growth"]
                 },
                 philosophy: {
                     heading: "Fluid Dynamic Alliance",
                     subheading: "THE PHILOSOPHY",
-                    desc: "We don't rely on fixed labels. Our connection shifts modes based on the vibe, necessity, and chemistry of the moment.",
+                    desc: "True connections don't require rigid labels. They adapt to the vibe, shared interests, and natural chemistry of the moment.",
                     cards: [
-                        { icon: IconBriefcase, title: "Strategic Partner", desc: "Discussion of Real Estate visions, AI projects, and investment opportunities in EEC/Pattaya." },
-                        { icon: IconDumbbell, title: "Gym Bro", desc: "Training spotters focusing on hypertrophy, nutrition science, and bio-hacking." },
-                        { icon: IconFlame, title: "Intimate Mode", desc: "Safe, sane, and consensual pleasure. Fluid dynamics with muscular chemistry." },
-                        { icon: IconHeart, title: "Organic Romance", desc: "Allowing space for affection and deeper bonding when the feeling is mutually right." }
+                        { icon: IconBriefcase, title: "Strategic Minds", desc: "Exchanging visions on Real Estate, AI innovations, and macro-investment opportunities." },
+                        { icon: IconDumbbell, title: "Fitness Synergy", desc: "Sharing a passion for wellness, hypertrophy training, and bio-hacking routines." },
+                        { icon: IconFlame, title: "Dynamic Chemistry", desc: "A safe, respectful space for exploring deep mutual attraction and shared energy." },
+                        { icon: IconHeart, title: "Organic Bonding", desc: "Allowing space for authentic affection and deeper relationships to unfold naturally." }
                     ]
                 },
                 conduct: {
                     heading: "Code of Conduct",
                     items: [
-                        { icon: IconBan, title: "Zero Drama", desc: "Emotional self-regulation required." },
-                        { icon: IconLock, title: "Respect Sovereignty", desc: "Deep work & privacy respected." },
-                        { icon: IconInfinity, title: "Fluid Connection", desc: "Defined by the moment, not the label." }
+                        { icon: IconBan, title: "Emotional Maturity", desc: "Self-awareness and clear communication required." },
+                        { icon: IconLock, title: "Respect Sovereignty", desc: "Valuing each other's deep work and personal space." },
+                        { icon: IconInfinity, title: "Fluid Connection", desc: "Defined by the quality of the moment, not a predefined label." }
                     ]
                 },
                 footer: {
                     contact: "Connect with me",
-                    rights: "© 2025 Thor Ayanundana. All rights reserved."
+                    rights: "© 2026 Thor Ayanundana. All rights reserved."
                 },
                 cvModal: {
                     title: "Curriculum Vitae Preview",
@@ -188,21 +201,21 @@
                 }
             },
             th: {
-                nav: { home: "หน้าหลัก", about: "ตัวตน", work: "วิสัยทัศน์", gallery: "ผลงาน", passion: "ความหลงใหล", love: "ความรัก", contact: "ติดต่อ" },
+                nav: { home: "หน้าหลัก", about: "ตัวตน", work: "วิสัยทัศน์", gallery: "ผลงาน", passion: "ความหลงใหล", love: "ความสัมพันธ์", contact: "ติดต่อ" },
                 hero: {
                     greeting: "สวัสดีครับ ผม",
                     name: "ธอร์ (Thor)",
                     title: "นักพัฒนาอสังหาริมทรัพย์ | ครีเอเตอร์ Hybrid AI",
-                    subtitle: "เชื่อมโยงโลกจริงของธุรกิจอสังหาฯ เข้ากับจินตนาการไร้ขีดจำกัดของ AI",
+                    subtitle: "เชื่อมโยงโลกอสังหาฯ โซน EEC และเมืองการบิน เข้ากับจินตนาการไร้ขีดจำกัดของ Next-Gen Cinematic AI Video",
                     cta: "ทำความรู้จักผม"
                 },
                 about: {
                     heading: "ตัวตนของผม",
-                    desc: "ผู้บริหารที่มีจิตวิญญาณศิลปิน (INFP) ผสมผสานความเฉียบคมทางธุรกิจเข้ากับความคิดสร้างสรรค์ รักการดูแลรูปร่างและสุขภาพ",
+                    desc: "ผู้บริหารที่มีจิตวิญญาณศิลปิน (INFP) ผสมผสานความเฉียบคมทางธุรกิจเข้ากับความคิดสร้างสรรค์ รักการพัฒนาตนเองและดูแลสุขภาพ",
                     stats: [
                         { label: "บุคลิกภาพ", value: "INFP (นักไกล่เกลี่ย - มีอุดมการณ์สูง)" },
                         { label: "ส่วนสูง/น้ำหนัก", value: "180 ซม. / 82 กก." },
-                        { label: "รูปร่าง", value: "Muscular Lean (หุ่นนายแบบ/นักกีฬา)" },
+                        { label: "ไลฟ์สไตล์", value: "Fitness & Wellness Focus" },
                         { label: "สถานที่หลัก", value: "กรุงเทพฯ - พัทยา - สัตหีบ" }
                     ],
                     cvBtn: "ดูประวัติ (CV)"
@@ -211,27 +224,27 @@
                     heading: "วิสัยทัศน์ทางธุรกิจ",
                     subheading: "อสังหาริมทรัพย์ & การพัฒนาธุรกิจ",
                     cards: [
-                        { title: "Real Estate & EEC", desc: "เชี่ยวชาญตลาดอสังหาริมทรัพย์พัทยา และพื้นที่เขตพัฒนาพิเศษภาคตะวันออก (EEC)" },
-                        { title: "การบริหารจัดการ", desc: "มีประสบการณ์สูงด้าน Operations, การตลาด และการจัดงาน Event ระดับนานาชาติ" },
+                        { title: "EEC & เมืองการบิน", desc: "เจาะลึกโปรเจกต์มหานครการบินอู่ตะเภา และการพัฒนา EECiti ศูนย์กลางความบันเทิงและเมืองอัจฉริยะ 15,000 ไร่" },
+                        { title: "AI-Driven Marketing", desc: "ประยุกต์ใช้ Generative AI Video ล้ำสมัย เพื่อสร้างสื่อนำเสนอโครงการอสังหาฯ ที่สมจริงและดึงดูดขั้นสุด" },
                         { title: "Smart Home & Interior", desc: "มุ่งพัฒนาระบบบ้านอัจฉริยะ (AI Smart Home) และงานออกแบบตกแต่งภายในเพื่อการอยู่อาศัยยุคใหม่" },
-                        { title: "หาพันธมิตรธุรกิจ", desc: "มองหา Partner เพื่อร่วมลงทุนในธุรกิจ AI Tech และอสังหาฯ ในอีก 2-5 ปีข้างหน้า" }
+                        { title: "กลยุทธ์เทคโนโลยีระดับมหภาค", desc: "นำวิสัยทัศน์ระดับโลกอย่าง 'Musconomy' (SpaceX ผสาน xAI) มาประยุกต์ใช้เพื่อวางรากฐานธุรกิจในอนาคต" }
                     ]
                 },
                 passion: {
-                    heading: "จิตวิญญาณศิลปิน",
-                    subheading: "Hybrid AI & ศิลปะดิจิทัล",
-                    desc: "ผู้ก่อตั้ง 'GymMateX Factory' สร้างสรรค์ Hybrid AI Personas ที่ผสมผสานตัวตนจริงเข้ากับโลกจินตนาการ",
+                    heading: "ขุมพลังแห่งความสร้างสรรค์",
+                    subheading: "Generative AI, สถาปัตยกรรม และงานออกแบบเสียง",
+                    desc: "นอกเหนือจากงานบริหารอสังหาฯ ผมคือครีเอเตอร์สาย Hybrid AI และผู้ก่อตั้ง 'GymMateX Factory' ที่ผสานเทคโนโลยีล้ำสมัยเข้ากับวิสัยทัศน์ทางศิลปะ",
                     points: [
-                        "สร้างภาพยนตร์ 'Hybrid AI Movies' สำหรับกลุ่ม Gay (เน้นงานภาพ Cinematic)",
-                        "มองหา Content Creator สาย Gay เพื่อ Collab หรือช่วย Upgrade ผลงานด้วย AI",
-                        "เชี่ยวชาญ Sound Design และทำเพลงประกอบ",
-                        "ใช้เทคโนโลยี Generative AI และ Veo3 ในการสร้างสรรค์ผลงาน"
+                        "Cinematic AI Production: กำกับและสร้างสรรค์ภาพยนตร์ AI คุณภาพสูง ด้วย Generative Video Tools ระดับโลก (Sora, Veo, Gen-3)",
+                        "Real Estate & Architecture Viz: ประยุกต์ใช้ AI สร้างภาพจำลองสถาปัตยกรรม แนวคิดห้องตัวอย่าง และสื่อโฆษณาอสังหาฯ สุดล้ำ",
+                        "GymMateX & Persona Design: เทรนโมเดล AI เพื่อสร้างสรรค์ Digital Personas และคาแรคเตอร์ที่สมจริงขั้นสุด",
+                        "Soundscapes & Automation: เชี่ยวชาญด้าน Sound Design การทำเพลงประกอบ และใช้ AI อัตโนมัติเพื่อลดทอนข้อจำกัดในการผลิตผลงาน"
                     ],
                     btn: "เยี่ยมชม GymMateX"
                 },
                 gallery: {
                     heading: "ตัวอย่างผลงาน",
-                    subheading: "Cinematic Hybrid AI & Motion",
+                    subheading: "Cinematic Hybrid AI & Macro Trends",
                     items: [
                         { 
                             isEmbed: true,
@@ -245,41 +258,41 @@
                             desc: "มิวสิควิดีโอ Hybrid AI", 
                             embedSrc: "https://www.youtube.com/embed/93xQKNh_4_w" 
                         },
-                        { title: "Muscular Persona", desc: "การเทรนโมเดล AI ให้สมจริง (Fitness Model)", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
-                        { title: "Fantasy Concepts", desc: "งานศิลป์แนว Steampunk & แสง Low-key", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=FANTASY+CONCEPT" },
-                        { title: "Smart Home Viz", desc: "การออกแบบภายในยุคใหม่ด้วย AI", img: "https://placehold.co/1920x1080/0f172a/ec4899?text=INTERIOR+DESIGN" }
+                        { title: "Digital Persona", desc: "การเทรนโมเดล AI ให้สมจริง (Fitness Model)", img: "https://placehold.co/1080x1350/0f172a/ec4899?text=AI+MODEL+PORTRAIT" },
+                        { title: "Tech & Biology Fusion", desc: "วิสัยทัศน์โลกอนาคตยุค Singularity 2045", img: "https://i.postimg.cc/rp7BgkLH/Create-image-to-2k-202602201422.jpg", link: "https://threeandhour.github.io/GymMateX/TransHuman.html" },
+                        { title: "Aerotropolis Vision", desc: "แผนแม่บทมหานครการบินอู่ตะเภา", img: "https://i.postimg.cc/90VvcZKj/Screenshot_2568-08-06_at_13.23.57-topaz-sharpen-upscale-1.5x-crop.jpg", link: "https://thbho.github.io/UTPCity.html" }
                     ]
                 },
                 love: {
-                    heading: "ความรักและความสัมพันธ์",
-                    subheading: "Love, Sex & Deep Connections",
-                    status: "โสด / Gay Versatile (Prefer Bottom)",
-                    looking: "ความสัมพันธ์แบบธรรมชาติ (Organic Growth)",
-                    desc: "นอกจาก Biz & AI Partners แล้ว ผมมองหาความสัมพันธ์ที่เริ่มต้นด้วยความสบายใจ (Comfort) และเคมีที่ตรงกัน (Chemistry) โดยไม่จำกัดรูปแบบตายตัว (Undefined) บนพื้นฐานความเข้าใจแบบผู้ใหญ่ (Mature) ที่ให้เกียรติพื้นที่ส่วนตัว แต่เปิดกว้าง (Open) ที่จะพัฒนาความโรแมนติกและความผูกพันได้ตามธรรมชาติ",
-                    tags: ["Comfort & Chemistry", "Mature", "Open", "Organic Growth", "Undefined"]
+                    heading: "รูปแบบความสัมพันธ์",
+                    subheading: "การเชื่อมโยงและไลฟ์สไตล์ส่วนตัว",
+                    status: "อิสระ / เปิดรับความสัมพันธ์ที่จริงใจ",
+                    looking: "ความสบายใจ เคมีที่ตรงกัน และการเติบโตตามธรรมชาติ",
+                    desc: "ในพื้นที่ส่วนตัว ผมให้ค่ากับความสัมพันธ์ที่เริ่มต้นจากความสบายใจและพลังงานที่เข้ากันได้ โดยไม่ต้องรีบตีกรอบตายตัว บนพื้นฐานของความเข้าใจแบบผู้ใหญ่ที่เคารพเป้าหมายและพื้นที่ส่วนตัวของกันและกัน แต่ก็เปิดกว้างเสมอสำหรับการพัฒนาความผูกพันที่ลึกซึ้งยิ่งขึ้น หากจังหวะเวลาและความรู้สึกเดินทางมาบรรจบกัน",
+                    tags: ["Comfort & Chemistry", "Aligned Energy", "Mature", "Open-Minded", "Organic Growth"]
                 },
                 philosophy: {
                     heading: "Fluid Dynamic Alliance",
                     subheading: "ปรัชญาความสัมพันธ์",
-                    desc: "เราไม่ยึดติดกับนิยามตายตัว ความสัมพันธ์ของเราปรับเปลี่ยนโหมดไปตามบรรยากาศ ความจำเป็น และเคมี ณ ขณะนั้น",
+                    desc: "ความสัมพันธ์ที่มีคุณภาพไม่จำเป็นต้องมีป้ายชื่อกำกับเสมอไป แต่มันสามารถปรับเปลี่ยนลื่นไหลไปตามความสนใจร่วมกันและเคมี ณ ขณะนั้น",
                     cards: [
-                        { icon: IconBriefcase, title: "คู่คิดเชิงกลยุทธ์", desc: "พูดคุยวิสัยทัศน์ด้านอสังหาฯ, โปรเจกต์ AI และโอกาสการลงทุนใน EEC/พัทยา" },
-                        { icon: IconDumbbell, title: "เพื่อนซี้เข้ายิม", desc: "ช่วยเซฟตอนเล่นเวท เน้นสร้างกล้ามเนื้อ วิทยาศาสตร์โภชนาการ และ Bio-hacking" },
-                        { icon: IconFlame, title: "โหมดความสัมพันธ์ลึกซึ้ง", desc: "ความสุขที่ปลอดภัย มีสติ และยินยอมพร้อมใจ เคมีที่ลื่นไหลกับรูปร่างที่แข็งแรง" },
-                        { icon: IconHeart, title: "ความโรแมนติกแบบธรรมชาติ", desc: "เปิดพื้นที่ให้ความรักและความผูกพันเติบโตเมื่อความรู้สึกตรงกันอย่างเป็นธรรมชาติ" }
+                        { icon: IconBriefcase, title: "คู่คิดเชิงกลยุทธ์", desc: "พูดคุยแลกเปลี่ยนมุมมองด้านการทำงาน อสังหาฯ เทคโนโลยี AI และโอกาสใหม่ๆ" },
+                        { icon: IconDumbbell, title: "แพชชั่นด้านสุขภาพ", desc: "ความสนใจร่วมกันในการออกกำลังกาย โภชนาการ และการดูแลตัวเอง" },
+                        { icon: IconFlame, title: "เคมีที่เข้ากัน", desc: "พื้นที่ปลอดภัยที่ให้เกียรติกัน ในการแบ่งปันความรู้สึกและพลังงานดึงดูดซึ่งกันและกัน" },
+                        { icon: IconHeart, title: "ความผูกพันที่ลื่นไหล", desc: "ปล่อยให้ความรู้สึกดีๆ และความสัมพันธ์พัฒนาไปอย่างเป็นธรรมชาติโดยไม่ฝืน" }
                     ]
                 },
                 conduct: {
                     heading: "แนวทางปฏิบัติ (Code of Conduct)",
                     items: [
-                        { icon: IconBan, title: "ไร้ดราม่า (Zero Drama)", desc: "ต้องรู้จักจัดการอารมณ์ตัวเองได้" },
+                        { icon: IconBan, title: "วุฒิภาวะทางอารมณ์", desc: "สื่อสารกันด้วยเหตุผลและความเข้าใจ" },
                         { icon: IconLock, title: "เคารพพื้นที่ส่วนตัว", desc: "ให้เกียรติเวลาทำงานลึกซึ้งและความเป็นส่วนตัว" },
-                        { icon: IconInfinity, title: "ความสัมพันธ์ที่ยืดหยุ่น", desc: "นิยามด้วยช่วงเวลา ไม่ใช่ป้ายชื่อ" }
+                        { icon: IconInfinity, title: "ความสัมพันธ์ที่ยืดหยุ่น", desc: "ให้คุณค่ากับช่วงเวลาที่มีร่วมกัน มากกว่าสถานะ" }
                     ]
                 },
                 footer: {
                     contact: "ช่องทางติดต่อ",
-                    rights: "© 2025 Thor Ayanundana. สงวนลิขสิทธิ์"
+                    rights: "© 2026 Thor Ayanundana. สงวนลิขสิทธิ์"
                 },
                 cvModal: {
                     title: "ตัวอย่างประวัติ (CV Preview)",
@@ -351,7 +364,7 @@
                                     <div className="max-w-2xl mx-auto space-y-6">
                                         <div className="text-center border-b-2 border-slate-900 pb-4">
                                             <h1 className="text-3xl font-bold uppercase">Techatorn Ayanundana (Thor)</h1>
-                                            <p className="text-slate-600">Operations | Sales & Marketing | Real Estate | Fitness Specialist</p>
+                                            <p className="text-slate-600">Operations | Sales & Marketing | Real Estate | Creative AI Strategist</p>
                                         </div>
                                         
                                         <div>
@@ -359,13 +372,13 @@
                                             
                                             <div className="mb-4">
                                                 <div className="flex justify-between font-bold">
-                                                    <span>Real Estate Developer (Pattaya)</span>
-                                                    <span>Present</span>
+                                                    <span>Real Estate Developer (EEC & Pattaya)</span>
+                                                    <span>2019 - Present</span>
                                                 </div>
-                                                <p className="italic text-slate-600">Executive Management</p>
+                                                <p className="italic text-slate-600">Executive Management & AI Strategist</p>
                                                 <ul className="list-disc ml-5 mt-1 text-slate-700">
-                                                    <li>Overseeing strategic operations and business development in EEC area.</li>
-                                                    <li>Managing high-end property projects and marketing strategies.</li>
+                                                    <li>Overseeing strategic operations and business development in the EEC and Eastern Aviation City area.</li>
+                                                    <li>Pioneering the use of Generative AI Video for high-end property marketing and presentations.</li>
                                                 </ul>
                                             </div>
 
@@ -399,7 +412,7 @@
                                             <ul className="list-none space-y-1 text-slate-700">
                                                 <li><strong>Thammasat University:</strong> Bachelor of Arts (International Affairs)</li>
                                                 <li><strong>ACE Certified:</strong> Personal Trainer & Fitness Nutrition Specialist</li>
-                                                <li><strong>Photography:</strong> 9 Years Professional Experience (Canon EOS system)</li>
+                                                <li><strong>Digital Art & Media:</strong> Advanced Generative AI Video Production (Sora, Veo, Midjourney)</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -510,13 +523,30 @@
                                 <p className="text-xl text-slate-400">{t.work.subheading}</p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {t.work.cards.map((card, idx) => (
-                                    <div key={idx} className="card-hover bg-slate-800 p-8 rounded-xl border border-slate-700/50">
-                                        <h3 className="text-2xl font-bold mb-3 text-cyan-50">{card.title}</h3>
-                                        <p className="text-slate-400 leading-relaxed">{card.desc}</p>
+                            <div className="flex flex-col lg:flex-row gap-12 items-center">
+                                {/* Visual Image Side */}
+                                <div className="w-full lg:w-5/12">
+                                     <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700 group hover:border-cyan-500/50 transition duration-500">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent z-10"></div>
+                                        <img 
+                                            src="https://i.postimg.cc/DyrF30zq/magnifics-upscale-precision-drztuz-Jdn-Lj82V8Wqm-Iw-ABD76AB2-69F6-4AD5-9626-936C79998123-1-105-c.png" 
+                                            alt="Professional Vision Visual" 
+                                            className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700"
+                                        />
+                                     </div>
+                                </div>
+
+                                {/* Cards Side */}
+                                <div className="w-full lg:w-7/12">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {t.work.cards.map((card, idx) => (
+                                            <div key={idx} className="card-hover bg-slate-800 p-8 rounded-xl border border-slate-700/50">
+                                                <h3 className="text-2xl font-bold mb-3 text-cyan-50">{card.title}</h3>
+                                                <p className="text-slate-400 leading-relaxed">{card.desc}</p>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -575,7 +605,7 @@
                         </div>
                     </section>
 
-                    {/* Passion / Creative Soul */}
+                    {/* Passion / Creative Engine */}
                     <section id="passion" className="py-20 bg-slate-800/30">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 border border-pink-500/20 shadow-2xl relative overflow-hidden">
@@ -600,7 +630,7 @@
                                                     </li>
                                                 ))}
                                             </ul>
-                                            <a href="https://threeandhour.github.io/GymMateX/" target="_blank" className="inline-block border border-pink-500 text-pink-400 hover:bg-pink-500 hover:text-white px-8 py-3 rounded-full font-semibold transition">
+                                            <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" className="inline-block border border-pink-500 text-pink-400 hover:bg-pink-500 hover:text-white px-8 py-3 rounded-full font-semibold transition">
                                                 {t.passion.btn}
                                             </a>
                                         </div>
@@ -620,7 +650,7 @@
                         </div>
                     </section>
 
-                    {/* Love & Personal */}
+                    {/* Love & Personal Dynamics */}
                     <section id="love" className="py-20">
                         <div className="max-w-6xl mx-auto px-4">
                             <div className="flex flex-col md:flex-row gap-12 items-stretch">
@@ -631,7 +661,7 @@
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
                                         <img 
                                             src="https://i.postimg.cc/mg0rJN2J/Gemini-Generated-Image-tr6st2tr6st2tr6s.png" 
-                                            alt="Love & Relationships" 
+                                            alt="Personal Connections" 
                                             className="w-full h-auto transition duration-700 group-hover:scale-105" 
                                         />
                                     </div>
@@ -641,7 +671,7 @@
                                 <div className="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
                                     <div className="inline-flex items-center gap-2 text-pink-500 mb-4 justify-center md:justify-start">
                                         <IconHeart />
-                                        <span className="uppercase tracking-widest font-bold text-sm">Private Life</span>
+                                        <span className="uppercase tracking-widest font-bold text-sm">Personal Life</span>
                                     </div>
                                     <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">{t.love.heading}</h2>
                                     
@@ -727,7 +757,7 @@
                                 <a href="https://www.instagram.com/th_b_ho/" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-pink-600 hover:text-white transition text-slate-400">
                                     <IconInstagram />
                                 </a>
-                                <a href="https://threeandhour.github.io/GymMateX/" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-purple-600 hover:text-white transition text-slate-400">
+                                <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" className="p-4 bg-slate-800 rounded-full hover:bg-purple-600 hover:text-white transition text-slate-400">
                                     <IconGlobe />
                                 </a>
                             </div>

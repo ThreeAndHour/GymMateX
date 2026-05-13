@@ -519,37 +519,57 @@
             </div>
 
             <!-- Master Video Playlist Showcase -->
-            <div class="glass-card p-6 md:p-8 rounded-[2rem] border border-vr-primary/30 shadow-[0_20px_50px_rgba(249,115,22,0.1)] relative overflow-hidden">
+            <div class="glass-card p-6 md:p-10 rounded-[2rem] border border-vr-primary/30 shadow-[0_20px_50px_rgba(249,115,22,0.15)] relative overflow-hidden">
                 <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-vr-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
                 <div class="absolute -right-32 -top-32 w-96 h-96 bg-vr-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
                 
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 relative z-10">
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-white flex items-center">
-                            <i data-lucide="play-circle" class="w-6 h-6 mr-3 text-vr-primary"></i>
+                <div class="flex flex-col lg:flex-row items-center gap-10 relative z-10">
+                    <!-- Left: Text Info & Button -->
+                    <div class="lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
+                        <div class="inline-flex items-center px-3 py-1.5 mb-6 text-xs font-bold tracking-widest text-vr-primary uppercase rounded-full bg-vr-primary/10 border border-vr-primary/20 mx-auto lg:mx-0 w-max">
+                            <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i> Vertical POV
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white flex items-center justify-center lg:justify-start mb-4">
+                            <i data-lucide="play-circle" class="w-8 h-8 mr-3 text-vr-primary"></i>
                             <span class="th">วิดีโอตัวอย่างประสบการณ์ทั้ง 3 ระดับ</span>
                             <span class="en">All Levels Video Showcase</span>
                             <span class="cn">全层级视频展示</span>
                             <span class="es">Muestra de Video de Todos los Niveles</span>
                         </h3>
-                        <p class="text-sm text-slate-400 mt-2 max-w-2xl">
-                            <span class="th">รับชมตัวอย่างจำลองจากฝั่งแว่น VR (POV) เพื่อให้เห็นภาพระดับ Companionship, Romantic และ Full Intimacy</span>
-                            <span class="en">Watch POV simulations directly from the VR headset, showcasing Companionship, Romantic, and Full Intimacy.</span>
-                            <span class="cn">直接从 VR 头显观看 POV 模拟，展示陪伴、浪漫和完全亲密体验。</span>
-                            <span class="es">Mira simulaciones POV directamente desde el visor de realidad virtual, mostrando Compañerismo, Romántico y Plena Intimidad.</span>
+                        <p class="text-base text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                            <span class="th">รับชมตัวอย่างจำลองจากฝั่งแว่น VR (POV) ในรูปแบบวิดีโอแนวตั้ง เพื่อให้เห็นภาพระดับ Companionship, Romantic และ Full Intimacy อย่างชัดเจน</span>
+                            <span class="en">Watch POV simulations directly from the VR headset in vertical format, showcasing Companionship, Romantic, and Full Intimacy.</span>
+                            <span class="cn">直接从 VR 头显观看垂直格式的 POV 模拟，展示陪伴、浪漫和完全亲密体验。</span>
+                            <span class="es">Mira simulaciones POV directamente desde el visor de realidad virtual en formato vertical, mostrando Compañerismo, Romántico y Plena Intimidad.</span>
                         </p>
+                        <div>
+                            <a href="https://youtube.com/playlist?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl&si=gjqNibqVZbrAr8ca" target="_blank" class="inline-flex text-sm font-bold text-white bg-gradient-to-r from-vr-primary to-orange-600 hover:to-orange-500 px-8 py-3.5 rounded-full transition-all items-center justify-center shadow-[0_10px_30px_rgba(249,115,22,0.3)] transform hover:-translate-y-1 border border-vr-primary/50">
+                                <span class="th">เปิด Playlist บน YouTube</span>
+                                <span class="en">Open Playlist on YouTube</span>
+                                <span class="cn">在 YouTube 上打开播放列表</span>
+                                <span class="es">Abrir lista de reproducción en YouTube</span>
+                                <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
                     </div>
-                    <a href="https://youtube.com/playlist?list=PLUk-GWDgGDRFUAQxqKiVVYxs04bnGZBsV&si=eGa5dotMrBIYKntt" target="_blank" class="text-xs font-semibold text-white bg-gradient-to-r from-vr-primary to-orange-600 hover:to-orange-600/80 px-5 py-2.5 rounded-full transition-all flex items-center shadow-[0_0_15px_rgba(249,115,22,0.3)] flex-shrink-0 border border-vr-primary/50">
-                        <span class="th">เปิด Playlist บน YouTube</span>
-                        <span class="en">Open Playlist on YouTube</span>
-                        <span class="cn">在 YouTube 上打开播放列表</span>
-                        <span class="es">Abrir lista de reproducción en YouTube</span>
-                        <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                    </a>
-                </div>
-                
-                <div class="relative w-full rounded-2xl overflow-hidden bg-black aspect-video border border-slate-800 shadow-2xl z-10">
-                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLUk-GWDgGDRFUAQxqKiVVYxs04bnGZBsV" title="GymMateX 3 Levels Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <!-- Right: Vertical Video Player (Mobile Mockup) -->
+                    <div class="lg:w-1/2 w-full flex justify-center">
+                        <div class="relative w-full max-w-[300px] aspect-[9/16] rounded-[2.5rem] p-2 bg-slate-900 border border-slate-700 shadow-[0_0_50px_rgba(249,115,22,0.25)] transform transition-transform hover:scale-105 duration-500">
+                            <!-- Premium Glow behind phone -->
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-vr-primary/40 to-vr-accent/40 rounded-[3rem] blur-xl opacity-50 -z-10 pointer-events-none"></div>
+                            
+                            <!-- Notch simulation -->
+                            <div class="absolute top-0 inset-x-0 h-6 flex justify-center z-20 pointer-events-none">
+                                <div class="w-32 h-5 bg-slate-900 rounded-b-[1rem]"></div>
+                            </div>
+
+                            <!-- Iframe Container -->
+                            <div class="relative w-full h-full rounded-[2rem] overflow-hidden bg-black z-10 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" title="GymMateX 3 Levels Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

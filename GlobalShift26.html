@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Shift 2026 - ASEAN Safe Haven</title>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Global Shift 2026 - ASEAN Safe Haven" />
+  <meta property="og:description" content="วิกฤตโลกดันอาเซียนผงาด: เจาะลึกโอกาสและความท้าทายในการตั้งรับการย้ายทุนสู่ EEC และประเทศไทยในฐานะ Safe Haven" />
+  <meta property="og:image" content="https://i.postimg.cc/prVnMz66/2.jpg" />
+  <meta property="og:image:secure_url" content="https://i.postimg.cc/prVnMz66/2.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta itemprop="image" content="https://i.postimg.cc/prVnMz66/2.jpg" />
+  <link rel="image_src" href="https://i.postimg.cc/prVnMz66/2.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Global Shift 2026 - ASEAN Safe Haven" />
+  <meta name="twitter:description" content="วิกฤตโลกดันอาเซียนผงาด: เจาะลึกโอกาสและความท้าทายในการตั้งรับการย้ายทุนสู่ EEC และประเทศไทยในฐานะ Safe Haven" />
+  <meta name="twitter:image" content="https://i.postimg.cc/prVnMz66/2.jpg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.263.0"
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.4s ease forwards; }
+    @keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:.5} }
+    .animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
+    .breaking-ticker { animation: ticker 30s linear infinite; }
+    @keyframes ticker { 0%{transform:translateX(100%)} 100%{transform:translateX(-100%)} }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans selection:bg-indigo-100">
+  <div id="root"></div>
+  <script type="text/babel" data-type="module">
+    import React, { useState, useEffect } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import {
+      ShieldCheck, TrendingUp, PlaneTakeoff, Building2, Cpu, Map, Globe2,
+      ArrowRight, MapPin, Clock, Landmark, Palmtree, Trophy, Award,
+      AlertTriangle, TrendingDown, Stethoscope, GraduationCap, Zap, FileText,
+      Image as ImageIcon, Music, ExternalLink, Target, BarChart3,
+      ListChecks, Info, Globe, Activity, Radio, Flame, DollarSign, Ship
+    } from 'lucide-react';
+
+    // ─── TRANSLATION DATA ───────────────────────────────────────────────────────
+    const t = {
+      th: {
+        updateDate: "Global Impact Report : May 2026 Update",
+        breakingLabel: "BREAKING",
+        breakingText: "สงครามอิหร่าน-สหรัฐฯ-อิสราเอล: หยุดยิงเปราะบาง (7 เม.ย.) — ช่องแคบฮอร์มุซยังถูกปิดบางส่วน — น่านฟ้า UAE เปิดบางส่วน 2 พ.ค. — SQ ยกเลิกเส้นทางดูไบถึง ส.ค. 2026",
+        heroTitle1: "วิกฤตโลกดันอาเซียนผงาด:",
+        heroTitle2: "โอกาสและความท้าทายในฐานะ Safe Haven",
+        heroDesc: "สงครามอิหร่าน-อิสราเอล-สหรัฐฯ ปะทุ 28 ก.พ. 2026 ส่งกระแสทุนมหาศาลหนีตะวันออกกลาง อาเซียนผงาดเป็นศูนย์กลางความเชื่อมั่นใหม่ด้วยนโยบายที่เป็นกลางและโครงสร้างพื้นฐานที่ครอบคลุม",
+        videoTitle: "The Shift in 60 Seconds",
+        videoDesc: "ทำความเข้าใจภาพรวมของการย้ายฐานทุนระดับโลก และเหตุผลที่อาเซียนกลายเป็น Safe Haven ที่สำคัญที่สุดในยุคนี้",
+        vBullet1: "สรุปวิกฤตสงครามอิหร่าน 2026 ที่กระทบสายการบินและโลจิสติกส์ทั่วโลก",
+        vBullet2: "ทิศทางกระแสเงินทุนมหาศาลที่ไหลเข้าสู่เอเชียตะวันออกเฉียงใต้",
+        vBullet3: "บทบาทของไทยและ EEC ในฐานะศูนย์กลางดิจิทัลและนวัตกรรมใหม่",
+        dominoTitle: "The Domino Effect: สงครามอิหร่าน 28 ก.พ. 2026 จุดชนวนการย้ายฐานครั้งใหญ่",
+        d1: "สงครามอิหร่าน-อิสราเอล-สหรัฐฯ ปะทุ 28 ก.พ. — ช่องแคบฮอร์มุซถูกปิดกั้น — น่านฟ้า ME พัง",
+        d2: "KLM ยกเลิกดูไบถึง มิ.ย., SQ ระงับดูไบถึง ส.ค. — ค่าขนส่งยุโรป-เอเชียพุ่งสูง",
+        d3: "ทุน/บุคลากรหนีภัยจาก ME/ยุโรป ดันอสังหาฯ Luxury บูมในสิงคโปร์และไทย",
+        d4: "EEC ลงทุนทะลุ 660,000 ล้านบาท อาเซียนโต 4.1% — Multi-hub เต็มรูปแบบ",
+        statusTitle: "สถานการณ์ล่าสุด พ.ค. 2026",
+        s1Title: "หยุดยิงเปราะบาง",
+        s1Desc: "ทรัมป์ประกาศหยุดยิง 7 เม.ย. — ถูกละเมิดทั้งสองฝ่าย — เจรจาผ่านปากีสถาน",
+        s2Title: "Hormuz ยังตึง",
+        s2Desc: "อิหร่านปฏิเสธเปิดช่องแคบ — น้ำมันผันผวน — ภาษีการขนส่งพุ่งสูง",
+        s3Title: "น่านฟ้า ME ฟื้นช้า",
+        s3Desc: "UAE เปิดบางส่วน 2 พ.ค. — Bahrain FIR ถูกจำกัดถึง ส.ค. 7 — ราคาตั๋วพุ่ง",
+        visualTitle: "Conceptual Visual: The ASEAN Shift",
+        visualDesc: "สไลด์สรุปแนวคิดเส้นทางการเคลื่อนย้ายเงินทุน เทคโนโลยี และการบิน สู่ \"Safe Haven\" แห่งภูมิภาคอาเซียน สะท้อนบทบาทของไทยที่เป็นศูนย์กลางการเชื่อมต่อที่ปลอดภัยและมั่นคงท่ามกลางความผันผวนของโลก",
+        visualLink: "เปิดดูสไลด์ขนาดเต็มในแท็บใหม่",
+        pullTitle: "Top Beneficiaries Ranking",
+        pullBadge: "✨ War Impact: Positive Shift",
+        pullDesc: "อานิสงส์จากการย้ายฐานหนีวิกฤตสงคราม (วัดจาก Aviation, Wealth, Real Estate, MICE)",
+        pushTitle: "Top Negatively Impacted",
+        pushBadge: "⚠️ War Impact & Geopolitical Risks",
+        pushDesc: "พื้นที่ที่ได้รับผลกระทบเชิงลบ (ปัจจัยหลักในการผลักดัน Capital Flight สู่ ASEAN)",
+        osintTitle: "Live Crisis Monitor: Middle East",
+        osintDesc: "ติดตามสถานการณ์วิกฤตตะวันออกกลางแบบเรียลไทม์ (OSINT) — สงครามอิหร่านปะทุ 28 ก.พ. 2026, หยุดยิงเปราะบาง 7 เม.ย., ช่องแคบฮอร์มุซยังตึง ดูข้อมูลเชิงลึกทั้งอัตราผู้สูญเสีย, ราคาน้ำมัน, ข่าวกรอง และแผนที่น่านฟ้าล่าสุด",
+        osintBtn: "เข้าสู่ Live Dashboard",
+        timelineTitle: "แนวโน้มสากล 3 ระยะ (Global Macro Scenarios)",
+        fdiTitle: "FDI Competitiveness Scorecard 2026",
+        fdiDesc: "การวิเคราะห์ศักยภาพดึงดูดเม็ดเงินลงทุน (FDI) แบบ Multi-hub (China+Many) โดยเปรียบเทียบ EEC และ ASEAN กับคู่แข่งระดับโลกผ่าน 7 มิติหลัก — EEC ทะลุ 660,000 ล้านบาทแล้ว (Q1/2026)",
+        fdiOverall: "Overall Score: ศักยภาพโดยรวม (Equal Weight)",
+        fdiTableTitle: "ตารางคะแนนเชิงลึก 7 มิติ (Detailed Metrics)",
+        fdiTh1: "ภูมิภาค / เมือง",
+        fdiTh2: "Neutrality & Stability",
+        fdiTh3: "Infra & Logistics",
+        fdiTh4: "Labor & Demographic",
+        fdiTh5: "Market Access & FTA",
+        fdiTh6: "Incentives & Ease of Biz",
+        fdiTh7: "Supply Chain Depth",
+        fdiTh8: "Domestic Market",
+        infoTitle: "วิเคราะห์มิติที่น่าสนใจ (อัปเดต พ.ค. 2026)",
+        info1: "ASEAN/EEC ชนะขาด (92-93%) ด้วยยุทธศาสตร์ 'Strategic Ambiguity' — FDI applications ใน EEC เพิ่มเกือบ 2 เท่าใน 9 เดือนแรกของปี 2025",
+        info2: "EEC ยืนหนึ่ง (94%) จากแพ็กเกจ BOI 'Thailand FastPass' — จีนเพิ่มลงทุน EV/Electronics ใน EEC 35% จากกลยุทธ์ China+1",
+        nuanceTitle: "Nuances & คู่แข่งหลัก",
+        nuance1: "India (83%): คู่แข่งที่น่ากลัวที่สุด โดดเด่นด้านขนาดตลาดและแรงงาน IT แต่คอขวดคือระบบราชการและกำแพงภาษีสหรัฐฯ",
+        nuance2: "Mexico (79%): ชนะขาดการทำ Nearshoring เข้าสหรัฐฯ แต่ไม่แข่งส่วนแบ่งตลาดยุโรป-เอเชียกับไทย",
+        showdownTitle: "The ASEAN Strategic Showdown (เจาะลึกภูมิภาค)",
+        compScore: "Competitiveness",
+        pros: "จุดเด่น (Strengths)",
+        cons: "ความท้าทาย (Challenges)",
+        pillarsTitle: "Thailand Strategic Pillars",
+        pillarsDesc: "ความได้เปรียบระดับท้องถิ่นที่ทำให้ไทยโดดเด่นเหนือคู่แข่ง ดึงดูดทั้งการลงทุนและบุคลากรระดับสูง",
+        enablersTitle: "Strategic Enablers: โครงสร้างพื้นฐานชีวิต",
+        reportsTitle: "Related Reports (รายงานที่เกี่ยวข้อง)",
+        footer: "Global Macro-Trend Report © 2026 | Strategic Analysis for Regional Growth | Pattaya City, Chon Buri | อัปเดตล่าสุด: พฤษภาคม 2026"
+      },
+      en: {
+        updateDate: "Global Impact Report : May 2026 Update",
+        breakingLabel: "BREAKING",
+        breakingText: "Iran-US-Israel War: Fragile ceasefire (Apr 7) — Strait of Hormuz partially blockaded — UAE airspace partial reopen May 2 — Singapore Airlines suspends Dubai until Aug 2026",
+        heroTitle1: "Global Crisis Propels ASEAN:",
+        heroTitle2: "Opportunities & Challenges as a Safe Haven",
+        heroDesc: "The Iran-Israel-US war erupted Feb 28, 2026, sending massive capital flows fleeing the Middle East. ASEAN emerges as the new confidence center with neutral policies and resilient infrastructure.",
+        videoTitle: "The Shift in 60 Seconds",
+        videoDesc: "Understand the overarching global capital shift and why ASEAN has become the most critical Safe Haven of this era.",
+        vBullet1: "Summary of the Iran War 2026 impacting global aviation and logistics.",
+        vBullet2: "The massive flow of capital and wealth into Southeast Asia.",
+        vBullet3: "The strategic role of Thailand and the EEC as a new digital hub.",
+        dominoTitle: "The Domino Effect: Iran War Feb 28, 2026 Triggers the Great Relocation",
+        d1: "Iran-Israel-US war erupts Feb 28 — Strait of Hormuz blockaded — ME airspace collapses",
+        d2: "KLM cancels Dubai until Jun, SQ suspends Dubai until Aug — Europe-Asia freight costs spike",
+        d3: "Capital/talent flight from ME/Europe fuels luxury real estate boom in Singapore & Thailand",
+        d4: "EEC investment exceeds 660B THB; ASEAN grows 4.1% — Full Multi-hub era begins",
+        statusTitle: "Live Status Update — May 2026",
+        s1Title: "Fragile Ceasefire",
+        s1Desc: "Trump declared ceasefire Apr 7 — violated by both sides — Pakistan mediating negotiations",
+        s2Title: "Hormuz Still Tense",
+        s2Desc: "Iran refuses to reopen strait — oil prices volatile — shipping tariffs at record high",
+        s3Title: "ME Airspace Slow Recovery",
+        s3Desc: "UAE partial reopen May 2 — Bahrain FIR restricted until Aug 7 — Ticket prices surge",
+        visualTitle: "Conceptual Visual: The ASEAN Shift",
+        visualDesc: "A slide summarizing the concept of capital, tech, and aviation routes shifting to the ASEAN \"Safe Haven\", reflecting Thailand's role as a secure and stable connectivity hub amidst global volatility.",
+        visualLink: "Open full slide in new tab",
+        pullTitle: "Top Beneficiaries Ranking",
+        pullBadge: "✨ War Impact: Positive Shift",
+        pullDesc: "Benefiting from relocation away from war crises (Measured by Aviation, Wealth, Real Estate, MICE)",
+        pushTitle: "Top Negatively Impacted",
+        pushBadge: "⚠️ War Impact & Geopolitical Risks",
+        pushDesc: "Negatively impacted regions (Primary factors driving Capital Flight to ASEAN)",
+        osintTitle: "Live Crisis Monitor: Middle East",
+        osintDesc: "Track the Middle East conflict in real-time (OSINT). Iran war erupted Feb 28, 2026. Fragile ceasefire since Apr 7. Hormuz remains tense. View live casualties, oil prices, intelligence, and airspace maps.",
+        osintBtn: "Access Live Dashboard",
+        timelineTitle: "Global Macro Scenarios (3 Phases)",
+        fdiTitle: "FDI Competitiveness Scorecard 2026",
+        fdiDesc: "Analysis of FDI potential via Multi-hub (China+Many) strategy, comparing EEC/ASEAN vs global competitors across 7 metrics — EEC has exceeded 660B THB investment milestone (Q1/2026).",
+        fdiOverall: "Overall Score (Equal Weight)",
+        fdiTableTitle: "Detailed 7-Dimension Metrics",
+        fdiTh1: "Region / City",
+        fdiTh2: "Neutrality & Stability",
+        fdiTh3: "Infra & Logistics",
+        fdiTh4: "Labor & Demographic",
+        fdiTh5: "Market Access & FTA",
+        fdiTh6: "Incentives & Ease of Biz",
+        fdiTh7: "Supply Chain Depth",
+        fdiTh8: "Domestic Market",
+        infoTitle: "Key Insights (Updated May 2026)",
+        info1: "ASEAN/EEC dominates (92-93%) with 'Strategic Ambiguity' — EEC FDI applications nearly doubled in first 9 months of 2025.",
+        info2: "EEC leads (94%) with BOI 'Thailand FastPass' — Chinese investment in EEC EV/Electronics up 35% via China+1 strategy.",
+        nuanceTitle: "Nuances & Main Competitors",
+        nuance1: "India (83%): The fiercest competitor. Excels in market size and IT labor, but hindered by bureaucracy and US tariffs.",
+        nuance2: "Mexico (79%): Wins in US Nearshoring, but not positioned to compete for the Europe-Asia market share against Thailand.",
+        showdownTitle: "The ASEAN Strategic Showdown",
+        compScore: "Competitiveness",
+        pros: "Strengths",
+        cons: "Challenges",
+        pillarsTitle: "Thailand Strategic Pillars",
+        pillarsDesc: "Local advantages that make Thailand stand out, attracting top-tier investments and global talents.",
+        enablersTitle: "Strategic Enablers: Lifestyle Infrastructure",
+        reportsTitle: "Related Reports",
+        footer: "Global Macro-Trend Report © 2026 | Strategic Analysis for Regional Growth | Pattaya City, Chon Buri | Last updated: May 2026"
+      },
+      ru: {
+        updateDate: "Отчет о глобальном влиянии : Май 2026",
+        breakingLabel: "СРОЧНО",
+        breakingText: "Война Иран-США-Израиль: хрупкое перемирие (7 апр.) — Ормузский пролив частично заблокирован — н/п ОАЭ частично открыто 2 мая — Singapore Airlines отменяет Дубай до авг. 2026",
+        heroTitle1: "Глобальный кризис возвышает АСЕАН:",
+        heroTitle2: "Возможности и вызовы «безопасной гавани»",
+        heroDesc: "Война Иран-Израиль-США вспыхнула 28 февраля 2026 года, направив колоссальные капиталы из Ближнего Востока. АСЕАН становится новым центром доверия.",
+        videoTitle: "Сдвиг за 60 секунд",
+        videoDesc: "Поймите суть глобального перемещения капитала и почему АСЕАН стал самой важной «безопасной гаванью» нашего времени.",
+        vBullet1: "Обзор войны с Ираном 2026 — влияние на авиацию и логистику.",
+        vBullet2: "Направление массивных потоков капитала в Юго-Восточную Азию.",
+        vBullet3: "Роль Таиланда и ЕЭС как нового цифрового хаба.",
+        dominoTitle: "Эффект домино: Война с Ираном 28 февр. 2026 запускает Великое переселение",
+        d1: "Война Иран-Израиль-США 28 февр. — блокада Ормузского пролива — крах авиапространства ME",
+        d2: "KLM отменяет Дубай до июня, SQ — до авг. — рост стоимости грузоперевозок Европа-Азия",
+        d3: "Отток капитала и талантов толкает вверх элитную недвижимость Сингапура и Таиланда",
+        d4: "ЕЭС: инвестиции >660 млрд бат; АСЕАН растет на 4,1% — эра мульти-хабов",
+        statusTitle: "Актуальный статус — Май 2026",
+        s1Title: "Хрупкое перемирие",
+        s1Desc: "Трамп объявил перемирие 7 апр. — нарушено обеими сторонами — Пакистан посредник",
+        s2Title: "Ормуз всё ещё напряжён",
+        s2Desc: "Иран отказывается открыть пролив — нефть волатильна — ставки фрахта на максимуме",
+        s3Title: "Медленное восстановление н/п ME",
+        s3Desc: "ОАЭ частично открыто 2 мая — FIR Бахрейна ограничен до 7 авг. — цены на билеты растут",
+        visualTitle: "Концептуальная визуализация: Сдвиг в АСЕАН",
+        visualDesc: "Слайд, обобщающий концепцию перемещения капитала, технологий и авиамаршрутов в «безопасную гавань» АСЕАН.",
+        visualLink: "Открыть слайд в новой вкладке",
+        pullTitle: "Рейтинг главных бенефициаров",
+        pullBadge: "✨ Влияние войны: Позитивный сдвиг",
+        pullDesc: "Выгода от релокации из зон военных кризисов (авиация, капитал, недвижимость, MICE)",
+        pushTitle: "Наиболее пострадавшие регионы",
+        pushBadge: "⚠️ Влияние войны и геополитические риски",
+        pushDesc: "Регионы с негативным воздействием (основные факторы оттока капитала в АСЕАН)",
+        osintTitle: "Live OSINT Мониторинг",
+        osintDesc: "Война с Ираном вспыхнула 28 февр. 2026. Хрупкое перемирие с 7 апр. Ормуз остаётся напряжённым. Отслеживайте данные в реальном времени.",
+        osintBtn: "Открыть Live Dashboard",
+        timelineTitle: "Глобальные макросценарии (3 этапа)",
+        fdiTitle: "Оценка конкурентоспособности ПИИ 2026",
+        fdiDesc: "Анализ ПИИ в рамках стратегии мульти-хабов — ЕЭС превысил отметку в 660 млрд бат инвестиций (Q1/2026).",
+        fdiOverall: "Общий балл (равный вес)",
+        fdiTableTitle: "Подробные метрики по 7 измерениям",
+        fdiTh1: "Регион / Город",
+        fdiTh2: "Нейтралитет и стабильность",
+        fdiTh3: "Инфраструктура и логистика",
+        fdiTh4: "Труд и демография",
+        fdiTh5: "Доступ к рынкам и ЗСТ",
+        fdiTh6: "Стимулы и легкость бизнеса",
+        fdiTh7: "Глубина цепочки поставок",
+        fdiTh8: "Внутренний рынок",
+        infoTitle: "Ключевые инсайты (Май 2026)",
+        info1: "АСЕАН/ЕЭС доминирует (92-93%) — ЕЭС: заявки на ПИИ почти удвоились за первые 9 месяцев 2025 г.",
+        info2: "ЕЭС лидирует (94%) — китайские инвестиции в EV/электронику в ЕЭС выросли на 35% по стратегии China+1.",
+        nuanceTitle: "Нюансы и главные конкуренты",
+        nuance1: "Индия (83%): Сильнейший конкурент. Выделяется размером рынка и ИТ-кадрами, но страдает от бюрократии.",
+        nuance2: "Мексика (79%): Лидер в ниршоринге США, но не конкурирует за долю рынка Европа-Азия с Таиландом.",
+        showdownTitle: "Стратегическое противостояние в АСЕАН",
+        compScore: "Конкурентоспособность",
+        pros: "Сильные стороны",
+        cons: "Вызовы",
+        pillarsTitle: "Стратегические опоры Таиланда",
+        pillarsDesc: "Местные преимущества, выделяющие Таиланд и привлекающие инвестиции и таланты со всего мира.",
+        enablersTitle: "Стратегические факторы: Инфраструктура для жизни",
+        reportsTitle: "Связанные отчеты",
+        footer: "Отчет о глобальных макротрендах © 2026 | Стратегический анализ | Паттайя, Чонбури | Обновлено: Май 2026"
+      },
+      zh: {
+        updateDate: "全球影响报告：2026年5月更新",
+        breakingLabel: "突发",
+        breakingText: "伊朗-美国-以色列战争：脆弱停火（4月7日）— 霍尔木兹海峡部分封锁 — UAE空域5月2日部分重开 — 新加坡航空暂停迪拜航线至2026年8月",
+        heroTitle1: "全球危机推动东盟崛起：",
+        heroTitle2: "作为避风港的机遇与挑战",
+        heroDesc: "伊朗-以色列-美国战争于2026年2月28日爆发，推动大量资本逃离中东。凭借中立政策和完善基础设施，东盟正成为新的信心中心。",
+        videoTitle: "60秒了解全球转移",
+        videoDesc: "了解全球资本转移的概况，以及为什么东盟成为这个时代最重要的避风港。",
+        vBullet1: "2026年伊朗战争影响全球航空和物流总结。",
+        vBullet2: "大量资本和财富流入东南亚的趋势。",
+        vBullet3: "泰国和EEC作为新数字枢纽的战略作用。",
+        dominoTitle: "多米诺骨牌效应：2026年2月28日伊朗战争引发大规模转移",
+        d1: "伊朗-以色列-美国战争2月28日爆发 — 霍尔木兹海峡封锁 — 中东空域崩溃",
+        d2: "荷航取消迪拜至6月，新航暂停至8月 — 欧亚货运成本飙升",
+        d3: "中东/欧洲资本和人才外逃推动新加坡和泰国豪华房地产繁荣",
+        d4: "EEC投资突破6600亿泰铢；东盟增长4.1% — 多枢纽时代全面开启",
+        statusTitle: "最新状态 — 2026年5月",
+        s1Title: "脆弱停火",
+        s1Desc: "特朗普4月7日宣布停火 — 双方均违反 — 巴基斯坦调解谈判",
+        s2Title: "霍尔木兹仍然紧张",
+        s2Desc: "伊朗拒绝重开海峡 — 油价波动 — 运费创历史新高",
+        s3Title: "中东空域缓慢恢复",
+        s3Desc: "UAE 5月2日部分重开 — 巴林FIR限制至8月7日 — 机票价格飙升",
+        visualTitle: "概念愿景：东盟转移",
+        visualDesc: "总结资本、技术和航空路线向东盟"避风港"转移概念的幻灯片。",
+        visualLink: "在新标签页中打开完整幻灯片",
+        pullTitle: "最大受益者排名",
+        pullBadge: "✨ 战争影响：积极转变",
+        pullDesc: "得益于逃离战争危机的转移（航空、财富、房地产、MICE）",
+        pushTitle: "受负面影响最大的地区",
+        pushBadge: "⚠️ 战争影响与地缘政治风险",
+        pushDesc: "受负面影响的地区（推动资本外逃至东盟的主要因素）",
+        osintTitle: "实时 OSINT 危机监控",
+        osintDesc: "伊朗战争2026年2月28日爆发。4月7日起脆弱停火。霍尔木兹仍紧张。实时跟踪中东冲突。",
+        osintBtn: "进入实时仪表板",
+        timelineTitle: "全球宏观情景（3个阶段）",
+        fdiTitle: "2026年FDI竞争力计分卡",
+        fdiDesc: "通过多枢纽（China+Many）策略分析FDI潜力 — EEC投资已超6600亿泰铢（2026年Q1）。",
+        fdiOverall: "总分（等权重）",
+        fdiTableTitle: "详细的7维指标",
+        fdiTh1: "区域/城市",
+        fdiTh2: "中立性与稳定性",
+        fdiTh3: "基础设施与物流",
+        fdiTh4: "劳动力与人口",
+        fdiTh5: "市场准入与自贸协定",
+        fdiTh6: "激励措施与营商便利度",
+        fdiTh7: "供应链深度",
+        fdiTh8: "国内市场",
+        infoTitle: "关键见解（2026年5月更新）",
+        info1: "东盟/EEC凭借"战略模糊"占据主导（92-93%）— EEC的FDI申请在2025年前9个月近乎翻倍。",
+        info2: "EEC凭借BOI"泰国快速通道"领先（94%）— 中国在EEC的EV/电子投资通过China+1战略增长35%。",
+        nuanceTitle: "细微差别与主要竞争对手",
+        nuance1: "印度（83%）：最强劲的竞争对手。在市场规模和IT劳动力方面表现出色，但受官僚主义阻碍。",
+        nuance2: "墨西哥（79%）：在美国近岸外包中获胜，但无法与泰国竞争欧亚市场份额。",
+        showdownTitle: "东盟战略对决（深入分析）",
+        compScore: "竞争力",
+        pros: "优势 (Strengths)",
+        cons: "挑战 (Challenges)",
+        pillarsTitle: "泰国战略支柱",
+        pillarsDesc: "使泰国脱颖而出的本地优势，吸引全球顶尖投资和人才。",
+        enablersTitle: "战略赋能因素：生活基础设施",
+        reportsTitle: "相关报告",
+        footer: "全球宏观趋势报告 © 2026 | 区域增长战略分析 | 泰国春武里府芭提雅市 | 最后更新：2026年5月"
+      }
+    };
+
+    // ─── DATA FUNCTIONS ──────────────────────────────────────────────────────────
+    const getFutureTrends = (l) => [
+      {
+        id: 'short',
+        title: l==='th'?'Short-Term (1-6 เดือน)':l==='en'?'Short-Term (1-6 Months)':l==='ru'?'Краткосрочно (1-6 мес.)':'短期 (1-6 个月)',
+        subtitle: 'The Panic & Capital Flight',
+        icon: <PlaneTakeoff className="w-6 h-6 text-blue-500" />,
+        color: 'bg-blue-500',
+        details: [
+          l==='th'?'✈️ Aviation Rerouting (Live): KLM ระงับดูไบถึงมิ.ย. 28, SQ ระงับดูไบถึง ส.ค. 2 — ค่าตั๋วยุโรป-เอเชียพุ่งสูง Summer 2026':
+          l==='en'?'✈️ Aviation Rerouting (Live): KLM suspends Dubai until Jun 28, SQ until Aug 2 — Europe-Asia fares spike for Summer 2026':
+          l==='ru'?'✈️ Изменение маршрутов (Актуально): KLM — Дубай до 28 июня, SQ — до 2 авг. — Рост цен на билеты летом 2026':
+          '✈️ 航空改道（实时）：荷航暂停迪拜至6月28日，新航至8月2日 — 2026年夏季欧亚机票飙升',
+
+          l==='th'?'🛢️ Hormuz Impact: อิหร่านปิดกั้นช่องแคบ — ราคาน้ำมันโลกผันผวนรุนแรง — ต้นทุนขนส่งทางทะเลพุ่ง':
+          l==='en'?'🛢️ Hormuz Impact: Iran blockades strait — Global oil prices highly volatile — Maritime shipping costs surge':
+          l==='ru'?'🛢️ Влияние Ормуза: Иран блокирует пролив — нефть волатильна — морской фрахт растёт':
+          '🛢️ 霍尔木兹影响：伊朗封锁海峡 — 全球油价高度波动 — 海运成本飙升',
+
+          l==='th'?'💰 Safe Haven Influx: เม็ดเงินไหลเข้าทองคำและอสังหาฯ Ultra-Luxury ในสิงคโปร์และไทย — EEC ทะลุ 660,000 ล้านบาทแล้ว':
+          l==='en'?'💰 Safe Haven Influx: Capital into gold and Ultra-Luxury real estate in Singapore & Thailand — EEC surpasses 660B THB milestone':
+          l==='ru'?'💰 Приток в безопасную гавань: Капитал в элитную недвижимость — ЕЭС превысил 660 млрд бат':
+          '💰 避风港涌入：资本流入黄金及超豪华房地产 — EEC突破6600亿泰铢里程碑'
+        ]
+      },
+      {
+        id: 'medium',
+        title: l==='th'?'Medium-Term (6-24 เดือน)':l==='en'?'Medium-Term (6-24 Months)':l==='ru'?'Среднесрочно (6-24 мес.)':'中期 (6-24 个月)',
+        subtitle: 'Supply Chain & Wealth Relocation',
+        icon: <Building2 className="w-6 h-6 text-orange-500" />,
+        color: 'bg-orange-500',
+        details: [
+          l==='th'?'🏭 China+1 Acceleration (อัปเดต): FDI applications ใน EEC เพิ่ม 2x — จีนเพิ่มการลงทุน EV/Electronics ใน EEC 35% โดย BYD, CATL นำขบวน':
+          l==='en'?'🏭 China+1 Acceleration (Updated): EEC FDI applications doubled — Chinese EV/Electronics investment up 35%, led by BYD & CATL':
+          l==='ru'?'🏭 Ускорение China+1 (Актуально): Заявки на ПИИ в ЕЭС удвоились — инвестиции BYD и CATL в EV/электронику +35%':
+          '🏭 中国+1加速（更新）：EEC FDI申请翻倍 — 比亚迪、宁德时代领衔中国EV/电子投资增长35%',
+
+          l==='th'?'🛡️ Geo-politic Hedging: เศรษฐีตะวันออกกลาง+เอเชียตะวันออกกว้านซื้อ "บ้านหลังที่ 2" ในอาเซียน หนีความเสี่ยง':
+          l==='en'?'🛡️ Geo-politic Hedging: ME + East Asian elites buy "second homes" in ASEAN to diversify risk away from conflict zones':
+          l==='ru'?'🛡️ Геохеджирование: Элита Ближнего Востока и Восточной Азии скупает "вторые дома" в АСЕАН':
+          '🛡️ 地缘政治对冲：中东+东亚富豪在东盟购买"第二居所"以分散风险',
+
+          l==='th'?'🔌 Tech & Data Center: U-Tapao NTP เริ่ม เม.ย. 2026 — ธุรกิจ AI ตั้ง Data Center ในพื้นที่พลังงานมั่นคงปลอดภัย':
+          l==='en'?'🔌 Tech & Data Center: U-Tapao NTP started Apr 2026 — AI firms seek secure, energy-stable Data Center locations in EEC':
+          l==='ru'?'🔌 Дата-центры: U-Tapao NTP запущен апрель 2026 — ИИ-компании ищут безопасные места в ЕЭС':
+          '🔌 技术与数据中心：U-Tapao NTP 2026年4月启动 — AI企业在EEC寻找安全稳定的数据中心位置'
+        ]
+      },
+      {
+        id: 'long',
+        title: l==='th'?'Long-Term (3-5 ปี+)':l==='en'?'Long-Term (3-5 Years+)':l==='ru'?'Долгосрочно (3-5 лет+)':'长期 (3-5 年+)',
+        subtitle: 'The New ASEAN Paradigm',
+        icon: <Globe2 className="w-6 h-6 text-green-500" />,
+        color: 'bg-green-500',
+        details: [
+          l==='th'?'🌐 Decentralized Global Hubs: โลกกระจายศูนย์กลางการบินมายังเอเชียตะวันออกและอาเซียน — BKK/Pattaya/EEC กลายเป็น Aerotropolis หลักของโลก':
+          l==='en'?'🌐 Decentralized Global Hubs: Aviation centers decentralize to East Asia/ASEAN — BKK/Pattaya/EEC becomes a world Aerotropolis':
+          l==='ru'?'🌐 Децентрализованные хабы: Авиация смещается в АСЕАН — BKK/Паттайя/ЕЭС становится мировым аэротрополисом':
+          '🌐 去中心化全球枢纽：航空中心向东亚/东盟分散 — BKK/芭提雅/EEC成为世界航空城',
+
+          l==='th'?'🎪 Global Events Relocation: อาเซียนกลายเป็นพื้นที่หลักสำหรับงานระดับโลก (World Expos, Mega Events, Tech Summits) ที่เลี่ยง ME':
+          l==='en'?'🎪 Global Events Relocation: ASEAN becomes the main stage for World Expos, Mega Events, and Tech Summits avoiding ME/Europe':
+          l==='ru'?'🎪 Перенос мероприятий: АСЕАН — главная арена World Expo, мега-ивентов и Tech Summit':
+          '🎪 全球赛事转移：东盟成为避开中东/欧洲的世界博览会、大型赛事和科技峰会主要舞台',
+
+          l==='th'?'⚠️ Local Challenges: อาเซียนต้องรับมือกับเงินเฟ้อจากทุนต่างชาติ (Gentrification), การขาดแคลนทักษะ (Skill Gap) และความหนาแน่นของอินฟรา':
+          l==='en'?'⚠️ Local Challenges: ASEAN must manage foreign-capital inflation (Gentrification), Skill Gap in tech sectors, and infrastructure density':
+          l==='ru'?'⚠️ Местные вызовы: АСЕАН должна справляться с джентрификацией, нехваткой квалифицированных кадров и плотностью инфраструктуры':
+          '⚠️ 本地挑战：东盟必须应对外资通胀（士绅化）、技术领域技能缺口和基础设施密度'
+        ]
+      }
+    ];
+
+    const getRankingData = (l) => [
+      { rank: 1, country: '🇹🇭 Thailand', areas: 'BKK, Phuket, EEC', score: 95,
+        role: l==='th'?'The Ultimate Neutral Safe Haven':l==='ru'?'Абсолютно нейтральная гавань':l==='zh'?'终极中立避风港':'The Ultimate Neutral Safe Haven',
+        desc: l==='th'?'EEC ลงทุนทะลุ 660,000 ล้านบาท, MICE ทะลัก, เป็นกลางทางภูมิรัฐศาสตร์ 100%':l==='en'?'EEC investment >660B THB, MICE influx, 100% geopolitical neutrality':l==='ru'?'ЕЭС >660 млрд бат, приток MICE, 100% нейтралитет':'EEC投资超6600亿泰铢，MICE涌入，100%中立', color: 'bg-emerald-500' },
+      { rank: 2, country: '🇸🇬 Singapore', areas: 'Singapore', score: 88,
+        role: 'The Premium Financial Hub',
+        desc: l==='th'?'ย้ายฐานทุนและสำนักงานใหญ่, รับงาน Mega Corporate MICE, Family Offices บูม':l==='en'?'HQ and capital relocation, Mega Corporate MICE, Family Offices boom':l==='ru'?'Перенос штаб-квартир, MICE, бум Family Office':'总部和资本搬迁，家族办公室热潮', color: 'bg-blue-500' },
+      { rank: 3, country: '🇹🇷 Turkey', areas: 'Istanbul (IST)', score: 82,
+        role: 'The Global Transit Winner',
+        desc: l==='th'?'ได้เปรียบเส้นทางบินเชื่อมโลก ดูดผู้โดยสาร Transit จากน่านฟ้า ME':l==='en'?'Aviation advantage connecting world, absorbs transit pax from ME airspace closure':l==='ru'?'Авиационное преимущество, поглощает транзит из закрытого ME':'航空优势连接世界，吸收中东空域关闭的中转乘客', color: 'bg-rose-500' },
+      { rank: 4, country: '🇻🇳 Vietnam', areas: 'HCMC, Hanoi', score: 75,
+        role: 'Supply Chain Relocation Hub',
+        desc: l==='th'?'ฐานผลิตย้ายหนีความเสี่ยงสงครามการค้า (China+1) — Samsung, Intel นำขบวน':l==='en'?'Manufacturing base relocation (China+1) — Samsung, Intel lead the way':l==='ru'?'Перенос производства (China+1) — Samsung, Intel лидируют':'制造基地搬迁（中国+1）— 三星、英特尔领衔', color: 'bg-amber-500' },
+      { rank: 5, country: '🇯🇵 Japan', areas: 'Tokyo (HND)', score: 68,
+        role: 'Temporary Luxury Safe Zone',
+        desc: l==='th'?'ที่หลบภัยพรีเมียม แต่มีความเสี่ยงแฝงระยะกลางจากความตึงเครียดในเอเชียตะวันออก':l==='en'?'Premium safe zone, but carries medium-term East Asia geopolitical risks':l==='ru'?'Премиум безопасная зона, но со среднесрочными геополитическими рисками':'高级安全区，但带有中期东亚地缘政治风险', color: 'bg-purple-500' }
+    ];
+
+    const getNegativeRankingData = (l) => [
+      { rank: 1, region: 'Conflict Ground Zeros', areas: 'Israel (TLV), Iran (IKA)',
+        impact: l==='th'?'Critical (วิกฤตหนัก — สงคราม)':l==='en'?'Critical (Active War)':l==='ru'?'Критический (Война)': '危急（战争中）',
+        desc: l==='th'?'สงครามอิหร่าน-อิสราเอล ปะทุ 28 ก.พ. — การบินอัมพาต, สมองไหลหนัก, เศรษฐกิจพัง':l==='en'?'Iran-Israel war erupted Feb 28 — Aviation paralysis, massive brain drain, economic collapse':l==='ru'?'Война Иран-Израиль 28 февр. — авиапаралич, утечка мозгов, коллапс экономики':'伊朗-以色列战争2月28日爆发 — 航空瘫痪，严重人才流失，经济崩溃', color: 'bg-red-600', iconColor: 'text-red-600', bgColor: 'bg-red-100' },
+      { rank: 2, region: 'Middle East Mega-Hubs', areas: 'UAE (DXB), Qatar (DOH)',
+        impact: l==='th'?'Severe (รุนแรง — ฟื้นตัวช้า)':l==='en'?'Severe (Slow Recovery)':l==='ru'?'Тяжелый (Медленное восстановление)':'严重（缓慢恢复）',
+        desc: l==='th'?'UAE เปิดบางส่วน 2 พ.ค. แต่ SQ ระงับดูไบถึง ส.ค. — Bahrain FIR ถูกจำกัดถึง ส.ค. 7':l==='en'?'UAE partial reopen May 2, but SQ suspends Dubai until Aug — Bahrain FIR restricted until Aug 7':l==='ru'?'ОАЭ частично открыто 2 мая, но SQ отменяет Дубай до авг. — FIR Бахрейна до 7 авг.':'UAE 5月2日部分重开，但新航暂停迪拜至8月 — 巴林FIR限制至8月7日', color: 'bg-orange-500', iconColor: 'text-orange-600', bgColor: 'bg-orange-100' },
+      { rank: 3, region: 'Europe', areas: 'London, Frankfurt, Paris',
+        impact: l==='th'?'High (สูง — ต้นทุนพุ่ง)':l==='en'?'High (Cost Surge)':l==='ru'?'Высокий (Рост затрат)':'高（成本飙升）',
+        desc: l==='th'?'วิกฤตเงินเฟ้อจากค่าขนส่ง/พลังงานพุ่ง — ค่าตั๋ว Summer 2026 แพงสุดในรอบ 10 ปี — ทุนไหลออก':l==='en'?'Inflation from shipping/energy costs — Summer 2026 tickets costliest in 10 years — capital flight':l==='ru'?'Инфляция из-за логистики/энергетики — билеты лета 2026 самые дорогие за 10 лет — отток капитала':'因航运/能源成本通胀 — 2026年夏季机票创10年最贵 — 资本外逃', color: 'bg-amber-500', iconColor: 'text-amber-600', bgColor: 'bg-amber-100' },
+      { rank: 4, region: 'Hong Kong', areas: 'HKG',
+        impact: l==='th'?'Moderate (ปานกลาง)':l==='en'?'Moderate':l==='ru'?'Умеренный':'中度',
+        desc: l==='th'?'ทุนใหม่ไม่ไหลเข้าเพราะกังวลสงคราม เสียเปรียบสิงคโปร์ — Family Offices ย้ายไป SGP':l==='en'?'New capital stalls due to war concerns, loses to Singapore — Family Offices migrate to SGP':l==='ru'?'Новый капитал не поступает — семейные офисы мигрируют в Сингапур':'因战争担忧新资本停滞，输给新加坡 — 家族办公室迁往新加坡', color: 'bg-yellow-500', iconColor: 'text-yellow-600', bgColor: 'bg-yellow-100' },
+      { rank: 5, region: 'Taiwan & South Korea', areas: 'TPE, ICN',
+        impact: l==='th'?'Risk Alert (เฝ้าระวัง)':l==='en'?'Risk Alert':l==='ru'?'Риск':'风险警报',
+        desc: l==='th'?'กังวลเป็นเป้าหมายถัดไป — บริษัทย้ายฐานผลิตล่วงหน้าไปอาเซียนเป็น Contingency Plan':l==='en'?'Concerns as Next Flashpoints — companies pre-emptively relocate to ASEAN as contingency':l==='ru'?'Опасения стать следующей горячей точкой — превентивный перенос производства в АСЕАН':'担忧成为下一个冲突点 — 企业提前将生产转移至东盟作为应急预案', color: 'bg-rose-400', iconColor: 'text-rose-600', bgColor: 'bg-rose-100' }
+    ];
+
+    const getComparisonData = (l) => ({
+      thailand: {
+        name: '🇹🇭 Thailand (EEC, BKK, Phuket)',
+        role: 'A Balanced & Neutral Safe Haven',
+        pros: [
+          l==='th'?'EEC ลงทุนทะลุ 660,000 ล้านบาท (Q1/2026) — FDI applications เพิ่มเกือบ 2x จาก China+1':l==='en'?'EEC investment exceeds 660B THB (Q1/2026) — FDI applications nearly doubled via China+1':l==='ru'?'ЕЭС >660 млрд бат (Q1/2026) — заявки на ПИИ почти удвоились':'EEC投资超6600亿泰铢（2026年Q1）— 中国+1战略带来FDI申请近翻倍',
+          l==='th'?'ความเป็นกลางทางภูมิรัฐศาสตร์ 100% + นโยบาย LTR Visa (10 ปี) และ DTV ดึงดูด Global Talent':l==='en'?'100% geopolitical neutrality + LTR Visa (10-year) & DTV policies attract Global Talent ($80k+ income)':l==='ru'?'100% нейтралитет + Виза LTR (10 лет) и DTV привлекают глобальные таланты':'100%地缘政治中立 + LTR签证（10年）和DTV政策吸引全球人才（年收入$8万以上）',
+          l==='th'?'การกระจายตัวที่ดี: กทม. (MICE), ภูเก็ต (Luxury Wellness), EEC (อุตสาหกรรม/Data Center)':l==='en'?'Excellent distribution: BKK (MICE), Phuket (Luxury Wellness), EEC (Industry/Data Center, U-Tapao NTP Apr 2026)':l==='ru'?'Хорошее распределение: Бангкок (MICE), Пхукет (велнес), ЕЭС (пром-сть/дата-центры)':'良好分布：曼谷（MICE），普吉岛（豪华健康），EEC（工业/数据中心，U-Tapao NTP 2026年4月）'
+        ],
+        cons: [
+          l==='th'?'ความท้าทายในการสร้าง High-speed train ให้ทันดีมานด์ที่เพิ่มขึ้นจาก FDI':l==='en'?'Challenge accelerating High-speed train construction to meet surging FDI demand':l==='ru'?'Сложность ускорения строительства ВСМ для удовлетворения растущего спроса':'加速高铁建设以满足FDI激增需求的挑战',
+          l==='th'?'ต้องการบุคลากรทักษะสูง EEC (Skill Gap) — การเติบโตช้าลงเหลือ 1.6% ในปี 2026 ก่อนฟื้นตัว':l==='en'?'High-skill talent gap in EEC — GDP growth slows to 1.6% in 2026 before recovering to ~2.3% in 2027':l==='ru'?'Нехватка кадров в ЕЭС — ВВП замедляется до 1,6% в 2026 г. перед восстановлением':'EEC高技能人才缺口 — 2026年GDP增速放缓至1.6%，2027年前恢复至约2.3%'
+        ],
+        score: 92
+      },
+      singapore: {
+        name: '🇸🇬 Singapore',
+        role: 'The Premium Financial Hub',
+        pros: [
+          l==='th'?'ศูนย์กลางการเงินและความโปร่งใสทางกฎหมายสูงสุด — Kearney FDI Top 20 (2026)':l==='en'?'Global financial center with max legal transparency — re-entered Kearney FDI Top 20 in 2026':l==='ru'?'Финансовый центр с макс. прозрачностью — вернулся в топ-20 Kearney FDI 2026':'具有最高法律透明度的全球金融中心 — 重返2026年科尔尼FDI前20名',
+          l==='th'?'ผู้นำ AI Governance ระดับโลก ดึงดูด Family Offices จาก ME และเอเชียตะวันออก':l==='en'?'AI Governance global leader, attracting Family Offices fleeing ME and East Asia':l==='ru'?'Лидер AI Governance, привлекает семейные офисы из ME и Восточной Азии':'AI治理全球领导者，吸引逃离中东和东亚的家族办公室'
+        ],
+        cons: [
+          l==='th'?'ข้อจำกัดพื้นที่ส่งผลให้ค่าครองชีพ/อสังหาฯ สูงลิ่ว — ไม่สามารถรองรับ Manufacturing ขนาดใหญ่':l==='en'?'Land limits drive extreme living & property costs — cannot accommodate large-scale Manufacturing':l==='ru'?'Ограничения по площади — экстремальные цены и невозможность крупного производства':'土地限制导致极高生活和房产成本 — 无法容纳大规模制造业',
+          l==='th'?'เปราะบางเรื่องอาหาร/พลังงานหากโดนปิดล้อมช่องแคบมะละกา':l==='en'?'Vulnerable in food/energy if Malacca Strait is disrupted (heightened risk in 2026)':l==='ru'?'Уязвимость по продовольствию/энергии при нарушении пролива Малакка':'如果马六甲海峡受阻，粮食/能源脆弱（2026年风险上升）'
+        ],
+        score: 88
+      }
+    });
+
+    const getFdiScoringData = (l) => [
+      { name: '🇹🇭 EEC (Thailand)', overall: 88, neutrality: 92, infra: 91, labor: 86, market: 88, incentives: 94, supply: 85, domestic: 78,
+        highlight: l==='th'?'ชนะขาดเพราะ Focused Dev + Incentives + Neutrality + EEC 660B':l==='en'?'Clear winner: Focused Dev + Incentives + Neutrality + EEC 660B THB milestone':l==='ru'?'Лидер: Фокус + Стимулы + Нейтралитет + ЕЭС 660 млрд':'明显赢家：专注开发+激励+中立+EEC 6600亿泰铢里程碑', color: 'bg-emerald-500' },
+      { name: '🌏 ASEAN Overall', overall: 86, neutrality: 93, infra: 84, labor: 89, market: 91, incentives: 82, supply: 87, domestic: 76,
+        highlight: l==='th'?'Safe Haven ที่สมดุลที่สุดในโลก Multipolar — ASEAN+3 คาดเติบโต 4.1% (2025), 3.8% (2026)':l==='en'?'Most balanced Safe Haven in Multipolar world — ASEAN+3 projected 4.1% (2025), 3.8% (2026)':l==='ru'?'Самая сбалансированная гавань — рост АСЕАН+3 4,1% (2025), 3,8% (2026)':'多极世界最平衡避风港 — 东盟+3预计增长4.1%(2025)，3.8%(2026)', color: 'bg-blue-500' },
+      { name: '🇮🇳 India', overall: 83, neutrality: 74, infra: 76, labor: 92, market: 79, incentives: 79, supply: 82, domestic: 95,
+        highlight: l==='th'?'ไล่ตามใน Scale + Market — แต่โดนกำแพงภาษีสหรัฐฯ กระทบ':l==='en'?'Fierce competitor in Scale + Market — US tariff impacts dampen growth':l==='ru'?'Догоняет за счёт масштаба — пострадал от тарифов США':'在规模和市场上赶超 — 但受美国关税影响', color: 'bg-orange-500' },
+      { name: '🇲🇽 Mexico', overall: 79, neutrality: 69, infra: 71, labor: 77, market: 88, incentives: 73, supply: 79, domestic: 74,
+        highlight: l==='th'?'ชนะใน US Nearshoring แต่มีความไม่แน่นอน USMCA':l==='en'?'Wins US Nearshoring but faces USMCA uncertainty under Trump 2.0':l==='ru'?'Побеждает в ниршоринге США, но USMCA нестабильно':'赢得美国近岸外包，但面临特朗普2.0时代的USMCA不确定性', color: 'bg-teal-500' }
+    ];
+
+    const getPillars = (l) => [
+      {
+        icon: <Cpu className="w-8 h-8 text-indigo-500" />,
+        title: 'EEC & Pattaya',
+        subtitle: 'Aviation & Smart Digital Hub',
+        desc: l==='th'? <span>พื้นที่ยุทธศาสตร์ <a href="https://thbho.github.io/UTPCiti02.html" target="_blank" className="text-indigo-600 underline">"เมืองการบินอู่ตะเภา"</a> — U-Tapao NTP เริ่ม เม.ย. 2026, ลงทุนทะลุ 660,000 ล้านบาท, BYD และ CATL นำ EV Cluster</span> :
+              l==='en'? <span>Strategic <a href="https://thbho.github.io/UTPCiti02.html" target="_blank" className="text-indigo-600 underline">"Eastern Aerotropolis"</a> — U-Tapao NTP started Apr 2026, investment >660B THB, BYD & CATL lead EV Cluster.</span> :
+              l==='ru'? <span>Стратегический <a href="https://thbho.github.io/UTPCiti02.html" target="_blank" className="text-indigo-600 underline">"Аэротрополис"</a> — U-Tapao NTP с апр. 2026, >660 млрд бат, BYD и CATL в EV-кластере.</span> :
+              <span>战略性的 <a href="https://thbho.github.io/UTPCiti02.html" target="_blank" className="text-indigo-600 underline">"东部航空城"</a> — U-Tapao NTP 2026年4月启动，投资超6600亿泰铢，比亚迪和宁德时代领衔EV集群。</span>
+      },
+      {
+        icon: <Landmark className="w-8 h-8 text-blue-500" />,
+        title: 'Bangkok (BKK)',
+        subtitle: 'The Urban Transit Hub',
+        desc: l==='th'?'ศูนย์กลางการบิน MICE และความบันเทิง รองรับงานจาก ME และยุโรปที่ย้ายมา — Kearney FDI Top 20 (2026)':l==='en'?'Aviation, MICE, and entertainment hub absorbing relocated events from ME and Europe — Top MICE destination 2026.':l==='ru'?'Авиационный и MICE центр, принимающий перенесённые из ME/Европы события — ТОП MICE 2026.':'吸收中东和欧洲转移赛事的航空、MICE和娱乐中心 — 2026年顶级MICE目的地。'
+      },
+      {
+        icon: <Palmtree className="w-8 h-8 text-emerald-500" />,
+        title: 'Phuket & South',
+        subtitle: 'Luxury Wellness Haven',
+        desc: l==='th'?'จุดหมายของมหาเศรษฐีจาก ME ที่เน้น Lifestyle และการแพทย์ (Longevity) — อสังหาฯ Luxury บูมต่อเนื่อง':l==='en'?'Billionaire destination from ME wealth flight, focusing on Lifestyle & Longevity wellness — Luxury real estate boom ongoing.':l==='ru'?'Направление для миллиардеров из ME (Лайфстайл и Долголетие) — бум элитной недвижимости продолжается.':'来自中东财富外逃的亿万富翁目的地，专注生活方式和长寿健康 — 豪华房地产持续繁荣。'
+      },
+      {
+        icon: <FileText className="w-8 h-8 text-orange-500" />,
+        title: 'Policy Enablers',
+        subtitle: 'LTR (10yr) & DTV Visas',
+        desc: l==='th'?'LTR Visa 10 ปี (ต้องรายได้ $80,000+/ปี) และ DTV ดึงดูด Global Talent อย่างยั่งยืน — Tax exemption for foreign income':l==='en'?'LTR Visa 10-year ($80k+ income req.) and DTV attract Global Talent sustainably — Full foreign income tax exemption.':l==='ru'?'LTR-виза на 10 лет (доход $80k+) и DTV устойчиво привлекают таланты — освобождение от налога с иностранного дохода.':'LTR签证10年（年收入$8万以上要求）和DTV可持续吸引全球人才 — 外国收入全额免税。'
+      }
+    ];
+
+    const getEnablers = (l) => [
+      { icon: <Zap className="text-yellow-500" />, title: 'Green Energy (EEC)', desc: l==='th'?'แผนพลังงานสะอาดรองรับ Data Centers AI — U-Tapao NTP เริ่ม เม.ย. 2026':l==='en'?'Clean energy plan supports AI Data Centers — U-Tapao NTP started Apr 2026':l==='ru'?'Зеленая энергия для AI-дата-центров — U-Tapao NTP с апр. 2026':'清洁能源支持AI数据中心 — U-Tapao NTP 2026年4月启动' },
+      { icon: <Stethoscope className="text-pink-500" />, title: 'Wellness Hub', desc: l==='th'?'การแพทย์ระดับโลก Longevity Medicine สำหรับผู้พักอาศัยและนักลงทุน':l==='en'?'World-class Longevity Medicine for residents and investors (Longevity Economy)':l==='ru'?'Медицина долголетия мирового уровня — экономика долголетия':'世界一流的长寿医学，服务居民和投资者（长寿经济）' },
+      { icon: <GraduationCap className="text-blue-500" />, title: 'Global Education', desc: l==='th'?'โรงเรียนนานาชาติรองรับครอบครัว Talents และบุตรหลานนักลงทุน':l==='en'?'International schools for Talent families and investor children — growing demand in EEC':l==='ru'?'Международные школы для семей талантов — растущий спрос в ЕЭС':'国际学校满足人才家庭和投资者子女需求 — EEC需求持续增长' },
+      { icon: <ShieldCheck className="text-green-500" />, title: 'Food Security', desc: l==='th'?'"Kitchen of the World" — ความมั่นคงทางอาหารสูง ไม่เหมือนสิงคโปร์ที่พึ่งพาการนำเข้า':l==='en'?'"Kitchen of the World" — High food security unlike Singapore (import-dependent crisis risk)':l==='ru'?'"Кухня мира" — Высокая продбезопасность в отличие от Сингапура':'世界厨房 — 与依赖进口的新加坡不同，粮食安全高' }
+    ];
+
+    // ─── HELPER ──────────────────────────────────────────────────────────────────
+    const getScoreColor = (score) => {
+      if (score >= 90) return 'text-emerald-600 font-bold bg-emerald-50';
+      if (score >= 80) return 'text-blue-600 font-semibold';
+      if (score >= 70) return 'text-amber-600 font-medium';
+      return 'text-rose-600';
+    };
+
+    // ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+    // Breaking News Ticker
+    const BreakingNewsTicker = ({ lang }) => (
+      <div className="bg-red-600 text-white py-2 px-4 flex items-center gap-3 overflow-hidden rounded-xl mb-4 shadow-md">
+        <span className="shrink-0 bg-white text-red-600 text-xs font-black px-2 py-0.5 rounded animate-pulse-slow">
+          {t[lang].breakingLabel}
+        </span>
+        <div className="overflow-hidden flex-1">
+          <p className="text-sm font-medium whitespace-nowrap breaking-ticker">
+            {t[lang].breakingText}
+          </p>
+        </div>
+      </div>
+    );
+
+    // Live Status Cards
+    const LiveStatusCards = ({ lang }) => (
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        <div className="bg-slate-800/80 border border-red-500/40 rounded-xl p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Flame className="w-4 h-4 text-red-400" />
+            <span className="text-red-400 text-xs font-bold uppercase tracking-wider">{t[lang].s1Title}</span>
+          </div>
+          <p className="text-slate-300 text-xs leading-relaxed">{t[lang].s1Desc}</p>
+        </div>
+        <div className="bg-slate-800/80 border border-amber-500/40 rounded-xl p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Ship className="w-4 h-4 text-amber-400" />
+            <span className="text-amber-400 text-xs font-bold uppercase tracking-wider">{t[lang].s2Title}</span>
+          </div>
+          <p className="text-slate-300 text-xs leading-relaxed">{t[lang].s2Desc}</p>
+        </div>
+        <div className="bg-slate-800/80 border border-blue-500/40 rounded-xl p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <PlaneTakeoff className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">{t[lang].s3Title}</span>
+          </div>
+          <p className="text-slate-300 text-xs leading-relaxed">{t[lang].s3Desc}</p>
+        </div>
+      </div>
+    );
+
+    const EmbeddedSlideVisual = ({ lang }) => (
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+        <h3 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+          <ImageIcon className="w-6 h-6 mr-3 text-indigo-600" />
+          {t[lang].visualTitle}
+        </h3>
+        <p className="text-gray-600 mb-6 text-sm leading-relaxed">{t[lang].visualDesc}</p>
+        <div className="w-full bg-slate-100 rounded-xl overflow-hidden relative border border-slate-200 shadow-inner" style={{ paddingTop: '56.25%' }}>
+          <iframe
+            src="https://drive.google.com/file/d/1YHp8hMx1-E7wkPt6b1YeSqcpTS9MASHj/preview"
+            className="absolute top-0 left-0 w-full h-full border-0"
+            allow="autoplay; fullscreen"
+            title="The ASEAN Shift Slide"
+          ></iframe>
+        </div>
+        <div className="mt-4 flex justify-end">
+          <a href="https://drive.google.com/file/d/1YHp8hMx1-E7wkPt6b1YeSqcpTS9MASHj/view?usp=sharing"
+            target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
+            {t[lang].visualLink} <ArrowRight className="w-4 h-4 ml-1.5" />
+          </a>
+        </div>
+      </div>
+    );
+
+    const OsintDashboardSection = ({ lang }) => (
+      <div className="bg-slate-900 rounded-3xl shadow-2xl border border-slate-700 overflow-hidden mt-8 text-white relative">
+        <div className="grid lg:grid-cols-5 gap-8 items-center p-8 md:p-12 relative z-10">
+          <div className="lg:col-span-3 space-y-6">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-bold border border-red-500/30">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse mr-2"></span>
+              LIVE OSINT DATA — Updated May 2026
+            </div>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white flex items-center">
+              <Radio className="w-8 h-8 mr-3 text-indigo-400" />
+              {t[lang].osintTitle}
+            </h3>
+            <p className="text-slate-300 text-lg leading-relaxed">{t[lang].osintDesc}</p>
+            <a href="https://threeandhour.github.io/GymMateX/MEWar.html"
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-colors shadow-[0_0_15px_rgba(79,70,229,0.5)] group">
+              <Activity className="w-5 h-5 mr-2" />
+              {t[lang].osintBtn}
+              <ExternalLink className="w-4 h-4 ml-2 opacity-70 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            <div className="bg-slate-800/80 border border-red-500/30 p-4 rounded-xl flex items-center justify-between">
+              <span className="text-slate-400 text-sm font-semibold">IRAN WAR STATUS</span>
+              <span className="text-red-400 font-black text-sm flex items-center">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse mr-2"></span>
+                CEASEFIRE FRAGILE
+              </span>
+            </div>
+            <div className="bg-slate-800/80 border border-amber-500/30 p-4 rounded-xl flex items-center justify-between">
+              <span className="text-slate-400 text-sm font-semibold">HORMUZ STATUS</span>
+              <span className="text-amber-400 font-black text-sm">PARTIAL BLOCKADE</span>
+            </div>
+            <div className="bg-slate-800/80 border border-blue-500/30 p-4 rounded-xl flex items-center justify-between">
+              <span className="text-slate-400 text-sm font-semibold">UAE AIRSPACE</span>
+              <span className="text-blue-400 text-sm font-bold flex items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-1.5"></span>PARTIAL OPEN
+              </span>
+            </div>
+            <div className="bg-slate-800/80 border border-slate-600 p-4 rounded-xl flex items-center justify-between">
+              <span className="text-slate-400 text-sm font-semibold">DEFCON LEVEL</span>
+              <span className="text-yellow-500 font-black text-2xl">3</span>
+            </div>
+          </div>
+        </div>
+        <LiveStatusCards lang={lang} />
+        <div className="px-8 md:px-12 pb-8"></div>
+      </div>
+    );
+
+    const TopBeneficiariesRanking = ({ lang }) => {
+      const data = getRankingData(lang);
+      return (
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 p-6 md:p-8 rounded-2xl shadow-xl text-white relative overflow-hidden h-full group">
+          <div className="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="" className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+          </div>
+          <div className="absolute -top-24 -right-24 opacity-10 z-0"><Trophy className="w-96 h-96" /></div>
+          <div className="relative z-10">
+            <h3 className="text-2xl font-bold mb-2 flex items-center">
+              <Trophy className="w-7 h-7 mr-3 text-yellow-400" />
+              {t[lang].pullTitle}
+            </h3>
+            <div className="mb-6">
+              <span className="inline-block bg-emerald-900/80 text-emerald-400 text-xs font-bold px-2 py-1 rounded mb-2 border border-emerald-800/50">{t[lang].pullBadge}</span>
+              <p className="text-slate-300 text-sm">{t[lang].pullDesc}</p>
+            </div>
+            <div className="space-y-4">
+              {data.map((item) => (
+                <div key={item.rank} className="bg-slate-800/70 backdrop-blur-md rounded-xl p-4 border border-slate-600/50">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4">
+                    <div className="flex items-center gap-4 md:w-1/4">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg ${item.rank===1?'bg-yellow-400 text-yellow-900 shadow-lg shadow-yellow-400/20':'bg-slate-700 text-slate-300'}`}>
+                        #{item.rank}
+                      </div>
+                      <h4 className="font-bold text-lg">{item.country}</h4>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-slate-300">{item.role}</span>
+                        <span className="font-bold">{item.score}%</span>
+                      </div>
+                      <div className="w-full bg-slate-900/80 rounded-full h-2">
+                        <div className={`${item.color} h-2 rounded-full`} style={{ width: `${item.score}%` }}></div>
+                      </div>
+                      <p className="text-xs text-slate-400 mt-2 line-clamp-2">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const TopNegativelyImpacted = ({ lang }) => {
+      const data = getNegativeRankingData(lang);
+      return (
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 border-red-500 h-full">
+          <h3 className="text-2xl font-bold mb-2 flex items-center text-gray-800">
+            <TrendingDown className="w-7 h-7 mr-3 text-red-500" />
+            {t[lang].pushTitle}
+          </h3>
+          <div className="mb-6">
+            <span className="inline-block bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded mb-2 border border-red-200">{t[lang].pushBadge}</span>
+            <p className="text-gray-500 text-sm">{t[lang].pushDesc}</p>
+          </div>
+          <div className="space-y-4">
+            {data.map((item) => (
+              <div key={item.rank} className="rounded-xl p-4 border border-gray-100 shadow-sm bg-white">
+                <div className="flex items-center gap-4">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${item.bgColor} ${item.iconColor}`}>#{item.rank}</div>
+                  <div>
+                    <h4 className="font-bold text-sm text-gray-800">{item.region}</h4>
+                    <p className="text-xs text-gray-500 font-semibold">{item.impact}</p>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-600 mt-2 italic">"{item.desc}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const FutureTimeline = ({ lang }) => {
+      const [activePhase, setActivePhase] = useState('short');
+      const data = getFutureTrends(lang);
+      const phaseImages = {
+        short: "https://i.postimg.cc/MT1RGH9t/ทำให_เห_นช_ดท_ว_า_พ_นท_ตะว_นออกกลาง_ม_202603201331.jpg",
+        medium: "https://i.postimg.cc/MT1RGH9Y/Geogrok_image_87d60e7c_4e46_4fec_9574_19992a695af7.jpg",
+        long: "https://i.postimg.cc/RhfP4vHj/GEO-Politic-e799-4996-ae08-ac037fd13d53.jpg"
+      };
+      return (
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mt-8">
+          <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+            <Clock className="w-6 h-6 mr-3 text-blue-600" />
+            {t[lang].timelineTitle}
+          </h3>
+          <div className="grid lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/2 flex flex-col gap-3">
+                {data.map((trend) => (
+                  <button key={trend.id} onClick={() => setActivePhase(trend.id)}
+                    className={`p-4 rounded-xl text-left transition-all border-2 ${activePhase===trend.id?'border-indigo-400 bg-indigo-50 shadow-sm':'border-transparent bg-gray-50 hover:bg-gray-100'}`}>
+                    <div className="flex items-center mb-1">
+                      {trend.icon}
+                      <span className="font-bold ml-2 text-gray-800">{trend.title}</span>
+                    </div>
+                    <p className="text-xs text-gray-500 ml-8">{trend.subtitle}</p>
+                  </button>
+                ))}
+              </div>
+              <div className="md:w-1/2">
+                {data.map((trend) => activePhase===trend.id && (
+                  <div key={trend.id} className="animate-fade-in bg-gray-50 p-6 rounded-xl h-full border border-gray-100 shadow-inner">
+                    <div className={`inline-block px-3 py-1 rounded-full text-white text-sm font-bold mb-4 shadow-sm ${trend.color}`}>{trend.title}</div>
+                    <h4 className="text-xl font-bold text-gray-800 mb-4">{trend.subtitle}</h4>
+                    <ul className="space-y-4">
+                      {trend.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-start bg-white p-3 rounded-lg shadow-sm border border-gray-50">
+                          <ArrowRight className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-sm leading-relaxed">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden lg:block rounded-xl overflow-hidden shadow-inner border border-gray-100 bg-slate-900">
+              <img key={activePhase} src={phaseImages[activePhase]} alt="" className="w-full h-full object-cover animate-fade-in" />
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const FDIScoringDashboard = ({ lang }) => {
+      const data = getFdiScoringData(lang);
+      return (
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 mt-8 overflow-hidden">
+          <div className="w-full h-40 md:h-56 relative">
+            <img src="https://i.postimg.cc/y8KRhzGm/EEC_2026_Inflection_Point.jpg" alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-indigo-900/70 mix-blend-multiply"></div>
+            <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white flex items-center mb-3">
+                <BarChart3 className="w-8 h-8 mr-3 text-yellow-400" />
+                {t[lang].fdiTitle}
+              </h3>
+              <p className="text-indigo-100 text-sm md:text-base leading-relaxed max-w-2xl">{t[lang].fdiDesc}</p>
+            </div>
+          </div>
+          <div className="p-6 md:p-8">
+            <div className="bg-slate-50 p-6 rounded-xl mb-8 border border-slate-100 shadow-inner">
+              <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+                <Trophy className="w-5 h-5 mr-2 text-yellow-500" />{t[lang].fdiOverall}
+              </h4>
+              <div className="space-y-4">
+                {data.map((item, idx) => (
+                  <div key={idx} className="flex flex-col md:flex-row md:items-center gap-2">
+                    <div className="md:w-1/4 font-semibold text-gray-700 text-sm">{item.name}</div>
+                    <div className="flex-1 flex items-center gap-3">
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className={`${item.color} h-3 rounded-full`} style={{ width: `${item.overall}%` }}></div>
+                      </div>
+                      <span className="font-bold text-gray-800 w-10 text-right">{item.overall}%</span>
+                    </div>
+                    <div className="md:w-1/3 text-xs text-gray-500 italic md:pl-4 hidden md:block line-clamp-1">{item.highlight}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mb-8 overflow-x-auto">
+              <h4 className="font-bold text-slate-800 mb-4 flex items-center">
+                <ListChecks className="w-5 h-5 mr-2 text-indigo-500" />{t[lang].fdiTableTitle}
+              </h4>
+              <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden text-sm">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-bold text-gray-600">{t[lang].fdiTh1}</th>
+                    {[t[lang].fdiTh2,t[lang].fdiTh3,t[lang].fdiTh4,t[lang].fdiTh5,t[lang].fdiTh6,t[lang].fdiTh7,t[lang].fdiTh8].map((h,i)=>(
+                      <th key={i} className="px-3 py-3 text-center font-semibold text-gray-500 text-xs">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-100">
+                  {data.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-4 py-3 font-semibold text-gray-800 whitespace-nowrap">{row.name}</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.neutrality)}`}>{row.neutrality}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.infra)}`}>{row.infra}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.labor)}`}>{row.labor}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.market)}`}>{row.market}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.incentives)}`}>{row.incentives}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.supply)}`}>{row.supply}%</td>
+                      <td className={`px-3 py-3 text-center ${getScoreColor(row.domestic)}`}>{row.domestic}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-indigo-50/50 p-5 rounded-xl border border-indigo-100">
+                <h5 className="font-bold text-indigo-900 mb-3 flex items-center">
+                  <Info className="w-4 h-4 mr-2" />{t[lang].infoTitle}
+                </h5>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li>{t[lang].info1}</li>
+                  <li>{t[lang].info2}</li>
+                </ul>
+              </div>
+              <div className="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                <h5 className="font-bold text-orange-900 mb-3 flex items-center">
+                  <Target className="w-4 h-4 mr-2" />{t[lang].nuanceTitle}
+                </h5>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li>{t[lang].nuance1}</li>
+                  <li>{t[lang].nuance2}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const RegionalShowdown = ({ lang }) => {
+      const [activeTab, setActiveTab] = useState('thailand');
+      const data = getComparisonData(lang);
+      return (
+        <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mt-8">
+          <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+            <Map className="w-6 h-6 mr-3 text-indigo-600" />{t[lang].showdownTitle}
+          </h3>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {Object.keys(data).map((key) => (
+              <button key={key} onClick={() => setActiveTab(key)}
+                className={`px-4 py-2 rounded-full font-medium transition-all ${activeTab===key?'bg-indigo-600 text-white shadow-md':'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+                {data[key].name}
+              </button>
+            ))}
+          </div>
+          <div className="bg-gray-50 p-6 rounded-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h4 className="text-xl font-bold text-gray-800">{data[activeTab].role}</h4>
+              <div className="flex items-center bg-indigo-100 px-3 py-1 rounded-full">
+                <TrendingUp className="w-4 h-4 text-indigo-600 mr-1" />
+                <span className="font-bold text-indigo-700">{t[lang].compScore}: {data[activeTab].score}/100</span>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 mt-4">
+              <div>
+                <h5 className="font-bold text-green-600 mb-2 flex items-center">
+                  <ShieldCheck className="w-4 h-4 mr-1" />{t[lang].pros}
+                </h5>
+                <ul className="space-y-2">
+                  {data[activeTab].pros.map((pro, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-700 leading-relaxed">
+                      <span className="text-green-500 mr-2">•</span>{pro}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-bold text-red-500 mb-2 flex items-center">
+                  <AlertTriangle className="w-4 h-4 mr-1" />{t[lang].cons}
+                </h5>
+                <ul className="space-y-2">
+                  {data[activeTab].cons.map((con, idx) => (
+                    <li key={idx} className="flex items-start text-sm text-gray-700 leading-relaxed">
+                      <span className="text-red-400 mr-2">•</span>{con}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const ThailandPillars = ({ lang }) => {
+      const data = getPillars(lang);
+      return (
+        <div className="mt-8">
+          <div className="relative rounded-2xl overflow-hidden mb-6 h-48 md:h-64 shadow-md">
+            <img src="https://i.postimg.cc/260vfzdT/highlightssss.jpg" alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-transparent flex flex-col justify-center p-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-white flex items-center mb-2">
+                <MapPin className="w-6 h-6 mr-3 text-red-400" />{t[lang].pillarsTitle}
+              </h3>
+              <p className="text-indigo-100 text-sm md:text-base max-w-lg">{t[lang].pillarsDesc}</p>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {data.map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="mb-4 bg-gray-50 w-16 h-16 rounded-full flex items-center justify-center">{item.icon}</div>
+                <h4 className="font-bold text-lg text-gray-800 mb-1">{item.title}</h4>
+                <p className="text-xs font-semibold text-indigo-500 mb-3">{item.subtitle}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const StrategicEnablers = ({ lang }) => {
+      const data = getEnablers(lang);
+      return (
+        <div className="bg-indigo-900 rounded-2xl p-6 md:p-8 text-white mt-8 shadow-xl">
+          <h3 className="text-xl font-bold mb-6 flex items-center">
+            <Award className="w-6 h-6 mr-3 text-indigo-300" />{t[lang].enablersTitle}
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.map((item, idx) => (
+              <div key={idx} className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shadow-inner">{item.icon}</div>
+                <div>
+                  <h4 className="font-bold text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-indigo-200">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const RelatedReports = ({ lang }) => {
+      const links = [
+        { url: 'https://thbho.github.io/EECWarImpact.html', title: 'War Impact & EEC', icon: <AlertTriangle className="w-5 h-5 text-red-500" /> },
+        { url: 'https://thbho.github.io/PivotToEEC.html', title: 'Pivot to EEC : EVENTS', icon: <Music className="w-5 h-5 text-pink-500" /> },
+        { url: 'https://thbho.github.io/EECSafeHaven.html', title: 'EEC Safe Haven', icon: <ShieldCheck className="w-5 h-5 text-green-500" /> },
+        { url: 'https://thbho.github.io/UTPCiti02.html', title: 'Airport City Phase 1', icon: <PlaneTakeoff className="w-5 h-5 text-blue-500" /> },
+        { url: 'https://thbho.github.io/UTPCity.html', title: 'EEC Updated May 2026', icon: <TrendingUp className="w-5 h-5 text-indigo-500" /> }
+      ];
+      return (
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 mt-8">
+          <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+            <FileText className="w-6 h-6 mr-3 text-indigo-600" />{t[lang].reportsTitle}
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {links.map((link, idx) => (
+              <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer"
+                className="flex items-start p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-indigo-50 hover:border-indigo-200 transition-all group shadow-sm">
+                <div className="bg-white p-2 rounded-lg shadow-sm mr-4 group-hover:scale-110 transition-transform">{link.icon}</div>
+                <div className="flex-1 flex items-center h-full">
+                  <h4 className="font-bold text-gray-800 text-sm flex items-center">
+                    {link.title}
+                    <ExternalLink className="w-3 h-3 ml-1.5 text-gray-400 group-hover:text-indigo-600" />
+                  </h4>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ─── MAIN APP ─────────────────────────────────────────────────────────────────
+    function App() {
+      const [lang, setLang] = useState('th');
+      const languages = [
+        { code: 'th', label: 'TH' },
+        { code: 'en', label: 'EN' },
+        { code: 'ru', label: 'RU' },
+        { code: 'zh', label: 'ZH' }
+      ];
+      return (
+        <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-sans">
+          <div className="max-w-6xl mx-auto space-y-6 relative">
+
+            {/* Language Switcher */}
+            <div className="fixed top-4 right-4 md:right-8 z-50 flex items-center bg-slate-900/80 backdrop-blur-md p-1 rounded-full border border-slate-700 shadow-lg">
+              <Globe className="w-4 h-4 text-slate-300 ml-2 mr-1" />
+              {languages.map(l => (
+                <button key={l.code} onClick={() => setLang(l.code)}
+                  className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${lang===l.code?'bg-indigo-500 text-white shadow-md':'text-slate-300 hover:text-white hover:bg-white/10'}`}>
+                  {l.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Breaking News Ticker */}
+            <BreakingNewsTicker lang={lang} />
+
+            {/* 1. Header */}
+            <header className="bg-gradient-to-br from-slate-900 to-indigo-900 rounded-3xl text-white shadow-xl overflow-hidden relative">
+              <div className="grid md:grid-cols-2 items-center h-full">
+                <div className="p-8 md:p-12 relative z-10">
+                  <div className="inline-block px-4 py-1.5 bg-indigo-500/30 backdrop-blur-md border border-indigo-400/30 rounded-full text-sm font-semibold tracking-wider uppercase mb-6 text-indigo-200">
+                    {t[lang].updateDate}
+                  </div>
+                  <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                    {t[lang].heroTitle1}<br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-blue-400">
+                      {t[lang].heroTitle2}
+                    </span>
+                  </h1>
+                  <p className="text-lg md:text-xl text-indigo-100 leading-relaxed mb-6">
+                    {t[lang].heroDesc}
+                  </p>
+                  {/* Key Stats Row */}
+                  <div className="grid grid-cols-3 gap-3 mt-4">
+                    <div className="bg-white/10 rounded-xl p-3 text-center">
+                      <p className="text-2xl font-black text-yellow-300">660B</p>
+                      <p className="text-xs text-indigo-200">EEC THB</p>
+                    </div>
+                    <div className="bg-white/10 rounded-xl p-3 text-center">
+                      <p className="text-2xl font-black text-emerald-300">4.1%</p>
+                      <p className="text-xs text-indigo-200">ASEAN+3 Growth</p>
+                    </div>
+                    <div className="bg-white/10 rounded-xl p-3 text-center">
+                      <p className="text-2xl font-black text-red-300">28 Feb</p>
+                      <p className="text-xs text-indigo-200">Iran War Start</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden md:block h-full relative" style={{minHeight:'320px'}}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-transparent to-transparent z-10 pointer-events-none"></div>
+                  <img src="https://i.postimg.cc/hGLr6gJG/d5a32e09-baf3-49e7-a8f6-851d05718f22.jpg" alt="" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </header>
+
+            {/* 1.5 Video Brief */}
+            <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center p-6 md:p-10">
+                <div className="lg:col-span-2 flex justify-center">
+                  <div className="w-full max-w-[280px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl bg-black border-4 border-slate-100">
+                    <iframe
+                      src="https://www.youtube.com/embed/WC_JkeX13Sg?autoplay=1&mute=0&loop=1&playlist=WC_JkeX13Sg&controls=1&rel=0"
+                      className="w-full h-full"
+                      allow="autoplay; encrypted-media; fullscreen"
+                    ></iframe>
+                  </div>
+                </div>
+                <div className="lg:col-span-3 space-y-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-sm font-bold border border-indigo-100">
+                    <Music className="w-4 h-4 mr-2" />Video Brief
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">{t[lang].videoTitle}</h2>
+                  <p className="text-slate-600 text-lg leading-relaxed">{t[lang].videoDesc}</p>
+                  <ul className="space-y-4 mt-6">
+                    {[t[lang].vBullet1, t[lang].vBullet2, t[lang].vBullet3].map((b, i) => (
+                      <li key={i} className="flex items-start">
+                        <div className="bg-indigo-100 p-2 rounded-full mr-4 mt-1 shrink-0">
+                          <ArrowRight className="w-4 h-4 text-indigo-600" />
+                        </div>
+                        <span className="text-slate-700 text-base md:text-lg pt-0.5">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Domino Effect */}
+            <div className="bg-gradient-to-r from-red-950 to-orange-950 p-6 rounded-2xl border border-red-800/50 shadow-lg relative overflow-hidden mt-8">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1612550761236-e813928f7271?auto=format&fit=crop&w=600&q=80" alt="" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-bold text-red-200 mb-4 flex items-center text-lg relative z-10">
+                <Flame className="w-5 h-5 mr-2 text-red-400" />
+                {t[lang].dominoTitle}
+              </h3>
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-red-100 relative z-10">
+                <li className="flex items-start bg-red-900/40 rounded-xl p-3"><span className="bg-white/10 p-1 rounded-full mr-2 text-base flex-shrink-0">🔥</span>{t[lang].d1}</li>
+                <li className="flex items-start bg-red-900/40 rounded-xl p-3"><span className="bg-white/10 p-1 rounded-full mr-2 text-base flex-shrink-0">✈️</span>{t[lang].d2}</li>
+                <li className="flex items-start bg-red-900/40 rounded-xl p-3"><span className="bg-white/10 p-1 rounded-full mr-2 text-base flex-shrink-0">💰</span>{t[lang].d3}</li>
+                <li className="flex items-start bg-emerald-900/40 rounded-xl p-3 border border-emerald-700/30 font-bold text-emerald-200"><span className="bg-white/10 p-1 rounded-full mr-2 text-base flex-shrink-0">🌏</span>{t[lang].d4}</li>
+              </ul>
+            </div>
+
+            <EmbeddedSlideVisual lang={lang} />
+
+            <div className="grid lg:grid-cols-2 gap-8 mt-8 items-stretch">
+              <TopNegativelyImpacted lang={lang} />
+              <TopBeneficiariesRanking lang={lang} />
+            </div>
+
+            <OsintDashboardSection lang={lang} />
+            <FutureTimeline lang={lang} />
+            <FDIScoringDashboard lang={lang} />
+            <RegionalShowdown lang={lang} />
+            <ThailandPillars lang={lang} />
+            <StrategicEnablers lang={lang} />
+            <RelatedReports lang={lang} />
+
+            <footer className="text-center text-gray-500 text-sm mt-12 py-6 border-t border-gray-200">
+              {t[lang].footer}
+            </footer>
+          </div>
+        </div>
+      );
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

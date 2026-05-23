@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEC 2026: The Cyber-Strategic Dashboard</title>
+    
+    <!-- Open Graph Tags for Social Media Sharing (LINE, Facebook) -->
+    <meta property="og:title" content="EEC 2026: U-Tapao Construction Kick-off, High-Speed Rail Deadlock & Green Cloud Hub">
+    <meta property="og:description" content="วิเคราะห์เจาะลึกสถานการณ์จริง EEC พฤษภาคม 2569: เมืองการบินตอกเสาเข็มแล้ว, รัฐส่งสัญญาณไม่แก้สัญญาไฮสปีด, กรีนดาต้าเซ็นเตอร์ดึงดูด Google">
+    <meta property="og:image" content="https://i.postimg.cc/V6KMcY9B/highlight_1_m.jpg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thbho.github.io/UTPCity.html">
+
+    <!-- CSS / JS Frameworks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Fonts: Sarabun (Thai), Roboto (Eng/Rus), Noto Sans SC (Chinese) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Roboto:wght@300;400;500;700&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Sarabun', 'Roboto', 'Noto Sans SC', sans-serif;
+            background-color: #0b0f19; /* Ultra-dark navy theme for modern dashboard */
+            color: #f1f5f9;
+        }
+        
+        .lang-th { font-family: 'Sarabun', sans-serif; }
+        .lang-en, .lang-ru { font-family: 'Roboto', sans-serif; }
+        .lang-zh { font-family: 'Noto Sans SC', sans-serif; }
+
+        .chart-container {
+            position: relative; 
+            width: 100%; 
+            height: 280px; 
+        }
+
+        .nav-item.active {
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+        }
+
+        /* Cyberpunk glassmorphism and shadow depth */
+        .cyber-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cyber-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .glow-green:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+        }
+
+        .glow-amber:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+        }
+
+        .glow-red:hover {
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.4; }
+        }
+        .pulse-indicator {
+            animation: pulse-dot 2s infinite;
+        }
+
+        .gallery-img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.08);
+        }
+
+        /* Lightbox transitions */
+        #lightbox {
+            transition: opacity 0.3s ease;
+        }
+        #lightbox.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        /* Custom Scrollbar for premium feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen lang-th" id="main-body">
+
+    <!-- Navigation / Header -->
+    <nav class="bg-[#0b0f19]/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo & Brand Info -->
+                <div class="flex items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                        </span>
+                        <i class="fa-solid fa-chart-line text-sky-400 text-2xl mr-1"></i>
+                        <span class="font-extrabold text-xl tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400" data-i18n="navTitle">EEC MONITOR 2026</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-2 lg:space-x-3 items-center">
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navHome">หน้าแรก</button>
+                    <button onclick="scrollToSection('updates-section')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navUpdates">ข่าวสารสำคัญ</button>
+                    <button onclick="scrollToSection('projects')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navProjects">เมกะโปรเจกต์</button>
+                    <button onclick="scrollToSection('real-estate')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navRealEstate">อสังหาริมทรัพย์</button>
+                    <button onclick="scrollToSection('presentation')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navPres">เอกสารนำเสนอ</button>
+                    <button onclick="scrollToSection('gallery')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navGallery">แกลเลอรี</button>
+                    <button onclick="scrollToSection('analysis')" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navAnalysis">วิเคราะห์ดัชนี</button>
+                    
+                    <a href="https://copacabanagroup.com" target="_blank" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navCopa">โครงการอสังหาฯ</a>
+                    <a href="https://thbho.github.io/CopaNewsMar26.html" target="_blank" class="nav-item px-2 py-2 text-xs font-medium text-slate-400 hover:text-sky-400 transition" data-i18n="navNews">ความเคลื่อนไหว</a>
+                    
+                    <!-- Language Selector Wrapper -->
+                    <div class="relative ml-2 border-l pl-2 border-slate-800">
+                        <select id="lang-selector" onchange="changeLanguage(this.value)" class="bg-[#111827] border border-slate-700 text-slate-300 text-xs rounded-lg focus:ring-sky-500 focus:border-sky-500 block p-1.5 outline-none cursor-pointer">
+                            <option value="th">🇹🇭 TH</option>
+                            <option value="en">🇬🇧 EN</option>
+                            <option value="ru">🇷🇺 RU</option>
+                            <option value="zh">🇨🇳 CN</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Mobile Action / Menu -->
+                <div class="flex items-center md:hidden gap-3">
+                    <select onchange="changeLanguage(this.value)" class="bg-[#111827] border border-slate-700 text-slate-300 text-xs rounded-lg p-1 outline-none">
+                        <option value="th">TH</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="zh">CN</option>
+                    </select>
+                    <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-sky-400 focus:outline-none"><i class="fa-solid fa-bars text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0b0f19] border-t border-slate-800 px-4 py-3 space-y-1">
+            <button onclick="scrollToSection('hero'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navHome">หน้าแรก</button>
+            <button onclick="scrollToSection('updates-section'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navUpdates">ข่าวล่าสุด</button>
+            <button onclick="scrollToSection('projects'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navProjects">เมกะโปรเจกต์</button>
+            <button onclick="scrollToSection('real-estate'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navRealEstate">อสังหาฯ</button>
+            <button onclick="scrollToSection('presentation'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navPres">เอกสาร</button>
+            <button onclick="scrollToSection('gallery'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navGallery">แกลเลอรี</button>
+            <button onclick="scrollToSection('analysis'); toggleMobileMenu()" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navAnalysis">บทวิเคราะห์</button>
+            <a href="https://copacabanagroup.com" target="_blank" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navCopa">โครงการ</a>
+            <a href="https://thbho.github.io/CopaNewsMar26.html" target="_blank" class="block w-full text-left py-2 text-sm text-slate-400 hover:bg-slate-800 px-3 rounded-md" data-i18n="navNews">ข่าวสาร</a>
+        </div>
+    </nav>
+
+    <!-- Operational Ticker / Live Status Bar -->
+    <div class="bg-slate-950 border-b border-slate-800 text-xs py-2.5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center md:justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 pulse-indicator"></span>
+                <span class="font-bold text-slate-400" data-i18n="liveTickerLabel">LIVE OPERATIONAL FEED:</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 text-[11px] text-slate-300">
+                <span class="border-r border-slate-800 pr-4"><i class="fa-solid fa-plane-up text-sky-400 mr-1"></i> U-Tapao: <strong class="text-emerald-400">Piling Active (NTP Signed)</strong></span>
+                <span class="border-r border-slate-800 pr-4"><i class="fa-solid fa-train text-red-500 mr-1"></i> Rail Contract: <strong class="text-amber-400">Dispute Stance Firm</strong></span>
+                <span class="border-r border-slate-800 pr-4"><i class="fa-solid fa-server text-emerald-500 mr-1"></i> Green Cloud: <strong class="text-sky-400">PUE &lt; 1.3 Target</strong></span>
+                <span><i class="fa-solid fa-map-location-dot text-indigo-400 mr-1"></i> Prachinburi: <strong class="text-indigo-400">SEA Review Underway</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow">
+        
+        <!-- Futuristic Hero Section -->
+        <section id="hero" class="relative py-20 lg:py-28 overflow-hidden bg-slate-950">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Futuristic Network Background" class="w-full h-full object-cover opacity-30 mix-blend-luminosity">
+                <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-[#0b0f19]/90 to-slate-950"></div>
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20 pointer-events-none"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Side Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold mb-6 tracking-wider uppercase">
+                            <span class="relative flex h-2 w-2 mr-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span data-i18n="heroBadge">May 2026: เมืองการบินตอกเสาเข็มแล้ว (NTP Active)</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-[1.15] text-white tracking-tight">
+                            <span data-i18n="heroTitlePrefix">พลิกโฉมยุทธศาสตร์</span> <br class="hidden md:inline">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400" data-i18n="heroTitleHighlight">ความหวังใหม่แห่ง EEC</span>
+                        </h1>
+                        <h2 class="text-lg md:text-xl font-light text-slate-300 mb-6 max-w-2xl" data-i18n="heroSubtitle">
+                            "ตอกเสาเข็มอู่ตะเภา ปฏิรูปแผนขนส่งมวลชน และบิ๊กโปรเจกต์นวัตกรรม Green Cloud"
+                        </h2>
+                        <p class="mb-8 max-w-xl text-sm md:text-base text-slate-400 leading-relaxed" data-i18n="heroDesc">
+                            อัปเดตล่าสุด พฤษภาคม 2569: สนามบินอู่ตะเภาพลิกแผนเฟสแรก มุ่งดีมานด์จริง 3-4 ล้านคน ชูแผนกรีนคลาวด์ความร่วมมือกับ Google ขณะที่สัญญารถไฟความเร็วสูงเชื่อม 3 สนามบินเผชิญข้อขัดแย้งจุดเปลี่ยนครั้งใหญ่
+                        </p>
+
+                        <!-- Action Controls -->
+                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                            <a href="https://drive.google.com/file/d/1atwslKkRAQ659FVjhFOMoC7JwYd3uXUW/view?usp=sharing" target="_blank" class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-xs font-bold rounded-xl shadow-lg text-slate-950 bg-gradient-to-r from-sky-400 to-indigo-400 hover:from-sky-300 hover:to-indigo-300 transition-all transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-file-pdf mr-2 text-base"></i>
+                                <span data-i18n="btnDownload">ดาวน์โหลดรายงานความก้าวหน้า (PDF)</span>
+                            </a>
+                            <button onclick="scrollToSection('presentation')" class="inline-flex justify-center items-center px-6 py-3 border border-slate-700 hover:border-sky-500 text-xs font-bold rounded-xl text-slate-300 hover:text-white bg-slate-900/50 hover:bg-slate-800 transition-all transform hover:-translate-y-0.5 backdrop-blur-md">
+                                <i class="fa-solid fa-display mr-2 text-base"></i>
+                                <span data-i18n="btnViewSlides">เปิดดูสไลด์นำเสนอ</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side Bento-style Stat Matrix -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                        <div class="cyber-card p-5 rounded-2xl border border-slate-800 hover:border-sky-500/30">
+                            <div class="text-slate-500 text-[10px] font-semibold tracking-wider uppercase mb-1" data-i18n="statNTP">อัปเดตข้อมูล EEC ล่าสุด</div>
+                            <div class="text-white text-lg font-black" data-i18n="statDateVal">พฤษภาคม 2569</div>
+                            <div class="text-sky-400 text-[11px] mt-1"><i class="fa-regular fa-clock mr-1"></i> Data Standardized</div>
+                        </div>
+                        <div class="cyber-card p-5 rounded-2xl border border-emerald-900/30 hover:border-emerald-500/30 glow-green">
+                            <div class="text-slate-500 text-[10px] font-semibold tracking-wider uppercase mb-1" data-i18n="statPartner">พันธมิตรคลาวด์</div>
+                            <div class="text-emerald-400 text-lg font-black">Google Cloud</div>
+                            <div class="text-slate-400 text-[11px] mt-1"><i class="fa-solid fa-seedling mr-1"></i> Clean Eco Hub</div>
+                        </div>
+                        <div class="cyber-card p-5 rounded-2xl border border-slate-800 hover:border-sky-500/30">
+                            <div class="text-slate-500 text-[10px] font-semibold tracking-wider uppercase mb-1" data-i18n="statLoc">โซนเด่นอสังหาฯ</div>
+                            <div class="text-white text-lg font-black">Na Jomtien</div>
+                            <div class="text-sky-400 text-[11px] mt-1"><i class="fa-solid fa-compass mr-1"></i> Premium Focus</div>
+                        </div>
+                        <div class="cyber-card p-5 rounded-2xl border border-indigo-900/30 hover:border-indigo-500/30">
+                            <div class="text-slate-500 text-[10px] font-semibold tracking-wider uppercase mb-1" data-i18n="statGoal">เป้าหมาย Green Tech</div>
+                            <div class="text-indigo-400 text-lg font-black">PUE &lt; 1.3</div>
+                            <div class="text-slate-400 text-[11px] mt-1"><i class="fa-solid fa-bolt mr-1"></i> 100% Renewable</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Asymmetric Strategic Updates Hub -->
+        <section id="updates-section" class="py-16 bg-[#090d16] border-y border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center md:text-left mb-12">
+                    <span class="text-xs font-extrabold text-sky-400 bg-sky-950/60 border border-sky-800 px-3 py-1 rounded-full uppercase tracking-widest" data-i18n="newsSectionBadge">HOT ISSUES</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3" data-i18n="newsSectionTitle">ข้อมูลสรุปยุทธศาสตร์ล่าสุด (อัปเดต พฤษภาคม 2569)</h2>
+                    <p class="mt-3 text-slate-400 max-w-2xl text-sm" data-i18n="newsSectionDesc">สรุปความเคลื่อนไหวล่าสุดที่เป็นปัจจัยหลักในการชี้ชะตาการขยายตัวทางเศรษฐกิจ การลงทุน และอสังหาริมทรัพย์ในเขตเศรษฐกิจพิเศษ</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left: Hero News (High Speed Rail Dispute) - Spans 7 cols -->
+                    <div class="lg:col-span-7 cyber-card p-8 rounded-2xl border-l-4 border-l-red-500 glow-red">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="px-2 py-0.5 text-[10px] font-extrabold text-red-400 bg-red-950 border border-red-800 rounded">CRITICAL CRISIS</span>
+                            <span class="text-xs text-slate-400" data-i18n="newsDate2">พฤษภาคม 2569</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-4" data-i18n="news2Title">ภาครัฐยืนกรานจุดยืน ไม่ปรับแก้สัญญารถไฟเชื่อม 3 สนามบิน</h3>
+                        <div class="prose max-w-none text-slate-300 text-sm md:text-base leading-relaxed space-y-3">
+                            <ul class="space-y-3 list-disc pl-5" id="news-list-2" data-i18n="news2Desc">
+                                <li><strong>จุดยืนคมนาคมชัดเจน:</strong> กระทรวงคมนาคมยืนยันอย่างเป็นรูปธรรมว่าจะไม่มีการแก้ไขสัญญาขอยืดหยุ่นเป็น ‘สร้างไปจ่ายไป’ ตามความต้องการของเอกชนผู้ร่วมทุน เพื่อความถูกต้องและธรรมาภิบาล</li>
+                                <li><strong>เปิดช่องขอยกเลิกสัญญา:</strong> รัฐบาลเปิดช่องทางกฎหมายให้ขอยกเลิกสัญญาร่วมเดิมได้โดยไม่มีค่าปรับ หากปัญหาเศรษฐกิจสะสมกดดัน เพื่อประโยชน์สูงสุดของทั้งสองฝ่ายในการเดินหน้าต่อ</li>
+                                <li><strong>แผนประมูลใหม่สำรอง:</strong> สำนักงาน EEC และการรถไฟฯ วางแผนรับมือล่วงหน้าด้วยการเตรียมประมูลสัญญาระหว่างประเทศรอบใหม่ทันที เพื่อให้ระบบส่งกำลังรางคู่ไม่ล่าช้าเกินวิสัย</li>
+                            </ul>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <a href="https://www.thaipbs.or.th/news" target="_blank" class="inline-flex items-center text-xs font-bold text-red-400 hover:text-red-300 hover:underline">
+                                <i class="fa-solid fa-circle-info mr-2"></i> <span data-i18n="newsReadMore">อ่านข่าวและแถลงการณ์รัฐ</span>
+                            </a>
+                            <span class="text-xs text-slate-500"><i class="fa-solid fa-triangle-exclamation mr-1 text-red-500/80"></i> Impact Level: High Risk</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Two Bento Sub-News Cards - Spans 5 cols -->
+                    <div class="lg:col-span-5 flex flex-col gap-6">
+                        
+                        <!-- News Card 1: Green Cloud Google -->
+                        <div class="cyber-card p-6 rounded-2xl border-l-4 border-l-sky-500">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2.5 py-0.5 text-[9px] font-bold text-sky-400 bg-sky-950 border border-sky-800 rounded">GREEN TECH</span>
+                                <span class="text-xs text-slate-400" data-i18n="newsDate1">พฤษภาคม 2569</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-2" data-i18n="news1Title">EEC ดัน Green Data Center ดึงดูดนวัตกรรม Google Cloud</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4" data-i18n="news1Summary">
+                                สำนักงาน EEC ประกาศเกณฑ์และจัดตั้งเขตอุตสาหกรรมโครงข่ายประมวลผลพลังงานสะอาด มุ่งจำกัดค่า PUE ไม่ให้เกิน 1.3 เพื่อดึงดูดกลุ่มทุนเทคโนโลยีชั้นนำทั่วโลก
+                            </p>
+                            <a href="https://www.eeco.or.th/" target="_blank" class="text-[11px] font-extrabold text-sky-400 hover:text-sky-300 flex items-center gap-1">
+                                <span data-i18n="newsReadMore">ศึกษาข้อมูลอ้างอิงของ EEC</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- News Card 2: Airport Runway 2 and Thai Airways MRO -->
+                        <div class="cyber-card p-6 rounded-2xl border-l-4 border-l-emerald-500 glow-green">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2.5 py-0.5 text-[9px] font-bold text-emerald-400 bg-emerald-950 border border-emerald-800 rounded">AVIATION HUB</span>
+                                <span class="text-xs text-slate-400" data-i18n="newsDate3">พฤษภาคม 2569</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-2" data-i18n="news3Title">ปรับสัดส่วนแม่บทอู่ตะเภาเฟส 1 เพื่อรองรับดีมานด์จริง</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4" data-i18n="news3Summary">
+                                หลังพิธี Kick-off ตอกเสาเข็ม ทร. เร่งรันเวย์ที่สองเต็มตัว ขณะที่บอร์ด UTA ปรับแผนเฟสแรก มุ่งประสิทธิภาพรองรับจริง 3-4 ล้านคน เร่งเดินหน้าอภิมหาศูนย์ซ่อมบำรุง MRO ในปีนี้
+                            </p>
+                            <a href="https://www.bangkokbiznews.com/" target="_blank" class="text-[11px] font-extrabold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                                <span data-i18n="newsReadMore">อ่านอ้างอิงจากกรุงเทพธุรกิจ</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive 4 Engines Section -->
+        <section id="projects" class="py-16 bg-[#0b0f19]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-white" data-i18n="projSectionTitle">4 แกนหลักเมกะโปรเจกต์เชิงกลยุทธ์ (The 4 Engines)</h2>
+                    <p class="mt-3 text-slate-400 max-w-2xl mx-auto text-sm" data-i18n="projSectionDesc">
+                        เจาะลึก 4 เสาหลักกลยุทธ์ที่ขับเคลื่อนมูลค่าทางเศรษฐกิจและเทคโนโลยีเชิงลึกของเขตอุตสาหกรรมในทศวรรษหน้า
+                    </p>
+                </div>
+
+                <!-- Bento grid cards to select dynamic details -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    
+                    <!-- Engine 1: U-Tapao -->
+                    <div class="cyber-card p-6 rounded-2xl cursor-pointer border-slate-800 hover:border-sky-500/50 relative overflow-hidden group" onclick="updateProjectDetail('aviation')">
+                        <!-- Background Image & Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop" alt="Aviation Background" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/80 to-transparent"></div>
+                        </div>
+                        
+                        <div class="absolute top-0 right-0 bg-sky-500/10 text-sky-400 text-[9px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-sky-500/20 z-10 shadow-sm">AVIATION</div>
+                        
+                        <div class="relative z-10">
+                            <div class="h-10 w-10 rounded-lg bg-sky-500/20 backdrop-blur-md flex items-center justify-center mb-4 border border-sky-500/30 shadow-lg group-hover:bg-sky-500/30 transition-colors">
+                                <i class="fa-solid fa-plane-up text-sky-400"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1 drop-shadow-md" data-i18n="cardUtapaoTitle">เมืองการบินอู่ตะเภา</h4>
+                            <p class="text-xs text-slate-300 line-clamp-2 drop-shadow-md" data-i18n="cardUtapaoDesc">ตอกเสาเข็มแล้ว ปรับเฟสแรกเพื่อผลตอบแทนจริงอย่างสมเหตุสมผล</p>
+                            <div class="mt-4 flex items-center justify-between text-[11px]">
+                                <span class="text-emerald-400 font-bold drop-shadow-md"><i class="fa-solid fa-check mr-1"></i> NTP Active</span>
+                                <span class="text-slate-400 flex items-center gap-1 group-hover:text-sky-400 transition-colors"><span data-i18n="cardClick">วิเคราะห์</span> <i class="fa-solid fa-angle-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engine 2: 3-Airport High Speed Rail -->
+                    <div class="cyber-card p-6 rounded-2xl cursor-pointer border-slate-800 hover:border-red-500/50 relative overflow-hidden group" onclick="updateProjectDetail('railway')">
+                        <!-- Background Image & Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=600&auto=format&fit=crop" alt="Railway Background" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/80 to-transparent"></div>
+                        </div>
+
+                        <div class="absolute top-0 right-0 bg-red-500/10 text-red-400 text-[9px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-red-500/20 z-10 shadow-sm">LOGISTICS</div>
+                        
+                        <div class="relative z-10">
+                            <div class="h-10 w-10 rounded-lg bg-red-500/20 backdrop-blur-md flex items-center justify-center mb-4 border border-red-500/30 shadow-lg group-hover:bg-red-500/30 transition-colors">
+                                <i class="fa-solid fa-train text-red-400"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1 drop-shadow-md" data-i18n="cardRailTitle">รถไฟเชื่อม 3 สนามบิน</h4>
+                            <p class="text-xs text-slate-300 line-clamp-2 drop-shadow-md" data-i18n="cardRailDesc">ทางตันสัญญาเจรจา รัฐเตรียมแผนสำรองเพื่อคุ้มครองงบแผ่นดิน</p>
+                            <div class="mt-4 flex items-center justify-between text-[11px]">
+                                <span class="text-red-400 font-bold drop-shadow-md"><i class="fa-solid fa-shield-halved mr-1"></i> Dispute Hold</span>
+                                <span class="text-slate-400 flex items-center gap-1 group-hover:text-red-400 transition-colors"><span data-i18n="cardClick">วิเคราะห์</span> <i class="fa-solid fa-angle-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engine 3: EECiti Smart Green City -->
+                    <div class="cyber-card p-6 rounded-2xl cursor-pointer border-slate-800 hover:border-emerald-500/50 relative overflow-hidden group" onclick="updateProjectDetail('smart')">
+                        <!-- Background Image & Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&auto=format&fit=crop" alt="Data Center Background" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/80 to-transparent"></div>
+                        </div>
+
+                        <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-400 text-[9px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-emerald-500/20 z-10 shadow-sm">SMART TECH</div>
+                        
+                        <div class="relative z-10">
+                            <div class="h-10 w-10 rounded-lg bg-emerald-500/20 backdrop-blur-md flex items-center justify-center mb-4 border border-emerald-500/30 shadow-lg group-hover:bg-emerald-500/30 transition-colors">
+                                <i class="fa-solid fa-city text-emerald-400"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1 drop-shadow-md" data-i18n="cardEECitiTitle">EECiti & Cloud Hub</h4>
+                            <p class="text-xs text-slate-300 line-clamp-2 drop-shadow-md" data-i18n="cardEECitiDesc">ปักหมุดกรีนคลาวด์ Google มาตรฐาน PUE ดึงเม็ดเงินเทคโนโลยี</p>
+                            <div class="mt-4 flex items-center justify-between text-[11px]">
+                                <span class="text-sky-400 font-bold drop-shadow-md"><i class="fa-solid fa-globe mr-1"></i> Green PUE</span>
+                                <span class="text-slate-400 flex items-center gap-1 group-hover:text-emerald-400 transition-colors"><span data-i18n="cardClick">วิเคราะห์</span> <i class="fa-solid fa-angle-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engine 4: Futuristic Tech & Theme Parks -->
+                    <div class="cyber-card p-6 rounded-2xl cursor-pointer border-slate-800 hover:border-purple-500/50 relative overflow-hidden group" onclick="updateProjectDetail('entertainment')">
+                        <!-- Background Image & Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=600&auto=format&fit=crop" alt="Aerospace Background" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/80 to-transparent"></div>
+                        </div>
+
+                        <div class="absolute top-0 right-0 bg-purple-500/10 text-purple-400 text-[9px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-purple-500/20 z-10 shadow-sm">AEROSPACE</div>
+                        
+                        <div class="relative z-10">
+                            <div class="h-10 w-10 rounded-lg bg-purple-500/20 backdrop-blur-md flex items-center justify-center mb-4 border border-purple-500/30 shadow-lg group-hover:bg-purple-500/30 transition-colors">
+                                <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1 drop-shadow-md" data-i18n="cardEntertainmentTitle">ท่าอวกาศยาน & แหล่งบันเทิง</h4>
+                            <p class="text-xs text-slate-300 line-clamp-2 drop-shadow-md" data-i18n="cardEntertainmentDesc">แผนการใช้งานรันเวย์อู่ตะเภาในภารกิจปล่อยดาวเทียมพาณิชย์ร่วมญี่ปุ่น</p>
+                            <div class="mt-4 flex items-center justify-between text-[11px]">
+                                <span class="text-purple-400 font-bold drop-shadow-md"><i class="fa-solid fa-rocket mr-1"></i> Aerospace</span>
+                                <span class="text-slate-400 flex items-center gap-1 group-hover:text-purple-400 transition-colors"><span data-i18n="cardClick">วิเคราะห์</span> <i class="fa-solid fa-angle-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Dynamic Workspace Panel -->
+                <div id="project-detail-panel" class="bg-slate-900/60 rounded-2xl p-6 md:p-8 border border-slate-800 scroll-mt-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        
+                        <!-- Left Details (8 columns) -->
+                        <div class="lg:col-span-8">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <h3 id="detail-title" class="text-2xl font-bold text-white"></h3>
+                                <span id="detail-badge" class="px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-sky-950 text-sky-400 border border-sky-800"></span>
+                            </div>
+                            <div class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                                <p id="detail-desc" class="mb-4"></p>
+                            </div>
+                            <div class="bg-slate-950/60 p-5 rounded-xl border border-slate-800">
+                                <h5 class="font-semibold text-slate-200 text-xs tracking-wider uppercase mb-3" data-i18n="detailMilestones">ความก้าวหน้าและการวิเคราะห์ผลกระทบเชิงยุทธศาสตร์:</h5>
+                                <ul id="detail-list" class="space-y-3 text-xs md:text-sm text-slate-300"></ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Index Chart (4 columns) -->
+                        <div class="lg:col-span-4 flex flex-col items-center">
+                            <div class="w-full bg-slate-950/40 p-4 rounded-xl border border-slate-800">
+                                <h5 class="text-[11px] font-semibold text-slate-400 uppercase tracking-widest text-center mb-4" data-i18n="detailChartTitle">ดัชนีคุณค่าและศักยภาพโครงการ (2026 INDEX)</h5>
+                                <div class="chart-container flex items-center justify-center">
+                                    <canvas id="projectImpactChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Real Estate Impact Analysis -->
+        <section id="real-estate" class="py-16 bg-[#090d16] border-y border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Bento-style header and filters -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+                    <div class="lg:col-span-8 text-center lg:text-left">
+                        <span class="text-xs font-extrabold text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-3 py-1 rounded-full uppercase tracking-widest">Spillover Focus</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-3" data-i18n="reTitle">การกระจายตัวของผลประโยชน์สู่อสังหาริมทรัพย์ (Spillover Effect)</h2>
+                        <p class="mt-3 text-slate-400 text-sm leading-relaxed" data-i18n="reDesc">
+                            จากการเริ่มตอกเสาเข็มของอู่ตะเภาเชิงลึกในพฤษภาคม 2569 ปลดล็อกความหวังของผู้ซื้อกำลังซื้อสูงและวิศวกรข้ามชาติ ขณะที่ความล่าช้าจากรถไฟความเร็วสูงส่องทางให้อสังหาฯ แถบนาจอมเทียนพุ่งเป้าไปที่จุดยุทธศาสตร์ถนนหลักและการเป็นชุมชนหรู (Branded Residences Hub) รองรับความต้องการจริง (Real Demand)
+                        </p>
+                    </div>
+                    <div class="lg:col-span-4 w-full">
+                        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+                            <label for="market-filter" class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Select Strategic Data View:</label>
+                            <select id="market-filter" onchange="updateMarketChart()" class="bg-[#0b0f19] border border-slate-800 text-slate-200 text-xs rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2 outline-none cursor-pointer">
+                                <option value="price" data-i18n="optPrice">ราคาประเมินที่ดิน (Growth Surge)</option>
+                                <option value="demand" data-i18n="optDemand">ความต้องการซื้อสะสม (Demand Index)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart & Bento Insight Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Left Bar Chart (7 columns) -->
+                    <div class="lg:col-span-7 cyber-card p-6 rounded-2xl flex flex-col justify-between">
+                        <h4 class="text-sm font-bold text-slate-300 text-center mb-4" id="chart-title"></h4>
+                        <div class="chart-container">
+                            <canvas id="realEstateChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Strategic Insights (5 columns) -->
+                    <div class="lg:col-span-5 flex flex-col gap-4">
+                        
+                        <!-- Insight 1 -->
+                        <div class="bg-slate-900/40 p-5 rounded-xl border-l-4 border-l-sky-500 border border-slate-800">
+                            <h4 class="font-bold text-sky-400 text-sm" data-i18n="insight1Title">1. ชุมชนพรีเมียมหรูริมชายหาด (Premium Branded Residences Core)</h4>
+                            <p class="text-xs text-slate-400 mt-2" data-i18n="insight1Desc">นาจอมเทียนได้สร้างบทบาทเป็นหมุดหมายแบรนเดดเรสซิเดนซ์ระดับหรู ป้อนดีมานด์ที่ต้องการอยู่จริงและกลุ่ม Tech Talent สายงานระบบคลาวด์และพลังงาน</p>
+                        </div>
+                        
+                        <!-- Insight 2 -->
+                        <div class="bg-slate-900/40 p-5 rounded-xl border-l-4 border-l-emerald-500 border border-slate-800">
+                            <h4 class="font-bold text-emerald-400 text-sm" data-i18n="insight2Title">2. เขตกระจายสินค้าอัจฉริยะ (Smart Logistics & Cloud Yards)</h4>
+                            <p class="text-xs text-slate-400 mt-2" data-i18n="insight2Desc">การพัฒนามาตรฐาน Green Data Center และ EECiti ช่วยเหนี่ยวนำให้เกิดคลังสินค้าควบคุมความเย็นอัจฉริยะในทำเลบ้านฉางเพื่อเชื่อมโยงกับฐานเมืองการบิน</p>
+                        </div>
+                        
+                        <!-- Insight 3 -->
+                        <div class="bg-slate-900/40 p-5 rounded-xl border-l-4 border-l-amber-500 border border-slate-800">
+                            <h4 class="font-bold text-amber-400 text-sm" data-i18n="insight3Title">3. การปรับเปลี่ยนโครงข่าย (Resilient Road & Airport Focus)</h4>
+                            <p class="text-xs text-slate-400 mt-2" data-i18n="insight3Desc">ปัญหาสัญญารถไฟความเร็วสูงเชื่อมต่อทำให้เม็ดเงินอสังหาฯ และการท่องเที่ยวระยะสั้นของจอมเทียนและพัทยาหันมาโฟกัสกับถนนสายหลักและน่านฟ้าอู่ตะเภาในฐานะศูนย์รวมความเจริญอย่างสมบูรณ์แบบ</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PDF Documents Viewer -->
+        <section id="presentation" class="py-16 bg-[#0b0f19]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-extrabold text-indigo-400 bg-indigo-950/60 border border-indigo-800 px-3 py-1 rounded-full uppercase tracking-widest">Scientific Papers</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3" data-i18n="presTitle">เอกสารนำเสนอและรายงานวิชาการเมืองการบิน</h2>
+                    <p class="mt-3 text-slate-400 text-sm max-w-2xl mx-auto" data-i18n="presDesc">สไลด์รายงานเจาะลึกแบบสมบูรณ์ที่วิเคราะห์บริบท แหล่งที่มา ความคืบหน้าของอสังหาฯ และผังเมืองเชิงนวัตกรรมรอบพื้นที่อู่ตะเภา</p>
+                </div>
+                
+                <div class="cyber-card p-3 rounded-2xl border border-slate-800 shadow-2xl">
+                    <div class="w-full aspect-video rounded-xl overflow-hidden relative bg-slate-950">
+                        <iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://drive.google.com/file/d/1atwslKkRAQ659FVjhFOMoC7JwYd3uXUW/preview" allow="autoplay" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multimedia Showcase Gallery -->
+        <section id="gallery" class="py-16 bg-[#090d16] border-y border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-extrabold text-sky-400 bg-sky-950/60 border border-sky-800 px-3 py-1 rounded-full uppercase tracking-widest">Spatial Concepts</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3" data-i18n="galleryTitle">แกลเลอรีภาพจำลองเมกะโปรเจกต์อัจฉริยะ</h2>
+                    <p class="mt-3 text-slate-400 text-sm max-w-xl mx-auto" data-i18n="galleryDesc">จินตนาการทัศนียภาพความเจริญระดับทศวรรษที่จะมาถึงในเขตเศรษฐกิจพิเศษภาคตะวันออก</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Item 1 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                        <img src="https://i.postimg.cc/TwfgCB6j/IHE0tfibz6Pd_J3p_JAB0R_topaz_upscale_2_6x.jpg" class="w-full h-full object-cover gallery-img" alt="U-Tapao Airport Master Plan 2026">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">U-Tapao Master Plan Model</p>
+                            <p class="text-[10px] text-sky-400">Conceptual layout for Runway 2 & Airport Zone</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                        <img src="https://i.postimg.cc/NMBmpZcr/rgm_VNJ8w7Cd99x5M8tjg_topaz_upscale_2_5x.jpg" class="w-full h-full object-cover gallery-img" alt="Airport Terminal Interior Architecture">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">Terminal Architecture Concept</p>
+                            <p class="text-[10px] text-sky-400">Smart services and immigration logistics</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                         <img src="https://i.postimg.cc/g2PHDK92/EECiti_model_EEC_gigapixel_high_fidelity_v2_2x.png" class="w-full h-full object-cover gallery-img" alt="EECiti Smart Living Infrastructure">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">EECiti Smart & Clean Town</p>
+                            <p class="text-[10px] text-emerald-400">Green Data infrastructure & high-tech quarters</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                        <img src="https://i.postimg.cc/V6KMcY9B/highlight_1_m.jpg" class="w-full h-full object-cover gallery-img" alt="MICE Facilities near Jomtien">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">MICE & Executive Business Parks</p>
+                            <p class="text-[10px] text-sky-400">High-class exhibition grounds in Chonburi</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                        <img src="https://i.postimg.cc/66kbGs1f/the_city_gallery_gallery_2_28_Dec_2022_1672205474639.png" class="w-full h-full object-cover gallery-img" alt="Convention Center Concept">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">Futuristic Arena & Retail Yards</p>
+                            <p class="text-[10px] text-purple-400">Cultural and leisure magnets connecting Na Jomtien</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="gallery-item relative overflow-hidden rounded-xl aspect-video cursor-pointer border border-slate-800 shadow-lg" onclick="openLightbox(this)">
+                        <img src="https://i.postimg.cc/63MRN9Vh/featuressss_4.jpg" class="w-full h-full object-cover gallery-img" alt="Smart Transport Networks in EEC">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
+                            <p class="text-white text-xs font-bold">Multi-modal Highway Junctions</p>
+                            <p class="text-[10px] text-indigo-400">Direct logistics highways connecting to dry ports</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Lightbox Modal -->
+        <div id="lightbox" class="fixed inset-0 z-[100] bg-slate-950/95 hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeLightbox(event)">
+            <div class="relative max-w-7xl max-h-screen w-full flex flex-col items-center">
+                <button onclick="closeLightbox(event)" class="absolute top-4 right-4 text-slate-400 hover:text-white text-4xl p-2 z-10 focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[80vh] object-contain rounded-xl border border-slate-800 shadow-2xl">
+                <p id="lightbox-caption" class="text-slate-300 text-sm font-semibold mt-4 text-center"></p>
+            </div>
+        </div>
+
+        <!-- Strategic Index & SWOT Section -->
+        <section id="analysis" class="py-16 bg-[#0b0f19] border-t border-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-extrabold text-sky-400 bg-sky-950/60 border border-sky-800 px-3 py-1 rounded-full uppercase tracking-widest">SWOT MATRIX</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-3" data-i18n="anaTitle">บทวิเคราะห์ยุทธศาสตร์ความร่วมมือ: ก้าวถัดไปของ EEC 2026</h2>
+                </div>
+                
+                <!-- Toggle Button Group -->
+                <div class="flex justify-center mb-10">
+                    <div class="bg-slate-950 p-1.5 rounded-xl border border-slate-800 inline-flex shadow-inner">
+                        <button onclick="toggleAnalysis('opportunities')" id="btn-opp" class="px-6 py-2.5 rounded-lg text-xs font-extrabold transition-all" data-i18n="btnOpp">โอกาสแห่งอนาคต (Opportunities)</button>
+                        <button onclick="toggleAnalysis('challenges')" id="btn-chal" class="px-6 py-2.5 rounded-lg text-xs font-extrabold transition-all" data-i18n="btnChal">ความท้าทายและความเสี่ยง (Challenges)</button>
+                    </div>
+                </div>
+                
+                <!-- SWOT Matrix Content Loaded Dynamically -->
+                <div id="analysis-content" class="cyber-card rounded-2xl p-6 md:p-8 transition-all duration-300 min-h-[300px]">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-extrabold tracking-wider text-white">EEC SYSTEM MONITOR 2026</h3>
+                    <p class="text-xs mt-2 text-slate-500" data-i18n="footerText">ระบบวิเคราะห์ข้อมูลเมืองอัจฉริยะ โครงสร้างพื้นฐานพลังงานทดแทน และที่อยู่อาศัยระดับพรีเมียมในจังหวัดจันทบุรีและชลบุรี</p>
+                </div>
+                <div class="text-center md:text-right text-[11px] text-slate-600">
+                    <p>&copy; 2026 EEC Insight Analytics. ALL Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Core Translation Databases with May 2026 Data ---
+        const translations = {
+            th: {
+                navTitle: "EEC MONITOR 2026",
+                navHome: "หน้าแรก",
+                navUpdates: "ข่าวสารสำคัญ",
+                navProjects: "เมกะโปรเจกต์",
+                navRealEstate: "อสังหาริมทรัพย์",
+                navPres: "เอกสารนำเสนอ",
+                navGallery: "แกลเลอรี",
+                navAnalysis: "วิเคราะห์ดัชนี",
+                navCopa: "โครงการอสังหาฯ",
+                navNews: "ความเคลื่อนไหว",
+                
+                heroBadge: "May 2026: เมืองการบินตอกเสาเข็มแล้ว (NTP Active)",
+                heroTitlePrefix: "พลิกโฉมยุทธศาสตร์",
+                heroTitleHighlight: "ความหวังใหม่แห่ง EEC",
+                heroSubtitle: "\"ตอกเสาเข็มอู่ตะเภา ปฏิรูปแผนขนส่งมวลชน และบิ๊กโปรเจกต์นวัตกรรม Green Cloud\"",
+                heroDesc: "อัปเดตล่าสุด พฤษภาคม 2569: สนามบินอู่ตะเภาพลิกแผนเฟสแรก มุ่งดีมานด์จริง 3-4 ล้านคน ชูแผนกรีนคลาวด์ความร่วมมือกับ Google ขณะที่สัญญารถไฟความเร็วสูงเชื่อม 3 สนามบินเผชิญข้อขัดแย้งจุดเปลี่ยนครั้งใหญ่",
+                
+                btnDownload: "ดาวน์โหลดรายงานความก้าวหน้า (PDF)",
+                btnViewSlides: "เปิดดูสไลด์นำเสนอ",
+                
+                statNTP: "อัปเดตข้อมูล EEC ล่าสุด",
+                statDateVal: "พฤษภาคม 2569",
+                statPartner: "พันธมิตรคลาวด์",
+                statLoc: "โซนเด่นอสังหาฯ",
+                statGoal: "เป้าหมาย Green Tech",
+                
+                liveTickerLabel: "LIVE OPERATIONAL FEED:",
+                
+                newsSectionBadge: "HOT ISSUES",
+                newsSectionTitle: "ข้อมูลสรุปยุทธศาสตร์ล่าสุด (อัปเดต พฤษภาคม 2569)",
+                newsSectionDesc: "สรุปความเคลื่อนไหวล่าสุดที่เป็นปัจจัยหลักในการชี้ชะตาการขยายตัวทางเศรษฐกิจ การลงทุน และอสังหาริมทรัพย์ในเขตเศรษฐกิจพิเศษ",
+                
+                news1Title: "EEC ดัน Green Data Center ดึงดูดนวัตกรรม Google Cloud",
+                news1Summary: "สำนักงาน EEC ประกาศเกณฑ์และจัดตั้งเขตอุตสาหกรรมโครงข่ายประมวลผลพลังงานสะอาด มุ่งจำกัดค่า PUE ไม่ให้เกิน 1.3 เพื่อดึงดูดกลุ่มทุนเทคโนโลยีชั้นนำทั่วโลก",
+                news2Title: "ภาครัฐยืนกรานจุดยืน ไม่ปรับแก้สัญญารถไฟเชื่อม 3 สนามบิน",
+                news2Desc: "<li><strong>จุดยืนคมนาคมชัดเจน:</strong> กระทรวงคมนาคมยืนยันอย่างเป็นรูปธรรมว่าจะไม่มีการแก้ไขสัญญาขอยืดหยุ่นเป็น ‘สร้างไปจ่ายไป’ ตามความต้องการของเอกชนผู้ร่วมทุน เพื่อความถูกต้องและธรรมาภิบาล</li><li><strong>เปิดช่องขอยกเลิกสัญญา:</strong> รัฐบาลเปิดช่องทางกฎหมายให้ขอยกเลิกสัญญาร่วมเดิมได้โดยไม่มีค่าปรับ หากปัญหาเศรษฐกิจสะสมกดดัน เพื่อประโยชน์สูงสุดของทั้งสองฝ่ายในการเดินหน้าต่อ</li><li><strong>แผนประมูลใหม่สำรอง:</strong> สำนักงาน EEC และการรถไฟฯ วางแผนรับมือล่วงหน้าด้วยการเตรียมประมูลสัญญาระหว่างประเทศรอบใหม่ทันที เพื่อให้ระบบส่งกำลังรางคู่ไม่ล่าช้าเกินวิสัย</li>",
+                news3Title: "ปรับสัดส่วนแม่บทอู่ตะเภาเฟส 1 เพื่อรองรับดีมานด์จริง",
+                news3Summary: "หลังพิธี Kick-off ตอกเสาเข็ม ทร. เร่งรันเวย์ที่สองเต็มตัว ขณะที่บอร์ด UTA ปรับแผนเฟสแรก มุ่งประสิทธิภาพรองรับจริง 3-4 ล้านคน เร่งเดินหน้าอภิมหาศูนย์ซ่อมบำรุง MRO ในปีนี้",
+                newsReadMore: "อ่านเอกสารอ้างอิงและข่าวกระทรวง",
+                newsDate1: "พฤษภาคม 2569",
+                newsDate2: "พฤษภาคม 2569",
+                newsDate3: "พฤษภาคม 2569",
+                
+                projSectionTitle: "4 แกนหลักเมกะโปรเจกต์เชิงกลยุทธ์ (The 4 Engines)",
+                projSectionDesc: "เจาะลึก 4 เสาหลักกลยุทธ์ที่ขับเคลื่อนมูลค่าทางเศรษฐกิจและเทคโนโลยีเชิงลึกของเขตอุตสาหกรรมในทศวรรษหน้า",
+                
+                cardUtapaoTitle: "เมืองการบินอู่ตะเภา",
+                cardUtapaoDesc: "ตอกเสาเข็มแล้ว ปรับเฟสแรกเพื่อผลตอบแทนจริงอย่างสมเหตุสมผล",
+                cardRailTitle: "รถไฟเชื่อม 3 สนามบิน",
+                cardRailDesc: "ทางตันสัญญาเจรจา รัฐเตรียมแผนสำรองเพื่อคุ้มครองงบแผ่นดิน",
+                cardEECitiTitle: "EECiti & Cloud Hub",
+                cardEECitiDesc: "ปักหมุดกรีนคลาวด์ Google มาตรฐาน PUE ดึงเม็ดเงินเทคโนโลยี",
+                cardEntertainmentTitle: "ท่าอวกาศยาน & แหล่งบันเทิง",
+                cardEntertainmentDesc: "แผนการใช้งานรันเวย์อู่ตะเภาในภารกิจปล่อยดาวเทียมพาณิชย์ร่วมญี่ปุ่น",
+                
+                cardClick: "วิเคราะห์",
+                cardStatusNTP: "สถานะ: กำลังก่อสร้าง",
+                detailMilestones: "ความก้าวหน้าและการวิเคราะห์ผลกระทบเชิงยุทธศาสตร์:",
+                detailChartTitle: "ดัชนีคุณค่าและศักยภาพโครงการ (2026 INDEX)",
+                
+                reTitle: "การกระจายตัวของผลประโยชน์สู่อสังหาริมทรัพย์ (Spillover Effect)",
+                reDesc: "จากการเริ่มตอกเสาเข็มของอู่ตะเภาเชิงลึกในพฤษภาคม 2569 ปลดล็อกความหวังของผู้ซื้อกำลังซื้อสูงและวิศวกรข้ามชาติ ขณะที่ความล่าช้าจากรถไฟความเร็วสูงส่องทางให้อสังหาฯ แถบนาจอมเทียนพุ่งเป้าไปที่จุดยุทธศาสตร์ถนนหลักและการเป็นชุมชนหรู (Branded Residences Hub) รองรับความต้องการจริง (Real Demand)",
+                optPrice: "ราคาประเมินที่ดิน (Growth Surge)",
+                optDemand: "ความต้องการซื้อสะสม (Demand Index)",
+                
+                insight1Title: "1. ชุมชนพรีเมียมหรูริมชายหาด (Premium Branded Residences Core)",
+                insight1Desc: "นาจอมเทียนได้สร้างบทบาทเป็นหมุดหมายแบรนเดดเรสซิเดนซ์ระดับหรู ป้อนดีมานด์ที่ต้องการอยู่จริงและกลุ่ม Tech Talent สายงานระบบคลาวด์และพลังงาน",
+                insight2Title: "2. เขตกระจายสินค้าอัจฉริยะ (Smart Logistics & Cloud Yards)",
+                insight2Desc: "การพัฒนามาตรฐาน Green Data Center และ EECiti ช่วยเหนี่ยวนำให้เกิดคลังสินค้าควบคุมความเย็นอัจฉริยะในทำเลบ้านฉางเพื่อเชื่อมโยงกับฐานเมืองการบิน",
+                insight3Title: "3. การปรับเปลี่ยนโครงข่าย (Resilient Road & Airport Focus)",
+                insight3Desc: "ปัญหาสัญญารถไฟความเร็วสูงเชื่อมต่อทำให้เม็ดเงินอสังหาฯ และการท่องเที่ยวระยะสั้นของจอมเทียนและพัทยาหันมาโฟกัสกับถนนสายหลักและน่านฟ้าอู่ตะเภาในฐานะศูนย์รวมความเจริญอย่างสมบูรณ์แบบ",
+                
+                presTitle: "เอกสารนำเสนอและรายงานวิชาการเมืองการบิน",
+                presDesc: "สไลด์รายงานเจาะลึกแบบสมบูรณ์ที่วิเคราะห์บริบท แหล่งที่มา ความคืบหน้าของอสังหาฯ และผังเมืองเชิงนวัตกรรมรอบพื้นที่อู่ตะเภา",
+                
+                galleryTitle: "แกลเลอรีภาพจำลองเมกะโปรเจกต์อัจฉริยะ",
+                galleryDesc: "จินตนาการทัศนียภาพความเจริญระดับทศวรรษที่จะมาถึงในเขตเศรษฐกิจพิเศษภาคตะวันออก",
+                
+                anaTitle: "บทวิเคราะห์ยุทธศาสตร์ความร่วมมือ: ก้าวถัดไปของ EEC 2026",
+                btnOpp: "โอกาสแห่งอนาคต (Opportunities)",
+                btnChal: "ความท้าทายและความเสี่ยง (Challenges)",
+                
+                footerText: "ระบบวิเคราะห์ข้อมูลเมืองอัจฉริยะ โครงสร้างพื้นฐานพลังงานทดแทน และที่อยู่อาศัยระดับพรีเมียมในจังหวัดจันทบุรีและชลบุรี",
+                chartPriceTitle: "ราคาประเมินที่ดินตามเป้าหมายปี 2026 (% Growth Surge)",
+                chartDemandTitle: "ดัชนีความต้องการซื้อสะสมจำแนกตามพื้นที่จริง 2026",
+                reLabels: ['จอมเทียน', 'นาจอมเทียน', 'บ้านฉาง', 'พัทยากลาง']
+            },
+            en: {
+                navTitle: "EEC MONITOR 2026",
+                navHome: "Home",
+                navUpdates: "Strategic News",
+                navProjects: "Mega Projects",
+                navRealEstate: "Real Estate",
+                navPres: "Documents",
+                navGallery: "Gallery",
+                navAnalysis: "Index SWOT",
+                navCopa: "Properties",
+                navNews: "Updates",
+                
+                heroBadge: "May 2026: Aviation City construction active (NTP Active)",
+                heroTitlePrefix: "Revising Strategy,",
+                heroTitleHighlight: "The New Hope of EEC",
+                heroSubtitle: "\"Piling U-Tapao, restructuring transport networks, and implementing Green Cloud Tech innovations.\"",
+                heroDesc: "Latest Update May 2026: U-Tapao Airport constructs Phase 1, optimized for 3-4 million passenger capacity. Google Cloud partners for low-PUE target while the High-Speed Rail contract faces deep state renegotiation challenges.",
+                
+                btnDownload: "Download Strategic PDF Report",
+                btnViewSlides: "View Interactive Slides",
+                
+                statNTP: "Latest EEC Monitoring Data",
+                statDateVal: "May 2026",
+                statPartner: "Cloud Joint Venture",
+                statLoc: "Strategic Real Estate Zone",
+                statGoal: "Green Tech Target",
+                
+                liveTickerLabel: "LIVE OPERATIONAL FEED:",
+                
+                newsSectionBadge: "HOT ISSUES",
+                newsSectionTitle: "Strategic News Updates (May 2026 Edition)",
+                newsSectionDesc: "A summarized view of key spatial and policy developments governing the economic expansion of the Eastern Seaboard.",
+                
+                news1Title: "EEC Welcomes Google Cloud to Power Green Data Center Standard",
+                news1Summary: "The EECO sets strict parameters restricting PUE ratings under 1.3, preparing sustainable zones using 100% clean energy for global tech giants.",
+                news2Title: "Transport Authority Takes Firm Stance: No HSR Contract Changes",
+                news2Desc: "<li><strong>Firm Position:</strong> The Ministry of Transport refuses to allow 'build-and-pay' financial structural modifications demanded by private contractors, protecting state assets.</li><li><strong>Amicable Termination Clause:</strong> Legal pathways are open to terminate the joint-venture without penalty if current economic pressure makes original parameters impossible.</li><li><strong>Re-Bidding Readiness:</strong> EECO and State Railway prepare immediate international bidding blueprints to bypass long-term infrastructure construction deadlocks.</li>",
+                news3Title: "Optimizing U-Tapao Phase 1 for Real Commercial Viability",
+                news3Summary: "Following the historic groundbreaking, Navy speeds Runway 2 construction. UTA modifies Phase 1 to focus on 3-4M passenger capacity, ensuring MRO complex initialization by late 2026.",
+                newsReadMore: "Read Original Reference & EECO Statements",
+                newsDate1: "May 2026",
+                newsDate2: "May 2026",
+                newsDate3: "May 2026",
+                
+                projSectionTitle: "The 4 Strategic Engines of EEC 2026",
+                projSectionDesc: "Deep-diving into the four pillars driving high-value investments and advanced tech on the Eastern Seaboard over the next decade.",
+                
+                cardUtapaoTitle: "U-Tapao Aviation City",
+                cardUtapaoDesc: "Construction actively piling. Phase 1 optimized to match post-crisis real demand parameters.",
+                cardRailTitle: "3-Airport High-Speed Rail",
+                cardRailDesc: "Joint-venture negotiations stalled. State prepares alternative biddings to protect budgets.",
+                cardEECitiTitle: "EECiti & Cloud Hub",
+                cardEECitiDesc: "Google Cloud PUE goals achieved. Sino-Thai smart town blueprints set for tech talent.",
+                cardEntertainmentTitle: "Spaceport & Entertainment",
+                cardEntertainmentDesc: "Utilizing U-Tapao extra-long runway for horizontal satellite launching under METI Japan.",
+                
+                cardClick: "Analyze",
+                cardStatusNTP: "Status: Under Active Construction",
+                detailMilestones: "Progress Milestones & Strategic Impact:",
+                detailChartTitle: "Project Potential Index (2026)",
+                
+                reTitle: "The Real Estate Spillover Effect",
+                reDesc: "The launch of physical piling at U-Tapao in May 2026 has converted speculative capital into Real Demand. Premium buyers, expats, and foreign cloud engineers are driving high-value branded residences in Na Jomtien, bypassing temporary HSR contract delays.",
+                optPrice: "Land Appraisal Rise (% Growth Surge)",
+                optDemand: "Accumulated Residential Demand Index",
+                
+                insight1Title: "1. Beachfront Branded Residence Hub (Na Jomtien)",
+                insight1Desc: "Na Jomtien solidifies its status as a premium residential core, accommodating highly paid technology expats and executive personnel.",
+                insight2Title: "2. Cold-Chain Smart Logistics Yards (Ban Chang)",
+                insight2Desc: "The launch of the U-Tapao core accelerates advanced logistics networks, attracting deep-freeze and high-tech supply chain nodes.",
+                insight3Title: "3. Strategic Transit Pivot (Road Network Connectivity)",
+                insight3Desc: "HSR delays pivot spatial investments towards premium highway systems and airport direct expansion, sustaining land values in Chonburi.",
+                
+                presTitle: "Scientific Papers & Airport Development Slide",
+                presDesc: "Academic presentations analyzing detailed masterplans, historical timelines, and spatial planning of the Eastern Economic Hub.",
+                
+                galleryTitle: "Futuristic Megastructure Gallery Concepts",
+                galleryDesc: "Visualizing the spatial and architectural paradigm shifts taking place on Thailand's Eastern Seaboard.",
+                
+                anaTitle: "Strategic Analysis SWOT Matrix: The Road Ahead",
+                btnOpp: "Opportunities",
+                btnChal: "Challenges & Risks",
+                
+                footerText: "Strategic monitor for smart grids, BCG clean energy corridors, and premium residential spaces on the Eastern Seaboard.",
+                chartPriceTitle: "Land Appraisal Target Growth % (2026)",
+                chartDemandTitle: "Residential Demand Index by Zone (2026)",
+                reLabels: ['Jomtien', 'Na Jomtien', 'Ban Chang', 'Central Pattaya']
+            },
+            ru: {
+                navTitle: "EEC МОНИТОР 2026",
+                navHome: "Главная",
+                navUpdates: "Важные новости",
+                navProjects: "Мегапроекты",
+                navRealEstate: "Недвижимость",
+                navPres: "Презентация",
+                navGallery: "Галерея",
+                navAnalysis: "SWOT Анализ",
+                navCopa: "Объекты",
+                navNews: "Обновления",
+                
+                heroBadge: "Май 2026: Строительство Авиаграда началось (NTP Активен)",
+                heroTitlePrefix: "Реформа стратегии,",
+                heroTitleHighlight: "Новая надежда EEC",
+                heroSubtitle: "\"Запуск У-Тапао, реструктуризация транспортных сетей и зеленые облачные технологии.\"",
+                heroDesc: "Май 2026: Начало работ в У-Тапао, Фаза 1 оптимизирована под трафик 3-4 млн пасс. Google Cloud выступает партнером с низким PUE, пока проект ВСМ переживает кризис пересмотра условий контракта.",
+                
+                btnDownload: "Скачать отчет о прогрессе (PDF)",
+                btnViewSlides: "Смотреть презентацию",
+                
+                statNTP: "Последние данные мониторинга",
+                statDateVal: "Май 2026",
+                statPartner: "Облачный Альянс",
+                statLoc: "Зона недвижимости",
+                statGoal: "Зеленая Цель",
+                
+                liveTickerLabel: "LIVE OPERATIONAL FEED:",
+                
+                newsSectionBadge: "ГОРЯЧИЕ ТЕМЫ",
+                newsSectionTitle: "Сводка важных новостей (Май 2026)",
+                newsSectionDesc: "Ключевые события, определяющие траекторию промышленного и жилищного развития на восточном побережье.",
+                
+                news1Title: "EEC внедряет стандарты Зеленых облаков с Google Cloud",
+                news1Summary: "EEC ограничивает стандарт PUE серверов на уровне ниже 1.3, готовя зоны со 100% чистой энергией для ИТ-гигантов.",
+                news2Title: "Власти отказались менять контракт на строительство ВСМ",
+                news2Desc: "<li><strong>Жесткая позиция:</strong> Министерство транспорта отклонило финансовые льготы для частных подрядчиков, защищая бюджет.</li><li><strong>Расторжение без штрафов:</strong> Открыт законный путь закрытия совместного контракта, если экономика сделает его невозможным.</li><li><strong>Резервный тендер:</strong> EEC готовит новые международные торги во избежание заморозки проекта.</li>",
+                news3Title: "Оптимизация Фазы 1 У-Тапао под реальный трафик",
+                news3Summary: "ВМС строят ВПП-2. План Авиаграда переориентирован на 3-4 млн пассажиров, запуск центра ТОиР Thai Airways планируется в конце 2026.",
+                newsReadMore: "Читать документы и заявления министерства",
+                newsDate1: "Май 2026",
+                newsDate2: "Май 2026",
+                newsDate3: "Май 2026",
+                
+                projSectionTitle: "4 Опоры Экономического Развития EEC 2026",
+                projSectionDesc: "Ключевые мегапроекты, выступающие драйверами высоких технологий и инвестиций в регионе.",
+                
+                cardUtapaoTitle: "Авиаград У-Тапао",
+                cardUtapaoDesc: "Идет забивка свай. План оптимизирован под фактический коммерческий трафик.",
+                cardRailTitle: "ВСМ 3 аэропортов",
+                cardRailDesc: "Переговоры зашли в тупик. Правительство готовит альтернативные тендеры.",
+                cardEECitiTitle: "EECiti и Облачный хаб",
+                cardEECitiDesc: "Внедрение стандартов Google Cloud PUE в новом квартале для ИТ-специалистов.",
+                cardEntertainmentTitle: "Космопорт и Парки",
+                cardEntertainmentDesc: "Использование ВПП У-Тапао для горизонтальных космических стартов совместно с Японией.",
+                
+                cardClick: "Анализ",
+                cardStatusNTP: "Статус: Идет строительство",
+                detailMilestones: "Ключевые вехи и стратегическое влияние:",
+                detailChartTitle: "Индекс потенциала проекта (2026)",
+                
+                reTitle: "Влияние на рынок недвижимости",
+                reDesc: "Начало строительства У-Тапао в мае 2026 года укрепило доверие покупателей. Кондоминиумы На-Джомтьена премиум-класса нацелены на ИТ-экспатов и пилотов, компенсируя временную задержку железной дороги.",
+                optPrice: "Рост стоимости земли (%)",
+                optDemand: "Индекс спроса на жилье",
+                
+                insight1Title: "1. Центр элитного брендового жилья (На-Джомтьен)",
+                insight1Desc: "На-Джомтьен закрепляет статус роскошного жилого кластера для иностранных ИТ-специалистов и топ-менеджеров.",
+                insight2Title: "2. Умные логистические склады (Бан Чанг)",
+                insight2Desc: "Развитие Авиаграда стимулирует запуск современных ИТ-холодильников и складов у аэропорта.",
+                insight3Title: "3. Адаптация к транспортным задержкам (Автодороги)",
+                insight3Desc: "Пауза по ВСМ сместила акцент на автострады и прямое расширение авиаузла, поддерживая высокие цены на землю.",
+                
+                presTitle: "Аналитические материалы по Авиаграду У-Тапао",
+                presDesc: "Презентации, описывающие детальное градостроительное и экономическое планирование коридора EEC.",
+                
+                galleryTitle: "Галерея концептуальных рендеров",
+                galleryDesc: "Архитектурный и промышленный облик будущего на восточном побережье Таиланда.",
+                
+                anaTitle: "SWOT Матрица: Дальнейший путь EEC 2026",
+                btnOpp: "Возможности",
+                btnChal: "Вызовы и Риски",
+                
+                footerText: "Информационная система анализа ИТ-инфраструктуры, зеленой энергетики и премиум-недвижимости EEC.",
+                chartPriceTitle: "Прогноз роста цен на землю (%)",
+                chartDemandTitle: "Индекс спроса по районам (2026)",
+                reLabels: ['Джомтьен', 'На-Джомтьен', 'Бан Чанг', 'Центральная Паттайя']
+            },
+            zh: {
+                navTitle: "EEC 监测 2026",
+                navHome: "首页",
+                navUpdates: "战略快讯",
+                navProjects: "大型项目",
+                navRealEstate: "房地产",
+                navPres: "白皮文档",
+                navGallery: "规划画廊",
+                navAnalysis: "SWOT分析",
+                navCopa: "核心项目",
+                navNews: "动态新闻",
+                
+                heroBadge: "May 2026: 航空城建设全面启动 (NTP已生效)",
+                heroTitlePrefix: "重塑战略规划",
+                heroTitleHighlight: "EEC 的新希望",
+                heroSubtitle: "“乌塔帕奥动工，打造绿色云端中心，重组轨道交通项目”",
+                heroDesc: "2026年5月最新更新：乌塔帕奥航空城一期工程动工，客运规模优化为300-400万人次。谷歌云加盟推进低PUE标准，同时三机场高铁合同面临国家强硬谈判考验。",
+                
+                btnDownload: "下载 EEC 2026 战略报告 (PDF)",
+                btnViewSlides: "在线查阅演示幻灯片",
+                
+                statNTP: "最新 EEC 监测数据",
+                statDateVal: "2026年5月",
+                statPartner: "云科技合作商",
+                statLoc: "核心房地产区",
+                statGoal: "绿色环保指标",
+                
+                liveTickerLabel: "LIVE OPERATIONAL FEED:",
+                
+                newsSectionBadge: "HOT ISSUES",
+                newsSectionTitle: "战略快讯汇编 (2026年5月版)",
+                newsSectionDesc: "深度汇总决定泰国东部沿海经济走廊、产业规划 and 投资政策的核心动态。",
+                
+                news1Title: "EEC 与谷歌云联合推进绿色数据中心建设",
+                news1Summary: "EEC 办公室拟设立 100% 清洁能源驱动的云算力园区，强制规定 PUE 低于 1.3 以吸引全球科技巨头。",
+                news2Title: "交通部强硬发声：拒绝修改三机场高铁合同条款",
+                news2Desc: "<li><strong>国家立场坚定:</strong> 交通部明确表态不接受私企合作方提出的‘边建边付’修改要求，保护财政资金安全。</li><li><strong>友好解约可能:</strong> 开启法律通道，若受阻，合伙方可申请友好终止合同且不承担违约金处罚。</li><li><strong>应急重新招标:</strong> EEC 和国铁已着手拟定全新的国际招标预案，避免基建进度长期陷入停滞。</li>",
+                news3Title: "乌塔帕奥一期规划精简优化以快速实现财务回报",
+                news3Summary: "海军加速第二跑道建设。一期航空城精简至年客流300-400万人次规模，确保泰航 MRO 维修中心于2026年底前落地。",
+                newsReadMore: "阅读报告原文与交通部声明",
+                newsDate1: "2026年5月",
+                newsDate2: "2026年5月",
+                newsDate3: "2026年5月",
+                
+                projSectionTitle: "引领 2026 年 EEC 经济的 4 大战略引擎",
+                projSectionDesc: "深度剖析在未来十年内驱动东部经济特区高附加值投资 and 深科技发展的四大核心产业支柱。",
+                
+                cardUtapaoTitle: "乌塔帕奥航空城",
+                cardUtapaoDesc: "项目已动工打桩。一期规划精简至匹配后疫情时代真实的商旅规模。",
+                cardRailTitle: "连接三大机场高铁",
+                cardRailDesc: "谈判陷入僵局。政府准备重新向国际招标以维护项目进度。",
+                cardEECitiTitle: "EECiti 与云港",
+                cardEECitiDesc: "谷歌云超低 PUE 指标敲定，中泰合作智慧产城迎来首批科技人才。",
+                cardEntertainmentTitle: "商业航天港与文旅",
+                cardEntertainmentDesc: "联合日本 METI 推进水平航天发射研究，开发地标级文旅磁极。",
+                
+                cardClick: "分析",
+                cardStatusNTP: "状态: 建设中",
+                detailMilestones: "战略里程碑与商业影响分析：",
+                detailChartTitle: "项目潜力与估值指数 (2026)",
+                
+                reTitle: "房地产的溢出效应 (Spillover Effect)",
+                reDesc: "随着2026年5月乌塔帕奥航空城的实体打桩开工，投机需求迅速转为刚性需求（Real Demand）。高净值买家、航空公司高管及外籍云软件工程师正强力支撑那中天等核心板块的品牌公寓，绕开了高铁延迟的负面预期。",
+                optPrice: "土地评估价格增幅 (% Growth Surge)",
+                optDemand: "各区域住宅需求累计指数",
+                
+                insight1Title: "1. 滨海品牌奢华公寓核心带 (那中天)",
+                insight1Desc: "那中天板块已成为奢华品牌住宅开发的兵家必争之地，吸引高购买力的国际刚需买家。",
+                insight2Title: "2. 智能冷链与高科技物流园区 (班昌)",
+                insight2Desc: "乌塔帕奥航空城的全面铺开促进了班昌工业腹地的高科技立体冷库 & 物流链条整合。",
+                insight3Title: "3. 战略性交通重心偏移 (发达的公路网络)",
+                insight3Desc: "高铁的延误使投资人更聚焦于发达的高速公路网与航空枢纽本身的绝对价值，维持了地价高位。",
+                
+                presTitle: "乌塔帕奥航空城学术与建设白皮书",
+                presDesc: "深度剖析空间规划布局、历史沿革及东部沿海一体化宏观经济发展模型的专业研究课件。",
+                
+                galleryTitle: "前沿地标建筑模型画廊",
+                galleryDesc: "预览泰国东部沿海世纪级产城融合的宏伟蓝图。",
+                
+                anaTitle: "SWOT 策略分析: EEC 2026 前行之路",
+                btnOpp: "战略机遇 (Opportunities)",
+                btnChal: "风险与挑战 (Challenges)",
+                
+                footerText: "智慧城市、智能冷链、新能源通道及东部沿海轻奢住宅综合分析监测平台。",
+                chartPriceTitle: "2026 土地评估价格预期增长率 %",
+                chartDemandTitle: "2026 区域刚性需求累计增幅指数",
+                reLabels: ['中天', '那中天', '班昌', '芭提雅市中心']
+            }
+        };
+
+        const projectDataFull = {
+            aviation: {
+                th: {
+                    title: 'เมืองการบินอู่ตะเภา (U-Tapao Aviation City)',
+                    badge: 'สถานะ: ตอกเสาเข็มก่อสร้าง (NTP Active)',
+                    desc: 'ความคืบหน้าล่าสุดพฤษภาคม 2569: หลังบวงสรวงตอกเสาเข็มอย่างเป็นทางการ บมจ.อู่ตะเภา อินเตอร์เนชั่นแนล เอวิเอชั่น (UTA) และกองทัพเรือได้ปรับขนาดเฟสแรกให้เหมาะกับตลาด (3-4 ล้านคน/ปี) เพื่อสร้างผลตอบแทนเชิงพาณิชย์สูงสุดและรวดเร็ว ก่อนขยายตัวเพิ่มเมื่อความจุแตะเป้าหมาย 80%<br><br><a href="https://thbho.github.io/UTPCiti02.html" target="_blank" class="text-sky-400 font-bold hover:underline"><i class="fa-solid fa-up-right-from-square mr-1"></i> คลิกเข้าชมหน้าเจาะลึกเมืองการบินอู่ตะเภา (UTPCiti02)</a>',
+                    points: [
+                        '<strong>รันเวย์ที่ 2:</strong> กองทัพเรือคืบหน้าก่อสร้าง วงเงิน 13,143 ล้านบาท ปรับฐานรากเสร็จใน 2569-2570', 
+                        '<strong>ศูนย์ MRO สิ้นปี:</strong> ความร่วมมือกับ บมจ.การบินไทย อยู่ระหว่างอนุมัติขั้นตอนเงินกู้ คาดเริ่มตอกเสาเข็มศูนย์ซ่อมภายในปีนี้', 
+                        '<strong>Optimized Layout:</strong> ปรับเลย์เอาต์อาคารผู้โดยสารเฟสแรกเพื่อประหยัดพลังงานสะท้อนแนวทาง BCG'
+                    ]
+                },
+                en: {
+                    title: 'U-Tapao Aviation City',
+                    badge: 'Status: Piling Active (NTP Active)',
+                    desc: 'Latest Update May 2026: Piling continues smoothly. EECO and UTA adjusted Phase 1 to 3-4 million passenger capacity to ensure short-term financial returns and efficient capital allocation before launching modular expansions.<br><br><a href="https://thbho.github.io/UTPCiti02.html" target="_blank" class="text-sky-400 font-bold hover:underline"><i class="fa-solid fa-up-right-from-square mr-1"></i> Click to explore deep-dive Aviation City Website (UTPCiti02)</a>',
+                    points: [
+                        '<strong>Runway 2:</strong> Navy speeds up base foundation operations (13.1 Billion Baht project budget).', 
+                        '<strong>Thai Airways MRO:</strong> Final funding stage active, structural groundwork expected late this year.', 
+                        '<strong>BCG Energy Plan:</strong> Passenger Terminal customized for optimized cooling systems.'
+                    ]
+                },
+                ru: {
+                    title: 'Авиаград У-Тапао (U-Tapao Aviation City)',
+                    badge: 'Статус: Активное строительство (NTP Активен)',
+                    desc: 'Май 2026: Строительство идет полным ходом. План Фазы 1 оптимизирован под 3-4 млн пассажиров в год для быстрой окупаемости инвестиций, с возможностью модульного расширения.<br><br><a href="https://thbho.github.io/UTPCiti02.html" target="_blank" class="text-sky-400 font-bold hover:underline"><i class="fa-solid fa-up-right-from-square mr-1"></i> Перейти на детальную страницу У-Тапао (UTPCiti02)</a>',
+                    points: [
+                        '<strong>Вторая ВПП:</strong> ВМС Таиланда осваивают бюджет в 13,1 млрд бат, завершение земляных работ идет по графику.', 
+                        '<strong>MRO Thai Airways:</strong> Проект находится на стадии утверждения финансирования с началом свайных работ в конце года.', 
+                        '<strong>Эко-дизайн терминала:</strong> Оптимизация систем кондиционирования в рамках стандартов BCG.'
+                    ]
+                },
+                zh: {
+                    title: '乌塔帕奥航空城 (U-Tapao Aviation City)',
+                    badge: '状态: 实体打桩进行中 (NTP已生效)',
+                    desc: '2026年5月最新进展：打桩工程顺利进行。为了确保快速财务收益 and 合理配置资本，一期规划精简调整为支持年客流量300-400万人次。<br><br><a href="https://thbho.github.io/UTPCiti02.html" target="_blank" class="text-sky-400 font-bold hover:underline"><i class="fa-solid fa-up-right-from-square mr-1"></i> 点击访问乌塔帕奥航空城深度专题 (UTPCiti02)</a>',
+                    points: [
+                        '<strong>第二跑道:</strong> 海军131.43亿泰铢基础土方工程稳步推进，计划于2026至2027年完工。', 
+                        '<strong>泰航MRO中心:</strong> 处于最后贷款审批阶段，预计今年底正式开工打桩。', 
+                        '<strong>BCG绿色航站楼:</strong> 一期航站楼通过模块化降温系统设计，践行绿色可持续发展目标。'
+                    ]
+                }
+            },
+            railway: {
+                th: {
+                    title: 'รถไฟความเร็วสูงเชื่อม 3 สนามบิน (Disputed Contract)',
+                    badge: 'สถานะ: พักเจรจา / เตรียมแผนสำรองประมูลใหม่',
+                    desc: 'พฤษภาคม 2569: ทางตันสัญญาเจรจาขอยืดหยุ่นจาก บจก.เอเชีย เอรา วัน (กลุ่ม ซี.พี.) รัฐบาลโดยกระทรวงคมนาคมยื่นคำขาด "ไม่ดำเนินนโยบายแก้สัญญาเอื้อประโยชน์ให้เอกชนเด็ดขาด" เพื่อปกป้องผลประโยชน์ทางการคลังของประเทศ',
+                    points: [
+                        '<strong>No revision policy:</strong> ยืนหยัดสัญญาฉบับร่วมทุนดั้งเดิม ป้องกันความเหลื่อมล้ำในการประมูลสัญญารัฐ', 
+                        '<strong>Amicable path:</strong> เปิดโอกาสให้เอกชนขอยกเลิกข้อตกลงร่วมกันได้โดยไม่ต้องเสียค่าปรับหากทนภาระเศรษฐกิจไม่ไหว', 
+                        '<strong>Re-bidding plan:</strong> สำนักงาน EEC และ รฟท. ร่างเอกสารประมูลใหม่เสร็จเรียบร้อย พร้อมเดินหน้าทันทีที่สัญญาเดิมยกเลิก'
+                    ]
+                },
+                en: {
+                    title: '3-Airport High-Speed Rail (Disputed Contract)',
+                    badge: 'Status: Negotiation Deadlock / Re-bidding Blueprints Ready',
+                    desc: 'May 2026 Update: Stance remains absolute. The Ministry of Transport refuses to allow contract changes that transfer risk to the state. Emergency plans are in place to ensure alternative logistics chains remain active.',
+                    points: [
+                        '<strong>State Budget Protection:</strong> Strict compliance with the original joint-venture contract terms.', 
+                        '<strong>Amicable Cancellation:</strong> Private partner can exit without penalties under accumulated economic distress clauses.', 
+                        '<strong>Re-bidding Blueprints:</strong> Tender paperwork fully prepared for immediate international relaunch if necessary.'
+                    ]
+                },
+                ru: {
+                    title: 'ВСМ 3-х аэропортов (Disputed Contract)',
+                    badge: 'Статус: Переговоры приостановлены / Подготовка нового тендера',
+                    desc: 'Май 2026: Минтранс Таиланда сохраняет жесткую позицию — никаких льготных изменений в контракт для частного инвестора. Власти готовы к перезапуску проекта через новые международные торги в интересах бюджета.',
+                    points: [
+                        '<strong>Защита госсредств:</strong> Строгое соблюдение первоначальных условий совместного предприятия.', 
+                        '<strong>Законный выход:</strong> Возможность закрытия контракта без штрафов из-за накопившегося макроэкономического давления.', 
+                        '<strong>Готовность к тендеру:</strong> Новая документация полностью готова на случай выхода текущего инвестора.'
+                    ]
+                },
+                zh: {
+                    title: '连接三大机场高铁 (Disputed Contract)',
+                    badge: '状态: 谈判陷入僵局 / 已备妥重新招标预案',
+                    desc: '2026年5月更新：交通部态度明确而坚定，绝不修改原始合同以偏向私企转嫁风险。若合伙方决定退出，政府做好了迅速向国际重新招标的全部法定流程准备。',
+                    points: [
+                        '<strong>维护国库利益:</strong> 严格坚守原始合资合同框架，绝不姑息任何利益输送嫌疑。', 
+                        '<strong>友好合规撤资:</strong> 允许私企合伙人在无法承受宏观环境压力时申请无罚金解约。', 
+                        '<strong>重新招标方案:</strong> EEC 和铁路局已备妥全部重招文书，一旦解约立即在全球铺开新一轮竞标。'
+                    ]
+                }
+            },
+            smart: {
+                th: { 
+                    title: 'EECiti & Green Data Center Zone', 
+                    badge: 'สถานะ: ขยายความร่วมมือ Google Cloud', 
+                    desc: 'สำนักงาน EEC (EECO) ปักหมุดยุทธศาสตร์ Green Data Center ในช่วงเดือนพฤษภาคม 2569 จับมือ Google Cloud ผลักดันโครงข่ายคลาวด์คาร์บอนต่ำที่สอดรับมาตรฐานพลังงาน BCG เพื่อพัฒนาอุตสาหกรรมไอทีในพื้นที่', 
+                    points: [
+                        '<strong>PUE &lt; 1.3:</strong> ข้อบังคับด้านสิ่งแวดล้อมที่เข้มงวด มุ่งหน้าใช้พลังงานสะอาด 100% ในอุตสาหกรรมคลาวด์', 
+                        '<strong>China MoU:</strong> ร่วมมือกับ Zhuhai Hengqin Jingtongrongzhi Technology ดึงทุนพัฒนาเมืองอัจฉริยะ EECiti', 
+                        '<strong>Medical Hub:</strong> การพัฒนาอุตสาหกรรมบริการทางการแพทย์และดิจิทัลเทคโนโลยีครบวงจรในพื้นที่เมืองอัจฉริยะ'
+                    ] 
+                },
+                en: { 
+                    title: 'EECiti & Green Data Center Zone', 
+                    badge: 'Status: Google Cloud Green Standards Active', 
+                    desc: 'May 2026: EECO establishes the Green Data Center Hub initiative, establishing low-PUE guidelines and clean energy sourcing to welcome Google Cloud regional operations.', 
+                    points: [
+                        '<strong>Strict PUE &lt; 1.3:</strong> Mandatory standard forcing tech operations towards 100% sustainable renewable energy.', 
+                        '<strong>Hengqin Sino-Thai MoU:</strong> Collaboration with Chinese developer Zhuhai Hengqin for digital town implementation.', 
+                        '<strong>Advanced Wellness Core:</strong> Integrated pharmaceutical and remote healthcare complexes inside EECiti.'
+                    ] 
+                },
+                ru: { 
+                    title: 'EECiti и Зеленые дата-центры', 
+                    badge: 'Статус: Внедрение экологических ИТ-стандартов Google', 
+                    desc: 'Май 2026: Офис EEC устанавливает жесткие стандарты PUE для облачной инфраструктуры с целью привлечения Google Cloud и других технологических гигантов.', 
+                    points: [
+                        '<strong>PUE ниже 1.3:</strong> Строгие экологические требования, ориентированные на 100% возобновляемую энергию.', 
+                        '<strong>Соглашение с Китаем:</strong> Партнерство с Zhuhai Hengqin Jingtongrongzhi для проектирования кварталов ИТ-инженеров.', 
+                        '<strong>Умная медицина:</strong> Цифровые медицинские сервисы и центры здоровья на территории EECiti.'
+                    ] 
+                },
+                zh: { 
+                    title: 'EECiti 与绿色数据中心', 
+                    badge: '状态: 谷歌云绿色算力标准生效', 
+                    desc: '2026年5月：东部经济走廊推行绿色数据中心专区建设，制定超低 PUE 规范以容纳谷歌云的区域投资。同时签署对华智能产城开发备忘录。', 
+                    points: [
+                        '<strong>PUE低于1.3要求:</strong> 严格的低能耗指标，数据基础设施必须全面接入可再生绿色电力。', 
+                        '<strong>横琴京同融智MoU:</strong> 与中国横琴科技开发商展开深度合作，引入智慧市政与云算力产城。', 
+                        '<strong>智慧医疗枢纽:</strong> 在智能新城内部设立高端医疗、远程诊断及生物制药研发组团。'
+                    ] 
+                }
+            },
+            entertainment: {
+                th: { 
+                    title: 'Commercial Spaceport & World-Class Tourism', 
+                    badge: 'สถานะ: การประเมินแผนยุทธศาสตร์ GISTDA-METI', 
+                    desc: 'ผลการศึกษาความเป็นไปได้เชิงลึก: น่านฟ้าและรันเวย์ขนาดใหญ่พิเศษของอู่ตะเภาได้รับการจัดลำดับความพร้อมในฐานะ "ท่าอวกาศยานเชิงพาณิชย์แนวราบ" (Spaceport) ภายใต้ความร่วมมือ GISTDA และกระทรวงเศรษฐกิจญี่ปุ่น (METI)', 
+                    points: [
+                        '<strong>Horizontal Space Launch:</strong> ประหยัดงบประมาณโครงสร้างพื้นฐานกว่า 80% เนื่องจากใช้งานรันเวย์อู่ตะเภาที่มีอยู่เดิม', 
+                        '<strong>Satellites Constellation:</strong> เป้าหมายพัฒนาและส่งกลุ่มดาวเทียมสังเกตการณ์เกษตรอัจฉริยะร่วมกับญี่ปุ่น', 
+                        '<strong>Luxury Recreation:</strong> ผลกระทบเหนี่ยวนำอสังหาฯ และโรงแรมหรูเพื่อต้อนรับผู้เชี่ยวชาญระดับนานาชาติในพัทยาและนาจอมเทียน'
+                    ] 
+                },
+                en: { 
+                    title: 'Commercial Spaceport & World-Class Tourism', 
+                    badge: 'Status: GISTDA-METI Strategic Studies Active', 
+                    desc: 'May 2026 Aerospace study: Survey of U-Tapao extra-long runway demonstrates massive commercial feasibility for horizontal space vehicle launching under joint Thai-Japan METI partnerships.', 
+                    points: [
+                        '<strong>Horizontal launching:</strong> Saves up to 80% on infrastructure by using U-Tapao runway.', 
+                        '<strong>Agriculture constellation:</strong> Deployment of environmental satellites to manage smart farming networks.', 
+                        '<strong>Ultra-luxury Spillover:</strong> High-wealth aerospace tourism boosting Na Jomtien real estate yields.'
+                    ] 
+                },
+                ru: { 
+                    title: 'Коммерческий Космопорт и Мега-Парки', 
+                    badge: 'Статус: Стратегическое исследование GISTDA-METI', 
+                    desc: 'Исследование аэрокосмической сферы (Май 2026): Обследование протяженной ВПП У-Тапао показало высокую коммерческую эффективность для горизонтальных космических стартов в союзе с METI Японии.', 
+                    points: [
+                        '<strong>Горизонтальный пуск:</strong> Экономия до 80% на стартовых площадках благодаря использованию готовой ВПП.', 
+                        '<strong>Мониторинговые спутники:</strong> Запуск группировок для точного земледелия совместно с Японией.', 
+                        '<strong>Премиум-туризм:</strong> Приток высокооплачиваемых специалистов космического сектора в На-Джомтьен.'
+                    ] 
+                },
+                zh: { 
+                    title: '商业航天港与世界级旅游度假区', 
+                    badge: '状态: GISTDA-METI 战略合作研究进行中', 
+                    desc: '2026年5月航天评估：考察表明，乌塔帕奥的超宽超长跑道完全具备高性价比的水平式商业航天发射（Spaceport）潜力，已获日本 METI 联合立项研究。', 
+                    points: [
+                        '<strong>水平太空发射:</strong> 充分盘活现有优质跑道资源，相比建设垂直发射台节省超 80% 基建资金。', 
+                        '<strong>中低轨农业星座:</strong> 联合日本展开空间卫星组网发射，赋能智慧精准农业与气象防灾。', 
+                        '<strong>高价值商旅提振:</strong> 吸引高净值航天科研人才驻地，激发那中天的高端度假地产溢出效应。'
+                    ] 
+                }
+            }
+        };
+
+        const analysisDataFull = {
+            opportunities: {
+                th: { 
+                    title: 'โอกาสและการคาดการณ์เชิงยุทธศาสตร์ (Opportunities)', 
+                    items: [
+                        {t:'Confidence Boosted', d:'การลงนาม NTP และการเริ่มปักตอกเสาเข็มของอู่ตะเภา ช่วยฟื้นคืนความเชื่อมั่นของนักลงทุนต่างชาติให้เข้าสู่เศรษฐกิจของภูมิภาคอย่างแท้จริง'}, 
+                        {t:'Green Capital Hub', d:'มาตรฐาน PUE &lt; 1.3 ของ Green Data Center ช่วยดึงดูดกลุ่มทุนพลังงานหมุนเวียนและผู้ให้บริการคลาวด์ เช่น Google Cloud เข้ามาตั้งดาต้าเซ็นเตอร์'},
+                        {t:'Prachinburi Supply Chain', d:'การขยายผังอุตสาหกรรมเข้าสู่ปราจีนบุรีช่วยเพิ่มกำลังการผลิตเซมิคอนดักเตอร์และชิ้นส่วนยานยนต์ไฟฟ้า (EV) ในประเทศ'}
+                    ] 
+                },
+                en: { 
+                    title: 'Golden Strategic Opportunities', 
+                    items: [
+                        {t:'Confidence Restored', d:'U-Tapao physical groundbreaking and active construction restore global investor trust.'}, 
+                        {t:'Tech & Green Capital', d:'Low-PUE initiatives and clean energy corridors position the EEC as a regional sustainable AI hub.'},
+                        {t:'Supply Chain Expansion', d:'Integrating Prachinburi industrial blueprints broadens domestic capacity for semiconductors and EV components.'}
+                    ] 
+                },
+                ru: { 
+                    title: 'Стратегические возможности развития', 
+                    items: [
+                        {t:'Возрождение доверия', d:'Физический старт свайных работ в У-Тапао вернул уверенность иностранным инвесторам.'}, 
+                        {t:'Зеленый капитал Google', d:'Стандарты PUE ниже 1.3 делают EEC привлекательным для ИТ-гигантов и зеленого финансирования.'},
+                        {t:'Расширение границ', d:'Присоединение Прачинбури усиливает цепочки поставок для производства электромобилей и полупроводников.'}
+                    ] 
+                },
+                zh: { 
+                    title: '东部经济走廊战略机遇', 
+                    items: [
+                        {t:'市场信心回归', d:'乌塔帕奥航空城的实质性开工彻底扫除了跨国资金对泰国大型基建兑现力的顾虑。'}, 
+                        {t:'绿色资本风口', d:'超低 PUE 算力中心和清洁能源网建设将吸引以谷歌为首的全球云计算 & 绿色电力基金。'}, 
+                        {t:'巴真府供应链腹地', d:'将巴真府（Prachinburi）纳入园区拓展版图，为新能源汽车和半导体供应链开拓出广阔腹地。'}
+                    ] 
+                }
+            },
+            challenges: {
+                th: { 
+                    title: 'ความท้าทายและความเสี่ยงเชิงโครงสร้าง (Challenges)', 
+                    items: [
+                        {t:'Railway Deadlock Risk', d:'การพักเจรจาสัญญาขอยืดหยุ่นของโครงการรถไฟความเร็วสูงเชื่อม 3 สนามบิน อาจเพิ่มโอกาสในการเปลี่ยนผ่านผู้ประมูลสัญญาส่งผลให้ล่าช้าออกไป'}, 
+                        {t:'Environmental SEA Protests', d:'การขยายเขตอุตสาหกรรมเข้าสู่ปราจีนบุรี เผชิญความท้าทายจากข้อกังวลและกระแสคัดค้านของภาคประชาชนที่เรียกร้องการจัดทำ SEA อย่างโปร่งใส'},
+                        {t:'Household Debt Pressure', d:'หนี้ครัวเรือนในประเทศที่อยู่ในระดับสูง ควบคู่กับอัตราดอกเบี้ยโลกที่ยังผันผวน อาจจำกัดความเร็วในการดูดซับของตลาดอสังหาฯ ระดับปานกลาง'}
+                    ] 
+                },
+                en: { 
+                    title: 'Key Structural Challenges', 
+                    items: [
+                        {t:'Railway Deadlock Risk', d:'Delays in the 3-Airport rail contract renegotiations may extend the rail connectivity timeline.'}, 
+                        {t:'Environmental SEA Demands', d:'Local protests in Prachinburi calling for Strategic Environmental Assessments (SEA) present regulatory hurdles.'},
+                        {t:'Financial Pressures', d:'High domestic household debt levels coupled with interest volatility pose segment risks for mid-market developments.'}
+                    ] 
+                },
+                ru: { 
+                    title: 'Препятствия и системные риски', 
+                    items: [
+                        {t:'Тупик по контракту ВСМ', d:'Задержка пересмотра контракта по ВСМ может отодвинуть сроки запуска скоростного поезда.'}, 
+                        {t:'Требования стратегического ОВОС', d:'Протесты в Прачинбури с требованиями проведения SEA могут затормозить расширение промышленных зон.'},
+                        {t:'Покупательская способность', d:'Высокий уровень долга тайских домохозяйств сдерживает продажи недвижимости среднего класса.'}
+                    ] 
+                },
+                zh: { 
+                    title: '核心挑战与结构性风险', 
+                    items: [
+                        {t:'高铁合同僵局', d:'三机场高铁合同未能达成妥协，若被迫重新向国际竞标将导致其物理通车时间延后。'}, 
+                        {t:'环境评估社会诉求', d:'巴真府新纳入区域的环保示威，呼吁全面开展战略环境评价（SEA），带来合规审批时间变数。'}, 
+                        {t:'家庭负债压制', d:'泰国内部高企的家庭负债率及全球利率波动令中端住宅市场消化速度放缓。'}
+                    ] 
+                }
+            }
+        };
+
+        let currentLang = 'th';
+        let currentProject = 'aviation';
+        let projectChartInstance = null;
+        let realEstateChartInstance = null;
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.body.className = `flex flex-col min-h-screen lang-${lang}`;
+
+            // Fast DOM Translation
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key]; 
+                }
+            });
+
+            // Update interactive sections
+            updateProjectDetail(currentProject);
+            updateRealEstateChartLang();
+            
+            const currentActiveBtn = document.getElementById('btn-opp').classList.contains('text-white') ? 'opportunities' : 'challenges';
+            toggleAnalysis(currentActiveBtn);
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(id)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        function updateProjectDetail(key) {
+            currentProject = key;
+            const data = projectDataFull[key][currentLang];
+            
+            let chartValues = [];
+            let chartLabels = [];
+            
+            if (currentLang === 'th') {
+                chartLabels = ['ความเชื่อมั่นผู้ลงทุน', 'การเชื่อมระบบโลจิสติกส์', 'พลังงานและกรีนเทค', 'นวัตกรรมและเทคโนโลยี'];
+            } else if (currentLang === 'zh') {
+                chartLabels = ['投资者信心', '物流衔接性', '绿色与环保', '科技创新度'];
+            } else if (currentLang === 'ru') {
+                chartLabels = ['Доверие инвесторов', 'Логистика', 'Зеленый сектор', 'Инновации'];
+            } else {
+                chartLabels = ['Investor Confidence', 'Logistics Connectivity', 'Eco & Green Tech', 'Tech Innovation'];
+            }
+
+            if(key === 'aviation') chartValues = [95, 90, 80, 85];
+            else if(key === 'railway') chartValues = [40, 95, 60, 75];
+            else if(key === 'smart') chartValues = [85, 75, 98, 95];
+            else chartValues = [75, 65, 80, 90]; 
+
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-badge').innerText = data.badge;
+            document.getElementById('detail-desc').innerHTML = data.desc;
+            
+            const list = document.getElementById('detail-list');
+            list.innerHTML = '';
+            data.points.forEach(p => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start';
+                
+                let iconColor = 'text-sky-400';
+                if(key === 'railway') iconColor = 'text-red-500';
+                else if(key === 'smart') iconColor = 'text-emerald-400';
+                else if(key === 'entertainment') iconColor = 'text-purple-400';
+
+                li.innerHTML = `<i class="fa-solid fa-circle-check ${iconColor} mt-1 mr-3 flex-shrink-0"></i> <span>${p}</span>`;
+                list.appendChild(li);
+            });
+
+            // Adjust dynamic Radar themes to match cyber palette
+            let chartColor = 'rgba(56, 189, 248, 1)'; 
+            let chartBg = 'rgba(56, 189, 248, 0.1)';
+            if(key === 'railway') { chartColor = 'rgba(239, 68, 68, 1)'; chartBg = 'rgba(239, 68, 68, 0.1)'; }
+            else if(key === 'smart') { chartColor = 'rgba(16, 185, 129, 1)'; chartBg = 'rgba(16, 185, 129, 0.1)'; }
+            else if(key === 'entertainment') { chartColor = 'rgba(168, 85, 247, 1)'; chartBg = 'rgba(168, 85, 247, 0.1)'; }
+
+            const ctx = document.getElementById('projectImpactChart').getContext('2d');
+            if(projectChartInstance) projectChartInstance.destroy();
+            
+            projectChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Impact Metric',
+                        data: chartValues,
+                        backgroundColor: chartBg,
+                        borderColor: chartColor,
+                        pointBackgroundColor: chartColor,
+                        pointBorderColor: '#0b0f19',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: chartColor,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.08)' },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false },
+                            pointLabels: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: "'Sarabun', 'Roboto', sans-serif",
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initRealEstateChart() {
+            const ctx = document.getElementById('realEstateChart').getContext('2d');
+            realEstateChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: translations[currentLang].reLabels,
+                    datasets: [{
+                        label: 'Appraisal Land Growth %',
+                        data: [88, 95, 70, 55],
+                        backgroundColor: ['rgba(56, 189, 248, 0.85)', 'rgba(16, 185, 129, 0.85)', 'rgba(245, 158, 11, 0.85)', 'rgba(148, 163, 184, 0.4)'],
+                        borderColor: ['#38bdf8', '#10b981', '#f59e0b', '#94a3b8'],
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8' }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+            document.getElementById('chart-title').innerText = translations[currentLang].chartPriceTitle;
+        }
+
+        function updateRealEstateChartLang() {
+            if(!realEstateChartInstance) return;
+            const type = document.getElementById('market-filter').value;
+            const labels = translations[currentLang].reLabels;
+            const title = type === 'price' ? translations[currentLang].chartPriceTitle : translations[currentLang].chartDemandTitle;
+
+            realEstateChartInstance.data.labels = labels;
+            document.getElementById('chart-title').innerText = title;
+            realEstateChartInstance.update();
+        }
+
+        function updateMarketChart() {
+            const type = document.getElementById('market-filter').value;
+            if(type === 'price') {
+                document.getElementById('chart-title').innerText = translations[currentLang].chartPriceTitle;
+                realEstateChartInstance.data.datasets[0].data = [88, 95, 70, 55];
+            } else {
+                document.getElementById('chart-title').innerText = translations[currentLang].chartDemandTitle;
+                realEstateChartInstance.data.datasets[0].data = [82, 91, 65, 60];
+            }
+            realEstateChartInstance.update();
+        }
+
+        function toggleAnalysis(type) {
+            const data = analysisDataFull[type][currentLang];
+            const container = document.getElementById('analysis-content');
+            
+            const icon = type === 'opportunities' ? 'fa-circle-nodes' : 'fa-triangle-exclamation';
+            const color = type === 'opportunities' ? 'text-sky-400' : 'text-amber-500';
+            const bg = type === 'opportunities' ? 'bg-sky-500/10 border-sky-500/30' : 'bg-amber-500/10 border-amber-500/30';
+
+            const btnOpp = document.getElementById('btn-opp');
+            const btnChal = document.getElementById('btn-chal');
+            
+            if(type === 'opportunities') {
+                btnOpp.className = "px-6 py-2.5 rounded-lg text-xs font-extrabold bg-gradient-to-r from-sky-400 to-indigo-400 text-slate-950 shadow-md transition-all";
+                btnChal.className = "px-6 py-2.5 rounded-lg text-xs font-extrabold text-slate-400 hover:text-white transition-all";
+            } else {
+                btnChal.className = "px-6 py-2.5 rounded-lg text-xs font-extrabold bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md transition-all";
+                btnOpp.className = "px-6 py-2.5 rounded-lg text-xs font-extrabold text-slate-400 hover:text-white transition-all";
+            }
+
+            container.innerHTML = `
+                <div class="flex flex-col items-center text-center mb-8">
+                    <div class="w-14 h-14 rounded-full ${bg} border flex items-center justify-center mb-3">
+                        <i class="fa-solid ${icon} text-2xl ${color}"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">${data.title}</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    ${data.items.map(item => `
+                        <div class="bg-slate-950/40 p-5 rounded-xl border border-slate-800 hover:border-slate-700 transition-all">
+                            <h4 class="font-bold text-white mb-2 border-b border-slate-800 pb-2 text-sm flex items-center">
+                               <i class="fa-regular fa-star mr-2 ${color} text-xs"></i> ${item.t}
+                            </h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">${item.d}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // --- Multimedia Lightbox Handlers ---
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            const captionText = element.querySelector('p').innerText;
+            
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = captionText;
+            
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox(event) {
+            if(event.target.id === 'lightbox' || event.target.closest('button')) {
+                document.getElementById('lightbox').classList.add('hidden');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // --- System Load Orchestrator ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateProjectDetail('aviation'); 
+            initRealEstateChart();
+            toggleAnalysis('opportunities');
+
+            // Escape key listener for lightbox accessibility
+            document.addEventListener('keydown', (e) => {
+                if(e.key === "Escape") {
+                    document.getElementById('lightbox').classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

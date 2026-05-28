@@ -59,7 +59,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <h1 class="text-xl font-bold tracking-wider text-slate-900 uppercase">COPACABANA<br><span class="text-sm font-medium text-slate-500">CORAL REEF</span></h1>
+                    <img src="https://i.postimg.cc/9fLx4CBH/logo-copa-group.png" alt="Copacabana Group Logo" class="h-12 mr-3 object-contain">
+                    <h1 class="text-xl font-bold tracking-wider text-slate-900 uppercase hidden sm:block">COPACABANA<br><span class="text-sm font-medium text-slate-500">CORAL REEF</span></h1>
                 </div>
                 <div class="flex items-center space-x-2">
                     <button onclick="changeLanguage('th')" id="btn-th" class="lang-btn px-3 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-900 text-white">TH</button>
@@ -168,12 +169,16 @@
                 <!-- Right: Image grid (Restored Original Images) -->
                 <div class="grid grid-cols-2 gap-4 h-full">
                     <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Resort" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel View" class="rounded-2xl object-cover h-48 w-full shadow-lg hover:shadow-xl transition-shadow">
+                        <img src="https://i.postimg.cc/VvnBF8X6/Copy-of-Insentive-35sqm-gigapixel-high-fidelity-v2-1-4x.jpg" alt="Resort Room" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="bg-white rounded-2xl p-4 shadow-lg flex items-center justify-center h-48 hover:shadow-xl transition-shadow">
+                            <img src="https://i.postimg.cc/m27dPyW1/e9d920df009b1991.png" alt="Copacabana Beach Logo" class="max-h-full max-w-full object-contain p-2">
+                        </div>
                     </div>
                     <div class="space-y-4 pt-8">
-                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool" class="rounded-2xl object-cover h-48 w-full shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="bg-white rounded-2xl p-4 shadow-lg flex items-center justify-center h-48 hover:shadow-xl transition-shadow">
+                            <img src="https://i.postimg.cc/hjh1hwwb/Coral-Rlogo-copa2.png" alt="Copacabana Coral Reef Logo" class="max-h-full max-w-full object-contain p-2">
+                        </div>
+                        <img src="https://i.postimg.cc/YCsGjPmy/Screenshot-2568-08-19-at-15-43-24-topaz-sharpen-text-upscale-1-9x.jpg" alt="Pool View" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
                     </div>
                 </div>
 
@@ -192,30 +197,48 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Perk 1 -->
-                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
-                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-ship text-2xl"></i>
+                <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-colors flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/m2S7ZVw0/DJI-0306.jpg" alt="Yacht Trip" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-slate-900/20"></div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk1_title">ทริปล่องเรือยอร์ชส่วนตัว</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk1_desc">เพื่อการสร้างสรรค์คอนเทนต์ไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ สะท้อนความสมาร์ทของคุณ</p>
+                    <div class="p-8 text-center flex-grow">
+                        <div class="w-14 h-14 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-4 -mt-16 relative z-10 shadow-lg border-4 border-slate-900">
+                            <i class="fas fa-ship text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk1_title">ทริปล่องเรือยอร์ชส่วนตัว</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk1_desc">เพื่อการสร้างสรรค์คอนเทนต์ไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ สะท้อนความสมาร์ทของคุณ</p>
+                    </div>
                 </div>
 
                 <!-- Perk 2 -->
-                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
-                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-swimming-pool text-2xl"></i>
+                <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-colors flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/YCsGjPmy/Screenshot-2568-08-19-at-15-43-24-topaz-sharpen-text-upscale-1-9x.jpg" alt="Facilities" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-slate-900/20"></div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk2_title">ใช้สิ่งอำนวยความสะดวกครบวงจร</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk2_desc">สิทธิ์เข้าใช้พื้นที่ส่วนกลางระดับท็อป ทั้งฟิตเนสวิวทะเล สระว่ายน้ำ และ Beach Club</p>
+                    <div class="p-8 text-center flex-grow">
+                        <div class="w-14 h-14 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-4 -mt-16 relative z-10 shadow-lg border-4 border-slate-900">
+                            <i class="fas fa-swimming-pool text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk2_title">ใช้สิ่งอำนวยความสะดวกครบวงจร</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk2_desc">สิทธิ์เข้าใช้พื้นที่ส่วนกลางระดับท็อป ทั้งฟิตเนสวิวทะเล สระว่ายน้ำ และ Beach Club</p>
+                    </div>
                 </div>
 
                 <!-- Perk 3 -->
-                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
-                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-key text-2xl"></i>
+                <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-colors flex flex-col group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/VvnBF8X6/Copy-of-Insentive-35sqm-gigapixel-high-fidelity-v2-1-4x.jpg" alt="VIP Accommodation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-slate-900/20"></div>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk3_title">ห้องพักรับรองระดับ VIP</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk3_desc">เข้าพักในห้องชุดวิวทะเลพาโนรามาแบบ Private ระหว่างการรีวิวและทำกิจกรรม</p>
+                    <div class="p-8 text-center flex-grow">
+                        <div class="w-14 h-14 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-4 -mt-16 relative z-10 shadow-lg border-4 border-slate-900">
+                            <i class="fas fa-key text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk3_title">ห้องพักรับรองระดับ VIP</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk3_desc">เข้าพักในห้องชุดวิวทะเลพาโนรามาแบบ Private ระหว่างการรีวิวและทำกิจกรรม</p>
+                    </div>
                 </div>
             </div>
 

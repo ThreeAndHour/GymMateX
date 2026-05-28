@@ -1,413 +1,360 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An Exclusive Invitation for K. Min from Copacabana Group</title>
+    <title>Exclusive Invitation | Copacabana Coral Reef Jomtien</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Kanit', sans-serif;
-            background-color: #f1f5f9; /* Slate 50 */
-            color: #1e293b; /* Slate 800 */
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
-        .font-en { font-family: 'Montserrat', sans-serif; }
-        .font-th { font-family: 'Kanit', sans-serif; }
-
-        .gradient-gold {
-            background: linear-gradient(135deg, #d4af37, #aa7c11);
+        .hero-pattern {
+            background-image: linear-gradient(to right bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        .gradient-dark {
-            background: linear-gradient(135deg, #0f172a, #1e293b); /* Slate 900 to 800 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #d4af37, #b48608);
+        .text-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card {
-            background: white;
-            border-radius: 1.25rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
-        }
-        .progress-bar {
-            background: linear-gradient(90deg, #d4af37 0%, #fef08a 50%, #d4af37 100%);
-            background-size: 200% auto;
-            animation: shine 3s linear infinite;
-        }
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
         .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeIn 1s ease-in-out forwards;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        
-        .lang-btn {
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            filter: grayscale(100%);
-            opacity: 0.6;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .lang-btn:hover {
-            transform: scale(1.1);
-            filter: grayscale(0%);
-            opacity: 1;
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-        .lang-btn.active {
-             border-color: #d4af37;
-             box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
-             filter: grayscale(0%);
-             opacity: 1;
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen pb-12">
+<body class="antialiased text-slate-800 selection:bg-slate-900 selection:text-white">
 
-    <div class="fixed top-4 right-4 z-50">
-        <div class="flex space-x-2 bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-lg border border-slate-200">
-            <img src="https://flagcdn.com/w40/th.png" alt="Thai" id="lang-th" class="lang-btn active object-cover" onclick="switchLanguage('th')">
-            <img src="https://flagcdn.com/w40/gb.png" alt="English" id="lang-en" class="lang-btn object-cover" onclick="switchLanguage('en')">
+    <!-- Navigation / Language Switcher -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-slate-200" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold tracking-wider text-slate-900 uppercase">COPACABANA<br><span class="text-sm font-medium text-slate-500">CORAL REEF</span></h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="changeLanguage('th')" id="btn-th" class="lang-btn px-3 py-1.5 rounded-md text-sm font-medium transition-colors bg-slate-900 text-white">TH</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn px-3 py-1.5 rounded-md text-sm font-medium transition-colors text-slate-600 hover:bg-slate-100">EN</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="gradient-dark text-white text-center py-3 px-4 relative z-10 shadow-md">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center space-y-1 md:space-y-0 md:space-x-3">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-slate-900 animate-pulse uppercase tracking-wider">
-                Live Update
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern min-h-[80vh] flex items-center">
+        <div class="absolute inset-0 bg-slate-900/40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-semibold tracking-widest uppercase mb-6 fade-in" style="animation-delay: 0.1s;">
+                Exclusive Invitation
             </span>
-            <p class="text-xs md:text-sm font-medium lang-text text-amber-50" data-lang="construction_banner">
-                🏗️ การก่อสร้างดำเนินอย่างรวดเร็วถึงชั้น 49 แล้ว! โครงการดำเนินไปอย่างสมบูรณ์ตามแผนงานเดิม (มิถุนายน 2026)
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight fade-in lang-text" data-lang="hero_title" style="animation-delay: 0.2s;">
+                คำเชิญพิเศษ สำหรับ<br>คุณมิน (Min)
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed fade-in lang-text" data-lang="hero_subtitle" style="animation-delay: 0.3s;">
+                สัมผัสประสบการณ์การอยู่อาศัยเหนือระดับที่ Copacabana Coral Reef Jomtien ที่ออกแบบมาเพื่อตอบโจทย์ไลฟ์สไตล์ผู้ชายที่ประสบความสำเร็จ รักสุขภาพ และชื่นชอบสีสันของการใช้ชีวิตแบบ "The Ultimate Bachelor Pad"
             </p>
+            <div class="mt-10 fade-in" style="animation-delay: 0.4s;">
+                <a href="#collaboration" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full text-slate-900 bg-white hover:bg-slate-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    <span class="lang-text" data-lang="explore_btn">ดูข้อเสนอความร่วมมือ</span>
+                    <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
-
-        <header class="text-center mt-8 mb-12 fade-in">
-            <img src="https://i.postimg.cc/9fLx4CBH/logo-copa-group.png" alt="Copacabana Group Logo" class="mx-auto h-24 mb-6 drop-shadow-sm">
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 lang-text uppercase" data-lang="header_title">An Exclusive Invitation</h1>
-            <p class="text-xl md:text-2xl text-amber-600 font-medium mt-3 tracking-wide lang-text" data-lang="header_subtitle">for K. Min</p>
-            <div class="w-16 h-1 gradient-gold mx-auto mt-6 rounded-full"></div>
-        </header>
-
-        <section class="mb-12 fade-in delay-1">
-            <div class="card p-8 md:p-10 text-center relative overflow-hidden border border-slate-100">
-                <div class="absolute top-0 left-0 w-2 h-full gradient-gold"></div>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-5 lang-text" data-lang="intro_greeting">เรียน คุณมิน,</h2>
-                <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-slate-600 lang-text" data-lang="intro_body">
-                    ทีมงาน Copacabana Group ชื่นชมในไลฟ์สไตล์ที่สมาร์ทและเต็มไปด้วยพลังของคุณ ซึ่งสะท้อนนิยามของ 'The Ultimate Bachelor' ได้อย่างสมบูรณ์แบบ ทั้งการใส่ใจสุขภาพ (Wellness) และการใช้ชีวิตที่สนุกสนาน (Fun Living) เราจึงขอเรียนเชิญคุณมาเป็นแขกคนสำคัญ เพื่อสัมผัสความหรูหราที่มาพร้อมความสะดวกสบาย (Luxury & Comfortable) ณ โครงการของเรา
-                </p>
+    <!-- Video Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 lang-text" data-lang="vdo_title">สัมผัสบรรยากาศจริง (Immersive Vibe)</h2>
+                <div class="w-24 h-1 bg-slate-900 mx-auto rounded-full"></div>
             </div>
-        </section>
-
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-2 fade-in delay-2 lang-text" data-lang="offer_title">เอกสิทธิ์เหนือระดับสำหรับคุณ</h2>
-            <p class="text-slate-500 text-center mb-10 fade-in delay-2 max-w-xl mx-auto text-sm md:text-base lang-text" data-lang="offer_subtitle">เพื่อการพักผ่อนและชาร์จพลังอย่างแท้จริง</p>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Offer 1 -->
-                <div class="card overflow-hidden fade-in delay-2 flex flex-col justify-between border border-slate-100">
-                    <div>
-                        <div class="relative overflow-hidden group h-56 bg-slate-200">
-                            <img src="https://i.postimg.cc/VvnBF8X6/Copy-of-Insentive-35sqm-gigapixel-high-fidelity-v2-1-4x.jpg" alt="Seaview Retreat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-900 font-bold text-xs py-1 px-3 rounded-md uppercase tracking-wider">Stay</div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 lang-text" data-lang="offer1_title">The Ultimate Seaview Suite</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed lang-text" data-lang="offer1_body">พักผ่อนชาร์จพลัง 3 วัน 2 คืน ในห้องพักวิวทะเลแบบพาโนรามา ณ Copacabana Beach Jomtien สัมผัสความสะดวกสบายขั้นสุด</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offer 2 -->
-                <div class="card overflow-hidden fade-in delay-3 flex flex-col justify-between border border-slate-100">
-                    <div>
-                        <div class="relative overflow-hidden group h-56 bg-slate-200">
-                            <img src="https://i.postimg.cc/YCsGjPmy/Screenshot-2568-08-19-at-15-43-24-topaz-sharpen-text-upscale-1-9x.jpg" alt="Wellness" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-900 font-bold text-xs py-1 px-3 rounded-md uppercase tracking-wider">Wellness</div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-3 lang-text" data-lang="offer2_title">Premium Wellness & Lifestyle</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <span class="text-amber-500 mr-2">✓</span>
-                                    <p class="text-sm text-slate-600 lang-text" data-lang="offer2_item1">Welcome Set ระดับพรีเมียม</p>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="text-amber-500 mr-2">✓</span>
-                                    <p class="text-sm text-slate-600 lang-text" data-lang="offer2_item2">สิทธิ์ใช้งาน High Ceiling Gym, Rooftop Pool และ Beach Club อย่างเป็นส่วนตัว</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Offer 3 -->
-                <div class="card overflow-hidden fade-in delay-4 flex flex-col justify-between border border-slate-100">
-                    <div>
-                        <div class="relative overflow-hidden group h-56 bg-slate-200">
-                            <img src="https://i.postimg.cc/m2S7ZVw0/DJI-0306.jpg" alt="Yacht Trip" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 bg-amber-500 text-slate-900 font-bold text-xs py-1 px-3 rounded-md uppercase tracking-wider">Experience</div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 lang-text" data-lang="offer3_title">Private Yacht Experience</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed lang-text" data-lang="offer3_body">สนุกสนานกับทริปล่องเรือยอร์ชส่วนตัว สะท้อนไลฟ์สไตล์เท่ๆ และลุค Smart Casual ในแบบของคุณกลางทะเลพัทยา</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-video relative">
+                <!-- YouTube iframe -->
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/videoseries?list=PLLS5V99ZfVi-0NeMX7m7LYM6vrIi2NsAQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-8 fade-in delay-2 lang-text" data-lang="collab_title">โปรเจกต์พิเศษที่เราอยากร่วมสร้างสรรค์</h2>
-            <div class="card p-6 md:p-10 border border-slate-200 shadow-sm fade-in delay-3">
-                <div class="text-center mb-10 pb-6 border-b border-slate-100">
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-gradient-gold uppercase tracking-wide lang-text" data-lang="collab_theme_title">"The Ultimate Bachelor Pad:<br>A Statement of Style & Investment"</h3>
-                </div>
+    <!-- Collaboration Details Section -->
+    <section id="collaboration" class="py-24 relative bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <!-- Collab 1 -->
-                    <div>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-lg mr-3 shadow-md">1</div>
-                            <h4 class="font-bold text-lg text-slate-800 lang-text" data-lang="collab1_title">ถ่ายทอด Lifestyle & Wellness (Copacabana Beach)</h4>
+                <!-- Left: Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 lang-text" data-lang="collab_title">รูปแบบความร่วมมือที่นำเสนอ</h2>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed lang-text" data-lang="collab_intro">
+                        ทางโครงการเล็งเห็นว่าไลฟ์สไตล์ที่สมาร์ทและรักสุขภาพของคุณมิน สอดคล้องกับคอนเซปต์ "The Jewels of the Sea" ของเราอย่างสมบูรณ์แบบ เราจึงขอเสนอแนวทางการทำงานร่วมกันดังนี้:
+                    </p>
+
+                    <div class="space-y-8">
+                        <!-- Collaboration Item 1 -->
+                        <div class="flex items-start gap-4 p-6 glass-card rounded-2xl transition-transform hover:-translate-y-1">
+                            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-building text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 lang-text" data-lang="collab_item1">รีวิวโครงการแบบ Exclusive</h3>
+                                <p class="text-slate-600 leading-relaxed lang-text" data-lang="collab_desc1">นำเสนอประสบการณ์การพักผ่อนแบบส่วนตัวในห้องพักหรูวิวทะเล และสิ่งอำนวยความสะดวกระดับเวิลด์คลาส เช่น ฟิตเนสเพดานสูงวิวพาโนรามา และสระว่ายน้ำลอยฟ้า</p>
+                            </div>
                         </div>
-                        <ul class="space-y-3 text-sm text-slate-600 pl-14">
-                            <li class="relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-amber-500 before:rounded-full">
-                                <p class="lang-text" data-lang="collab1_item1"><strong>Instagram Reel:</strong> วิดีโอสไตล์สมาร์ทๆ นำเสนอการพักผ่อนและการดูแลสุขภาพ (Fun & Wellness)</p>
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-amber-500 before:rounded-full">
-                                <p class="lang-text" data-lang="collab1_item2"><strong>Instagram Post:</strong> ภาพถ่ายลุค Smart Casual กับมุม Photogenic เท่ๆ ของโครงการ</p>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Collab 2 -->
-                    <div>
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-lg mr-3 shadow-md">2</div>
-                            <h4 class="font-bold text-lg text-slate-800 lang-text" data-lang="collab2_title">เปิดมุมมอง Smart Investment (Copacabana Coral Reef)</h4>
+
+                        <!-- Collaboration Item 2 -->
+                        <div class="flex items-start gap-4 p-6 glass-card rounded-2xl transition-transform hover:-translate-y-1">
+                            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-camera-retro text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 lang-text" data-lang="collab_item2">Lifestyle Content Creation</h3>
+                                <p class="text-slate-600 leading-relaxed lang-text" data-lang="collab_desc2">ผลิตวิดีโอและภาพนิ่งที่สะท้อนความสมาร์ทและสนุกสนาน ควบคู่กับทริปล่องเรือยอร์ชส่วนตัว ในลุค Smart Casual ที่ถ่ายทอดไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ</p>
+                            </div>
                         </div>
-                        <ul class="space-y-3 text-sm text-slate-600 pl-14">
-                            <li class="relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-amber-500 before:rounded-full">
-                                <p class="lang-text" data-lang="collab2_item1"><strong>Visit Sales Gallery:</strong> ร่วมชมห้องตัวอย่าง สัมผัสความหรูหราที่ตอบโจทย์ไลฟ์สไตล์ผู้ชายยุคใหม่</p>
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-amber-500 before:rounded-full">
-                                <p class="lang-text" data-lang="collab2_item2"><strong>Investment Content:</strong> เล่าเรื่องราวความสำเร็จในการเลือกลงทุนอสังหาฯ ที่มีศักยภาพ</p>
-                            </li>
-                        </ul>
+
+                        <!-- Collaboration Item 3 -->
+                        <div class="flex items-start gap-4 p-6 glass-card rounded-2xl transition-transform hover:-translate-y-1">
+                            <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-microphone-alt text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 lang-text" data-lang="collab_item3">Guest Speaker โครงการพิเศษ (Offline PR)</h3>
+                                <p class="text-slate-600 leading-relaxed mb-3 lang-text" data-lang="collab_desc3">ร่วมเดินสายตามมหาวิทยาลัยเพื่อบรรยายหัวข้อ 'การประยุกต์ใช้ Hybrid AI สำหรับงาน Online Content และอสังหาริมทรัพย์' รวมถึงร่วมงาน CSR และ Lifestyle Workshop ของโครงการ</p>
+                                <a href="https://thbho.github.io/HybridAIPersona.html" target="_blank" class="inline-flex items-center text-sm font-semibold text-slate-900 hover:text-slate-600 transition-colors group">
+                                    <span class="border-b border-slate-900 group-hover:border-slate-600 pb-0.5 lang-text" data-lang="collab_link3">ดูตัวอย่างเนื้อหาการบรรยาย (Hybrid AI Persona)</span>
+                                    <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Collab 3 (New: PR & Events) -->
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-amber-500 text-slate-900 flex items-center justify-center font-bold text-lg mr-3 shadow-md">3</div>
-                        <h4 class="font-bold text-lg text-slate-800 lang-text" data-lang="collab3_title">Exclusive Guest Speaker & Offline Events</h4>
+                <!-- Right: Image grid -->
+                <div class="grid grid-cols-2 gap-4 h-full">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Resort Resort" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel View" class="rounded-2xl object-cover h-48 w-full shadow-lg hover:shadow-xl transition-shadow">
                     </div>
-                    <ul class="space-y-3 text-sm text-slate-600 pl-14 md:flex md:space-y-0 md:space-x-6">
-                        <li class="md:w-1/2 relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-800 before:rounded-full">
-                            <p class="lang-text" data-lang="collab3_item1"><strong>University Tour:</strong> ร่วมเป็น Guest Speaker แบ่งปันความรู้เรื่องการใช้ Hybrid AI สร้างสรรค์ Online Content และประยุกต์ใช้กับธุรกิจอสังหาฯ ให้นักศึกษามหาวิทยาลัย</p>
-                        </li>
-                        <li class="md:w-1/2 relative before:content-[''] before:absolute before:left-[-15px] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-800 before:rounded-full">
-                            <p class="lang-text" data-lang="collab3_item2"><strong>CSR & Workshops:</strong> ร่วมเป็นแขกคนพิเศษในกิจกรรมเพื่อสังคม (CSR) และ Lifestyle Workshop ต่างๆ ของโครงการในฐานะ Brand Partner</p>
-                        </li>
-                    </ul>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool" class="rounded-2xl object-cover h-48 w-full shadow-lg hover:shadow-xl transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior" class="rounded-2xl object-cover h-64 w-full shadow-lg hover:shadow-xl transition-shadow">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 background-pattern"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 lang-text" data-lang="perks_title">สิ่งที่เราตั้งใจมอบให้เป็นพิเศษ</h2>
+                <div class="w-24 h-1 bg-white/30 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Perk 1 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-ship text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk1_title">ทริปล่องเรือยอร์ชส่วนตัว</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk1_desc">เพื่อการสร้างสรรค์คอนเทนต์ไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ สะท้อนความสมาร์ทของคุณ</p>
+                </div>
+
+                <!-- Perk 2 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-swimming-pool text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk2_title">ใช้สิ่งอำนวยความสะดวกครบวงจร</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk2_desc">สิทธิ์เข้าใช้พื้นที่ส่วนกลางระดับท็อป ทั้งฟิตเนสวิวทะเล สระว่ายน้ำ และ Beach Club</p>
+                </div>
+
+                <!-- Perk 3 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-16 h-16 mx-auto bg-white text-slate-900 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-key text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 lang-text" data-lang="perk3_title">ห้องพักรับรองระดับ VIP</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed lang-text" data-lang="perk3_desc">เข้าพักในห้องชุดวิวทะเลพาโนรามาแบบ Private ระหว่างการรีวิวและทำกิจกรรม</p>
                 </div>
             </div>
-        </section>
 
-        <section class="mb-16 fade-in delay-3">
-            <h2 class="text-2xl font-bold text-center text-slate-900 mb-6 lang-text" data-lang="video_title">สัมผัสบรรยากาศจริง (Immersive Vibe)</h2>
-            <div class="card p-2 border border-slate-100 overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 relative rounded-lg overflow-hidden" style="padding-bottom: 56.25%;">
-                    <iframe 
-                        class="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/videoseries?list=PLLS5V99ZfVi-0NeMX7m7LYM6vrIi2NsAQ" 
-                        title="Copacabana Coral Reef YouTube Playlist" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <section class="text-center fade-in delay-4 pb-8">
-            <div class="card p-8 md:p-12 border border-slate-200 bg-white relative overflow-hidden">
-                <div class="absolute inset-x-0 bottom-0 h-1.5 gradient-dark"></div>
-                
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 lang-text" data-lang="cta_title">พร้อมต้อนรับคุณมินอย่างเป็นทางการ</h2>
-                <p class="text-base text-slate-500 mb-8 max-w-xl mx-auto lang-text" data-lang="cta_body">
-                    อัปเดตความเคลื่อนไหวล่าสุดผ่าน Newsletter และตอบกลับเพื่อยืนยันตารางเวลาที่สะดวกที่สุดของคุณได้เลยครับ
+            <!-- Remark Note -->
+            <div class="mt-12 text-center">
+                <p class="text-sm text-slate-400 italic lang-text" data-lang="perk_remark">
+                    *หมายเหตุ: สิทธิพิเศษต่างๆ ขึ้นอยู่กับความพร้อมให้บริการ และต้องทำการจองล่วงหน้ากับทางทีมงาน
                 </p>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-                    <a href="https://thbho.github.io/CopaNewsJun26.html" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300 font-semibold py-3.5 px-8 rounded-xl transition-all flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5L18.5 8H20"></path></svg>
-                        <span class="lang-text" data-lang="cta_button1">Newsletter (June 2026)</span>
-                    </a>
-                    
-                    <a href="mailto:Marketing_coral@copacabanacoralreef.com" class="w-full sm:w-auto gradient-dark text-amber-400 hover:opacity-90 font-bold py-3.5 px-8 rounded-xl transition-all shadow-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        <span class="lang-text" data-lang="cta_button2">RSVP via Email</span>
-                    </a>
-                </div>
-                
-                <div class="pt-6 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-2">
-                    <div class="text-center md:text-left text-slate-600">
-                        <p class="font-bold">ThB.Ho</p>
-                        <p class="lang-text" data-lang="cta_footer1">Marketing & Sales Consultant</p>
-                        <p>Copacabana Coral Reef Jomtien</p>
-                    </div>
-                    <div class="text-center md:text-right">
-                        <p class="lang-text font-semibold text-amber-600" data-lang="construction_info">Construction Status: 49th Floor completed (June 2026)</p>
-                        <p>© 2026 Copacabana Group.</p>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
+    <!-- Call to Action -->
+    <section class="py-24 bg-white text-center">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight lang-text" data-lang="cta_title">เริ่มต้นความร่วมมือ</h2>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed lang-text" data-lang="cta_desc">
+                ทางทีมงาน Copacabana ยินดีอย่างยิ่งที่จะได้ร่วมงานกับคุณมิน หากมีความสนใจหรือต้องการปรับเปลี่ยนรูปแบบ สามารถแจ้งทีมงานได้ทันทีครับ
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="mailto:marketing@copacabanacoralreef.com" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full text-white bg-slate-900 hover:bg-slate-800 transition-all shadow-lg hover:-translate-y-0.5">
+                    <i class="fas fa-envelope mr-2"></i>
+                    <span class="lang-text" data-lang="btn_contact">ติดต่อทีมงาน Marketing</span>
+                </a>
+                <a href="https://thbho.github.io/CopaNewsMay26.html" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full text-slate-900 bg-white border-2 border-slate-900 hover:bg-slate-50 transition-all shadow-md hover:-translate-y-0.5">
+                    <i class="far fa-newspaper mr-2"></i>
+                    <span class="lang-text" data-lang="btn_news">อ่าน Newsletter ล่าสุด</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-10 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <h2 class="text-xl font-bold tracking-wider text-slate-900 uppercase mb-2">COPACABANA <span class="font-normal text-slate-500">CORAL REEF</span></h2>
+            <p class="text-slate-500 text-sm lang-text" data-lang="footer_text">Jomtien 2nd Road, Pattaya, Chonburi 20150</p>
+            <div class="mt-6 flex space-x-6">
+                <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+            </div>
+            <p class="mt-8 text-xs text-slate-400">&copy; 2026 Copacabana Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script>
+        // Language Dictionary (TH & EN only)
         const translations = {
             th: {
-                construction_banner: "🏗️ โครงการก่อสร้างดำเนินอย่างรวดเร็วถึงชั้น 49 แล้ว! สมบูรณ์แบบตามแผนงานเดิม (มิ.ย. 2026)",
-                header_title: "An Exclusive Invitation",
-                header_subtitle: "สำหรับ คุณมิน (K. Min)",
-                intro_greeting: "เรียน คุณมิน,",
-                intro_body: "ทีมงาน Copacabana Group ชื่นชมในไลฟ์สไตล์ที่สมาร์ทและเต็มไปด้วยพลังของคุณ ซึ่งสะท้อนนิยามของ 'The Ultimate Bachelor' ได้อย่างสมบูรณ์แบบ ทั้งการใส่ใจสุขภาพ (Wellness) และการใช้ชีวิตที่สนุกสนาน (Fun Living) เราจึงขอเรียนเชิญคุณมาเป็นแขกคนสำคัญ เพื่อสัมผัสความหรูหราที่มาพร้อมความสะดวกสบาย (Luxury & Comfortable) ณ โครงการของเรา",
-                offer_title: "เอกสิทธิ์เหนือระดับสำหรับคุณ",
-                offer_subtitle: "เพื่อการพักผ่อนและชาร์จพลังอย่างแท้จริง",
-                offer1_title: "The Ultimate Seaview Suite",
-                offer1_body: "พักผ่อนชาร์จพลัง 3 วัน 2 คืน ในห้องพักวิวทะเลแบบพาโนรามา ณ Copacabana Beach Jomtien สัมผัสความสะดวกสบายขั้นสุด",
-                offer2_title: "Premium Wellness & Lifestyle",
-                offer2_item1: "Welcome Set ระดับพรีเมียมต้อนรับการมาเยือน",
-                offer2_item2: "สิทธิ์ใช้งาน High Ceiling Gym, Rooftop Pool และ Beach Club เพื่อการดูแลสุขภาพอย่างเต็มรูปแบบ",
-                offer3_title: "Private Yacht Experience",
-                offer3_body: "สนุกสนานกับทริปล่องเรือยอร์ชส่วนตัว สะท้อนไลฟ์สไตล์เท่ๆ และลุค Smart Casual ในแบบของคุณ",
-                collab_title: "โปรเจกต์พิเศษที่เราอยากร่วมสร้างสรรค์",
-                collab_theme_title: '"The Ultimate Bachelor Pad:<br>A Statement of Style & Investment"',
-                collab1_title: "ถ่ายทอด Lifestyle & Wellness (Copacabana Beach)",
-                collab1_item1: "<strong>Instagram Reel:</strong> วิดีโอสไตล์เท่ๆ นำเสนอการพักผ่อนและการดูแลสุขภาพ (Fun & Wellness)",
-                collab1_item2: "<strong>Instagram Post:</strong> ภาพถ่ายลุค Smart Casual กับมุม Photogenic เท่ๆ ของโครงการ",
-                collab2_title: "เปิดมุมมอง Smart Investment (Copacabana Coral Reef)",
-                collab2_item1: "<strong>Visit Sales Gallery:</strong> ร่วมชมห้องตัวอย่าง สัมผัสความหรูหราที่ตอบโจทย์ไลฟ์สไตล์ผู้ชายยุคใหม่",
-                collab2_item2: "<strong>Investment Content:</strong> เล่าเรื่องราวความสำเร็จและการเลือกลงทุนอสังหาฯ ที่มีศักยภาพ",
-                collab3_title: "Exclusive Guest Speaker & Offline Events",
-                collab3_item1: "<strong>University Tour:</strong> ร่วมแบ่งปันความรู้เรื่องการใช้ Hybrid AI สร้าง Content และธุรกิจอสังหาฯ ให้นักศึกษา",
-                collab3_item2: "<strong>CSR & Workshops:</strong> ร่วมเป็นแขกคนพิเศษในกิจกรรมเพื่อสังคมและ Lifestyle Workshop ของโครงการ",
-                video_title: "สัมผัสบรรยากาศจริง (Immersive Vibe)",
-                cta_title: "พร้อมต้อนรับคุณมินอย่างเป็นทางการ",
-                cta_body: "อัปเดตความเคลื่อนไหวล่าสุดผ่าน Newsletter และตอบกลับเพื่อยืนยันเวลาที่สะดวกได้เลยครับ",
-                cta_button1: "อ่าน Newsletter (มิ.ย. 2026)",
-                cta_button2: "ยืนยันรับสิทธิ์ (Email)",
-                cta_footer1: "ที่ปรึกษาด้านการตลาดและฝ่ายขาย",
-                construction_info: "สถานะก่อสร้าง: ชั้น 49 สำเร็จลุล่วง (มิถุนายน 2026)"
+                hero_title: 'คำเชิญพิเศษ สำหรับ<br>คุณมิน (Min)',
+                hero_subtitle: 'สัมผัสประสบการณ์การอยู่อาศัยเหนือระดับที่ Copacabana Coral Reef Jomtien ที่ออกแบบมาเพื่อตอบโจทย์ไลฟ์สไตล์ผู้ชายที่ประสบความสำเร็จ รักสุขภาพ และชื่นชอบสีสันของการใช้ชีวิตแบบ "The Ultimate Bachelor Pad"',
+                explore_btn: 'ดูข้อเสนอความร่วมมือ',
+                collab_title: 'รูปแบบความร่วมมือที่นำเสนอ',
+                collab_intro: 'ทางโครงการเล็งเห็นว่าไลฟ์สไตล์ที่สมาร์ทและรักสุขภาพของคุณมิน สอดคล้องกับคอนเซปต์ "The Jewels of the Sea" ของเราอย่างสมบูรณ์แบบ เราจึงขอเสนอแนวทางการทำงานร่วมกันดังนี้:',
+                collab_item1: 'รีวิวโครงการแบบ Exclusive',
+                collab_desc1: 'นำเสนอประสบการณ์การพักผ่อนแบบส่วนตัวในห้องพักหรูวิวทะเล และสิ่งอำนวยความสะดวกระดับเวิลด์คลาส เช่น ฟิตเนสเพดานสูงวิวพาโนรามา และสระว่ายน้ำลอยฟ้า',
+                collab_item2: 'Lifestyle Content Creation',
+                collab_desc2: 'ผลิตวิดีโอและภาพนิ่งที่สะท้อนความสมาร์ทและสนุกสนาน ควบคู่กับทริปล่องเรือยอร์ชส่วนตัว ในลุค Smart Casual ที่ถ่ายทอดไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ',
+                collab_item3: 'Guest Speaker โครงการพิเศษ (Offline PR)',
+                collab_desc3: 'ร่วมเดินสายตามมหาวิทยาลัยเพื่อบรรยายหัวข้อ \'การประยุกต์ใช้ Hybrid AI สำหรับงาน Online Content และอสังหาริมทรัพย์\' รวมถึงร่วมงาน CSR และ Lifestyle Workshop ของโครงการ',
+                collab_link3: 'ดูตัวอย่างเนื้อหาการบรรยาย (Hybrid AI Persona)',
+                vdo_title: 'สัมผัสบรรยากาศจริง (Immersive Vibe)',
+                perks_title: 'สิ่งที่เราตั้งใจมอบให้เป็นพิเศษ',
+                perk1_title: 'ทริปล่องเรือยอร์ชส่วนตัว',
+                perk1_desc: 'เพื่อการสร้างสรรค์คอนเทนต์ไลฟ์สไตล์สุดเอ็กซ์คลูซีฟ สะท้อนความสมาร์ทของคุณ',
+                perk2_title: 'ใช้สิ่งอำนวยความสะดวกครบวงจร',
+                perk2_desc: 'สิทธิ์เข้าใช้พื้นที่ส่วนกลางระดับท็อป ทั้งฟิตเนสวิวทะเล สระว่ายน้ำ และ Beach Club',
+                perk3_title: 'ห้องพักรับรองระดับ VIP',
+                perk3_desc: 'เข้าพักในห้องชุดวิวทะเลพาโนรามาแบบ Private ระหว่างการรีวิวและทำกิจกรรม',
+                perk_remark: '*หมายเหตุ: สิทธิพิเศษต่างๆ ขึ้นอยู่กับความพร้อมให้บริการ และต้องทำการจองล่วงหน้ากับทางทีมงาน',
+                cta_title: 'เริ่มต้นความร่วมมือ',
+                cta_desc: 'ทางทีมงาน Copacabana ยินดีอย่างยิ่งที่จะได้ร่วมงานกับคุณมิน หากมีความสนใจหรือต้องการปรับเปลี่ยนรูปแบบ สามารถแจ้งทีมงานได้ทันทีครับ',
+                btn_contact: 'ติดต่อทีมงาน Marketing',
+                btn_news: 'อ่าน Newsletter ล่าสุด',
+                footer_text: 'ถนนจอมเทียนสาย 2 พัทยา ชลบุรี 20150'
             },
             en: {
-                construction_banner: "🏗️ Construction has successfully reached the 49th floor! Perfectly on track with the original schedule. (June 2026)",
-                header_title: "An Exclusive Invitation",
-                header_subtitle: "for K. Min",
-                intro_greeting: "Dear K. Min,",
-                intro_body: "The Copacabana Group admires your smart and energetic lifestyle, which perfectly reflects 'The Ultimate Bachelor'. With your focus on wellness and fun living, we cordially invite you as our VIP guest to experience accessible luxury and ultimate comfort at our project.",
-                offer_title: "Exclusive Privileges for You",
-                offer_subtitle: "For true relaxation and recharging",
-                offer1_title: "The Ultimate Seaview Suite",
-                offer1_body: "Recharge with a 3-day, 2-night stay in a panoramic Seaview suite at Copacabana Beach Jomtien, experiencing ultimate comfort.",
-                offer2_title: "Premium Wellness & Lifestyle",
-                offer2_item1: "A premium Welcome Set upon your arrival.",
-                offer2_item2: "Full access to our High Ceiling Gym, Rooftop Pool, and Beach Club for your complete wellness routine.",
-                offer3_title: "Private Yacht Experience",
-                offer3_body: "Enjoy a private yacht trip, reflecting your cool lifestyle and smart casual look in the Pattaya sea.",
-                collab_title: "Special Projects We'd Love to Co-Create",
-                collab_theme_title: '"The Ultimate Bachelor Pad:<br>A Statement of Style & Investment"',
-                collab1_title: "Showcase Lifestyle & Wellness (Copacabana Beach)",
-                collab1_item1: "<strong>Instagram Reel:</strong> A cool video presenting your relaxation and wellness routine.",
-                collab1_item2: "<strong>Instagram Post:</strong> Smart casual photos in our photogenic spots.",
-                collab2_title: "Unveil Smart Investment (Copacabana Coral Reef)",
-                collab2_item1: "<strong>Visit Sales Gallery:</strong> Experience the luxury that answers the modern man's lifestyle.",
-                collab2_item2: "<strong>Investment Content:</strong> Share your success story and potential real estate investment choices.",
-                collab3_title: "Exclusive Guest Speaker & Offline Events",
-                collab3_item1: "<strong>University Tour:</strong> Share knowledge on using Hybrid AI for content creation and real estate with students.",
-                collab3_item2: "<strong>CSR & Workshops:</strong> Join us as a VIP guest for our CSR activities and lifestyle workshops.",
-                video_title: "Immersive Vibe",
-                cta_title: "Ready to Officially Welcome You",
-                cta_body: "Read our latest updates in the Newsletter and reply to confirm your most convenient schedule.",
-                cta_button1: "Read Newsletter (June 2026)",
-                cta_button2: "RSVP via Email",
-                cta_footer1: "Marketing & Sales Consultant",
-                construction_info: "Construction Status: 49th Floor completed (June 2026)"
+                hero_title: 'Exclusive Invitation for<br>Mr. Min',
+                hero_subtitle: 'Experience the pinnacle of living at Copacabana Coral Reef Jomtien, perfectly tailored for the sophisticated gentleman who values wellness and fun living in "The Ultimate Bachelor Pad" concept.',
+                explore_btn: 'Explore Collaboration',
+                collab_title: 'Proposed Collaboration',
+                collab_intro: 'We recognize that your smart and health-conscious lifestyle perfectly resonates with our "Jewels of the Sea" concept. Here is how we envision our partnership:',
+                collab_item1: 'Exclusive Property Review',
+                collab_desc1: 'Showcase the private luxury living experience with panoramic sea views and world-class amenities, including our high-ceiling panoramic gym and cantilever pools.',
+                collab_item2: 'Lifestyle Content Creation',
+                collab_desc2: 'Produce engaging photo and video content capturing your smart, fun lifestyle, including a private yacht trip in a Smart Casual look, perfectly aligned with the project\'s vibe.',
+                collab_item3: 'Exclusive Guest Speaker (Offline PR)',
+                collab_desc3: 'Join our university tour to speak on \'Applied Hybrid AI for Online Content & Real Estate\', along with participating in our CSR events and Lifestyle Workshops.',
+                collab_link3: 'View Sample Lecture Content (Hybrid AI Persona)',
+                vdo_title: 'Immersive Vibe',
+                perks_title: 'Exclusive Privileges for You',
+                perk1_title: 'Private Yacht Trip',
+                perk1_desc: 'For creating highly exclusive lifestyle content that reflects your sophisticated persona.',
+                perk2_title: 'Full Access to Amenities',
+                perk2_desc: 'Access our top-tier common areas including the panoramic sea-view gym, pools, and Beach Club.',
+                perk3_title: 'VIP Accommodation',
+                perk3_desc: 'Stay in a private, panoramic sea-view suite during your review and activities.',
+                perk_remark: '*Remark: All privileges are subject to availability and require advance booking with our team.',
+                cta_title: 'Let\'s Make It Happen',
+                cta_desc: 'The Copacabana team would be absolutely thrilled to collaborate with you. If you are interested or would like to tailor this proposal further, please let us know.',
+                btn_contact: 'Contact Marketing Team',
+                btn_news: 'Read Latest Newsletter',
+                footer_text: 'Jomtien 2nd Road, Pattaya, Chonburi 20150'
             }
         };
 
-        function switchLanguage(lang) {
-            document.documentElement.lang = lang;
-            const elements = document.querySelectorAll('.lang-text');
-            const body = document.querySelector('body');
-            
-            body.classList.remove('font-th', 'font-en');
-            body.classList.add(`font-${lang}`);
-
-            elements.forEach(el => {
-                const key = el.dataset.lang;
-                if (translations[lang] && translations[lang][key]) {
+        // Function to change language
+        function changeLanguage(lang) {
+            // Update texts
+            document.querySelectorAll('.lang-text').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) {
                     el.innerHTML = translations[lang][key];
                 }
             });
+
+            // Update button styles
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+            const activeBtn = document.getElementById(`btn-${lang}`);
+            activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            activeBtn.classList.add('bg-slate-900', 'text-white');
             
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`lang-${lang}`).classList.add('active');
+            // Change html lang attribute
+            document.documentElement.lang = lang;
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            switchLanguage('th');
-
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -20px 0px"
-            };
-
-            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                });
-            }, appearOptions);
-
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
-            });
+        // Add scroll background to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
         });
     </script>
 </body>

@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts: Cormorant Garamond for Editorial Vogue vibe, Inter & Kanit for Clean Modern UI -->
+    <!-- Google Fonts: Cormorant Garamond for Luxury Editorial Vibe, Inter & Kanit for Clean Modern UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600;700&family=Kanit:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
@@ -19,10 +19,10 @@
                 extend: {
                     colors: {
                         aesthetic: {
-                            beige: '#fdfbf7', // Warm aesthetic cream background
-                            dark: '#0a1424',  // Sophisticated deep navy
-                            accent: '#cfa670', // Champagne gold
-                            accentDark: '#a37c4c',
+                            beige: '#fcfbf9', // Warm premium off-white background
+                            dark: '#0c1a30',  // Ultra sophisticated deepest blue-black
+                            accent: '#d4af37', // Champagne soft gold
+                            accentDark: '#aa7c11',
                             grayLight: '#f1f5f9',
                             slate: '#5c6f84',
                             mint: '#10b981',
@@ -40,23 +40,30 @@
     <style>
         body {
             font-family: 'Inter', 'Kanit', sans-serif;
-            background-color: #fdfbf7;
-            color: #0a1424;
+            background-color: #fcfbf9;
+            color: #0c1a30;
+        }
+
+        /* Beautiful responsive Thai headline line breaks */
+        .thai-headline {
+            word-break: keep-all;
+            line-break: loose;
+            overflow-wrap: break-word;
         }
 
         /* Sleek minimalist editorial cards */
         .vogue-card {
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 30px rgba(10, 20, 36, 0.02);
-            border-radius: 1.25rem;
+            box-shadow: 0 4px 30px rgba(12, 26, 48, 0.015);
+            border-radius: 1.5rem;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .vogue-card:hover {
-            box-shadow: 0 20px 40px rgba(10, 20, 36, 0.05);
+            box-shadow: 0 20px 40px rgba(12, 26, 48, 0.04);
             transform: translateY(-3px);
-            border-color: #cfa670;
+            border-color: #d4af37;
         }
 
         /* Custom subtle scrollbar to preserve minimal visual aesthetic */
@@ -64,10 +71,10 @@
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #fdfbf7;
+            background: #fcfbf9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cfa670;
+            background: #d4af37;
             border-radius: 10px;
         }
     </style>
@@ -75,7 +82,7 @@
 <body class="antialiased selection:bg-aesthetic-accent selection:text-white">
 
     <!-- Minimalist Navigation Bar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-[#e2e8f0] transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-white/85 backdrop-blur-xl border-b border-[#e2e8f0] transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Branding Group -->
@@ -98,8 +105,8 @@
                 <!-- Language switcher with modern pill selector styling -->
                 <div class="flex items-center space-x-4">
                     <div class="flex bg-[#f1f5f9] p-1 rounded-full border border-slate-200">
-                        <button onclick="changeLanguage('th')" id="btn-th" class="px-3.5 py-1 rounded-full text-[10px] font-bold tracking-widest transition-all duration-300 bg-aesthetic-dark text-white shadow-sm">TH</button>
-                        <button onclick="changeLanguage('en')" id="btn-en" class="px-3.5 py-1 rounded-full text-[10px] font-bold tracking-widest transition-all duration-300 text-aesthetic-slate hover:text-aesthetic-dark">EN</button>
+                        <button onclick="changeLanguage('th')" id="btn-th" class="px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-widest transition-all duration-300 bg-aesthetic-dark text-white shadow-sm">TH</button>
+                        <button onclick="changeLanguage('en')" id="btn-en" class="px-3.5 py-1.5 rounded-full text-[10px] font-bold tracking-widest transition-all duration-300 text-aesthetic-slate hover:text-aesthetic-dark">EN</button>
                     </div>
                 </div>
             </div>
@@ -121,12 +128,13 @@
                         <span class="lang-text" data-lang="hero_badge">An Invitation for Visionaries</span>
                     </div>
                     
-                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-light leading-[1.1] mb-6 tracking-tight text-white">
-                        <span class="lang-text" data-lang="hero_title_p1">เราสร้างสรรค์วิสัยทัศน์</span> <br>
-                        <span class="italic text-aesthetic-accent font-light lang-text" data-lang="hero_title_p2">คุณร่วมสร้างเรื่องราว</span>
+                    <!-- Fixed responsive headline size with word-break preservation -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-sans font-light leading-[1.15] mb-6 tracking-tight text-white thai-headline">
+                        <span class="lang-text block mb-1" data-lang="hero_title_p1"><span class="inline-block">เราดีไซน์</span><span class="inline-block">สเปซที่ใช่...</span></span>
+                        <span class="italic text-aesthetic-accent font-serif font-light lang-text block" data-lang="hero_title_p2"><span class="inline-block">ให้คุณมาร่วม</span><span class="inline-block">เขียนเรื่องราว</span></span>
                     </h1>
                     
-                    <p class="text-slate-300 text-sm sm:text-base font-light leading-relaxed max-w-lg lang-text" data-lang="hero_subtitle">
+                    <p class="text-slate-300 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-lg lang-text" data-lang="hero_subtitle">
                         นี่ไม่ใช่การจ้างโพสต์สปอนเซอร์ธรรมดา แต่คือความร่วมมือระดับเอ็กซ์คลูซีฟสำหรับครีเอเตอร์ผู้มีสไตล์เฉพาะตัว สัมผัสความลักชัวรีที่ผ่อนคลายและสนุกสนาน ณ คอนโดมิเนียมระดับเวิลด์คลาส Copacabana Coral Reef จอมเทียนแคมเปญสนับสนุนแบบจัดเต็มรอคุณอยู่
                     </p>
                     
@@ -186,7 +194,7 @@
 
     <!-- Authentic Real-Time Update Ribbon -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div class="w-full bg-[#fdfbf7] border border-slate-200 rounded-2xl p-5 px-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+        <div class="w-full bg-[#ffffff] border border-slate-200 rounded-2xl p-5 px-8 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
             <div class="flex items-center gap-3">
                 <span class="flex h-2.5 w-2.5 relative">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-aesthetic-mint opacity-75"></span>
@@ -229,7 +237,7 @@
                         </p>
                     </div>
 
-                    <!-- Modern Aesthetic Tabs Selector (EECiti inspired, redesigned chic responsive to 4 tracks) -->
+                    <!-- Modern Aesthetic Tabs Selector -->
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 p-1.5 bg-[#f1f5f9] rounded-2xl border border-slate-200 mb-8 text-center text-xs font-semibold">
                         <button onclick="toggleTrack('vibe-showunit')" id="tab-vibe-showunit" class="vibe-tab py-3.5 rounded-xl text-aesthetic-dark transition-all duration-300 bg-white shadow-sm border border-slate-200">
                             🏢 Show Units
@@ -252,7 +260,7 @@
                         <div id="panel-vibe-showunit" class="vibe-panel transition-all duration-300 flex flex-col justify-between h-full">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div>
-                                    <span class="bg-[#fdfbf7] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Quiet Luxury Design</span>
+                                    <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Quiet Luxury Design</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item1">รีวิวห้องจริง ท่ามกลางวิวขอบฟ้า</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc1">
                                         ถ่ายทำคอนเทนต์ในดีไซน์ห้องตัวอย่างแบบมินิมอล-สแกนดิเนเวียน นำเสนอสุนทรียะแห่งความเงียบสงบ วัสดุเกรดพรีเมียม และสมาร์ทเทคโนโลยีที่แบรนด์เลือกใช้
@@ -274,11 +282,11 @@
                             </div>
                         </div>
 
-                        <!-- Panel: Wellness (Specifically updated pool visual) -->
+                        <!-- Panel: Wellness -->
                         <div id="panel-vibe-wellness" class="vibe-panel hidden transition-all duration-300 flex flex-col justify-between h-full">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div>
-                                    <span class="bg-[#fdfbf7] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Active & Serene</span>
+                                    <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Active & Serene</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item2">แชร์ไลฟ์สไตล์เพื่อสุขภาพและความสนุก</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc2">
                                         ถ่ายทอดภาพลักษณ์การออกกำลังกาย เล่นน้ำ ล้างพิษ หรือสปา ด้วยพื้นที่ส่วนกลางแบบอลังการ และสระน้ำเกลือลอยฟ้าที่ชมพระอาทิตย์ตกได้อย่างงดงาม
@@ -304,7 +312,7 @@
                         <div id="panel-vibe-academic" class="vibe-panel hidden transition-all duration-300 flex flex-col justify-between h-full">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div>
-                                    <span class="bg-[#fdfbf7] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Future Education & PR</span>
+                                    <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Future Education & PR</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item3">บรรยายแบ่งปันความรู้กับมหาวิทยาลัยชั้นนำ</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc3">
                                         สร้างการเป็นที่ยอมรับด้วยการจัดเวิร์กช็อปร่วมกับสถาบันการศึกษา ชี้แนะการใช้นวัตกรรมอัจฉริยะ (Hybrid AI) ร่วมกับคอนเทนต์คุณภาพ เพื่อสร้างคุณค่าให้ผู้คน
@@ -326,7 +334,7 @@
                         <div id="panel-vibe-eec" class="vibe-panel hidden transition-all duration-300 flex flex-col justify-between h-full">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                 <div>
-                                    <span class="bg-[#fdfbf7] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Mega Project Roadmap</span>
+                                    <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Mega Project Roadmap</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item4">ร่วมอัปเดตและแชร์ข่าวสารล่าสุดของ EEC</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc4">
                                         ร่วมเป็นกระบอกเสียงในการส่งต่อเรื่องราวและแชร์วิสัยทัศน์เมกะโปรเจกต์ระดับชาติอย่าง EECiti และเมืองการบินภาคตะวันออก (Eastern Aviation City) สู่สาธารณชน ย่อยข้อมูลโครงสร้างพื้นฐานระดับเวิลด์คลาสให้กลายเป็นเรื่องที่สนุก เข้าใจง่าย และเข้าถึงกลุ่มเป้าหมายยุคใหม่ได้อย่างมีสไตล์
@@ -365,7 +373,7 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div onclick="toggleChecklist(1)" id="checklist-card-1" class="p-5 rounded-2xl border border-slate-200 bg-[#fdfbf7] cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-aesthetic-accent">
+                        <div onclick="toggleChecklist(1)" id="checklist-card-1" class="p-5 rounded-2xl border border-slate-200 bg-[#fcfbf9] cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-aesthetic-accent">
                             <span class="text-xl font-serif font-semibold text-aesthetic-accent">01. Pitch Idea</span>
                             <p class="text-[11px] text-aesthetic-slate mt-2 leading-relaxed lang-text" data-lang="check_card1">ส่งแบบฟอร์มเพื่อร่วมเสนอไอเดียหรือคอนเซ็ปต์การทำงานตามที่คุณชอบ</p>
                             <span class="text-[9px] mt-4 uppercase font-bold text-aesthetic-accent tracking-wider"><i class="fa-regular fa-clock"></i> 2-3 Days Review</span>
@@ -427,7 +435,6 @@
                 </div>
 
                 <!-- Sidebar Item 3: Public Interactive Poll -->
-                <!-- Dynamic Poll lets creators vote for their favorite VIP perk instantly, keeping them engaged -->
                 <div class="vogue-card p-6 bg-[#fcfbf9] border border-slate-200">
                     <span class="text-aesthetic-accent font-bold tracking-[0.25em] uppercase text-[9px] block mb-1">Creator Sentiment</span>
                     <h4 class="text-sm font-serif font-semibold text-aesthetic-dark mb-4 lang-text" data-lang="poll_title">โพลสิทธิพิเศษที่คุณประทับใจที่สุด?</h4>
@@ -495,7 +502,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
                         </div>
                         <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fdfbf7] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
                                 <i class="fas fa-ship text-sm"></i>
                             </div>
                             <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk1_title">ทริปล่องเรือยอร์ชส่วนตัว</h3>
@@ -512,7 +519,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
                         </div>
                         <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fdfbf7] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
                                 <i class="fas fa-swimming-pool text-sm"></i>
                             </div>
                             <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk2_title">ใช้สิ่งอำนวยความสะดวกระดับพรีเมียม</h3>
@@ -529,7 +536,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
                         </div>
                         <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fdfbf7] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
+                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
                                 <i class="fas fa-key text-sm"></i>
                             </div>
                             <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk3_title">ห้องพักรับรองสุดเอ็กซ์คลูซีฟ</h3>
@@ -634,8 +641,9 @@
         const translations = {
             th: {
                 hero_badge: 'A Rare Creative Partnership Invitation',
-                hero_title_p1: 'เราเตรียมความลักชัวรี',
-                hero_title_p2: 'คุณมาร่วมเขียนเรื่องราว',
+                // Using precise inline-block segments to stop Thai typography breaking awkwardly
+                hero_title_p1: '<span class="inline-block">เราดีไซน์</span><span class="inline-block">สเปซที่ใช่...</span>',
+                hero_title_p2: '<span class="inline-block">ให้คุณมาร่วม</span><span class="inline-block">เขียนเรื่องราว</span>',
                 hero_subtitle: 'นี่ไม่ใช่การจ้างโพสต์สปอนเซอร์แบบเดิม ๆ แต่คือแคมเปญระดับสากลที่มีงบประมาณและสิทธิพิเศษจริง สำหรับครีเอเตอร์และอินฟลูเอนเซอร์ผู้มีสไตล์เฉพาะตัว สัมผัสความลักชัวรีที่ผ่อนคลายในสไตล์ Wellness & Fun Living ณ คอนโดมิเนียมระดับเวิลด์คลาส Copacabana Coral Reef จอมเทียน',
                 explore_btn: 'เสนอไอเดียร่วมงาน',
                 perk_brief1_title: 'สิทธิ์ล่องเรือยอร์ชส่วนตัว',
@@ -694,8 +702,8 @@
             },
             en: {
                 hero_badge: 'A Rare Creative Partnership Invitation',
-                hero_title_p1: 'We Build The Canvas.',
-                hero_title_p2: 'You Write The Beautiful Story.',
+                hero_title_p1: '<span class="inline-block">We Build</span> <span class="inline-block">The Canvas.</span>',
+                hero_title_p2: '<span class="inline-block">You Write</span> <span class="inline-block">The Beautiful Story.</span>',
                 hero_subtitle: 'This is not a regular sponsored posting. We are looking for distinct creators who appreciate minimalist elegance and true aesthetics. Experience authentic Wellness & Fun Living in Pattaya\'s landmark condominium development, backed by real budget, yacht residencies, and production support.',
                 explore_btn: 'Co-Create With Us',
                 perk_brief1_title: 'Private Yacht Residencies',
@@ -814,7 +822,7 @@
             for (let i = 1; i <= 3; i++) {
                 const card = document.getElementById(`checklist-card-${i}`);
                 if (i === step) {
-                    card.classList.add('border-aesthetic-accent', 'bg-[#fdfbf7]');
+                    card.classList.add('border-aesthetic-accent', 'bg-[#fcfbf9]');
                     card.classList.remove('bg-white');
                     if (i > 1) {
                         document.getElementById(`checklist-num-${i}`).classList.remove('text-slate-300');
@@ -823,7 +831,7 @@
                         document.getElementById(`checklist-sub-${i}`).classList.add('text-aesthetic-accent');
                     }
                 } else {
-                    card.classList.remove('border-aesthetic-accent', 'bg-[#fdfbf7]');
+                    card.classList.remove('border-aesthetic-accent', 'bg-[#fcfbf9]');
                     card.classList.add('bg-white');
                 }
             }
@@ -853,16 +861,12 @@
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 40) {
                 navbar.classList.add('shadow-md', 'bg-white/95');
-                navbar.classList.remove('bg-white/80');
+                navbar.classList.remove('bg-white/85');
             } else {
                 navbar.classList.remove('shadow-md', 'bg-white/95');
-                navbar.classList.add('bg-white/80');
+                navbar.classList.add('bg-white/85');
             }
         });
     </script>
 </body>
 </html>
-```
-eof
-
-สไลเดอร์และระบบแท็บชุดนี้ได้รับการพัฒนาและเตรียมความพร้อมในการรองรับทั้งสองภาษาเรียบร้อยแล้ว หากมีรายละเอียดจุดใดต้องการเพิ่มเติมอีก สามารถแจ้งเข้ามาได้เลยครับ!

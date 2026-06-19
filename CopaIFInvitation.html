@@ -102,6 +102,7 @@
                 <div class="hidden lg:flex items-center space-x-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-aesthetic-slate">
                     <a href="#perks-overview" class="hover:text-aesthetic-accent transition-colors duration-200">The Perks</a>
                     <a href="#residencies" class="hover:text-aesthetic-accent transition-colors duration-200">Collab Tracks</a>
+                    <a href="#specs-factsheet" class="hover:text-aesthetic-accent transition-colors duration-200">Specs Dashboard</a>
                     <a href="#video-brief" class="hover:text-aesthetic-accent transition-colors duration-200">Video Tour</a>
                     <a href="#co-create" class="hover:text-aesthetic-accent transition-colors duration-200">Pitch Now</a>
                 </div>
@@ -267,17 +268,23 @@
                                     <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Quiet Luxury Design</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item1">รีวิวห้องจริง ท่ามกลางวิวขอบฟ้า</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc1">
-                                        ถ่ายทำคอนเทนต์ในดีไซน์ห้องตัวอย่างแบบมินิมอล-สแกนดิเนเวียน นำเสนอสุนทรียะแห่งความเงียบสงบ วัสดุเกรดพรีเมียม และสมาร์ทเทคโนโลยีที่แบรนด์เลือกใช้
+                                        เยี่ยมชมและสัมผัสความงามล้ำค่าของห้องตัวอย่าง (Show Units) ณ Sales Gallery ด้วยดีไซน์หรูหราที่ผ่อนคลายในทุกสัมผัส
                                     </p>
                                     <div class="mt-4 space-y-2">
                                         <div class="flex items-center gap-2.5 text-xs text-aesthetic-dark">
                                             <i class="fa-solid fa-circle-check text-aesthetic-accent"></i>
-                                            <span class="lang-text" data-lang="p_check1_1">ถ่ายทอดความประณีตของดีไซน์สแกนดิเนเวียน-มินิมอล</span>
+                                            <span class="lang-text" data-lang="p_check1_1">ถ่ายทอดความประณีตของดีไซน์สไตล์ Modern-Classic สุดหรูหรา</span>
                                         </div>
                                         <div class="flex items-center gap-2.5 text-xs text-aesthetic-dark">
                                             <i class="fa-solid fa-circle-check text-aesthetic-accent"></i>
-                                            <span class="lang-text" data-lang="p_check1_2">สัมผัสวัสดุเกรดพรีเมียมและระบบ Smart Home ยุคใหม่</span>
+                                            <span class="lang-text" data-lang="p_check1_2">เปิดแนวคิดใหม่ในการเลือกที่อยู่อาศัยให้ตรงกับความต้องการของบุคลิก MBTI</span>
                                         </div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <a href="https://thbho.github.io/Copa2MBTI.html" target="_blank" class="inline-flex items-center gap-2 text-aesthetic-accent hover:text-aesthetic-accentDark text-xs font-semibold underline underline-offset-4 decoration-aesthetic-accent/40 transition-colors">
+                                            <span class="lang-text" data-lang="p_showunit_link">วิเคราะห์ที่อยู่อาศัยตาม MBTI คลิก</span>
+                                            <i class="fas fa-external-link-alt text-[9px]"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="rounded-2xl overflow-hidden shadow-inner h-52 md:h-64 border border-slate-100">
@@ -482,80 +489,152 @@
         </div>
     </main>
 
-    <!-- High-Budget Premium Perks Grid Showcase -->
-    <section id="perks-overview" class="py-24 bg-white border-y border-slate-200 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-aesthetic-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
-        
+    <!-- Project Specs & Factsheet (Detailed condo specs requested by user) -->
+    <section id="specs-factsheet" class="py-24 bg-[#f8f6f2] border-t border-b border-slate-200 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-aesthetic-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-2 block">Luxury Amenities Portfolio</span>
-                <h2 class="text-3xl sm:text-4xl font-serif text-aesthetic-dark font-medium lang-text" data-lang="perk_header">
-                    สิ่งที่เรา<span class="italic text-aesthetic-accent">ตั้งใจมอบให้คุณ</span>เป็นพิเศษ
+                <span class="text-aesthetic-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-2 block">Copacabana Coral Reef Jomtien Specs</span>
+                <h2 class="text-3xl sm:text-4xl font-serif text-aesthetic-dark font-medium">
+                    <span class="lang-text" data-lang="specs_title">เจาะลึกรายละเอียดและ Factsheet โครงการ</span>
                 </h2>
                 <div class="w-16 h-[1.5px] bg-aesthetic-accent mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <!-- Elegant 3-Column Luxury Portfolio -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Card 1 -->
-                <div class="vogue-card overflow-hidden bg-white border border-slate-200 flex flex-col justify-between">
+            <!-- Responsive Specification Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Card 1: General Info -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="https://i.postimg.cc/m2S7ZVw0/DJI-0306.jpg" alt="Yacht Trip" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
+                        <div class="w-12 h-12 bg-aesthetic-accent/10 rounded-2xl flex items-center justify-center text-aesthetic-accent mb-4">
+                            <i class="fa-solid fa-hotel text-lg"></i>
                         </div>
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
-                                <i class="fas fa-ship text-sm"></i>
-                            </div>
-                            <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk1_title">ทริปล่องเรือยอร์ชส่วนตัว</h3>
-                            <p class="text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed lang-text" data-lang="perk1_desc">เดินทางล่องท้องทะเลอันแสนงดงาม เพื่อสร้างสรรค์ภาพถ่ายและวิดีโอไลฟ์สไตล์ตามสไตล์อันโดดเด่นของคุณเอง</p>
-                        </div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-aesthetic-dark mb-4 lang-text" data-lang="specs_g_title">ข้อมูลทั่วไปของโครงการ</h3>
+                        <ul class="space-y-3.5 text-xs text-aesthetic-slate font-light">
+                            <li><strong class="font-medium text-aesthetic-dark lang-text" data-lang="specs_g_l1_label">ที่ตั้ง:</strong> <span class="lang-text" data-lang="specs_g_l1_val">ถนนจอมเทียน สาย 2 ใกล้ตลาดร่มโพธิ์</span></li>
+                            <li><strong class="font-medium text-aesthetic-dark lang-text" data-lang="specs_g_l2_label">ขนาดที่ดิน:</strong> <span class="lang-text" data-lang="specs_g_l2_val">ประมาณ 13 ไร่ 84.5 ตร.ว.</span></li>
+                            <li><strong class="font-medium text-aesthetic-dark lang-text" data-lang="specs_g_l3_label">ลักษณะอาคาร:</strong> <span class="lang-text" data-lang="specs_g_l3_val">สูง 55 ชั้น 1 อาคาร (พร้อมอาคารจอดรถแยกส่วน)</span></li>
+                            <li><strong class="font-medium text-aesthetic-dark lang-text" data-lang="specs_g_l4_label">จำนวนยูนิต:</strong> <span class="lang-text" data-lang="specs_g_l4_val">ทั้งหมด 1,897 ยูนิต</span></li>
+                            <li><strong class="font-medium text-aesthetic-dark lang-text" data-lang="specs_g_l5_label">ค่าส่วนกลาง:</strong> <span class="lang-text" data-lang="specs_g_l5_val">50 บาทต่อตารางเมตร</span></li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-[10px] text-aesthetic-accent font-semibold tracking-wider">
+                        <i class="fa-regular fa-calendar mr-1"></i> <span class="lang-text" data-lang="specs_g_timeline">EST. COMPLETION LATE 2027</span>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="vogue-card overflow-hidden bg-white border border-slate-200 flex flex-col justify-between">
+                <!-- Card 2: Facilities Ecosystem -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between md:col-span-2">
                     <div>
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="https://i.postimg.cc/YCsGjPmy/Screenshot-2568-08-19-at-15-43-24-topaz-sharpen-text-upscale-1-9x.jpg" alt="Facilities" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
+                        <div class="w-12 h-12 bg-aesthetic-accent/10 rounded-2xl flex items-center justify-center text-aesthetic-accent mb-4">
+                            <i class="fa-solid fa-umbrella-beach text-lg"></i>
                         </div>
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
-                                <i class="fas fa-swimming-pool text-sm"></i>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-aesthetic-dark mb-4 lang-text" data-lang="specs_f_title">สิ่งอำนวยความสะดวกระดับเวิลด์คลาส (Facilities)</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-aesthetic-slate font-light">
+                            <div class="space-y-3">
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-water text-aesthetic-accent text-[10px] mr-1.5"></i> Ground Floor</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_ground">Wave pool คลื่นจำลอง, สระจากุซซี่, บาร์น้ำและบีชคลับ, สนามเด็กเล่น</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-dumbbell text-aesthetic-accent text-[10px] mr-1.5"></i> 3rd Floor (Gym)</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_gym">ฟิตเนสเพดานสูงขนาด 360-487 ตร.ม. พร้อมหน้าต่างกระจกชมวิวทะเลพาโนรามา</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-spa text-aesthetic-accent text-[10px] mr-1.5"></i> 6th Floor (Coral Pool)</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_floor6">สระว่ายน้ำสไตล์คอรัล, จากุซซี่, ออนเซ็นแบบญี่ปุ่น, ซาวน่า & สตรีม</p>
+                                </div>
                             </div>
-                            <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk2_title">ใช้สิ่งอำนวยความสะดวกระดับพรีเมียม</h3>
-                            <p class="text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed lang-text" data-lang="perk2_desc">สิทธิ์เข้าใช้งานพื้นที่คลับและสิ่งอำนวยความสะดวกของโครงการทั้งหมด เช่น ฟิตเนสเพดานสูงวิวพาโนรามา สระว่ายน้ำลอยฟ้าสไตล์หรูหรา และสปารักษ์สุขภาพ</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-sun text-aesthetic-accent text-[10px] mr-1.5"></i> 50th Floor Rooftop Sky Park</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_floor50">มินิเธียเตอร์, Business Lounge, Co-working space & ห้องประชุมหรู</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-person-swimming text-aesthetic-accent text-[10px] mr-1.5"></i> 51st Floor Pool Deck</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_floor51">สระว่ายน้ำลอยฟ้าแบบยื่น (Cantilever) ยาว 45 ม. วิวพรีเมียม และบาร์บนดาดฟ้า</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-tree text-aesthetic-accent text-[10px] mr-1.5"></i> Greenery Space</h4>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_gardens">มีสวนลอยฟ้ากระจายบนตัวอาคารสูงเพื่อความร่มรื่นกว่า 32 แห่งทั่วโครงการ</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-[10px] text-aesthetic-accent font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-circle-check mr-1"></i> <span class="lang-text" data-lang="specs_f_tag">Unparalleled Wellness & Fun living facilities</span>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="vogue-card overflow-hidden bg-white border border-slate-200 flex flex-col justify-between">
+                <!-- Card 3: Room Types & Sizing -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
                     <div>
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="https://i.postimg.cc/9QpJpXMW/Copy-of-DSC09069-HDR-copy.jpg" alt="VIP Accommodation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/40 to-transparent"></div>
+                        <div class="w-12 h-12 bg-aesthetic-accent/10 rounded-2xl flex items-center justify-center text-aesthetic-accent mb-4">
+                            <i class="fa-solid fa-door-open text-lg"></i>
                         </div>
-                        <div class="p-6">
-                            <div class="w-10 h-10 bg-[#fcfbf9] border border-slate-200 text-aesthetic-accent rounded-xl flex items-center justify-center mb-4">
-                                <i class="fas fa-key text-sm"></i>
-                            </div>
-                            <h3 class="text-lg font-serif font-medium text-aesthetic-dark mb-2 lang-text" data-lang="perk3_title">ห้องพักรับรองสุดเอ็กซ์คลูซีฟ</h3>
-                            <p class="text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed lang-text" data-lang="perk3_desc">เข้าพักในห้องสวีทรับรองวิวทะเลพาโนรามาแบบ Private ระหว่างเข้าร่วมถ่ายทำคอนเทนต์หรือทำกิจกรรมไลฟ์สไตล์แสนสนุก</p>
-                        </div>
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-aesthetic-dark mb-4 lang-text" data-lang="specs_r_title">รูปแบบห้องพัก (Room Types)</h3>
+                        <ul class="space-y-4 text-xs text-aesthetic-slate font-light">
+                            <li>
+                                <strong class="font-medium text-aesthetic-dark block">1 Bedroom</strong>
+                                <span class="lang-text" data-lang="specs_r_t1">ขนาดประมาณ 32.1 - 52.8 ตร.ม.</span>
+                            </li>
+                            <li>
+                                <strong class="font-medium text-aesthetic-dark block">1 Bedroom + Private Pool</strong>
+                                <span class="lang-text" data-lang="specs_r_t2">ห้องพร้อมสระส่วนตัวขนาด 71.5 - 79.6 ตร.ม.</span>
+                            </li>
+                            <li>
+                                <strong class="font-medium text-aesthetic-dark block">2 Bedrooms</strong>
+                                <span class="lang-text" data-lang="specs_r_t3">ขนาดประมาณ 63.4 - 82.7 ตร.ม.</span>
+                            </li>
+                            <li>
+                                <strong class="font-medium text-aesthetic-dark block">Combine Room (ห้องแบบพิเศษ)</strong>
+                                <span class="lang-text" data-lang="specs_r_t4">ขนาด 110.2 ตร.ม. ถึงสูงสุด 146.4 ตร.ม. (3 Bed)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-[10px] text-aesthetic-accent font-semibold tracking-wider">
+                        <i class="fa-solid fa-magnifying-glass-chart mr-1"></i> <span class="lang-text" data-lang="specs_r_tag">Diverse layouts for every vibe</span>
                     </div>
                 </div>
-
             </div>
 
-            <div class="mt-8 text-center">
-                <p class="text-[10px] text-aesthetic-slate font-light italic tracking-wider lang-text" data-lang="perk_remark">
-                    *หมายเหตุ: สิทธิพิเศษต่าง ๆ ขึ้นอยู่กับความพร้อมให้บริการ (Subject to availability) และต้องทำการ booking ล่วงหน้ากับทางทีมงานเป็นพิเศษ
-                </p>
+            <!-- Connection & Travel times banner -->
+            <div class="mt-8 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-aesthetic-accent/10 rounded-2xl flex items-center justify-center text-aesthetic-accent flex-shrink-0">
+                            <i class="fa-solid fa-route text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-aesthetic-dark uppercase tracking-wider lang-text" data-lang="specs_l_title">จุดเด่นด้านทำเลและการเดินทาง (Global Connectivity)</h4>
+                            <p class="text-xs text-aesthetic-slate font-light mt-0.5 lang-text" data-lang="specs_l_desc">ห่างจากหาดจอมเทียนเพียง 2 นาที แวดล้อมด้วยโครงสร้างพื้นฐานระดับนานาชาติ</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 w-full md:w-auto text-center border-t md:border-t-0 md:pl-6 border-slate-100 pt-4 md:pt-0">
+                        <div class="px-3">
+                            <span class="block text-lg font-serif font-semibold text-aesthetic-dark">2 Mins</span>
+                            <span class="text-[9px] uppercase tracking-wider text-aesthetic-slate lang-text" data-lang="specs_l_t1">Jomtien Beach</span>
+                        </div>
+                        <div class="px-3 border-l border-slate-100">
+                            <span class="block text-lg font-serif font-semibold text-aesthetic-dark">12 Mins</span>
+                            <span class="text-[9px] uppercase tracking-wider text-aesthetic-slate lang-text" data-lang="specs_l_t2">Bali Hai / Walking St.</span>
+                        </div>
+                        <div class="px-3 border-l border-slate-100">
+                            <span class="block text-lg font-serif font-semibold text-aesthetic-dark">15 Mins</span>
+                            <span class="text-[9px] uppercase tracking-wider text-aesthetic-slate lang-text" data-lang="specs_l_t3">Motorway 7</span>
+                        </div>
+                        <div class="px-3 border-l border-slate-100">
+                            <span class="block text-lg font-serif font-semibold text-aesthetic-dark">35 Mins</span>
+                            <span class="text-[9px] uppercase tracking-wider text-aesthetic-slate lang-text" data-lang="specs_l_t4">U-Tapao Airport</span>
+                        </div>
+                        <div class="px-3 border-l border-slate-100">
+                            <span class="block text-lg font-serif font-semibold text-aesthetic-dark">90 Mins</span>
+                            <span class="text-[9px] uppercase tracking-wider text-aesthetic-slate lang-text" data-lang="specs_l_t5">BKK Airport</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -580,7 +659,7 @@
                     <div class="aspect-video w-full rounded-3xl overflow-hidden bg-black border border-slate-200 shadow-2xl relative">
                         <!-- Aesthetic frame corners -->
                         <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] uppercase tracking-widest text-slate-300 z-10">
-                            <span class="w-1 h-1 bg-aesthetic-accent rounded-full animate-pulse"></span> Virtual Preview Tour
+                            <span class="w-1.5 h-1.5 bg-aesthetic-accent rounded-full animate-pulse"></span> Virtual Preview Tour
                         </div>
                         <iframe 
                             class="w-full h-full"
@@ -663,9 +742,10 @@
                 concept_title: 'เลือกสไตล์แคมเปญของคุณเอง',
                 concept_subtitle: 'ร่วมถ่ายทอดเรื่องราวการใช้ชีวิตผ่าน "Creative Residencies" 4 แทร็คใหญ่ เพื่อนำเสนอความเป็น Wellness & Fun Living ในรูปแบบที่เป็นตัวคุณอย่างแท้จริง',
                 collab_item1: 'รีวิวห้องจริง ท่ามกลางวิวขอบฟ้า',
-                collab_desc1: 'เยี่ยมชมและสัมผัสความงามล้ำค่าของห้องตัวอย่าง (Show Units) ณ Sales Gallery ด้วยสไตล์มินิมอลโมเดิร์นที่น่าประทับใจ',
-                p_check1_1: 'ถ่ายทอดความประณีตของดีไซน์สแกนดิเนเวียน-มินิมอล',
-                p_check1_2: 'สัมผัสวัสดุเกรดพรีเมียมและระบบ Smart Home ยุคใหม่',
+                collab_desc1: 'เยี่ยมชมและสัมผัสความงามล้ำค่าของห้องตัวอย่าง (Show Units) ณ Sales Gallery ด้วยดีไซน์หรูหราที่ผ่อนคลายในทุกสัมผัส',
+                p_check1_1: 'ถ่ายทอดความประณีตของดีไซน์สไตล์ Modern-Classic สุดหรูหรา',
+                p_check1_2: 'เปิดแนวคิดใหม่ในการเลือกที่อยู่อาศัยให้ตรงกับความต้องการของบุคลิก MBTI',
+                p_showunit_link: 'วิเคราะห์ที่อยู่อาศัยตาม MBTI คลิก',
                 collab_item2: 'แชร์ไลฟ์สไตล์เพื่อสุขภาพและความสนุก',
                 collab_desc2: 'นำเสนอชีวิตพักผ่อนระดับห้าดาวและการเข้าสังคมอย่างสนุกสนาน ผ่านพื้นที่ส่วนกลางสุดครบครัน รวมถึงความงดงามระดับโลกของโครงการ',
                 p_check2_1: 'สระว่ายน้ำระบบน้ำเกลือขนาดใหญ่ ดีไซน์หรูสไตล์รีสอร์ท',
@@ -702,7 +782,43 @@
                 cta_desc: 'ฝ่ายการตลาดและการพัฒนาโครงการของ Copacabana Coral Reef Jomtien มีความยินดีและตั้งตารอเป็นอย่างยิ่งที่จะได้พูดคุยแลกเปลี่ยนรายละเอียดความร่วมมือแสนพิเศษนี้ในแบบที่คุณสะดวกครับ',
                 btn_contact: 'ติดต่อทีมงาน Marketing',
                 btn_news: 'อ่าน Newsletter ล่าสุด',
-                footer_text: 'ถนนจอมเทียนสาย 2 พัทยา ชลบุรี 20150'
+                footer_text: 'ถนนจอมเทียนสาย 2 พัทยา ชลบุรี 20150',
+                
+                // Specs translation keys
+                specs_title: 'เจาะลึกรายละเอียดและ Factsheet โครงการ',
+                specs_g_title: 'ข้อมูลทั่วไปของโครงการ',
+                specs_g_l1_label: 'ที่ตั้ง:',
+                specs_g_l1_val: 'ถนนจอมเทียน สาย 2 ใกล้ตลาดร่มโพธิ์',
+                specs_g_l2_label: 'ขนาดที่ดิน:',
+                specs_g_l2_val: 'ประมาณ 13 ไร่ 84.5 ตร.ว.',
+                specs_g_l3_label: 'ลักษณะอาคาร:',
+                specs_g_l3_val: 'สูง 55 ชั้น 1 อาคาร (พร้อมอาคารจอดรถแยกส่วน)',
+                specs_g_l4_label: 'จำนวนยูนิต:',
+                specs_g_l4_val: 'ทั้งหมด 1,897 ยูนิต',
+                specs_g_l5_label: 'ค่าส่วนกลาง:',
+                specs_g_l5_val: '50 บาทต่อตารางเมตร',
+                specs_g_timeline: 'คาดว่าจะแล้วเสร็จ: ปลายปี 2570',
+                specs_f_title: 'สิ่งอำนวยความสะดวกระดับเวิลด์คลาส (Facilities)',
+                specs_f_ground: 'Wave pool คลื่นจำลอง, สระจากุซซี่, บาร์น้ำและบีชคลับ, สนามเด็กเล่น',
+                specs_f_gym: 'ฟิตเนสเพดานสูงขนาด 360-487 ตร.ม. พร้อมหน้าต่างกระจกชมวิวทะเลพาโนรามา (ชั้น 3)',
+                specs_f_floor6: 'สระว่ายน้ำสไตล์คอรัล, จากุซซี่, ออนเซ็นแบบญี่ปุ่น, ซาวน่า & สตรีม (ชั้น 6)',
+                specs_f_floor50: 'มินิเธียเตอร์, Business Lounge, Co-working space & ห้องประชุมหรู (ชั้น 50)',
+                specs_f_floor51: 'สระว่ายน้ำลอยฟ้า Cantilever ยาว 45 ม. วิวพรีเมียม และบาร์ดาดฟ้า (ชั้น 51)',
+                specs_f_gardens: 'มีสวนลอยฟ้าและสวนพักผ่อนกระจายบนตัวอาคารสูงเพื่อความร่มรื่นกว่า 32 แห่ง',
+                specs_f_tag: 'พื้นที่ส่วนกลางจัดเต็มแบบ Wellness & Fun Living',
+                specs_r_title: 'รูปแบบห้องพัก (Room Types)',
+                specs_r_t1: 'ขนาดประมาณ 32.1 - 52.8 ตร.ม.',
+                specs_r_t2: 'ห้องพร้อมสระส่วนตัวขนาด 71.5 - 79.6 ตร.ม.',
+                specs_r_t3: 'ขนาดประมาณ 63.4 - 82.7 ตร.ม.',
+                specs_r_t4: 'Combine Room ขนาด 110.2 ตร.ม. ถึง 146.4 ตร.ม. (3 Bed)',
+                specs_r_tag: 'มีดีไซน์ห้องพักตอบโจทย์ทุกแนวไลฟ์สไตล์',
+                specs_l_title: 'จุดเด่นด้านทำเลและการเดินทาง (Global Connectivity)',
+                specs_l_desc: 'ห่างจากหาดจอมเทียนเพียง 2 นาที แวดล้อมด้วยโครงสร้างพื้นฐานระดับนานาชาติ',
+                specs_l_t1: 'หาดจอมเทียน',
+                specs_l_t2: 'ท่าเรือบาลีฮาย / วอล์กกิ้งสตรีท',
+                specs_l_t3: 'มอเตอร์เวย์ สาย 7',
+                specs_l_t4: 'สนามบินอู่ตะเภา',
+                specs_l_t5: 'สนามบินสุวรรณภูมิ'
             },
             en: {
                 hero_badge: 'A Rare Creative Partnership Invitation',
@@ -724,8 +840,9 @@
                 concept_subtitle: 'Express yourself through four distinctive residency streams tailored to showcase premium living in your authentic style.',
                 collab_item1: 'Scenic Skyline Apartment Reviews',
                 collab_desc1: 'Review our meticulously designed show units showcasing sleek Scandinavian-Minimalist architecture and panoramic sea backdrops.',
-                p_check1_1: 'Presenting refined Scandinavian-Minimalist architecture details.',
-                p_check1_2: 'Highlighting top-tier imported materials & next-gen Smart Home tech.',
+                p_check1_1: 'Presenting the refined details of the luxurious Modern-Classic architecture.',
+                p_check1_2: 'Discover a new residential concept tailored specifically to match your MBTI personality type.',
+                p_showunit_link: 'Click to view Residential Analysis by MBTI',
                 collab_item2: 'Aesthetic Wellness Lifestyle',
                 collab_desc2: 'Showcase beautiful wellness routines including panoramic glass gyms, custom oceanfront swimming pools, and recovery wellness spas.',
                 p_check2_1: 'A massive custom saltwater resort-inspired swimming pool.',
@@ -752,7 +869,7 @@
                 perk1_title: 'Private Premium Yacht Trip',
                 perk1_desc: 'Sail through the beautiful sea of Pattaya to create premium, high-contrast digital content that mirrors your sophisticated persona.',
                 perk2_title: 'Bespoke Club & Facilities Access',
-                perk2_desc: 'VIP privileges to experience all project amenities, including our panoramic high-ceiling sky fitness center, oceanfront pools, and wellness spa.',
+                perk2_desc: 'VIP privileges to experience all project amenities, including our panoramic high-ceiling sky fitness center, oceanfront pools, and recovery wellness spa.',
                 perk3_title: 'Signature VIP Suite Accommodations',
                 perk3_desc: 'Stay in a private panoramic ocean-view room while engaging in reviews or capturing unique content moments with us.',
                 perk_remark: '*Remark: All privileges are subject to availability and require advance booking with our team.',
@@ -762,7 +879,43 @@
                 cta_desc: 'The Copacabana Coral Reef Jomtien marketing and executive team are ready to facilitate your preferred dates and welcome you in outstanding comfort.',
                 btn_contact: 'Contact Marketing Team',
                 btn_news: 'Read June Newsletter',
-                footer_text: 'Jomtien 2nd Road, Pattaya, Chonburi 20150'
+                footer_text: 'Jomtien 2nd Road, Pattaya, Chonburi 20150',
+
+                // Specs translation keys
+                specs_title: 'Project Specifications & Factsheet',
+                specs_g_title: 'General Project Details',
+                specs_g_l1_label: 'Location:',
+                specs_g_l1_val: 'Jomtien 2nd Road, near Rompho Market',
+                specs_g_l2_label: 'Land Size:',
+                specs_g_l2_val: 'Approx. 13 Rai 84.5 Sq.w.',
+                specs_g_l3_label: 'Structure:',
+                specs_g_l3_val: '55 Floors, 1 Tower (separate parking building)',
+                specs_g_l4_label: 'Total Units:',
+                specs_g_l4_val: '1,897 Units',
+                specs_g_l5_label: 'Sinking Fund:',
+                specs_g_l5_val: '50 THB per Sq.m. / month',
+                specs_g_timeline: 'Completion Target: Late 2027',
+                specs_f_title: 'World-Class Facility Zones',
+                specs_f_ground: 'Wave pool, Jacuzzi, Pool bar, Beach club, Kid playrooms',
+                specs_f_gym: 'High-ceiling panoramic glass fitness gym 360-487 Sq.m. (Floor 3)',
+                specs_f_floor6: 'Coral swimming pool, Onsen, Sauna & steam rooms (Floor 6)',
+                specs_f_floor50: 'Mini-theater, Business Lounge, Co-working spaces (Floor 50)',
+                specs_f_floor51: '45-meter Cantilever Sky Pool, Jacuzzi, Rooftop deck bar (Floor 51)',
+                specs_f_gardens: '32 lush botanical sky pockets scattered throughout the tower',
+                specs_f_tag: 'Comprehensive Wellness & Fun living facilities',
+                specs_r_title: 'Room Layouts & Sizes',
+                specs_r_t1: 'Approx. 32.1 - 52.8 Sq.m.',
+                specs_r_t2: '1 Bed + Private Pool (71.5 - 79.6 Sq.m.)',
+                specs_r_t3: 'Approx. 63.4 - 82.7 Sq.m.',
+                specs_r_t4: 'Combine Rooms up to 146.4 Sq.m. (3 Beds)',
+                specs_r_tag: 'Meticulously crafted layout options',
+                specs_l_title: 'Global Travel Connectivity',
+                specs_l_desc: 'Just 2 minutes away from the pristine beach and main bypasses',
+                specs_l_t1: 'Jomtien Beach',
+                specs_l_t2: 'Bali Hai / Walking St.',
+                specs_l_t3: 'Motorway 7',
+                specs_l_t4: 'U-Tapao Airport',
+                specs_l_t5: 'BKK Airport'
             }
         };
 

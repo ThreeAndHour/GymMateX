@@ -44,7 +44,7 @@
             color: #0c1a30;
         }
 
-        /* Beautiful responsive Thai headline line breaks */
+        /* Beautiful Thai headline line breaks */
         .thai-headline {
             word-break: keep-all;
             line-break: loose;
@@ -66,7 +66,7 @@
             border-color: #d4af37;
         }
 
-        /* Custom subtle scrollbar to preserve minimal visual aesthetic */
+        /* Custom subtle scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -100,11 +100,11 @@
 
                 <!-- Sleek Navigation links -->
                 <div class="hidden lg:flex items-center space-x-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-aesthetic-slate">
-                    <a href="#perks-overview" class="hover:text-aesthetic-accent transition-colors duration-200">The Perks</a>
-                    <a href="#residencies" class="hover:text-aesthetic-accent transition-colors duration-200">Collab Tracks</a>
-                    <a href="#specs-factsheet" class="hover:text-aesthetic-accent transition-colors duration-200">Specs Dashboard</a>
-                    <a href="#video-brief" class="hover:text-aesthetic-accent transition-colors duration-200">Video Tour</a>
-                    <a href="#co-create" class="hover:text-aesthetic-accent transition-colors duration-200">Pitch Now</a>
+                    <a href="#perks-overview" class="hover:text-aesthetic-accent transition-colors duration-200 lang-text" data-lang="nav_offer">Our Offer</a>
+                    <a href="#residencies" class="hover:text-aesthetic-accent transition-colors duration-200 lang-text" data-lang="nav_tracks">Collab Tracks</a>
+                    <a href="#creator-lab" class="hover:text-aesthetic-accent transition-colors duration-200 lang-text" data-lang="nav_lab">Creator Lab</a>
+                    <a href="#specs-factsheet" class="hover:text-aesthetic-accent transition-colors duration-200 lang-text" data-lang="nav_specs">Specs Dashboard</a>
+                    <a href="#co-create" class="hover:text-aesthetic-accent transition-colors duration-200 lang-text" data-lang="nav_pitch">Pitch Now</a>
                 </div>
 
                 <!-- Language switcher with modern pill selector styling -->
@@ -156,7 +156,7 @@
                     <div class="border border-white/10 rounded-3xl p-6 bg-white/5 backdrop-blur-md shadow-inner relative overflow-hidden">
                         
                         <div class="flex items-center justify-between mb-4 pb-4 border-b border-white/5">
-                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">CREATOR PRIVILEGES</span>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest lang-text" data-lang="sidebar_admin_title">CREATOR PRIVILEGES</span>
                             <span class="bg-aesthetic-accent text-aesthetic-dark text-[8px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">High Tier Campaign</span>
                         </div>
 
@@ -223,6 +223,77 @@
         </div>
     </section>
 
+    <!-- Curated "Our Offer" Section based on Screenshot 2569-06-21 at 09.33.43.jpg -->
+    <section id="perks-overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 scroll-mt-24">
+        <div class="text-center mb-12">
+            <span class="text-aesthetic-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-2 block">EXCLUSIVE CAMPAIGN REWARDS</span>
+            <h2 class="text-3xl sm:text-4xl font-serif text-aesthetic-dark font-medium lang-text" data-lang="offer_title">
+                Our Offer (at Copacabana Beach Jomtien)
+            </h2>
+            <div class="w-16 h-[1.5px] bg-aesthetic-accent mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Your Stylish Seaview Retreat -->
+            <div class="vogue-card overflow-hidden bg-white flex flex-col justify-between">
+                <div>
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/9QpJpXMW/Copy-of-DSC09069-HDR-copy.jpg" alt="Your Stylish Seaview Retreat" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-lg font-semibold text-aesthetic-dark mb-3 lang-text" data-lang="offer_card1_title">
+                            Your Stylish Seaview Retreat
+                        </h3>
+                        <p class="text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed lang-text" data-lang="offer_card1_desc">
+                            A 3-day, 2-night stay in a <strong>Seaview Room</strong> at Copacabana Beach Jomtien, allowing you to fully immerse yourself in our special resort atmosphere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Curated Experiences -->
+            <div class="vogue-card overflow-hidden bg-white flex flex-col justify-between">
+                <div>
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/YCsGjPmy/Screenshot-2568-08-19-at-15-43-24-topaz-sharpen-text-upscale-1-9x.jpg" alt="Curated Experiences" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-lg font-semibold text-aesthetic-dark mb-3 lang-text" data-lang="offer_card2_title">
+                            Curated Experiences
+                        </h3>
+                        <ul class="space-y-3.5 text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-aesthetic-accent mt-1 text-xs"></i>
+                                <span class="lang-text" data-lang="offer_card2_desc1">A special Welcome Set to greet you.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-aesthetic-accent mt-1 text-xs"></i>
+                                <span class="lang-text" data-lang="offer_card2_desc2">Full access to all facilities, including the Rooftop Pool, Beach Club, and Gym.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Exclusive Yacht Trip -->
+            <div class="vogue-card overflow-hidden bg-white flex flex-col justify-between">
+                <div>
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://i.postimg.cc/m2S7ZVw0/DJI-0306.jpg" alt="Exclusive Yacht Trip" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-lg font-semibold text-aesthetic-dark mb-3 lang-text" data-lang="offer_card3_title">
+                            Exclusive Yacht Trip
+                        </h3>
+                        <p class="text-aesthetic-slate text-xs sm:text-sm font-light leading-relaxed lang-text" data-lang="offer_card3_desc">
+                            A private yacht trip to experience the beauty of the Pattaya sea and create unique content in your own style.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Two-Column Editorial Layout (70% Deep Detail Content | 30% Dynamic Social Sidebar) -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -245,16 +316,16 @@
                     <!-- Modern Aesthetic Tabs Selector -->
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-2 p-1.5 bg-[#f1f5f9] rounded-2xl border border-slate-200 mb-8 text-center text-xs font-semibold">
                         <button onclick="toggleTrack('vibe-showunit')" id="tab-vibe-showunit" class="vibe-tab py-3.5 rounded-xl text-aesthetic-dark transition-all duration-300 bg-white shadow-sm border border-slate-200">
-                            🏢 Show Units
+                            🏢 <span class="lang-text" data-lang="tab_showunit">Show Units</span>
                         </button>
                         <button onclick="toggleTrack('vibe-wellness')" id="tab-vibe-wellness" class="vibe-tab py-3.5 rounded-xl text-aesthetic-slate hover:text-aesthetic-dark transition-all duration-300">
-                            🏊 Wellness
+                            🏊 <span class="lang-text" data-lang="tab_wellness">Wellness</span>
                         </button>
                         <button onclick="toggleTrack('vibe-academic')" id="tab-vibe-academic" class="vibe-tab py-3.5 rounded-xl text-aesthetic-slate hover:text-aesthetic-dark transition-all duration-300">
-                            🎓 AI & Tech
+                            🤖 <span class="lang-text" data-lang="tab_ai">Hybrid AI</span>
                         </button>
                         <button onclick="toggleTrack('vibe-eec')" id="tab-vibe-eec" class="vibe-tab py-3.5 rounded-xl text-aesthetic-slate hover:text-aesthetic-dark transition-all duration-300">
-                            🚀 EEC Updated
+                            🚀 <span class="lang-text" data-lang="tab_eec">EEC Updated</span>
                         </button>
                     </div>
 
@@ -268,16 +339,16 @@
                                     <span class="bg-[#fcfbf9] text-aesthetic-accent text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-aesthetic-accent/30">Quiet Luxury Design</span>
                                     <h3 class="text-xl font-serif font-semibold text-aesthetic-dark mt-4 lang-text" data-lang="collab_item1">รีวิวห้องจริง ท่ามกลางวิวขอบฟ้า</h3>
                                     <p class="text-aesthetic-slate text-xs sm:text-sm font-light mt-3 leading-relaxed lang-text" data-lang="collab_desc1">
-                                        เยี่ยมชมและสัมผัสความงามล้ำค่าของห้องตัวอย่าง (Show Units) ณ Sales Gallery ด้วยดีไซน์หรูหราที่ผ่อนคลายในทุกสัมผัส
+                                        ถ่ายทำคอนเทนต์ในดีไซน์ห้องตัวอย่างแบบมินิมอล-สแกนดิเนเวียน นำเสนอสุนทรียะแห่งความเงียบสงบ วัสดุเกรดพรีเมียม และสมาร์ทเทคโนโลยีที่แบรนด์เลือกใช้
                                     </p>
                                     <div class="mt-4 space-y-2">
                                         <div class="flex items-center gap-2.5 text-xs text-aesthetic-dark">
                                             <i class="fa-solid fa-circle-check text-aesthetic-accent"></i>
-                                            <span class="lang-text" data-lang="p_check1_1">ถ่ายทอดความประณีตของดีไซน์สไตล์ Modern-Classic สุดหรูหรา</span>
+                                            <span class="lang-text" data-lang="p_check1_1">ถ่ายทอดความประณีตของดีไซน์สแกนดิเนเวียน-มินิมอล</span>
                                         </div>
                                         <div class="flex items-center gap-2.5 text-xs text-aesthetic-dark">
                                             <i class="fa-solid fa-circle-check text-aesthetic-accent"></i>
-                                            <span class="lang-text" data-lang="p_check1_2">เปิดแนวคิดใหม่ในการเลือกที่อยู่อาศัยให้ตรงกับความต้องการของบุคลิก MBTI</span>
+                                            <span class="lang-text" data-lang="p_check1_2">สัมผัสวัสดุเกรดพรีเมียมและระบบ Smart Home ยุคใหม่</span>
                                         </div>
                                     </div>
                                     <div class="mt-5">
@@ -288,7 +359,7 @@
                                     </div>
                                 </div>
                                 <div class="rounded-2xl overflow-hidden shadow-inner h-52 md:h-64 border border-slate-100">
-                                    <img src="https://i.postimg.cc/133d9kTB/hf-20260523-102521-9d85f0e2-a898-4255-ad50-abede832f4ec.jpg" alt="Showroom" class="w-full h-full object-cover">
+                                    <img src="https://i.postimg.cc/SKT827Cy/hf-20260525-102455-5879c19c-1515-4d3a-9f90-ddc4b7e78d70.jpg" alt="Showroom" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -336,7 +407,7 @@
                                     </div>
                                 </div>
                                 <div class="rounded-2xl overflow-hidden shadow-inner h-52 md:h-64 border border-slate-100">
-                                    <img src="https://i.postimg.cc/gjrkfpkz/THOR-to-THBHO001.png" alt="AI-Tech & Creative Collaborations" class="w-full h-full object-cover">
+                                    <img src="https://i.postimg.cc/3x54QwVG/edit-to-From-202603261309.jpg" alt="AI-Tech & Creative Collaborations" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -368,7 +439,7 @@
                                     </div>
                                 </div>
                                 <div class="rounded-2xl overflow-hidden shadow-inner h-52 md:h-64 border border-slate-100 bg-[#f8fafc] flex items-center justify-center">
-                                    <img src="https://i.postimg.cc/g2PHDK92/EECiti-model-EEC-gigapixel-high-fidelity-v2-2x.png" alt="EECiti Model Blueprint" class="w-full h-full object-cover">
+                                    <img src="https://i.postimg.cc/Qt29NxCJ/make-it-realistic-change-202606211012.jpg" alt="EECiti Model Blueprint" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
@@ -387,17 +458,17 @@
                         <div onclick="toggleChecklist(1)" id="checklist-card-1" class="p-5 rounded-2xl border border-slate-200 bg-[#fcfbf9] cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-aesthetic-accent">
                             <span class="text-xl font-serif font-semibold text-aesthetic-accent">01. Pitch Idea</span>
                             <p class="text-[11px] text-aesthetic-slate mt-2 leading-relaxed lang-text" data-lang="check_card1">ส่งแบบฟอร์มเพื่อร่วมเสนอไอเดียหรือคอนเซ็ปต์การทำงานตามที่คุณชอบ</p>
-                            <span class="text-[9px] mt-4 uppercase font-bold text-aesthetic-accent tracking-wider"><i class="fa-regular fa-clock"></i> 2-3 Days Review</span>
+                            <span class="text-[9px] mt-4 uppercase font-bold text-aesthetic-accent tracking-wider"><i class="fa-regular fa-clock"></i> <span class="lang-text" data-lang="check_foot1">2-3 Days Review</span></span>
                         </div>
                         <div onclick="toggleChecklist(2)" id="checklist-card-2" class="p-5 rounded-2xl border border-slate-200 bg-white cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-aesthetic-accent">
-                            <span class="text-xl font-serif font-semibold text-slate-300" id="checklist-num-2">02. Setup Deal</span>
+                            <span class="text-xl font-serif font-semibold text-slate-300 transition-all duration-300" id="checklist-num-2">02. Setup Deal</span>
                             <p class="text-[11px] text-aesthetic-slate mt-2 leading-relaxed lang-text" data-lang="check_card2">ฝ่ายพัฒนาพาร์ทเนอร์ส่งข้อเสนอ สัญญางบประมาณ และสิทธิ์จองที่พักส่วนตัว</p>
-                            <span class="text-[9px] mt-4 uppercase font-bold text-slate-400 tracking-wider" id="checklist-sub-2">Upon Agreement</span>
+                            <span class="text-[9px] mt-4 uppercase font-bold text-slate-400 tracking-wider transition-all duration-300" id="checklist-sub-2" data-lang="check_foot2">Upon Agreement</span>
                         </div>
                         <div onclick="toggleChecklist(3)" id="checklist-card-3" class="p-5 rounded-2xl border border-slate-200 bg-white cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-aesthetic-accent">
-                            <span class="text-xl font-serif font-semibold text-slate-300" id="checklist-num-3">03. Production</span>
+                            <span class="text-xl font-serif font-semibold text-slate-300 transition-all duration-300" id="checklist-num-3">03. Production</span>
                             <p class="text-[11px] text-aesthetic-slate mt-2 leading-relaxed lang-text" data-lang="check_card3">เริ่มต้นถ่ายทำ ล่องเรือยอร์ช โดยมีงบซัพพอร์ตโปรดักชั่นอย่างเป็นทางการ</p>
-                            <span class="text-[9px] mt-4 uppercase font-bold text-slate-400 tracking-wider" id="checklist-sub-3">Execution Day</span>
+                            <span class="text-[9px] mt-4 uppercase font-bold text-slate-400 tracking-wider transition-all duration-300" id="checklist-sub-3" data-lang="check_foot3">Execution Day</span>
                         </div>
                     </div>
                 </div>
@@ -414,8 +485,8 @@
                             C
                         </div>
                         <div>
-                            <h4 class="text-xs font-bold text-aesthetic-dark uppercase tracking-wider">Campaign Hub</h4>
-                            <p class="text-[10px] text-aesthetic-slate font-medium">COPACABANA VIP RELATIONS</p>
+                            <h4 class="text-xs font-bold text-aesthetic-dark uppercase tracking-wider lang-text" data-lang="sidebar_admin_title_badge">Campaign Hub</h4>
+                            <p class="text-[10px] text-aesthetic-slate font-medium lang-text" data-lang="sidebar_admin_subtitle">COPACABANA VIP RELATIONS</p>
                         </div>
                     </div>
                     
@@ -431,10 +502,10 @@
                 <!-- Sidebar Item 2: Spotlight Image Card -->
                 <div class="vogue-card overflow-hidden bg-white border border-slate-200">
                     <div class="relative h-44 overflow-hidden">
-                        <img src="https://i.postimg.cc/m2S7ZVw0/DJI-0306.jpg" alt="Yacht Trip Spotlight" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                        <img src="https://i.postimg.cc/J7XZnZ9V/r-pre-x-phra-xath-ty-tk-2.jpg" alt="Yacht Trip Spotlight" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-aesthetic-dark/70 to-transparent"></div>
                         <div class="absolute bottom-3 left-4">
-                            <span class="bg-aesthetic-accent text-aesthetic-dark text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Spotlight Feature</span>
+                            <span class="bg-aesthetic-accent text-aesthetic-dark text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded lang-text" data-lang="sidebar_spot_badge">Spotlight Feature</span>
                             <h4 class="text-sm font-serif font-semibold text-white mt-1 lang-text" data-lang="sidebar_spot_title">The Yacht Lifestyle Cruise</h4>
                         </div>
                     </div>
@@ -447,7 +518,7 @@
 
                 <!-- Sidebar Item 3: Public Interactive Poll -->
                 <div class="vogue-card p-6 bg-[#fcfbf9] border border-slate-200">
-                    <span class="text-aesthetic-accent font-bold tracking-[0.25em] uppercase text-[9px] block mb-1">Creator Sentiment</span>
+                    <span class="text-aesthetic-accent font-bold tracking-[0.25em] uppercase text-[9px] block mb-1 lang-text" data-lang="sidebar_poll_badge">Creator Sentiment</span>
                     <h4 class="text-sm font-serif font-semibold text-aesthetic-dark mb-4 lang-text" data-lang="poll_title">โพลสิทธิพิเศษที่คุณประทับใจที่สุด?</h4>
                     
                     <div class="space-y-2.5" id="poll-options">
@@ -488,6 +559,118 @@
 
         </div>
     </main>
+
+    <!-- Hybrid AI Creator Lab Section based on Screenshot 2569-06-21 at 09.26.10.jpg -->
+    <section id="creator-lab" class="py-24 bg-aesthetic-beige border-t border-slate-200 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="mb-10">
+                <div class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] text-aesthetic-slate uppercase mb-3">
+                    <i class="fa-solid fa-clapperboard text-aesthetic-accent"></i>
+                    <span class="lang-text" data-lang="lab_badge">NEW INITIATIVE</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif text-aesthetic-dark font-semibold tracking-tight lang-text" data-lang="lab_title">
+                    Hybrid AI Creator Lab
+                </h2>
+            </div>
+
+            <!-- Big Gradient Feature Hero Card -->
+            <div class="w-full rounded-[2rem] overflow-hidden bg-gradient-to-br from-[#0c1a30] via-[#0f2545] to-[#071120] text-white p-8 sm:p-12 shadow-2xl relative mb-12 border border-white/5">
+                <!-- Decorative background vector element mirroring the screenshot design -->
+                <div class="absolute top-10 right-10 opacity-15 pointer-events-none">
+                    <svg class="w-24 h-24 text-aesthetic-accent" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l2.4 7.2h7.6l-6.2 4.5 2.4 7.3-6.2-4.5-6.2 4.5 2.4-7.3-6.2-4.5h7.6z"/>
+                    </svg>
+                </div>
+
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-block bg-aesthetic-accent/15 border border-aesthetic-accent/30 text-aesthetic-accent text-[9px] font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full mb-6 lang-text" data-lang="lab_pill">
+                        INFLUENCERS & CONTENT CREATORS PROGRAM
+                    </span>
+                    <h3 class="text-2xl sm:text-4xl font-sans font-light leading-tight mb-5 tracking-tight thai-headline">
+                        <span class="lang-text block" data-lang="lab_hero_h1">เปลี่ยน Content เดิม ให้กลายเป็น Hybrid AI Content</span>
+                    </h3>
+                    <p class="text-slate-300 text-xs sm:text-sm md:text-base font-light leading-relaxed lang-text" data-lang="lab_hero_desc">
+                        COPA คัดเลือก Creators ที่ใช่ แล้วเข้าไปช่วยพัฒนา Content ที่พวกเขาทำอยู่แล้ว ให้ฉลาดขึ้น สร้างสรรค์ขึ้น และ Scale ได้ง่ายขึ้น — ด้วย Hybrid AI ไม่ใช่การแทนที่ตัวตนของ Creator แต่คือการยกระดับมัน
+                    </p>
+                    
+                    <!-- Experimental AI Gymmate Project Link CTA -->
+                    <div class="mt-8">
+                        <a href="https://thbho.github.io/AIGymmateXFactory.html" target="_blank" class="inline-flex items-center gap-2.5 bg-aesthetic-accent hover:bg-white text-aesthetic-dark hover:text-aesthetic-dark text-[11px] font-semibold tracking-[0.15em] uppercase px-6 py-4 rounded-full transition-all duration-300 shadow-lg shadow-aesthetic-accent/15 animate-pulse">
+                            <i class="fa-solid fa-dumbbell text-xs"></i>
+                            <span class="lang-text" data-lang="lab_project_btn">ชมเคสตัวอย่างโปรเจกต์ GymMateX คลิก</span>
+                            <i class="fas fa-external-link-alt text-[9px] opacity-85"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4-Steps Process Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-h-[190px]">
+                    <div>
+                        <div class="w-8 h-8 bg-[#0c1a30] text-white rounded-full flex items-center justify-center text-xs font-bold mb-4">
+                            1
+                        </div>
+                        <h4 class="text-sm font-bold text-[#0c1a30] mb-2 lang-text" data-lang="lab_s1_title">คัดเลือก (Curate)</h4>
+                        <p class="text-xs text-aesthetic-slate font-light leading-relaxed lang-text" data-lang="lab_s1_desc">
+                            COPA เลือก Creators เอง — ไม่ใช่ Mass แต่คือคนที่ Fit กับแนวทาง Wellness, AI หรือ Lifestyle ของ COPA จริงๆ
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-h-[190px]">
+                    <div>
+                        <div class="w-8 h-8 bg-[#2d79ca] text-white rounded-full flex items-center justify-center text-xs font-bold mb-4">
+                            2
+                        </div>
+                        <h4 class="text-sm font-bold text-[#2d79ca] mb-2 lang-text" data-lang="lab_s2_title">สอน & ทดลอง (Teach & Explore)</h4>
+                        <p class="text-xs text-aesthetic-slate font-light leading-relaxed lang-text" data-lang="lab_s2_desc">
+                            Workshop 1-on-1 หรือกลุ่มเล็ก — ดู Content เดิมของเขา วิเคราะห์ร่วมกัน แล้วหาว่า AI จะช่วยตรงไหนได้บ้าง
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-h-[190px]">
+                    <div>
+                        <div class="w-8 h-8 bg-[#d08b35] text-white rounded-full flex items-center justify-center text-xs font-bold mb-4">
+                            3
+                        </div>
+                        <h4 class="text-sm font-bold text-[#d08b35] mb-2 lang-text" data-lang="lab_s3_title">พัฒนาร่วมกัน (Co-create)</h4>
+                        <p class="text-xs text-aesthetic-slate font-light leading-relaxed lang-text" data-lang="lab_s3_desc">
+                            Collab จริง — ช่วยออกแบบ Workflow ใหม่ ปรับ Script, Visual, Hook, Format ให้เป็น Hybrid AI Style
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between min-h-[190px]">
+                    <div>
+                        <div class="w-8 h-8 bg-[#288b56] text-white rounded-full flex items-center justify-center text-xs font-bold mb-4">
+                            4
+                        </div>
+                        <h4 class="text-sm font-bold text-[#288b56] mb-2 lang-text" data-lang="lab_s4_title">ขยายผล (Scale)</h4>
+                        <p class="text-xs text-aesthetic-slate font-light leading-relaxed lang-text" data-lang="lab_s4_desc">
+                            Creator ที่ผ่าน Lab กลายเป็น COPA Affiliated Ambassador — พร้อม Co-host Events, PR และ Roadshow ร่วมกัน
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision Callout Box / Indicator at the bottom -->
+            <div class="bg-amber-500/5 border border-amber-500/25 rounded-2xl p-5 px-6 flex items-start gap-4">
+                <span class="text-amber-500 text-xl flex-shrink-0 mt-0.5">💡</span>
+                <p class="text-xs text-aesthetic-dark leading-relaxed font-light lang-text" data-lang="lab_goal_footer">
+                    <strong>เป้าหมายของ Creator Lab:</strong> ไม่ใช่แค่ให้ Influencer มาโปรโมต COPA แต่คือการสร้าง Hybrid AI Creator Network ที่ขับเคลื่อนด้วยตัวตนจริงของแต่ละคน — เมื่อ Creator เก่งขึ้น COPA ก็เติบโตไปพร้อมกัน
+                </p>
+            </div>
+
+        </div>
+    </section>
 
     <!-- Project Specs & Factsheet (Detailed condo specs requested by user) -->
     <section id="specs-factsheet" class="py-24 bg-[#f8f6f2] border-t border-b border-slate-200 relative overflow-hidden">
@@ -556,7 +739,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-aesthetic-dark text-xs"><i class="fa-solid fa-tree text-aesthetic-accent text-[10px] mr-1.5"></i> Greenery Space</h4>
-                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_gardens">มีสวนลอยฟ้ากระจายบนตัวอาคารสูงเพื่อความร่มรื่นกว่า 32 แห่งทั่วโครงการ</p>
+                                    <p class="mt-0.5 leading-relaxed lang-text" data-lang="specs_f_gardens">มีสวนลอยฟ้าและสวนพักผ่อนกระจายบนตัวอาคารสูงเพื่อความร่มรื่นกว่า 32 แห่ง</p>
                                 </div>
                             </div>
                         </div>
@@ -723,11 +906,31 @@
     <script>
         const translations = {
             th: {
+                nav_offer: 'ข้อเสนอพิเศษ',
+                nav_tracks: 'แทร็คคอลแลปส์',
+                nav_lab: 'Creator Lab',
+                nav_specs: 'ข้อมูลโครงการ',
+                nav_pitch: 'เสนอไอเดีย',
+
+                tab_showunit: 'Show Units',
+                tab_wellness: 'Wellness',
+                tab_ai: 'Hybrid AI',
+                tab_eec: 'EEC Updated',
+
+                check_foot1: 'ใช้เวลาพิจารณา 2-3 วัน',
+                check_foot2: 'เมื่อบรรลุข้อตกลง',
+                check_foot3: 'วันเริ่มแคมเปญ',
+
+                sidebar_admin_title_badge: 'สิทธิ์พิเศษครีเอเตอร์',
+                sidebar_admin_subtitle: 'ฝ่ายดูแลสิทธิประโยชน์ COPACABANA',
+                sidebar_spot_badge: 'สปอตไลท์แคมเปญ',
+                sidebar_poll_badge: 'โพลความเห็นครีเอเตอร์',
+
                 hero_badge: 'A Rare Creative Partnership Invitation',
                 // Using precise inline-block segments to stop Thai typography breaking awkwardly
                 hero_title_p1: '<span class="inline-block">เราดีไซน์</span><span class="inline-block">สเปซที่ใช่...</span>',
                 hero_title_p2: '<span class="inline-block">ให้คุณมาร่วม</span><span class="inline-block">เขียนเรื่องราว</span>',
-                hero_subtitle: 'นี่ไม่ใช่การจ้างโพสต์สปอนเซอร์แบบเดิม ๆ แต่คือแคมเปญระดับสากลที่มีงบประมาณและสิทธิพิเศษจริง สำหรับครีเอเตอร์และอินฟลูเอนเซอร์ผู้มีสไตล์เฉพาะตัว สัมผัสความลักชัวรีที่ผ่อนคลายในสไตล์ Wellness & Fun Living ณ คอนโดมิเนียมระดับเวิลด์คลาส Copacabana Coral Reef Jomtien',
+                hero_subtitle: 'นี่ไม่ใช่การจ้างโพสต์สปอนเซอร์แบบเดิม ๆ แต่คือแคมเปญระดับสากลที่มีงบประมาณและสิทธิพิเศษจริง สำหรับครีเอเตอร์และอินฟลูเอนเซอร์ผู้มีสไตล์เฉพาะตัว สัมผัสความลักชัวรีที่ผ่อนคลายในสไตล์ Wellness & Fun Living ณ คอนโดมิเนียมระดับเวิลด์คลาส Copacabana Coral Reef Jomtien แคมเปญสนับสนุนแบบจัดเต็มรอคุณอยู่',
                 explore_btn: 'เสนอไอเดียร่วมงาน',
                 perk_brief1_title: 'สิทธิ์ล่องเรือยอร์ชส่วนตัว',
                 perk_brief1_desc: 'ล่องใต้ลมทะเลพัทยาสำหรับสร้างสรรค์คอนเทนต์ VIP',
@@ -739,6 +942,17 @@
                 status_location: 'ถนนจอมเทียนสาย 2 พัทยา ชลบุรี',
                 status_detail: '✨ โครงสร้างหลักของอาคารดำเนินถึง <span class="font-semibold text-aesthetic-accent text-base">ชั้น 49</span> เรียบร้อยแล้ว พร้อมเป็นแบ็คดรอปขอบฟ้าที่งดงามที่สุด',
                 status_progress: 'คืบหน้าถึงชั้น 49',
+                
+                // Our Offer Translation Keys
+                offer_title: 'Our Offer (at Copacabana Beach Jomtien)',
+                offer_card1_title: 'Your Stylish Seaview Retreat',
+                offer_card1_desc: 'เข้าพัก 3 วัน 2 คืน ใน ห้องพักวิวทะเล ณ Copacabana Beach Jomtien ให้คุณได้ซึมซับกับบรรยากาศการพักผ่อนอย่างเต็มรูปแบบ',
+                offer_card2_title: 'Curated Experiences',
+                offer_card2_desc1: 'ชุดของขวัญ Welcome Set ต้อนรับคุณอย่างอบอุ่น',
+                offer_card2_desc2: 'สิทธิ์เข้าใช้งานสิ่งอำนวยความสะดวกครบครัน สระว่ายน้ำลอยฟ้า, บีชคลับ และฟิตเนส',
+                offer_card3_title: 'Exclusive Yacht Trip',
+                offer_card3_desc: 'ทริปล่องเรือยอร์ชส่วนตัวเพื่อสัมผัสความงดงามของท้องทะเลพัทยา และสร้างสรรค์คอนเทนต์ที่เป็นเอกลักษณ์ในสไตล์ของคุณเอง',
+
                 concept_title: 'เลือกสไตล์แคมเปญของคุณเอง',
                 concept_subtitle: 'ร่วมถ่ายทอดเรื่องราวการใช้ชีวิตผ่าน "Creative Residencies" 4 แทร็คใหญ่ เพื่อนำเสนอความเป็น Wellness & Fun Living ในรูปแบบที่เป็นตัวคุณอย่างแท้จริง',
                 collab_item1: 'รีวิวห้องจริง ท่ามกลางวิวขอบฟ้า',
@@ -750,8 +964,10 @@
                 collab_desc2: 'นำเสนอชีวิตพักผ่อนระดับห้าดาวและการเข้าสังคมอย่างสนุกสนาน ผ่านพื้นที่ส่วนกลางสุดครบครัน รวมถึงความงดงามระดับโลกของโครงการ',
                 p_check2_1: 'สระว่ายน้ำระบบน้ำเกลือขนาดใหญ่ ดีไซน์หรูสไตล์รีสอร์ท',
                 p_check2_2: 'โซนฟิตเนสและสปากระจกบานใหญ่ ชมวิวทะเลพาโนรามา',
-                collab_item3: 'บรรยายแบ่งปันความรู้กับมหาวิทยาลัยชั้นนำ',
-                collab_desc3: 'ชี้แนะและถ่ายทอดการใช้นวัตกรรมอัจฉริยะ (Hybrid AI) ร่วมกับคอนเทนต์คุณภาพ เพื่อสร้างประโยชน์ทางปัญญาและแรงบันดาลใจ',
+                collab_item3: 'เวิร์กช็อปขยายขีดจำกัดคอนเทนต์ด้วย Hybrid AI',
+                collab_desc3: 'โครงการร่วมมือพิเศษสำหรับครีเอเตอร์ที่เราคัดเลือก เพื่อเรียนรู้ ทดลอง และร่วมพัฒนาพอร์ตโฟลิโอคอนเทนต์เดิมของคุณสู่ "Hybrid Content" ทรงคุณค่าด้วยเครื่องมือ AI',
+                p_check3_1: 'ทดลองและร่วมเรียนรู้การประยุกต์ใช้ AI เพื่อยกระดับโปรดักชันอย่างเป็นกันเอง',
+                p_check3_2: 'อัปเดตงานภาพ บทความ และคอนเซ็ปต์เดิมสู่ผลงานแนวหน้าด้วยเทคโนโลยีชั้นยอด',
                 p_academic_link: 'ดูตัวอย่างเนื้อหาบรรยายคลิก',
                 collab_item4: 'ร่วมอัปเดตและแชร์ข่าวสารล่าสุดของ EEC',
                 collab_desc4: 'ร่วมเป็นกระบอกเสียงในการส่งต่อเรื่องราวและแชร์วิสัยทัศน์เมกะโปรเจกต์ระดับชาติอย่าง EECiti และเมืองการบินภาคตะวันออก (Eastern Aviation City) สู่สาธารณชน ย่อยข้อมูลโครงสร้างพื้นฐานระดับเวิลด์คลาสให้กลายเป็นเรื่องที่สนุก เข้าใจง่าย และเข้าถึงกลุ่มเป้าหมายยุคใหม่ได้อย่างมีสไตล์',
@@ -800,7 +1016,7 @@
                 specs_g_timeline: 'คาดว่าจะแล้วเสร็จ: ปลายปี 2570',
                 specs_f_title: 'สิ่งอำนวยความสะดวกระดับเวิลด์คลาส (Facilities)',
                 specs_f_ground: 'Wave pool คลื่นจำลอง, สระจากุซซี่, บาร์น้ำและบีชคลับ, สนามเด็กเล่น',
-                specs_f_gym: 'ฟิตเนสเพดานสูงขนาด 360-487 ตร.ม. พร้อมหน้าต่างกระจกชมวิวทะเลพาโนรามา (ชั้น 3)',
+                specs_f_gym: 'ห้องออกกำลังกาย เพดานสูง ขนาด 360-487 ตร.ม. พร้อมหน้าต่างวิวทะเลแบบพาโนรามา (ชั้น 3)',
                 specs_f_floor6: 'สระว่ายน้ำสไตล์คอรัล, จากุซซี่, ออนเซ็นแบบญี่ปุ่น, ซาวน่า & สตรีม (ชั้น 6)',
                 specs_f_floor50: 'มินิเธียเตอร์, Business Lounge, Co-working space & ห้องประชุมหรู (ชั้น 50)',
                 specs_f_floor51: 'สระว่ายน้ำลอยฟ้า Cantilever ยาว 45 ม. วิวพรีเมียม และบาร์ดาดฟ้า (ชั้น 51)',
@@ -818,9 +1034,46 @@
                 specs_l_t2: 'ท่าเรือบาลีฮาย / วอล์กกิ้งสตรีท',
                 specs_l_t3: 'มอเตอร์เวย์ สาย 7',
                 specs_l_t4: 'สนามบินอู่ตะเภา',
-                specs_l_t5: 'สนามบินสุวรรณภูมิ'
+                specs_l_t5: 'สนามบินสุวรรณภูมิ',
+
+                // Hybrid AI Creator Lab Keys
+                lab_badge: 'NEW INITIATIVE',
+                lab_title: 'Hybrid AI Creator Lab',
+                lab_pill: 'INFLUENCERS & CONTENT CREATORS PROGRAM',
+                lab_hero_h1: 'เปลี่ยน Content เดิม ให้กลายเป็น Hybrid AI Content',
+                lab_hero_desc: 'COPA คัดเลือก Creators ที่ใช่ แล้วเข้าไปช่วยพัฒนา Content ที่พวกเขาทำอยู่แล้ว ให้ฉลาดขึ้น สร้างสรรค์ขึ้น และ Scale ได้ง่ายขึ้น — ด้วย Hybrid AI ไม่ใช่การแทนที่ตัวตนของ Creator แต่คือการยกระดับมัน',
+                lab_project_btn: 'ชมเคสตัวอย่างโปรเจกต์ GymMateX คลิก',
+                lab_s1_title: 'คัดเลือก (Curate)',
+                lab_s1_desc: 'COPA เลือก Creators เอง — ไม่ใช่ Mass แต่คือคนที่ Fit กับแนวทาง Wellness, AI หรือ Lifestyle ของ COPA จริงๆ',
+                lab_s2_title: 'สอน & ทดลอง (Teach & Explore)',
+                lab_s2_desc: 'Workshop 1-on-1 หรือกลุ่มเล็ก — ดู Content เดิมของเขา วิเคราะห์ร่วมกัน แล้วหาว่า AI จะช่วยตรงไหนได้บ้าง',
+                lab_s3_title: 'พัฒนาร่วมกัน (Co-create)',
+                lab_s3_desc: 'Collab จริง — ช่วยออกแบบ Workflow ใหม่ ปรับ Script, Visual, Hook, Format ให้เป็น Hybrid AI Style',
+                lab_s4_title: 'ขยายผล (Scale)',
+                lab_s4_desc: 'Creator ที่ผ่าน Lab กลายเป็น COPA Affiliated Ambassador — พร้อม Co-host Events, PR และ Roadshow ร่วมกัน',
+                lab_goal_footer: 'เป้าหมายของ Creator Lab: ไม่ใช่แค่ให้ Influencer มาโปรโมต COPA แต่คือการสร้าง Hybrid AI Creator Network ที่ขับเคลื่อนด้วยตัวตนจริงของแต่ละคน — เมื่อ Creator เก่งขึ้น COPA ก็เติบโตไปพร้อมกัน'
             },
             en: {
+                nav_offer: 'Our Offer',
+                nav_tracks: 'Collab Tracks',
+                nav_lab: 'Creator Lab',
+                nav_specs: 'Specs Dashboard',
+                nav_pitch: 'Pitch Now',
+
+                tab_showunit: 'Show Units',
+                tab_wellness: 'Wellness',
+                tab_ai: 'Hybrid AI',
+                tab_eec: 'EEC Updated',
+
+                check_foot1: '2-3 Days Review',
+                check_foot2: 'Upon Agreement',
+                check_foot3: 'Execution Day',
+
+                sidebar_admin_title_badge: 'CREATOR PRIVILEGES',
+                sidebar_admin_subtitle: 'COPACABANA VIP RELATIONS',
+                sidebar_spot_badge: 'Spotlight Feature',
+                sidebar_poll_badge: 'Creator Sentiment',
+
                 hero_badge: 'A Rare Creative Partnership Invitation',
                 hero_title_p1: '<span class="inline-block">We Build</span> <span class="inline-block">The Canvas.</span>',
                 hero_title_p2: '<span class="inline-block">You Write</span> <span class="inline-block">The Beautiful Story.</span>',
@@ -836,6 +1089,17 @@
                 status_location: 'Jomtien 2nd Road, Pattaya, Chonburi',
                 status_detail: '✨ Structural development is strictly on schedule, reaching the <span class="font-semibold text-aesthetic-accent text-base">49th floor</span> as of this month.',
                 status_progress: '49th Floor Reached',
+                
+                // Our Offer Translation Keys
+                offer_title: 'Our Offer (at Copacabana Beach Jomtien)',
+                offer_card1_title: 'Your Stylish Seaview Retreat',
+                offer_card1_desc: 'A 3-day, 2-night stay in a Seaview Room at Copacabana Beach Jomtien, allowing you to fully immerse yourself in our special resort atmosphere.',
+                offer_card2_title: 'Curated Experiences',
+                offer_card2_desc1: 'A special Welcome Set to greet you.',
+                offer_card2_desc2: 'Full access to all facilities, including the Rooftop Pool, Beach Club, and Gym.',
+                offer_card3_title: 'Exclusive Yacht Trip',
+                offer_card3_desc: 'A private yacht trip to experience the beauty of the Pattaya sea and create unique content in your own style.',
+
                 concept_title: 'Pick Your Creative Vibe Track',
                 concept_subtitle: 'Express yourself through four distinctive residency streams tailored to showcase premium living in your authentic style.',
                 collab_item1: 'Scenic Skyline Apartment Reviews',
@@ -847,9 +1111,11 @@
                 collab_desc2: 'Showcase beautiful wellness routines including panoramic glass gyms, custom oceanfront swimming pools, and recovery wellness spas.',
                 p_check2_1: 'A massive custom saltwater resort-inspired swimming pool.',
                 p_check2_2: 'High-ceiling glass panoramic fitness spa facing the infinite ocean views.',
-                collab_item3: 'AI-Tech & Creative Collaborations',
-                collab_desc3: 'Co-host meaningful academic tours sharing concepts of "Hybrid AI" and premium content tools with local universities to inspire the future.',
-                p_academic_link: 'Click to view presentation materials sample',
+                collab_item3: 'Hybrid AI Content Lab & Masterclass',
+                collab_desc3: 'An exclusive collaboration initiative designed for curated influencers and content creators. Through hands-on collabs, private training sessions, experimentation, and customized workshops, we help you transition your existing content into cutting-edge "Hybrid Content" by integrating powerful Hybrid AI workflows to elevate visual, text, and overall creative output.',
+                p_check3_1: 'Co-experiment and master top-tier Hybrid AI tools to scale production efficiency.',
+                p_check3_2: 'Evolve your signature content formulas into high-performing Hybrid formats.',
+                p_academic_link: 'Click to view Hybrid AI Blueprint & Framework',
                 collab_item4: 'Co-Publicize Latest EEC & Aviation City Updates',
                 collab_desc4: 'Be the powerful voice that bridges the public with Thailand’s game-changing megaprojects, including EECiti green smart town and the Eastern Aviation City. Translate world-class utility designs and smart infrastructure into aesthetic, shareable, and highly engaging lifestyle updates.',
                 p_check4_1: 'Publicize the 72,000 Million Baht EECiti Blueprint and the Eastern Aviation City plans.',
@@ -915,7 +1181,24 @@
                 specs_l_t2: 'Bali Hai / Walking St.',
                 specs_l_t3: 'Motorway 7',
                 specs_l_t4: 'U-Tapao Airport',
-                specs_l_t5: 'BKK Airport'
+                specs_l_t5: 'BKK Airport',
+
+                // Hybrid AI Creator Lab Keys
+                lab_badge: 'NEW INITIATIVE',
+                lab_title: 'Hybrid AI Creator Lab',
+                lab_pill: 'INFLUENCERS & CONTENT CREATORS PROGRAM',
+                lab_hero_h1: 'Evolve Your Signature Content with Hybrid AI Workflow',
+                lab_hero_desc: 'COPA handpicks the right creators to adapt, test, and co-develop their current content formulas into high-performance Hybrid AI formats. This is about amplifying your authentic style—not replacing it.',
+                lab_project_btn: 'Explore GymMateX Project Case Study',
+                lab_s1_title: 'Curate',
+                lab_s1_desc: 'COPA selectively invites creators aligned with wellness, AI tech, and sophisticated coastal lifestyles—no mass syndicates.',
+                lab_s2_title: 'Teach & Explore',
+                lab_s2_desc: 'Engage in intimate group or 1-on-1 workshops to audit your active content and identify strategic AI implementation opportunities.',
+                lab_s3_title: 'Co-create',
+                lab_s3_desc: 'Launch actual collaborative content with optimized workflow frameworks, refined scripting, hooks, and polished visuals.',
+                lab_s4_title: 'Scale',
+                lab_s4_desc: 'Graduate to become an official COPA Affiliated Ambassador, co-hosting strategic PR campaigns, luxury roadshows, and exclusive events.',
+                lab_goal_footer: 'Creator Lab Goal: Beyond promotional briefs, we aim to build a high-performance Hybrid AI Creator Network driven by authentic individual styles. When you grow, COPA thrives alongside you.'
             }
         };
 

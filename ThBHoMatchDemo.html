@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matching Demo · ThB.Ho</title>
+<meta name="description" content="ตัวอย่างหน้า Matching ของร้าน: ตอบ 4 ข้อ ได้ 3 โปรแกรมที่เข้ากับบุคลิกคุณ แล้วจองผ่าน LINE · ThB.Ho Hybrid Persona Studio">
+<meta property="og:title" content="Matching Demo · ThB.Ho">
+<meta property="og:description" content="Answer 4 questions, get 3 matches, book through LINE. A live sample of a venue matching page.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://threeandhour.github.io/GymMateX/creator-img/persona-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same night palette as ThBHoStudio.html. Layout: quiz card on top, results, then the full catalogue (every item has its own #CODE link). */
+:root{
+ --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
+ --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
+ --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --nt:#8E7CF0; --nf:#3FC48A; --sj:#4AA8F0; --sp:#F0B24A;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark svg{width:22px;height:22px;color:var(--cyan)}
+.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navr{display:flex;align-items:center;gap:14px;font-size:14px}
+.navr a{color:var(--ink2);text-decoration:none}
+.navr a:hover{color:var(--ink)}
+.lang{font:500 12px var(--mono);background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+
+.demo-bar{background:var(--s2);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.demo-bar .wrap{padding-block:9px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.demo-bar b{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 6px}
+
+.hero{padding:44px 0 26px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.hero h1{font-size:clamp(32px,5.4vw,52px);font-weight:700;line-height:1.08}
+.hero p{color:var(--ink2);max-width:60ch;font-size:17px;margin-top:14px}
+
+/* quiz */
+.quiz{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:18px}
+.prog{display:flex;gap:6px}
+.prog i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.prog i.on{background:var(--cyan)}
+.qn{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.quiz h2{font-size:clamp(22px,3vw,28px);line-height:1.3}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;font:inherit;color:var(--ink);background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer}
+.opt:hover{border-color:var(--cyan)}
+.opt[aria-pressed="true"]{border-color:var(--cyan);background:#16302f}
+.opt .k{font:600 13px var(--mono);color:var(--cyan);border:1px solid var(--line);border-radius:5px;width:26px;height:26px;display:grid;place-items:center;flex:none}
+.opt b{display:block;font:600 16px var(--display)}
+.opt small{color:var(--ink2);font-size:13.5px}
+.qnav{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:10px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
+.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
+.btn:hover{border-color:var(--cyan)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* results */
+#results{padding-top:36px}
+.res-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+.res-head h2{font-size:clamp(24px,3.4vw,32px)}
+.profile{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13.5px;color:var(--ink2)}
+.chip{font:500 12px var(--mono);padding:2px 9px;border-radius:99px;border:1px solid var(--c);color:var(--c)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.picks{grid-template-columns:1fr}}
+.pick{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.pick::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--c)}
+.pick.first{background:var(--s2);border-color:var(--c)}
+.rank{display:flex;justify-content:space-between;align-items:baseline;font:500 12px var(--mono);color:var(--ink3)}
+.pct{font:700 26px var(--display);color:var(--c);font-variant-numeric:tabular-nums}
+.persona-name{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.pick h3{font-size:20px;line-height:1.3}
+.pick p{color:var(--ink2);font-size:14.5px;margin:0}
+.why{font-size:13.5px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+.why b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:2px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font:500 13px var(--mono);color:var(--ink2);font-variant-numeric:tabular-nums}
+.pick .btn{margin-top:auto;justify-content:center}
+
+/* booking sheet */
+.book{margin-top:18px;background:var(--s1);border:1px solid var(--cyan);border-radius:12px;padding:20px;display:grid;gap:12px}
+.book h3{font-size:19px}
+.msg{font:14px/1.6 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;white-space:pre-wrap;user-select:all;overflow-wrap:anywhere}
+.book .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.book .note{font-size:13px;color:var(--ink3);margin:0}
+.toast{font:500 13px var(--mono);color:var(--nf)}
+
+/* catalogue */
+.sec{padding-top:56px}
+.sh{display:grid;gap:6px;margin-bottom:18px;max-width:66ch}
+.sh h2{font-size:clamp(24px,3.4vw,32px)}
+.sh p{color:var(--ink2);margin:0}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.filters button{font:500 13px var(--mono);background:var(--s1);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--bg);background:var(--c,var(--ink));border-color:var(--c,var(--ink))}
+.cat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:860px){.cat{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cat{grid-template-columns:1fr}}
+.item{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;scroll-margin-top:80px}
+.item:target,.item.hl{border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.item .code{display:flex;justify-content:space-between;font:500 12px var(--mono);color:var(--ink3)}
+.item .code a{color:var(--ink3);text-decoration:none}
+.item .code a:hover{color:var(--cyan)}
+.item h3{font-size:17px;line-height:1.35}
+.item p{color:var(--ink2);font-size:14px;margin:0}
+.item .groups{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.how div{background:var(--s1);padding:20px}
+.how b{display:block;font:600 17px var(--display);margin-bottom:4px}
+.how span{color:var(--ink2);font-size:14.5px}
+.cta{margin-top:56px;background:var(--s1);border-top:1px solid var(--line)}
+.cta .wrap{padding-block:44px;display:grid;gap:14px}
+.cta h2{font-size:clamp(24px,3.4vw,32px)}
+.cta p{color:var(--ink2);max-width:60ch;margin:0}
+.cta .row{display:flex;flex-wrap:wrap;gap:10px}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="ThBHoStudio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>Th<b>B.</b>Ho</a>
+  <div class="navr">
+   <a href="#quiz"><span lang="th">แบบทดสอบ</span><span lang="en">Quiz</span></a>
+   <a href="#catalogue"><span lang="th">ทุกโปรแกรม</span><span lang="en">All programmes</span></a>
+   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+  </div>
+ </div>
+</header>
+
+<div class="demo-bar"><div class="wrap">
+ <b>Demo</b>
+ <span><span lang="th">ร้านตัวอย่างสมมติ "Steam &amp; Co." · สินค้าและราคาเป็นตัวอย่าง · หน้าจริงสร้างจากเมนูของร้านคุณ</span><span lang="en">"Steam &amp; Co." is a made-up sample venue · items and prices are examples · a real page is built from your own menu</span></span>
+ <a href="ThBHoStudio.html#venues"><span lang="th">← กลับหน้า Studio</span><span lang="en">← Back to the studio</span></a>
+</div></div>
+
+<main class="wrap">
+ <section class="hero">
+  <p class="eyebrow">Steam &amp; Co. · Sauna · Spa · Bangkok</p>
+  <h1><span lang="th">วันนี้คุณเหมาะกับโปรแกรมไหน?</span><span lang="en">Which programme suits you tonight?</span></h1>
+  <p><span lang="th">ตอบ 4 ข้อ ใช้เวลาไม่ถึง 1 นาที แล้วรับ 3 ตัวเลือกที่เข้ากับบุคลิกและเวลาของคุณ จองต่อผ่าน LINE ของร้านได้ทันที หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">Answer 4 questions in under a minute and get 3 picks that fit your personality and your time. Book straight through the venue's LINE. This page stores nothing about you.</span></p>
+ </section>
+
+ <section class="quiz" id="quiz" aria-live="polite">
+  <div class="prog" id="prog"><i></i><i></i><i></i><i></i></div>
+  <div class="qn" id="qn"></div>
+  <h2 id="qtitle"></h2>
+  <div class="opts" id="opts"></div>
+  <div class="qnav">
+   <button class="btn" id="back" type="button"><span lang="th">← ย้อนกลับ</span><span lang="en">← Back</span></button>
+   <button class="btn" id="restart" type="button" hidden><span lang="th">เริ่มใหม่</span><span lang="en">Start over</span></button>
+  </div>
+ </section>
+
+ <section id="results" hidden>
+  <div class="res-head">
+   <div>
+    <span class="kick"><span lang="th">ผลการจับคู่</span><span lang="en">Your matches</span></span>
+    <h2><span lang="th">3 ตัวเลือกที่เข้ากับคุณที่สุด</span><span lang="en">Your 3 best matches</span></h2>
+   </div>
+   <div class="profile" id="profile"></div>
+  </div>
+  <div class="picks" id="picks"></div>
+  <div class="book" id="book" hidden>
+   <h3 id="bookTitle"></h3>
+   <div class="msg" id="msg"></div>
+   <div class="row">
+    <button class="btn solid" id="copy" type="button"><span lang="th">คัดลอกข้อความ</span><span lang="en">Copy message</span></button>
+    <a class="btn" id="lineBtn" href="https://line.me/" target="_blank" rel="noopener"><span lang="th">เปิด LINE</span><span lang="en">Open LINE</span></a>
+    <span class="toast" id="toast" role="status"></span>
+   </div>
+   <p class="note"><span lang="th">ในหน้าจริง ปุ่มนี้เปิดแชท LINE OA ของร้านพร้อมข้อความและรหัสสินค้าที่พิมพ์ไว้ให้ พนักงานเห็นรหัสแล้วรู้ทันทีว่าลูกค้าต้องการอะไร</span><span lang="en">On a real page this opens the venue's LINE OA with the message and item code already typed, so staff know exactly what the guest wants.</span></p>
+  </div>
+ </section>
+
+ <section class="sec" id="catalogue">
+  <div class="sh">
+   <span class="kick"><span lang="th">ทุกโปรแกรมของร้าน</span><span lang="en">The full menu</span></span>
+   <h2><span lang="th">ทุกโปรแกรมมีบุคลิกและลิงก์ของตัวเอง</span><span lang="en">Every item has a personality and its own link</span></h2>
+   <p><span lang="th">กดรหัสสินค้าเพื่อคัดลอกลิงก์ไปแชร์ใน LINE หรือโซเชียลได้</span><span lang="en">Tap an item code to copy a link you can share on LINE or social media.</span></p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="cat" id="cat"></div>
+ </section>
+
+ <section class="sec">
+  <div class="sh">
+   <span class="kick"><span lang="th">สำหรับเจ้าของร้าน</span><span lang="en">For venue owners</span></span>
+   <h2><span lang="th">หน้าแบบนี้ของร้านคุณ ทำอย่างไร</span><span lang="en">How we build one for your venue</span></h2>
+  </div>
+  <div class="how">
+   <div><b><span lang="th">1 · ส่งเมนูมา</span><span lang="en">1 · Send your menu</span></b><span><span lang="th">โปรแกรม ห้อง แพ็กเกจนวด คืน theme ราคา และรูปจริงของร้าน</span><span lang="en">Programmes, rooms, massage packages, theme nights, prices and real photos.</span></span></div>
+   <div><b><span lang="th">2 · เราให้บุคลิกทุกรายการ</span><span lang="en">2 · We give each item a personality</span></b><span><span lang="th">ตั้งชื่อ จุดเด่น กลุ่ม MBTI ที่เข้ากัน และคำถาม 4 ข้อที่เหมาะกับลูกค้าของร้าน</span><span lang="en">A name, strengths, the MBTI groups it suits, and 4 questions tuned to your guests.</span></span></div>
+   <div><b><span lang="th">3 · ใช้ได้ทันที</span><span lang="en">3 · Ready to use</span></b><span><span lang="th">ลิงก์เดียวใช้ได้ทั้ง QR ในร้าน, bio โซเชียล และ LINE OA · รองรับได้ถึง 6 ภาษา</span><span lang="en">One link for in-venue QR codes, social bios and LINE OA, in up to six languages.</span></span></div>
+  </div>
+ </section>
+</main>
+
+<div class="cta"><div class="wrap">
+ <h2><span lang="th">อยากเห็นหน้าแบบนี้จากเมนูของร้านคุณ?</span><span lang="en">Want to see this built from your own menu?</span></h2>
+ <p><span lang="th">ส่งรายการโปรแกรมหรือเมนูมา เราจะทำหน้า Matching ตัวอย่างให้ 1 หน้าก่อน ไม่มีข้อผูกมัด</span><span lang="en">Send your programme or menu and we'll build one sample matching page first, with no commitment.</span></p>
+ <div class="row">
+  <span class="btn solid" style="cursor:text;user-select:all">threeandhour@gmail.com</span>
+  <a class="btn" href="ThBHoStudio.html#venues"><span lang="th">ดูบริการทั้งหมดสำหรับร้าน</span><span lang="en">All venue services</span></a>
+ </div>
+</div></div>
+<div class="foot"><div class="wrap"><span>© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ร้านและราคาในหน้านี้เป็นตัวอย่าง · หน้านี้ไม่เก็บข้อมูลผู้ใช้</span><span lang="en">The venue and prices on this page are examples · this page stores no user data</span></span></div></div>
+
+<script>
+(function(){
+ var root=document.documentElement, langBtn=document.getElementById('lang');
+ function setLang(l){root.lang=l;langBtn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}if(state.done)renderBook();}
+ function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
+ function L(o){return root.lang==='en'?o.en:o.th}
+
+ var G={
+  NT:{c:'var(--nt)',th:'NT นักคิด',en:'NT Thinker'},
+  NF:{c:'var(--nf)',th:'NF ผู้ใส่ใจ',en:'NF Feeler'},
+  SJ:{c:'var(--sj)',th:'SJ ขาประจำ',en:'SJ Regular'},
+  SP:{c:'var(--sp)',th:'SP สายสนุก',en:'SP Explorer'}
+ };
+
+ // Sample catalogue. g = MBTI groups it suits, t = tags matched by questions 2–3.
+ var ITEMS=[
+  {id:'P01',g:['NT'],t:['solo','short'],price:'450',dur:{th:'90 นาที',en:'90 min'},
+   p:{th:'The Quiet Mind',en:'The Quiet Mind'},
+   n:{th:'Silent Steam & Read',en:'Silent Steam & Read'},
+   d:{th:'ห้องสตีมโซนเงียบ ห้ามคุย มีมุมอ่านหนังสือและชาร้อน เหมาะกับคนที่อยากพักหัวจริงๆ',en:'A no-talking steam zone with a reading corner and hot tea, for when your head needs a real rest.'}},
+  {id:'P02',g:['NF'],t:['solo','mid'],price:'1,200',dur:{th:'90 นาที',en:'90 min'},
+   p:{th:'The Gentle Healer',en:'The Gentle Healer'},
+   n:{th:'Aroma Deep Tissue',en:'Aroma Deep Tissue'},
+   d:{th:'นวดน้ำมันอโรมาเลือกกลิ่นเอง ห้องไฟสลัว เพลงเบา ผู้นวดถามก่อนทุกครั้งว่าแรงพอดีไหม',en:'Aroma oil massage with a scent you choose, low light and soft music. Your therapist checks the pressure with you.'}},
+  {id:'P03',g:['SJ'],t:['regular','short'],price:'3,500',dur:{th:'10 ครั้ง · 60 วัน',en:'10 visits · 60 days'},
+   p:{th:'The Steady Regular',en:'The Steady Regular'},
+   n:{th:'Morning Routine Pass',en:'Morning Routine Pass'},
+   d:{th:'บัตร 10 ครั้ง ซาวน่า + อาบน้ำเย็น ช่วงเช้า 07:00–11:00 มีล็อกเกอร์ประจำ',en:'A 10-visit morning pass (07:00–11:00): sauna and cold plunge, with your own locker.'}},
+  {id:'P04',g:['SP'],t:['group','night','social'],price:'600',dur:{th:'21:00–01:00',en:'21:00–01:00'},
+   p:{th:'The Spotlight',en:'The Spotlight'},
+   n:{th:'Neon Foam Night (ทุกวันเสาร์)',en:'Neon Foam Night (Saturdays)'},
+   d:{th:'คืน theme ประจำสัปดาห์ DJ ไฟนีออน และโชว์สั้นจาก persona Hour บัตรรวมเครื่องดื่ม 1 แก้ว',en:'The weekly theme night: DJ, neon light and a short show with persona Hour. Ticket includes one drink.'}},
+  {id:'R01',g:['NF','NT'],t:['pair','mid'],price:'1,500',dur:{th:'2 ชั่วโมง',en:'2 hours'},
+   p:{th:'The Slow Conversation',en:'The Slow Conversation'},
+   n:{th:'Private Room for Two',en:'Private Room for Two'},
+   d:{th:'ห้องสตีมส่วนตัวสำหรับ 2 คน พร้อมชาสมุนไพรและผลไม้ เหมาะกับการคุยยาวๆ แบบไม่มีใครรบกวน',en:'A private steam room for two with herbal tea and fruit, made for a long, undisturbed talk.'}},
+  {id:'P05',g:['SP','SJ'],t:['group','short'],price:'500',dur:{th:'45 นาที',en:'45 min'},
+   p:{th:'The Challenger',en:'The Challenger'},
+   n:{th:'Hunk Academy HIIT',en:'Hunk Academy HIIT'},
+   d:{th:'คลาสกลุ่มเข้มข้น 45 นาที ตามด้วยซาวน่า มีโค้ชประจำและตารางคลาสชัดเจนทุกสัปดาห์',en:'A 45-minute high-intensity group class followed by sauna, with a regular coach and a fixed weekly schedule.'}},
+  {id:'P06',g:['SJ','NF'],t:['solo','pair','mid'],price:'900',dur:{th:'60 นาที',en:'60 min'},
+   p:{th:'The Classic',en:'The Classic'},
+   n:{th:'Thai Herbal Compress',en:'Thai Herbal Compress'},
+   d:{th:'นวดไทยกับลูกประคบสมุนไพรสูตรร้าน แบบดั้งเดิมที่ลูกค้าประจำสั่งซ้ำมากที่สุด',en:'Traditional Thai massage with the house herbal compress, the most re-ordered item among regulars.'}},
+  {id:'E01',g:['NF','SP'],t:['social','night','solo'],price:'800',dur:{th:'3 ชั่วโมง · ทุกวันศุกร์',en:'3 hours · Fridays'},
+   p:{th:'The Connector',en:'The Connector'},
+   n:{th:'MBTI Pairing Night',en:'MBTI Pairing Night'},
+   d:{th:'ทำ quiz ตอน check-in รับ tag สีตามกลุ่ม ระบบเสนอคนที่น่าคุยด้วย ปฏิเสธได้ทุกครั้ง เหมาะกับคนที่มาคนเดียว',en:'Quiz at check-in, a colour tag by group, suggested people to talk to that you can always decline. Great if you came alone.'}},
+  {id:'P07',g:['NT','SP'],t:['solo','group','short'],price:'700',dur:{th:'60 นาที',en:'60 min'},
+   p:{th:'The Experimenter',en:'The Experimenter'},
+   n:{th:'Ice Bath & Breathwork',en:'Ice Bath & Breathwork'},
+   d:{th:'คลาสหายใจแบบมีจังหวะ แล้วลงอ่างน้ำแข็งพร้อมโค้ช วัดค่าหัวใจก่อนและหลังให้ดู',en:'Guided breathwork, then an ice bath with a coach. Heart rate measured before and after.'}}
+ ];
+
+ // Each option adds points to MBTI groups (gp) and/or sets tags (tg).
+ var Q=[
+  {q:{th:'วันนี้อยากได้อะไรจากร้านมากที่สุด?',en:'What do you want most from tonight?'},
+   o:[
+    {th:'พักหัว อยู่เงียบๆ',en:'Quiet time to reset',sth:'ไม่ต้องคุยกับใคร',sen:'No small talk needed',gp:{NT:3,NF:1}},
+    {th:'ให้คนดูแล ผ่อนคลาย',en:'To be looked after',sth:'นวด กลิ่นหอม อบอุ่น',sen:'Massage, scent, warmth',gp:{NF:3,SJ:1}},
+    {th:'ได้เหงื่อ ได้พลัง',en:'Sweat and energy',sth:'ออกกำลัง แล้วค่อยพัก',sen:'Work out, then recover',gp:{SP:2,SJ:2}},
+    {th:'เจอคนใหม่ๆ',en:'Meet new people',sth:'บรรยากาศสนุก มีกิจกรรม',sen:'A fun crowd and something to do',gp:{SP:3,NF:1}}
+   ]},
+  {q:{th:'มากับใคร?',en:'Who are you here with?'},
+   o:[
+    {th:'มาคนเดียว',en:'On my own',sth:'อยากมีเวลาของตัวเอง',sen:'My own time',tg:'solo'},
+    {th:'มากับคู่หรือเพื่อน 1 คน',en:'With a partner or one friend',sth:'อยากได้พื้นที่ส่วนตัว',sen:'Somewhere private for two',tg:'pair'},
+    {th:'มากันเป็นกลุ่ม',en:'With a group',sth:'3 คนขึ้นไป',sen:'Three or more',tg:'group'},
+    {th:'มาคนเดียว แต่อยากเจอคน',en:'Alone, but open to meeting someone',sth:'ถ้ามีคนแนะนำให้ก็ดี',sen:'An introduction would help',tg:'social',gp:{NF:1,SP:1}}
+   ]},
+  {q:{th:'มีเวลาเท่าไร?',en:'How much time do you have?'},
+   o:[
+    {th:'ไม่ถึง 1 ชั่วโมง',en:'Under an hour',sth:'แวะสั้นๆ',sen:'A quick stop',tg:'short'},
+    {th:'1–2 ชั่วโมง',en:'1–2 hours',sth:'มีเวลาพอสมควร',sen:'A proper visit',tg:'mid'},
+    {th:'ทั้งคืน',en:'The whole evening',sth:'ไม่รีบกลับ',sen:'No rush to leave',tg:'night'},
+    {th:'อยากมาเป็นประจำ',en:'I want to come regularly',sth:'หาโปรแกรมระยะยาว',sen:'Looking for something ongoing',tg:'regular',gp:{SJ:2}}
+   ]},
+  {q:{th:'บรรยากาศแบบไหนที่คุณชอบ?',en:'Which atmosphere feels like you?'},
+   o:[
+    {th:'เรียบ เงียบ มีเหตุผล',en:'Calm, minimal, makes sense',sth:'รู้ว่าทำอะไรไปเพื่ออะไร',sen:'I like knowing why',gp:{NT:3}},
+    {th:'อบอุ่น มีความหมาย',en:'Warm and meaningful',sth:'กลิ่น แสง และคนที่ใส่ใจ',sen:'Scent, light and people who care',gp:{NF:3}},
+    {th:'คุ้นเคย มีตารางชัด',en:'Familiar, with a clear schedule',sth:'ของดีแบบเดิมที่ไว้ใจได้',sen:'A trusted classic',gp:{SJ:3}},
+    {th:'เพลง ไฟ มีโชว์',en:'Music, lights and a show',sth:'ยิ่งมีสีสันยิ่งดี',sen:'The more colour the better',gp:{SP:3}}
+   ]}
+ ];
+
+ var state={step:0,ans:[null,null,null,null],done:false,picked:null};
+ var $=function(id){return document.getElementById(id)};
+
+ function renderQ(){
+  var i=state.step, q=Q[i];
+  $('prog').querySelectorAll('i').forEach(function(el,k){el.className=k<=i?'on':''});
+  $('qn').innerHTML=T('ข้อ '+(i+1)+' จาก 4','Question '+(i+1)+' of 4');
+  $('qtitle').innerHTML=T(q.q.th,q.q.en);
+  $('opts').innerHTML=q.o.map(function(o,k){
+   return '<button class="opt" type="button" data-k="'+k+'" aria-pressed="'+(state.ans[i]===k)+'"><span class="k">'+'ABCD'[k]+'</span><span><b>'+T(o.th,o.en)+'</b><small>'+T(o.sth,o.sen)+'</small></span></button>';
+  }).join('');
+  $('back').disabled=i===0;
+  $('restart').hidden=!state.done;
+ }
+
+ $('opts').addEventListener('click',function(e){
+  var b=e.target.closest('.opt'); if(!b)return;
+  state.ans[state.step]=+b.dataset.k;
+  if(state.step<3){state.step++;renderQ();}
+  else{state.done=true;renderQ();score();}
+ });
+ $('back').addEventListener('click',function(){if(state.step>0){state.step--;renderQ();}});
+ $('restart').addEventListener('click',function(){
+  state={step:0,ans:[null,null,null,null],done:false,picked:null};
+  $('results').hidden=true;renderQ();$('quiz').scrollIntoView({block:'start'});
+ });
+
+ function score(){
+  var gp={NT:0,NF:0,SJ:0,SP:0}, tags={};
+  state.ans.forEach(function(k,i){
+   var o=Q[i].o[k]; if(!o)return;
+   if(o.gp)for(var g in o.gp)gp[g]+=o.gp[g];
+   if(o.tg)tags[o.tg]=1;
+  });
+  var top=Object.keys(gp).sort(function(a,b){return gp[b]-gp[a]});
+  var maxG=gp[top[0]]||1;
+  var ranked=ITEMS.map(function(it){
+   var gs=Math.max.apply(null,it.g.map(function(g){return gp[g]}))/maxG;      // best group fit, 0–1
+   var tm=it.t.filter(function(t){return tags[t]}).length;                     // tag hits
+   if(tags.social&&it.t.indexOf('social')>=0)tm++;                            // wanting to meet people outweighs other tags
+   var ts=Math.min(tm,2)/2;                                                    // 0–1
+   var s=gs*0.65+ts*0.35;
+   return {it:it,s:s,tm:it.t.filter(function(t){return tags[t]})};
+  }).sort(function(a,b){return b.s-a.s});
+  state.res=ranked.slice(0,3); state.gp=gp; state.top=top;
+  renderResults();
+ }
+
+ var TAGTXT={solo:['มาคนเดียวได้','good alone'],pair:['เหมาะกับ 2 คน','made for two'],group:['เหมาะกับกลุ่ม','great for groups'],social:['ได้เจอคนใหม่','meet new people'],short:['ใช้เวลาไม่นาน','fits a short visit'],mid:['พอดีกับ 1–2 ชม.','fits 1–2 hours'],night:['อยู่ได้ทั้งคืน','an evening-long plan'],regular:['เหมาะกับขาประจำ','built for regulars']};
+
+ function renderResults(){
+  var gp=state.gp, top=state.top;
+  $('profile').innerHTML=T('บุคลิกเด่นของคุณ:','Your strongest groups:')+' '+top.slice(0,2).map(function(g){return '<span class="chip" style="--c:'+G[g].c+'">'+T(G[g].th,G[g].en)+'</span>'}).join(' ');
+  $('picks').innerHTML=state.res.map(function(r,k){
+   var it=r.it, g=it.g.slice().sort(function(a,b){return gp[b]-gp[a]})[0], c=G[g].c;
+   var pct=Math.round(68+r.s*31);
+   var why=[T('เข้ากับกลุ่ม '+G[g].th,'fits '+G[g].en)].concat(r.tm.map(function(t){return T(TAGTXT[t][0],TAGTXT[t][1])})).join(' · ');
+   return '<article class="pick'+(k===0?' first':'')+'" style="--c:'+c+'">'+
+    '<div class="rank"><span>#'+(k+1)+' · '+it.id+'</span><span class="pct">'+pct+'%</span></div>'+
+    '<span class="persona-name">'+T(it.p.th,it.p.en)+'</span>'+
+    '<h3>'+T(it.n.th,it.n.en)+'</h3><p>'+T(it.d.th,it.d.en)+'</p>'+
+    '<div class="meta"><span>฿'+it.price+'</span><span>'+T(it.dur.th,it.dur.en)+'</span></div>'+
+    '<div class="why"><b>'+T('ทำไมถึงเหมาะ','Why it fits')+'</b>'+why+'</div>'+
+    '<button class="btn'+(k===0?' solid':'')+'" type="button" data-book="'+it.id+'">'+T('จองผ่าน LINE','Book via LINE')+'</button>'+
+   '</article>';
+  }).join('');
+  $('book').hidden=true; state.picked=null;
+  $('results').hidden=false;
+  $('results').scrollIntoView({block:'start'});
+ }
+
+ function byId(id){for(var i=0;i<ITEMS.length;i++)if(ITEMS[i].id===id)return ITEMS[i]}
+ function renderBook(){
+  if(!state.picked)return;
+  var it=byId(state.picked), en=root.lang==='en';
+  var groups=state.top?state.top.slice(0,2).join('/'):'';
+  var txt=en
+   ? 'Hi Steam & Co.! I\'d like to book:\n['+it.id+'] '+it.n.en+' (฿'+it.price+', '+it.dur.en+')\nMatched via your website quiz'+(groups?' · '+groups:'')+'\nDate/time: \nNumber of people: '
+   : 'สวัสดีครับ Steam & Co. ขอจอง\n['+it.id+'] '+it.n.th+' (฿'+it.price+', '+it.dur.th+')\nเลือกจากแบบทดสอบบนเว็บ'+(groups?' · '+groups:'')+'\nวัน/เวลา: \nจำนวนคน: ';
+  $('bookTitle').innerHTML=T('ข้อความจองที่ส่งให้ร้าน','The booking message sent to the venue');
+  $('msg').textContent=txt;
+  $('lineBtn').href='https://line.me/R/share?text='+encodeURIComponent(txt);
+  $('toast').textContent='';
+ }
+ $('picks').addEventListener('click',function(e){
+  var b=e.target.closest('[data-book]'); if(!b)return;
+  state.picked=b.dataset.book; renderBook(); $('book').hidden=false;
+  $('book').scrollIntoView({block:'nearest'});
+ });
+ function copyText(txt,done){
+  try{navigator.clipboard.writeText(txt).then(done,function(){fallback()})}catch(e){fallback()}
+  function fallback(){var r=document.createRange();r.selectNodeContents($('msg'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+ }
+ $('copy').addEventListener('click',function(){
+  copyText($('msg').textContent,function(){$('toast').textContent=root.lang==='en'?'Copied':'คัดลอกแล้ว'});
+ });
+
+ // catalogue
+ var filter='ALL';
+ function renderFilters(){
+  var keys=['ALL','NT','NF','SJ','SP'];
+  $('filters').innerHTML=keys.map(function(k){
+   var lab=k==='ALL'?T('ทั้งหมด','All'):T(G[k].th,G[k].en);
+   return '<button type="button" data-f="'+k+'" aria-pressed="'+(filter===k)+'"'+(k!=='ALL'?' style="--c:'+G[k].c+'"':'')+'>'+lab+'</button>';
+  }).join('');
+ }
+ function renderCat(){
+  $('cat').innerHTML=ITEMS.filter(function(it){return filter==='ALL'||it.g.indexOf(filter)>=0}).map(function(it){
+   return '<article class="item" id="'+it.id+'" style="--c:'+G[it.g[0]].c+'">'+
+    '<div class="code"><a href="#'+it.id+'" data-share="'+it.id+'" title="Copy link">'+it.id+' ⧉</a><span>฿'+it.price+'</span></div>'+
+    '<span class="persona-name" style="color:var(--c);font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase">'+T(it.p.th,it.p.en)+'</span>'+
+    '<h3>'+T(it.n.th,it.n.en)+'</h3><p>'+T(it.d.th,it.d.en)+'</p>'+
+    '<div class="groups">'+it.g.map(function(g){return '<span class="chip" style="--c:'+G[g].c+'">'+g+'</span>'}).join('')+'<span class="chip" style="--c:var(--ink3)">'+T(it.dur.th,it.dur.en)+'</span></div>'+
+   '</article>';
+  }).join('');
+ }
+ $('filters').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;filter=b.dataset.f;renderFilters();renderCat();});
+ $('cat').addEventListener('click',function(e){
+  var a=e.target.closest('[data-share]'); if(!a)return;
+  var url=location.href.split('#')[0]+'#'+a.dataset.share;
+  try{navigator.clipboard.writeText(url).then(function(){a.textContent=a.dataset.share+' ✓'},function(){})}catch(err){}
+ });
+ function highlight(){
+  var id=location.hash.slice(1); if(!byId(id))return;
+  if(filter!=='ALL'){filter='ALL';renderFilters();renderCat();}
+  document.querySelectorAll('.item.hl').forEach(function(x){x.classList.remove('hl')});
+  var el=$(id); if(el){el.classList.add('hl');el.scrollIntoView({block:'center'});}
+ }
+ window.addEventListener('hashchange',highlight);
+
+ // init language (shared with the studio page)
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ setLang(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
+ langBtn.addEventListener('click',function(){setLang(root.lang==='th'?'en':'th')});
+ renderQ();renderFilters();renderCat();highlight();
+})();
+</script>
+</body>
+</html>

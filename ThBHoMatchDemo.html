@@ -54,6 +54,19 @@ p{margin:0 0 12px}
 .hero h1{font-size:clamp(32px,5.4vw,52px);font-weight:700;line-height:1.08}
 .hero p{color:var(--ink2);max-width:60ch;font-size:17px;margin-top:14px}
 
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hosts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0}
+.hosts figure{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.hosts img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:50% 20%}
+.hosts figcaption{font:500 11.5px var(--mono);color:var(--ink2);padding:6px 8px;line-height:1.35}
+.hosts figcaption b{display:block;font:600 13.5px var(--display);color:var(--c)}
+.hero .hosts-note{grid-column:1/-1;font-size:12.5px;color:var(--ink3);margin:0;line-height:1.5}
+.host{display:flex;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px}
+.host img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none;border:2px solid var(--hc)}
+.host span{font-size:13px;color:var(--ink2);line-height:1.4}
+.host b{font:600 13px var(--display);color:var(--hc)}
+
 /* quiz */
 .quiz{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:18px}
 .prog{display:flex;gap:6px}
@@ -160,9 +173,17 @@ p{margin:0 0 12px}
 
 <main class="wrap">
  <section class="hero">
+  <div>
   <p class="eyebrow">Steam &amp; Co. · Sauna · Spa · Bangkok</p>
   <h1><span lang="th">วันนี้คุณเหมาะกับโปรแกรมไหน?</span><span lang="en">Which programme suits you tonight?</span></h1>
   <p><span lang="th">ตอบ 4 ข้อ ใช้เวลาไม่ถึง 1 นาที แล้วรับ 3 ตัวเลือกที่เข้ากับบุคลิกและเวลาของคุณ จองต่อผ่าน LINE ของร้านได้ทันที หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">Answer 4 questions in under a minute and get 3 picks that fit your personality and your time. Book straight through the venue's LINE. This page stores nothing about you.</span></p>
+  </div>
+  <div class="hosts" aria-label="Hosts">
+   <figure style="--c:var(--nf)"><img src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" width="560" height="840"><figcaption><b>Three · INFP</b><span lang="th">ดูแลสายผ่อนคลาย</span><span lang="en">Your calm-down guide</span></figcaption></figure>
+   <figure style="--c:var(--nt)"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" width="560" height="840"><figcaption><b>B. · INFJ</b><span lang="th">ดูแลสายคิดและขาประจำ</span><span lang="en">For thinkers and regulars</span></figcaption></figure>
+   <figure style="--c:var(--sp)"><img src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" width="560" height="840"><figcaption><b>Hour · ESTP</b><span lang="th">ดูแลสายสนุกและปาร์ตี้</span><span lang="en">For the fun crowd</span></figcaption></figure>
+   <p class="hosts-note"><span lang="th">ภาพ Hybrid AI ของ ThB.Ho · ในหน้าจริงใช้พนักงานหรือนายแบบของร้านได้</span><span lang="en">Hybrid AI images by ThB.Ho · a real page can feature the venue's own staff or models</span></p>
+  </div>
  </section>
 
  <section class="quiz" id="quiz" aria-live="polite">
@@ -242,6 +263,13 @@ p{margin:0 0 12px}
   NF:{c:'var(--nf)',th:'NF ผู้ใส่ใจ',en:'NF Feeler'},
   SJ:{c:'var(--sj)',th:'SJ ขาประจำ',en:'SJ Regular'},
   SP:{c:'var(--sp)',th:'SP สายสนุก',en:'SP Explorer'}
+ };
+
+ var HOST={
+  NF:{img:'creator-img/persona-three.jpg',n:'Three',c:'var(--nf)',th:'"คืนนี้ไม่ต้องรีบ ให้ร่างกายได้พักจริงๆ"',en:'"No rush tonight. Let your body actually rest."'},
+  NT:{img:'creator-img/persona-b.jpg',n:'B.',c:'var(--nt)',th:'"เลือกสิ่งที่มีเหตุผล แล้วปล่อยหัวให้ว่าง"',en:'"Pick what makes sense, then let your mind go quiet."'},
+  SJ:{img:'creator-img/persona-b.jpg',n:'B.',c:'var(--sj)',th:'"ของดีที่ไว้ใจได้ คือของที่อยากกลับมาซ้ำ"',en:'"The best things are the ones you come back to."'},
+  SP:{img:'creator-img/persona-hour.jpg',n:'Hour',c:'var(--sp)',th:'"มาแล้วต้องสนุก เดี๋ยวพาไปรู้จักคนอื่นเอง"',en:'"Come for the fun. I\'ll introduce you around."'}
  };
 
  // Sample catalogue. g = MBTI groups it suits, t = tags matched by questions 2–3.
@@ -379,6 +407,7 @@ p{margin:0 0 12px}
     '<h3>'+T(it.n.th,it.n.en)+'</h3><p>'+T(it.d.th,it.d.en)+'</p>'+
     '<div class="meta"><span>฿'+it.price+'</span><span>'+T(it.dur.th,it.dur.en)+'</span></div>'+
     '<div class="why"><b>'+T('ทำไมถึงเหมาะ','Why it fits')+'</b>'+why+'</div>'+
+    '<div class="host" style="--hc:'+HOST[g].c+'"><img src="'+HOST[g].img+'" alt="" width="44" height="44" loading="lazy"><span><b>'+T('แนะนำโดย ','Picked by ')+HOST[g].n+'</b><br>'+T(HOST[g].th,HOST[g].en)+'</span></div>'+
     '<button class="btn'+(k===0?' solid':'')+'" type="button" data-book="'+it.id+'">'+T('จองผ่าน LINE','Book via LINE')+'</button>'+
    '</article>';
   }).join('');

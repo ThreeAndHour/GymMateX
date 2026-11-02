@@ -152,6 +152,34 @@ p{margin:0 0 12px}
 .foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 /* creator page additions */
+.popen{all:unset;display:block;cursor:pointer;width:100%}
+.popen:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:8px}
+.hosts figure{transition:border-color .2s,transform .2s}
+.hosts figure:hover{border-color:var(--c);transform:translateY(-2px)}
+.hosts .see{display:block;font:500 11px var(--mono);color:var(--c);margin-top:2px}
+.pc .popen-txt{font:600 14px var(--display);color:var(--c);background:none;border:1px solid var(--c);border-radius:6px;padding:7px 12px;cursor:pointer;align-self:flex-start}
+dialog#pdlg{border:1px solid var(--line);border-radius:14px;padding:0;background:var(--s1);color:var(--ink);width:min(860px,calc(100vw - 24px));max-height:calc(100vh - 32px);overflow:auto}
+dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
+.pd{position:relative;display:grid;gap:16px;padding:0 0 20px}
+.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(14,11,16,.85);color:var(--ink);cursor:pointer;font-size:15px}
+.pdhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border-bottom:1px solid var(--line)}
+.pdhead img{display:block;width:100%;height:100%;min-height:230px;object-fit:cover;object-position:50% 25%}
+.pdhead .mbody{padding:22px}
+@media (max-width:640px){.pdhead{grid-template-columns:1fr}.pdhead img{height:auto;aspect-ratio:16/10;min-height:0}}
+.pdsub{font-size:18px;padding:0 22px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pdsub a{font:500 13px var(--mono);text-decoration:none}
+.pdworks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px}
+@media (max-width:640px){.pdworks{grid-template-columns:1fr 1fr}}
+.pdworks a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--bg)}
+.pdworks a:hover,.pdworks a:focus-visible{border-color:var(--c)}
+.pdworks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.pdworks .cap b{display:block;font:600 14px var(--display);line-height:1.25}
+.pdworks .cap span{font:500 11.5px var(--mono);color:var(--c)}
+.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(14,11,16,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
+.pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
+.pdfoot{padding:0 22px}
+
 .vr{background:linear-gradient(160deg,var(--s2),var(--s1));border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;gap:22px}
 .vrpath{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:v}
 @media (max-width:860px){.vrpath{grid-template-columns:1fr 1fr}}
@@ -232,10 +260,10 @@ p{margin:0 0 12px}
    <p><span lang="th">สำหรับ creator สายฟิตเนสและกล้าม, OnlyFans และ platform สมัครสมาชิก, influencer สาย lifestyle และ creator กลุ่มเกย์/LGBTQ+ ตอบ 6 ข้อ แล้วดูว่า persona ตัวไหนเข้ากับคุณที่สุด พร้อมรูปแบบงานที่ทำร่วมกันได้ หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">For fitness and physique creators, OnlyFans and subscription creators, lifestyle influencers and gay/LGBTQ+ creators. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.</span></p>
   </div>
   <div class="hosts" aria-label="Personas">
-   <figure style="--c:var(--nf)"><img src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" width="560" height="840"><figcaption><b>Three · INFP</b><span lang="th">นักเล่าเรื่อง</span><span lang="en">Storyteller</span></figcaption></figure>
-   <figure style="--c:var(--nt)"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" width="560" height="840"><figcaption><b>B. · INFJ</b><span lang="th">นักวางกลยุทธ์</span><span lang="en">Strategist</span></figcaption></figure>
-   <figure style="--c:var(--sp)"><img src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" width="560" height="840"><figcaption><b>Hour · ESTP</b><span lang="th">สายลุย</span><span lang="en">Entrepreneur</span></figcaption></figure>
-   <p class="hosts-note"><span lang="th">ทุกภาพเป็น Hybrid AI ใบหน้าและร่างกายจริงผสม AI</span><span lang="en">All images are Hybrid AI: a real face and body blended with AI</span></p>
+   <figure style="--c:var(--nf)"><button class="popen" type="button" data-p="three" aria-label="ดูผลงานของ Three / See Three's work"><img src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" width="560" height="840"><figcaption><b>Three · INFP</b><span lang="th">นักเล่าเรื่อง</span><span lang="en">Storyteller</span><small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+   <figure style="--c:var(--nt)"><button class="popen" type="button" data-p="b" aria-label="ดูผลงานของ B. / See B.'s work"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" width="560" height="840"><figcaption><b>B. · INFJ</b><span lang="th">นักวางกลยุทธ์</span><span lang="en">Strategist</span><small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+   <figure style="--c:var(--sp)"><button class="popen" type="button" data-p="hour" aria-label="ดูผลงานของ Hour / See Hour's work"><img src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" width="560" height="840"><figcaption><b>Hour · ESTP</b><span lang="th">สายลุย</span><span lang="en">Entrepreneur</span><small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+   <p class="hosts-note"><span lang="th">กดที่รูปเพื่อดูผลงานบน X · ทุกภาพเป็น Hybrid AI ใบหน้าและร่างกายจริงผสม AI</span><span lang="en">Tap a portrait to see their work on X · all images are Hybrid AI: a real face and body blended with AI</span></p>
   </div>
  </section>
 
@@ -365,6 +393,17 @@ p{margin:0 0 12px}
    </ul>
   </div>
  </section>
+ <dialog id="pdlg" aria-labelledby="pdTitle">
+  <div class="pd">
+   <button class="pdx" id="pdClose" type="button" aria-label="Close">✕</button>
+   <div class="pdhead" id="pdHead"></div>
+   <h3 class="pdsub"><span lang="th">ผลงานบน X</span><span lang="en">Work on X</span> <a href="https://x.com/widerooms" target="_blank" rel="noopener">@widerooms ↗</a></h3>
+   <div class="pdworks" id="pdWorks"></div>
+   <div class="pdfoot">
+    <button class="btn solid" id="pdMatch" type="button"><span lang="th">อยาก collab กับคนนี้ → เริ่มจับคู่</span><span lang="en">Collab with him → start matching</span></button>
+   </div>
+  </div>
+ </dialog>
 </main>
 
 <div class="cta"><div class="wrap">
@@ -401,6 +440,47 @@ p{margin:0 0 12px}
    best:{th:'Hybrid Shoot สายกล้าม, 48 Hours, งาน event และทริป, collab ข้ามฐานแฟน',en:'Physique Hybrid Shoots, 48 Hours, events and trips, audience-crossover collabs'},
    quote:{th:'"ถ่ายจริงครึ่งวัน ที่เหลือให้ AI ช่วย แล้วไปเที่ยวต่อ"',en:'"Half a day of real shooting, AI does the rest, then we go out."'}}
  };
+
+ // Work on X per persona. Add each persona's own posts to WORKS[persona]:
+ // {u:'https://x.com/widerooms/status/…', img:'creator-img/….jpg', t:'Title', v:'123K'}
+ // SHARED = ThB.Ho clips featuring more than one persona; fills in while a persona has fewer than 3 of its own.
+ var WORKS={three:[],b:[],hour:[]};
+ var SHARED=[
+  {u:'https://x.com/widerooms/status/2094021510986154482',img:'creator-img/x-154482.jpg',t:'Ritmo del Alma · MV',v:'245K'},
+  {u:'https://x.com/widerooms/status/2109560564754362752',img:'creator-img/x-362752.jpg',t:'Perdiéndonos en el calor',v:'147K'},
+  {u:'https://x.com/widerooms/status/2061309949037400429',img:'creator-img/x-400429.jpg',t:'Explore Together · Full MV',v:'130K'},
+  {u:'https://x.com/widerooms/status/2061643553772830937',img:'creator-img/x-830937.jpg',t:'Explore Together · BTS',v:'83K'},
+  {u:'https://x.com/widerooms/status/2112541590720000085',img:'creator-img/x-000085.jpg',t:'Tell Me It\'s (Not) a Dream',v:'68K'},
+  {u:'https://x.com/widerooms/status/2089337196402852328',img:'creator-img/x-852328.jpg',t:'La sal en la piel',v:'61K'}
+ ];
+ function workCard(w,own){
+  return '<a href="'+w.u+'" target="_blank" rel="noopener"><img src="'+w.img+'" alt="'+w.t.replace(/"/g,'')+'" loading="lazy">'+
+   (own?'':'<span class="tagw">ThB.Ho</span>')+
+   '<span class="cap"><b>'+w.t+'</b><span>'+(w.v?w.v+' '+T('วิว','views')+' · ':'')+T('ดูบน X ↗','View on X ↗')+'</span></span></a>';
+ }
+ var dlg=$('pdlg'), lastFocus=null;
+ function openPersona(k){
+  var p=P[k];
+  dlg.style.setProperty('--c',p.c);
+  $('pdHead').innerHTML='<img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona">'+
+   '<div class="mbody"><span class="persona-name" style="color:var(--c)">'+p.n+' · '+p.mbti+' · '+T(p.role.th,p.role.en)+'</span>'+
+   '<h3 id="pdTitle" style="font-size:21px;line-height:1.35">'+T(p.quote.th,p.quote.en)+'</h3><p style="color:var(--ink2);margin:0">'+T(p.vibe.th,p.vibe.en)+'</p>'+
+   '<div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div>';
+  var own=WORKS[k]||[], html=own.map(function(w){return workCard(w,true)}).join('');
+  if(own.length<3){
+   html+=SHARED.slice(0,6-own.length).map(function(w){return workCard(w,false)}).join('');
+   if(!own.length)html+='<p class="pdnote">'+T('ผลงานรวมของ ThB.Ho ที่ Three, B. และ Hour ร่วมแสดง','ThB.Ho works featuring Three, B. and Hour together')+'</p>';
+  }
+  $('pdWorks').innerHTML=html;
+  lastFocus=document.activeElement;
+  if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+  dlg.scrollTop=0;
+ }
+ function closePersona(){if(dlg.close)dlg.close();else dlg.removeAttribute('open');if(lastFocus)lastFocus.focus();}
+ document.addEventListener('click',function(e){var b=e.target.closest('[data-p]');if(b&&!b.closest('#pdlg'))openPersona(b.dataset.p);});
+ $('pdClose').addEventListener('click',closePersona);
+ dlg.addEventListener('click',function(e){if(e.target===dlg)closePersona();});
+ $('pdMatch').addEventListener('click',function(){closePersona();$('quiz').scrollIntoView({block:'start'});});
 
  var F={
   collab:{th:'Persona Collab',en:'Persona Collab',d:{th:'ถ่ายคู่หรือเล่าเรื่องร่วมกับ persona ผู้ชมสองฝั่งข้ามมาเจอกัน',en:'Shoot or tell a story with a persona so both audiences cross over.'}},
@@ -538,7 +618,7 @@ p{margin:0 0 12px}
  });
 
  $('pgrid').innerHTML=['three','b','hour'].map(function(k){var p=P[k];
-  return '<article class="pc" style="--c:'+p.c+'"><img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona" loading="lazy"><div class="mbody"><span class="persona-name">'+p.n+' · '+p.mbti+'</span><h3>'+T(p.role.th,p.role.en)+'</h3><p>'+T(p.vibe.th,p.vibe.en)+'</p><div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div></article>';
+  return '<article class="pc" style="--c:'+p.c+'"><img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona" loading="lazy"><div class="mbody"><span class="persona-name">'+p.n+' · '+p.mbti+'</span><h3>'+T(p.role.th,p.role.en)+'</h3><p>'+T(p.vibe.th,p.vibe.en)+'</p><div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div><button class="popen-txt" type="button" data-p="'+k+'">'+T('ดูผลงานของ '+p.n+' →','See '+p.n+'\'s work →')+'</button></div></article>';
  }).join('');
 
  function setLang(l){root.lang=l;langBtn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}renderMsg();}

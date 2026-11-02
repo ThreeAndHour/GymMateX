@@ -28,7 +28,9 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
-html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
+select.lang option{background:#17121A;color:#F2ECEF}
 a{color:var(--cyan);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
@@ -241,6 +243,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .embed main{padding-top:4px}
 .embed body{background:transparent}
 </style>
+<script src="thbho-i18n.js"></script>
 </head>
 <body>
 
@@ -252,7 +255,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    <a href="#personas"><span lang="th">Persona</span><span lang="en">Personas</span></a>
    <a href="#vr">VR</a>
    <a href="#rules"><span lang="th">กติกา</span><span lang="en">Rules</span></a>
-   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
   </div>
  </div>
 </header>
@@ -427,7 +430,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  var root=document.documentElement, langBtn=document.getElementById('lang');
  var $=function(id){return document.getElementById(id)};
  function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
- var EN=function(){return root.lang==='en'};
+ var EN=function(){return root.lang!=='th'};
 
  var P={
   three:{n:'Three',mbti:'INFP',c:'var(--nf)',img:'creator-img/persona-three.jpg',show:'creator-img/show-three.jpg',
@@ -637,11 +640,11 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   return '<article class="pc" style="--c:'+p.c+'"><img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona" loading="lazy"><div class="mbody"><span class="persona-name">'+p.n+' · '+p.mbti+'</span><h3>'+T(p.role.th,p.role.en)+'</h3><p>'+T(p.vibe.th,p.vibe.en)+'</p><div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div><button class="popen-txt" type="button" data-p="'+k+'">'+T('ดูผลงานของ '+p.n+' →','See '+p.n+'\'s work →')+'</button></div></article>';
  }).join('');
 
- function setLang(l){root.lang=l;langBtn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}renderMsg();}
+ function setLang(l){root.lang=l;langBtn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}renderMsg();}
  var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
  var q=new URLSearchParams(location.search).get('lang');
- setLang(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
- langBtn.addEventListener('click',function(){setLang(root.lang==='th'?'en':'th')});
+ setLang(THBHO_I18N.pick(q,saved));
+ langBtn.addEventListener('change',function(){setLang(langBtn.value)});
  renderQ();
 
  // Embed mode (?embed=1): used inside ThBHoVenues.html / ThBHoCreators.html
@@ -650,7 +653,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   var post=function(){try{parent.postMessage({thbho:'h',h:document.documentElement.scrollHeight},'*')}catch(e){}};
   if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
   window.addEventListener('load',post);setTimeout(post,300);
-  window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&(e.data.l==='th'||e.data.l==='en'))setLang(e.data.l);});
+  window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&THBHO_LANGS.indexOf(e.data.l)>=0)setLang(e.data.l);});
   var fixLinks=function(){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(h.charAt(0)!=='#'&&!a.target)a.target='_top';});};
   fixLinks();new MutationObserver(fixLinks).observe(document.body,{childList:true,subtree:true});
  }

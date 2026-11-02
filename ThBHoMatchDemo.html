@@ -28,7 +28,9 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
-html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
+select.lang option{background:#17121A;color:#F2ECEF}
 a{color:var(--cyan);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
@@ -156,6 +158,7 @@ p{margin:0 0 12px}
 .embed .hero{padding-top:18px}
 .embed body{background:transparent}
 </style>
+<script src="thbho-i18n.js"></script>
 </head>
 <body>
 
@@ -165,7 +168,7 @@ p{margin:0 0 12px}
   <div class="navr">
    <a href="#quiz"><span lang="th">แบบทดสอบ</span><span lang="en">Quiz</span></a>
    <a href="#catalogue"><span lang="th">ทุกโปรแกรม</span><span lang="en">All programmes</span></a>
-   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
   </div>
  </div>
 </header>
@@ -259,9 +262,9 @@ p{margin:0 0 12px}
 <script>
 (function(){
  var root=document.documentElement, langBtn=document.getElementById('lang');
- function setLang(l){root.lang=l;langBtn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}if(state.done)renderBook();}
+ function setLang(l){root.lang=l;langBtn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}if(state.done)renderBook();}
  function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
- function L(o){return root.lang==='en'?o.en:o.th}
+ function L(o){return root.lang==='th'?o.th:o.en}
 
  var G={
   NT:{c:'var(--nt)',th:'NT นักคิด',en:'NT Thinker'},
@@ -424,7 +427,7 @@ p{margin:0 0 12px}
  function byId(id){for(var i=0;i<ITEMS.length;i++)if(ITEMS[i].id===id)return ITEMS[i]}
  function renderBook(){
   if(!state.picked)return;
-  var it=byId(state.picked), en=root.lang==='en';
+  var it=byId(state.picked), en=root.lang!=='th';
   var groups=state.top?state.top.slice(0,2).join('/'):'';
   var txt=en
    ? 'Hi Steam & Co.! I\'d like to book:\n['+it.id+'] '+it.n.en+' (฿'+it.price+', '+it.dur.en+')\nMatched via your website quiz'+(groups?' · '+groups:'')+'\nDate/time: \nNumber of people: '
@@ -444,7 +447,7 @@ p{margin:0 0 12px}
   function fallback(){var r=document.createRange();r.selectNodeContents($('msg'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
  }
  $('copy').addEventListener('click',function(){
-  copyText($('msg').textContent,function(){$('toast').textContent=root.lang==='en'?'Copied':'คัดลอกแล้ว'});
+  copyText($('msg').textContent,function(){$('toast').textContent=root.lang!=='th'?'Copied':'คัดลอกแล้ว'});
  });
 
  // catalogue
@@ -483,8 +486,8 @@ p{margin:0 0 12px}
  // init language (shared with the studio page)
  var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
  var q=new URLSearchParams(location.search).get('lang');
- setLang(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
- langBtn.addEventListener('click',function(){setLang(root.lang==='th'?'en':'th')});
+ setLang(THBHO_I18N.pick(q,saved));
+ langBtn.addEventListener('change',function(){setLang(langBtn.value)});
  renderQ();renderFilters();renderCat();highlight();
 
  // Embed mode (?embed=1): used inside ThBHoVenues.html / ThBHoCreators.html
@@ -493,7 +496,7 @@ p{margin:0 0 12px}
   var post=function(){try{parent.postMessage({thbho:'h',h:document.documentElement.scrollHeight},'*')}catch(e){}};
   if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
   window.addEventListener('load',post);setTimeout(post,300);
-  window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&(e.data.l==='th'||e.data.l==='en'))setLang(e.data.l);});
+  window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&THBHO_LANGS.indexOf(e.data.l)>=0)setLang(e.data.l);});
   var fixLinks=function(){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(h.charAt(0)!=='#'&&!a.target)a.target='_top';});};
   fixLinks();new MutationObserver(fixLinks).observe(document.body,{childList:true,subtree:true});
  }

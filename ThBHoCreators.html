@@ -27,7 +27,9 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 var(--body);-webkit-font-smoothing:antialiased}
-html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
+select.lang option{background:#17121A;color:#F2ECEF}
 a{color:var(--cyan);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
@@ -287,6 +289,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
 .pdfoot{padding:0 22px}
 </style>
+<script src="thbho-i18n.js"></script>
 </head>
 <body>
 
@@ -301,7 +304,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
    <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับร้าน →</span><span lang="en">For venues →</span></a>
-   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
   </nav>
  </div>
 </header>
@@ -486,12 +489,12 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 <script>
 (function(){
  var root=document.documentElement, btn=document.getElementById('lang');
- function set(l){root.lang=l;btn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}
+ function set(l){root.lang=l;btn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}
   document.querySelectorAll('iframe[data-demo]').forEach(function(f){try{f.contentWindow.postMessage({thbho:'lang',l:l},'*')}catch(e){}});}
  var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
  var q=new URLSearchParams(location.search).get('lang');
- set(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
- btn.addEventListener('click',function(){set(root.lang==='th'?'en':'th')});
+ set(THBHO_I18N.pick(q,saved));
+ btn.addEventListener('change',function(){set(btn.value)});
  // demo iframe grows to fit its content
  window.addEventListener('message',function(e){
   if(!e.data||e.data.thbho!=='h')return;

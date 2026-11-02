@@ -521,7 +521,13 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  // Work on X per persona. Add each persona's own posts to WORKS[persona]:
  // {u:'https://x.com/widerooms/status/…', img:'creator-img/….jpg', t:'Title', v:'123K'}
  // SHARED = ThB.Ho clips featuring more than one persona; fills in while a persona has fewer than 3 of its own.
- var WORKS={three:[],b:[],hour:[]};
+ var WORKS={
+  three:[
+   {u:'https://x.com/widerooms/status/2062523276543623214',img:'creator-img/show-three.jpg',t:'Three · Video'}
+  ],
+  b:[],
+  hour:[]
+ };
  var SHARED=[
   {u:'https://x.com/widerooms/status/2094021510986154482',img:'creator-img/x-154482.jpg',t:'Ritmo del Alma · MV',v:'245K'},
   {u:'https://x.com/widerooms/status/2109560564754362752',img:'creator-img/x-362752.jpg',t:'Perdiéndonos en el calor',v:'147K'},

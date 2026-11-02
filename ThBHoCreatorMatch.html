@@ -152,6 +152,31 @@ p{margin:0 0 12px}
 .foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 /* creator page additions */
+.vr{background:linear-gradient(160deg,var(--s2),var(--s1));border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;gap:22px}
+.vrpath{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:v}
+@media (max-width:860px){.vrpath{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.vrpath{grid-template-columns:1fr}}
+.vrpath li{counter-increment:v;border-top:2px solid var(--c);padding-top:12px;display:grid;gap:4px;align-content:start}
+.vrpath li::before{content:"0" counter(v);font:500 12px var(--mono);color:var(--c)}
+.vrpath b{font:600 17px var(--display)}
+.vrpath span{color:var(--ink2);font-size:14.5px}
+.vrpath small{font:500 11.5px var(--mono);color:var(--c);letter-spacing:.06em}
+.vrcols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.vrcols{grid-template-columns:1fr}}
+.vrbox{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:18px}
+.vrbox h3{font-size:17px;margin-bottom:8px}
+.vrbox ul{margin:0;padding-left:18px;display:grid;gap:5px;color:var(--ink2);font-size:14.5px}
+.vrbox li b{color:var(--ink)}
+.tiers{display:grid;gap:8px}
+.tier{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;font-size:14.5px;color:var(--ink2)}
+.tier i{font:700 15px var(--display);font-style:normal;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--bg);background:var(--c)}
+.tier b{color:var(--ink);font:600 15px var(--display);display:block}
+.ready{margin:0;padding-left:18px;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;color:var(--ink2);font-size:14.5px}
+@media (max-width:700px){.ready{grid-template-columns:1fr}}
+.ready li b{color:var(--ink)}
+.vrlink{margin-top:12px;padding:10px 14px;border:1px dashed var(--line);border-radius:8px;font-size:14px;color:var(--ink2)}
+.vrlink a{font-weight:600}
+
 .qhint{color:var(--ink3);font-size:14px;margin:-8px 0 0}
 .sub{font-size:20px;margin:28px 0 14px}
 .match .mcard,.pgrid .pc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);background:var(--s2);border:1px solid var(--c);border-radius:12px;overflow:hidden}
@@ -192,6 +217,7 @@ p{margin:0 0 12px}
   <div class="navr">
    <a href="#quiz"><span lang="th">จับคู่</span><span lang="en">Match</span></a>
    <a href="#personas"><span lang="th">Persona</span><span lang="en">Personas</span></a>
+   <a href="#vr">VR</a>
    <a href="#rules"><span lang="th">กติกา</span><span lang="en">Rules</span></a>
    <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
   </div>
@@ -236,6 +262,7 @@ p{margin:0 0 12px}
   <div class="match" id="match"></div>
   <h3 class="sub"><span lang="th">รูปแบบ collab ที่เหมาะกับคุณ</span><span lang="en">Collab formats that fit you</span></h3>
   <div class="picks" id="picks"></div>
+  <p class="vrlink" id="vrlink"><span lang="th">ทุกงานถ่ายในรูปแบบที่พร้อมต่อยอดสู่ VR ในอนาคต ·</span><span lang="en">Every shoot is captured in formats ready for VR later ·</span> <a href="#vr"><span lang="th">ดูเส้นทางสู่ VR ↓</span><span lang="en">See the path to VR ↓</span></a></p>
 
   <div class="book" id="apply">
    <h3><span lang="th">ส่งข้อความสมัคร collab</span><span lang="en">Send a collab request</span></h3>
@@ -273,6 +300,56 @@ p{margin:0 0 12px}
    <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><img src="creator-img/x-154482.jpg" alt="Ritmo del Alma music video still" loading="lazy" width="720" height="405"><span class="cap"><b>Ritmo del Alma · MV</b><span>245K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
    <a href="https://x.com/widerooms/status/2109560564754362752" target="_blank" rel="noopener"><img src="creator-img/x-362752.jpg" alt="Perdiéndonos en el calor still" loading="lazy" width="405" height="720"><span class="cap"><b>Perdiéndonos en el calor</b><span>147K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
    <a href="https://x.com/widerooms/status/2061309949037400429" target="_blank" rel="noopener"><img src="creator-img/x-400429.jpg" alt="Explore Together still" loading="lazy" width="405" height="720"><span class="cap"><b>Explore Together · MV</b><span>130K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
+  </div>
+ </section>
+
+ <section class="sec" id="vr">
+  <div class="sh">
+   <span class="kick"><span lang="th">เตรียมพร้อมสู่ VR · อนาคตอันใกล้</span><span lang="en">Ready for VR · the near future</span></span>
+   <h2><span lang="th">ถ่ายวันนี้ ให้พร้อมใช้ใน VR และ platform ที่กำลังจะมา</span><span lang="en">Shoot today in formats ready for VR and the platforms coming next</span></h2>
+   <p><span lang="th">VR, Digital Twin และงานอื่นๆ ในอนาคตยังอยู่ในขั้นเตรียมการ สิ่งที่ทำได้ตั้งแต่วันนี้คือถ่ายและเก็บ content ในรูปแบบที่ใช้ต่อได้ เมื่อแอปและอุปกรณ์พร้อม งานที่คุณทำกับ Three, B. หรือ Hour จะไม่ต้องถ่ายใหม่ทั้งหมด</span><span lang="en">VR, Digital Twins and other future formats are still being prepared. What we can do today is shoot and keep content in formats that carry over, so when the apps and headsets are ready, the work you make with Three, B. or Hour doesn't have to be shot again.</span></p>
+  </div>
+  <div class="vr">
+   <ol class="vrpath">
+    <li style="--c:var(--cyan)"><small>OFFLINE</small><b><span lang="th">Collab และ Casting</span><span lang="en">Collabs &amp; casting</span></b><span><span lang="th">ถ่ายงาน Hybrid AI ร่วมกับ persona หรือร่วมงาน Casting Night ที่ร้านพันธมิตร</span><span lang="en">Shoot Hybrid AI work with a persona, or join a casting night at a partner venue.</span></span></li>
+    <li style="--c:var(--gold)"><small>DATA TRIP</small><b><span lang="th">ทริปเก็บข้อมูล</span><span lang="en">Capture trip</span></b><span><span lang="th">ทริป wellness 3 วัน 2 คืน บันทึกท่าทาง เสียง และบุคลิก เฉพาะส่วนที่คุณยินยอม</span><span lang="en">A 3-day wellness trip recording movement, voice and personality, only what you agree to.</span></span></li>
+    <li style="--c:var(--pink)"><small>DIGITAL TWIN</small><b><span lang="th">สร้าง AI Persona ของคุณ</span><span lang="en">Your AI persona</span></b><span><span lang="th">คุยได้เหมือนคุณ ตลอด 24 ชม. ในฉาก 3 มิติแนว Fitness &amp; Fantasy</span><span lang="en">Talks like you, 24/7, in Fitness &amp; Fantasy 3D scenes.</span></span></li>
+    <li style="--c:var(--nf)"><small>ONLINE VR</small><b><span lang="th">รายได้ต่อเนื่อง</span><span lang="en">Ongoing income</span></b><span><span lang="th">แบ่งรายได้จากสมาชิกรายเดือน, pay-per-experience และบัตรงานจริง (Agency model)</span><span lang="en">A share of subscriptions, pay-per-experience and live-event tickets (agency model).</span></span></li>
+   </ol>
+   <div class="vrbox">
+    <h3><span lang="th">Content ที่เตรียมไว้ตั้งแต่วันนี้</span><span lang="en">Content we prepare from today</span></h3>
+    <ul class="ready">
+     <li><b><span lang="th">วิดีโอแนวตั้ง POV</span><span lang="en">Vertical POV video</span></b> <span lang="th">9:16 มุมสายตา ใช้ได้ทั้ง Reels วันนี้และมุมมองในแว่น VR</span><span lang="en">9:16 at eye level, for today's reels and for a headset view later</span></li>
+     <li><b><span lang="th">หลายมุมกล้อง</span><span lang="en">Multi-angle footage</span></b> <span lang="th">ถ่ายรอบตัว ใช้สร้างฉากและร่างกาย 3 มิติภายหลัง</span><span lang="en">around the subject, to rebuild 3D bodies and sets later</span></li>
+     <li><b><span lang="th">เสียงพูดสะอาด</span><span lang="en">Clean voice recordings</span></b> <span lang="th">สำหรับเสียง AI ที่คุยได้เหมือนคุณ</span><span lang="en">for an AI voice that sounds like you</span></li>
+     <li><b><span lang="th">ท่าทางและบุคลิก</span><span lang="en">Movement and personality</span></b> <span lang="th">คลิปเทรน ท่าโพส และสัมภาษณ์สั้นๆ เป็นฐานของ Digital Twin</span><span lang="en">training clips, poses and short interviews as the base of a Digital Twin</span></li>
+     <li><b><span lang="th">ไฟล์ต้นฉบับความละเอียดสูง</span><span lang="en">High-res masters</span></b> <span lang="th">เก็บนอก platform ไม่ผูกกับที่ใดที่หนึ่ง</span><span lang="en">kept off-platform, never tied to one service</span></li>
+     <li><b><span lang="th">บันทึกความยินยอมรายชิ้น</span><span lang="en">Consent on record per piece</span></b> <span lang="th">ระบุว่าใช้ต่อในรูปแบบไหนได้บ้าง</span><span lang="en">stating which future uses are allowed</span></li>
+    </ul>
+   </div>
+   <div class="vrcols">
+    <div class="vrbox">
+     <h3><span lang="th">3 ระดับประสบการณ์ที่วางแผนไว้</span><span lang="en">Three planned experience levels</span></h3>
+     <div class="tiers">
+      <div class="tier"><i style="--c:var(--nf)">G</i><span><b>General</b><span lang="th">เพื่อนคุย ปรึกษาชีวิต และเทรนเนอร์ฟิตเนสส่วนตัวใน VR</span><span lang="en">Companionship, life chat and a private VR fitness trainer</span></span></div>
+      <div class="tier"><i style="--c:var(--gold)">R</i><span><b>Restricted</b><span lang="th">เดทเสมือนและดินเนอร์ส่วนตัว ท่าทางจับจากคนจริง</span><span lang="en">Virtual dates and private dinners, with motion captured from real people</span></span></div>
+      <div class="tier"><i style="--c:var(--pink)">X</i><span><b>Premium 18+</b><span lang="th">เฉพาะผู้ใหญ่ที่ผ่านการตรวจอายุ และเฉพาะ creator ที่เลือกเข้าร่วมเอง</span><span lang="en">Age-verified adults only, and only for creators who opt in</span></span></div>
+     </div>
+    </div>
+    <div class="vrbox">
+     <h3><span lang="th">เมื่อเปิดใช้ creator จะได้</span><span lang="en">When it launches, creators get</span></h3>
+     <ul>
+      <li><b><span lang="th">ตัวตนดิจิทัลที่ทำรายได้</span><span lang="en">A digital self that earns</span></b> <span lang="th">ระหว่างที่คุณไม่ได้ถ่าย</span><span lang="en">while you are not shooting</span></li>
+      <li><b><span lang="th">เลือกระดับเอง</span><span lang="en">You pick the level</span></b> <span lang="th">G, R หรือ X ปรับได้ตลอด</span><span lang="en">G, R or X, and can change it</span></li>
+      <li><b><span lang="th">ความเป็นส่วนตัว</span><span lang="en">Privacy</span></b> <span lang="th">ตรวจอายุและความยินยอมเข้มงวด, งานออฟไลน์ไม่ใช้โทรศัพท์, ข้อมูลในแอปเข้ารหัส</span><span lang="en">strict age and consent checks, phone-free offline events, encrypted app data</span></li>
+      <li><b><span lang="th">ไทม์ไลน์</span><span lang="en">Timeline</span></b> <span lang="th">ตามแผน: 2026 เตรียม content และต้นแบบ ThB.Ho · 2027 Casting และเบต้าปิด · 2028–29 เปิดทั่วโลก ปรับตามเทคโนโลยี</span><span lang="en">Planned: 2026 content prep and the ThB.Ho prototype · 2027 casting and closed beta · 2028–29 global launch, adjusted as the tech moves</span></li>
+     </ul>
+    </div>
+   </div>
+   <div class="row" style="display:flex;flex-wrap:wrap;gap:10px">
+    <a class="btn solid" href="O2OEventsVR.html"><span lang="th">ดูแผน GymMateX O2O · VR ฉบับเต็ม →</span><span lang="en">See the full GymMateX O2O · VR plan →</span></a>
+    <a class="btn" href="#quiz"><span lang="th">เริ่มจาก collab ก่อน</span><span lang="en">Start with a collab</span></a>
+   </div>
   </div>
  </section>
 

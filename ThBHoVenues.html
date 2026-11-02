@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ThB.Ho Venues</title>
+<meta name="description" content="ThB.Ho สำหรับร้าน: หน้า Matching ด้วย MBTI, Pairing Night, content รายเดือน และ O2O events สำหรับซาวน่า สปา ร้านนวด และบาร์">
+<meta property="og:title" content="ThB.Ho Venues">
+<meta property="og:description" content="MBTI matching pages, Pairing Nights, monthly content and O2O events for saunas, spas, massage houses and bars.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="https://threeandhour.github.io/GymMateX/creator-img/persona-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One deliberate night palette — the venue world after dark. Single theme by design. */
+:root{
+ --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
+ --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
+ --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark svg{width:22px;height:22px;color:var(--cyan);filter:drop-shadow(0 0 6px rgba(102,252,241,.5))}
+.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;align-items:center;gap:18px;font-size:14px}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.lang{font:500 12px var(--mono);background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+@media (max-width:760px){nav a{display:none}}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.hero h1{font-size:clamp(38px,6.4vw,66px);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+.hero .role{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:10px 0 22px}
+.thesis{font:600 clamp(22px,3vw,30px)/1.35 var(--display);max-width:26ch;margin:0 0 16px}
+.thesis em{font-style:normal;color:var(--cyan)}
+.lead{color:var(--ink2);max-width:62ch;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:11px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink)}
+.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
+.btn:hover{border-color:var(--cyan)}
+.banner{margin-top:36px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+.banner img{display:block;width:100%;height:auto}
+.banner figcaption{font:500 12px var(--mono);color:var(--ink3);padding:9px 14px;border-top:1px solid var(--line);background:var(--s1)}
+
+section{padding:64px 0 0}
+.sh{display:grid;gap:8px;margin-bottom:26px;max-width:66ch}
+.sh h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;line-height:1.2}
+.sh p{color:var(--ink2);margin:0}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+
+.for{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.for{grid-template-columns:1fr}}
+.door{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.door .who{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.door.pk .who{color:var(--pink)}
+.door h3{font-size:23px;line-height:1.3}
+.door p{color:var(--ink2);margin:0}
+.door a{margin-top:auto;font-weight:600;text-decoration:none}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc{grid-template-columns:1fr}}
+.svc article{background:var(--s1);padding:22px;display:flex;flex-direction:column;gap:8px}
+.svc small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.svc h3{font-size:19px;line-height:1.35}
+.svc p{color:var(--ink2);font-size:15px;margin:0}
+.svc article.lead-card{background:var(--s2)}
+.svc article.lead-card small{color:var(--cyan)}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st;list-style:none;padding:0;margin:0}
+@media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.flow li{border-top:2px solid var(--cyan);padding-top:14px;counter-increment:st}
+.flow li::before{content:"0" counter(st);font:500 12px var(--mono);color:var(--cyan);display:block;margin-bottom:6px}
+.flow b{display:block;font:600 17px var(--display);margin-bottom:4px}
+.flow span{color:var(--ink2);font-size:15px}
+.mock{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:760px){.mock{grid-template-columns:1fr 1fr}}
+.tag{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--s1)}
+.tag i{display:block;width:28px;height:6px;border-radius:3px;margin-bottom:10px}
+.tag b{font:600 16px var(--display);display:block}
+.tag span{font-size:13.5px;color:var(--ink2)}
+.note{font-size:13.5px;color:var(--ink3);margin-top:12px}
+
+.collab{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+@media (max-width:860px){.collab{grid-template-columns:1fr}}
+.personas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.personas figure{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.personas img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover}
+.personas figcaption{font:500 11.5px var(--mono);color:var(--ink3);padding:7px 9px}
+.tracks{list-style:none;padding:0;margin:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tracks li{background:var(--s1);padding:15px 18px}
+.tracks b{font:600 16.5px var(--display);display:block}
+.tracks span{color:var(--ink2);font-size:14.5px}
+.tracks li.new{background:var(--s2)}
+.tracks li.new b::after{content:"NEW";font:500 10px var(--mono);letter-spacing:.1em;color:var(--pink);border:1px solid var(--pink);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px}
+
+.show{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:180px;gap:10px;margin-top:34px}
+.show figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.show img{display:block;width:100%;height:100%;object-fit:cover}
+.show figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(14,11,16,.9));font-size:13px;color:var(--ink)}
+.show figcaption b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:1px}
+.show .who{position:absolute;top:10px;left:10px;font:600 12px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#0E0B10;background:var(--c);padding:3px 9px;border-radius:3px}
+.show .w2{grid-column:span 2}.show .h2{grid-row:span 2}
+.show .top img{object-position:50% 15%}
+@media (max-width:700px){.show{grid-template-columns:1fr;grid-auto-rows:auto}.show .w2{grid-column:auto}.show .h2{grid-row:auto}.show img{height:auto;aspect-ratio:16/10}.show .top img{aspect-ratio:4/5}}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.reel{grid-template-columns:1fr 1fr}}
+.reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1);color:var(--ink);text-decoration:none}
+.reel a:hover,.reel a:focus-visible{border-color:var(--pink)}
+.reel img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s}
+.reel a:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.reel img{transition:none}.reel a:hover img{transform:none}}
+.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(14,11,16,.7);display:grid;place-items:center;color:#fff}
+.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:rgba(14,11,16,.7);padding:2px 6px;border-radius:3px}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.reel .cap b{display:block;font:600 15.5px var(--display);line-height:1.25}
+.reel .cap span{font:500 12px var(--mono);color:var(--cyan);font-variant-numeric:tabular-nums}
+.reel a:first-child .cap span{color:var(--pink)}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+@media (max-width:700px){.levels{grid-template-columns:1fr}}
+.lv{background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:16px}
+.lv .n{font:700 28px var(--display);color:var(--cyan);line-height:1}
+.lv:nth-child(2) .n{color:var(--gold)}
+.lv:nth-child(3) .n{color:var(--pink)}
+.lv b{display:block;font:600 16px var(--display);margin:6px 0 2px}
+.lv span{font-size:14px;color:var(--ink2)}
+
+.o2o{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.o2o{grid-template-columns:1fr}}
+.stage{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
+.stage .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.stage:nth-child(2) .k{color:var(--gold)}
+.stage:nth-child(3) .k{color:var(--pink)}
+.stage h3{font-size:20px;line-height:1.3}
+.stage p{color:var(--ink2);font-size:15px;margin:0}
+.stage .fit{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink)}
+.stage .fit b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:2px}
+.phases{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.phases li{background:var(--s1);display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px}
+@media (max-width:600px){.phases li{grid-template-columns:1fr;gap:4px}}
+.phases li.now{background:var(--s2)}
+.phases time{font:500 12px var(--mono);color:var(--cyan);padding-top:3px}
+.phases li.now time::after{content:" ● NOW";color:var(--pink)}
+.phases b{font:600 17px var(--display);display:block}
+.phases span{color:var(--ink2);font-size:14.5px}
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--pink);border-radius:8px;padding:22px 24px}
+.rules h3{font-size:20px;margin-bottom:10px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
+.rules li b{color:var(--ink)}
+
+.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:760px){.proof{grid-template-columns:1fr 1fr}}
+.proof div{background:var(--s1);padding:18px}
+.proof b{font:700 30px var(--display);display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+.proof span{font-size:13.5px;color:var(--ink2)}
+
+.contact{margin-top:72px;background:var(--s1);border-top:1px solid var(--line)}
+.contact .wrap{padding-block:52px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(26px,3.6vw,36px);line-height:1.2;margin-bottom:10px}
+.contact p{color:var(--ink2);margin:0;max-width:52ch}
+.links{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.qr{display:flex;align-items:center;gap:14px}
+.qr img{width:120px;height:120px;background:#fff;padding:6px;border-radius:8px}
+.qr b{display:block;font:700 15px var(--display)}
+.qr span span{font-size:13px;color:var(--ink2)}
+.brands{border-top:1px solid var(--line)}
+.brands .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.brands .lbl{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-right:6px}
+.brand{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.brand:hover{border-color:var(--cyan)}
+.brand img{height:44px;width:auto;border-radius:4px}
+.brand small{display:block;font-size:12.5px;color:var(--ink2)}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.personas figcaption{position:relative;z-index:1;background:var(--s1)}
+
+/* split pages */
+@media (max-width:760px){nav a.switch{display:inline-block}}
+.switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
+.switch:hover{color:var(--ink);border-color:var(--cyan)}
+.demo-frame{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
+.demo-frame .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--s1);font:500 12px var(--mono);color:var(--ink3)}
+.demo-frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.demo-frame .bar span{margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.demo-frame iframe{display:block;width:100%;height:760px;border:0;background:var(--bg)}
+.demo-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+.live{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.live{grid-template-columns:1fr}}
+.live a{display:flex;flex-direction:column;gap:6px;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:20px;color:var(--ink);text-decoration:none}
+.live a:hover,.live a:focus-visible{border-color:var(--cyan)}
+.live small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.live b{font:600 19px var(--display);line-height:1.3}
+.live span{color:var(--ink2);font-size:14.5px}
+.live em{font-style:normal;margin-top:auto;padding-top:8px;font:500 13px var(--mono);color:var(--cyan)}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+@media (max-width:700px){.looks{grid-template-columns:1fr}}
+.looks figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.looks img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.looks figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,rgba(14,11,16,.9));font-size:13px}
+.looks figcaption b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+.popen{all:unset;display:block;cursor:pointer;width:100%}
+.popen:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.personas figure{transition:border-color .2s}
+.personas figure:hover{border-color:var(--cyan)}
+.personas .see{display:block;font:500 11px var(--mono);color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>Th<b>B.</b>Ho</a>
+  <nav>
+   <a href="#venues"><span lang="th">บริการ</span><span lang="en">Services</span></a>
+   <a href="#demo">Demo</a>
+   <a href="#portfolio">Portfolio</a>
+   <a href="#roadmap"><span lang="th">แผน O2O</span><span lang="en">O2O plan</span></a>
+   <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
+   <a class="switch" href="ThBHoCreators.html"><span lang="th">สำหรับ Creator →</span><span lang="en">For creators →</span></a>
+   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+  </nav>
+ </div>
+</header>
+
+<main class="wrap" id="top">
+<div class="hero">
+ <p class="eyebrow">ThB.Ho for Venues · Saunas · Spas · Massage · Bars — Bangkok · EEC</p>
+ <h1>ThB.Ho <span style="color:var(--cyan)">Venues</span></h1>
+ <p class="role"><span lang="th">หน้า Matching ด้วย MBTI · Pairing Night · Content รายเดือน · O2O Events</span><span lang="en">MBTI matching pages · Pairing Nights · Monthly content · O2O events</span></p>
+ <p class="thesis"><span lang="th">ร้านอื่นลอก party ได้ — <em>แต่ลอกระบบจับคู่และคลัง content ไม่ได้</em></span><span lang="en">Competitors can copy a party. <em>They can't copy a matching system or a content library.</em></span></p>
+ <p class="lead"><span lang="th">เราช่วยซาวน่า สปา ร้านนวด และบาร์ ให้ลูกค้ามีเหตุผลกลับมาซ้ำ และให้ลูกค้าต่างชาติที่มาคนเดียวเจอโปรแกรมและคนที่ใช่ในร้านคุณ ด้วย Hybrid AI Persona Three, B. และ Hour · เริ่มจากบริการเดียวก็ได้ ไม่ต้องลงเงินก้อนก่อน</span><span lang="en">We help saunas, spas, massage houses and bars give guests a reason to come back, and help solo international guests find the right programme and the right people at your place, with Hybrid AI personas Three, B. and Hour. Start with one service, no upfront lump sum.</span></p>
+ <div class="cta">
+  <a class="btn solid" href="#demo"><span lang="th">ลองหน้า Matching ตัวอย่าง</span><span lang="en">Try the matching demo</span></a>
+  <a class="btn" href="#venues"><span lang="th">ดูบริการ</span><span lang="en">See services</span></a>
+ </div>
+ <figure class="banner">
+  <img src="creator-img/persona-banner.jpg" alt="Hybrid AI Persona banner — Three, B. and Hour" width="1280" height="320">
+  <figcaption><span lang="th">Hybrid AI Persona: Three · B. · Hour — ใบหน้าจริงผสม AI</span><span lang="en">Hybrid AI personas Three · B. · Hour — real face blended with AI</span></figcaption>
+ </figure>
+</div>
+
+<section id="venues">
+ <div class="sh">
+  <span class="kick"><span lang="th">สำหรับร้าน</span><span lang="en">For venues</span></span>
+  <h2><span lang="th">ร้านอื่นลอก party ได้ แต่ลอกระบบจับคู่และคลัง content ไม่ได้</span><span lang="en">Competitors can copy a party. They can't copy a matching system or a content library.</span></h2>
+  <p><span lang="th">เริ่มจากข้อเดียวได้ ไม่ต้องเอาทั้งหมด · ทุกข้อหยุดได้โดยไม่มีค่าปรับ · และทุกข้อต่อเข้ากับแผน O2O ด้านล่าง</span><span lang="en">Start with one piece — you don't need them all. Every piece can stop with no penalty, and each one plugs into the O2O roadmap below.</span></p>
+ </div>
+ <div class="svc">
+  <article class="lead-card"><small>Matching page</small><h3><span lang="th">หน้า Matching สินค้าของร้าน</span><span lang="en">A matching page for your products</span></h3><p><span lang="th">ทุกโปรแกรม ห้อง แพ็กเกจนวด หรือคืน theme ได้หน้าของตัวเองพร้อม "บุคลิก" · ลูกค้าตอบ 4 ข้อ ได้ 3 ตัวเลือกที่เหมาะ แล้วจองผ่าน LINE ของร้าน · 6 ภาษา</span><span lang="en">Every programme, room, massage package or theme night gets its own page with a "personality". Guests answer 4 questions, get 3 matches and book through your LINE — in six languages.</span></p><a href="#demo" style="font-weight:600;text-decoration:none;margin-top:auto"><span lang="th">ลองเล่นตัวอย่าง ↓</span><span lang="en">Try the demo ↓</span></a></article>
+  <article><small>Pairing Night</small><h3><span lang="th">คืนจับคู่ด้วย MBTI · 3 ชั่วโมง</span><span lang="en">MBTI Pairing Night · 3 hours</span></h3><p><span lang="th">ตอบแบบทดสอบตอน check-in รับ tag สีตามกลุ่ม ระบบเสนอคู่ ปฏิเสธได้ทุกครั้ง · ลูกค้าต่างชาติที่มาคนเดียวเข้าถึงคนอื่นได้โดยไม่ต้องข้ามกำแพงภาษา</span><span lang="en">A quick quiz at check-in, a colour tag by group, suggested matches that can always be declined. Solo international guests connect without a language barrier.</span></p></article>
+  <article><small>Monthly content</small><h3><span lang="th">Content รายเดือน 8–12 ชิ้น</span><span lang="en">8–12 pieces of content a month</span></h3><p><span lang="th">promote งานประจำสัปดาห์ reels แนวตั้ง spotlight นายแบบ และ teaser collab · ลิขสิทธิ์เป็นของร้าน ใช้กับจอในร้านได้</span><span lang="en">Weekly event promos, vertical reels, model spotlights and collab teasers. The venue owns the rights, including for in-house screens.</span></p></article>
+  <article><small>O2O event</small><h3><span lang="th">งาน theme ร่วมผลิต</span><span lang="en">Co-produced theme nights</span></h3><p><span lang="th">ออกแบบงาน สื่อ promote ล่วงหน้า 3 สัปดาห์ ทีมถ่ายในงาน และสรุปตัวเลขหลังงาน · แบ่งรายได้บัตร ไม่ต้องจ่ายล่วงหน้า</span><span lang="en">Concept, promo three weeks ahead, an in-event camera crew and a one-page results summary. Ticket revenue is shared, nothing paid upfront.</span></p></article>
+  <article><small>Wellness retreat</small><h3><span lang="th">ทริป Wellness 3 วัน 2 คืน</span><span lang="en">3-day wellness retreats</span></h3><p><span lang="th">15–30 คน · เช้า fitness บ่ายถ่าย content เย็น mixer · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · EEC เป็นปลายทางแรก</span><span lang="en">15–30 guests: morning fitness, afternoon content, evening mixer — using partner venues' rooms and massage teams. The EEC first.</span></p></article>
+  <article><small>Hunk Academy</small><h3><span lang="th">โปรแกรมเทรนที่ร้าน</span><span lang="en">In-venue training programme</span></h3><p><span lang="th">Personal training และ group session ตาม theme · ทีมมีประสบการณ์บริหารศูนย์ฟิตเนสและกีฬา</span><span lang="en">Personal training and themed group sessions — the team has run fitness and sports venues.</span></p></article>
+ </div>
+
+ <h3 style="font-size:22px;margin:44px 0 18px"><span lang="th">หน้า Matching ทำงานยังไง</span><span lang="en">How a matching page works</span></h3>
+ <ol class="flow">
+  <li><b><span lang="th">รวบรวมสินค้าจริง</span><span lang="en">Gather the real offer</span></b><span><span lang="th">โปรแกรม ห้อง ราคา รูปจริงของร้าน</span><span lang="en">Programmes, rooms, prices and real venue photos.</span></span></li>
+  <li><b><span lang="th">ให้แต่ละอย่างมีบุคลิก</span><span lang="en">Give each one a personality</span></b><span><span lang="th">ชื่อ จุดเด่น และกลุ่ม MBTI ที่เข้ากัน</span><span lang="en">A name, strengths and the MBTI groups it suits.</span></span></li>
+  <li><b><span lang="th">ลูกค้าตอบ 4 ข้อ</span><span lang="en">Guests answer 4 questions</span></b><span><span lang="th">จบใน 1 นาที ได้ 3 ตัวเลือก</span><span lang="en">Done in a minute, three matches back.</span></span></li>
+  <li><b><span lang="th">จองผ่าน LINE</span><span lang="en">Book via LINE</span></b><span><span lang="th">ส่งถึงพนักงานพร้อมรหัสสินค้า · หน้าเว็บไม่เก็บข้อมูลลูกค้า</span><span lang="en">Handed to staff with the item code. The page stores no guest data.</span></span></li>
+ </ol>
+ <div class="mock" aria-label="Sample MBTI groups">
+  <div class="tag"><i style="background:#8E7CF0"></i><b>NT</b><span><span lang="th">ตัวอย่าง: ชอบห้องเงียบ คุยลึก</span><span lang="en">e.g. quiet rooms, deep talk</span></span></div>
+  <div class="tag"><i style="background:#3FC48A"></i><b>NF</b><span><span lang="th">ตัวอย่าง: บรรยากาศอบอุ่น นวดอโรมา</span><span lang="en">e.g. warm vibe, aroma massage</span></span></div>
+  <div class="tag"><i style="background:#4AA8F0"></i><b>SJ</b><span><span lang="th">ตัวอย่าง: โปรแกรมประจำ เวลาชัด</span><span lang="en">e.g. regular programme, set times</span></span></div>
+  <div class="tag"><i style="background:#F0B24A"></i><b>SP</b><span><span lang="th">ตัวอย่าง: คืน theme เวทีโชว์</span><span lang="en">e.g. theme nights, shows</span></span></div>
+ </div>
+ <p class="note"><span lang="th">ตัวอย่างการจัดกลุ่มเพื่อให้เห็นภาพ — ของจริงตั้งตามสินค้าของแต่ละร้าน</span><span lang="en">Sample grouping for illustration — the real one is built from each venue's own offer.</span></p>
+</section>
+
+<section id="demo">
+ <div class="sh">
+  <span class="kick">Live demo</span>
+  <h2><span lang="th">ลองเป็นลูกค้าของร้านตัวอย่าง</span><span lang="en">Try it as a guest of a sample venue</span></h2>
+  <p><span lang="th">ร้านสมมติ "Steam &amp; Co." ตอบ 4 ข้อ ได้ 3 โปรแกรมที่เข้ากับบุคลิก พร้อมข้อความจองผ่าน LINE ที่มีรหัสสินค้า · หน้าจริงสร้างจากเมนูของร้านคุณ</span><span lang="en">A made-up venue, "Steam &amp; Co.". Answer 4 questions, get 3 programmes that fit, plus a LINE booking message with the item code. A real page is built from your own menu.</span></p>
+ </div>
+ <div class="demo-frame">
+  <div class="bar"><i></i><i></i><i></i><span>threeandhour.github.io/GymMateX/ThBHoMatchDemo.html</span></div>
+  <iframe data-demo src="ThBHoMatchDemo.html?embed=1" title="Venue matching demo" loading="lazy"></iframe>
+ </div>
+ <div class="demo-cta">
+  <a class="btn" href="ThBHoMatchDemo.html" target="_blank" rel="noopener"><span lang="th">เปิดเดโมเต็มจอ ↗</span><span lang="en">Open the demo full screen ↗</span></a>
+  <span class="note" style="margin:0"><span lang="th">สินค้าและราคาในเดโมเป็นตัวอย่าง</span><span lang="en">Items and prices in the demo are examples</span></span>
+ </div>
+</section>
+
+<section id="portfolio">
+ <div class="sh">
+  <span class="kick">Portfolio</span>
+  <h2><span lang="th">หน้า Matching ที่ใช้งานจริงแล้ว</span><span lang="en">Matching pages already in use</span></h2>
+  <p><span lang="th">ระบบเดียวกันนี้ใช้จับคู่ผู้ซื้อกับห้องและบ้านของพาร์ทเนอร์อสังหาฯ ในพัทยาอยู่แล้ว หลายภาษา บุคลิกรายยูนิต และจองผ่าน LINE</span><span lang="en">The same system already matches buyers with units and homes for property partners in Pattaya: multilingual, a personality per unit, booking through LINE.</span></p>
+ </div>
+ <div class="live">
+  <a href="https://thbho.github.io/Riviera2Resale.html" target="_blank" rel="noopener"><small>Clare Pattaya Property</small><b>The Riviera Jomtien Resale</b><span><span lang="th">66 ยูนิต · Personalized Matching + Room Matcher · 5 ภาษา</span><span lang="en">66 units · Personalized Matching + Room Matcher · 5 languages</span></span><em><span lang="th">เปิดดู ↗</span><span lang="en">Open ↗</span></em></a>
+  <a href="https://thbho.github.io/ASNProperty.html" target="_blank" rel="noopener"><small>ASN Exclusive Property</small><b>ASN Property</b><span><span lang="th">ตัวจับคู่ 4 คำถาม → 3 บ้าน · บุคลิกบ้าน + MBTI · 6 ภาษา</span><span lang="en">A 4-question matcher → 3 homes · home personalities + MBTI · 6 languages</span></span><em><span lang="th">เปิดดู ↗</span><span lang="en">Open ↗</span></em></a>
+  <a href="https://thbho.github.io/CopaMatching.html" target="_blank" rel="noopener"><small>Copacabana Group</small><b>Copacabana Personalized Matching</b><span><span lang="th">เลือกคอนโดตามบุคลิก 4 กลุ่ม NT · NF · SJ · SP</span><span lang="en">Choosing a condo by the four temperaments NT · NF · SJ · SP</span></span><em><span lang="th">เปิดดู ↗</span><span lang="en">Open ↗</span></em></a>
+ </div>
+ <h3 style="font-size:22px;margin:44px 0 6px"><span lang="th">ตัวอย่างลุค content ที่ร้านจะได้</span><span lang="en">The content look your venue gets</span></h3>
+ <p class="note" style="margin-top:0"><span lang="th">promote งาน theme, spotlight นายแบบ และ lifestyle · ลิขสิทธิ์เป็นของร้าน</span><span lang="en">Theme-night promos, model spotlights and lifestyle pieces. The venue owns the rights.</span></p>
+ <div class="looks">
+  <figure><img src="creator-img/show-hour.jpg" alt="Hour in blue and red neon light" loading="lazy" width="1394" height="1400" style="object-position:50% 30%"><figcaption><b>Theme night promo</b><span lang="th">ไฟนีออน คืนปาร์ตี้</span><span lang="en">Neon party night</span></figcaption></figure>
+  <figure><img src="creator-img/show-b.jpg" alt="B. in a suit on a rooftop at sunset" loading="lazy" width="1400" height="781" style="object-position:38% 50%"><figcaption><b>Premium lifestyle</b><span lang="th">ลุคหรูสำหรับ VIP</span><span lang="en">A premium look for VIP nights</span></figcaption></figure>
+  <figure><img src="creator-img/show-three.jpg" alt="Three in yellow and green light" loading="lazy" width="1360" height="768"><figcaption><b>Model spotlight</b><span lang="th">แนะนำนายแบบประจำเดือน</span><span lang="en">Model of the month</span></figcaption></figure>
+ </div>
+ <div class="demo-cta"><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">ดูผลงาน MV และหนังสั้นบน X ↗</span><span lang="en">See our films and music videos on X ↗</span></a><span class="note" style="margin:0">Ritmo del Alma · 245K <span lang="th">วิว</span><span lang="en">views</span></span></div>
+</section>
+
+<section id="roadmap">
+ <div class="sh">
+  <span class="kick">GymMateX O2O · Offline → Online</span>
+  <h2><span lang="th">จากงานจริงในร้าน สู่ Persona ในโลก VR</span><span lang="en">From real nights at your venue to personas in VR</span></h2>
+  <p><span lang="th">ร้านของคุณคือจุดเริ่มต้นของระบบ — คืน Casting และทริป wellness ที่จัดร่วมกัน สร้างรายได้วันนี้ และเป็นฐานของ persona ในโลก VR ในอนาคต</span><span lang="en">Your venue is where the system starts: casting nights and wellness trips we co-host earn today, and become the base for personas in VR tomorrow.</span></p>
+ </div>
+ <div class="o2o">
+  <div class="stage"><span class="k">01 · Offline casting</span><h3><span lang="th">อีเวนต์คัดเลือกที่ร้าน</span><span lang="en">Casting events at the venue</span></h3><p><span lang="th">คืน Casting, Pairing Night และ Creator Lab · ค้นหานายแบบและ creator ผ่านกิจกรรมฟิตเนสและการออดิชัน · ลูกค้า VIP ซื้อบัตรเข้าชมงานจริง</span><span lang="en">Casting nights, Pairing Nights and the Creator Lab — finding models and creators through fitness activities and auditions. VIP guests buy tickets to the live event.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">รายได้บัตร ลูกค้าใหม่ และ content หลังงาน</span><span lang="en">Ticket revenue, new guests and post-event content</span></p></div>
+  <div class="stage"><span class="k">02 · Wellness trips</span><h3><span lang="th">ทริปส่วนตัวและการเก็บข้อมูล</span><span lang="en">Private trips &amp; capture</span></h3><p><span lang="th">ทริป 3 วัน 2 คืนสำหรับผู้ชนะและสมาชิก · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · ถ่ายทำและบันทึกท่าทาง เสียง และบุคลิก (ด้วยความยินยอม)</span><span lang="en">3-day trips for winners and members, using partner venues' rooms and massage teams — filming movement, voice and personality, with consent.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">ส่วนแบ่งแพ็กเกจและชื่อในฐานะผู้ร่วมจัด</span><span lang="en">A package share and co-host billing</span></p></div>
+  <div class="stage"><span class="k">03 · Online VR</span><h3><span lang="th">AI Persona และ VR</span><span lang="en">AI personas &amp; VR</span></h3><p><span lang="th">เปลี่ยนข้อมูลเป็น Digital Twin ที่แฟนคุยและพบได้ในโลก VR · ฉาก 3 มิติแนว Fitness &amp; Fantasy · โมเดลสมาชิกรายเดือนจากผู้ใช้ทั่วโลก</span><span lang="en">Data becomes Digital Twins fans can talk to and meet in VR, in Fitness &amp; Fantasy 3D scenes, on a global subscription model.</span></p><p class="fit"><b><span lang="th">Creator ได้</span><span lang="en">Creators get</span></b><span lang="th">ตัวตนดิจิทัลที่ทำรายได้ต่อเนื่อง แบ่งรายได้กัน</span><span lang="en">A digital self that keeps earning, on a revenue share</span></p></div>
+ </div>
+ <ol class="phases">
+  <li class="now"><time>Phase 1 · 2026</time><div><b><span lang="th">ต้นแบบและวางระบบ</span><span lang="en">Prototype &amp; groundwork</span></b><span><span lang="th">"ThB.Ho" (Three · B. · Hour) เป็น AI ต้นแบบตัวแรก · วางกรอบกฎหมายและความเป็นส่วนตัว · เปิด Creator Lab และหน้า Matching ให้ร้านพันธมิตร</span><span lang="en">"ThB.Ho" (Three · B. · Hour) is the first AI prototype. Legal and privacy frameworks, the Creator Lab and matching pages for partner venues.</span></span></div></li>
+  <li><time>Phase 2 · 2027</time><div><b><span lang="th">อีเวนต์จริงและเบต้าปิด</span><span lang="en">Live events &amp; closed beta</span></b><span><span lang="th">จัด Casting Event ที่ร้านพันธมิตร · ทริป Wellness แรก · เปิดแอปให้แฟนกลุ่มแรกทดลองและให้ feedback</span><span lang="en">Casting events at partner venues, the first wellness trip, and an early-fan beta of the app.</span></span></div></li>
+  <li><time>Phase 3 · 2028–29</time><div><b><span lang="th">เปิดตัวเต็มรูปแบบ</span><span lang="en">Full launch</span></b><span><span lang="th">เปิดรับสมาชิกทั่วโลก · ชวนนายแบบและ creator สร้างตัวตนดิจิทัลในแอป · พร้อมรองรับ VR ความละเอียดสูงเมื่ออุปกรณ์ราคาเข้าถึงได้</span><span lang="en">Global subscriptions open, models and creators build their digital selves in the app, ready for high-resolution VR as headsets become affordable.</span></span></div></li>
+ </ol>
+ <p class="note"><span lang="th">แผนเป็นแบบ Agile — ปรับโมเดลและฟีเจอร์ตามเทคโนโลยีที่เปลี่ยนเร็ว</span><span lang="en">An agile plan — models and features adapt as the technology moves.</span></p>
+ <div class="cta"><a class="btn" href="https://threeandhour.github.io/GymMateX/O2OEventsVR.html" target="_blank" rel="noopener"><span lang="th">🔒 แผน GymMateX O2O · VR ฉบับวงใน →</span><span lang="en">🔒 The insider GymMateX O2O · VR plan →</span></a><a class="btn" href="https://threeandhour.github.io/GymMateX/index.html" target="_blank" rel="noopener"><span lang="th">เข้าเว็บ GymMateX FIT &amp; Fantasy →</span><span lang="en">Visit GymMateX FIT &amp; Fantasy →</span></a></div>
+</section>
+
+<section id="rules">
+ <div class="rules">
+  <h3><span lang="th">กติกาที่ไม่ยืดหยุ่น</span><span lang="en">Ground rules — not negotiable</span></h3>
+  <ul>
+   <li><b><span lang="th">อายุ 20 ปีขึ้นไป</span><span lang="en">20+ only</span></b> <span lang="th">— ทุกคนแสดงเอกสารยืนยันตัวตนก่อนถ่ายทุกครั้ง</span><span lang="en">— everyone shows ID before every shoot.</span></li>
+   <li><b><span lang="th">ยินยอมเป็นลายลักษณ์อักษร</span><span lang="en">Written consent</span></b> <span lang="th">จากทุกคนในภาพ และระบุระดับความเปิดเผยก่อนเผยแพร่</span><span lang="en">from everyone in frame, with the exposure level agreed before release.</span></li>
+   <li><b><span lang="th">สมัครใจ 100%</span><span lang="en">100% voluntary</span></b> <span lang="th">— ปฏิเสธคู่ได้ทุกครั้ง ถอนตัวได้ตลอดโดยไม่ต้องอธิบาย</span><span lang="en">— any match can be declined, anyone can leave at any time without explaining.</span></li>
+   <li><b><span lang="th">Matching ไม่ใช่บริการทางเพศ</span><span lang="en">Matching is not a sexual service</span></b> <span lang="th">— เป็นการจับคู่เพื่อใช้เวลาหรือทำงานร่วมกันในกรอบเวลา</span><span lang="en">— it pairs people to spend time or work together within a set window.</span></li>
+   <li><b><span lang="th">ไม่ใช้ภาพใครโดยไม่ได้รับอนุญาต</span><span lang="en">No one's image without permission</span></b> <span lang="th">— persona ทุกตัวสร้างจากคนที่ยินยอมเท่านั้น</span><span lang="en">— every persona is built only from people who agreed to it.</span></li>
+   <li><b><span lang="th">ต้นฉบับเก็บนอก platform</span><span lang="en">Originals kept off-platform</span></b> <span lang="th">— ไม่ฝากงานไว้กับ platform ใด platform เดียว</span><span lang="en">— no work depends on a single platform.</span></li>
+  </ul>
+ </div>
+</section>
+
+<section aria-label="Background">
+ <div class="sh">
+  <span class="kick"><span lang="th">ทำไมต้อง ThB.Ho</span><span lang="en">Why ThB.Ho</span></span>
+  <h2><span lang="th">Persona ที่มีคนจริงและทีมที่เคยทำงานสถานที่จริงอยู่ข้างหลัง</span><span lang="en">Personas with real people — and real venue experience — behind them</span></h2>
+ </div>
+ <div class="proof">
+  <div><b>245K</b><span><span lang="th">วิว MV "Ritmo del Alma" บน X — คลิปที่มีคนดูมากที่สุด</span><span lang="en">views on the "Ritmo del Alma" MV on X — the most-watched clip</span></span></div>
+  <div><b>3+</b><span><span lang="th">ปี ทำ Hybrid AI Persona และหนังสั้น AI</span><span lang="en">years making Hybrid AI personas and AI films</span></span></div>
+ </div>
+</section>
+</main>
+
+<div class="contact" id="contact">
+ <div class="wrap">
+  <div>
+   <h2><span lang="th">คุยกันก่อน ไม่มีข้อผูกมัด</span><span lang="en">Talk first — no commitment</span></h2>
+   <p><span lang="th">ส่งรายการโปรแกรมหรือเมนูมา เราจะทำหน้า Matching ตัวอย่างจากเมนูจริงของร้านให้ดู 1 หน้าก่อน</span><span lang="en">Send your programme or menu and we'll build one sample matching page from your real menu first.</span></p>
+  </div>
+  <div class="links">
+   <a class="btn solid" href="mailto:threeandhour@gmail.com">Email · threeandhour@gmail.com</a>
+   <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · @widerooms</a>
+  </div>
+ </div>
+ <div class="foot"><div class="wrap"><span>© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · เนื้อหาสำหรับผู้ใหญ่ไม่อยู่บนหน้านี้</span><span lang="en">All persona images are Hybrid AI · no adult content on this page</span></span></div></div>
+</div>
+
+<script>
+(function(){
+ var root=document.documentElement, btn=document.getElementById('lang');
+ function set(l){root.lang=l;btn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}
+  document.querySelectorAll('iframe[data-demo]').forEach(function(f){try{f.contentWindow.postMessage({thbho:'lang',l:l},'*')}catch(e){}});}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ set(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
+ btn.addEventListener('click',function(){set(root.lang==='th'?'en':'th')});
+ // demo iframe grows to fit its content
+ window.addEventListener('message',function(e){
+  if(!e.data||e.data.thbho!=='h')return;
+  document.querySelectorAll('iframe[data-demo]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(480,e.data.h)+'px';});
+ });
+})();
+</script>
+</body>
+</html>

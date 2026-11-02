@@ -151,6 +151,10 @@ p{margin:0 0 12px}
 .foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
 .foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 .hosts figcaption{position:relative;z-index:1;background:var(--s1)}
+/* embed mode */
+.embed .top,.embed .demo-bar,.embed .cta,.embed .foot,.embed .sec{display:none!important}
+.embed .hero{padding-top:18px}
+.embed body{background:transparent}
 </style>
 </head>
 <body>
@@ -482,6 +486,17 @@ p{margin:0 0 12px}
  setLang(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
  langBtn.addEventListener('click',function(){setLang(root.lang==='th'?'en':'th')});
  renderQ();renderFilters();renderCat();highlight();
+
+ // Embed mode (?embed=1): used inside ThBHoVenues.html / ThBHoCreators.html
+ if(new URLSearchParams(location.search).get('embed')==='1'){
+  root.classList.add('embed');
+  var post=function(){try{parent.postMessage({thbho:'h',h:document.documentElement.scrollHeight},'*')}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
+  window.addEventListener('load',post);setTimeout(post,300);
+  window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&(e.data.l==='th'||e.data.l==='en'))setLang(e.data.l);});
+  var fixLinks=function(){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(h.charAt(0)!=='#'&&!a.target)a.target='_top';});};
+  fixLinks();new MutationObserver(fixLinks).observe(document.body,{childList:true,subtree:true});
+ }
 })();
 </script>
 </body>

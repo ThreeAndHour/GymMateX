@@ -572,5 +572,7 @@ THBHO_I18N_ADD('zh', {
  "Highlights from X @widerooms": "X @widerooms 精选",
  "Music videos, short films, behind the scenes, personas, music and podcasts. Pick a category and play the videos right here.": "MV、短片、幕后花絮、persona、音乐和播客。选择分类，直接在本页播放。",
  "See everything on X @widerooms ↗": "在 X @widerooms 查看全部 ↗",
- "If a video doesn't load, tap its card to open it on X": "如果视频无法加载，点击卡片在 X 上打开"
+ "If a video doesn't load, tap its card to open it on X": "如果视频无法加载，点击卡片在 X 上打开",
+ "More videos": "更多视频",
+ "Hybrid AI video": "Hybrid AI 视频"
 });

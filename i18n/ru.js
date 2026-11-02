@@ -572,5 +572,7 @@ THBHO_I18N_ADD('ru', {
  "Highlights from X @widerooms": "Лучшее из X @widerooms",
  "Music videos, short films, behind the scenes, personas, music and podcasts. Pick a category and play the videos right here.": "Клипы, короткие фильмы, закадровые видео, персоны, музыка и подкасты. Выберите категорию и смотрите прямо здесь.",
  "See everything on X @widerooms ↗": "Всё в X @widerooms ↗",
- "If a video doesn't load, tap its card to open it on X": "Если видео не загрузилось, нажмите на карточку, чтобы открыть его в X"
+ "If a video doesn't load, tap its card to open it on X": "Если видео не загрузилось, нажмите на карточку, чтобы открыть его в X",
+ "More videos": "Ещё видео",
+ "Hybrid AI video": "Видео Hybrid AI"
 });

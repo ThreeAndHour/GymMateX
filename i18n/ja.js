@@ -572,5 +572,7 @@ THBHO_I18N_ADD('ja', {
  "Highlights from X @widerooms": "X @widerooms ハイライト",
  "Music videos, short films, behind the scenes, personas, music and podcasts. Pick a category and play the videos right here.": "MV、ショートフィルム、メイキング、ペルソナ、音楽、ポッドキャスト。カテゴリを選んで、このページでそのまま再生できます。",
  "See everything on X @widerooms ↗": "X @widerooms ですべて見る ↗",
- "If a video doesn't load, tap its card to open it on X": "動画が表示されない場合は、カードをタップしてXで開いてください"
+ "If a video doesn't load, tap its card to open it on X": "動画が表示されない場合は、カードをタップしてXで開いてください",
+ "More videos": "その他の動画",
+ "Hybrid AI video": "Hybrid AI 動画"
 });

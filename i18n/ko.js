@@ -572,5 +572,7 @@ THBHO_I18N_ADD('ko', {
  "Highlights from X @widerooms": "X @widerooms 하이라이트",
  "Music videos, short films, behind the scenes, personas, music and podcasts. Pick a category and play the videos right here.": "뮤직비디오, 단편 영화, 비하인드, 페르소나, 음악, 팟캐스트. 카테고리를 고르고 이 페이지에서 바로 재생하세요.",
  "See everything on X @widerooms ↗": "X @widerooms에서 전체 보기 ↗",
- "If a video doesn't load, tap its card to open it on X": "영상이 안 나오면 카드를 눌러 X에서 여세요"
+ "If a video doesn't load, tap its card to open it on X": "영상이 안 나오면 카드를 눌러 X에서 여세요",
+ "More videos": "더 많은 영상",
+ "Hybrid AI video": "Hybrid AI 영상"
 });

@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creator Match · ThB.Ho</title>
+<meta name="description" content="Creator สายฟิตเนส OnlyFans influencer และ LGBTQ+ ตอบ 6 ข้อ ดูว่าเข้ากับ Three, B. หรือ Hour และ collab แบบไหนได้บ้าง">
+<meta property="og:title" content="Creator Match · ThB.Ho">
+<meta property="og:description" content="Which Hybrid AI persona should you collab with: Three, B. or Hour? Answer 6 questions.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://threeandhour.github.io/GymMateX/creator-img/persona-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same night palette as ThBHoStudio.html. Layout: hero with the three personas, quiz, persona match + 3 collab formats, request message, persona profiles, portfolio, rules. */
+:root{
+ --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
+ --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
+ --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --nt:#8E7CF0; --nf:#3FC48A; --sj:#4AA8F0; --sp:#F0B24A;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html:not([lang="en"]) span[lang="en"]{display:none!important}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark svg{width:22px;height:22px;color:var(--cyan)}
+.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navr{display:flex;align-items:center;gap:14px;font-size:14px}
+.navr a{color:var(--ink2);text-decoration:none}
+.navr a:hover{color:var(--ink)}
+.lang{font:500 12px var(--mono);background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+
+.demo-bar{background:var(--s2);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.demo-bar .wrap{padding-block:9px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.demo-bar b{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 6px}
+
+.hero{padding:44px 0 26px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.hero h1{font-size:clamp(32px,5.4vw,52px);font-weight:700;line-height:1.08}
+.hero p{color:var(--ink2);max-width:60ch;font-size:17px;margin-top:14px}
+
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.hosts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0}
+.hosts figure{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.hosts img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:50% 20%}
+.hosts figcaption{font:500 11.5px var(--mono);color:var(--ink2);padding:6px 8px;line-height:1.35}
+.hosts figcaption b{display:block;font:600 13.5px var(--display);color:var(--c)}
+.hero .hosts-note{grid-column:1/-1;font-size:12.5px;color:var(--ink3);margin:0;line-height:1.5}
+.host{display:flex;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px}
+.host img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 18%;flex:none;border:2px solid var(--hc)}
+.host span{font-size:13px;color:var(--ink2);line-height:1.4}
+.host b{font:600 13px var(--display);color:var(--hc)}
+
+/* quiz */
+.quiz{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:18px}
+.prog{display:flex;gap:6px}
+.prog i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.prog i.on{background:var(--cyan)}
+.qn{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.quiz h2{font-size:clamp(22px,3vw,28px);line-height:1.3}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;font:inherit;color:var(--ink);background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer}
+.opt:hover{border-color:var(--cyan)}
+.opt[aria-pressed="true"]{border-color:var(--cyan);background:#16302f}
+.opt .k{font:600 13px var(--mono);color:var(--cyan);border:1px solid var(--line);border-radius:5px;width:26px;height:26px;display:grid;place-items:center;flex:none}
+.opt b{display:block;font:600 16px var(--display)}
+.opt small{color:var(--ink2);font-size:13.5px}
+.qnav{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:10px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
+.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
+.btn:hover{border-color:var(--cyan)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* results */
+#results{padding-top:36px}
+.res-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+.res-head h2{font-size:clamp(24px,3.4vw,32px)}
+.profile{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13.5px;color:var(--ink2)}
+.chip{font:500 12px var(--mono);padding:2px 9px;border-radius:99px;border:1px solid var(--c);color:var(--c)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.picks{grid-template-columns:1fr}}
+.pick{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.pick::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--c)}
+.pick.first{background:var(--s2);border-color:var(--c)}
+.rank{display:flex;justify-content:space-between;align-items:baseline;font:500 12px var(--mono);color:var(--ink3)}
+.pct{font:700 26px var(--display);color:var(--c);font-variant-numeric:tabular-nums}
+.persona-name{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.pick h3{font-size:20px;line-height:1.3}
+.pick p{color:var(--ink2);font-size:14.5px;margin:0}
+.why{font-size:13.5px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+.why b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:2px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font:500 13px var(--mono);color:var(--ink2);font-variant-numeric:tabular-nums}
+.pick .btn{margin-top:auto;justify-content:center}
+
+/* booking sheet */
+.book{margin-top:18px;background:var(--s1);border:1px solid var(--cyan);border-radius:12px;padding:20px;display:grid;gap:12px}
+.book h3{font-size:19px}
+.msg{font:14px/1.6 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;white-space:pre-wrap;user-select:all;overflow-wrap:anywhere}
+.book .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.book .note{font-size:13px;color:var(--ink3);margin:0}
+.toast{font:500 13px var(--mono);color:var(--nf)}
+
+/* catalogue */
+.sec{padding-top:56px}
+.sh{display:grid;gap:6px;margin-bottom:18px;max-width:66ch}
+.sh h2{font-size:clamp(24px,3.4vw,32px)}
+.sh p{color:var(--ink2);margin:0}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.filters button{font:500 13px var(--mono);background:var(--s1);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--bg);background:var(--c,var(--ink));border-color:var(--c,var(--ink))}
+.cat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:860px){.cat{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.cat{grid-template-columns:1fr}}
+.item{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;scroll-margin-top:80px}
+.item:target,.item.hl{border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.item .code{display:flex;justify-content:space-between;font:500 12px var(--mono);color:var(--ink3)}
+.item .code a{color:var(--ink3);text-decoration:none}
+.item .code a:hover{color:var(--cyan)}
+.item h3{font-size:17px;line-height:1.35}
+.item p{color:var(--ink2);font-size:14px;margin:0}
+.item .groups{display:flex;gap:6px;margin-top:auto;padding-top:6px}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.how div{background:var(--s1);padding:20px}
+.how b{display:block;font:600 17px var(--display);margin-bottom:4px}
+.how span{color:var(--ink2);font-size:14.5px}
+.cta{margin-top:56px;background:var(--s1);border-top:1px solid var(--line)}
+.cta .wrap{padding-block:44px;display:grid;gap:14px}
+.cta h2{font-size:clamp(24px,3.4vw,32px)}
+.cta p{color:var(--ink2);max-width:60ch;margin:0}
+.cta .row{display:flex;flex-wrap:wrap;gap:10px}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+/* creator page additions */
+.qhint{color:var(--ink3);font-size:14px;margin:-8px 0 0}
+.sub{font-size:20px;margin:28px 0 14px}
+.match .mcard,.pgrid .pc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);background:var(--s2);border:1px solid var(--c);border-radius:12px;overflow:hidden}
+.mcard img,.pc img{display:block;width:100%;height:100%;min-height:220px;object-fit:cover;object-position:50% 25%}
+.mbody{padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.mcard h3{font-size:21px;line-height:1.35}
+.mcard p,.pc p{color:var(--ink2);margin:0;font-size:15px}
+@media (max-width:700px){.match .mcard,.pgrid .pc{grid-template-columns:1fr}.mcard img,.pc img{height:auto;aspect-ratio:16/10;min-height:0}}
+.pgrid{display:grid;gap:14px}
+.pgrid .pc{background:var(--s1);border-color:var(--line);border-top:3px solid var(--c)}
+.pc h3{font-size:18px}
+.picks .pick h3{font-size:19px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:600px){.fields{grid-template-columns:1fr}}
+.fields label{display:grid;gap:4px;font-size:13.5px;color:var(--ink2)}
+.fields input{font:15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 12px}
+.fields input:focus{outline:2px solid var(--cyan);outline-offset:1px}
+.btn.ghost{font:500 14px var(--mono)}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:700px){.reel{grid-template-columns:1fr 1fr}}
+.reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.reel a:hover{border-color:var(--pink)}
+.reel img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.reel .cap b{display:block;font:600 15px var(--display);line-height:1.25}
+.reel .cap>span{font:500 12px var(--mono);color:var(--cyan)}
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--pink);border-radius:8px;padding:22px 24px}
+.rules h3{font-size:20px;margin-bottom:10px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
+.rules li b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="ThBHoStudio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>Th<b>B.</b>Ho</a>
+  <div class="navr">
+   <a href="#quiz"><span lang="th">จับคู่</span><span lang="en">Match</span></a>
+   <a href="#personas"><span lang="th">Persona</span><span lang="en">Personas</span></a>
+   <a href="#rules"><span lang="th">กติกา</span><span lang="en">Rules</span></a>
+   <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+  </div>
+ </div>
+</header>
+
+<main class="wrap">
+ <section class="hero">
+  <div>
+   <p class="eyebrow">ThB.Ho · Creator Collab Matching</p>
+   <h1><span lang="th">คุณควร collab กับใคร: Three, B. หรือ Hour?</span><span lang="en">Who should you collab with: Three, B. or Hour?</span></h1>
+   <p><span lang="th">สำหรับ creator สายฟิตเนสและกล้าม, OnlyFans และ platform สมัครสมาชิก, influencer สาย lifestyle และ creator กลุ่มเกย์/LGBTQ+ ตอบ 6 ข้อ แล้วดูว่า persona ตัวไหนเข้ากับคุณที่สุด พร้อมรูปแบบงานที่ทำร่วมกันได้ หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">For fitness and physique creators, OnlyFans and subscription creators, lifestyle influencers and gay/LGBTQ+ creators. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.</span></p>
+  </div>
+  <div class="hosts" aria-label="Personas">
+   <figure style="--c:var(--nf)"><img src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" width="560" height="840"><figcaption><b>Three · INFP</b><span lang="th">นักเล่าเรื่อง</span><span lang="en">Storyteller</span></figcaption></figure>
+   <figure style="--c:var(--nt)"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" width="560" height="840"><figcaption><b>B. · INFJ</b><span lang="th">นักวางกลยุทธ์</span><span lang="en">Strategist</span></figcaption></figure>
+   <figure style="--c:var(--sp)"><img src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" width="560" height="840"><figcaption><b>Hour · ESTP</b><span lang="th">สายลุย</span><span lang="en">Entrepreneur</span></figcaption></figure>
+   <p class="hosts-note"><span lang="th">ทุกภาพเป็น Hybrid AI ใบหน้าและร่างกายจริงผสม AI</span><span lang="en">All images are Hybrid AI: a real face and body blended with AI</span></p>
+  </div>
+ </section>
+
+ <section class="quiz" id="quiz" aria-live="polite">
+  <div class="prog" id="prog"></div>
+  <div class="qn" id="qn"></div>
+  <h2 id="qtitle"></h2>
+  <p class="qhint" id="qhint"></p>
+  <div class="opts" id="opts"></div>
+  <div class="qnav">
+   <button class="btn" id="back" type="button"><span lang="th">← ย้อนกลับ</span><span lang="en">← Back</span></button>
+   <button class="btn" id="restart" type="button" hidden><span lang="th">เริ่มใหม่</span><span lang="en">Start over</span></button>
+  </div>
+ </section>
+
+ <section id="results" hidden>
+  <div class="res-head">
+   <div>
+    <span class="kick"><span lang="th">ผลการจับคู่</span><span lang="en">Your match</span></span>
+    <h2 id="resTitle"></h2>
+   </div>
+   <div class="profile" id="profile"></div>
+  </div>
+  <div class="match" id="match"></div>
+  <h3 class="sub"><span lang="th">รูปแบบ collab ที่เหมาะกับคุณ</span><span lang="en">Collab formats that fit you</span></h3>
+  <div class="picks" id="picks"></div>
+
+  <div class="book" id="apply">
+   <h3><span lang="th">ส่งข้อความสมัคร collab</span><span lang="en">Send a collab request</span></h3>
+   <div class="fields">
+    <label for="fHandle"><span lang="th">ชื่อหรือ handle ของคุณ</span><span lang="en">Your name or handle</span><input id="fHandle" type="text" autocomplete="off" placeholder="@yourhandle"></label>
+    <label for="fLink"><span lang="th">ลิงก์ผลงานหลัก</span><span lang="en">Main portfolio link</span><input id="fLink" type="text" autocomplete="off" placeholder="x.com/… · instagram.com/… · onlyfans.com/…"></label>
+   </div>
+   <div class="msg" id="msg"></div>
+   <div class="row">
+    <button class="btn solid" id="copy" type="button"><span lang="th">คัดลอกข้อความ</span><span lang="en">Copy message</span></button>
+    <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">DM ทาง X @widerooms</span><span lang="en">DM on X @widerooms</span></a>
+    <span class="btn ghost" style="user-select:all;cursor:text">threeandhour@gmail.com</span>
+    <span class="toast" id="toast" role="status"></span>
+   </div>
+   <p class="note"><span lang="th">ข้อความนี้สร้างในเครื่องของคุณ หน้าเว็บไม่ส่งหรือเก็บข้อมูลใดๆ คัดลอกแล้วส่งเองทาง DM หรืออีเมล</span><span lang="en">This message is built on your device. The page sends and stores nothing; copy it and send it yourself by DM or email.</span></p>
+  </div>
+ </section>
+
+ <section class="sec" id="personas">
+  <div class="sh">
+   <span class="kick"><span lang="th">รู้จัก persona ทั้ง 3</span><span lang="en">Meet the three personas</span></span>
+   <h2><span lang="th">ใบหน้าจริงหนึ่งคน สามบุคลิก</span><span lang="en">One real face, three personalities</span></h2>
+   <p><span lang="th">สร้างจาก THOR ผสมกับเชื้อสายและบุคลิกที่ต่างกัน แต่ละตัวมีแนวงานที่ถนัดของตัวเอง</span><span lang="en">Built from THOR, each blended with a different heritage and personality, and each with its own kind of work.</span></p>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+ </section>
+
+ <section class="sec">
+  <div class="sh">
+   <span class="kick"><span lang="th">ผลงาน</span><span lang="en">Portfolio</span></span>
+   <h2><span lang="th">ผู้ชมจริงบน X</span><span lang="en">Real audiences on X</span></h2>
+   <p><span lang="th">MV และหนังสั้น Hybrid AI ของ Three, B. และ Hour ผู้ชมส่วนใหญ่เป็นชาวต่างชาติ (ยอดวิว ณ 2 พ.ย. 2026)</span><span lang="en">Hybrid AI music videos and short films by Three, B. and Hour, watched mostly by international audiences (views as of 2 Nov 2026).</span></p>
+  </div>
+  <div class="reel">
+   <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><img src="creator-img/x-154482.jpg" alt="Ritmo del Alma music video still" loading="lazy" width="720" height="405"><span class="cap"><b>Ritmo del Alma · MV</b><span>245K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
+   <a href="https://x.com/widerooms/status/2109560564754362752" target="_blank" rel="noopener"><img src="creator-img/x-362752.jpg" alt="Perdiéndonos en el calor still" loading="lazy" width="405" height="720"><span class="cap"><b>Perdiéndonos en el calor</b><span>147K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
+   <a href="https://x.com/widerooms/status/2061309949037400429" target="_blank" rel="noopener"><img src="creator-img/x-400429.jpg" alt="Explore Together still" loading="lazy" width="405" height="720"><span class="cap"><b>Explore Together · MV</b><span>130K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
+  </div>
+ </section>
+
+ <section class="sec" id="rules">
+  <div class="rules">
+   <h3><span lang="th">กติกาที่ไม่ยืดหยุ่น</span><span lang="en">Ground rules, not negotiable</span></h3>
+   <ul>
+    <li><b><span lang="th">อายุ 20 ปีขึ้นไป</span><span lang="en">20+ only</span></b> <span lang="th">แสดงเอกสารยืนยันตัวตนก่อนถ่ายทุกครั้ง</span><span lang="en">with ID shown before every shoot.</span></li>
+    <li><b><span lang="th">คุณเลือกระดับเนื้อหาเอง</span><span lang="en">You choose the content level</span></b> <span lang="th">ทุกชิ้น เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น ระดับ 3 เผยแพร่เฉพาะ platform ที่ตรวจอายุ</span><span lang="en">for every piece, can change it any time, and are never pushed up a level. Level 3 goes only to age-verified platforms.</span></li>
+    <li><b><span lang="th">ยินยอมเป็นลายลักษณ์อักษร</span><span lang="en">Written consent</span></b> <span lang="th">จากทุกคนในภาพ ก่อนเผยแพร่</span><span lang="en">from everyone in frame, before release.</span></li>
+    <li><b><span lang="th">คุณเป็นเจ้าของงานของคุณ</span><span lang="en">You own your work</span></b> <span lang="th">Remaster ทำเฉพาะงานที่คุณเป็นเจ้าของ · Digital Twin สร้างจากตัวคุณเมื่อคุณยินยอมเท่านั้น และแบ่งรายได้กัน</span><span lang="en">Remasters only use footage you own. A Digital Twin is built from you only with your consent, on a revenue share.</span></li>
+    <li><b><span lang="th">ถอนตัวได้ตลอด</span><span lang="en">Leave any time</span></b> <span lang="th">โดยไม่ต้องอธิบาย</span><span lang="en">without explaining.</span></li>
+   </ul>
+  </div>
+ </section>
+</main>
+
+<div class="cta"><div class="wrap">
+ <h2><span lang="th">ยังไม่แน่ใจ? ส่งลิงก์ผลงานมาคุยกันก่อน</span><span lang="en">Not sure yet? Send a link and let's talk</span></h2>
+ <p><span lang="th">ไม่มีข้อผูกมัด เราจะดูงานของคุณแล้วเสนอรูปแบบ collab ที่เหมาะ</span><span lang="en">No commitment. We'll look at your work and suggest the right collab.</span></p>
+ <div class="row">
+  <span class="btn solid" style="cursor:text;user-select:all">threeandhour@gmail.com</span>
+  <a class="btn" href="ThBHoStudio.html#creators"><span lang="th">ดูบริการสำหรับ creator</span><span lang="en">All creator services</span></a>
+ </div>
+</div></div>
+<div class="foot"><div class="wrap"><span>© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · เนื้อหาสำหรับผู้ใหญ่ไม่อยู่บนหน้านี้</span><span lang="en">All persona images are Hybrid AI · no adult content on this page</span></span></div></div>
+
+<script>
+(function(){
+ var root=document.documentElement, langBtn=document.getElementById('lang');
+ var $=function(id){return document.getElementById(id)};
+ function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
+ var EN=function(){return root.lang==='en'};
+
+ var P={
+  three:{n:'Three',mbti:'INFP',c:'var(--nf)',img:'creator-img/persona-three.jpg',show:'creator-img/show-three.jpg',
+   role:{th:'นักเล่าเรื่อง · ไทย-อิตาเลียน',en:'Storyteller · Thai-Italian'},
+   vibe:{th:'อบอุ่น โรแมนติก แบบภาพยนตร์ เน้นอารมณ์และเรื่องราวมากกว่าความหวือหวา',en:'Warm, romantic and cinematic. Mood and story over flash.'},
+   best:{th:'หนังสั้นและ MV, งานศิลปะและ portrait, collab แบบคู่ที่มีเรื่องเล่า',en:'Short films and music videos, art and portrait work, story-led duo collabs'},
+   quote:{th:'"มาเล่าเรื่องของเราสองคนให้คนดูรู้สึกตามไปด้วยกัน"',en:'"Let\'s tell a story about the two of us that people actually feel."'}},
+  b:{n:'B.',mbti:'INFJ',c:'var(--nt)',img:'creator-img/persona-b.jpg',show:'creator-img/show-b.jpg',
+   role:{th:'นักวางกลยุทธ์ · ไทย-สเปน-เกาหลี',en:'Strategist · Thai-Spanish-Korean'},
+   vibe:{th:'ลุค lifestyle หรู สุขุม มีแผน เหมาะกับแบรนด์และการต่อยอดรายได้ระยะยาว',en:'Premium lifestyle, composed and planned. Good for brands and long-term income.'},
+   best:{th:'Digital Twin, Remaster, collab แบรนด์และ lifestyle, วางแผน content ทั้งเดือน',en:'Digital Twins, remasters, brand and lifestyle collabs, month-long content plans'},
+   quote:{th:'"วางระบบให้ดีครั้งเดียว แล้วให้งานทำรายได้แทนคุณ"',en:'"Set it up properly once, then let the work earn for you."'}},
+  hour:{n:'Hour',mbti:'ESTP',c:'var(--sp)',img:'creator-img/persona-hour.jpg',show:'creator-img/show-hour.jpg',
+   role:{th:'สายลุย · ไทย-เกาหลี',en:'Entrepreneur · Thai-Korean'},
+   vibe:{th:'พลังเยอะ กล้า สนุก ชอบฟิตเนส ไฟนีออน งาน event และการถ่ายแบบเร็วๆ',en:'High energy, bold and playful. Fitness, neon, events and fast shoots.'},
+   best:{th:'Hybrid Shoot สายกล้าม, 48 Hours, งาน event และทริป, collab ข้ามฐานแฟน',en:'Physique Hybrid Shoots, 48 Hours, events and trips, audience-crossover collabs'},
+   quote:{th:'"ถ่ายจริงครึ่งวัน ที่เหลือให้ AI ช่วย แล้วไปเที่ยวต่อ"',en:'"Half a day of real shooting, AI does the rest, then we go out."'}}
+ };
+
+ var F={
+  collab:{th:'Persona Collab',en:'Persona Collab',d:{th:'ถ่ายคู่หรือเล่าเรื่องร่วมกับ persona ผู้ชมสองฝั่งข้ามมาเจอกัน',en:'Shoot or tell a story with a persona so both audiences cross over.'}},
+  shoot:{th:'Hybrid Shoot',en:'Hybrid Shoot',d:{th:'ถ่ายจริงเป็นฐาน AI เติมฉากและชุด ลดวันถ่ายลงราวครึ่งหนึ่ง',en:'A real shoot as the base, AI adds sets and wardrobe. About half the shoot days.'}},
+  remaster:{th:'Remaster',en:'Remaster',d:{th:'ยกระดับ footage เก่าด้วย AI ทั้งแสง ฉาก สี และ format ใหม่ (เฉพาะงานที่คุณเป็นเจ้าของ)',en:'Upgrade old footage with AI: light, set, colour and new formats (your own work only).'}},
+  movie:{th:'Hybrid AI Movies',en:'Hybrid AI Movies',d:{th:'หนังสั้นหรือ MV แบบ cinematic ที่คุณร่วมแสดง',en:'A cinematic short film or music video you appear in.'}},
+  twin:{th:'Digital Twin',en:'Digital Twin',d:{th:'AI Persona ที่สร้างจากตัวคุณ (เมื่อคุณยินยอม) ให้แฟนคุยได้ 24 ชม. แบ่งรายได้ เตรียมขึ้นแอป VR',en:'An AI persona built from you, with consent, that fans can talk to 24/7 on a revenue share. VR-ready.'}},
+  h48:{th:'48 Hours',en:'48 Hours',d:{th:'คู่ที่จับด้วย MBTI รับโจทย์เดียว ถ่ายเป็น series 2 วันในกรอบที่ตกลงไว้',en:'An MBTI-matched pair takes one brief and shoots a two-day series within agreed limits.'}},
+  lab:{th:'Creator & Art Lab',en:'Creator & Art Lab',d:{th:'workshop รุ่นละ 6–10 คน เรียนทำ Hybrid AI เอง',en:'Cohorts of 6–10 learning to make Hybrid AI work yourself.'}}
+ };
+
+ // p = persona points, f = format points, set = facts for the message
+ var Q=[
+  {k:'type',q:{th:'คุณเป็น creator สายไหนเป็นหลัก?',en:'What kind of creator are you mostly?'},
+   o:[
+    {th:'ฟิตเนส / สายกล้าม',en:'Fitness / physique',s:{th:'คลิปเทรน โพส ร่างกาย',en:'Training, posing, physique'},p:{hour:3,b:1},f:{shoot:3,h48:2,collab:1}},
+    {th:'OnlyFans / platform สมัครสมาชิก',en:'OnlyFans / subscription',s:{th:'มีแฟนจ่ายรายเดือน',en:'Paying monthly fans'},p:{hour:2,b:2},f:{twin:3,remaster:2,shoot:2}},
+    {th:'Influencer สาย lifestyle / ท่องเที่ยว',en:'Lifestyle / travel influencer',s:{th:'IG, TikTok, YouTube',en:'IG, TikTok, YouTube'},p:{b:3,three:1},f:{collab:3,movie:1}},
+    {th:'Creator กลุ่มเกย์ / LGBTQ+ หรือคู่รัก',en:'Gay / LGBTQ+ creator or couple',s:{th:'เล่าเรื่องชีวิตและความสัมพันธ์',en:'Life and relationship stories'},p:{three:2,hour:1},f:{collab:2,movie:2,h48:1}},
+    {th:'ช่างภาพ / ผู้กำกับ / ศิลปิน',en:'Photographer / filmmaker / artist',s:{th:'อยู่หลังกล้องเป็นหลัก',en:'Mostly behind the camera'},p:{three:3,b:1},f:{lab:3,movie:2}}
+   ]},
+  {k:'goal',q:{th:'อยากได้อะไรจาก collab มากที่สุด?',en:'What do you want most from a collab?'},
+   o:[
+    {th:'ฐานแฟนใหม่',en:'New audience',s:{th:'ข้ามไปหาแฟนฝั่ง persona',en:'Cross over to the personas\' fans'},p:{hour:1,b:1},f:{collab:4}},
+    {th:'Content มากขึ้น ถ่ายจริงน้อยลง',en:'More content, fewer shoot days',s:{th:'ประหยัดเวลาและค่าโปรดักชัน',en:'Save time and production cost'},p:{hour:1},f:{shoot:4,remaster:2}},
+    {th:'ผลงานแบบหนังหรือ MV',en:'A film or music video',s:{th:'งานชิ้นเด่นไว้โชว์',en:'A standout portfolio piece'},p:{three:2},f:{movie:4,h48:1}},
+    {th:'รายได้ตอนที่ไม่ได้ถ่าย',en:'Income while offline',s:{th:'มีตัวตน AI ทำงานแทน',en:'An AI self that works for you'},p:{b:2},f:{twin:4}},
+    {th:'อยากทำ Hybrid AI เป็นเอง',en:'Learn to do Hybrid AI myself',s:{th:'เรียนเป็นรุ่นเล็ก',en:'Small-group learning'},p:{b:1,three:1},f:{lab:4}}
+   ]},
+  {k:'level',hint:{th:'ไม่มีผลต่อการจับคู่ ใช้บอกทีมให้วางแผนถูก เปลี่ยนได้ทุกชิ้นงาน',en:'This does not change your match. It tells the team how to plan, and you can change it per piece.'},
+   q:{th:'ปกติคุณทำ content ระดับไหน?',en:'Which content level do you usually work at?'},
+   o:[
+    {th:'1 · ศิลปะ',en:'1 · Art',s:{th:'เผยแพร่ได้ทุก platform',en:'Fine on every platform'}},
+    {th:'2 · เปิดเผยบางส่วน',en:'2 · Partial',s:{th:'เฉพาะ platform ที่รองรับ',en:'Only where platforms allow it'}},
+    {th:'3 · สำหรับผู้ใหญ่',en:'3 · Adult',s:{th:'เฉพาะ platform ที่ตรวจอายุ',en:'Age-verified platforms only'}}
+   ]},
+  {k:'energy',q:{th:'บุคลิกหน้ากล้องของคุณเป็นแบบไหน?',en:'What is your on-camera energy like?'},
+   o:[
+    {th:'นิ่ง ลึก เล่าเรื่อง',en:'Calm, deep, storytelling',s:{th:'คนดูรู้สึกตาม',en:'People feel it with you'},p:{three:4}},
+    {th:'มั่นใจ ดูแพง มีแผน',en:'Confident, polished, planned',s:{th:'premium และน่าเชื่อถือ',en:'Premium and trustworthy'},p:{b:4}},
+    {th:'พลังเยอะ กล้า ขี้เล่น',en:'High energy, bold, playful',s:{th:'ยิ่งสนุกยิ่งดี',en:'The more fun the better'},p:{hour:4}},
+    {th:'ปรับตามงาน',en:'Depends on the project',s:{th:'เล่นได้หลายแบบ',en:'I can do several styles'},p:{three:1,b:1,hour:1},f:{h48:1}}
+   ]},
+  {k:'where',q:{th:'คุณถ่ายงานได้ที่ไหน?',en:'Where can you shoot?'},
+   o:[
+    {th:'กรุงเทพฯ',en:'Bangkok',s:{th:'นัดถ่ายในเมือง',en:'Shoots in the city'},f:{shoot:2,collab:1}},
+    {th:'พัทยา / EEC',en:'Pattaya / EEC',s:{th:'ทะเล เรือ วิลล่า',en:'Beach, yachts, villas'},p:{hour:1},f:{h48:2,movie:1}},
+    {th:'ส่งงานจากที่ไหนก็ได้',en:'Remote only',s:{th:'ส่ง footage มาให้',en:'I send footage'},p:{b:1},f:{remaster:3,twin:2}},
+    {th:'ไปทริปด้วยกันได้',en:'Happy to travel together',s:{th:'ทริป 3 วัน 2 คืน',en:'A 3-day trip'},p:{hour:1,three:1},f:{h48:3,movie:1}}
+   ]},
+  {k:'size',q:{th:'ฐานผู้ติดตามรวมของคุณประมาณเท่าไร?',en:'Roughly how big is your following?'},
+   o:[
+    {th:'1K–10K',en:'1K–10K',s:{th:'Resident creator',en:'Resident creator'},f:{lab:1,shoot:1}},
+    {th:'10K–100K',en:'10K–100K',s:{th:'Featured creator',en:'Featured creator'},f:{collab:1}},
+    {th:'100K ขึ้นไป',en:'100K+',s:{th:'Headline creator',en:'Headline creator'},f:{collab:1,twin:1}},
+    {th:'กำลังเริ่ม',en:'Just starting',s:{th:'ยังไม่ถึง 1K',en:'Under 1K'},f:{lab:2}}
+   ]}
+ ];
+ var N=Q.length;
+ var st={step:0,ans:[],done:false};
+ $('prog').innerHTML=Q.map(function(){return '<i></i>'}).join('');
+
+ function renderQ(){
+  var i=st.step,q=Q[i];
+  $('prog').querySelectorAll('i').forEach(function(el,k){el.className=k<=i?'on':''});
+  $('qn').innerHTML=T('ข้อ '+(i+1)+' จาก '+N,'Question '+(i+1)+' of '+N);
+  $('qtitle').innerHTML=T(q.q.th,q.q.en);
+  $('qhint').innerHTML=q.hint?T(q.hint.th,q.hint.en):'';
+  $('qhint').hidden=!q.hint;
+  $('opts').innerHTML=q.o.map(function(o,k){
+   return '<button class="opt" type="button" data-k="'+k+'" aria-pressed="'+(st.ans[i]===k)+'"><span class="k">'+'ABCDE'[k]+'</span><span><b>'+T(o.th,o.en)+'</b><small>'+T(o.s.th,o.s.en)+'</small></span></button>';
+  }).join('');
+  $('back').disabled=i===0; $('restart').hidden=!st.done;
+ }
+ $('opts').addEventListener('click',function(e){
+  var b=e.target.closest('.opt');if(!b)return;
+  st.ans[st.step]=+b.dataset.k;
+  if(st.step<N-1){st.step++;renderQ();}else{st.done=true;renderQ();score();}
+ });
+ $('back').addEventListener('click',function(){if(st.step>0){st.step--;renderQ();}});
+ $('restart').addEventListener('click',function(){st={step:0,ans:[],done:false};$('results').hidden=true;renderQ();$('quiz').scrollIntoView({block:'start'});});
+
+ function score(){
+  var ps={three:0,b:0,hour:0},fs={};for(var k in F)fs[k]=0;
+  Q.forEach(function(q,i){var o=q.o[st.ans[i]];if(!o)return;
+   if(o.p)for(var a in o.p)ps[a]+=o.p[a];
+   if(o.f)for(var b in o.f)fs[b]+=o.f[b];});
+  var pr=Object.keys(ps).sort(function(a,b){return ps[b]-ps[a]});
+  var tot=ps.three+ps.b+ps.hour||1;
+  // persona flavour nudges formats a little
+  var lean={three:{movie:1,lab:1},b:{twin:1,remaster:1},hour:{shoot:1,h48:1}}[pr[0]];
+  for(var x in lean)fs[x]+=lean[x];
+  var fr=Object.keys(fs).sort(function(a,b){return fs[b]-fs[a]}).slice(0,3);
+  var fmax=fs[fr[0]]||1;
+  st.res={ps:ps,pr:pr,tot:tot,fr:fr,fs:fs,fmax:fmax};
+  render();
+ }
+
+ function render(){
+  var r=st.res,top=P[r.pr[0]],second=P[r.pr[1]];
+  var pct=Math.round(60+39*(r.ps[r.pr[0]]/r.tot));
+  $('resTitle').innerHTML=T('คุณเข้ากับ '+top.n+' ที่สุด','You match best with '+top.n);
+  $('profile').innerHTML=T('อันดับรอง:','Runner-up:')+' <span class="chip" style="--c:'+second.c+'">'+second.n+' · '+second.mbti+'</span>';
+  $('match').innerHTML='<article class="mcard" style="--c:'+top.c+'">'+
+   '<img src="'+top.show+'" alt="'+top.n+' — Hybrid AI persona" loading="lazy">'+
+   '<div class="mbody"><div class="rank"><span class="persona-name">'+top.n+' · '+top.mbti+' · '+T(top.role.th,top.role.en)+'</span><span class="pct">'+pct+'%</span></div>'+
+   '<h3>'+T(top.quote.th,top.quote.en)+'</h3><p>'+T(top.vibe.th,top.vibe.en)+'</p>'+
+   '<div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(top.best.th,top.best.en)+'</div></div></article>';
+  $('picks').innerHTML=r.fr.map(function(k,i){var f=F[k];
+   var fit=Math.round(70+29*(r.fs[k]/r.fmax));
+   return '<article class="pick'+(i===0?' first':'')+'" style="--c:'+top.c+'"><div class="rank"><span>#'+(i+1)+'</span><span class="pct">'+fit+'%</span></div><h3>'+f.en+'</h3><p>'+T(f.d.th,f.d.en)+'</p></article>';
+  }).join('');
+  $('results').hidden=false; renderMsg();
+  $('results').scrollIntoView({block:'start'});
+ }
+
+ function renderMsg(){
+  if(!st.res)return;
+  var en=EN(),r=st.res,top=P[r.pr[0]];
+  function a(i){var o=Q[i].o[st.ans[i]];return o?(en?o.en:o.th):'-'}
+  var h=$('fHandle').value.trim()||(en?'(your handle)':'(ชื่อหรือ handle)');
+  var l=$('fLink').value.trim()||(en?'(portfolio link)':'(ลิงก์ผลงาน)');
+  var fm=r.fr.map(function(k){return F[k].en}).join(', ');
+  var t=en
+   ? 'Hi ThB.Ho! I\'d like to collab with '+top.n+'.\nName/handle: '+h+'\nPortfolio: '+l+'\nI am: '+a(0)+' · following '+a(5)+'\nGoal: '+a(1)+'\nContent level: '+a(2)+'\nOn camera: '+a(3)+' · can shoot: '+a(4)+'\nFormats I\'m interested in: '+fm+'\nI am 20+ and can show ID before a shoot.'
+   : 'สวัสดีครับ ThB.Ho สนใจ collab กับ '+top.n+'\nชื่อ/handle: '+h+'\nผลงาน: '+l+'\nสายงาน: '+a(0)+' · ผู้ติดตาม '+a(5)+'\nเป้าหมาย: '+a(1)+'\nระดับเนื้อหา: '+a(2)+'\nบุคลิกหน้ากล้อง: '+a(3)+' · ถ่ายได้ที่: '+a(4)+'\nรูปแบบที่สนใจ: '+fm+'\nอายุ 20 ปีขึ้นไป และแสดงบัตรก่อนถ่ายได้';
+  $('msg').textContent=t; $('toast').textContent='';
+ }
+ $('fHandle').addEventListener('input',renderMsg);
+ $('fLink').addEventListener('input',renderMsg);
+ $('copy').addEventListener('click',function(){
+  var done=function(){$('toast').textContent=EN()?'Copied':'คัดลอกแล้ว'};
+  var fb=function(){var rg=document.createRange();rg.selectNodeContents($('msg'));var s=getSelection();s.removeAllRanges();s.addRange(rg);};
+  try{navigator.clipboard.writeText($('msg').textContent).then(done,fb)}catch(e){fb()}
+ });
+
+ $('pgrid').innerHTML=['three','b','hour'].map(function(k){var p=P[k];
+  return '<article class="pc" style="--c:'+p.c+'"><img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona" loading="lazy"><div class="mbody"><span class="persona-name">'+p.n+' · '+p.mbti+'</span><h3>'+T(p.role.th,p.role.en)+'</h3><p>'+T(p.vibe.th,p.vibe.en)+'</p><div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div></article>';
+ }).join('');
+
+ function setLang(l){root.lang=l;langBtn.textContent=l==='th'?'EN':'TH';try{localStorage.setItem('thbho-lang',l)}catch(e){}renderMsg();}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ setLang(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
+ langBtn.addEventListener('click',function(){setLang(root.lang==='th'?'en':'th')});
+ renderQ();
+})();
+</script>
+</body>
+</html>

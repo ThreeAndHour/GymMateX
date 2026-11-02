@@ -195,6 +195,43 @@ section{padding:64px 0 0}
 .personas figcaption{position:relative;z-index:1;background:var(--s1)}
 
 /* split pages */
+/* level switcher */
+#levels{scroll-margin-top:70px}
+.lvtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:640px){.lvtabs{grid-template-columns:1fr}}
+.lvtab{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:4px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:16px 18px}
+.lvtab:hover{border-color:var(--c)}
+.lvtab:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.lvtab[aria-selected="true"]{background:var(--s2);border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.lvtab .n{font:700 13px var(--mono);color:var(--c);letter-spacing:.08em}
+.lvtab b{font:600 19px var(--display)}
+.lvtab>span:not(.n){font-size:13.5px;color:var(--ink2)}
+.lvtab b span{font:inherit;color:inherit}
+.lvpanel{margin-top:16px;background:var(--s1);border:1px solid var(--c);border-radius:12px;padding:24px;display:grid;gap:20px}
+.lvhead{display:grid;gap:6px;max-width:68ch}
+.lvhead .k{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.lvhead h3{font-size:clamp(22px,3vw,28px);line-height:1.3}
+.lvhead p{color:var(--ink2);margin:0}
+.lvcols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.lvcols{grid-template-columns:1fr}}
+.lvbox{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px}
+.lvbox h4{margin:0 0 8px;font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.lvbox ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14.5px;color:var(--ink2)}
+.lvbox li b{color:var(--ink)}
+.lvlooks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:700px){.lvlooks{grid-template-columns:1fr 1fr}}
+.lvlooks a,.lvlooks figure{position:relative;display:block;margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.lvlooks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.lvlooks .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,rgba(14,11,16,.92));font-size:13px}
+.lvlooks .cap b{display:block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.lock{display:grid;gap:12px;justify-items:start;background:repeating-linear-gradient(135deg,var(--s2) 0 14px,var(--s1) 14px 28px);border:1px dashed var(--c);border-radius:10px;padding:22px}
+.lock b{font:600 18px var(--display)}
+.lock p{margin:0;color:var(--ink2);max-width:60ch}
+.lock label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink);cursor:pointer}
+.lock input{margin-top:4px;accent-color:var(--pink);width:18px;height:18px}
+.lvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.lvcta .btn.solid{background:var(--c);border-color:var(--c);color:#0E0B10}
+
 @media (max-width:760px){nav a.switch{display:inline-block}}
 .switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
 .switch:hover{color:var(--ink);border-color:var(--cyan)}
@@ -260,6 +297,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    <a href="#match"><span lang="th">จับคู่</span><span lang="en">Match</span></a>
    <a href="#portfolio">Portfolio</a>
    <a href="#roadmap">VR</a>
+   <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
    <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับร้าน →</span><span lang="en">For venues →</span></a>
    <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
@@ -283,6 +321,17 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <figcaption><span lang="th">Hybrid AI Persona: Three · B. · Hour — ใบหน้าจริงผสม AI</span><span lang="en">Hybrid AI personas Three · B. · Hour — real face blended with AI</span></figcaption>
  </figure>
 </div>
+
+
+<section id="levels">
+ <div class="sh">
+  <span class="kick"><span lang="th">เลือกระดับของคุณ</span><span lang="en">Choose your level</span></span>
+  <h2><span lang="th">3 ระดับ เลือกเท่าที่คุณสบายใจ</span><span lang="en">Three levels. Go only as far as you're comfortable.</span></h2>
+  <p><span lang="th">คุณเลือกระดับเองทุกชิ้น เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">You choose the level of every piece, can change it any time, and are never pushed up a level.</span></p>
+ </div>
+ <div class="lvtabs" role="tablist" aria-label="Levels"><button class="lvtab" type="button" role="tab" id="lvt1" data-lv="1" aria-selected="false" style="--c:var(--cyan)"><span class="n">LEVEL 1</span><b><span lang="th">ปกติ</span><span lang="en">Everyday</span></b><span><span lang="th">ฟิตเนส lifestyle influencer</span><span lang="en">Fitness, lifestyle, influencers</span></span></button><button class="lvtab" type="button" role="tab" id="lvt2" data-lv="2" aria-selected="false" style="--c:var(--gold)"><span class="n">LEVEL 2</span><b><span lang="th">Sexy</span><span lang="en">Sexy</span></b><span><span lang="th">หุ่น ชุดว่ายน้ำ thirst trap</span><span lang="en">Physique, swimwear, thirst traps</span></span></button><button class="lvtab" type="button" role="tab" id="lvt3" data-lv="3" aria-selected="false" style="--c:var(--pink)"><span class="n">LEVEL 3</span><b><span lang="th">Hardcore 18+</span><span lang="en">Hardcore 18+</span></b><span><span lang="th">OnlyFans และ platform ตรวจอายุ</span><span lang="en">OnlyFans and age-verified platforms</span></span></button></div>
+ <div class="lvpanel" id="lvpanel" role="tabpanel" aria-live="polite"></div>
+</section>
 
 <section id="creators">
  <div class="sh">
@@ -509,6 +558,37 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  $('pdClose').addEventListener('click',closePersona);
  dlg.addEventListener('click',function(e){if(e.target===dlg)closePersona();});
  $('pdMatch').addEventListener('click',function(){closePersona();$('match').scrollIntoView({block:'start'});});
+
+ // ---- level switcher ----
+ var LV=[{"c": "var(--cyan)", "name_th": "ปกติ", "name_en": "Everyday", "tag_th": "ฟิตเนส lifestyle influencer", "tag_en": "Fitness, lifestyle, influencers", "title": ["Content ที่ลงได้ทุก platform", "Content that works on every platform"], "lead": ["สำหรับ creator สายฟิตเนส ไลฟ์สไตล์ ท่องเที่ยว และ influencer ที่อยากได้งานสวยระดับหนัง ถ่ายจริงน้อยลง และข้ามไปหาฐานแฟนของ Three, B. และ Hour", "For fitness, lifestyle and travel creators and influencers who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Creator ฟิตเนสและสายกล้าม", "Fitness and physique creators"], ["Influencer ไลฟ์สไตล์และท่องเที่ยว", "Lifestyle and travel influencers"], ["ช่างภาพ ผู้กำกับ ศิลปิน", "Photographers, filmmakers, artists"]]}, {"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Persona Collab</b> ถ่ายคู่ ข้ามฐานแฟน", "<b>Persona Collab</b> for audience crossover"], ["<b>Hybrid AI Movies</b> หนังสั้นและ MV", "<b>Hybrid AI Movies</b>: short films and MVs"], ["<b>Creator &amp; Art Lab</b> รุ่นละ 6–10 คน", "<b>Creator &amp; Art Lab</b>, cohorts of 6–10"]]}, {"h": ["ช่องทางและรายได้", "Channels and income"], "items": [["IG · TikTok · YouTube · X", "IG · TikTok · YouTube · X"], ["แบ่งรายได้จากแบรนด์และ sponsor", "Shared brand and sponsor income"], ["คุณเป็นเจ้าของงานของคุณ", "You own your work"]]}], "looks": [{"img": "creator-img/show-three.jpg", "alt": "Three in yellow and green light", "k": "Three · Digital look", "t": ["ลุคแบบภาพยนตร์", "A cinematic look"]}, {"img": "creator-img/show-b.jpg", "alt": "B. in a suit on a rooftop at sunset", "k": "B. · Lifestyle", "t": ["lifestyle หรู", "Premium lifestyle"]}, {"u": "https://x.com/widerooms/status/2061309949037400429", "img": "creator-img/x-400429.jpg", "alt": "Explore Together still", "k": "Explore Together · 130K", "t": ["ดูบน X ↗", "View on X ↗"]}], "cta": {"href": "#match", "t": ["เช็กว่าเข้ากับ persona ไหน →", "Find your persona match →"]}, "note": ["ระดับ 1 เผยแพร่ได้ทุก platform", "Level 1 is fine on every platform"]}, {"c": "var(--gold)", "name_th": "Sexy", "name_en": "Sexy", "tag_th": "หุ่น ชุดว่ายน้ำ thirst trap", "tag_en": "Physique, swimwear, thirst traps", "title": ["เซ็กซี่แบบมีชั้นเชิง ลงได้ในที่ที่ platform อนุญาต", "Sexy with style, where platforms allow it"], "lead": ["สำหรับ creator ที่ขายความมั่นใจในรูปร่าง ชุดว่ายน้ำ ชุดชั้นใน และ thirst trap ให้ AI สร้างฉากเรือ ชายหาด และวิลล่า แทนการเช่าโลเคชัน", "For creators who sell confidence in their physique: swimwear, underwear and thirst traps, with AI building the yacht, beach and villa sets instead of renting locations."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Creator สายกล้ามและนายแบบ", "Physique creators and models"], ["Creator กลุ่มเกย์ / LGBTQ+ และคู่รัก", "Gay / LGBTQ+ creators and couples"], ["Creator ที่มีหน้า X หรือ Fansly ระดับ SFW", "Creators with SFW X or Fansly pages"]]}, {"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Hybrid Shoot</b> ถ่ายครึ่งวัน AI เติมฉาก", "<b>Hybrid Shoot</b>: half a day of shooting, AI adds the sets"], ["<b>48 Hours</b> คู่ MBTI ถ่าย series 2 วัน", "<b>48 Hours</b>: an MBTI pair, a two-day series"], ["<b>Remaster</b> ยกระดับงานเก่า", "<b>Remaster</b> your older footage"]]}, {"h": ["ช่องทางและรายได้", "Channels and income"], "items": [["X · Fansly · Patreon · ช่อง VIP", "X · Fansly · Patreon · VIP channels"], ["Collab แบ่งรายได้ 50/50", "Collab revenue split 50/50"], ["คุณกำหนดขอบเขตเองทุกชิ้น", "You set the limits on every piece"]]}], "looks": [{"u": "https://x.com/widerooms/status/2094021510986154482", "img": "creator-img/x-154482.jpg", "alt": "Ritmo del Alma still", "k": "Ritmo del Alma · 245K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2109560564754362752", "img": "creator-img/x-362752.jpg", "alt": "Perdiéndonos en el calor still", "k": "Perdiéndonos · 147K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2089337196402852328", "img": "creator-img/x-852328.jpg", "alt": "La sal en la piel still", "k": "La sal en la piel · 61K", "t": ["ดูบน X ↗", "View on X ↗"]}], "cta": {"href": "#match", "t": ["เช็กว่าเข้ากับ persona ไหน →", "Find your persona match →"]}, "note": ["ระดับ 2 เฉพาะ platform ที่รองรับ", "Level 2 only where platforms allow it"]}, {"c": "var(--pink)", "name_th": "Hardcore 18+", "name_en": "Hardcore 18+", "tag_th": "OnlyFans และ platform ตรวจอายุ", "tag_en": "OnlyFans and age-verified platforms", "gate": true, "gateText": ["ระดับนี้สำหรับ creator ผู้ใหญ่บน platform สมัครสมาชิกที่ตรวจอายุ รายละเอียดแสดงเมื่อยืนยันอายุเท่านั้น และไม่มีภาพในหน้านี้", "This level is for adult creators on age-verified subscription platforms. Details show only after you confirm your age, and there are no images on this page."], "title": ["งานสำหรับผู้ใหญ่ ที่คุณคุมได้ทุกขั้น", "Adult work you control at every step"], "lead": ["สำหรับ creator บน OnlyFans และ platform ที่ตรวจอายุ ทำงานร่วมกับ persona ลดวันถ่ายจริง และเตรียม Digital Twin สำหรับระดับ X ในแอป VR ในอนาคต", "For creators on OnlyFans and other age-verified platforms: work alongside the personas, cut real shoot days, and prepare a Digital Twin for the future X tier of the VR app."], "cols": [{"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Persona Collab 18+</b> เฉพาะ platform ตรวจอายุ", "<b>Persona Collab 18+</b>, age-verified platforms only"], ["<b>Remaster</b> งานเก่าที่คุณเป็นเจ้าของ", "<b>Remaster</b> footage you own"], ["<b>Digital Twin</b> เตรียมสำหรับแอป VR", "<b>Digital Twin</b>, prepared for the VR app"]]}, {"h": ["โมเดลแบ่งรายได้", "Revenue models"], "items": [["Licensing: creator ได้ 20–30%", "Licensing: creator gets 20–30%"], ["Co-managed: 50–60 / 40–50", "Co-managed: 50–60 / 40–50"], ["Full agency: creator ได้ 30–40% · Collab 50/50", "Full agency: creator gets 30–40% · Collab 50/50"]]}, {"h": ["กติกาเพิ่มเติม", "Extra rules"], "items": [["ตรวจบัตรและเซ็นยินยอมก่อนถ่ายทุกครั้ง", "ID check and signed consent before every shoot"], ["ไม่ขึ้นช่องทางสาธารณะใดๆ ทั้งสิ้น", "Never on any public channel"], ["ถอนงานและถอนตัวได้ตลอด", "Withdraw work or leave at any time"]]}], "privateText": ["เพื่อความเป็นส่วนตัวของทุกคน ผลงานระดับ 3 ไม่แสดงบนเว็บ ส่งให้ดูเป็นรายบุคคลหลังคุยกันและยืนยันตัวตนแล้ว", "For everyone's privacy, level 3 work is never shown on the web. We share it one to one after a conversation and an ID check."], "cta": {"href": "#contact", "t": ["ขอดูผลงานระดับ 3 แบบส่วนตัว →", "Request level 3 work privately →"]}, "note": ["ระดับ 3 เฉพาะ platform ที่ตรวจอายุ", "Level 3 only on age-verified platforms"]}], lvAdult=false;
+ try{lvAdult=sessionStorage.getItem('thbho-20plus')==='1'}catch(e){}
+ function TT(o){return '<span lang="th">'+o[0]+'</span><span lang="en">'+o[1]+'</span>'}
+ function lvList(a){return '<ul>'+a.map(function(x){return '<li>'+TT(x)+'</li>'}).join('')+'</ul>'}
+ function showLevel(n,scroll){
+  var L=LV[n-1],P=document.getElementById('lvpanel');
+  document.querySelectorAll('.lvtab').forEach(function(t){t.setAttribute('aria-selected',t.dataset.lv==n)});
+  P.style.setProperty('--c',L.c);
+  var head='<div class="lvhead"><span class="k">LEVEL '+n+' · '+TT([L.name_th,L.name_en])+'</span><h3>'+TT(L.title)+'</h3><p>'+TT(L.lead)+'</p></div>';
+  if(L.gate&&!lvAdult){
+   P.innerHTML=head+'<div class="lock"><b>'+TT(['🔒 เนื้อหาระดับนี้สำหรับผู้ใหญ่','🔒 This level is for adults'])+'</b><p>'+TT(L.gateText)+'</p>'+
+    '<label for="ageok"><input type="checkbox" id="ageok"> '+TT(['ฉันอายุ 20 ปีขึ้นไป และเข้าใจว่างานระดับนี้เผยแพร่เฉพาะ platform ที่ตรวจอายุ','I am 20 or older and understand this level is only published on age-verified platforms'])+'</label>'+
+    '<button class="btn solid" type="button" id="ageGo" disabled>'+TT(['ดูรายละเอียดระดับ 3','Show level 3 details'])+'</button></div>';
+   var cb=document.getElementById('ageok'),go=document.getElementById('ageGo');
+   cb.addEventListener('change',function(){go.disabled=!cb.checked});
+   go.addEventListener('click',function(){lvAdult=true;try{sessionStorage.setItem('thbho-20plus','1')}catch(e){}showLevel(n);});
+  } else {
+   var cols='<div class="lvcols">'+L.cols.map(function(c){return '<div class="lvbox"><h4>'+TT(c.h)+'</h4>'+lvList(c.items)+'</div>'}).join('')+'</div>';
+   var looks=L.looks?'<div class="lvlooks">'+L.looks.map(function(w){var inner='<img src="'+w.img+'" alt="'+w.alt+'" loading="lazy"><span class="cap"><b>'+w.k+'</b>'+TT(w.t)+'</span>';return w.u?'<a href="'+w.u+'" target="_blank" rel="noopener">'+inner+'</a>':'<figure>'+inner+'</figure>'}).join('')+'</div>'
+     :'<div class="lock"><b>'+TT(['ผลงานระดับนี้ส่งให้เป็นรายบุคคล','Work at this level is shared one to one'])+'</b><p>'+TT(L.privateText)+'</p></div>';
+   P.innerHTML=head+cols+looks+'<div class="lvcta"><a class="btn solid" href="'+L.cta.href+'">'+TT(L.cta.t)+'</a><span class="note" style="margin:0">'+TT(L.note)+'</span></div>';
+  }
+  try{var u=new URL(location.href);u.searchParams.set('level',n);history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}
+  if(scroll)document.getElementById('levels').scrollIntoView({block:'start'});
+ }
+ document.querySelectorAll('.lvtab').forEach(function(t){t.addEventListener('click',function(){showLevel(+t.dataset.lv)})});
+ var lq=+(new URLSearchParams(location.search).get('level')||1); if(!(lq>=1&&lq<=3))lq=1;
+ showLevel(lq,new URLSearchParams(location.search).has('level'));
+
 })();
 </script>
 </body>

@@ -197,6 +197,23 @@ section{padding:64px 0 0}
 .personas figcaption{position:relative;z-index:1;background:var(--s1)}
 
 /* split pages */
+/* X highlights */
+.xh-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.xh-chips button{font:500 13px var(--mono);background:var(--s1);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 12px;cursor:pointer}
+.xh-chips button[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#06201E}
+.xh-grid{columns:3 300px;column-gap:14px}
+.xh-card{break-inside:avoid;margin:0 0 14px;background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.xh-card[hidden]{display:none}
+.xh-link{display:grid;gap:6px;padding:18px;color:var(--ink);text-decoration:none;min-height:120px;align-content:start}
+.xh-link:hover{background:var(--s2)}
+.xh-link small{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pink)}
+.xh-link b{font:600 17px/1.35 var(--display)}
+.xh-link em{font-style:normal;font:500 12.5px var(--mono);color:var(--cyan);margin-top:4px}
+.xh-card .twitter-tweet{margin:0!important}
+.xh-card.loaded .xh-link{display:none}
+.xh-card.loaded{background:transparent;border-color:transparent}
+.xh-more{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
+
 /* level switcher */
 #levels{scroll-margin-top:70px}
 .lvtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -274,6 +291,7 @@ section{padding:64px 0 0}
    <a href="#venues"><span lang="th">บริการ</span><span lang="en">Services</span></a>
    <a href="#demo">Demo</a>
    <a href="#portfolio">Portfolio</a>
+   <a href="#highlights">X</a>
    <a href="#roadmap"><span lang="th">แผน O2O</span><span lang="en">O2O plan</span></a>
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
@@ -377,6 +395,17 @@ section{padding:64px 0 0}
   <figure><img src="creator-img/show-three.jpg" alt="Three in yellow and green light" loading="lazy" width="1360" height="768"><figcaption><b>Model spotlight</b><span lang="th">แนะนำนายแบบประจำเดือน</span><span lang="en">Model of the month</span></figcaption></figure>
  </div>
  <div class="demo-cta"><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">ดูผลงาน MV และหนังสั้นบน X ↗</span><span lang="en">See our films and music videos on X ↗</span></a><span class="note" style="margin:0">Ritmo del Alma · 245K <span lang="th">วิว</span><span lang="en">views</span></span></div>
+</section>
+
+<section id="highlights">
+ <div class="sh">
+  <span class="kick">X · @widerooms</span>
+  <h2><span lang="th">วิดีโอจริงจาก X @widerooms</span><span lang="en">Real videos from X @widerooms</span></h2>
+  <p><span lang="th">MV เบื้องหลัง และคลิป Casting ที่ทำด้วย Hybrid AI · ร้านจะได้ content คุณภาพระดับเดียวกัน</span><span lang="en">MVs, behind-the-scenes and casting clips made with Hybrid AI. Your venue gets content at the same level.</span></p>
+ </div>
+ 
+ <div class="xh-grid" id="xhGrid"><article class="xh-card" data-x="2064692207236649126" data-cat="film"><a class="xh-link" href="https://x.com/widerooms/status/2064692207236649126" target="_blank" rel="noopener"><small><span lang="th">MV และหนังสั้น</span><span lang="en">MV &amp; films</span> · 2026</small><b><span lang="th">MV ที่ตัดต่อทั้งเรื่องด้วย Claude</span><span lang="en">A music video edited entirely with Claude</span></b><em><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></em></a></article><article class="xh-card" data-x="2063900491546009687" data-cat="film"><a class="xh-link" href="https://x.com/widerooms/status/2063900491546009687" target="_blank" rel="noopener"><small><span lang="th">MV และหนังสั้น</span><span lang="en">MV &amp; films</span> · 2026</small><b><span lang="th">100 Days of Heartbreaking</span><span lang="en">100 Days of Heartbreaking</span></b><em><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></em></a></article><article class="xh-card" data-x="2063254810783285608" data-cat="bts"><a class="xh-link" href="https://x.com/widerooms/status/2063254810783285608" target="_blank" rel="noopener"><small><span lang="th">เบื้องหลัง</span><span lang="en">Behind the scenes</span> · 2026</small><b><span lang="th">เบื้องหลัง · The Butterflies</span><span lang="en">Behind the scenes · The Butterflies</span></b><em><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></em></a></article><article class="xh-card" data-x="1888880203272995220" data-cat="casting"><a class="xh-link" href="https://x.com/widerooms/status/1888880203272995220" target="_blank" rel="noopener"><small><span lang="th">Casting</span><span lang="en">Casting</span> · 2025</small><b><span lang="th">คลิป Casting · Portfolio 2: Time Rider</span><span lang="en">Casting clip · Portfolio 2: Time Rider</span></b><em><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></em></a></article></div>
+ <div class="xh-more"><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">ดูทั้งหมดบน X @widerooms ↗</span><span lang="en">See everything on X @widerooms ↗</span></a><span class="note" style="margin:0"><span lang="th">ถ้าวิดีโอไม่ขึ้น กดที่การ์ดเพื่อเปิดบน X</span><span lang="en">If a video doesn't load, tap its card to open it on X</span></span></div>
 </section>
 
 <section id="roadmap">
@@ -483,6 +512,33 @@ section{padding:64px 0 0}
  document.querySelectorAll('.lvtab').forEach(function(t){t.addEventListener('click',function(){showLevel(+t.dataset.lv)})});
  var lq=+(new URLSearchParams(location.search).get('level')||1); if(!(lq>=1&&lq<=3))lq=1;
  showLevel(lq,new URLSearchParams(location.search).has('level'));
+
+
+ // ---- X highlights: embed each post with X's own widget when it scrolls into view ----
+ (function(){
+  var grid=document.getElementById('xhGrid'); if(!grid)return;
+  var loading=false, ready=false, queue=[];
+  function embed(card){
+   if(card.dataset.done)return; card.dataset.done='1';
+   var box=document.createElement('div'); card.appendChild(box);
+   window.twttr.widgets.createTweet(card.dataset.x,box,{theme:'dark',dnt:true,conversation:'none',align:'center'})
+    .then(function(el){if(el)card.classList.add('loaded');else box.remove();});
+  }
+  function need(card){ if(ready)embed(card); else {queue.push(card); load();} }
+  function load(){
+   if(loading)return; loading=true;
+   var s=document.createElement('script'); s.src='https://platform.twitter.com/widgets.js'; s.async=true; s.charset='utf-8';
+   s.onload=function(){ if(window.twttr&&twttr.ready)twttr.ready(function(){ready=true;queue.splice(0).forEach(embed);}); };
+   document.head.appendChild(s);
+  }
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);need(e.target);}})},{rootMargin:'300px'}):null;
+  grid.querySelectorAll('.xh-card').forEach(function(c){ if(io)io.observe(c); });
+  document.querySelectorAll('[data-xf]').forEach(function(b){b.addEventListener('click',function(){
+   var f=b.dataset.xf;
+   document.querySelectorAll('[data-xf]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+   grid.querySelectorAll('.xh-card').forEach(function(c){c.hidden=!(f==='all'||c.dataset.cat===f); if(!c.hidden&&io){io.unobserve(c);io.observe(c);}});
+  })});
+ })();
 
 })();
 </script>

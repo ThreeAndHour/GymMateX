@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('es', {
+  "View counts from X as of": "Vistas según X al",
+  ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": ", actualizadas automáticamente cada día. Los videos se reproducen desde los archivos originales en X. Toca \"Ver en X\" para abrir la publicación completa.",
+
  "\"Come for the fun. I'll introduce you around.\"": "\"Ven a divertirte. Yo te presento a todos.\"",
  "\"Half a day of real shooting, AI does the rest, then we go out.\"": "\"Medio día de rodaje real, la IA hace el resto y luego salimos.\"",
  "\"Let's tell a story about the two of us that people actually feel.\"": "\"Contemos una historia de nosotros dos que la gente realmente sienta.\"",

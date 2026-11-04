@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "View counts from X as of": "再生数は X のデータ、",
+  ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": "時点。毎日自動更新。動画は X の元ファイルから再生されます。「X で見る」をタップすると投稿全体が開きます。",
+
  "\"Come for the fun. I'll introduce you around.\"": "\"楽しみに来て。みんなに紹介するよ。\"",
  "\"Half a day of real shooting, AI does the rest, then we go out.\"": "\"リアルな撮影は半日、残りはAIに任せて、そのあと出かけよう。\"",
  "\"Let's tell a story about the two of us that people actually feel.\"": "\"ふたりの物語を、ちゃんと心に届く形で語ろう。\"",

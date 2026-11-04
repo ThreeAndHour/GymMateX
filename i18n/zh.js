@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "View counts from X as of": "观看次数来自 X，截至",
+  ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": "，每天自动更新。视频从 X 的原始文件播放。点击\"在 X 上查看\"打开完整帖子。",
+
  "\"Come for the fun. I'll introduce you around.\"": "\"来玩就好，我帮你介绍大家认识。\"",
  "\"Half a day of real shooting, AI does the rest, then we go out.\"": "\"半天真实拍摄，剩下的交给 AI，然后我们出去玩。\"",
  "\"Let's tell a story about the two of us that people actually feel.\"": "\"我们来讲一个关于我们俩、真正打动人心的故事。\"",

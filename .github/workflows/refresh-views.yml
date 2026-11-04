@@ -1,0 +1,27 @@
+name: Refresh X view counts
+on:
+  schedule:
+    - cron: '0 20 * * *'   # 03:00 Asia/Bangkok
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: refresh-views
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pull current numbers from X
+        run: python3 tools/refresh_views.py
+      - name: Commit if anything changed
+        run: |
+          if git diff --quiet; then echo "no change"; exit 0; fi
+          git config user.name "thbho-bot"
+          git config user.email "thbho-bot@users.noreply.github.com"
+          git commit -am "Portfolio: refresh X view counts ($(TZ=Asia/Bangkok date +%F))"
+          git push origin HEAD:main

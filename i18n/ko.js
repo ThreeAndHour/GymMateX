@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "View counts from X as of": "조회수는 X 기준,",
+  ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": " 자동으로 매일 갱신됩니다. 영상은 X의 원본 파일로 재생됩니다. \"X에서 보기\"를 눌러 전체 게시물을 여세요.",
+
  "\"Come for the fun. I'll introduce you around.\"": "\"재미있게 놀러 와요. 사람들 소개해 줄게요.\"",
  "\"Half a day of real shooting, AI does the rest, then we go out.\"": "\"반나절은 진짜 촬영, 나머지는 AI가. 그다음엔 같이 나가요.\"",
  "\"Let's tell a story about the two of us that people actually feel.\"": "\"사람들이 진짜로 느끼는 우리 둘의 이야기를 만들어 봐요.\"",

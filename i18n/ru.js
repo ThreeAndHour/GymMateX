@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "View counts from X as of": "Просмотры по данным X на",
+  ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": ", обновляется автоматически каждый день. Видео воспроизводятся из оригинальных файлов на X. Нажмите «Смотреть в X», чтобы открыть пост.",
+
  "\"Come for the fun. I'll introduce you around.\"": "\"Приходи за весельем. Я со всеми тебя познакомлю.\"",
  "\"Half a day of real shooting, AI does the rest, then we go out.\"": "\"Полдня настоящей съёмки, остальное делает ИИ, а потом идём гулять.\"",
  "\"Let's tell a story about the two of us that people actually feel.\"": "\"Давай расскажем историю о нас двоих, которую люди по-настоящему почувствуют.\"",

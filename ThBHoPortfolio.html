@@ -188,6 +188,7 @@ main{padding:22px 0 60px}
 
  // ===== Portfolio data, built from X post metadata on 4 Nov 2026. Add a post: {id:'<X status id>', cat:'mv'|'film'|'bts'|'music', t:'Title', p:['three','b','hour'], y:2026, d:'4 Nov 2026', v:'245K', vn:245397, ts:<unix seconds>, dur:'3:40'} =====
  var FILMS=[
+  {id:'2113298960093954384',cat:'film',t:'3 Meses Más Tarde · teaser',p:["three", "hour"],y:2026,d:'22 Oct 2026',v:'20K',vn:19598,ts:1792684709,dur:'1:07'},
   {id:'2114350163963883533',cat:'film',t:'3 Months Later · teaser',p:["three", "hour"],y:2026,d:'25 Oct 2026',v:'2.9K',vn:2949,ts:1792935336,dur:'2:05'},
   {id:'2112541590720000085',cat:'mv',t:'Tell Me It\'s (Not) a Dream · BL Cut',p:["three", "hour"],y:2026,d:'20 Oct 2026',v:'69K',vn:69191,ts:1792504139,dur:'5:55'},
   {id:'2109560564754362752',cat:'mv',t:'Perdiéndonos en el calor',p:["three", "hour"],y:2026,d:'12 Oct 2026',v:'149K',vn:149085,ts:1791793407,dur:'3:26'},
@@ -269,6 +270,7 @@ main{padding:22px 0 60px}
   {id:'1818615708814635245',cat:'music',t:'Sweet Hallucination · covered by Three',p:["three"],y:2024,d:'31 Jul 2024',v:'3.4K',vn:3367,ts:1722426747,dur:'3:11'},
   {id:'1798672280790376735',cat:'music',t:'Neon Light · by Three',p:["three"],y:2024,d:'6 Jun 2024',v:'4.0K',vn:4022,ts:1717671864,dur:'3:58'}
  ];
+ FILMS.sort(function(a,b){return b.ts-a.ts});
  var CAT={mv:['MV เต็มเรื่อง','Full MV'],film:['หนังสั้นและคลิป','Short film / clip'],bts:['เบื้องหลัง','Behind the scenes'],music:['เพลงและ OST','Music / OST']};
  var PC={three:'var(--nf)',b:'var(--nt)',hour:'var(--sp)'}, PN={three:'Three',b:'B.',hour:'Hour'};
 

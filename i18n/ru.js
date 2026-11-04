@@ -613,5 +613,6 @@ THBHO_I18N_ADD('ru', {
  "Casting clip": "Кастинг-ролик",
  "An AI-made song": "Песня, созданная с ИИ",
  "A new song": "Новая песня",
- "The story behind THOR": "История THOR"
+ "The story behind THOR": "История THOR",
+ "More from X": "Ещё из X"
 });

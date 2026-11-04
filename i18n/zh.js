@@ -613,5 +613,6 @@ THBHO_I18N_ADD('zh', {
  "Casting clip": "选角短片",
  "An AI-made song": "AI 制作的歌曲",
  "A new song": "新歌",
- "The story behind THOR": "THOR 背后的故事"
+ "The story behind THOR": "THOR 背后的故事",
+ "More from X": "X 上的更多帖子"
 });

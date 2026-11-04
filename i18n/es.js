@@ -613,5 +613,6 @@ THBHO_I18N_ADD('es', {
  "Casting clip": "Clip de casting",
  "An AI-made song": "Una canción hecha con IA",
  "A new song": "Una nueva canción",
- "The story behind THOR": "La historia detrás de THOR"
+ "The story behind THOR": "La historia detrás de THOR",
+ "More from X": "Más de X"
 });

@@ -613,5 +613,6 @@ THBHO_I18N_ADD('ja', {
  "Casting clip": "キャスティング映像",
  "An AI-made song": "AIで作った曲",
  "A new song": "新曲",
- "The story behind THOR": "THORの物語"
+ "The story behind THOR": "THORの物語",
+ "More from X": "X のその他の投稿"
 });

@@ -613,5 +613,6 @@ THBHO_I18N_ADD('ko', {
  "Casting clip": "캐스팅 클립",
  "An AI-made song": "AI로 만든 노래",
  "A new song": "신곡",
- "The story behind THOR": "THOR의 이야기"
+ "The story behind THOR": "THOR의 이야기",
+ "More from X": "X의 다른 게시물"
 });

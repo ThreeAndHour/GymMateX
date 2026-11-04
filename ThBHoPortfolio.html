@@ -152,7 +152,6 @@ main{padding:22px 0 60px}
   <button type="button" data-f="mv" aria-pressed="false"><span lang="th">MV เต็มเรื่อง</span><span lang="en">Full MVs</span></button>
   <button type="button" data-f="film" aria-pressed="false"><span lang="th">หนังสั้นและคลิป</span><span lang="en">Short films &amp; clips</span></button>
   <button type="button" data-f="bts" aria-pressed="false"><span lang="th">เบื้องหลัง</span><span lang="en">Behind the scenes</span></button>
-  <button type="button" data-f="music" aria-pressed="false"><span lang="th">เพลงและ OST</span><span lang="en">Music &amp; OST</span></button>
   <span class="sep"></span>
   <button type="button" class="p" data-p="three" aria-pressed="false" style="--c:var(--nf)">Three</button>
   <button type="button" class="p" data-p="b" aria-pressed="false" style="--c:var(--nt)">B.</button>
@@ -268,7 +267,7 @@ main{padding:22px 0 60px}
   {id:'1853437796045713878',cat:'mv',t:'Portfolio Vol. 002 | Time Rider',p:[],y:2024,d:'4 Nov 2024',v:'6.0K',vn:6038,ts:1730728980,dur:'4:12'},
   {id:'1836043178572681321',cat:'mv',t:'Portfolio Vol. 001 · Desert Warriors',p:[],y:2024,d:'17 Sep 2024',v:'8.3K',vn:8345,ts:1726581780,dur:'6:57'},
   {id:'1818615708814635245',cat:'mv',t:'Sweet Hallucination · covered by Three',p:["three"],y:2024,d:'31 Jul 2024',v:'3.4K',vn:3367,ts:1722426747,dur:'3:11'},
-  {id:'1798672280790376735',cat:'music',t:'Neon Light · by Three',p:["three"],y:2024,d:'6 Jun 2024',v:'4.0K',vn:4022,ts:1717671864,dur:'3:58'}
+  {id:'1798672280790376735',cat:'mv',t:'Neon Light · by Three',p:["three"],y:2024,d:'6 Jun 2024',v:'4.0K',vn:4022,ts:1717671864,dur:'3:58'}
  ];
  FILMS.sort(function(a,b){return b.ts-a.ts});
  var CAT={mv:['MV เต็มเรื่อง','Full MV'],film:['หนังสั้นและคลิป','Short film / clip'],bts:['เบื้องหลัง','Behind the scenes'],music:['เพลงและ OST','Music / OST']};
@@ -303,7 +302,7 @@ main{padding:22px 0 60px}
 
  // ===== filters =====
  var qs=new URLSearchParams(location.search);
- var fcat=/^(mv|film|bts|music)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
+ var fcat=/^(mv|film|bts)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
  document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.f===fcat)});
  document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
  function apply(){

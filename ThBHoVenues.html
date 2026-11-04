@@ -212,6 +212,8 @@ section{padding:64px 0 0}
 .xh-card .twitter-tweet{margin:0!important}
 .xh-card.loaded .xh-link{display:none}
 .xh-card.loaded{background:transparent;border-color:transparent}
+.xh-card.loaded>div{overflow:hidden;--clip:62px}
+.xh-card.loaded>div iframe{margin-bottom:calc(-1 * var(--clip))!important;display:block}
 .xh-more{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
 
 /* level switcher */

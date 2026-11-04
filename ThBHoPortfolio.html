@@ -70,7 +70,22 @@ select.lang option{background:#17121A;color:#F2ECEF}
 .personas{display:flex;gap:8px;margin-top:12px}
 .personas figure{margin:0;flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
 .personas img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:50% 50%}
-.personas figcaption{font:500 11px var(--mono);padding:5px 8px;color:var(--c)}
+.personas figcaption{font:500 11px var(--mono);padding:5px 8px;color:var(--c);display:flex;justify-content:space-between;gap:6px;align-items:center}
+.personas figcaption small{font-size:9.5px;color:var(--ink3);letter-spacing:.04em;white-space:nowrap}
+.personas button{all:unset;display:block;cursor:pointer;width:100%}
+.personas button:hover img,.personas button:focus-visible img{filter:brightness(1.12)}
+.personas button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.personas img{transition:filter .15s}
+dialog.pv{border:1px solid var(--line);padding:0;background:var(--s1);color:var(--ink);border-radius:14px;width:min(92vw,420px);max-width:92vw;overflow:hidden}
+dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
+.pv-head{display:flex;align-items:center;gap:8px;padding:10px 10px 8px 14px;font:600 15px var(--display)}
+.pv-head .pp{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:99px;border:1px solid var(--c);color:var(--c)}
+.pv-head .x{margin-left:auto;all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;color:var(--ink2);font-size:20px;line-height:1;margin-left:auto}
+.pv-head .x:hover{background:var(--s2,rgba(255,255,255,.08));color:var(--ink)}
+.pv-box{padding:0 8px}
+.pv-foot{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px 12px;font:500 12.5px var(--mono)}
+.pv-foot a{color:var(--cyan);text-decoration:none}.pv-foot a:hover{text-decoration:underline}
+.pv-foot a+a{margin-left:auto}
 
 .bar{position:sticky;top:58px;z-index:9;background:rgba(14,11,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 0}
 .bar .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -143,10 +158,10 @@ main{padding:22px 0 60px}
     <div><b id="nAll">0</b><span><span lang="th">คลิปทั้งหมด</span><span lang="en">clips in total</span></span></div>
     <div><b id="nViews">0</b><span><span lang="th">วิวรวมบน X</span><span lang="en">views on X</span></span></div>
    </div>
-   <div class="personas" aria-hidden="true">
-    <figure style="--c:var(--nf)"><img src="creator-img/persona-three.jpg" alt=""><figcaption>Three · INFP</figcaption></figure>
-    <figure style="--c:var(--nt)"><img src="creator-img/persona-b.jpg" alt=""><figcaption>B. · INFJ</figcaption></figure>
-    <figure style="--c:var(--sp)"><img src="creator-img/persona-hour.jpg" alt=""><figcaption>Hour · ESTP</figcaption></figure>
+   <div class="personas">
+    <figure style="--c:var(--nf)"><button type="button" class="pv-open" data-x="1931021538918342873" data-p="three" data-t="Three | MODE 001"><img src="creator-img/persona2-three.jpg" alt="Three" width="560" height="840"><figcaption>Three · INFP<small>▶ MODE 001</small></figcaption></button></figure>
+    <figure style="--c:var(--nt)"><button type="button" class="pv-open" data-x="1934638162791616567" data-p="b" data-t="B. | MODE 001"><img src="creator-img/persona2-b.jpg" alt="B." width="560" height="840"><figcaption>B. · INFJ<small>▶ MODE 001</small></figcaption></button></figure>
+    <figure style="--c:var(--sp)"><button type="button" class="pv-open" data-x="1933149788549394684" data-p="hour" data-t="Hour | MODE 001"><img src="creator-img/persona2-hour.jpg" alt="Hour" width="560" height="840"><figcaption>Hour · ESTP<small>▶ MODE 001</small></figcaption></button></figure>
    </div>
   </div>
  </section>
@@ -176,6 +191,12 @@ main{padding:22px 0 60px}
  <p class="empty" id="empty" hidden><span lang="th">ยังไม่มีคลิปในหมวดนี้</span><span lang="en">Nothing in this category yet</span></p>
  <p class="note"><span lang="th">ยอดวิวจาก X ณ 4 พ.ย. 2026 · วิดีโอเล่นจากไฟล์ต้นฉบับบน X · กด "ดูบน X" เพื่อเปิดโพสต์เต็ม</span><span lang="en">View counts from X as of 4 Nov 2026. Videos play from the original files on X. Tap "View on X" to open the full post.</span></p>
 </main>
+
+<dialog class="pv" id="pv" aria-labelledby="pvTitle">
+ <div class="pv-head"><span class="pp" id="pvP"></span><span id="pvTitle"></span><button type="button" class="x" id="pvClose" aria-label="Close">×</button></div>
+ <div class="pv-box" id="pvBox"></div>
+ <div class="pv-foot"><a id="pvAll" href="#films"><span lang="th">ดูผลงานทั้งหมด →</span><span lang="en">All their work →</span></a><a id="pvX" href="#" target="_blank" rel="noopener"><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></a></div>
+</dialog>
 
 <div class="cta2"><div class="wrap">
  <h2><span lang="th">อยากเห็นตัวเองในเรื่องต่อไป?</span><span lang="en">Want to be in the next one?</span></h2>
@@ -329,7 +350,7 @@ main{padding:22px 0 60px}
  var qs=new URLSearchParams(location.search);
  var fcat=/^(mv|film|bts|photo)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
  document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.f===fcat)});
- document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
+ document.querySelectorAll('#filters [data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
  function apply(){
   var n=0;
   grid.querySelectorAll('.card').forEach(function(c){
@@ -341,13 +362,33 @@ main{padding:22px 0 60px}
   watchAll();
  }
  document.querySelectorAll('[data-f]').forEach(function(b){b.addEventListener('click',function(){fcat=b.dataset.f;document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})});
- document.querySelectorAll('[data-p]').forEach(function(b){b.addEventListener('click',function(){fp=fp===b.dataset.p?null:b.dataset.p;document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});apply()})});
+ document.querySelectorAll('#filters [data-p]').forEach(function(b){b.addEventListener('click',function(){fp=fp===b.dataset.p?null:b.dataset.p;document.querySelectorAll('#filters [data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});apply()})});
  apply();
  document.querySelectorAll('[data-s]').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('[data-s]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
   var k=b.dataset.s==='views'?'vn':b.dataset.s==='likes'?'ln':'ts';
   Array.prototype.slice.call(grid.children).sort(function(a,c){return (+c.dataset[k])-(+a.dataset[k])}).forEach(function(el){grid.appendChild(el)});
  })});
+
+ // ===== persona popup: solo MODE 001 clip for each face =====
+ var pv=$('pv'), pvBox=$('pvBox');
+ function pvClose(){pvBox.querySelectorAll('video').forEach(function(v){v.pause()});pvBox.innerHTML='';if(pv.open)pv.close()}
+ document.querySelectorAll('.pv-open').forEach(function(b){b.addEventListener('click',function(){
+  var k=b.dataset.p;pvBox.innerHTML='';
+  $('pvTitle').textContent=b.dataset.t;$('pvP').textContent=PN[k];$('pvP').style.setProperty('--c',PC[k]);
+  $('pvX').href='https://x.com/widerooms/status/'+b.dataset.x;$('pvAll').dataset.p=k;
+  if(!THBHO_PLAYER(pvBox,b.dataset.x,b.dataset.t)){location.href=$('pvX').href;return}
+  if(pv.showModal)pv.showModal();else pv.setAttribute('open','');
+  var play=pvBox.querySelector('button');if(play)play.click();
+ })});
+ $('pvClose').addEventListener('click',pvClose);
+ pv.addEventListener('close',pvClose);
+ pv.addEventListener('click',function(e){if(e.target===pv)pvClose()});
+ $('pvAll').addEventListener('click',function(){
+  var k=this.dataset.p;pvClose();fp=k;
+  document.querySelectorAll('#filters [data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
+  apply();
+ });
 
  // ===== language (shared with the other ThB.Ho pages) =====
  function setLang(l){root.lang=l;langBtn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}}

@@ -94,6 +94,12 @@ main{padding:22px 0 60px}
 .card .link em{font-style:normal;font:500 12.5px var(--mono);color:var(--cyan);margin-top:4px}
 .card .link:hover b{color:var(--cyan)}
 .card .emb{padding:6px 6px 0}
+.card .emb.ph a{display:block}
+.card .emb.ph img{display:block;width:100%;height:auto;border-radius:8px;background:var(--s2,#111)}
+.card .emb.ph .more{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}
+.card .emb.ph .more img{aspect-ratio:1;object-fit:cover}
+.card .meta .likes{color:var(--pink);text-transform:none;letter-spacing:0}
+.card .meta .views+.likes{margin-left:0}
 .card.loaded .link{padding-top:12px}
 .empty{color:var(--ink3);padding:30px 0;text-align:center}
 .note{font-size:13.5px;color:var(--ink3);margin-top:16px}
@@ -152,6 +158,7 @@ main{padding:22px 0 60px}
   <button type="button" data-f="mv" aria-pressed="false"><span lang="th">MV เต็มเรื่อง</span><span lang="en">Full MVs</span></button>
   <button type="button" data-f="film" aria-pressed="false"><span lang="th">หนังสั้นและคลิป</span><span lang="en">Short films &amp; clips</span></button>
   <button type="button" data-f="bts" aria-pressed="false"><span lang="th">เบื้องหลัง</span><span lang="en">Behind the scenes</span></button>
+  <button type="button" data-f="photo" aria-pressed="false"><span lang="th">ภาพถ่าย</span><span lang="en">Photos</span></button>
   <span class="sep"></span>
   <button type="button" class="p" data-p="three" aria-pressed="false" style="--c:var(--nf)">Three</button>
   <button type="button" class="p" data-p="b" aria-pressed="false" style="--c:var(--nt)">B.</button>
@@ -159,6 +166,7 @@ main{padding:22px 0 60px}
   <span class="sep"></span>
   <button type="button" data-s="new" aria-pressed="true"><span lang="th">ล่าสุด</span><span lang="en">Newest</span></button>
   <button type="button" data-s="views" aria-pressed="false"><span lang="th">ยอดวิว</span><span lang="en">Most viewed</span></button>
+  <button type="button" data-s="likes" aria-pressed="false"><span lang="th">ยอดไลก์</span><span lang="en">Most liked</span></button>
   <span class="count" id="count"></span>
  </div>
 </div>
@@ -185,7 +193,7 @@ main{padding:22px 0 60px}
  var $=function(id){return document.getElementById(id)};
  function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
 
- // ===== Portfolio data, built from X post metadata on 4 Nov 2026. Add a post: {id:'<X status id>', cat:'mv'|'film'|'bts'|'music', t:'Title', p:['three','b','hour'], y:2026, d:'4 Nov 2026', v:'245K', vn:245397, ts:<unix seconds>, dur:'3:40'} =====
+ // ===== Portfolio data, built from X post metadata on 4 Nov 2026. Add a post: {id:'<X status id>', cat:'mv'|'film'|'bts'|'music', t:'Title', p:['three','b','hour'], y:2026, d:'4 Nov 2026', v:'245K', vn:245397, ts:<unix seconds>, dur:'3:40'}. Photo post: cat:'photo', ln:<likes>, img:['https://pbs.twimg.com/media/<id>.jpg', ...] instead of dur =====
  var FILMS=[
   {id:'1942234233411629531',cat:'mv',t:'Lost In Neon Light (2025 MV)',p:["b"],y:2025,d:'7 Jul 2025',v:'1.1K',vn:1111,ts:1751899700,dur:'3:30'},
   {id:'1943329193988882795',cat:'film',t:'GymMateX Fit Factory · \'Anyone can be a fitness trainer\'',p:["three","b","hour"],y:2025,d:'10 Jul 2025',v:'0.8K',vn:804,ts:1752160759,dur:'1:02'},
@@ -277,29 +285,39 @@ main{padding:22px 0 60px}
   {id:'1798672280790376735',cat:'mv',t:'Neon Light · by Three',p:["three"],y:2024,d:'6 Jun 2024',v:'4.0K',vn:4022,ts:1717671864,dur:'3:58'}
  ];
  FILMS.sort(function(a,b){return b.ts-a.ts});
- var CAT={mv:['MV เต็มเรื่อง','Full MV'],film:['หนังสั้นและคลิป','Short film / clip'],bts:['เบื้องหลัง','Behind the scenes'],music:['เพลงและ OST','Music / OST']};
+ var CAT={mv:['MV เต็มเรื่อง','Full MV'],film:['หนังสั้นและคลิป','Short film / clip'],bts:['เบื้องหลัง','Behind the scenes'],music:['เพลงและ OST','Music / OST'],photo:['ภาพถ่าย','Photo']};
  var PC={three:'var(--nf)',b:'var(--nt)',hour:'var(--sp)'}, PN={three:'Three',b:'B.',hour:'Hour'};
 
  // ===== render =====
  var grid=$('grid');
+ function K(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=10000?Math.round(n/1000)+'K':n>=1000?(n/1000).toFixed(1)+'K':String(n)}
  grid.innerHTML=FILMS.map(function(f){
   var pp=f.p.map(function(k){return '<span class="pp" style="--c:'+PC[k]+'">'+PN[k]+'</span>'}).join('');
   var views=f.v?'<span class="views">'+f.v+' '+T('วิว','views')+'</span>':'';
-  var note='<span>'+f.d+(f.dur?' · '+f.dur:'')+'</span>';
-  return '<article class="card" data-x="'+f.id+'" data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ts="'+f.ts+'">'+
-   '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+views+'</div>'+
-   '<div class="emb"></div>'+
+  var likes=f.ln?'<span class="likes">♥ '+K(f.ln)+'</span>':'';
+  var note='<span>'+f.d+(f.dur?' · '+f.dur:'')+(f.img&&f.img.length>1?' · '+f.img.length+' '+T('ภาพ','photos'):'')+'</span>';
+  var emb='<div class="emb"></div>', xurl='https://x.com/widerooms/status/'+f.id;
+  if(f.img){
+   var im=function(u,i){return '<img src="'+u+'?format=jpg&name='+(i?'small':'medium')+'" alt="'+f.t.replace(/"/g,'&quot;')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'};
+   emb='<div class="emb ph"><a href="'+xurl+'" target="_blank" rel="noopener">'+im(f.img[0],0)+
+    (f.img.length>1?'<div class="more">'+f.img.slice(1,4).map(function(u){return im(u,1)}).join('')+'</div>':'')+'</a></div>';
+  }
+  return '<article class="card" data-x="'+f.id+'" data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
+   '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+views+likes+'</div>'+
+   emb+
    '<a class="link" href="https://x.com/widerooms/status/'+f.id+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+T('ดูบน X ↗','View on X ↗')+'</em></a>'+
    '</article>';
  }).join('');
  var vsum=0;FILMS.forEach(function(f){vsum+=f.vn||0});
  $('nFilms').textContent=FILMS.filter(function(f){return f.cat==='mv'||f.cat==='film'}).length;
- $('nAll').textContent=FILMS.length;
+ $('nAll').textContent=FILMS.filter(function(f){return f.cat!=='photo'}).length;
+ if(!FILMS.some(function(f){return f.cat==='photo'})){document.querySelectorAll('[data-f=photo],[data-s=likes]').forEach(function(x){x.hidden=true})}
  $('nViews').textContent=vsum>=1e6?(vsum/1e6).toFixed(2)+'M':Math.round(vsum/1000)+'K';
 
  // ===== native player (poster + play button -> <video>), rendered when a card scrolls into view =====
  function embed(card){
   if(card.dataset.done)return;card.dataset.done='1';
+  if(card.dataset.cat==='photo')return;
   var box=card.querySelector('.emb');
   if(THBHO_PLAYER(box,card.dataset.x,card.querySelector('.link b').textContent))card.classList.add('loaded');
  }
@@ -309,7 +327,7 @@ main{padding:22px 0 60px}
 
  // ===== filters =====
  var qs=new URLSearchParams(location.search);
- var fcat=/^(mv|film|bts)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
+ var fcat=/^(mv|film|bts|photo)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
  document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.f===fcat)});
  document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
  function apply(){
@@ -327,7 +345,7 @@ main{padding:22px 0 60px}
  apply();
  document.querySelectorAll('[data-s]').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('[data-s]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-  var k=b.dataset.s==='views'?'vn':'ts';
+  var k=b.dataset.s==='views'?'vn':b.dataset.s==='likes'?'ln':'ts';
   Array.prototype.slice.call(grid.children).sort(function(a,c){return (+c.dataset[k])-(+a.dataset[k])}).forEach(function(el){grid.appendChild(el)});
  })});
 

@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "시크릿 에이전트 역의 B.: 모든 컷, 각도, 조명에서 한결같은 얼굴",
+
   "Explore more of the GymMateX universe": "GymMateX 세계 더 둘러보기",
 
   "View counts from X as of": "조회수는 X 기준,",

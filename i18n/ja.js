@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "シークレットエージェント役の B.：どのカット・角度・光でも同じ顔",
+
   "Explore more of the GymMateX universe": "GymMateX の世界をもっと見る",
 
   "View counts from X as of": "再生数は X のデータ、",

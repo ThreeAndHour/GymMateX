@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "B. 饰演特工：同一张脸，在每个镜头、角度和光线下都保持一致",
+
   "Explore more of the GymMateX universe": "继续探索 GymMateX 宇宙",
 
   "View counts from X as of": "观看次数来自 X，截至",

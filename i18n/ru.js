@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "B. в роли секретного агента: одно и то же лицо в каждом кадре, ракурсе и свете",
+
   "Explore more of the GymMateX universe": "Откройте для себя вселенную GymMateX",
 
   "View counts from X as of": "Просмотры по данным X на",

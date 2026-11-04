@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "Explore more of the GymMateX universe": "继续探索 GymMateX 宇宙",
+
   "View counts from X as of": "观看次数来自 X，截至",
   ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": "，每天自动更新。视频从 X 的原始文件播放。点击\"在 X 上查看\"打开完整帖子。",
 

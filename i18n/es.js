@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "Explore more of the GymMateX universe": "Explora más del universo GymMateX",
+
   "View counts from X as of": "Vistas según X al",
   ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": ", actualizadas automáticamente cada día. Los videos se reproducen desde los archivos originales en X. Toca \"Ver en X\" para abrir la publicación completa.",
 

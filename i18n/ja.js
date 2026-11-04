@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "Explore more of the GymMateX universe": "GymMateX の世界をもっと見る",
+
   "View counts from X as of": "再生数は X のデータ、",
   ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": "時点。毎日自動更新。動画は X の元ファイルから再生されます。「X で見る」をタップすると投稿全体が開きます。",
 

@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "Explore more of the GymMateX universe": "Откройте для себя вселенную GymMateX",
+
   "View counts from X as of": "Просмотры по данным X на",
   ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": ", обновляется автоматически каждый день. Видео воспроизводятся из оригинальных файлов на X. Нажмите «Смотреть в X», чтобы открыть пост.",
 

@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "Explore more of the GymMateX universe": "GymMateX 세계 더 둘러보기",
+
   "View counts from X as of": "조회수는 X 기준,",
   ", refreshed automatically every day. Videos play from the original files on X. Tap \"View on X\" to open the full post.": " 자동으로 매일 갱신됩니다. 영상은 X의 원본 파일로 재생됩니다. \"X에서 보기\"를 눌러 전체 게시물을 여세요.",
 

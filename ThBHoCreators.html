@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>ThB.Ho Creators</title>
 <meta name="description" content="ThB.Ho สำหรับ creator: collab กับ Hybrid AI Persona Three, B. และ Hour สำหรับ creator สายฟิตเนส OnlyFans influencer และ LGBTQ+">
 <meta property="og:title" content="ThB.Ho Creators">
@@ -209,9 +210,9 @@ section{padding:64px 0 0}
 .xh-link small{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pink)}
 .xh-link b{font:600 17px/1.35 var(--display)}
 .xh-link em{font-style:normal;font:500 12.5px var(--mono);color:var(--cyan);margin-top:4px}
-.xh-card .twitter-tweet{margin:0!important}
-.xh-card.loaded .xh-link{display:none}
-.xh-card.loaded{background:transparent;border-color:transparent}
+.xh-media{padding:6px 6px 0}
+.xh-card.loaded .xh-link{min-height:0;padding-top:12px}
+.xh-card.loaded .xh-link em{display:none}
 .xh-more{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
 
 /* level switcher */
@@ -307,6 +308,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pdfoot{padding:0 22px}
 </style>
 <script src="thbho-i18n.js"></script>
+<script src="x-media.js"></script>
+<script src="thbho-player.js"></script>
 </head>
 <body>
 
@@ -629,29 +632,22 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  showLevel(lq,new URLSearchParams(location.search).has('level'));
 
 
- // ---- X highlights: embed each post with X's own widget when it scrolls into view ----
+ // ---- X highlights: native player (poster + play) rendered when a card scrolls into view ----
  (function(){
   var grid=document.getElementById('xhGrid'); if(!grid)return;
-  var loading=false, ready=false, queue=[];
   function embed(card){
    if(card.dataset.done)return; card.dataset.done='1';
-   var box=document.createElement('div'); card.appendChild(box);
-   window.twttr.widgets.createTweet(card.dataset.x,box,{theme:'dark',dnt:true,conversation:'none',align:'center'})
-    .then(function(el){if(el)card.classList.add('loaded');else box.remove();});
+   var box=document.createElement('div'); box.className='xh-media'; card.insertBefore(box,card.firstChild);
+   if(THBHO_PLAYER(box,card.dataset.x,(card.querySelector('.xh-link b')||{}).textContent||''))card.classList.add('loaded');else box.remove();
   }
-  function need(card){ if(ready)embed(card); else {queue.push(card); load();} }
-  function load(){
-   if(loading)return; loading=true;
-   var s=document.createElement('script'); s.src='https://platform.twitter.com/widgets.js'; s.async=true; s.charset='utf-8';
-   s.onload=function(){ if(window.twttr&&twttr.ready)twttr.ready(function(){ready=true;queue.splice(0).forEach(embed);}); };
-   document.head.appendChild(s);
-  }
-  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);need(e.target);}})},{rootMargin:'300px'}):null;
-  grid.querySelectorAll('.xh-card').forEach(function(c){ if(io)io.observe(c); });
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);embed(e.target);}})},{rootMargin:'500px'}):null;
+  function watchAll(){grid.querySelectorAll('.xh-card').forEach(function(c){if(c.dataset.done||c.hidden)return;if(io){io.unobserve(c);io.observe(c)}else embed(c)})}
+  watchAll();
   document.querySelectorAll('[data-xf]').forEach(function(b){b.addEventListener('click',function(){
    var f=b.dataset.xf;
    document.querySelectorAll('[data-xf]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-   grid.querySelectorAll('.xh-card').forEach(function(c){c.hidden=!(f==='all'||c.dataset.cat===f); if(!c.hidden&&io){io.unobserve(c);io.observe(c);}});
+   grid.querySelectorAll('.xh-card').forEach(function(c){c.hidden=!(f==='all'||c.dataset.cat===f)});
+   watchAll();
   })});
  })();
 

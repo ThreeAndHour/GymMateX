@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>ThB.Ho Portfolio · MV &amp; Films</title>
 <meta name="description" content="MV หนังสั้น และคลิป Hybrid AI ทั้งหมดของ Three, B. และ Hour จาก X @widerooms รวมไว้ในหน้าเดียว กดเล่นได้เลย">
 <meta property="og:title" content="ThB.Ho Portfolio · MV &amp; Films">
@@ -13,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <script src="thbho-i18n.js"></script>
+<script src="x-media.js"></script>
+<script src="thbho-player.js"></script>
 <style>
 /* Same night palette as the ThB.Ho pages. Layout: hero with counts, filter bar, masonry grid of embedded X posts. */
 :root{
@@ -90,10 +93,8 @@ main{padding:22px 0 60px}
 .card .link span{color:var(--ink2);font-size:14px}
 .card .link em{font-style:normal;font:500 12.5px var(--mono);color:var(--cyan);margin-top:4px}
 .card .link:hover b{color:var(--cyan)}
-.card .emb{padding:0 6px 4px}
-.card .twitter-tweet{margin:0!important}
-.card.loaded .link em{display:none}
-.card.loaded .link{padding-bottom:8px}
+.card .emb{padding:6px 6px 0}
+.card.loaded .link{padding-top:12px}
 .empty{color:var(--ink3);padding:30px 0;text-align:center}
 .note{font-size:13.5px;color:var(--ink3);margin-top:16px}
 
@@ -166,7 +167,7 @@ main{padding:22px 0 60px}
 <main class="wrap">
  <div class="grid" id="grid"></div>
  <p class="empty" id="empty" hidden><span lang="th">ยังไม่มีคลิปในหมวดนี้</span><span lang="en">Nothing in this category yet</span></p>
- <p class="note"><span lang="th">ยอดวิวจาก X ณ 4 พ.ย. 2026 · ถ้าวิดีโอไม่ขึ้น กดที่การ์ดเพื่อเปิดบน X</span><span lang="en">View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.</span></p>
+ <p class="note"><span lang="th">ยอดวิวจาก X ณ 4 พ.ย. 2026 · วิดีโอเล่นจากไฟล์ต้นฉบับบน X · กด "ดูบน X" เพื่อเปิดโพสต์เต็ม</span><span lang="en">View counts from X as of 4 Nov 2026. Videos play from the original files on X. Tap "View on X" to open the full post.</span></p>
 </main>
 
 <div class="cta2"><div class="wrap">
@@ -278,31 +279,23 @@ main{padding:22px 0 60px}
   var note='<span>'+f.d+(f.dur?' · '+f.dur:'')+'</span>';
   return '<article class="card" data-x="'+f.id+'" data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ts="'+f.ts+'">'+
    '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+views+'</div>'+
+   '<div class="emb"></div>'+
    '<a class="link" href="https://x.com/widerooms/status/'+f.id+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+T('ดูบน X ↗','View on X ↗')+'</em></a>'+
-   '<div class="emb"></div></article>';
+   '</article>';
  }).join('');
  var vsum=0;FILMS.forEach(function(f){vsum+=f.vn||0});
  $('nFilms').textContent=FILMS.filter(function(f){return f.cat==='mv'||f.cat==='film'}).length;
  $('nAll').textContent=FILMS.length;
  $('nViews').textContent=vsum>=1e6?(vsum/1e6).toFixed(2)+'M':Math.round(vsum/1000)+'K';
 
- // ===== X embeds, loaded when a card scrolls into view =====
- var ready=false,loading=false,queue=[];
+ // ===== native player (poster + play button -> <video>), rendered when a card scrolls into view =====
  function embed(card){
   if(card.dataset.done)return;card.dataset.done='1';
   var box=card.querySelector('.emb');
-  window.twttr.widgets.createTweet(card.dataset.x,box,{theme:'dark',dnt:true,conversation:'none',align:'center',cards:'visible'})
-   .then(function(el){if(el)card.classList.add('loaded');});
+  if(THBHO_PLAYER(box,card.dataset.x,card.querySelector('.link b').textContent))card.classList.add('loaded');
  }
- function need(card){if(ready)embed(card);else{queue.push(card);loadWidgets();}}
- function loadWidgets(){
-  if(loading)return;loading=true;
-  var s=document.createElement('script');s.src='https://platform.twitter.com/widgets.js';s.async=true;s.charset='utf-8';
-  s.onload=function(){if(window.twttr&&twttr.ready)twttr.ready(function(){ready=true;queue.splice(0).forEach(embed)})};
-  document.head.appendChild(s);
- }
- var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);need(e.target)}})},{rootMargin:'400px'}):null;
- function watchAll(){grid.querySelectorAll('.card').forEach(function(c){if(io&&!c.hidden&&!c.dataset.done){io.unobserve(c);io.observe(c)}})}
+ var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);embed(e.target)}})},{rootMargin:'600px'}):null;
+ function watchAll(){grid.querySelectorAll('.card').forEach(function(c){if(c.dataset.done||c.hidden)return;if(io){io.unobserve(c);io.observe(c)}else embed(c)})}
  watchAll();
 
  // ===== filters =====

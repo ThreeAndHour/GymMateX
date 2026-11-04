@@ -70,8 +70,8 @@ select.lang option{background:#17121A;color:#F2ECEF}
 .personas{display:flex;gap:8px;margin-top:12px}
 .personas figure{margin:0;flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
 .personas img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;object-position:50% 50%}
-.personas figcaption{font:500 11px var(--mono);padding:5px 8px;color:var(--c);display:flex;justify-content:space-between;gap:6px;align-items:center}
-.personas figcaption small{font-size:9.5px;color:var(--ink3);letter-spacing:.04em;white-space:nowrap}
+.personas figcaption{font:500 11px var(--mono);padding:5px 8px 6px;color:var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.personas figcaption small{display:block;font-size:9.5px;color:var(--ink3);letter-spacing:.04em;margin-top:2px}
 .personas button{all:unset;display:block;cursor:pointer;width:100%}
 .personas button:hover img,.personas button:focus-visible img{filter:brightness(1.12)}
 .personas button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}

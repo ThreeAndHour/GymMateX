@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ThB.Ho Portfolio · MV &amp; Films</title>
+<meta name="description" content="MV หนังสั้น และคลิป Hybrid AI ทั้งหมดของ Three, B. และ Hour จาก X @widerooms รวมไว้ในหน้าเดียว กดเล่นได้เลย">
+<meta property="og:title" content="ThB.Ho Portfolio · MV &amp; Films">
+<meta property="og:description" content="Every Hybrid AI music video, short film and clip by Three, B. and Hour from X @widerooms, in one place.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://threeandhour.github.io/GymMateX/creator-img/persona-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="thbho-i18n.js"></script>
+<style>
+/* Same night palette as the ThB.Ho pages. Layout: hero with counts, filter bar, masonry grid of embedded X posts. */
+:root{
+ --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
+ --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
+ --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --nf:#3FC48A; --nt:#8E7CF0; --sp:#F0B24A;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark svg{width:22px;height:22px;color:var(--cyan)}
+.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navr{display:flex;align-items:center;gap:14px;font-size:14px}
+.navr a{color:var(--ink2);text-decoration:none}
+.navr a:hover{color:var(--ink)}
+.switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
+.switch:hover{color:var(--ink)!important;border-color:var(--cyan)}
+select.lang{font:500 12px var(--mono);background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer;appearance:none;-webkit-appearance:none}
+select.lang option{background:#17121A;color:#F2ECEF}
+@media (max-width:640px){.navr a:not(.switch){display:none}}
+
+.hero{padding:48px 0 28px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:end}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.hero h1{font-size:clamp(34px,5.6vw,56px);font-weight:700;line-height:1.06}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p.lead{color:var(--ink2);max-width:58ch;font-size:17px;margin-top:14px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:10px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
+.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
+.btn:hover{border-color:var(--cyan)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stats div{background:var(--s1);padding:16px}
+.stats b{font:700 30px var(--display);display:block;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--cyan)}
+.stats span{font-size:13px;color:var(--ink2)}
+.personas{display:flex;gap:8px;margin-top:12px}
+.personas figure{margin:0;flex:1;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.personas img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 20%}
+.personas figcaption{font:500 11px var(--mono);padding:5px 8px;color:var(--c)}
+
+.bar{position:sticky;top:58px;z-index:9;background:rgba(14,11,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 0}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bar button{font:500 13px var(--mono);background:var(--s1);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 12px;cursor:pointer}
+.bar button[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:#06201E}
+.bar .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
+.bar button.p[aria-pressed="true"]{background:var(--c);border-color:var(--c)}
+.bar .count{margin-left:auto;font:500 12.5px var(--mono);color:var(--ink3)}
+
+main{padding:22px 0 60px}
+.grid{columns:3 300px;column-gap:14px}
+.card{break-inside:avoid;margin:0 0 14px;background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative}
+.card[hidden]{display:none}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 12px 0;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.card .meta .cat{color:var(--pink)}
+.card .meta .pp{padding:1px 7px;border-radius:99px;border:1px solid var(--c);color:var(--c)}
+.card .meta .views{margin-left:auto;color:var(--cyan);text-transform:none;letter-spacing:0}
+.card .link{display:grid;gap:6px;padding:10px 12px 16px;color:var(--ink);text-decoration:none}
+.card .link b{font:600 18px/1.3 var(--display)}
+.card .link span{color:var(--ink2);font-size:14px}
+.card .link em{font-style:normal;font:500 12.5px var(--mono);color:var(--cyan);margin-top:4px}
+.card .link:hover b{color:var(--cyan)}
+.card .emb{padding:0 6px 4px}
+.card .twitter-tweet{margin:0!important}
+.card.loaded .link em{display:none}
+.card.loaded .link{padding-bottom:8px}
+.empty{color:var(--ink3);padding:30px 0;text-align:center}
+.note{font-size:13.5px;color:var(--ink3);margin-top:16px}
+
+.cta2{background:var(--s1);border-top:1px solid var(--line)}
+.cta2 .wrap{padding-block:40px;display:grid;gap:12px}
+.cta2 h2{font-size:clamp(22px,3.2vw,30px)}
+.cta2 p{color:var(--ink2);max-width:60ch;margin:0}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="ThBHoCreators.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>Th<b>B.</b>Ho</a>
+  <div class="navr">
+   <a href="#films"><span lang="th">ผลงาน</span><span lang="en">Films</span></a>
+   <a href="https://x.com/widerooms/media" target="_blank" rel="noopener">X @widerooms ↗</a>
+   <a class="switch" href="ThBHoCreators.html"><span lang="th">← สำหรับ Creator</span><span lang="en">← For creators</span></a>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
+  </div>
+ </div>
+</header>
+
+<div class="wrap">
+ <section class="hero">
+  <div>
+   <p class="eyebrow">ThB.Ho · Online portfolio · X @widerooms</p>
+   <h1><span lang="th">MV และหนังสั้น <em>Hybrid AI</em> ทั้งหมดของเรา</span><span lang="en">Every <em>Hybrid AI</em> music video and film we've made</span></h1>
+   <p class="lead"><span lang="th">ผลงานเต็มเรื่องของ Three, B. และ Hour ที่โพสต์บน X รวมไว้ในหน้าเดียว ทุกเรื่องสร้างจากใบหน้าและร่างกายจริงผสม AI กดเล่นได้เลยจากหน้านี้ หรือเปิดดูบน X</span><span lang="en">The full-length work of Three, B. and Hour as posted on X, in one place. Every piece is a real face and body blended with AI. Play them right here, or open them on X.</span></p>
+   <div class="cta">
+    <a class="btn solid" href="#films"><span lang="th">ดูผลงาน ↓</span><span lang="en">Watch the films ↓</span></a>
+    <a class="btn" href="ThBHoCreators.html#match"><span lang="th">อยาก collab กับเรา →</span><span lang="en">Collab with us →</span></a>
+   </div>
+  </div>
+  <div>
+   <div class="stats">
+    <div><b id="nFilms">0</b><span><span lang="th">MV และหนังสั้น</span><span lang="en">MVs &amp; films</span></span></div>
+    <div><b id="nAll">0</b><span><span lang="th">คลิปทั้งหมด</span><span lang="en">clips in total</span></span></div>
+    <div><b id="nViews">0</b><span><span lang="th">วิวรวมที่นับได้</span><span lang="en">views counted</span></span></div>
+   </div>
+   <div class="personas" aria-hidden="true">
+    <figure style="--c:var(--nf)"><img src="creator-img/persona-three.jpg" alt="" style="transform:scale(1.1);transform-origin:50% 45%"><figcaption>Three · INFP</figcaption></figure>
+    <figure style="--c:var(--nt)"><img src="creator-img/persona-b.jpg" alt=""><figcaption>B. · INFJ</figcaption></figure>
+    <figure style="--c:var(--sp)"><img src="creator-img/persona-hour.jpg" alt="" style="transform:scale(1.11);transform-origin:50% 45%"><figcaption>Hour · ESTP</figcaption></figure>
+   </div>
+  </div>
+ </section>
+</div>
+
+<div class="bar" id="films">
+ <div class="wrap" id="filters">
+  <button type="button" data-f="all" aria-pressed="true"><span lang="th">ทั้งหมด</span><span lang="en">All</span></button>
+  <button type="button" data-f="mv" aria-pressed="false"><span lang="th">MV เต็มเรื่อง</span><span lang="en">Full MVs</span></button>
+  <button type="button" data-f="film" aria-pressed="false"><span lang="th">หนังสั้นและคลิป</span><span lang="en">Short films &amp; clips</span></button>
+  <button type="button" data-f="bts" aria-pressed="false"><span lang="th">เบื้องหลัง</span><span lang="en">Behind the scenes</span></button>
+  <button type="button" data-f="music" aria-pressed="false"><span lang="th">เพลงและ Podcast</span><span lang="en">Music &amp; podcast</span></button>
+  <span class="sep"></span>
+  <button type="button" class="p" data-p="three" aria-pressed="false" style="--c:var(--nf)">Three</button>
+  <button type="button" class="p" data-p="b" aria-pressed="false" style="--c:var(--nt)">B.</button>
+  <button type="button" class="p" data-p="hour" aria-pressed="false" style="--c:var(--sp)">Hour</button>
+  <span class="count" id="count"></span>
+ </div>
+</div>
+
+<main class="wrap">
+ <div class="grid" id="grid"></div>
+ <p class="empty" id="empty" hidden><span lang="th">ยังไม่มีคลิปในหมวดนี้</span><span lang="en">Nothing in this category yet</span></p>
+ <p class="note"><span lang="th">ยอดวิวตามที่นับได้ ณ วันที่ระบุในแต่ละโพสต์ · คลิปที่ไม่มียอดวิวคือยังไม่ได้นับ · ถ้าวิดีโอไม่ขึ้น กดที่การ์ดเพื่อเปิดบน X</span><span lang="en">View counts are as recorded on the date noted per post. Clips without a count have not been tallied yet. If a video doesn't load, tap its card to open it on X.</span></p>
+</main>
+
+<div class="cta2"><div class="wrap">
+ <h2><span lang="th">อยากเห็นตัวเองในเรื่องต่อไป?</span><span lang="en">Want to be in the next one?</span></h2>
+ <p><span lang="th">Creator สายฟิตเนส OnlyFans influencer และ LGBTQ+ ตอบ 6 ข้อ เพื่อดูว่าเข้ากับ Three, B. หรือ Hour และ collab แบบไหนเหมาะกับคุณ</span><span lang="en">Fitness, OnlyFans, influencer and LGBTQ+ creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.</span></p>
+ <div class="cta" style="margin-top:4px">
+  <a class="btn solid" href="ThBHoCreators.html#match"><span lang="th">เช็กว่าเข้ากับ persona ไหน →</span><span lang="en">Find your persona match →</span></a>
+  <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">ติดตาม @widerooms บน X ↗</span><span lang="en">Follow @widerooms on X ↗</span></a>
+ </div>
+</div></div>
+<div class="foot"><div class="wrap"><span>© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ทุกคลิปเป็น Hybrid AI · เนื้อหาสำหรับผู้ใหญ่ไม่อยู่บนหน้านี้</span><span lang="en">Every clip is Hybrid AI · no adult content on this page</span></span></div></div>
+
+<script>
+(function(){
+ var root=document.documentElement, langBtn=document.getElementById('lang');
+ var $=function(id){return document.getElementById(id)};
+ function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
+
+ // ===== Portfolio data. Add a post: {id:'<X status id>', cat:'mv'|'film'|'bts'|'music', t:'Title', p:['three','b','hour'], y:2026, v:'245K', asof:'2 Nov 2026', th:'คำอธิบายไทย', en:'English note'} =====
+ var FILMS=[
+  {id:'2094021510986154482',cat:'mv',t:'Ritmo del Alma',p:['three','hour'],y:2026,v:'245K',asof:'2 Nov 2026',th:'MV บนเรือยอชต์ คลิปที่มีคนดูมากที่สุด',en:'The yacht music video, our most-watched piece'},
+  {id:'2109560564754362752',cat:'mv',t:'Perdiéndonos en el calor',p:['three','hour'],y:2026,v:'147K',asof:'2 Nov 2026',th:'เพลงและ MV ภาคต่อจากทริปเรือ',en:'The song and video that followed the yacht trip'},
+  {id:'2061309949037400429',cat:'mv',t:'Explore Together · Full MV',p:['three','b','hour'],y:2026,v:'130K',asof:'2 Nov 2026',th:'"Welcome to Hybrid" MV เต็มเรื่อง',en:'"Welcome to Hybrid", the full music video'},
+  {id:'2062523276543623214',cat:'mv',t:'Full MV · BL story',p:['three','b','hour'],y:2026,v:'',asof:'',th:'เรื่อง BL เล่าผ่าน persona ทั้งสาม',en:'A BL story told through all three personas'},
+  {id:'2064692207236649126',cat:'mv',t:'MV edited with Claude',p:['three','b','hour'],y:2026,v:'',asof:'',th:'MV ที่ตัดต่อทั้งเรื่องด้วย Claude',en:'A music video edited entirely with Claude'},
+  {id:'2112541590720000085',cat:'film',t:"Tell Me It's (Not) a Dream",p:['three','hour'],y:2026,v:'68K',asof:'2 Nov 2026',th:'หนังสั้น · BL cut',en:'Short film · BL cut'},
+  {id:'2089337196402852328',cat:'film',t:'La sal en la piel',p:['three','hour'],y:2026,v:'61K',asof:'2 Nov 2026',th:'ชายหาดยามเย็น',en:'A beach at dusk'},
+  {id:'2063900491546009687',cat:'film',t:'100 Days of Heartbreaking',p:['three'],y:2026,v:'',asof:'',th:'หนังสั้น',en:'Short film'},
+  {id:'2071216625098047805',cat:'film',t:'"When we first met, I felt so shy"',p:['three','b'],y:2026,v:'',asof:'',th:'คลิปโรแมนติก',en:'A romantic clip'},
+  {id:'2091160128116695425',cat:'film',t:'Claude-edited clip',p:['three','hour'],y:2026,v:'21K',asof:'Aug 2026',th:'คลิปตัดต่อด้วย Claude',en:'A clip edited with Claude'},
+  {id:'2050586617103179798',cat:'film',t:'B. · featured video',p:['b'],y:2026,v:'',asof:'',th:'ผลงานเด่นของ B.',en:"B.'s featured video"},
+  {id:'2012110863138971788',cat:'film',t:'Hour · featured video',p:['hour'],y:2026,v:'',asof:'',th:'ผลงานเด่นของ Hour',en:"Hour's featured video"},
+  {id:'2068355101954343141',cat:'film',t:'Hybrid AI video',p:[],y:2026,v:'',asof:'',th:'',en:''},
+  {id:'2026703611460530482',cat:'film',t:'Hybrid AI video',p:[],y:2026,v:'',asof:'',th:'',en:''},
+  {id:'2077754118253486555',cat:'film',t:'Hybrid AI video',p:[],y:2026,v:'',asof:'',th:'',en:''},
+  {id:'2073771480756973828',cat:'film',t:'Hybrid AI video',p:[],y:2026,v:'',asof:'',th:'',en:''},
+  {id:'2059563105223651793',cat:'film',t:'Hybrid AI video',p:[],y:2026,v:'',asof:'',th:'',en:''},
+  {id:'2061643553772830937',cat:'bts',t:'Explore Together · BTS',p:['three','b','hour'],y:2026,v:'83K',asof:'2 Nov 2026',th:'เบื้องหลัง MV',en:'Behind the music video'},
+  {id:'2063254810783285608',cat:'bts',t:'The Butterflies · BTS',p:['three'],y:2026,v:'',asof:'',th:'เบื้องหลัง',en:'Behind the scenes'},
+  {id:'2063812217573978606',cat:'bts',t:'100 days on X',p:['three','b','hour'],y:2026,v:'',asof:'',th:'ครบ 100 วันบน X',en:'The 100-day milestone'},
+  {id:'1888880203272995220',cat:'bts',t:'Casting · Portfolio 2: Time Rider',p:['three','hour'],y:2025,v:'',asof:'',th:'คลิป Casting',en:'Casting clip'},
+  {id:'1798672280790376735',cat:'music',t:'A song made with AI',p:['three'],y:2024,v:'',asof:'',th:'เพลงที่ทำด้วย AI',en:'An AI-made song'},
+  {id:'1841712995308863704',cat:'music',t:'New song release',p:['three'],y:2024,v:'',asof:'',th:'เพลงใหม่',en:'A new song'},
+  {id:'1836043178572681321',cat:'music',t:'Podcast · the story behind THOR',p:['three','b','hour'],y:2024,v:'',asof:'',th:'Podcast เล่าเรื่องเบื้องหลัง',en:'The story behind THOR'}
+ ];
+ var CAT={mv:['MV เต็มเรื่อง','Full MV'],film:['หนังสั้นและคลิป','Short film / clip'],bts:['เบื้องหลัง','Behind the scenes'],music:['เพลงและ Podcast','Music / podcast']};
+ var PC={three:'var(--nf)',b:'var(--nt)',hour:'var(--sp)'}, PN={three:'Three',b:'B.',hour:'Hour'};
+
+ // ===== render =====
+ var grid=$('grid');
+ grid.innerHTML=FILMS.map(function(f){
+  var pp=f.p.map(function(k){return '<span class="pp" style="--c:'+PC[k]+'">'+PN[k]+'</span>'}).join('');
+  var views=f.v?'<span class="views">'+f.v+' '+T('วิว','views')+'</span>':'';
+  var note=(f.th||f.en)?'<span>'+T(f.th||f.en,f.en||f.th)+'</span>':'';
+  return '<article class="card" data-x="'+f.id+'" data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'">'+
+   '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span><span>'+f.y+'</span>'+pp+views+'</div>'+
+   '<a class="link" href="https://x.com/widerooms/status/'+f.id+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+T('ดูบน X ↗','View on X ↗')+'</em></a>'+
+   '<div class="emb"></div></article>';
+ }).join('');
+ var vsum=0;FILMS.forEach(function(f){var m=/^([\d.]+)K$/.exec(f.v||'');if(m)vsum+=parseFloat(m[1])*1000});
+ $('nFilms').textContent=FILMS.filter(function(f){return f.cat==='mv'||f.cat==='film'}).length;
+ $('nAll').textContent=FILMS.length;
+ $('nViews').textContent=vsum>=1e6?(vsum/1e6).toFixed(1)+'M':Math.round(vsum/1000)+'K+';
+
+ // ===== X embeds, loaded when a card scrolls into view =====
+ var ready=false,loading=false,queue=[];
+ function embed(card){
+  if(card.dataset.done)return;card.dataset.done='1';
+  var box=card.querySelector('.emb');
+  window.twttr.widgets.createTweet(card.dataset.x,box,{theme:'dark',dnt:true,conversation:'none',align:'center',cards:'visible'})
+   .then(function(el){if(el)card.classList.add('loaded');});
+ }
+ function need(card){if(ready)embed(card);else{queue.push(card);loadWidgets();}}
+ function loadWidgets(){
+  if(loading)return;loading=true;
+  var s=document.createElement('script');s.src='https://platform.twitter.com/widgets.js';s.async=true;s.charset='utf-8';
+  s.onload=function(){if(window.twttr&&twttr.ready)twttr.ready(function(){ready=true;queue.splice(0).forEach(embed)})};
+  document.head.appendChild(s);
+ }
+ var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!e.target.hidden){io.unobserve(e.target);need(e.target)}})},{rootMargin:'400px'}):null;
+ function watchAll(){grid.querySelectorAll('.card').forEach(function(c){if(io&&!c.hidden&&!c.dataset.done){io.unobserve(c);io.observe(c)}})}
+ watchAll();
+
+ // ===== filters =====
+ var fcat='all',fp=null;
+ function apply(){
+  var n=0;
+  grid.querySelectorAll('.card').forEach(function(c){
+   var ok=(fcat==='all'||c.dataset.cat===fcat)&&(!fp||(' '+c.dataset.p+' ').indexOf(' '+fp+' ')>=0);
+   c.hidden=!ok;if(ok)n++;
+  });
+  $('empty').hidden=n>0;
+  $('count').textContent=n+' / '+FILMS.length;
+  watchAll();
+ }
+ document.querySelectorAll('[data-f]').forEach(function(b){b.addEventListener('click',function(){fcat=b.dataset.f;document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})});
+ document.querySelectorAll('[data-p]').forEach(function(b){b.addEventListener('click',function(){fp=fp===b.dataset.p?null:b.dataset.p;document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});apply()})});
+ apply();
+
+ // ===== language (shared with the other ThB.Ho pages) =====
+ function setLang(l){root.lang=l;langBtn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ setLang(THBHO_I18N.pick(q,saved));
+ langBtn.addEventListener('change',function(){setLang(langBtn.value)});
+})();
+</script>
+</body>
+</html>

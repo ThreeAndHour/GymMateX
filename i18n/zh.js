@@ -548,7 +548,7 @@ THBHO_I18N_ADD('zh', {
  "🔒 Open the insider GymMateX O2O · VR plan →": "🔒 打开内部 GymMateX O2O · VR 计划 →",
  "🔒 The insider GymMateX O2O · VR plan →": "🔒 内部 GymMateX O2O · VR 计划 →",
  "🔒 This level is for adults": "🔒 此等级仅限成人",
- "MV &amp; films": "MV 与短片",
+ "MV &amp; films": "MV 与影片",
  "Behind the scenes": "幕后花絮",
  "Music &amp; podcast": "音乐与播客",
  "Casting": "选角",
@@ -617,5 +617,11 @@ THBHO_I18N_ADD('zh', {
  "More from X": "X 上的更多帖子",
  "All of Three's work →": "Three 的全部作品 →",
  "All of B.'s work →": "B. 的全部作品 →",
- "All of Hour's work →": "Hour 的全部作品 →"
+ "All of Hour's work →": "Hour 的全部作品 →",
+ "Newest": "最新",
+ "Most viewed": "最多观看",
+ "views on X": "X 上的观看",
+ "Music &amp; OST": "音乐与 OST",
+ "Music / OST": "音乐 / OST",
+ "View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.": "观看次数来自 X，截至 2026 年 11 月 4 日。若视频无法加载，点击卡片在 X 上打开。"
 });

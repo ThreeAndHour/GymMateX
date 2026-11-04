@@ -548,7 +548,7 @@ THBHO_I18N_ADD('es', {
  "🔒 Open the insider GymMateX O2O · VR plan →": "🔒 Abrir el plan interno GymMateX O2O · VR →",
  "🔒 The insider GymMateX O2O · VR plan →": "🔒 El plan interno GymMateX O2O · VR →",
  "🔒 This level is for adults": "🔒 Este nivel es para adultos",
- "MV &amp; films": "Videoclips y cortos",
+ "MV &amp; films": "Videoclips y películas",
  "Behind the scenes": "Detrás de cámaras",
  "Music &amp; podcast": "Música y pódcast",
  "Casting": "Casting",
@@ -617,5 +617,11 @@ THBHO_I18N_ADD('es', {
  "More from X": "Más de X",
  "All of Three's work →": "Todo el trabajo de Three →",
  "All of B.'s work →": "Todo el trabajo de B. →",
- "All of Hour's work →": "Todo el trabajo de Hour →"
+ "All of Hour's work →": "Todo el trabajo de Hour →",
+ "Newest": "Más recientes",
+ "Most viewed": "Más vistos",
+ "views on X": "vistas en X",
+ "Music &amp; OST": "Música y OST",
+ "Music / OST": "Música / OST",
+ "View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.": "Vistas según X al 4 de noviembre de 2026. Si un video no carga, toca su tarjeta para abrirlo en X."
 });

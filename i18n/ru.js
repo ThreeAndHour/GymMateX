@@ -617,5 +617,11 @@ THBHO_I18N_ADD('ru', {
  "More from X": "Ещё из X",
  "All of Three's work →": "Все работы Three →",
  "All of B.'s work →": "Все работы B. →",
- "All of Hour's work →": "Все работы Hour →"
+ "All of Hour's work →": "Все работы Hour →",
+ "Newest": "Сначала новые",
+ "Most viewed": "По просмотрам",
+ "views on X": "просмотров в X",
+ "Music &amp; OST": "Музыка и OST",
+ "Music / OST": "Музыка / OST",
+ "View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.": "Просмотры по данным X на 4 ноября 2026. Если видео не загрузилось, нажмите на карточку, чтобы открыть его в X."
 });

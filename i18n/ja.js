@@ -548,7 +548,7 @@ THBHO_I18N_ADD('ja', {
  "🔒 Open the insider GymMateX O2O · VR plan →": "🔒 インサイダー向け GymMateX O2O · VR プランを開く →",
  "🔒 The insider GymMateX O2O · VR plan →": "🔒 インサイダー向け GymMateX O2O · VR プラン →",
  "🔒 This level is for adults": "🔒 このレベルは成人向けです",
- "MV &amp; films": "MV &amp; ショートフィルム",
+ "MV &amp; films": "MV &amp; 映像",
  "Behind the scenes": "メイキング",
  "Music &amp; podcast": "音楽 &amp; ポッドキャスト",
  "Casting": "キャスティング",
@@ -617,5 +617,11 @@ THBHO_I18N_ADD('ja', {
  "More from X": "X のその他の投稿",
  "All of Three's work →": "Three の全作品 →",
  "All of B.'s work →": "B. の全作品 →",
- "All of Hour's work →": "Hour の全作品 →"
+ "All of Hour's work →": "Hour の全作品 →",
+ "Newest": "新しい順",
+ "Most viewed": "再生数順",
+ "views on X": "X での再生数",
+ "Music &amp; OST": "音楽 &amp; OST",
+ "Music / OST": "音楽 / OST",
+ "View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.": "再生数は 2026 年 11 月 4 日時点の X のデータです。動画が表示されない場合はカードをタップして X で開いてください。"
 });

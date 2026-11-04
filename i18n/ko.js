@@ -617,5 +617,11 @@ THBHO_I18N_ADD('ko', {
  "More from X": "X의 다른 게시물",
  "All of Three's work →": "Three의 모든 작품 →",
  "All of B.'s work →": "B.의 모든 작품 →",
- "All of Hour's work →": "Hour의 모든 작품 →"
+ "All of Hour's work →": "Hour의 모든 작품 →",
+ "Newest": "최신순",
+ "Most viewed": "조회수순",
+ "views on X": "X 조회수",
+ "Music &amp; OST": "음악 &amp; OST",
+ "Music / OST": "음악 / OST",
+ "View counts from X as of 4 Nov 2026. If a video doesn't load, tap its card to open it on X.": "조회수는 2026년 11월 4일 기준 X 데이터입니다. 영상이 안 나오면 카드를 눌러 X에서 여세요."
 });

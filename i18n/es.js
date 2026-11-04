@@ -614,5 +614,8 @@ THBHO_I18N_ADD('es', {
  "An AI-made song": "Una canción hecha con IA",
  "A new song": "Una nueva canción",
  "The story behind THOR": "La historia detrás de THOR",
- "More from X": "Más de X"
+ "More from X": "Más de X",
+ "All of Three's work →": "Todo el trabajo de Three →",
+ "All of B.'s work →": "Todo el trabajo de B. →",
+ "All of Hour's work →": "Todo el trabajo de Hour →"
 });

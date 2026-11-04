@@ -614,5 +614,8 @@ THBHO_I18N_ADD('zh', {
  "An AI-made song": "AI 制作的歌曲",
  "A new song": "新歌",
  "The story behind THOR": "THOR 背后的故事",
- "More from X": "X 上的更多帖子"
+ "More from X": "X 上的更多帖子",
+ "All of Three's work →": "Three 的全部作品 →",
+ "All of B.'s work →": "B. 的全部作品 →",
+ "All of Hour's work →": "Hour 的全部作品 →"
 });

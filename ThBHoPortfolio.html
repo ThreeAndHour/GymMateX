@@ -269,7 +269,10 @@ main{padding:22px 0 60px}
  watchAll();
 
  // ===== filters =====
- var fcat='all',fp=null;
+ var qs=new URLSearchParams(location.search);
+ var fcat=/^(mv|film|bts|music|more)$/.test(qs.get('f')||'')?qs.get('f'):'all', fp=/^(three|b|hour)$/.test(qs.get('p')||'')?qs.get('p'):null;
+ document.querySelectorAll('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.f===fcat)});
+ document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.p===fp)});
  function apply(){
   var n=0;
   grid.querySelectorAll('.card').forEach(function(c){

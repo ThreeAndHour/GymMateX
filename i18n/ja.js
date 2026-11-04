@@ -614,5 +614,8 @@ THBHO_I18N_ADD('ja', {
  "An AI-made song": "AIで作った曲",
  "A new song": "新曲",
  "The story behind THOR": "THORの物語",
- "More from X": "X のその他の投稿"
+ "More from X": "X のその他の投稿",
+ "All of Three's work →": "Three の全作品 →",
+ "All of B.'s work →": "B. の全作品 →",
+ "All of Hour's work →": "Hour の全作品 →"
 });

@@ -614,5 +614,8 @@ THBHO_I18N_ADD('ru', {
  "An AI-made song": "Песня, созданная с ИИ",
  "A new song": "Новая песня",
  "The story behind THOR": "История THOR",
- "More from X": "Ещё из X"
+ "More from X": "Ещё из X",
+ "All of Three's work →": "Все работы Three →",
+ "All of B.'s work →": "Все работы B. →",
+ "All of Hour's work →": "Все работы Hour →"
 });

@@ -294,7 +294,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 @media (max-width:640px){.pdhead{grid-template-columns:1fr}.pdhead img{height:auto;aspect-ratio:16/10;min-height:0}}
 .pdsub{font-size:18px;padding:0 22px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .pdsub a{font:500 13px var(--mono);text-decoration:none}
-.pdworks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px}
+.pdworks{display:flex;flex-wrap:wrap;gap:10px;padding:0 22px}
 @media (max-width:640px){.pdworks{grid-template-columns:1fr 1fr}}
 .pdworks a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--bg)}
 .pdworks a:hover,.pdworks a:focus-visible{border-color:var(--c)}
@@ -587,12 +587,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    '<div class="mbody"><span class="persona-name" style="color:var(--c)">'+p.n+' · '+p.mbti+' · '+T(p.role.th,p.role.en)+'</span>'+
    '<h3 id="pdTitle" style="font-size:21px;line-height:1.35">'+T(p.quote.th,p.quote.en)+'</h3><p style="color:var(--ink2);margin:0">'+T(p.vibe.th,p.vibe.en)+'</p>'+
    '<div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div>';
-  var own=WORKS[k]||[], html=own.map(function(w){return workCard(w,true)}).join('');
-  if(own.length<3){
-   html+=SHARED.slice(0,6-own.length).map(function(w){return workCard(w,false)}).join('');
-   if(!own.length)html+='<p class="pdnote">'+T('ผลงานรวมของ ThB.Ho ที่ Three, B. และ Hour ร่วมแสดง','ThB.Ho works featuring Three, B. and Hour together')+'</p>';
-  }
-  $('pdWorks').innerHTML=html;
+  $('pdWorks').innerHTML='<a class="btn solid" href="ThBHoPortfolio.html?p='+k+'">'+T('ดูผลงานทั้งหมดของ '+p.n+' →','All of '+p.n+'\'s work →')+'</a><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X @widerooms ↗</a>';
   lastFocus=document.activeElement;
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
   dlg.scrollTop=0;

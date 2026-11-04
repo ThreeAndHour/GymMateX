@@ -614,5 +614,8 @@ THBHO_I18N_ADD('ko', {
  "An AI-made song": "AI로 만든 노래",
  "A new song": "신곡",
  "The story behind THOR": "THOR의 이야기",
- "More from X": "X의 다른 게시물"
+ "More from X": "X의 다른 게시물",
+ "All of Three's work →": "Three의 모든 작품 →",
+ "All of B.'s work →": "B.의 모든 작품 →",
+ "All of Hour's work →": "Hour의 모든 작품 →"
 });

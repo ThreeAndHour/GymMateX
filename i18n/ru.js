@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "Одно лицо, три персоны: Three · B. · Hour — у каждого своё выражение лица и взгляд",
+
   "Sound off": "Выключить звук",
 
   "Sound on": "Включить звук",

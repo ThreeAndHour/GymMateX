@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "하나의 얼굴, 세 페르소나: Three · B. · Hour — 각자 다른 표정과 눈빛",
+
   "Sound off": "소리 끄기",
 
   "Sound on": "소리 켜기",

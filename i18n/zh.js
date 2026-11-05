@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "一张脸，三个人设：Three · B. · Hour — 各自不同的表情与眼神",
+
   "Sound off": "关闭声音",
 
   "Sound on": "开启声音",

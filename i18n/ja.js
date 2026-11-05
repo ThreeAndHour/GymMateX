@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "ひとつの顔、3 つのペルソナ：Three · B. · Hour — それぞれ違う表情とまなざし",
+
   "Sound off": "音声オフ",
 
   "Sound on": "音声オン",

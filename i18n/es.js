@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "Una cara, tres personas: Three · B. · Hour — cada uno con su propia expresión y mirada",
+
   "Sound off": "Silenciar",
 
   "Sound on": "Activar sonido",

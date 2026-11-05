@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "The six most-watched clips": "가장 많이 본 클립 6편",
+  "Play them right here. All 80+ clips, filtered by persona, live on the Portfolio page.": "여기서 바로 재생하세요. 80편이 넘는 전체 클립은 페르소나별로 Portfolio 페이지에 있습니다.",
+
   "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "시크릿 에이전트 역의 B.: 모든 컷, 각도, 조명에서 한결같은 얼굴",
 
   "Explore more of the GymMateX universe": "GymMateX 세계 더 둘러보기",

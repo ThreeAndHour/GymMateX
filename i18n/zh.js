@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "The six most-watched clips": "观看次数最多的 6 支影片",
+  "Play them right here. All 80+ clips, filtered by persona, live on the Portfolio page.": "可直接在此播放。全部 80 多支影片按人设筛选，见 Portfolio 页面。",
+
   "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "B. 饰演特工：同一张脸，在每个镜头、角度和光线下都保持一致",
 
   "Explore more of the GymMateX universe": "继续探索 GymMateX 宇宙",

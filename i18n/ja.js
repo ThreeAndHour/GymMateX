@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "The six most-watched clips": "最も再生されたクリップ 6 本",
+  "Play them right here. All 80+ clips, filtered by persona, live on the Portfolio page.": "ここでそのまま再生できます。80 本以上の全クリップはペルソナ別に Portfolio ページへ。",
+
   "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "シークレットエージェント役の B.：どのカット・角度・光でも同じ顔",
 
   "Explore more of the GymMateX universe": "GymMateX の世界をもっと見る",

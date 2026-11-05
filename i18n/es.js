@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('es', {
+  "The six most-watched clips": "Los seis clips más vistos",
+  "Play them right here. All 80+ clips, filtered by persona, live on the Portfolio page.": "Reprodúcelos aquí mismo. Los más de 80 clips, filtrados por persona, están en la página Portfolio.",
+
   "B. as a Secret Agent: the same face, consistent in every shot, angle and light": "B. como agente secreto: la misma cara, consistente en cada toma, ángulo y luz",
 
   "Explore more of the GymMateX universe": "Explora más del universo GymMateX",

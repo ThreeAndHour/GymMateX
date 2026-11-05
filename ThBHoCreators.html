@@ -53,6 +53,14 @@ nav a:hover{color:var(--ink)}
 
 .hero{padding:56px 0 40px}
 .eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(14,11,16,.85));font-size:13px;color:var(--ink2)}
+.hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(14,11,16,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
+.hvid-snd:hover{background:rgba(14,11,16,.85)}
+.hvid-snd .l0,.hvid-snd[aria-pressed="true"] .l1{display:none}.hvid-snd[aria-pressed="true"] .l0{display:inline}
+@media (max-width:600px){.hvid figcaption{position:static;background:var(--s1);padding:9px 12px;border-top:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){.hvid video{display:none}.hvid{background:url(creator-vid/thbho-faces-001.jpg) center/cover;aspect-ratio:16/9}}
 .hero h1{font-size:clamp(38px,6.4vw,66px);font-weight:700;line-height:1.04;letter-spacing:-.01em}
 .hero .role{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:10px 0 22px}
 .thesis{font:600 clamp(22px,3vw,30px)/1.35 var(--display);max-width:26ch;margin:0 0 16px}
@@ -330,9 +338,10 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <a class="btn solid" href="#match"><span lang="th">เช็กว่าคุณเข้ากับ persona ไหน</span><span lang="en">Find your persona match</span></a>
   <a class="btn" href="#portfolio"><span lang="th">ดูผลงาน</span><span lang="en">See the work</span></a>
  </div>
- <figure class="banner">
-  <img src="creator-img/persona-banner.jpg" alt="Hybrid AI Persona banner — Three, B. and Hour" width="1280" height="320">
-  <figcaption><span lang="th">Hybrid AI Persona: Three · B. · Hour — ใบหน้าจริงผสม AI</span><span lang="en">Hybrid AI personas Three · B. · Hour — real face blended with AI</span></figcaption>
+ <figure class="hvid">
+  <video id="hvid" src="creator-vid/thbho-faces-001.mp4" poster="creator-vid/thbho-faces-001.jpg" autoplay muted loop playsinline preload="auto" width="1280" height="720" aria-label="One face shifting through Three, B. and Hour"></video>
+  <button type="button" class="hvid-snd" id="hvidSnd" aria-pressed="false"><span class="on" aria-hidden="true">🔇</span><span class="l1"><span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></span><span class="l0"><span lang="th">ปิดเสียง</span><span lang="en">Sound off</span></span></button>
+  <figcaption><span lang="th">ใบหน้าเดียว สาม persona: Three · B. · Hour — ใบหน้าจริงผสม AI</span><span lang="en">One face, three personas: Three · B. · Hour — a real face blended with AI</span></figcaption>
  </figure>
 </div>
 
@@ -620,6 +629,13 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    if(THBHO_PLAYER(box,id,cap.querySelector('b').textContent)){var b=box.querySelector('button'); if(b)b.click();}else location.href=a.href;
   });
  });
+
+ // ---- hero video: sound toggle, pause when off screen ----
+ (function(){
+  var v=document.getElementById('hvid'),b=document.getElementById('hvidSnd'); if(!v||!b)return;
+  b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.querySelector('.on').textContent=v.muted?'🔇':'🔊';if(!v.muted)v.play&&v.play().catch(function(){})});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play&&v.play().catch(function(){})}else v.pause()})}).observe(v);
+ })();
 
 })();
 </script>

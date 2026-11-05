@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('zh', {
+  "Sound off": "关闭声音",
+
+  "Sound on": "开启声音",
+  "One face, three personas: Three · B. · Hour — a real face blended with AI": "一张脸，三个人设：Three · B. · Hour — 真实面孔融合 AI",
+
   "15–30 guests: morning fitness, afternoon content, evening mixer, at partner venues.": "15–30 位客人：上午健身、下午拍摄内容、晚间交流，在合作场所进行。",
   "3-day trips for winners and members at partner venues, capturing movement, voice and personality with consent.": "为优胜者与会员安排的 3 天旅行，在合作场所进行，经同意后采集动作、声音与个性。",
   "<b>Private Persona Collab</b>, age-verified platforms only": "<b>私密 Persona 合作</b>，仅限年龄验证平台",

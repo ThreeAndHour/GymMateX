@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('ja', {
+  "Sound off": "音声オフ",
+
+  "Sound on": "音声オン",
+  "One face, three personas: Three · B. · Hour — a real face blended with AI": "ひとつの顔、3 つのペルソナ：Three · B. · Hour — 実在の顔と AI の融合",
+
   "15–30 guests: morning fitness, afternoon content, evening mixer, at partner venues.": "15〜30 名：午前はフィットネス、午後はコンテンツ撮影、夜はミキサー。提携施設にて。",
   "3-day trips for winners and members at partner venues, capturing movement, voice and personality with consent.": "優勝者とメンバー向けの 3 日間トリップ。提携施設で、同意のもと動き・声・個性を収録。",
   "<b>Private Persona Collab</b>, age-verified platforms only": "<b>プライベート Persona Collab</b>、年齢確認済みプラットフォーム限定",

@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('es', {
+  "Sound off": "Silenciar",
+
+  "Sound on": "Activar sonido",
+  "One face, three personas: Three · B. · Hour — a real face blended with AI": "Una cara, tres personas: Three · B. · Hour — un rostro real fusionado con IA",
+
   "15–30 guests: morning fitness, afternoon content, evening mixer, at partner venues.": "15–30 invitados: fitness por la mañana, contenido por la tarde, mixer por la noche, en locales asociados.",
   "3-day trips for winners and members at partner venues, capturing movement, voice and personality with consent.": "Viajes de 3 días para ganadores y miembros en locales asociados, capturando movimiento, voz y personalidad con consentimiento.",
   "<b>Private Persona Collab</b>, age-verified platforms only": "<b>Persona Collab privado</b>, solo en plataformas con verificación de edad",

@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI": "하나의 원형, 세 페르소나: Three · B. · Hour — 각자의 MBTI에 따라 다른 표정과 눈빛",
+
   "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "하나의 얼굴, 세 페르소나: Three · B. · Hour — 각자 다른 표정과 눈빛",
 
   "Sound off": "소리 끄기",

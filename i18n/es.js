@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('es', {
+  "Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their \"3\" and \"H\" pendants.": "Three (INFP), B. (INFJ) y Hour (ESTP) tienen su propia voz, ánimo y mirada. Three × Hour es la pareja que los fans reconocen en cada clip por sus colgantes \"3\" y \"H\".",
+  "Three × Hour: 3× the views of solo clips": "Three × Hour: 3 veces las vistas de los clips en solitario",
+  "Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.": "Romance y química entre las personas, contados en videoclips y cortos. Nuestro sello: canciones de amor en español, un yate y una playa al atardecer. Latin-pop BL que nadie más hace.",
+  "10 Spanish clips · 575K views": "10 clips en español · 575K vistas",
+
   "What ThB.Ho brings": "Lo que aporta ThB.Ho",
   "Hybrid AI content no one else makes": "Contenido Hybrid AI que nadie más hace",
   "Six things that set Three, B. and Hour apart, and that you get when you collab with us.": "Seis cosas que distinguen a Three, B. y Hour, y que obtienes al colaborar con nosotros.",

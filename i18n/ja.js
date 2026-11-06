@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('ja', {
+  "Hybrid Persona, made for vertical": "縦型のための Hybrid Persona",
+  "Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.": "Three、B.、Hour の縦型クリップをひとつの再生リストに。ここでスワイプするか、Portfolio ページでペルソナ別に全クリップをどうぞ。",
+  "Open the playlist on YouTube ↗": "YouTube で再生リストを開く ↗",
+  "Every clip is Hybrid AI · YouTube channel @ThreeBestHours": "すべてのクリップは Hybrid AI · YouTube チャンネル @ThreeBestHours",
+
   "One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI": "ひとつの原型、3 つのペルソナ：Three · B. · Hour — それぞれの MBTI で変わる表情とまなざし",
 
   "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "ひとつの顔、3 つのペルソナ：Three · B. · Hour — それぞれ違う表情とまなざし",

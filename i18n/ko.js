@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('ko', {
+  "Hybrid Persona, made for vertical": "세로 화면을 위한 Hybrid Persona",
+  "Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.": "Three, B., Hour의 세로 영상을 하나의 재생목록에 모았습니다. 여기서 넘겨 보거나, Portfolio 페이지에서 페르소나별 전체 클립을 보세요.",
+  "Open the playlist on YouTube ↗": "YouTube에서 재생목록 열기 ↗",
+  "Every clip is Hybrid AI · YouTube channel @ThreeBestHours": "모든 클립은 Hybrid AI · YouTube 채널 @ThreeBestHours",
+
   "One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI": "하나의 원형, 세 페르소나: Three · B. · Hour — 각자의 MBTI에 따라 다른 표정과 눈빛",
 
   "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "하나의 얼굴, 세 페르소나: Three · B. · Hour — 각자 다른 표정과 눈빛",

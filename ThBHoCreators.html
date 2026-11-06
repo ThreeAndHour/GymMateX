@@ -136,6 +136,14 @@ section{padding:64px 0 0}
 .show .w2{grid-column:span 2}.show .w3{grid-column:span 3}.show .h2{grid-row:span 2}
 .show .top img{object-position:50% 15%}
 @media (max-width:700px){.show{grid-template-columns:1fr;grid-auto-rows:auto}.show .w2,.show .w3{grid-column:auto}.show .h2{grid-row:auto}.show img{height:auto;aspect-ratio:16/10}.show .top img{aspect-ratio:4/5}}
+.ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
+.yttext h2{margin:8px 0 12px}
+.yttext p{color:var(--ink2)}
+.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(255,120,60,.25),0 0 60px -10px rgba(102,252,241,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
+.phone-in iframe{display:block;width:100%;height:100%;border:0}
+@media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
 .reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:760px){.reel{grid-template-columns:1fr 1fr}}
 .reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1);color:var(--ink);text-decoration:none}
@@ -417,21 +425,21 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 </section>
 
 <section id="portfolio">
- <div class="sh">
-  <span class="kick">Portfolio · X</span>
-  <h2><span lang="th">6 คลิปที่คนดูมากที่สุด</span><span lang="en">The six most-watched clips</span></h2>
-  <p><span lang="th">กดเล่นได้ที่นี่ · ผลงานทั้งหมดกว่า 80 คลิป แยกตาม persona อยู่ในหน้า Portfolio</span><span lang="en">Play them right here. All 80+ clips, filtered by persona, live on the Portfolio page.</span></p>
+ <div class="ytwrap">
+  <div class="yttext">
+   <span class="kick">Portfolio · YouTube</span>
+   <h2><span lang="th">Hybrid Persona ในแบบแนวตั้ง</span><span lang="en">Hybrid Persona, made for vertical</span></h2>
+   <p><span lang="th">คลิปแนวตั้งของ Three, B. และ Hour รวมไว้ในเพลย์ลิสต์เดียว เลื่อนดูได้เลย หรือเปิดหน้า Portfolio เพื่อดูทุกคลิปแยกตาม persona</span><span lang="en">Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.</span></p>
+   <div class="cta">
+    <a class="btn solid" href="https://www.youtube.com/playlist?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" target="_blank" rel="noopener"><span lang="th">เปิดเพลย์ลิสต์บน YouTube ↗</span><span lang="en">Open the playlist on YouTube ↗</span></a>
+    <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a>
+   </div>
+   <p class="note"><span lang="th">ทุกคลิปเป็น Hybrid AI · ช่อง YouTube @ThreeBestHours</span><span lang="en">Every clip is Hybrid AI · YouTube channel @ThreeBestHours</span></p>
+  </div>
+  <div class="phone"><div class="phone-in">
+   <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl&amp;rel=0&amp;playsinline=1&amp;modestbranding=1" title="ThB.Ho Hybrid Persona playlist on YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div></div>
  </div>
- <div class="reel">
-  <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><img src="creator-img/x-154482.jpg" alt="Ritmo del Alma music video still: two personas on a yacht" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:40</span><span class="cap"><b>Ritmo del Alma · MV</b><span>245K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2109560564754362752" target="_blank" rel="noopener"><img src="creator-img/x-362752.jpg" alt="Two personas in a yacht cabin over a sea chart" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:26</span><span class="cap"><b>Perdiéndonos en el calor</b><span>149K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2061309949037400429" target="_blank" rel="noopener"><img src="creator-img/x-400429.jpg" alt="A persona walking through a sunlit temple doorway" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:02</span><span class="cap"><b>Explore Together · Full MV</b><span>130K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2061643553772830937" target="_blank" rel="noopener"><img src="creator-img/x-830937.jpg" alt="A persona in a white drape among temple columns" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">1:04</span><span class="cap"><b>Explore Together · BTS</b><span>83K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2112541590720000085" target="_blank" rel="noopener"><img src="creator-img/x-000085.jpg" alt="Two personas in sunglasses, close-up" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">5:55</span><span class="cap"><b>Tell Me It's (Not) a Dream</b><span>69K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2089337196402852328" target="_blank" rel="noopener"><img src="creator-img/x-852328.jpg" alt="Two personas on a beach at dusk" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">1:30</span><span class="cap"><b>La sal en la piel</b><span>61K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
- </div>
- <p style="margin:18px 0 0"><a class="btn solid" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a></p>
- <p class="note"><span lang="th">ยอดวิว ณ 5 พ.ย. 2026 · ทุกคลิปเป็น Hybrid AI</span><span lang="en">View counts as of 5 Nov 2026 · every clip is Hybrid AI</span></p>
 </section>
 
 <section id="roadmap">

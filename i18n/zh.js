@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('zh', {
+  "Hybrid Persona, made for vertical": "为竖屏打造的 Hybrid Persona",
+  "Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.": "Three、B. 和 Hour 的竖屏短片汇集在一个播放列表里。可在此滑动观看，或打开 Portfolio 页面按人设浏览全部影片。",
+  "Open the playlist on YouTube ↗": "在 YouTube 上打开播放列表 ↗",
+  "Every clip is Hybrid AI · YouTube channel @ThreeBestHours": "所有影片均为 Hybrid AI · YouTube 频道 @ThreeBestHours",
+
   "One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI": "一个原型，三个人设：Three · B. · Hour — 表情与眼神因各自的 MBTI 而不同",
 
   "One face, three personas: Three · B. · Hour — each with his own expression and look in the eyes": "一张脸，三个人设：Three · B. · Hour — 各自不同的表情与眼神",

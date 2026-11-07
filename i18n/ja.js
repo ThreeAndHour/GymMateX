@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "See the full Portfolio →": "Portfolio をすべて見る →",
+  "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "MV、短編、メイキングなど 80 本以上。Three、B.、Hour で絞り込み可能",
+
   "Close": "閉じる",
 
   "Watch": "見る",

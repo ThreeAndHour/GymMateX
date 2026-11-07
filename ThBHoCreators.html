@@ -91,7 +91,7 @@ section{padding:64px 0 0}
 .usp article:hover{border-color:var(--c);box-shadow:0 10px 40px -12px var(--c)}
 .usp article{cursor:pointer}
 .usp article:focus-visible{outline:2px solid var(--c);outline-offset:2px}
-.usp .uclip{all:unset;cursor:pointer;font:500 11.5px var(--mono);color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.usp .uclip{all:unset;position:relative;z-index:1;cursor:pointer;font:500 11.5px var(--mono);color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .usp .uclip:hover,.usp article:hover .uclip{color:var(--c)}
 dialog.vpop{border:0;padding:0;background:transparent;width:min(96vw,1100px);max-width:96vw;max-height:94vh;overflow:visible}
 dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
@@ -103,6 +103,8 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
 .vpop-cap{margin:10px 2px 0;font:500 13px var(--mono);color:var(--ink3);text-align:center}
 .vpop-cap a{color:var(--cyan);text-decoration:none}
 @media (prefers-reduced-motion:reduce){.usp article>.ubg{transition:none}.usp article:hover>.ubg{transform:none}}
+.usp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:22px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,rgba(255,79,139,.10),rgba(102,252,241,.06))}
+.usp-cta>span{color:var(--ink2);font-size:14.5px}
 @media (max-width:900px){.usp{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.usp{grid-template-columns:1fr}}
 
@@ -400,6 +402,11 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><button type="button" class="uclip" data-x="2040825962750001292">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING</button></article>
   <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><button type="button" class="uclip" data-x="2057333372205289701">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona</button></article>
  </div>
+ <div class="usp-cta">
+  <a class="btn solid" href="ThBHoPortfolio.html"><span lang="th">ดูผลงานทั้งหมดใน Portfolio →</span><span lang="en">See the full Portfolio →</span></a>
+  <span><span lang="th">MV หนังสั้น และเบื้องหลังกว่า 80 คลิป · กรองตาม Three, B. และ Hour ได้</span><span lang="en">80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour</span></span>
+ </div>
+
 </section>
 
 <section id="levels">

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "See the full Portfolio →": "查看完整 Portfolio →",
+  "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "80 多支 MV、短片与幕后花絮，可按 Three、B. 和 Hour 筛选",
+
   "Close": "关闭",
 
   "Watch": "观看",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "See the full Portfolio →": "전체 Portfolio 보기 →",
+  "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "MV, 단편, 비하인드 등 80편 이상 · Three, B., Hour별로 필터",
+
   "Close": "닫기",
 
   "Watch": "보기",

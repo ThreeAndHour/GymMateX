@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('es', {
+  "See the full Portfolio →": "Ver el Portfolio completo →",
+  "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "Más de 80 videoclips, cortos y detrás de cámaras, filtrables por Three, B. y Hour",
+
   "Close": "Cerrar",
 
   "Watch": "Ver",

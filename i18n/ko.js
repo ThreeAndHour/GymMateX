@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "Watch": "보기",
+
   "Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their \"3\" and \"H\" pendants.": "Three(INFP), B.(INFJ), Hour(ESTP)는 각자의 목소리, 분위기, 눈빛을 지녔습니다. Three × Hour는 팬들이 모든 클립에서 \"3\"과 \"H\" 펜던트로 알아보는 커플입니다.",
   "Three × Hour: 3× the views of solo clips": "Three × Hour: 솔로 클립의 3배 조회수",
   "Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.": "페르소나 사이의 로맨스와 케미를 MV와 단편으로 풀어냅니다. 우리의 시그니처: 스페인어 러브송, 요트, 해 질 녘 해변. 누구도 만들지 않는 Latin-pop BL.",

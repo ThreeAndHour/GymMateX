@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "Watch": "观看",
+
   "Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their \"3\" and \"H\" pendants.": "Three（INFP）、B.（INFJ）和 Hour（ESTP）各有自己的声音、情绪与眼神。Three × Hour 是粉丝在每支影片里都能凭 \"3\" 和 \"H\" 吊坠认出的一对。",
   "Three × Hour: 3× the views of solo clips": "Three × Hour：观看数是单人影片的 3 倍",
   "Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.": "人设之间的浪漫与化学反应，通过 MV 和短片讲述。我们的招牌：西班牙语情歌、游艇与日落海滩，别人做不出的 Latin-pop BL。",

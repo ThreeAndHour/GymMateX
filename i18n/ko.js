@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "One original, three personalities": "하나의 원형, 세 가지 개성",
+
   "See Three's work in the Portfolio →": "Portfolio에서 Three의 작품 보기 →",
   "See B.'s work in the Portfolio →": "Portfolio에서 B.의 작품 보기 →",
   "See Hour's work in the Portfolio →": "Portfolio에서 Hour의 작품 보기 →",

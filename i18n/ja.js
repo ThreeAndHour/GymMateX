@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "One original, three personalities": "ひとつの原型、3 つの個性",
+
   "See Three's work in the Portfolio →": "Portfolio で Three の作品を見る →",
   "See B.'s work in the Portfolio →": "Portfolio で B. の作品を見る →",
   "See Hour's work in the Portfolio →": "Portfolio で Hour の作品を見る →",

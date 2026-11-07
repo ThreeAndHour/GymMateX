@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "One original, three personalities": "一个原型，三种个性",
+
   "See Three's work in the Portfolio →": "在 Portfolio 查看 Three 的作品 →",
   "See B.'s work in the Portfolio →": "在 Portfolio 查看 B. 的作品 →",
   "See Hour's work in the Portfolio →": "在 Portfolio 查看 Hour 的作品 →",

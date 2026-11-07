@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "One original, three personalities": "Один прототип, три характера",
+
   "See Three's work in the Portfolio →": "Работы Three в портфолио →",
   "See B.'s work in the Portfolio →": "Работы B. в портфолио →",
   "See Hour's work in the Portfolio →": "Работы Hour в портфолио →",

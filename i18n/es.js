@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "One original, three personalities": "Un original, tres personalidades",
+
   "See Three's work in the Portfolio →": "Ver el trabajo de Three en el Portfolio →",
   "See B.'s work in the Portfolio →": "Ver el trabajo de B. en el Portfolio →",
   "See Hour's work in the Portfolio →": "Ver el trabajo de Hour en el Portfolio →",

@@ -89,8 +89,19 @@ section{padding:64px 0 0}
 .usp article::before{z-index:2}
 .usp article{transition:border-color .3s,box-shadow .3s}
 .usp article:hover{border-color:var(--c);box-shadow:0 10px 40px -12px var(--c)}
-.usp .uclip{font:500 11.5px var(--mono);color:var(--ink2);text-decoration:none;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.usp .uclip:hover{color:var(--c)}
+.usp article{cursor:pointer}
+.usp article:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.usp .uclip{all:unset;cursor:pointer;font:500 11.5px var(--mono);color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.usp .uclip:hover,.usp article:hover .uclip{color:var(--c)}
+dialog.vpop{border:0;padding:0;background:transparent;width:min(96vw,1100px);max-width:96vw;max-height:94vh;overflow:visible}
+dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
+.vpop-box{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 0 80px -10px rgba(255,140,60,.25);display:flex;justify-content:center}
+.vpop-box video{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;background:#000}
+.vpop-x{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;margin:0 0 12px auto;font:600 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.vpop-x b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;font-size:14px}
+.vpop-x:hover,.vpop-x:focus-visible{color:#fff}
+.vpop-cap{margin:10px 2px 0;font:500 13px var(--mono);color:var(--ink3);text-align:center}
+.vpop-cap a{color:var(--cyan);text-decoration:none}
 @media (prefers-reduced-motion:reduce){.usp article>.ubg{transition:none}.usp article:hover>.ubg{transform:none}}
 @media (max-width:900px){.usp{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.usp{grid-template-columns:1fr}}
@@ -382,12 +393,12 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <p><span lang="th">หกอย่างที่ทำให้งานของ Three, B. และ Hour ต่างจาก creator ทั่วไป และเป็นสิ่งที่คุณได้เมื่อ collab กับเรา</span><span lang="en">Six things that set Three, B. and Hour apart, and that you get when you collab with us.</span></p>
  </div>
  <div class="usp">
-  <article style="--c:#3FC48A"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><a class="uclip" href="https://x.com/widerooms/status/2117252195011993896" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo ↗</a></article>
-  <article style="--c:var(--cyan)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><a class="uclip" href="https://x.com/widerooms/status/2072701160025428150" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide ↗</a></article>
-  <article style="--c:var(--pink)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><a class="uclip" href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma ↗</a></article>
-  <article style="--c:var(--gold)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><a class="uclip" href="https://x.com/widerooms/status/2072352936219615678" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds ↗</a></article>
-  <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><a class="uclip" href="https://x.com/widerooms/status/2040825962750001292" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING ↗</a></article>
-  <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><a class="uclip" href="https://x.com/widerooms/status/2057333372205289701" target="_blank" rel="noopener">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona ↗</a></article>
+  <article style="--c:#3FC48A"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
+  <article style="--c:var(--cyan)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><button type="button" class="uclip" data-x="2072701160025428150">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide</button></article>
+  <article style="--c:var(--pink)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
+  <article style="--c:var(--gold)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><button type="button" class="uclip" data-x="2072352936219615678">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds</button></article>
+  <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><button type="button" class="uclip" data-x="2040825962750001292">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING</button></article>
+  <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><button type="button" class="uclip" data-x="2057333372205289701">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona</button></article>
  </div>
 </section>
 
@@ -524,6 +535,11 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <div><b>3+</b><span><span lang="th">ปี ทำ Hybrid AI Persona และหนังสั้น AI</span><span lang="en">years making Hybrid AI personas and AI films</span></span></div>
  </div>
 </section>
+<dialog class="vpop" id="vpop" aria-label="Clip">
+ <button type="button" class="vpop-x" id="vpopX"><span lang="th">ปิด</span><span lang="en">Close</span> <b aria-hidden="true">✕</b></button>
+ <div class="vpop-box" id="vpopBox"></div>
+ <p class="vpop-cap" id="vpopCap"></p>
+</dialog>
  <dialog id="pdlg" aria-labelledby="pdTitle">
   <div class="pd">
    <button class="pdx" id="pdClose" type="button" aria-label="Close">✕</button>
@@ -688,8 +704,33 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   vs.forEach(function(v){v.preload='metadata'});
   if(still||!('IntersectionObserver' in window))return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.play&&v.play().catch(function(){})}else v.pause()})},{threshold:.25});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting&&!window.__vpop){v.play&&v.play().catch(function(){})}else v.pause()})},{threshold:.25});
   vs.forEach(function(v){io.observe(v)});
+ })();
+
+ // ---- strength cards: tap a card to watch its clip in a popup ----
+ (function(){
+  var d=document.getElementById('vpop'),box=document.getElementById('vpopBox'),cap=document.getElementById('vpopCap'); if(!d)return;
+  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg').forEach(function(x){x.play&&x.play().catch(function(){})})}
+  function open(id,title){
+   var m=window.THBHO_X&&THBHO_X[id]; if(!m||!m.mp4){window.open('https://x.com/widerooms/status/'+id,'_blank','noopener');return}
+   window.__vpop=1;document.querySelectorAll('.usp .ubg').forEach(function(x){x.pause()});
+   var v=document.createElement('video');v.setAttribute('referrerpolicy','no-referrer');v.controls=true;v.playsInline=true;v.autoplay=true;v.poster=m.poster||'';v.src=m.mp4;
+   box.innerHTML='';box.appendChild(v);
+   cap.innerHTML=title+' · <a href="https://x.com/widerooms/status/'+id+'" target="_blank" rel="noopener">X ↗</a>';
+   d.showModal?d.showModal():d.setAttribute('open','');v.play&&v.play().catch(function(){});
+  }
+  document.querySelectorAll('.usp article').forEach(function(a){
+   var b=a.querySelector('.uclip'); if(!b)return;
+   a.tabIndex=0;a.setAttribute('role','button');
+   var t=b.textContent.split('·').slice(1).join('·').trim();
+   function go(e){e.preventDefault();open(b.dataset.x,t)}
+   a.addEventListener('click',go);
+   a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')go(e)});
+  });
+  document.getElementById('vpopX').addEventListener('click',close);
+  d.addEventListener('close',close);
+  d.addEventListener('click',function(e){if(e.target===d)close()});
  })();
 
 })();

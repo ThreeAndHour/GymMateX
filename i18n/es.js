@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "Close": "Cerrar",
+
   "Watch": "Ver",
 
   "Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their \"3\" and \"H\" pendants.": "Three (INFP), B. (INFJ) y Hour (ESTP) tienen su propia voz, ánimo y mirada. Three × Hour es la pareja que los fans reconocen en cada clip por sus colgantes \"3\" y \"H\".",

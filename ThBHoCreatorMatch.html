@@ -258,6 +258,14 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
 .pv-foot{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px 12px;font:500 12.5px var(--mono)}
 .pv-foot a{color:var(--cyan);text-decoration:none}.pv-foot a:hover{text-decoration:underline}
 .pv-foot a+a{margin-left:auto}
+.ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
+.yttext h2{margin:8px 0 12px}
+.yttext p{color:var(--ink2)}
+.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(255,120,60,.25),0 0 60px -10px rgba(102,252,241,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
+.phone-in iframe{display:block;width:100%;height:100%;border:0}
+@media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
 </style>
 <script src="thbho-i18n.js"></script>
 <meta name="referrer" content="no-referrer">
@@ -345,18 +353,23 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
   <div class="pgrid" id="pgrid"></div>
  </section>
 
- <section class="sec">
-  <div class="sh">
-   <span class="kick"><span lang="th">ผลงาน</span><span lang="en">Portfolio</span></span>
-   <h2><span lang="th">ผู้ชมจริงบน X</span><span lang="en">Real audiences on X</span></h2>
-   <p><span lang="th">MV และหนังสั้น Hybrid AI ของ Three, B. และ Hour ผู้ชมส่วนใหญ่เป็นชาวต่างชาติ (ยอดวิว ณ 2 พ.ย. 2026)</span><span lang="en">Hybrid AI music videos and short films by Three, B. and Hour, watched mostly by international audiences (views as of 2 Nov 2026).</span></p>
+ <section class="sec" id="portfolio">
+ <div class="ytwrap">
+  <div class="yttext">
+   <span class="kick">Portfolio · YouTube</span>
+   <h2><span lang="th">Hybrid Persona ในแบบแนวตั้ง</span><span lang="en">Hybrid Persona, made for vertical</span></h2>
+   <p><span lang="th">คลิปแนวตั้งของ Three, B. และ Hour รวมไว้ในเพลย์ลิสต์เดียว เลื่อนดูได้เลย หรือเปิดหน้า Portfolio เพื่อดูทุกคลิปแยกตาม persona</span><span lang="en">Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.</span></p>
+   <div class="cta">
+    <a class="btn solid" href="https://www.youtube.com/playlist?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" target="_blank" rel="noopener"><span lang="th">เปิดเพลย์ลิสต์บน YouTube ↗</span><span lang="en">Open the playlist on YouTube ↗</span></a>
+    <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a>
+   </div>
+   <p class="note"><span lang="th">ทุกคลิปเป็น Hybrid AI · ช่อง YouTube @ThreeBestHours</span><span lang="en">Every clip is Hybrid AI · YouTube channel @ThreeBestHours</span></p>
   </div>
-  <div class="reel">
-   <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><img src="creator-img/x-154482.jpg" alt="Ritmo del Alma music video still" loading="lazy" width="720" height="405"><span class="cap"><b>Ritmo del Alma · MV</b><span>245K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-   <a href="https://x.com/widerooms/status/2109560564754362752" target="_blank" rel="noopener"><img src="creator-img/x-362752.jpg" alt="Perdiéndonos en el calor still" loading="lazy" width="405" height="720"><span class="cap"><b>Perdiéndonos en el calor</b><span>147K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-   <a href="https://x.com/widerooms/status/2061309949037400429" target="_blank" rel="noopener"><img src="creator-img/x-400429.jpg" alt="Explore Together still" loading="lazy" width="405" height="720"><span class="cap"><b>Explore Together · MV</b><span>130K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  </div>
- </section>
+  <div class="phone"><div class="phone-in">
+   <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl&amp;rel=0&amp;playsinline=1&amp;modestbranding=1" title="ThB.Ho Hybrid Persona playlist on YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div></div>
+ </div>
+</section>
 
  <section class="sec" id="vr">
   <div class="sh">

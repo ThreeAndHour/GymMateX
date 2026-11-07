@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ThB.Ho · Hybrid Persona Studio</title>
 <meta name="description" content="ThB.Ho (Three · B. · Hour) — Hybrid AI Persona, หน้า Matching สำหรับซาวน่า สปา ร้านนวด และงาน collab กับ creator">
@@ -197,7 +198,25 @@ section{padding:64px 0 0}
 .foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
 .foot .fl{display:flex;align-items:center;gap:10px}.foot .fl img{height:26px;width:auto;opacity:.85}
 .personas figcaption{position:relative;z-index:1;background:var(--s1)}
+.hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(14,11,16,.85));font-size:13px;color:var(--ink2)}
+.hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(14,11,16,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
+.hvid-snd:hover{background:rgba(14,11,16,.85)}
+.hvid-snd .l0,.hvid-snd[aria-pressed="true"] .l1{display:none}.hvid-snd[aria-pressed="true"] .l0{display:inline}
+@media (max-width:600px){.hvid figcaption{position:static;background:var(--s1);padding:9px 12px;border-top:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){.hvid video{display:none}.hvid{background:url(creator-vid/thbho-faces-003.jpg) center/cover;aspect-ratio:16/9}}
+.ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
+.yttext h2{margin:8px 0 12px}
+.yttext p{color:var(--ink2)}
+.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(255,120,60,.25),0 0 60px -10px rgba(102,252,241,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
+.phone-in iframe{display:block;width:100%;height:100%;border:0}
+@media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
 </style>
+<script src="x-media.js"></script>
+<script src="thbho-player.js"></script>
 </head>
 <body>
 
@@ -227,9 +246,10 @@ section{padding:64px 0 0}
   <a class="btn solid" href="#venues"><span lang="th">สำหรับร้าน / ธุรกิจ</span><span lang="en">For venues</span></a>
   <a class="btn" href="#creators"><span lang="th">สำหรับ Creator</span><span lang="en">For creators</span></a>
  </div>
- <figure class="banner">
-  <img src="creator-img/persona-banner.jpg" alt="Hybrid AI Persona banner — Three, B. and Hour" width="1280" height="320">
-  <figcaption><span lang="th">Hybrid AI Persona: Three · B. · Hour — ใบหน้าจริงผสม AI</span><span lang="en">Hybrid AI personas Three · B. · Hour — real face blended with AI</span></figcaption>
+ <figure class="hvid">
+  <video id="hvid" src="creator-vid/thbho-faces-003.mp4" poster="creator-vid/thbho-faces-003.jpg" autoplay muted loop playsinline preload="auto" width="1280" height="720" aria-label="One face shifting through Three, B. and Hour"></video>
+  <button type="button" class="hvid-snd" id="hvidSnd" aria-pressed="false"><span class="on" aria-hidden="true">🔇</span><span class="l1"><span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></span><span class="l0"><span lang="th">ปิดเสียง</span><span lang="en">Sound off</span></span></button>
+  <figcaption><span lang="th">หนึ่งต้นแบบ สาม persona: Three · B. · Hour — สีหน้าและแววตาที่ต่างกันตาม MBTI ของแต่ละคน</span><span lang="en">One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI</span></figcaption>
  </figure>
 </div>
 
@@ -242,7 +262,7 @@ section{padding:64px 0 0}
    <a href="#venues"><span lang="th">ดูบริการสำหรับร้าน →</span><span lang="en">Venue services →</span></a>
   </div>
   <div class="door pk">
-   <span class="who"><span lang="th">Creator บน OnlyFans และ platform สมัครสมาชิก</span><span lang="en">OnlyFans &amp; subscription creators</span></span>
+   <span class="who"><span lang="th">Creator บน platform สมาชิก</span><span lang="en">Subscription-platform creators</span></span>
    <h3><span lang="th">ทำงานมากขึ้นโดยถ่ายจริงน้อยลง — collab กับ Three, B. หรือ Hour</span><span lang="en">Make more with fewer shoot days — collab with Three, B. or Hour.</span></h3>
    <p><span lang="th">Hybrid AI ลดวันถ่ายจริงได้ราวครึ่งหนึ่ง · remaster งานเก่า · ถ่ายคู่กับ Three, B. หรือ Hour · คุณเลือกระดับความเปิดเผยเองทุกชิ้น และเป็นเจ้าของงานของคุณ</span><span lang="en">Hybrid AI cuts real shoot days by about half. Remaster old footage, pair up with Three, B. or Hour, choose the exposure level of every piece yourself, and keep ownership of your work.</span></p>
    <a href="#creators" style="color:var(--pink)"><span lang="th">ดูงาน collab →</span><span lang="en">Creator collabs →</span></a>
@@ -310,8 +330,8 @@ section{padding:64px 0 0}
  </div>
 
  <div class="show" aria-label="Sample work">
-  <figure class="w2 h2"><img src="creator-img/show-transform.jpg" alt="From a real face to three Hybrid AI personas: Three, B. and Hour" loading="lazy" width="1400" height="773"><figcaption><b>Hybrid Persona</b><span lang="th">ใบหน้าจริงหนึ่งคน → Three · B. · Hour แต่ละตัวมีบุคลิก MBTI ของตัวเอง</span><span lang="en">One real face → Three · B. · Hour, each with its own MBTI</span></figcaption></figure>
-  <figure class="h2"><img src="creator-img/show-hour.jpg" alt="Hour — Hybrid AI persona in blue and red neon light" loading="lazy" width="1394" height="1400"><span class="who" style="--c:#A9C4DA">Hour</span><figcaption><b>Hybrid Shoot</b><span lang="th">ถ่ายจริงเป็นฐาน AI เติมแสงนีออนและฉาก</span><span lang="en">Real shoot, AI neon light and set</span></figcaption></figure>
+  <figure class="w2 h2"><img src="creator-img/show-agent-b.jpg" alt="B. as a Secret Agent — the same Hybrid AI face across eight shots" loading="lazy" width="1400" height="788"><figcaption><b>Hybrid Persona</b><span lang="th">B. ในบท Secret Agent — หน้าเดิม คงที่ทุกช็อต ทุกมุม ทุกแสง</span><span lang="en">B. as a Secret Agent: the same face, consistent in every shot, angle and light</span></figcaption></figure>
+  <figure class="h2"><img style="object-position:42% 30%" src="creator-img/show-hour-2.jpg" alt="Hour — Hybrid AI persona in warm orange and blue light" loading="lazy" width="1600" height="900"><span class="who" style="--c:#A9C4DA">Hour</span><figcaption><b>Hybrid Shoot</b><span lang="th">ถ่ายจริงเป็นฐาน AI เติมแสงนีออนและฉาก</span><span lang="en">Real shoot, AI neon light and set</span></figcaption></figure>
   <figure class="h2"><img src="creator-img/show-storyboard.jpg" alt="Nine-frame cinematic storyboard" loading="lazy" width="900" height="900"><figcaption><b>Hybrid AI Movies</b><span lang="th">storyboard 9 ช็อตก่อนถ่ายหนังสั้น</span><span lang="en">A 9-shot storyboard before the short film</span></figcaption></figure>
   <figure class="w2 h2"><img src="creator-img/show-three.jpg" alt="Three — Hybrid AI persona in yellow and green light" loading="lazy" width="1360" height="768"><span class="who" style="--c:#C9C36A">Three</span><figcaption><b>Digital Twin</b><span lang="th">ใบหน้า แสง และบุคลิกที่คงที่ — ฐานของ persona ที่คุยกับแฟนได้</span><span lang="en">A consistent face, light and personality — the base for a persona fans can talk to</span></figcaption></figure>
   <figure class="w2 h2"><img src="creator-img/show-book.jpg" alt="Coffee-table portfolio book, Homme — Modern Masculinity" loading="lazy" width="1400" height="800"><figcaption><b>Creator &amp; Art Lab</b><span lang="th">ต่อยอดเป็น portfolio และหนังสือภาพ</span><span lang="en">Extended into portfolios and photo books</span></figcaption></figure>
@@ -322,26 +342,27 @@ section{padding:64px 0 0}
  <div class="levels">
   <div class="lv"><span class="n">1</span><b><span lang="th">ศิลปะ</span><span lang="en">Art</span></b><span><span lang="th">เผยแพร่ได้ทุก platform</span><span lang="en">Fine on every platform</span></span></div>
   <div class="lv"><span class="n">2</span><b><span lang="th">เปิดเผยบางส่วน</span><span lang="en">Partial</span></b><span><span lang="th">เฉพาะ platform ที่รองรับ</span><span lang="en">Only on platforms that allow it</span></span></div>
-  <div class="lv"><span class="n">3</span><b><span lang="th">สำหรับผู้ใหญ่</span><span lang="en">Adult</span></b><span><span lang="th">เฉพาะ platform ที่ตรวจอายุ · ไม่ขึ้นช่องทางสาธารณะของร้านใดๆ</span><span lang="en">Age-verified platforms only — never on any venue's public channels</span></span></div>
+  <div class="lv"><span class="n">3</span><b><span lang="th">ส่วนตัว</span><span lang="en">Private</span></b><span><span lang="th">เฉพาะ platform ที่ตรวจอายุ · ไม่ขึ้นช่องทางสาธารณะของร้านใดๆ</span><span lang="en">Age-verified platforms only — never on any venue's public channels</span></span></div>
  </div>
  <p class="note"><span lang="th">Creator เลือกระดับของงานตัวเองทุกครั้ง เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">Creators choose the level of their own work every time, can change it any time, and are never pushed up a level.</span></p>
 </section>
 
 <section id="portfolio">
- <div class="sh">
-  <span class="kick">Portfolio · X</span>
-  <h2><span lang="th">MV และหนังสั้นของ Three, B. และ Hour ที่มีคนดูมากที่สุด</span><span lang="en">The most-watched Three, B. and Hour films and music videos</span></h2>
-  <p><span lang="th">ผู้ชมส่วนใหญ่เป็นชาวต่างชาติ · กดที่ภาพเพื่อดูคลิปเต็มบน X</span><span lang="en">Mostly international audiences. Tap a still to watch the full clip on X.</span></p>
+ <div class="ytwrap">
+  <div class="yttext">
+   <span class="kick">Portfolio · YouTube</span>
+   <h2><span lang="th">Hybrid Persona ในแบบแนวตั้ง</span><span lang="en">Hybrid Persona, made for vertical</span></h2>
+   <p><span lang="th">คลิปแนวตั้งของ Three, B. และ Hour รวมไว้ในเพลย์ลิสต์เดียว เลื่อนดูได้เลย หรือเปิดหน้า Portfolio เพื่อดูทุกคลิปแยกตาม persona</span><span lang="en">Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.</span></p>
+   <div class="cta">
+    <a class="btn solid" href="https://www.youtube.com/playlist?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" target="_blank" rel="noopener"><span lang="th">เปิดเพลย์ลิสต์บน YouTube ↗</span><span lang="en">Open the playlist on YouTube ↗</span></a>
+    <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a>
+   </div>
+   <p class="note"><span lang="th">ทุกคลิปเป็น Hybrid AI · ช่อง YouTube @ThreeBestHours</span><span lang="en">Every clip is Hybrid AI · YouTube channel @ThreeBestHours</span></p>
+  </div>
+  <div class="phone"><div class="phone-in">
+   <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl&amp;rel=0&amp;playsinline=1&amp;modestbranding=1" title="ThB.Ho Hybrid Persona playlist on YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div></div>
  </div>
- <div class="reel">
-  <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><img src="creator-img/x-154482.jpg" alt="Ritmo del Alma music video still: two personas on a yacht" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:40</span><span class="cap"><b>Ritmo del Alma · MV</b><span>245K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2109560564754362752" target="_blank" rel="noopener"><img src="creator-img/x-362752.jpg" alt="Two personas in a yacht cabin over a sea chart" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:26</span><span class="cap"><b>Perdiéndonos en el calor</b><span>147K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2061309949037400429" target="_blank" rel="noopener"><img src="creator-img/x-400429.jpg" alt="A persona walking through a sunlit temple doorway" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">3:02</span><span class="cap"><b>Explore Together · Full MV</b><span>130K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2061643553772830937" target="_blank" rel="noopener"><img src="creator-img/x-830937.jpg" alt="A persona in a white drape among temple columns" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">1:04</span><span class="cap"><b>Explore Together · BTS</b><span>83K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2112541590720000085" target="_blank" rel="noopener"><img src="creator-img/x-000085.jpg" alt="Two personas in sunglasses, close-up" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">5:55</span><span class="cap"><b>Tell Me It's (Not) a Dream</b><span>68K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
-  <a href="https://x.com/widerooms/status/2089337196402852328" target="_blank" rel="noopener"><img src="creator-img/x-852328.jpg" alt="Two personas on a beach at dusk" loading="lazy" width="405" height="506"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span class="dur">1:30</span><span class="cap"><b>La sal en la piel</b><span>61K <span lang="th">วิว</span><span lang="en">views</span></span></span></a>
- </div>
- <p class="note"><span lang="th">ยอดวิว ณ 2 พ.ย. 2026 · ทุกคลิปเป็น Hybrid AI</span><span lang="en">View counts as of 2 Nov 2026 · every clip is Hybrid AI</span></p>
 </section>
 
 <section id="roadmap">
@@ -401,7 +422,7 @@ section{padding:64px 0 0}
    <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · @widerooms</a>
   </div>
  </div>
- <div class="foot"><div class="wrap"><span class="fl"><img src="creator-img/thho-logo.png" alt="" loading="lazy" width="900" height="286">© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · เนื้อหาสำหรับผู้ใหญ่ไม่อยู่บนหน้านี้</span><span lang="en">All persona images are Hybrid AI · no adult content on this page</span></span></div></div>
+ <div class="foot"><div class="wrap"><span class="fl"><img src="creator-img/thho-logo.png" alt="" loading="lazy" width="900" height="286">© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้มีเฉพาะเนื้อหาสาธารณะ</span><span lang="en">All persona images are Hybrid AI · public-safe content only on this page</span></span></div></div>
 </div>
 
 <script>
@@ -412,6 +433,13 @@ section{padding:64px 0 0}
  var q=new URLSearchParams(location.search).get('lang');
  set(q==='en'||q==='th'?q:(saved||((navigator.language||'th').slice(0,2)==='th'?'th':'en')));
  btn.addEventListener('click',function(){set(root.lang==='th'?'en':'th')});
+ // ---- hero video: sound toggle, pause when off screen ----
+ (function(){
+  var v=document.getElementById('hvid'),b=document.getElementById('hvidSnd'); if(!v||!b)return;
+  b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.querySelector('.on').textContent=v.muted?'🔇':'🔊';if(!v.muted)v.play&&v.play().catch(function(){})});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play&&v.play().catch(function(){})}else v.pause()})}).observe(v);
+ })();
+
 })();
 </script>
 </body>

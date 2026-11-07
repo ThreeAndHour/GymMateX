@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "Subscription-platform creators": "サブスクプラットフォームのクリエイター",
+
+  "Every clip is Hybrid AI · public-safe content only on this page": "すべてのクリップは Hybrid AI · このページは公開可能なコンテンツのみ",
+
   "Nightlife bars and clubs": "ナイトライフのバーとクラブ",
 
   "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "ポートレートをタップして各ペルソナのクリップを再生 · すべての画像は Hybrid AI：実在の顔と体に AI を融合",

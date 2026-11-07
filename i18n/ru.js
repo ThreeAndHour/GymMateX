@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "Subscription-platform creators": "Авторы подписочных платформ",
+
+  "Every clip is Hybrid AI · public-safe content only on this page": "Каждый клип — Hybrid AI · на этой странице только публичный контент",
+
   "Nightlife bars and clubs": "Бары и клубы ночной жизни",
 
   "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "Нажмите на портрет, чтобы посмотреть клип каждой персоны · все изображения — Hybrid AI: реальное лицо и тело, смешанные с ИИ",

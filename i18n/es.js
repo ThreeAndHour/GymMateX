@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "Subscription-platform creators": "Creadores de plataformas de suscripción",
+
+  "Every clip is Hybrid AI · public-safe content only on this page": "Cada clip es Hybrid AI · en esta página solo contenido apto para todos",
+
   "Nightlife bars and clubs": "Bares y clubes de vida nocturna",
 
   "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "Toca un retrato para ver el clip de cada persona · todas las imágenes son Hybrid AI: un rostro y cuerpo reales fusionados con IA",

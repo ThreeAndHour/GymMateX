@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ko', {
+  "Subscription-platform creators": "구독 플랫폼 크리에이터",
+
+  "Every clip is Hybrid AI · public-safe content only on this page": "모든 클립은 Hybrid AI · 이 페이지에는 공개 가능한 콘텐츠만",
+
   "Nightlife bars and clubs": "나이트라이프 바와 클럽",
 
   "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "초상을 눌러 각 페르소나의 클립을 보세요 · 모든 이미지는 Hybrid AI: 실제 얼굴과 몸에 AI를 결합",

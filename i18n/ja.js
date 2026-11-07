@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "ポートレートをタップして各ペルソナのクリップを再生 · すべての画像は Hybrid AI：実在の顔と体に AI を融合",
+
   "One original, three personalities": "ひとつの原型、3 つの個性",
 
   "See Three's work in the Portfolio →": "Portfolio で Three の作品を見る →",

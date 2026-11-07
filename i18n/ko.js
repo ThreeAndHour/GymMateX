@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "초상을 눌러 각 페르소나의 클립을 보세요 · 모든 이미지는 Hybrid AI: 실제 얼굴과 몸에 AI를 결합",
+
   "One original, three personalities": "하나의 원형, 세 가지 개성",
 
   "See Three's work in the Portfolio →": "Portfolio에서 Three의 작품 보기 →",

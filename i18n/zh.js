@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "点击头像观看每位人设的影片 · 所有图片均为 Hybrid AI：真实面孔与身体融合 AI",
+
   "One original, three personalities": "一个原型，三种个性",
 
   "See Three's work in the Portfolio →": "在 Portfolio 查看 Three 的作品 →",

@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "Nightlife bars and clubs": "Бары и клубы ночной жизни",
+
   "Tap a portrait to watch each persona's clip · all images are Hybrid AI: a real face and body blended with AI": "Нажмите на портрет, чтобы посмотреть клип каждой персоны · все изображения — Hybrid AI: реальное лицо и тело, смешанные с ИИ",
 
   "One original, three personalities": "Один прототип, три характера",

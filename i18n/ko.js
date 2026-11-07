@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ko', {
+  "Hide": "접기",
+
+  "Show": "펼치기",
+
   "Subscription-platform creators": "구독 플랫폼 크리에이터",
 
   "Every clip is Hybrid AI · public-safe content only on this page": "모든 클립은 Hybrid AI · 이 페이지에는 공개 가능한 콘텐츠만",

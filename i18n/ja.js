@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "Hide": "隠す",
+
+  "Show": "表示",
+
   "Subscription-platform creators": "サブスクプラットフォームのクリエイター",
 
   "Every clip is Hybrid AI · public-safe content only on this page": "すべてのクリップは Hybrid AI · このページは公開可能なコンテンツのみ",

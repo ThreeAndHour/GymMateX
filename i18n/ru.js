@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "Hide": "Скрыть",
+
+  "Show": "Показать",
+
   "Subscription-platform creators": "Авторы подписочных платформ",
 
   "Every clip is Hybrid AI · public-safe content only on this page": "Каждый клип — Hybrid AI · на этой странице только публичный контент",

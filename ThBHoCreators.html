@@ -75,6 +75,13 @@ nav a:hover{color:var(--ink)}
 .banner figcaption{font:500 12px var(--mono);color:var(--ink3);padding:9px 14px;border-top:1px solid var(--line);background:var(--s1)}
 
 section{padding:64px 0 0}
+.fold .sh{position:relative}
+.fold-btn{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;font:600 13px var(--mono);letter-spacing:.06em;color:var(--ink2);background:var(--s1);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;cursor:pointer}
+.fold-btn b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--cyan);color:#06201E;font:700 16px/1 var(--mono)}
+.fold-btn:hover{color:var(--ink);border-color:var(--cyan)}
+.fold-btn .c,.fold-btn[aria-expanded="true"] .o{display:none}.fold-btn[aria-expanded="true"] .c{display:inline}
+.fold-body{margin-top:4px}
+
 .usp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .usp article{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px 18px 18px;display:grid;gap:8px;align-content:start;overflow:hidden}
 .usp article::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--c)}
@@ -463,12 +470,14 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  <p class="note"><span lang="th">Creator เลือกระดับของงานตัวเองทุกครั้ง เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">Creators choose the level of their own work every time, can change it any time, and are never pushed up a level.</span></p>
 </section>
 
-<section id="match">
+<section id="match" class="fold">
  <div class="sh">
   <span class="kick">Creator Match</span>
   <h2><span lang="th">คุณควร collab กับใคร: Three, B. หรือ Hour?</span><span lang="en">Who should you collab with: Three, B. or Hour?</span></h2>
   <p><span lang="th">ตอบ 6 ข้อ ได้ persona ที่เข้ากับคุณที่สุด รูปแบบ collab 3 แบบ และข้อความสมัครที่คัดลอกส่งได้ทันที หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">Answer 6 questions to get your best persona match, 3 collab formats and a request message you can copy and send. Nothing about you is stored.</span></p>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-match"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
  </div>
+ <div class="fold-body" id="fold-match" hidden>
  <div class="demo-frame">
   <div class="bar"><i></i><i></i><i></i><span>threeandhour.github.io/GymMateX/ThBHoCreatorMatch.html</span></div>
   <iframe data-demo src="ThBHoCreatorMatch.html?embed=1" title="Creator match" loading="lazy"></iframe>
@@ -476,6 +485,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  <div class="demo-cta">
   <a class="btn" href="ThBHoCreatorMatch.html" target="_blank" rel="noopener"><span lang="th">เปิดแบบเต็มจอ ↗</span><span lang="en">Open full screen ↗</span></a>
   <span class="note" style="margin:0"><span lang="th">ระดับเนื้อหาที่เลือกไม่มีผลต่อการจับคู่</span><span lang="en">The content level you pick does not change your match</span></span>
+ </div>
  </div>
 </section>
 
@@ -497,12 +507,14 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  </div>
 </section>
 
-<section id="roadmap">
+<section id="roadmap" class="fold">
  <div class="sh">
   <span class="kick">GymMateX O2O · Offline → Online</span>
   <h2><span lang="th">ถ่ายวันนี้ ให้พร้อมใช้ใน VR และ platform ที่กำลังจะมา</span><span lang="en">Shoot today in formats ready for VR and the platforms coming next</span></h2>
   <p><span lang="th">VR และ Digital Twin ยังอยู่ในขั้นเตรียมการ ทุกงาน collab วันนี้จึงถ่ายในรูปแบบที่ใช้ต่อได้ ทั้งวิดีโอแนวตั้ง POV, หลายมุมกล้อง, เสียงพูดสะอาด และบันทึกความยินยอมรายชิ้น เมื่อแอปพร้อม งานของคุณจะไม่ต้องถ่ายใหม่ทั้งหมด</span><span lang="en">VR and Digital Twins are still being prepared, so every collab today is shot in formats that carry over: vertical POV video, multi-angle footage, clean voice and consent on record per piece. When the app is ready, your work won't need reshooting.</span></p>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-roadmap"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
  </div>
+ <div class="fold-body" id="fold-roadmap" hidden>
  <div class="o2o">
   <div class="stage"><span class="k">01 · Offline casting</span><h3><span lang="th">อีเวนต์คัดเลือกที่ร้าน</span><span lang="en">Casting events at the venue</span></h3><p><span lang="th">คืน Casting, Pairing Night และ Creator Lab · ค้นหานายแบบและ creator ผ่านกิจกรรมฟิตเนสและการออดิชัน · ลูกค้า VIP ซื้อบัตรเข้าชมงานจริง</span><span lang="en">Casting nights, Pairing Nights and the Creator Lab — finding models and creators through fitness activities and auditions. VIP guests buy tickets to the live event.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">รายได้บัตร ลูกค้าใหม่ และ content หลังงาน</span><span lang="en">Ticket revenue, new guests and post-event content</span></p></div>
   <div class="stage"><span class="k">02 · Wellness trips</span><h3><span lang="th">ทริปส่วนตัวและการเก็บข้อมูล</span><span lang="en">Private trips &amp; capture</span></h3><p><span lang="th">ทริป 3 วัน 2 คืนสำหรับผู้ชนะและสมาชิก · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · ถ่ายทำและบันทึกท่าทาง เสียง และบุคลิก (ด้วยความยินยอม)</span><span lang="en">3-day trips for winners and members, using partner venues' rooms and massage teams — filming movement, voice and personality, with consent.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">ส่วนแบ่งแพ็กเกจและชื่อในฐานะผู้ร่วมจัด</span><span lang="en">A package share and co-host billing</span></p></div>
@@ -516,6 +528,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  <p class="note"><span lang="th">แผนเป็นแบบ Agile — ปรับโมเดลและฟีเจอร์ตามเทคโนโลยีที่เปลี่ยนเร็ว</span><span lang="en">An agile plan — models and features adapt as the technology moves.</span></p>
  <p class="note" style="color:var(--gold)"><span lang="th">แผนฉบับเต็มเป็นเอกสารวงใน เปิดให้เฉพาะ creator ที่สนใจร่วมงานกับ ThB.Ho</span><span lang="en">The full plan is an insider document, shared only with creators interested in working with ThB.Ho.</span></p>
  <div class="cta"><a class="btn solid" href="https://threeandhour.github.io/GymMateX/O2OEventsVR.html" target="_blank" rel="noopener"><span lang="th">🔒 เปิดแผน GymMateX O2O · VR ฉบับวงใน →</span><span lang="en">🔒 Open the insider GymMateX O2O · VR plan →</span></a><a class="btn" href="https://threeandhour.github.io/GymMateX/index.html" target="_blank" rel="noopener"><span lang="th">เข้าเว็บ GymMateX FIT &amp; Fantasy →</span><span lang="en">Visit GymMateX FIT &amp; Fantasy →</span></a></div>
+ </div>
 </section>
 
 <section id="rules">
@@ -738,6 +751,15 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   document.getElementById('vpopX').addEventListener('click',close);
   d.addEventListener('close',close);
   d.addEventListener('click',function(e){if(e.target===d)close()});
+ })();
+
+ // ---- collapsible sections (+/-) ----
+ (function(){
+  function set(sec,open){var b=sec.querySelector('.fold-btn'),d=sec.querySelector('.fold-body');if(!b||!d)return;d.hidden=!open;b.setAttribute('aria-expanded',open);b.querySelector('b').textContent=open?'−':'+';}
+  document.querySelectorAll('section.fold').forEach(function(sec){sec.querySelector('.fold-btn').addEventListener('click',function(){set(sec,this.getAttribute('aria-expanded')!=='true')})});
+  function fromHash(){var h=location.hash.slice(1);if(!h)return;var el=document.getElementById(h);var sec=el&&el.closest('section.fold');if(sec){set(sec,true);setTimeout(function(){el.scrollIntoView()},30)}}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute('href').slice(1));var sec=el&&el.closest('section.fold');if(sec)set(sec,true)});
+  window.addEventListener('hashchange',fromHash);fromHash();
  })();
 
 })();

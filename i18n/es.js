@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "Hide": "Ocultar",
+
+  "Show": "Mostrar",
+
   "Subscription-platform creators": "Creadores de plataformas de suscripción",
 
   "Every clip is Hybrid AI · public-safe content only on this page": "Cada clip es Hybrid AI · en esta página solo contenido apto para todos",

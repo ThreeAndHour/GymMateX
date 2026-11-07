@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('zh', {
+  "Hide": "收起",
+
+  "Show": "展开",
+
   "Subscription-platform creators": "订阅平台创作者",
 
   "Every clip is Hybrid AI · public-safe content only on this page": "所有影片均为 Hybrid AI · 本页仅含可公开内容",

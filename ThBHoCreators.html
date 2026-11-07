@@ -599,7 +599,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  // demo iframe grows to fit its content
  window.addEventListener('message',function(e){
   if(!e.data||e.data.thbho!=='h')return;
-  document.querySelectorAll('iframe[data-demo]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(480,e.data.h)+'px';});
+  document.querySelectorAll('iframe[data-demo]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(360,e.data.h)+'px';});
  });
 
  var $=function(id){return document.getElementById(id)};

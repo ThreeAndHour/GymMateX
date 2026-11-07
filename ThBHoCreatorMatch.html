@@ -266,6 +266,13 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
 .phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
 .phone-in iframe{display:block;width:100%;height:100%;border:0}
 @media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
+.quiz{position:relative;overflow:hidden;isolation:isolate}
+.quiz::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--qbg) center/cover no-repeat;opacity:.6;transition:opacity .4s}
+.quiz::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,11,16,.88) 0%,rgba(14,11,16,.7) 55%,rgba(14,11,16,.45) 100%)}
+.quiz.qfade::before{animation:qin .6s ease}
+@keyframes qin{from{opacity:0}to{opacity:.6}}
+.quiz .opt{background:rgba(26,22,32,.78);backdrop-filter:blur(2px)}
+@media (prefers-reduced-motion:reduce){.quiz.qfade::before{animation:none}}
 </style>
 <script src="thbho-i18n.js"></script>
 <meta name="referrer" content="no-referrer">
@@ -601,6 +608,7 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
 
  function renderQ(){
   var i=st.step,q=Q[i];
+  var qz=$('quiz');qz.style.setProperty('--qbg','url(creator-img/quiz-'+(i+1)+'.jpg)');qz.classList.remove('qfade');void qz.offsetWidth;qz.classList.add('qfade');
   $('prog').querySelectorAll('i').forEach(function(el,k){el.className=k<=i?'on':''});
   $('qn').innerHTML=T('ข้อ '+(i+1)+' จาก '+N,'Question '+(i+1)+' of '+N);
   $('qtitle').innerHTML=T(q.q.th,q.q.en);
@@ -704,7 +712,7 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
  // Embed mode (?embed=1): used inside ThBHoVenues.html / ThBHoCreators.html
  if(new URLSearchParams(location.search).get('embed')==='1'){
   root.classList.add('embed');
-  var post=function(){try{parent.postMessage({thbho:'h',h:document.documentElement.scrollHeight},'*')}catch(e){}};
+  var post=function(){var b=document.body,h=0;for(var k=0;k<b.children.length;k++){var c=b.children[k];if(c.offsetParent===null&&getComputedStyle(c).position!=='fixed')continue;var r=c.getBoundingClientRect();if(r.height)h=Math.max(h,r.bottom+window.scrollY)}h=Math.ceil(h+parseFloat(getComputedStyle(b).marginBottom||0)+8);try{parent.postMessage({thbho:'h',h:h},'*')}catch(e){}};
   if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
   window.addEventListener('load',post);setTimeout(post,300);
   window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='lang'&&THBHO_LANGS.indexOf(e.data.l)>=0)setLang(e.data.l);});

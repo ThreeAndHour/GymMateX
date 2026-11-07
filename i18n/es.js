@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "See Three's work in the Portfolio →": "Ver el trabajo de Three en el Portfolio →",
+  "See B.'s work in the Portfolio →": "Ver el trabajo de B. en el Portfolio →",
+  "See Hour's work in the Portfolio →": "Ver el trabajo de Hour en el Portfolio →",
+
   "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "Para creadores de fitness y físico, creadores de plataformas de suscripción, influencers de estilo de vida y modelos. Responde 6 preguntas para ver qué persona encaja mejor contigo y qué formatos de collab tienen sentido. Esta página no guarda nada sobre ti.",
   "Age-verified 20+ only, and only for creators who opt in": "Solo con verificación de edad 20+ y solo para creadores que lo elijan",
   "Subscription platforms": "Plataformas de suscripción",

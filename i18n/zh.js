@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('zh', {
+  "See Three's work in the Portfolio →": "在 Portfolio 查看 Three 的作品 →",
+  "See B.'s work in the Portfolio →": "在 Portfolio 查看 B. 的作品 →",
+  "See Hour's work in the Portfolio →": "在 Portfolio 查看 Hour 的作品 →",
+
   "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "面向健身与体格创作者、订阅平台创作者、生活方式网红和模特。回答 6 个问题，看看哪位人设最适合你，以及哪些合作形式可行。本页面不保存你的任何信息。",
   "Age-verified 20+ only, and only for creators who opt in": "仅限通过 20+ 年龄验证者，且仅限自愿加入的创作者",
   "Subscription platforms": "订阅平台",

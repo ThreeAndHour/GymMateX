@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "See Three's work in the Portfolio →": "Portfolio で Three の作品を見る →",
+  "See B.'s work in the Portfolio →": "Portfolio で B. の作品を見る →",
+  "See Hour's work in the Portfolio →": "Portfolio で Hour の作品を見る →",
+
   "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "フィットネス・フィジーク系クリエイター、サブスクプラットフォームのクリエイター、ライフスタイル系インフルエンサー、モデル向け。6 つの質問に答えて、どのペルソナが一番合うか、どんなコラボ形式が合うかをチェック。このページはあなたの情報を保存しません。",
   "Age-verified 20+ only, and only for creators who opt in": "20 歳以上の年齢確認済みの方のみ、かつ自ら参加を選んだクリエイターのみ",
   "Subscription platforms": "サブスクプラットフォーム",

@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ko', {
+  "See Three's work in the Portfolio →": "Portfolio에서 Three의 작품 보기 →",
+  "See B.'s work in the Portfolio →": "Portfolio에서 B.의 작품 보기 →",
+  "See Hour's work in the Portfolio →": "Portfolio에서 Hour의 작품 보기 →",
+
   "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "피트니스·피지크 크리에이터, 구독 플랫폼 크리에이터, 라이프스타일 인플루언서, 모델을 위해. 6가지 질문에 답하고 어떤 페르소나가 가장 잘 맞는지, 어떤 콜라보 형식이 어울리는지 확인하세요. 이 페이지는 어떤 정보도 저장하지 않습니다.",
   "Age-verified 20+ only, and only for creators who opt in": "20세 이상 연령 확인자만, 그리고 직접 참여를 선택한 크리에이터만",
   "Subscription platforms": "구독 플랫폼",

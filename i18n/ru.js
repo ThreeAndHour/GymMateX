@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "See Three's work in the Portfolio →": "Работы Three в портфолио →",
+  "See B.'s work in the Portfolio →": "Работы B. в портфолио →",
+  "See Hour's work in the Portfolio →": "Работы Hour в портфолио →",
+
   "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "Для фитнес-авторов и авторов с акцентом на тело, авторов подписочных платформ, лайфстайл-инфлюенсеров и моделей. Ответьте на 6 вопросов и узнайте, какая персона вам подходит и какие форматы коллаба имеют смысл. Страница ничего о вас не сохраняет.",
   "Age-verified 20+ only, and only for creators who opt in": "Только с проверкой возраста 20+ и только для авторов, которые сами согласились",
   "Subscription platforms": "Подписочные платформы",

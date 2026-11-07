@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ko', {
+  "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "피트니스·구독 플랫폼·인플루언서·모델 크리에이터: 6가지 질문에 답하고 Three, B., Hour 중 누구와 맞는지, 어떤 콜라보가 어울리는지 확인하세요.",
+
+  "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "피트니스·구독 플랫폼·인플루언서·모델 크리에이터를 위해. Hybrid AI로 실제 촬영일이 절반으로, 페르소나 콜라보로 새 팬이 생기고, 콘텐츠 수위는 직접 정하며, 작품은 당신 소유입니다.",
+  "Cinematic short films and music videos for a global audience.": "전 세계 관객을 위한 시네마틱 단편과 MV.",
+  "Couples and duo creators": "커플·듀오 크리에이터",
+
   "See the full Portfolio →": "전체 Portfolio 보기 →",
   "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "MV, 단편, 비하인드 등 80편 이상 · Three, B., Hour별로 필터",
 

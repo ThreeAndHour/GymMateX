@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ru', {
+  "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "Фитнес-авторы, авторы подписочных платформ, инфлюенсеры и модели: ответьте на 6 вопросов и узнайте, кто вам подходит — Three, B. или Hour, и какой коллаб лучше.",
+
+  "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "Для фитнес-авторов, авторов подписочных платформ, инфлюенсеров и моделей. Hybrid AI вдвое сокращает съёмочные дни, коллаб с персоной приводит новых фанатов, уровень контента выбираете вы, работа остаётся вашей.",
+  "Cinematic short films and music videos for a global audience.": "Кинематографичные короткометражки и клипы для мировой аудитории.",
+  "Couples and duo creators": "Пары и дуэты авторов",
+
   "See the full Portfolio →": "Открыть всё портфолио →",
   "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "80+ клипов, короткометражек и закулисья с фильтром по Three, B. и Hour",
 

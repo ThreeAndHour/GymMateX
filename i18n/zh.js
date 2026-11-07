@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('zh', {
+  "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "健身、订阅平台、网红与模特创作者：回答 6 个问题，看看你与 Three、B. 还是 Hour 最合拍，以及哪种合作最适合你。",
+
+  "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "面向健身、订阅平台、网红与模特创作者。Hybrid AI 将实拍天数减少约一半，与人设合作带来新粉丝，内容尺度由你决定，作品归你所有。",
+  "Cinematic short films and music videos for a global audience.": "面向全球观众的电影感短片与 MV。",
+  "Couples and duo creators": "情侣与双人创作者",
+
   "See the full Portfolio →": "查看完整 Portfolio →",
   "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "80 多支 MV、短片与幕后花絮，可按 Three、B. 和 Hour 筛选",
 

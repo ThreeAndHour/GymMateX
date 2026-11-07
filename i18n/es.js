@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('es', {
+  "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "Creadores de fitness, de plataformas de suscripción, influencers y modelos: responde 6 preguntas para ver si encajas con Three, B. o Hour, y qué collab te conviene.",
+
+  "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "Para creadores de fitness, de plataformas de suscripción, influencers y modelos. Hybrid AI reduce los días de rodaje real a la mitad, un collab con una persona trae nuevos fans, tú eliges el nivel del contenido y conservas tu trabajo.",
+  "Cinematic short films and music videos for a global audience.": "Cortos y videoclips cinematográficos para una audiencia global.",
+  "Couples and duo creators": "Creadores en pareja y dúos",
+
   "See the full Portfolio →": "Ver el Portfolio completo →",
   "80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour": "Más de 80 videoclips, cortos y detrás de cámaras, filtrables por Three, B. y Hour",
 

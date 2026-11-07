@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('zh', {
+  "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "面向健身与体格创作者、订阅平台创作者、生活方式网红和模特。回答 6 个问题，看看哪位人设最适合你，以及哪些合作形式可行。本页面不保存你的任何信息。",
+  "Age-verified 20+ only, and only for creators who opt in": "仅限通过 20+ 年龄验证者，且仅限自愿加入的创作者",
+  "Subscription platforms": "订阅平台",
+  "Couple or duo creator": "情侣或双人创作者",
+  "3 · Private 20+": "3 · 私密 20+",
+
   "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "健身、订阅平台、网红与模特创作者：回答 6 个问题，看看你与 Three、B. 还是 Hour 最合拍，以及哪种合作最适合你。",
 
   "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "面向健身、订阅平台、网红与模特创作者。Hybrid AI 将实拍天数减少约一半，与人设合作带来新粉丝，内容尺度由你决定，作品归你所有。",

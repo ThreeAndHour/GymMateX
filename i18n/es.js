@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('es', {
+  "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "Para creadores de fitness y físico, creadores de plataformas de suscripción, influencers de estilo de vida y modelos. Responde 6 preguntas para ver qué persona encaja mejor contigo y qué formatos de collab tienen sentido. Esta página no guarda nada sobre ti.",
+  "Age-verified 20+ only, and only for creators who opt in": "Solo con verificación de edad 20+ y solo para creadores que lo elijan",
+  "Subscription platforms": "Plataformas de suscripción",
+  "Couple or duo creator": "Creador en pareja o dúo",
+  "3 · Private 20+": "3 · Privado 20+",
+
   "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "Creadores de fitness, de plataformas de suscripción, influencers y modelos: responde 6 preguntas para ver si encajas con Three, B. o Hour, y qué collab te conviene.",
 
   "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "Para creadores de fitness, de plataformas de suscripción, influencers y modelos. Hybrid AI reduce los días de rodaje real a la mitad, un collab con una persona trae nuevos fans, tú eliges el nivel del contenido y conservas tu trabajo.",

@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ja', {
+  "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "フィットネス・フィジーク系クリエイター、サブスクプラットフォームのクリエイター、ライフスタイル系インフルエンサー、モデル向け。6 つの質問に答えて、どのペルソナが一番合うか、どんなコラボ形式が合うかをチェック。このページはあなたの情報を保存しません。",
+  "Age-verified 20+ only, and only for creators who opt in": "20 歳以上の年齢確認済みの方のみ、かつ自ら参加を選んだクリエイターのみ",
+  "Subscription platforms": "サブスクプラットフォーム",
+  "Couple or duo creator": "カップル・デュオのクリエイター",
+  "3 · Private 20+": "3 · プライベート 20+",
+
   "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "フィットネス、サブスクプラットフォーム、インフルエンサー、モデルのクリエイター：6 つの質問に答えて、Three、B.、Hour の誰と合うか、どんなコラボが合うかをチェック。",
 
   "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "フィットネス、サブスクプラットフォーム、インフルエンサー、モデルのクリエイター向け。Hybrid AI で実撮影日は約半分、ペルソナとのコラボで新しいファンが増え、コンテンツのレベルは自分で選び、作品は自分のもの。",

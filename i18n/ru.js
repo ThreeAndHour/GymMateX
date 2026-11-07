@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ru', {
+  "For fitness and physique creators, subscription-platform creators, lifestyle influencers and models. Answer 6 questions to see which persona fits you best and which collab formats make sense. This page stores nothing about you.": "Для фитнес-авторов и авторов с акцентом на тело, авторов подписочных платформ, лайфстайл-инфлюенсеров и моделей. Ответьте на 6 вопросов и узнайте, какая персона вам подходит и какие форматы коллаба имеют смысл. Страница ничего о вас не сохраняет.",
+  "Age-verified 20+ only, and only for creators who opt in": "Только с проверкой возраста 20+ и только для авторов, которые сами согласились",
+  "Subscription platforms": "Подписочные платформы",
+  "Couple or duo creator": "Пара или дуэт авторов",
+  "3 · Private 20+": "3 · Приватно 20+",
+
   "Fitness, subscription-platform, influencer and model creators: answer 6 questions to see whether Three, B. or Hour is your match, and which collab fits.": "Фитнес-авторы, авторы подписочных платформ, инфлюенсеры и модели: ответьте на 6 вопросов и узнайте, кто вам подходит — Three, B. или Hour, и какой коллаб лучше.",
 
   "For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.": "Для фитнес-авторов, авторов подписочных платформ, инфлюенсеров и моделей. Hybrid AI вдвое сокращает съёмочные дни, коллаб с персоной приводит новых фанатов, уровень контента выбираете вы, работа остаётся вашей.",

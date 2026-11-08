@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('es', {
+  "Apply to collab": "Solicitar collab",
+  "Want to collab with Three, B. or Hour? Fill in the form": "¿Quieres colaborar con Three, B. o Hour? Rellena el formulario",
+  "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "Tarda unos 3 minutos. Respondemos en 3 días laborables y tus respuestas solo se usan para planear un collab.",
+  "Open the form in a new tab ↗": "Abrir el formulario en una pestaña nueva ↗",
+  "If the form doesn't load, open it in a new tab or sign in to Google first.": "Si el formulario no carga, ábrelo en una pestaña nueva o inicia sesión en Google primero.",
+  "Apply": "Aplicar",
+
   "Hide": "Ocultar",
 
   "Show": "Mostrar",

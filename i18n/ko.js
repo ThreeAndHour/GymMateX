@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ko', {
+  "Apply to collab": "콜라보 신청",
+  "Want to collab with Three, B. or Hour? Fill in the form": "Three, B., Hour와 콜라보하고 싶다면? 폼을 작성하세요",
+  "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "약 3분이면 됩니다. 3영업일 이내에 답변드리며, 답변은 콜라보 기획에만 사용됩니다.",
+  "Open the form in a new tab ↗": "새 탭에서 폼 열기 ↗",
+  "If the form doesn't load, open it in a new tab or sign in to Google first.": "폼이 보이지 않으면 새 탭에서 열거나 먼저 Google에 로그인하세요.",
+  "Apply": "신청",
+
   "Hide": "접기",
 
   "Show": "펼치기",

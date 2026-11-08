@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ru', {
+  "Apply to collab": "Подать заявку на коллаб",
+  "Want to collab with Three, B. or Hour? Fill in the form": "Хотите коллаб с Three, B. или Hour? Заполните форму",
+  "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "Это займёт около 3 минут. Мы ответим в течение 3 рабочих дней, а ответы используем только для планирования коллаба.",
+  "Open the form in a new tab ↗": "Открыть форму в новой вкладке ↗",
+  "If the form doesn't load, open it in a new tab or sign in to Google first.": "Если форма не загрузилась, откройте её в новой вкладке или сначала войдите в Google.",
+  "Apply": "Заявка",
+
   "Hide": "Скрыть",
 
   "Show": "Показать",

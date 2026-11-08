@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('zh', {
+  "Apply to collab": "申请合作",
+  "Want to collab with Three, B. or Hour? Fill in the form": "想与 Three、B. 或 Hour 合作？请填写表单",
+  "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "大约 3 分钟即可完成。我们会在 3 个工作日内回复，你的回答仅用于规划合作。",
+  "Open the form in a new tab ↗": "在新标签页打开表单 ↗",
+  "If the form doesn't load, open it in a new tab or sign in to Google first.": "如果表单无法加载，请在新标签页打开，或先登录 Google。",
+  "Apply": "申请",
+
   "Hide": "收起",
 
   "Show": "展开",

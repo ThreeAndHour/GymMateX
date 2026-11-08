@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ja', {
+  "Apply to collab": "コラボに応募",
+  "Want to collab with Three, B. or Hour? Fill in the form": "Three、B.、Hour とコラボしたい？フォームに記入してください",
+  "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "約 3 分で完了します。3 営業日以内にご連絡し、回答はコラボの検討にのみ使います。",
+  "Open the form in a new tab ↗": "新しいタブでフォームを開く ↗",
+  "If the form doesn't load, open it in a new tab or sign in to Google first.": "フォームが表示されない場合は、新しいタブで開くか先に Google にログインしてください。",
+  "Apply": "応募",
+
   "Hide": "隠す",
 
   "Show": "表示",

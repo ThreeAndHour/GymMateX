@@ -234,6 +234,7 @@ main{padding:22px 0 60px}
 
  // ===== Portfolio data, built from X post metadata on 4 Nov 2026. Add a post: {id:'<X status id>', cat:'mv'|'film'|'bts'|'music', t:'Title', p:['three','b','hour'], y:2026, d:'4 Nov 2026', v:'245K', vn:245397, ts:<unix seconds>, dur:'3:40'}. Photo post: cat:'photo', ln:<likes>, img:['https://pbs.twimg.com/media/<id>.jpg', ...] instead of dur =====
  var FILMS=[
+  {id:'2063643620889276787',cat:'film',t:'Hour · "I’m not a writer. I just talk, and the story happens."',p:["hour"],y:2026,d:'7 Jun 2026',v:'54K',vn:54228,ts:1780845954,dur:'1:23',u:'threeandhour'},
   {id:'2119058537620164707',cat:'mv',t:'Ritmo del Alma (MV · OP) · "No mask, no rush, just who I am"',p:["three","hour"],y:2026,d:'7 Nov 2026',v:'1.9K',vn:1910,ts:1794057900,dur:'3:51'},
   {id:'1942234233411629531',cat:'mv',t:'Lost In Neon Light (2025 MV)',p:["three","b","hour"],y:2025,d:'7 Jul 2025',v:'1.1K',vn:1111,ts:1751899700,dur:'3:30'},
   {id:'1943329193988882795',cat:'film',t:'GymMateX Fit Factory · \'Anyone can be a fitness trainer\'',p:["three","b","hour"],y:2025,d:'10 Jul 2025',v:'0.8K',vn:804,ts:1752160759,dur:'1:02'},
@@ -335,7 +336,7 @@ main{padding:22px 0 60px}
   var views=f.v?'<span class="views">'+f.v+' '+T('วิว','views')+'</span>':'';
   var likes=f.ln?'<span class="likes">♥ '+K(f.ln)+'</span>':'';
   var note='<span>'+f.d+(f.dur?' · '+f.dur:'')+(f.img&&f.img.length>1?' · '+f.img.length+' '+T('ภาพ','photos'):'')+'</span>';
-  var emb='<div class="emb"></div>', xurl='https://x.com/widerooms/status/'+f.id;
+  var emb='<div class="emb"></div>', xurl='https://x.com/'+(f.u||'widerooms')+'/status/'+f.id;
   if(f.img){
    var im=function(u,i){return '<img src="'+u+'?format=jpg&name='+(i?'small':'medium')+'" alt="'+f.t.replace(/"/g,'&quot;')+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">'};
    emb='<div class="emb ph"><a href="'+xurl+'" target="_blank" rel="noopener">'+im(f.img[0],0)+
@@ -344,7 +345,7 @@ main{padding:22px 0 60px}
   return '<article class="card" data-x="'+f.id+'" data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
    '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+views+likes+'</div>'+
    emb+
-   '<a class="link" href="https://x.com/widerooms/status/'+f.id+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+T('ดูบน X ↗','View on X ↗')+'</em></a>'+
+   '<a class="link" href="'+xurl+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+T('ดูบน X ↗','View on X ↗')+'</em></a>'+
    '</article>';
  }).join('');
  var vsum=0;FILMS.forEach(function(f){vsum+=f.vn||0});

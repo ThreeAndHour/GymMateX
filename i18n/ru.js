@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "Tell us about you and your channels": "Расскажите о себе и своих каналах",
+  "Pick your content level and on-camera vibe": "Выберите уровень контента и стиль в кадре",
+  "Choose a persona and the collab formats you like": "Выберите персону и форматы коллаба",
+
   "Apply to collab": "Подать заявку на коллаб",
   "Want to collab with Three, B. or Hour? Fill in the form": "Хотите коллаб с Three, B. или Hour? Заполните форму",
   "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "Это займёт около 3 минут. Мы ответим в течение 3 рабочих дней, а ответы используем только для планирования коллаба.",

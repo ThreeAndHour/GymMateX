@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "Tell us about you and your channels": "あなたとあなたのチャンネルについて教えてください",
+  "Pick your content level and on-camera vibe": "コンテンツのレベルとカメラ前の雰囲気を選ぶ",
+  "Choose a persona and the collab formats you like": "ペルソナと好きなコラボ形式を選ぶ",
+
   "Apply to collab": "コラボに応募",
   "Want to collab with Three, B. or Hour? Fill in the form": "Three、B.、Hour とコラボしたい？フォームに記入してください",
   "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "約 3 分で完了します。3 営業日以内にご連絡し、回答はコラボの検討にのみ使います。",

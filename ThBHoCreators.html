@@ -80,9 +80,15 @@ nav a:hover{color:var(--ink)}
 .banner figcaption{font:500 12px var(--mono);color:var(--ink3);padding:9px 14px;border-top:1px solid var(--line);background:var(--s1)}
 
 section{padding:64px 0 0}
-.gform{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.gform iframe{display:block;width:100%;height:1400px;border:0}
-.gform.login iframe{height:560px}
+.applywrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:40px;align-items:start}
+.apply-text{position:sticky;top:90px}
+.apply-text .sh{margin-bottom:18px}
+.apply-steps{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.apply-steps li{display:flex;gap:12px;align-items:center;color:var(--ink2);font-size:15px}
+.apply-steps b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--cyan);color:var(--cyan);font:600 13px var(--mono)}
+.gform{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);padding:10px;box-shadow:0 30px 80px -30px rgba(102,252,241,.18)}
+.gform iframe{display:block;width:100%;height:780px;border:0;border-radius:10px;background:#fff}
+@media (max-width:860px){.applywrap{grid-template-columns:1fr;gap:24px}.apply-text{position:static}.gform iframe{height:720px}}
 @media (max-width:600px){.gform iframe{height:1300px}}
 .fold .sh{position:relative}
 .fold-btn{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;font:600 13px var(--mono);letter-spacing:.06em;color:var(--ink2);background:var(--s1);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;cursor:pointer}
@@ -579,22 +585,32 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    </div>
   </div>
  </dialog>
-</main>
-
 <section id="apply">
+ <div class="applywrap">
+  <div class="apply-text">
  <div class="sh">
   <span class="kick"><span lang="th">สมัคร collab</span><span lang="en">Apply to collab</span></span>
   <h2><span lang="th">สนใจ collab กับ Three, B. หรือ Hour? กรอกฟอร์มได้เลย</span><span lang="en">Want to collab with Three, B. or Hour? Fill in the form</span></h2>
   <p><span lang="th">ใช้เวลาราว 3 นาที ทีมจะติดต่อกลับภายใน 3 วันทำการ ข้อมูลใช้เพื่อพิจารณางาน collab เท่านั้น</span><span lang="en">It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.</span></p>
  </div>
- <div class="gform">
-  <iframe src="https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform?embedded=true" title="ThB.Ho Creators collab application form" loading="lazy">Loading…</iframe>
- </div>
+ <ol class="apply-steps">
+  <li><b>1</b><span><span lang="th">บอกเราเกี่ยวกับคุณและช่องทางของคุณ</span><span lang="en">Tell us about you and your channels</span></span></li>
+  <li><b>2</b><span><span lang="th">เลือกระดับเนื้อหาและสไตล์หน้ากล้อง</span><span lang="en">Pick your content level and on-camera vibe</span></span></li>
+  <li><b>3</b><span><span lang="th">เลือก persona และรูปแบบ collab ที่สนใจ</span><span lang="en">Choose a persona and the collab formats you like</span></span></li>
+ </ol>
  <div class="demo-cta">
   <a class="btn solid" href="https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
   <span class="note" style="margin:0"><span lang="th">ถ้าฟอร์มไม่ขึ้น ให้กดเปิดในแท็บใหม่ หรือเข้าสู่ระบบ Google ก่อน</span><span lang="en">If the form doesn't load, open it in a new tab or sign in to Google first.</span></span>
  </div>
+  </div>
+ <div class="gform">
+  <iframe src="https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform?embedded=true" title="ThB.Ho Creators collab application form" loading="lazy">Loading…</iframe>
+ </div>
+ </div>
 </section>
+</main>
+
+
 
 <div class="contact" id="contact">
  <div class="wrap">

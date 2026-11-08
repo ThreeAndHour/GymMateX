@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "Tell us about you and your channels": "Cuéntanos sobre ti y tus canales",
+  "Pick your content level and on-camera vibe": "Elige tu nivel de contenido y tu estilo frente a la cámara",
+  "Choose a persona and the collab formats you like": "Elige una persona y los formatos de collab que te gustan",
+
   "Apply to collab": "Solicitar collab",
   "Want to collab with Three, B. or Hour? Fill in the form": "¿Quieres colaborar con Three, B. o Hour? Rellena el formulario",
   "It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.": "Tarda unos 3 minutos. Respondemos en 3 días laborables y tus respuestas solo se usan para planear un collab.",

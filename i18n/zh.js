@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "Views and likes from X as of": "观看与点赞数来自 X，截至",
+
   "Tell us about you and your channels": "介绍你自己和你的平台",
   "Pick your content level and on-camera vibe": "选择内容尺度与镜头前风格",
   "Choose a persona and the collab formats you like": "选择人设和你喜欢的合作形式",

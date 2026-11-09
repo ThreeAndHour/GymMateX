@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "Views and likes from X as of": "Vistas y me gusta según X al",
+
   "Tell us about you and your channels": "Cuéntanos sobre ti y tus canales",
   "Pick your content level and on-camera vibe": "Elige tu nivel de contenido y tu estilo frente a la cámara",
   "Choose a persona and the collab formats you like": "Elige una persona y los formatos de collab que te gustan",

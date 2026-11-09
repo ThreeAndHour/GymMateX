@@ -27,7 +27,9 @@ for i in rows:
         global changed
         row = m.group(0)
         new = re.sub(r"v:'[^']*',vn:\d+", f"v:'{kview(views)}',vn:{views or 0}", row) if views else row
-        if 'ln:' in new and likes is not None: new = re.sub(r"ln:\d+", f"ln:{likes}", new)
+        if likes is not None:
+            if 'ln:' in new: new = re.sub(r"ln:\d+", f"ln:{likes}", new)
+            else: new = re.sub(r"(vn:\d+)", lambda m: m.group(1) + f",ln:{likes}", new, count=1)
         if new != row: changed += 1
         return new
     s = re.sub(r"\{id:'" + i + r"',[^}]*\}", fix, s, count=1)

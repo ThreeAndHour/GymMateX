@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "Views and likes from X as of": "조회수와 좋아요는 X 기준,",
+
   "Tell us about you and your channels": "당신과 채널에 대해 알려주세요",
   "Pick your content level and on-camera vibe": "콘텐츠 수위와 카메라 앞 분위기를 고르세요",
   "Choose a persona and the collab formats you like": "페르소나와 원하는 콜라보 형식을 고르세요",

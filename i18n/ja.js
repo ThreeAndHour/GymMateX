@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "Views and likes from X as of": "再生数といいね数は X のデータ、",
+
   "Tell us about you and your channels": "あなたとあなたのチャンネルについて教えてください",
   "Pick your content level and on-camera vibe": "コンテンツのレベルとカメラ前の雰囲気を選ぶ",
   "Choose a persona and the collab formats you like": "ペルソナと好きなコラボ形式を選ぶ",

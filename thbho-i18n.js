@@ -14,7 +14,7 @@
   function load(l, cb) {
     if (l === 'th' || l === 'en' || dicts[l]) { cb(); return; }
     var s = document.createElement('script');
-    s.src = base + 'i18n/' + l + '.js?v=32';
+    s.src = base + 'i18n/' + l + '.js?v=33';
     s.onload = cb; s.onerror = cb;
     document.head.appendChild(s);
   }

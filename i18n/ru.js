@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "Views and likes from X as of": "Просмотры и лайки по данным X на",
+
   "Tell us about you and your channels": "Расскажите о себе и своих каналах",
   "Pick your content level and on-camera vibe": "Выберите уровень контента и стиль в кадре",
   "Choose a persona and the collab formats you like": "Выберите персону и форматы коллаба",

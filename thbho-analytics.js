@@ -5,7 +5,7 @@
    - Never runs inside an embedded demo (?embed=1), so a page view is not counted twice.
    - Extra events: video_play, persona_open, apply_click, language. */
 (function () {
-  var GA_ID = '';
+  var GA_ID = 'G-9Y2YDL6KT9';
   if (!GA_ID || /[?&]embed=1/.test(location.search)) return;
 
   var KEY = 'thbho-consent', saved = null;

@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ko', {
+  "We use cookies to count visitors anonymously and improve this page.": "방문자 수를 익명으로 집계하고 페이지를 개선하기 위해 쿠키를 사용합니다.",
+  "Accept": "수락",
+  "Decline": "거부",
+
   "View on YouTube ↗": "YouTube에서 보기 ↗",
 
   "On YouTube": "YouTube 게시",

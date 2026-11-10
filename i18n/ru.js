@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "We use cookies to count visitors anonymously and improve this page.": "Мы используем cookie, чтобы анонимно считать посетителей и улучшать страницу.",
+  "Accept": "Принять",
+  "Decline": "Отклонить",
+
   "View on YouTube ↗": "Смотреть на YouTube ↗",
 
   "On YouTube": "На YouTube",

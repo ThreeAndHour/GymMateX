@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('zh', {
+  "We use cookies to count visitors anonymously and improve this page.": "我们使用 Cookie 匿名统计访客数量，以改进本页面。",
+  "Accept": "接受",
+  "Decline": "拒绝",
+
   "View on YouTube ↗": "在 YouTube 上观看 ↗",
 
   "On YouTube": "在 YouTube 上发布",

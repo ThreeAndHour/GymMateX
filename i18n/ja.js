@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "We use cookies to count visitors anonymously and improve this page.": "訪問者数を匿名で集計し、ページを改善するために Cookie を使用しています。",
+  "Accept": "同意する",
+  "Decline": "拒否する",
+
   "View on YouTube ↗": "YouTube で見る ↗",
 
   "On YouTube": "YouTube で公開",

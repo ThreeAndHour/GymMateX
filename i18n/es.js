@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "We use cookies to count visitors anonymously and improve this page.": "Usamos cookies para contar visitantes de forma anónima y mejorar esta página.",
+  "Accept": "Aceptar",
+  "Decline": "Rechazar",
+
   "View on YouTube ↗": "Ver en YouTube ↗",
 
   "On YouTube": "En YouTube",

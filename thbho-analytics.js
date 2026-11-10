@@ -3,7 +3,8 @@
    - Consent first: cookies stay off until the visitor taps "Accept" (Google Consent Mode v2).
      Before that, GA only receives cookieless, anonymous pings, so totals are still counted.
    - Never runs inside an embedded demo (?embed=1), so a page view is not counted twice.
-   - Extra events: video_play, persona_open, apply_click, language. */
+   - Extra events: video_play, persona_open, apply_click, language.
+   Used by the ThB.Ho pages, O2OEventsVR, Fit & Fantasy (index) and thbho.github.io/AIGymmateXFactory.html. */
 (function () {
   var GA_ID = 'G-9Y2YDL6KT9';
   if (!GA_ID || /[?&]embed=1/.test(location.search)) return;
@@ -35,7 +36,7 @@
   var played = new WeakSet();
   document.addEventListener('play', function (e) {
     var v = e.target;
-    if (!(v instanceof HTMLVideoElement) || v.muted && v.autoplay || played.has(v)) return;
+    if (!(v instanceof HTMLVideoElement) || v.muted || played.has(v)) return;   // muted = background / hover loops
     played.add(v);
     ev('video_play', { video_title: title(v), page: location.pathname.split('/').pop() });
   }, true);
@@ -50,6 +51,7 @@
 
   var lang = document.getElementById('lang');
   if (lang) lang.addEventListener('change', function () { ev('language', { language: lang.value }); });
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-lang]'); if (b) ev('language', { language: b.getAttribute('data-lang') }); }, true);
 
   // Small consent bar, shown once until the visitor chooses
   if (saved === 'yes' || saved === 'no') return;
@@ -64,6 +66,7 @@
       '<button type="button" data-c="no"><span lang="th">ไม่ยอมรับ</span><span lang="en">Decline</span></button></div>';
     var css = document.createElement('style');
     css.textContent = '.thbho-consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:720px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:12px;background:rgba(22,19,27,.96);border:1px solid rgba(255,255,255,.12);color:#e9e6ee;font:14px/1.5 system-ui,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.5)}' +
+      '.thbho-consent span[lang]{display:none}html[lang^=th] .thbho-consent span[lang=th],html:not([lang^=th]) .thbho-consent span[lang=en]{display:inline}' +
       '.thbho-consent p{margin:0;flex:1 1 280px}.thbho-consent div{display:flex;gap:8px}' +
       '.thbho-consent button{cursor:pointer;font:600 13px system-ui,sans-serif;border-radius:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#e9e6ee}' +
       '.thbho-consent button[data-c=yes]{background:#66FCF1;border-color:#66FCF1;color:#06201E}';

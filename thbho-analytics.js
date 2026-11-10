@@ -4,7 +4,7 @@
      Before that, GA only receives cookieless, anonymous pings, so totals are still counted.
    - Never runs inside an embedded demo (?embed=1), so a page view is not counted twice.
    - Extra events: video_play, persona_open, apply_click, language.
-   Used by the ThB.Ho pages, O2OEventsVR, Fit & Fantasy (index) and thbho.github.io/AIGymmateXFactory.html. */
+   Used by the ThB.Ho pages, O2OEventsVR, Fit & Fantasy (index) and thbho.com/AIGymmateXFactory.html. */
 (function () {
   var GA_ID = 'G-9Y2YDL6KT9';
   if (!GA_ID || /[?&]embed=1/.test(location.search)) return;

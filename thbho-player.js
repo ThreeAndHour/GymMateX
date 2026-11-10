@@ -12,6 +12,21 @@
   '.vp .vp-play svg{width:26px;height:26px;color:#fff;margin-left:4px}'+
   '.vp .vp-photo{display:block}';
  var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+ // Start at 720p; switch to the 1080p file when the viewer goes full screen, back to 720p on exit.
+ function swapTo(v,url){
+  if(!url||v.currentSrc===url||v.src===url)return;
+  var t=v.currentTime||0,playing=!v.paused&&!v.ended;
+  v.src=url;
+  var go=function(){v.removeEventListener('loadedmetadata',go);try{v.currentTime=t}catch(e){}if(playing)v.play&&v.play().catch(function(){})};
+  v.addEventListener('loadedmetadata',go);v.load();
+ }
+ function hdSwap(v,m){
+  var fs=function(){return (document.fullscreenElement||document.webkitFullscreenElement)===v||(document.fullscreenElement&&document.fullscreenElement.contains(v))};
+  var on=function(){swapTo(v,fs()?m.hd:m.mp4)};
+  document.addEventListener('fullscreenchange',on);document.addEventListener('webkitfullscreenchange',on);
+  v.addEventListener('webkitbeginfullscreen',function(){swapTo(v,m.hd)});   // iPhone Safari
+  v.addEventListener('webkitendfullscreen',function(){swapTo(v,m.mp4)});
+ }
  window.THBHO_PLAYER=function(box,id,alt){
   var m=window.THBHO_X&&window.THBHO_X[id]; if(!m||!(m.mp4||m.poster))return false;
   var fig=document.createElement('figure');fig.className='vp'+(m.w&&m.h&&m.h>m.w*1.15?' tall':'');
@@ -23,6 +38,7 @@
    var v=document.createElement('video');v.setAttribute('referrerpolicy','no-referrer');v.controls=true;v.playsInline=true;v.autoplay=true;v.preload='metadata';v.poster=m.poster||'';v.src=m.mp4;
    document.querySelectorAll('.vp video').forEach(function(o){if(o!==v)o.pause()});
    fig.replaceChild(v,btn);v.play&&v.play().catch(function(){});
+   if(m.hd)hdSwap(v,m);
   });
   fig.appendChild(btn);box.appendChild(fig);return true;
  };

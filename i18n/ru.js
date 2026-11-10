@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ru', {
+  "View on YouTube ↗": "Смотреть на YouTube ↗",
+
+  "On YouTube": "На YouTube",
+
   "Views and likes from X as of": "Просмотры и лайки по данным X на",
 
   "Tell us about you and your channels": "Расскажите о себе и своих каналах",

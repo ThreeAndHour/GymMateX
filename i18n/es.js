@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('es', {
+  "View on YouTube ↗": "Ver en YouTube ↗",
+
+  "On YouTube": "En YouTube",
+
   "Views and likes from X as of": "Vistas y me gusta según X al",
 
   "Tell us about you and your channels": "Cuéntanos sobre ti y tus canales",

@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('zh', {
+  "View on YouTube ↗": "在 YouTube 上观看 ↗",
+
+  "On YouTube": "在 YouTube 上发布",
+
   "Views and likes from X as of": "观看与点赞数来自 X，截至",
 
   "Tell us about you and your channels": "介绍你自己和你的平台",

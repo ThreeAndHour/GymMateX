@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ko', {
+  "View on YouTube ↗": "YouTube에서 보기 ↗",
+
+  "On YouTube": "YouTube 게시",
+
   "Views and likes from X as of": "조회수와 좋아요는 X 기준,",
 
   "Tell us about you and your channels": "당신과 채널에 대해 알려주세요",

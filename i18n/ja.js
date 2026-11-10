@@ -1,4 +1,8 @@
 THBHO_I18N_ADD('ja', {
+  "View on YouTube ↗": "YouTube で見る ↗",
+
+  "On YouTube": "YouTube で公開",
+
   "Views and likes from X as of": "再生数といいね数は X のデータ、",
 
   "Tell us about you and your channels": "あなたとあなたのチャンネルについて教えてください",

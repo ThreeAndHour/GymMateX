@@ -14,7 +14,7 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 | `ThBHoVenues.html` | Venue partners page. |
 | `ThBHoStudio.html`, `ThBHoMatchDemo.html` | Backups of older versions. Do not link them. |
 | `O2OEventsVR.html` | GymMateX O2O · VR plan. |
-| `FitFantasy.html` | GymMateX Fit & Fantasy (was `index.html` until 10 Nov 2026). |
+| `FitFantasy.html` | GymMateX Fit & Fantasy (was `index.html` until 10 Nov 2026). Own 4-language i18n (th/en/ru/zh) inside the page. Persona chat is `fitfantasy-chat.js` (scripted replies; real AI once `FF_CHAT_API` is set to the Worker in `tools/chat-worker/`). Bump its `?v=` after edits. |
 | `index.html` | Only a redirect to `ThBHoCreators.html` (keeps ?query and #hash, carries the Creators share tags). Do not put content here. |
 
 Other old HTML files in the repo are legacy pages; leave them alone unless Thor asks.

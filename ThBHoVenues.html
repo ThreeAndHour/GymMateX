@@ -285,13 +285,12 @@ section{padding:64px 0 0}
 .personas figure:hover{border-color:var(--accent)}
 .personas .see{display:block;font:500 11px var(--mono);color:var(--accent)}
 .hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
-.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(8,18,17,.85));font-size:13px;color:var(--ink2)}
+.hvid video,.hvid iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:0}
+.hvid figcaption{padding:9px 14px;background:var(--s1);border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
 .hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(8,18,17,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
 .hvid-snd:hover{background:rgba(8,18,17,.85)}
 .hvid-snd .l0,.hvid-snd[aria-pressed="true"] .l1{display:none}.hvid-snd[aria-pressed="true"] .l0{display:inline}
 @media (max-width:600px){.hvid figcaption{position:static;background:var(--s1);padding:9px 12px;border-top:1px solid var(--line)}}
-@media (prefers-reduced-motion:reduce){.hvid video{display:none}.hvid{background:url(https://pbs.twimg.com/amplify_video_thumb/2030343602266853376/img/Ns-fyskZATMKPAlA.jpg) center/cover;aspect-ratio:16/9}}
 .ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
 .yttext h2{margin:8px 0 12px}
 .yttext p{color:var(--ink2)}
@@ -371,9 +370,8 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <a class="btn" href="#venues"><span lang="th">ดูบริการ</span><span lang="en">See services</span></a>
  </div>
  <figure class="hvid">
-  <video id="hvid" src="https://video.twimg.com/amplify_video/2030343602266853376/vid/avc1/1280x720/57FkSjwo2qHFL6wa.mp4?tag=21" poster="https://pbs.twimg.com/amplify_video_thumb/2030343602266853376/img/Ns-fyskZATMKPAlA.jpg" referrerpolicy="no-referrer" autoplay muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Lost In Neon Light teaser with Three, B. and Hour"></video>
-  <button type="button" class="hvid-snd" id="hvidSnd" aria-pressed="false"><span class="on" aria-hidden="true">🔇</span><span class="l1"><span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></span><span class="l0"><span lang="th">ปิดเสียง</span><span lang="en">Sound off</span></span></button>
-  <figcaption><span lang="th">Lost In Neon Light · teaser — Three, B. และ Hour ในคืนแสงนีออนเดียวกัน</span><span lang="en">Lost In Neon Light · teaser — Three, B. and Hour in one neon night</span></figcaption>
+  <iframe id="hvid" src="https://www.youtube-nocookie.com/embed/Yrg6KHHeg7I?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=Yrg6KHHeg7I&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="Tell Me It's (Not) a Dream · Three &amp; Hour" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
+  <figcaption><span lang="th">Tell Me It's (Not) a Dream · Three &amp; Hour — กดที่วิดีโอเพื่อเปิดเสียง</span><span lang="en">Tell Me It's (Not) a Dream · Three &amp; Hour — tap the video for sound</span></figcaption>
  </figure>
 </div>
 

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — нажмите на видео, чтобы включить звук",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · тизер — Three, B. и Hour в одной неоновой ночи",
   "Gladiator theme night": "Тематическая ночь гладиаторов",
   "Steampunk costume party": "Костюмированная вечеринка в стиле стимпанк",

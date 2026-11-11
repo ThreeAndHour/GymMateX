@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ja', {
+  "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — 動画をタップして音声オン",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · ティーザー — Three、B.、Hour がそろうネオンの夜",
   "Gladiator theme night": "グラディエーターのテーマナイト",
   "Steampunk costume party": "スチームパンクのコスチュームパーティー",

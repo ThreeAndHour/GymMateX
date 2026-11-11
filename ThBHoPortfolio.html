@@ -367,7 +367,7 @@ main{padding:22px 0 60px}
    emb='<div class="emb ph"><a href="'+xurl+'" target="_blank" rel="noopener">'+im(f.img[0],0)+
     (f.img.length>1?'<div class="more">'+f.img.slice(1,4).map(function(u){return im(u,1)}).join('')+'</div>':'')+'</a></div>';
   }
-  return '<article class="card" data-x="'+f.id+'"'+(f.yt?' data-yt="'+f.yt+'"'+(f.wide?' data-wide="1"':''):'')+' data-cat="'+f.cat+'" data-th="'+(f.th||'')+'" data-p=""'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
+  return '<article class="card" data-x="'+f.id+'"'+(f.yt?' data-yt="'+f.yt+'"'+(f.wide?' data-wide="1"':''):'')+' data-cat="'+f.cat+'" data-th="'+(f.th||'')+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
    '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+src+views+likes+'</div>'+
    emb+
    '<a class="link" href="'+xurl+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+(f.yt?T('ดูบน YouTube ↗','View on YouTube ↗'):T('ดูบน X ↗','View on X ↗'))+'</em></a>'+

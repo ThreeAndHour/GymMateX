@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('ko', {
+  "Introduce your trainers": "매장 트레이너 소개",
+  "A fitness look built on real physiques": "실제 몸을 바탕으로 한 피트니스 룩",
+  "A real shoot with the team, extended by AI": "팀과 실제 촬영, AI로 확장",
+  "8–12 pieces a month": "매달 8–12개 콘텐츠",
+  "Neon theme night": "네온 테마 나이트",
+  "Meet someone worth talking to": "대화가 통하는 사람을 만나세요",
+  "A premium look for VIP nights": "VIP 나이트를 위한 프리미엄 룩",
+  "Find models and creators": "모델과 크리에이터 발굴",
   "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — 영상을 눌러 소리를 켜세요",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · 티저 — Three, B., Hour가 함께한 네온의 밤",
   "Gladiator theme night": "글래디에이터 테마 나이트",

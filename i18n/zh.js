@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('zh', {
+  "Introduce your trainers": "介绍店里的教练",
+  "A fitness look built on real physiques": "以真实身材打造的健身风格",
+  "A real shoot with the team, extended by AI": "与团队实拍，再由 AI 延展",
+  "8–12 pieces a month": "每月 8–12 件内容",
+  "Neon theme night": "霓虹主题之夜",
+  "Meet someone worth talking to": "遇见聊得来的人",
+  "A premium look for VIP nights": "为 VIP 之夜打造的高级风格",
+  "Find models and creators": "发掘模特与创作者",
   "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — 点击视频开启声音",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · 预告 — Three、B. 与 Hour 同在一个霓虹之夜",
   "Gladiator theme night": "角斗士主题之夜",

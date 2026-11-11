@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('ja', {
+  "Introduce your trainers": "お店のトレーナーを紹介",
+  "A fitness look built on real physiques": "本物の体から作るフィットネスルック",
+  "A real shoot with the team, extended by AI": "チームと実写撮影し、AIで広げる",
+  "8–12 pieces a month": "毎月8〜12本",
+  "Neon theme night": "ネオンのテーマナイト",
+  "Meet someone worth talking to": "話が合う人に出会える",
+  "A premium look for VIP nights": "VIPナイトのためのプレミアムルック",
+  "Find models and creators": "モデルとクリエイターを発掘",
   "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — 動画をタップして音声オン",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · ティーザー — Three、B.、Hour がそろうネオンの夜",
   "Gladiator theme night": "グラディエーターのテーマナイト",

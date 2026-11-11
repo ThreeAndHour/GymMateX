@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('es', {
+  "Introduce your trainers": "Presenta a tus entrenadores",
+  "A fitness look built on real physiques": "Un look fitness basado en físicos reales",
+  "A real shoot with the team, extended by AI": "Un rodaje real con el equipo, ampliado con IA",
+  "8–12 pieces a month": "8–12 piezas al mes",
+  "Neon theme night": "Noche temática de neón",
+  "Meet someone worth talking to": "Conoce a alguien con quien valga la pena hablar",
+  "A premium look for VIP nights": "Un look premium para noches VIP",
+  "Find models and creators": "Encuentra modelos y creadores",
   "Tell Me It's (Not) a Dream · Three & Hour — tap the video for sound": "Tell Me It's (Not) a Dream · Three & Hour — toca el video para activar el sonido",
   "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · teaser — Three, B. y Hour en una misma noche de neón",
   "Gladiator theme night": "Noche temática de gladiadores",

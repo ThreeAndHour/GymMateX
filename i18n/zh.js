@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('zh', {
+  "Hybrid Persona music videos and films": "Hybrid Persona 的 MV 与短片",
+  "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three、B. 和 Hour 的 MV 与短片汇集在一个播放列表中。可在此观看，或打开作品集页面按分身查看全部视频。",
   "Introduce your trainers": "介绍店里的教练",
   "A fitness look built on real physiques": "以真实身材打造的健身风格",
   "A real shoot with the team, extended by AI": "与团队实拍，再由 AI 延展",

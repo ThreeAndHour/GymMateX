@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "Hybrid Persona music videos and films": "Клипы и фильмы Hybrid Persona",
+  "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Клипы и короткие фильмы Three, B. и Hour в одном плейлисте. Смотрите здесь или откройте портфолио, чтобы увидеть все ролики по персонам.",
   "Introduce your trainers": "Представьте своих тренеров",
   "A fitness look built on real physiques": "Фитнес-образ на основе реальной формы",
   "A real shoot with the team, extended by AI": "Реальная съёмка с командой, дополненная ИИ",

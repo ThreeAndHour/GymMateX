@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ko', {
+  "Hybrid Persona music videos and films": "Hybrid Persona의 뮤직비디오와 단편영화",
+  "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three, B., Hour의 뮤직비디오와 단편영화를 하나의 재생목록에 모았습니다. 여기서 바로 보거나 포트폴리오 페이지에서 페르소나별 모든 영상을 확인하세요.",
   "Introduce your trainers": "매장 트레이너 소개",
   "A fitness look built on real physiques": "실제 몸을 바탕으로 한 피트니스 룩",
   "A real shoot with the team, extended by AI": "팀과 실제 촬영, AI로 확장",

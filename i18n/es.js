@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('es', {
+  "Hybrid Persona music videos and films": "Videoclips y películas de Hybrid Persona",
+  "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Videoclips y cortometrajes de Three, B. y Hour en una sola lista. Míralos aquí o abre la página de portafolio para ver cada clip por persona.",
   "Introduce your trainers": "Presenta a tus entrenadores",
   "A fitness look built on real physiques": "Un look fitness basado en físicos reales",
   "A real shoot with the team, extended by AI": "Un rodaje real con el equipo, ampliado con IA",

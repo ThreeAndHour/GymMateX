@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ja', {
+  "Hybrid Persona music videos and films": "Hybrid Persona のMVとショートフィルム",
+  "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three、B.、Hour のMVとショートフィルムをひとつのプレイリストに。ここで観るか、ポートフォリオでペルソナ別に全作品をご覧ください。",
   "Introduce your trainers": "お店のトレーナーを紹介",
   "A fitness look built on real physiques": "本物の体から作るフィットネスルック",
   "A real shoot with the team, extended by AI": "チームと実写撮影し、AIで広げる",

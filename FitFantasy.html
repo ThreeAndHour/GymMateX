@@ -89,6 +89,36 @@
             box-shadow: 0 20px 60px -15px rgba(249,115,22,0.15);
         }
 
+
+        /* Feature cards with background clips + popup (like ThBHoCreators #strengths) */
+        .ffu { position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column;
+               transition: transform .5s cubic-bezier(0.23,1,0.32,1), border-color .4s, box-shadow .4s; }
+        .ffu > * { position: relative; z-index: 1; }
+        .ffu::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--c); z-index: 2; opacity: .85; }
+        .ffu > .ffu-bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover;
+                         opacity: .42; transform: scale(1.02); transition: opacity .6s, transform 8s ease-out; pointer-events: none; }
+        .ffu > .ffu-shade { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+                            background: linear-gradient(180deg, rgba(10,10,14,.30), rgba(10,10,14,.88) 70%); }
+        .ffu:hover { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 20px 60px -18px var(--c); }
+        .ffu:hover > .ffu-bg { opacity: .72; transform: scale(1.08); }
+        .ffu:focus-visible { outline: 2px solid var(--c); outline-offset: 3px; }
+        .ffu p { color: rgba(255,255,255,.72) !important; }
+        .ffu-watch { all: unset; margin-top: auto; padding-top: 18px; font: 600 12px/1.4 'JetBrains Mono', ui-monospace, monospace;
+                     letter-spacing: .03em; color: rgba(255,255,255,.6); cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ffu:hover .ffu-watch, .ffu-watch:focus-visible { color: var(--c); }
+        @media (prefers-reduced-motion: reduce) { .ffu > .ffu-bg { transition: none; transform: none; } .ffu:hover > .ffu-bg { transform: none; } }
+        dialog.ffpop { border: 0; padding: 0; background: transparent; width: min(94vw, 1000px); max-width: 94vw; max-height: 94vh; overflow: visible; color: #fff; }
+        dialog.ffpop::backdrop { background: rgba(5,4,8,.88); backdrop-filter: blur(4px); }
+        .ffpop-x { all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px; margin: 0 0 12px auto;
+                   font: 600 12px 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+        .ffpop-x b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 2px solid currentColor; font-size: 14px; }
+        .ffpop-x:hover, .ffpop-x:focus-visible { color: #fb923c; }
+        .ffpop-box { background: #000; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; overflow: hidden;
+                     box-shadow: 0 0 80px -10px rgba(249,115,22,.3); display: flex; justify-content: center; }
+        .ffpop-box video { display: block; max-width: 100%; max-height: 80vh; width: auto; height: auto; background: #000; }
+        .ffpop-cap { margin: 10px 2px 0; font: 500 13px 'JetBrains Mono', ui-monospace, monospace; color: rgba(255,255,255,.5); text-align: center; }
+        .ffpop-cap a { color: #fb923c; text-decoration: none; }
+
         /* Navigation */
         nav {
             background: rgba(13,17,23,0.7);
@@ -466,23 +496,35 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-5">
-                    <div class="glass glass-hover p-8 group">
+                    <article class="ffu glass p-8 group" style="--c:#fb923c" data-clip="2026703611460530482" data-title="Sanctuary · The Warriors">
+                        <video class="ffu-bg" data-x="2026703611460530482" data-start="25" muted loop playsinline preload="none" referrerpolicy="no-referrer" aria-hidden="true"></video><span class="ffu-shade" aria-hidden="true"></span>
                         <div class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">⚔️</div>
                         <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b1-title">Epic Fantasy Transformation</h3>
                         <p class="text-sm text-white/50 leading-relaxed font-thai" data-i18n="b1-desc">แปลงโฉมเป็นกลาดิเอเตอร์ นักรบทะเลทราย หรือฮีโร่ในโลกอนาคต โดยยังรักษาตัวตนของคุณไว้</p>
-                    </div>
-                    <div class="glass glass-hover p-8 group">
+                        <button type="button" class="ffu-watch">▶ <span data-i18n="watch-clip">ดูคลิป</span> · Sanctuary · The Warriors</button>
+                    </article>
+                    <article class="ffu glass p-8 group" style="--c:#a78bfa" data-clip="2075429117579919382" data-title="Middle of Time · teaser">
+                        <video class="ffu-bg" data-x="2075429117579919382" data-start="3" muted loop playsinline preload="none" referrerpolicy="no-referrer" aria-hidden="true"></video><span class="ffu-shade" aria-hidden="true"></span>
                         <div class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">⌛</div>
                         <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b2-title">AI Time Traveler</h3>
                         <p class="text-sm text-white/50 leading-relaxed font-thai" data-i18n="b2-desc">ข้ามข้ามมิติเวลาและสถานที่ด้วยเทคโนโลยี AI สร้างเรื่องราวต่อเนื่องที่ Hollywood ยังต้องทึ่ง</p>
-                    </div>
-                    <div class="glass glass-hover p-8 group">
+                        <button type="button" class="ffu-watch">▶ <span data-i18n="watch-clip">ดูคลิป</span> · Middle of Time · teaser</button>
+                    </article>
+                    <article class="ffu glass p-8 group" style="--c:#67e8f9" data-clip="2057333372205289701" data-title="Without a persona">
+                        <video class="ffu-bg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true" data-loop="1"></video><span class="ffu-shade" aria-hidden="true"></span>
                         <div class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">🧬</div>
                         <h3 class="text-lg font-bold mb-3 text-white" data-i18n="b3-title">The 50/70/90 Identity</h3>
                         <p class="text-sm text-white/50 leading-relaxed font-thai" data-i18n="b3-desc">กฎแห่งการสร้าง Persona: ใบหน้า 50%, ร่างกาย 70%, และเสียง 90% เพื่อเอกลักษณ์ที่สมบูรณ์</p>
-                    </div>
+                        <button type="button" class="ffu-watch">▶ <span data-i18n="watch-clip">ดูคลิป</span> · Without a persona</button>
+                    </article>
                 </div>
             </section>
+
+            <dialog class="ffpop" id="ffpop" aria-label="Clip">
+                <button type="button" class="ffpop-x" id="ffpopX"><span data-i18n="close-btn">ปิด</span> <b aria-hidden="true">✕</b></button>
+                <div class="ffpop-box" id="ffpopBox"></div>
+                <p class="ffpop-cap" id="ffpopCap"></p>
+            </dialog>
 
             <!-- AI Video Gallery -->
             <section class="reveal mb-28">
@@ -717,6 +759,8 @@
       // ── i18n ──
       const i18n = {
         th: {
+          "watch-clip": "ดูคลิป",
+          "close-btn": "ปิด",
           "nav-general": "General",
           "hero-title": "ปั้น AI Twin &\nทะลุมิติสู่โลกแฟนตาซี",
           "hero-desc": "สร้าง Hybrid AI Persona ที่รวมความแข็งแกร่งของร่างกายเข้ากับจินตนาการไร้ขีดจำกัด",
@@ -756,6 +800,8 @@
           "social-sp": "พอดแคสต์"
         },
         en: {
+          "watch-clip": "Watch",
+          "close-btn": "Close",
           "nav-general": "General",
           "hero-title": "Sculpt AI Twin &\nFantasy Legacy",
           "hero-desc": "Create a Hybrid AI Persona fusing your peak physique with cinematic imagination.",
@@ -795,6 +841,8 @@
           "social-sp": "Podcast"
         },
         ru: {
+          "watch-clip": "Смотреть",
+          "close-btn": "Закрыть",
           "nav-general": "Главная",
           "hero-title": "Создай AI-двойника и\nФэнтези-легенду",
           "hero-desc": "Гибридная AI-персона: слияние идеального тела и кинематографичного воображения.",
@@ -834,6 +882,8 @@
           "social-sp": "Подкаст"
         },
         zh: {
+          "watch-clip": "观看",
+          "close-btn": "关闭",
           "nav-general": "主页",
           "hero-title": "塑造 AI 孪生身与\n奇幻传奇",
           "hero-desc": "打造混合型 AI 人格，将您的巅峰体魄与电影般的想象力融合。",
@@ -953,5 +1003,53 @@
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 <script src="fitfantasy-chat.js?v=2"></script>
+<script src="x-media.js?v=2"></script>
+<script>
+ // Feature cards: background clips (play only on screen / on hover) + tap to watch in a popup
+ (function(){
+  var cards=[].slice.call(document.querySelectorAll('.ffu')); if(!cards.length)return;
+  var M=window.THBHO_X||{}, popOpen=false;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hover=window.matchMedia&&matchMedia('(hover: hover) and (pointer: fine)').matches;
+  cards.forEach(function(a){
+   var v=a.querySelector('.ffu-bg'); if(!v)return;
+   if(v.dataset.x){                       // X clip: poster as the image, stream the clip only on hover (desktop)
+    var m=M[v.dataset.x]; if(m&&m.poster)v.poster=m.poster;
+    if(hover&&!still&&m&&m.mp4){
+     a.addEventListener('mouseenter',function(){
+      if(!v.src){v.src=m.mp4;v.addEventListener('loadedmetadata',function(){try{v.currentTime=+v.dataset.start||0}catch(e){}},{once:true})}
+      v.play&&v.play().catch(function(){});
+     });
+     a.addEventListener('mouseleave',function(){v.pause()});
+    }
+   }
+  });
+  var loops=cards.map(function(a){return a.querySelector('.ffu-bg[data-loop]')}).filter(Boolean);
+  if(!still&&'IntersectionObserver' in window){
+   var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting&&!popOpen){v.play&&v.play().catch(function(){})}else v.pause()})},{threshold:.25});
+   loops.forEach(function(v){v.preload='metadata';io.observe(v)});
+  }
+  var d=document.getElementById('ffpop'),box=document.getElementById('ffpopBox'),cap=document.getElementById('ffpopCap');
+  function close(){var v=box.querySelector('video');if(v)v.pause();box.textContent='';popOpen=false;if(d.open)d.close();document.body.style.overflow=''}
+  function open(id,title){
+   var m=M[id], url='https://x.com/widerooms/status/'+id;
+   if(!m||!m.mp4||!d.showModal){window.open(url,'_blank','noopener');return}
+   popOpen=true;cards.forEach(function(a){var b=a.querySelector('.ffu-bg');b&&b.pause()});
+   var v=document.createElement('video');v.setAttribute('referrerpolicy','no-referrer');v.controls=true;v.playsInline=true;v.autoplay=true;v.poster=m.poster||'';v.src=m.mp4;v.title=title;
+   box.textContent='';box.appendChild(v);
+   cap.textContent=title+' · ';var l=document.createElement('a');l.href=url;l.target='_blank';l.rel='noopener';l.textContent='X ↗';cap.appendChild(l);
+   d.showModal();document.body.style.overflow='hidden';v.play&&v.play().catch(function(){});
+  }
+  cards.forEach(function(a){
+   a.tabIndex=0;a.setAttribute('role','button');a.setAttribute('aria-label',a.dataset.title);
+   function go(e){e.preventDefault();open(a.dataset.clip,a.dataset.title)}
+   a.addEventListener('click',go);
+   a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')go(e)});
+  });
+  document.getElementById('ffpopX').addEventListener('click',close);
+  d.addEventListener('close',close);
+  d.addEventListener('click',function(e){if(e.target===d)close()});
+ })();
+</script>
 </body>
 </html>

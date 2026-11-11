@@ -18,9 +18,9 @@
 <style>
 /* Same night palette as ThBHoStudio.html. Layout: hero with the three personas, quiz, persona match + 3 collab formats, request message, persona profiles, portfolio, rules. */
 :root{
- --bg:#0A0D16; --s1:#111626; --s2:#1A2136; --line:#283250;
- --ink:#EEF0F6; --ink2:#AEB4C6; --ink3:#77809A;
- --accent:#E0B96B; --rose:#C8466F; --accent2:#7FD6D0;
+ --bg:#100A0D; --s1:#1B1116; --s2:#281820; --line:#3D2530;
+ --ink:#F4ECEA; --ink2:#C2ADB0; --ink3:#8C7479;
+ --accent:#E8C77A; --rose:#D0607E; --accent2:#E3B7A0;
  --nt:#8E7CF0; --nf:#3FC48A; --sj:#4AA8F0; --sp:#F0B24A;
  --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
  --body:"IBM Plex Sans Thai",system-ui,sans-serif;
@@ -33,14 +33,14 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
 html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
 select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
-select.lang option{background:#111626;color:#EEF0F6}
+select.lang option{background:#1B1116;color:#F4ECEA}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 p{margin:0 0 12px}
 
-.top{position:sticky;top:0;z-index:10;background:rgba(10,13,22,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:10;background:rgba(16,10,13,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
 .mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
 .mark img{height:38px;width:auto;display:block}
@@ -89,7 +89,7 @@ p{margin:0 0 12px}
 .opt small{color:var(--ink2);font-size:13.5px}
 .qnav{display:flex;justify-content:space-between;gap:10px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:10px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
-.btn.solid{background:var(--accent);color:#1A1305;border-color:var(--accent)}
+.btn.solid{background:var(--accent);color:#1F1406;border-color:var(--accent)}
 .btn:hover{border-color:var(--accent)}
 .btn[disabled]{opacity:.4;cursor:not-allowed}
 
@@ -167,7 +167,7 @@ p{margin:0 0 12px}
 dialog#pdlg{border:1px solid var(--line);border-radius:14px;padding:0;background:var(--s1);color:var(--ink);width:min(860px,calc(100vw - 24px));max-height:calc(100vh - 32px);overflow:auto}
 dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pd{position:relative;display:grid;gap:16px;padding:0 0 20px}
-.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(10,13,22,.85);color:var(--ink);cursor:pointer;font-size:15px}
+.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(16,10,13,.85);color:var(--ink);cursor:pointer;font-size:15px}
 .pdhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border-bottom:1px solid var(--line)}
 .pdhead img{display:block;width:100%;height:100%;min-height:230px;object-fit:cover;object-position:50% 25%}
 .pdhead .mbody{padding:22px}
@@ -179,10 +179,10 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pdworks a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--bg)}
 .pdworks a:hover,.pdworks a:focus-visible{border-color:var(--c)}
 .pdworks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
+.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,rgba(16,10,13,.92))}
 .pdworks .cap b{display:block;font:600 14px var(--display);line-height:1.25}
 .pdworks .cap span{font:500 11.5px var(--mono);color:var(--c)}
-.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(10,13,22,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
+.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(16,10,13,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
 .pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
 .pdfoot{padding:0 22px}
 
@@ -236,7 +236,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
 .reel a:hover{border-color:var(--rose)}
 .reel img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(16,10,13,.92))}
 .reel .cap b{display:block;font:600 15px var(--display);line-height:1.25}
 .reel .cap>span{font:500 12px var(--mono);color:var(--accent)}
 .rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--rose);border-radius:8px;padding:22px 24px}
@@ -261,18 +261,18 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
 .ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
 .yttext h2{margin:8px 0 12px}
 .yttext p{color:var(--ink2)}
-.phone{position:relative;padding:12px;border-radius:44px;background:#12172A;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(224,185,107,.25),0 0 60px -10px rgba(224,185,107,.12)}
-.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#12172A;border-radius:0 0 14px 14px;z-index:2}
+.phone{position:relative;padding:12px;border-radius:44px;background:#1A1014;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(232,199,122,.25),0 0 60px -10px rgba(232,199,122,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#1A1014;border-radius:0 0 14px 14px;z-index:2}
 .phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
 .phone-in iframe{display:block;width:100%;height:100%;border:0}
 .ytpl{width:100%;height:100%}.ytpl-fb{display:grid;place-items:center;align-content:center;gap:10px;width:100%;height:100%;color:#fff;text-decoration:none;font:600 15px var(--mono)}.ytpl-fb b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#FF0033;font-size:24px}
 @media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
 .quiz{position:relative;overflow:hidden;isolation:isolate}
 .quiz::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--qbg) center/cover no-repeat;opacity:.6;transition:opacity .4s}
-.quiz::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,13,22,.88) 0%,rgba(10,13,22,.7) 55%,rgba(10,13,22,.45) 100%)}
+.quiz::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(16,10,13,.88) 0%,rgba(16,10,13,.7) 55%,rgba(16,10,13,.45) 100%)}
 .quiz.qfade::before{animation:qin .6s ease}
 @keyframes qin{from{opacity:0}to{opacity:.6}}
-.quiz .opt{background:rgba(20,26,44,.78);backdrop-filter:blur(2px)}
+.quiz .opt{background:rgba(34,20,27,.78);backdrop-filter:blur(2px)}
 @media (prefers-reduced-motion:reduce){.quiz.qfade::before{animation:none}}
 </style>
 <script src="thbho-i18n.js"></script>

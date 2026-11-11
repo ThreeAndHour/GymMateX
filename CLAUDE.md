@@ -19,10 +19,15 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 
 Other old HTML files in the repo are legacy pages; leave them alone unless Thor asks.
 
-## Colours (palette "A · deep water + gold", chosen by Thor 11 Nov 2026)
-Creators, Portfolio, CreatorMatch and Venues share these `:root` variables, named by role:
-`--bg:#0A0D16` `--s1:#111626` `--s2:#1A2136` `--line:#283250` (navy-black), `--accent:#E0B96B` (gold: buttons, links),
-`--rose:#C8466F` (rose burgundy), `--accent2:#7FD6D0` (soft aqua: small labels). No neon pink or neon cyan.
+## Colours (chosen by Thor 11 Nov 2026: deep "Water element" darks + gold, no neon pink / neon cyan)
+All four pages use the same `:root` variable names, by role: `--bg --s1 --s2 --line` (surfaces), `--accent` (buttons, links),
+`--rose`, `--accent2` (small labels). Each page has its own palette on purpose:
+| Page | Surfaces | accent / rose / accent2 |
+|---|---|---|
+| Creators (main) | navy-black `#0A0D16 #111626 #1A2136 #283250` | gold `#E0B96B` / `#C8466F` / aqua `#7FD6D0` |
+| Portfolio | cinema black `#0A0A0C #141416 #1D1D21 #2F2F36` | soft yellow `#EBD488` / `#C8466F` / silver-blue `#A9C4DA` |
+| CreatorMatch (quiz) | burgundy `#100A0D #1B1116 #281820 #3D2530` | gold `#E8C77A` / `#D0607E` / rose gold `#E3B7A0` |
+| Venues | deep-sea teal `#081211 #0F1D1C #172A29 #24403E` | gold `#E0B96B` / `#C8466F` / `#8FD9C8` |
 FitFantasy and O2OEventsVR keep their own orange theme.
 
 ## Shared files (edit with care: every page uses them)

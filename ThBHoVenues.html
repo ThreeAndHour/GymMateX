@@ -277,11 +277,16 @@ section{padding:64px 0 0}
 .demo-frame iframe{display:block;width:100%;height:760px;border:0;background:var(--bg)}
 .demo-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
 .looks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
-@media (max-width:700px){.looks{grid-template-columns:1fr}}
 .looks figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
 .looks img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .looks video{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 18%;background:var(--s1)}
-@media (max-width:700px){.looks{max-width:420px;margin-left:auto;margin-right:auto}}
+@media (max-width:700px){.looks{grid-template-columns:1fr 1fr;gap:8px}}
+.looks .lk{all:unset;box-sizing:border-box;position:relative;display:block;cursor:pointer;border-radius:8px;overflow:hidden;border:1px solid var(--line);transition:border-color .2s}
+.looks .lk:hover,.looks .lk:focus-visible{border-color:var(--accent)}
+.looks .lkplay{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(8,18,17,.7);border:1px solid rgba(255,255,255,.35);color:#fff;font:normal 11px/1 system-ui;padding-left:2px}
+.looks .lk:hover .lkplay{background:var(--accent);color:#111;border-color:var(--accent)}
+.looks .lkcap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,rgba(8,18,17,.9));font-size:13px}
+.looks .lkcap b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .looks figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,rgba(8,18,17,.9));font-size:13px}
 .looks figcaption b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .popen{all:unset;display:block;cursor:pointer;width:100%}
@@ -291,6 +296,7 @@ section{padding:64px 0 0}
 .personas .see{display:block;font:500 11px var(--mono);color:var(--accent)}
 .hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
 .hvid video,.hvid iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:0}
+.hvid figcaption a{color:var(--accent)}
 .hvid figcaption{padding:9px 14px;background:var(--s1);border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
 .hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(8,18,17,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
 .hvid-snd:hover{background:rgba(8,18,17,.85)}
@@ -354,7 +360,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
    <a href="#venues"><span lang="th">บริการ</span><span lang="en">Services</span></a>
    <a href="#demo">Demo</a>
    <a href="#portfolio">Portfolio</a>
-   <a href="#highlights"><span lang="th">ผลงาน</span><span lang="en">Films</span></a>
+   <a href="ThBHoPortfolio.html"><span lang="th">ผลงาน</span><span lang="en">Films</span></a>
    <a href="#roadmap"><span lang="th">แผน O2O</span><span lang="en">O2O plan</span></a>
    <a href="#strengths"><span lang="th">จุดแข็ง</span><span lang="en">Why us</span></a>
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
@@ -377,8 +383,8 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <a class="btn" href="#venues"><span lang="th">ดูบริการ</span><span lang="en">See services</span></a>
  </div>
  <figure class="hvid">
-  <iframe id="hvid" src="https://www.youtube-nocookie.com/embed/Yrg6KHHeg7I?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=Yrg6KHHeg7I&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="Tell Me It's (Not) a Dream · Three &amp; Hour" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
-  <figcaption><span lang="th">Tell Me It's (Not) a Dream · Three &amp; Hour — กดที่วิดีโอเพื่อเปิดเสียง</span><span lang="en">Tell Me It's (Not) a Dream · Three &amp; Hour — tap the video for sound</span></figcaption>
+  <iframe id="hvid" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLV9Z52snDXW0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="ThB.Ho Hybrid Creator Lab playlist on YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
+  <figcaption><span lang="th">เพลย์ลิสต์ Hybrid Creator Lab · MV และหนังสั้นของ Three, B. และ Hour — กดที่วิดีโอเพื่อเปิดเสียง</span><span lang="en">Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound</span> · <a href="https://www.youtube.com/playlist?list=PLV9Z52snDXW0" target="_blank" rel="noopener"><span lang="th">เปิดบน YouTube ↗</span><span lang="en">Open on YouTube ↗</span></a></figcaption>
  </figure>
 </div>
 
@@ -468,25 +474,14 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
  </div>
 <p class="note" style="margin-top:0"><span lang="th">promote งาน theme, spotlight นายแบบ และ lifestyle · ลิขสิทธิ์เป็นของร้าน</span><span lang="en">Theme-night promos, model spotlights and lifestyle pieces. The venue owns the rights.</span></p>
  <div class="looks">
-  <figure><video src="https://astra.app/api/files/4efe09ae-260b-4c1d-86a8-7f94c24826e7" muted loop playsinline preload="metadata" aria-label="Gladiator look in a desert ruin"></video><figcaption><b>Theme night promo</b><span lang="th">คืนธีมกลาดิเอเตอร์</span><span lang="en">Gladiator theme night</span></figcaption></figure>
-  <figure><video src="https://astra.app/api/files/019d5bf1-2e96-746b-bb46-308eb74d3fb0" muted loop playsinline preload="metadata" aria-label="Steampunk costume look"></video><figcaption><b>Costume party</b><span lang="th">ปาร์ตี้คอสตูมสตีมพังก์</span><span lang="en">Steampunk costume party</span></figcaption></figure>
-  <figure><video src="https://astra.app/api/files/019d5bf2-939a-74fa-91fc-abb93a81182a" muted loop playsinline preload="metadata" aria-label="Cowboy with a guitar"></video><figcaption><b>Model spotlight</b><span lang="th">แนะนำนายแบบประจำเดือน</span><span lang="en">Model of the month</span></figcaption></figure>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/4efe09ae-260b-4c1d-86a8-7f94c24826e7" data-title="Theme night promo · Gladiator theme night" aria-label="Gladiator look in a desert ruin"><video src="https://astra.app/api/files/4efe09ae-260b-4c1d-86a8-7f94c24826e7" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>Theme night promo</b><span lang="th">คืนธีมกลาดิเอเตอร์</span><span lang="en">Gladiator theme night</span></span></button>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/019d5bf1-2e96-746b-bb46-308eb74d3fb0" data-title="Costume party · Steampunk costume party" aria-label="Steampunk costume look"><video src="https://astra.app/api/files/019d5bf1-2e96-746b-bb46-308eb74d3fb0" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>Costume party</b><span lang="th">ปาร์ตี้คอสตูมสตีมพังก์</span><span lang="en">Steampunk costume party</span></span></button>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/019d5bf2-939a-74fa-91fc-abb93a81182a" data-title="Model spotlight · Model of the month" aria-label="Cowboy with a guitar"><video src="https://astra.app/api/files/019d5bf2-939a-74fa-91fc-abb93a81182a" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>Model spotlight</b><span lang="th">แนะนำนายแบบประจำเดือน</span><span lang="en">Model of the month</span></span></button>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/019d2b96-60cd-77da-8c7e-76e825266f48" data-title="Grand entrance · A cinematic opening for your event" aria-label="A caped warrior walking into an ancient temple"><video src="https://astra.app/api/files/019d2b96-60cd-77da-8c7e-76e825266f48" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>Grand entrance</b><span lang="th">ฉากเปิดงานแบบภาพยนตร์</span><span lang="en">A cinematic opening for your event</span></span></button>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/019e26ee-7a5a-70c5-8e85-92ebe5426e6c" data-title="Greek night · Greek god theme night" aria-label="Greek toga look by marble columns"><video src="https://astra.app/api/files/019e26ee-7a5a-70c5-8e85-92ebe5426e6c" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>Greek night</b><span lang="th">คืนธีมเทพกรีก</span><span lang="en">Greek god theme night</span></span></button>
+  <button type="button" class="lk" data-src="https://astra.app/api/files/019d5bc4-493b-7659-9c0a-143e681daf2d" data-title="VIP costume · Golden wings for a VIP night" aria-label="Golden angel wings costume"><video src="https://astra.app/api/files/019d5bc4-493b-7659-9c0a-143e681daf2d" muted loop playsinline preload="metadata" aria-hidden="true"></video><i class="lkplay" aria-hidden="true">▶</i><span class="lkcap"><b>VIP costume</b><span lang="th">ชุดปีกทองคำสำหรับคืน VIP</span><span lang="en">Golden wings for a VIP night</span></span></button>
  </div>
  <div class="demo-cta"><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener"><span lang="th">ดูผลงาน MV และหนังสั้นบน X ↗</span><span lang="en">See our films and music videos on X ↗</span></a></div>
-</section>
-
-<section id="highlights">
- <div class="sh">
-  <span class="kick">Portfolio · YouTube</span>
-  <h2><span lang="th">MV และหนังสั้นของ Hybrid Persona</span><span lang="en">Hybrid Persona music videos and films</span></h2>
-  <p><span lang="th">MV และหนังสั้นของ Three, B. และ Hour รวมไว้ในเพลย์ลิสต์เดียว ดูได้เลยตรงนี้ หรือเปิดหน้า Portfolio เพื่อดูทุกคลิปแยกตาม persona</span><span lang="en">Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.</span></p>
- </div>
- <div class="ytwide"><div class="ytpl" data-list="PLV9Z52snDXW0" data-title="ThB.Ho Hybrid Creator Lab playlist on YouTube"></div></div>
- <div class="cta" style="margin-top:20px">
-  <a class="btn solid" href="https://www.youtube.com/playlist?list=PLV9Z52snDXW0" target="_blank" rel="noopener"><span lang="th">เปิดเพลย์ลิสต์บน YouTube ↗</span><span lang="en">Open the playlist on YouTube ↗</span></a>
-  <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a>
- </div>
- <p class="note"><span lang="th">ทุกคลิปเป็น Hybrid AI · ช่อง YouTube @ThreeBestHours</span><span lang="en">Every clip is Hybrid AI · YouTube channel @ThreeBestHours</span></p>
 </section>
 
 <section id="roadmap">
@@ -645,7 +640,7 @@ function lvInit(P){
  // ---- strength cards: tap a card to watch its clip in a popup ----
  (function(){
   var d=document.getElementById('vpop'),box=document.getElementById('vpopBox'),cap=document.getElementById('vpopCap'); if(!d)return;
-  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg').forEach(function(x){x.play&&x.play().catch(function(){})})}
+  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg, .looks video').forEach(function(x){x.play&&x.play().catch(function(){})})}
   function open(id,title){
    var m=window.THBHO_X&&THBHO_X[id]; if(!m||!m.mp4){window.open('https://x.com/widerooms/status/'+id,'_blank','noopener');return}
    window.__vpop=1;document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg').forEach(function(x){x.pause()});
@@ -655,6 +650,14 @@ function lvInit(P){
    d.showModal?d.showModal():d.setAttribute('open','');v.play&&v.play().catch(function(){});
   }
   window.__vopen=open;
+  function openSrc(src,title){
+   if(!d.showModal){window.open(src,'_blank','noopener');return}
+   window.__vpop=1;document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg, .looks video').forEach(function(x){x.pause()});
+   var v=document.createElement('video');v.controls=true;v.playsInline=true;v.autoplay=true;v.muted=false;v.loop=true;v.src=src;
+   box.innerHTML='';box.appendChild(v);cap.textContent=title;
+   d.showModal();v.play&&v.play().catch(function(){v.muted=true;v.play().catch(function(){})});
+  }
+  document.querySelectorAll('.looks .lk').forEach(function(b){b.addEventListener('click',function(){openSrc(b.dataset.src,b.dataset.title)})});
   document.querySelectorAll('.stage').forEach(function(a){
    var b=a.querySelector('.sclip'); if(!b)return;
    a.tabIndex=0;a.setAttribute('role','button');

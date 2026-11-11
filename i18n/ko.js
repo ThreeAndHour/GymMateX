@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('ko', {
+  "Open on YouTube \u2197": "YouTube에서 열기 ↗",
+  "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab 재생목록 · Three, B., Hour의 뮤직비디오와 영화 — 영상을 눌러 소리를 켜세요",
+  "A cinematic opening for your event": "이벤트를 위한 영화 같은 오프닝",
+  "Greek god theme night": "그리스 신 테마 나이트",
+  "Golden wings for a VIP night": "VIP 나이트를 위한 황금 날개",
   "Hybrid Persona music videos and films": "Hybrid Persona의 뮤직비디오와 단편영화",
   "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three, B., Hour의 뮤직비디오와 단편영화를 하나의 재생목록에 모았습니다. 여기서 바로 보거나 포트폴리오 페이지에서 페르소나별 모든 영상을 확인하세요.",
   "Introduce your trainers": "매장 트레이너 소개",

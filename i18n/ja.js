@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('ja', {
+  "Open on YouTube \u2197": "YouTubeで開く ↗",
+  "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab プレイリスト · Three、B.、Hour のMVと映像 — 動画をタップして音声オン",
+  "A cinematic opening for your event": "イベントを彩る映画のようなオープニング",
+  "Greek god theme night": "ギリシャ神話のテーマナイト",
+  "Golden wings for a VIP night": "VIPナイトのための黄金の翼",
   "Hybrid Persona music videos and films": "Hybrid Persona のMVとショートフィルム",
   "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three、B.、Hour のMVとショートフィルムをひとつのプレイリストに。ここで観るか、ポートフォリオでペルソナ別に全作品をご覧ください。",
   "Introduce your trainers": "お店のトレーナーを紹介",

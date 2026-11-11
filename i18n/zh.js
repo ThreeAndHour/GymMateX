@@ -1,4 +1,9 @@
 THBHO_I18N_ADD('zh', {
+  "Open on YouTube \u2197": "在 YouTube 打开 ↗",
+  "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab 播放列表 · Three、B. 与 Hour 的 MV 和短片 — 点击视频开启声音",
+  "A cinematic opening for your event": "为活动打造电影感开场",
+  "Greek god theme night": "希腊神祇主题之夜",
+  "Golden wings for a VIP night": "VIP 之夜的金色羽翼",
   "Hybrid Persona music videos and films": "Hybrid Persona 的 MV 与短片",
   "Music videos and short films of Three, B. and Hour in one playlist. Watch here, or open the Portfolio page for every clip by persona.": "Three、B. 和 Hour 的 MV 与短片汇集在一个播放列表中。可在此观看，或打开作品集页面按分身查看全部视频。",
   "Introduce your trainers": "介绍店里的教练",

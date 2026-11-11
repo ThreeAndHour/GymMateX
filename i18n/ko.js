@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "A two-day series with Three, B. and Hour": "Three, B., Hour와 함께한 이틀 시리즈",
   "Cinematic short films and MVs": "영화 같은 단편과 뮤직비디오",
   "An audience crossover with Three, B. and Hour": "Three, B., Hour와 팬층 교차",
   "An MBTI pair series on a yacht": "요트 위의 MBTI 페어 시리즈",

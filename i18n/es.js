@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "A two-day series with Three, B. and Hour": "Una serie de dos días con Three, B. y Hour",
   "Cinematic short films and MVs": "Cortos y videoclips cinematográficos",
   "An audience crossover with Three, B. and Hour": "Un cruce de audiencias con Three, B. y Hour",
   "An MBTI pair series on a yacht": "Una serie en pareja MBTI en un yate",

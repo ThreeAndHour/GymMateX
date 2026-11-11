@@ -126,6 +126,7 @@ main{padding:22px 0 60px}
 .card .ytp .vp-play svg{width:26px;height:26px;margin-left:4px}
 .card .ytp:hover .vp-play{background:#FF0033}
 .card .ytf{display:block;width:100%;aspect-ratio:9/16;max-height:78vh;border:0;border-radius:8px;background:#000}
+.card.ytwide .ytp img,.card.ytwide .ytf{aspect-ratio:16/9}
 
 .card .emb.ph a{display:block}
 .card .emb.ph img{display:block;width:100%;height:auto;border-radius:8px;background:var(--s2,#111)}
@@ -245,6 +246,7 @@ main{padding:22px 0 60px}
  var FILMS=[
   {id:'2119771702301479410',cat:'film',t:'Ritmo del Alma · "por Three"',p:["three","hour"],y:2026,d:'9 Nov 2026',v:'5.7K',vn:5678,ln:85,ts:1794227931,dur:'1:07'},
   {id:'yt-poKjyGc-Al8',yt:'poKjyGc-Al8',cat:'mv',t:'The Butterfly Effect',p:["three","b","hour"],y:2026,d:'16 May 2026',v:'',vn:0,ts:1778907600,dur:'5:59'},
+  {id:'yt-ihwdU7odF_Y',yt:'ihwdU7odF_Y',wide:1,cat:'mv',t:'"SANCTUARY" (The Warriors) feat. Shared Dreams',p:["three","b","hour"],y:2026,d:'11 May 2026',v:'',vn:0,ts:1778502501,dur:'5:13'},
   {id:'2030657758492860737',cat:'mv',t:'Lost In Neon Light (A Cry for PEACE)',p:["three","b","hour"],y:2026,d:'8 Mar 2026',v:'6.7K',vn:6728,ln:26,ts:1772981512,dur:'6:09'},
   {id:'2063643620889276787',cat:'film',t:'Hour · "I’m not a writer. I just talk, and the story happens."',p:["hour"],y:2026,d:'7 Jun 2026',v:'54K',vn:54242,ln:934,ts:1780845954,dur:'1:23',u:'threeandhour'},
   {id:'2119058537620164707',cat:'mv',t:'Ritmo del Alma (MV · OP) · "No mask, no rush, just who I am"',p:["three","hour"],y:2026,d:'7 Nov 2026',v:'11K',vn:11139,ln:108,ts:1794057900,dur:'3:51'},
@@ -351,7 +353,7 @@ main{padding:22px 0 60px}
    emb='<div class="emb ph"><a href="'+xurl+'" target="_blank" rel="noopener">'+im(f.img[0],0)+
     (f.img.length>1?'<div class="more">'+f.img.slice(1,4).map(function(u){return im(u,1)}).join('')+'</div>':'')+'</a></div>';
   }
-  return '<article class="card" data-x="'+f.id+'"'+(f.yt?' data-yt="'+f.yt+'"':'')+' data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
+  return '<article class="card" data-x="'+f.id+'"'+(f.yt?' data-yt="'+f.yt+'"'+(f.wide?' data-wide="1"':''):'')+' data-cat="'+f.cat+'" data-p="'+f.p.join(' ')+'" data-vn="'+f.vn+'" data-ln="'+(f.ln||0)+'" data-ts="'+f.ts+'">'+
    '<div class="meta"><span class="cat">'+T(CAT[f.cat][0],CAT[f.cat][1])+'</span>'+pp+src+views+likes+'</div>'+
    emb+
    '<a class="link" href="'+xurl+'" target="_blank" rel="noopener"><b>'+f.t+'</b>'+note+'<em>'+(f.yt?T('ดูบน YouTube ↗','View on YouTube ↗'):T('ดูบน X ↗','View on X ↗'))+'</em></a>'+
@@ -370,7 +372,8 @@ main{padding:22px 0 60px}
   if(card.dataset.cat==='photo')return;
   var box=card.querySelector('.emb');
   if(card.dataset.yt){var y=card.dataset.yt,b=document.createElement('button');b.type='button';b.className='ytp';b.setAttribute('aria-label','Play on YouTube');
-   b.innerHTML='<img src="creator-img/yt-'+y+'.jpg" alt="" loading="lazy" onerror="this.src=\'https://i.ytimg.com/vi/'+y+'/hqdefault.jpg\'"><span class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>';
+   if(card.dataset.wide)card.classList.add('ytwide');
+   b.innerHTML='<img src="creator-img/yt-'+y+'.jpg" alt="" loading="lazy" onerror="this.onerror=function(){this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+y+'/hqdefault.jpg\'};this.src=\'https://i.ytimg.com/vi/'+y+'/maxresdefault.jpg\'"><span class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>';
    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+y+'?autoplay=1&rel=0&playsinline=1';f.title=card.querySelector('.link b').textContent;f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');f.className='ytf';b.replaceWith(f)});
    box.appendChild(b);card.classList.add('loaded');return}
   if(THBHO_PLAYER(box,card.dataset.x,card.querySelector('.link b').textContent))card.classList.add('loaded');

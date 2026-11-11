@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>[Colour preview] ThB.Ho Creators</title>
+<meta name="description" content="ThB.Ho สำหรับ creator: collab กับ Hybrid AI Persona Three, B. และ Hour สำหรับ creator สายฟิตเนส platform สมาชิก influencer และนายแบบ">
+<meta property="og:title" content="ThB.Ho Creators">
+<meta property="og:description" content="Collab with Hybrid AI personas Three, B. and Hour: fitness, physique, subscription-platform, influencer and model creators.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="https://creators.thbho.com/creator-img/og-creators-three.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://creators.thbho.com/creator-img/og-creators-three.jpg">
+<meta property="og:image:alt" content="Three — Hybrid AI persona in yellow and green light">
+<link rel="icon" type="image/png" sizes="32x32" href="creator-img/thho-icon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="creator-img/thho-icon-64.png">
+<link rel="apple-touch-icon" href="creator-img/thho-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One deliberate night palette — the venue world after dark. Single theme by design. */
+:root{
+ --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
+ --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
+ --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
+select.lang option{background:#17121A;color:#F2ECEF}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.mark img{height:38px;width:auto;display:block}
+.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;align-items:center;gap:18px;font-size:14px}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.lang{font:500 12px var(--mono);background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+@media (max-width:760px){nav a{display:none}}
+
+.hero{padding:56px 0 40px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 85%,transparent));font-size:13px;color:var(--ink2)}
+.hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:color-mix(in srgb,var(--bg) 65%,transparent);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
+.hvid-snd:hover{background:color-mix(in srgb,var(--bg) 85%,transparent)}
+.hvid-snd .l0,.hvid-snd[aria-pressed="true"] .l1{display:none}.hvid-snd[aria-pressed="true"] .l0{display:inline}
+@media (max-width:600px){.hvid figcaption{position:static;background:var(--s1);padding:9px 12px;border-top:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){.hvid video{display:none}.hvid{background:url(creator-vid/thbho-faces-003.jpg) center/cover;aspect-ratio:16/9}}
+.hero h1{font-size:clamp(38px,6.4vw,66px);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+.hero .role{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:10px 0 22px}
+.thesis{font:600 clamp(22px,3vw,30px)/1.35 var(--display);max-width:26ch;margin:0 0 16px}
+.thesis em{font-style:normal;color:var(--cyan)}
+.lead{color:var(--ink2);max-width:62ch;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:11px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink)}
+.btn.solid{background:var(--cyan);color:var(--onaccent);border-color:var(--cyan)}
+.btn:hover{border-color:var(--cyan)}
+.banner{margin-top:36px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+.banner img{display:block;width:100%;height:auto}
+.banner figcaption{font:500 12px var(--mono);color:var(--ink3);padding:9px 14px;border-top:1px solid var(--line);background:var(--s1)}
+
+section{padding:64px 0 0}
+.applywrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:40px;align-items:start}
+.apply-text{position:sticky;top:90px}
+.apply-text .sh{margin-bottom:18px}
+.apply-steps{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.apply-steps li{display:flex;gap:12px;align-items:center;color:var(--ink2);font-size:15px}
+.apply-steps b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--cyan);color:var(--cyan);font:600 13px var(--mono)}
+.gform{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);padding:10px;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--cyan) 18%,transparent)}
+.gform iframe{display:block;width:100%;height:780px;border:0;border-radius:10px;background:#fff}
+@media (max-width:860px){.applywrap{grid-template-columns:1fr;gap:24px}.apply-text{position:static}.gform iframe{height:720px}}
+@media (max-width:600px){.gform iframe{height:1300px}}
+.fold .sh{position:relative}
+.fold-btn{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;font:600 13px var(--mono);letter-spacing:.06em;color:var(--ink2);background:var(--s1);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;cursor:pointer}
+.fold-btn b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--cyan);color:#06201E;font:700 16px/1 var(--mono)}
+.fold-btn:hover{color:var(--ink);border-color:var(--cyan)}
+.fold-btn .c,.fold-btn[aria-expanded="true"] .o{display:none}.fold-btn[aria-expanded="true"] .c{display:inline}
+.fold-body{margin-top:4px}
+
+.usp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.usp article{position:relative;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px 18px 18px;display:grid;gap:8px;align-content:start;overflow:hidden}
+.usp article::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--c)}
+.usp i{font-style:normal;font-size:20px;line-height:1;color:var(--c)}
+.usp h3{font:600 18px/1.3 var(--display);margin:0}
+.usp p{margin:0;color:var(--ink2);font-size:14.5px;line-height:1.55}
+.usp small{font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--c);margin-top:4px}
+.usp article>*{position:relative;z-index:1}
+.usp article>.ubg{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:opacity .5s,transform 6s ease-out;pointer-events:none}
+.usp article>.ushade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 35%,transparent),color-mix(in srgb,var(--bg) 85%,transparent) 72%);pointer-events:none}
+.usp article:hover>.ubg{opacity:.75;transform:scale(1.04)}
+.usp article::before{z-index:2}
+.usp article{transition:border-color .3s,box-shadow .3s}
+.usp article:hover{border-color:var(--c);box-shadow:0 10px 40px -12px var(--c)}
+.usp article{cursor:pointer}
+.usp article:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.usp .uclip{all:unset;position:relative;z-index:1;cursor:pointer;font:500 11.5px var(--mono);color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.usp .uclip:hover,.usp article:hover .uclip{color:var(--c)}
+dialog.vpop{border:0;padding:0;background:transparent;width:min(96vw,1100px);max-width:96vw;max-height:94vh;overflow:visible}
+dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
+.vpop-box{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 0 80px -10px color-mix(in srgb,var(--glow) 25%,transparent);display:flex;justify-content:center}
+.vpop-box video{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;background:#000}
+.vpop-x{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;margin:0 0 12px auto;font:600 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.vpop-x b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;font-size:14px}
+.vpop-x:hover,.vpop-x:focus-visible{color:#fff}
+.vpop-cap{margin:10px 2px 0;font:500 13px var(--mono);color:var(--ink3);text-align:center}
+.vpop-cap a{color:var(--cyan);text-decoration:none}
+@media (prefers-reduced-motion:reduce){.usp article>.ubg{transition:none}.usp article:hover>.ubg{transform:none}}
+.usp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:22px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,color-mix(in srgb,var(--pink) 10%,transparent),color-mix(in srgb,var(--cyan) 6%,transparent))}
+.usp-cta>span{color:var(--ink2);font-size:14.5px}
+@media (max-width:900px){.usp{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.usp{grid-template-columns:1fr}}
+
+.sh{display:grid;gap:8px;margin-bottom:26px;max-width:66ch}
+.sh h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;line-height:1.2}
+.sh p{color:var(--ink2);margin:0}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+
+.for{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.for{grid-template-columns:1fr}}
+.door{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.door .who{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.door.pk .who{color:var(--pink)}
+.door h3{font-size:23px;line-height:1.3}
+.door p{color:var(--ink2);margin:0}
+.door a{margin-top:auto;font-weight:600;text-decoration:none}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc{grid-template-columns:1fr}}
+.svc article{background:var(--s1);padding:22px;display:flex;flex-direction:column;gap:8px}
+.svc small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.svc h3{font-size:19px;line-height:1.35}
+.svc p{color:var(--ink2);font-size:15px;margin:0}
+.svc article.lead-card{background:var(--s2)}
+.svc article.lead-card small{color:var(--cyan)}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st;list-style:none;padding:0;margin:0}
+@media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.flow li{border-top:2px solid var(--cyan);padding-top:14px;counter-increment:st}
+.flow li::before{content:"0" counter(st);font:500 12px var(--mono);color:var(--cyan);display:block;margin-bottom:6px}
+.flow b{display:block;font:600 17px var(--display);margin-bottom:4px}
+.flow span{color:var(--ink2);font-size:15px}
+.mock{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:760px){.mock{grid-template-columns:1fr 1fr}}
+.tag{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--s1)}
+.tag i{display:block;width:28px;height:6px;border-radius:3px;margin-bottom:10px}
+.tag b{font:600 16px var(--display);display:block}
+.tag span{font-size:13.5px;color:var(--ink2)}
+.note{font-size:13.5px;color:var(--ink3);margin-top:12px}
+
+.collab{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+@media (max-width:860px){.collab{grid-template-columns:1fr}}
+.personas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.personas figure{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.personas img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:cover}
+.personas figcaption{font:500 11.5px var(--mono);color:var(--ink3);padding:7px 9px}
+.tracks{list-style:none;padding:0;margin:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tracks li{background:var(--s1);padding:15px 18px}
+.tracks b{font:600 16.5px var(--display);display:block}
+.tracks span{color:var(--ink2);font-size:14.5px}
+.tracks li.new{background:var(--s2)}
+.tracks li.new b::after{content:"NEW";font:500 10px var(--mono);letter-spacing:.1em;color:var(--pink);border:1px solid var(--pink);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px}
+
+.show{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:180px;gap:10px;margin-top:34px}
+.show figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
+.show img{display:block;width:100%;height:100%;object-fit:cover}
+.show figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 90%,transparent));font-size:13px;color:var(--ink)}
+.show figcaption b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:1px}
+.show .who{position:absolute;top:10px;left:10px;font:600 12px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#0E0B10;background:var(--c);padding:3px 9px;border-radius:3px}
+.show .w2{grid-column:span 2}.show .w3{grid-column:span 3}.show .h2{grid-row:span 2}
+.show .top img{object-position:50% 15%}
+@media (max-width:700px){.show{grid-template-columns:1fr;grid-auto-rows:auto}.show .w2,.show .w3{grid-column:auto}.show .h2{grid-row:auto}.show img{height:auto;aspect-ratio:16/10}.show .top img{aspect-ratio:4/5}}
+.ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
+.yttext h2{margin:8px 0 12px}
+.yttext p{color:var(--ink2)}
+.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px color-mix(in srgb,var(--glow) 25%,transparent),0 0 60px -10px color-mix(in srgb,var(--cyan) 12%,transparent)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
+.phone-in iframe{display:block;width:100%;height:100%;border:0}
+.ytpl{width:100%;height:100%}.ytpl-fb{display:grid;place-items:center;align-content:center;gap:10px;width:100%;height:100%;color:#fff;text-decoration:none;font:600 15px var(--mono)}.ytpl-fb b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#FF0033;font-size:24px}
+@media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.reel{grid-template-columns:1fr 1fr}}
+.reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1);color:var(--ink);text-decoration:none}
+.reel a:hover,.reel a:focus-visible{border-color:var(--pink)}
+.reel img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s}
+.reel a:hover img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.reel img{transition:none}.reel a:hover img{transform:none}}
+.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:color-mix(in srgb,var(--bg) 70%,transparent);display:grid;place-items:center;color:#fff}
+.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:color-mix(in srgb,var(--bg) 70%,transparent);padding:2px 6px;border-radius:3px}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 92%,transparent))}
+.reel .cap b{display:block;font:600 15.5px var(--display);line-height:1.25}
+.reel .cap span{font:500 12px var(--mono);color:var(--cyan);font-variant-numeric:tabular-nums}
+.reel a:first-child .cap span{color:var(--pink)}
+.reel a.playing{aspect-ratio:auto}.reel a.playing .cap{position:static;background:none;padding:10px 12px 12px}.reel a.playing .vp{border-radius:0}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+@media (max-width:700px){.levels{grid-template-columns:1fr}}
+.lv{background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:16px}
+.lv .n{font:700 28px var(--display);color:var(--cyan);line-height:1}
+.lv:nth-child(2) .n{color:var(--gold)}
+.lv:nth-child(3) .n{color:var(--pink)}
+.lv b{display:block;font:600 16px var(--display);margin:6px 0 2px}
+.lv span{font-size:14px;color:var(--ink2)}
+
+.o2o{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.o2o{grid-template-columns:1fr}}
+.stage{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
+.stage .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.stage:nth-child(2) .k{color:var(--gold)}
+.stage:nth-child(3) .k{color:var(--pink)}
+.stage h3{font-size:20px;line-height:1.3}
+.stage p{color:var(--ink2);font-size:15px;margin:0}
+.stage .fit{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink)}
+.stage .fit b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:2px}
+.phases{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.phases li{background:var(--s1);display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px}
+@media (max-width:600px){.phases li{grid-template-columns:1fr;gap:4px}}
+.phases li.now{background:var(--s2)}
+.phases time{font:500 12px var(--mono);color:var(--cyan);padding-top:3px}
+.phases li.now time::after{content:" ● NOW";color:var(--pink)}
+.phases b{font:600 17px var(--display);display:block}
+.phases span{color:var(--ink2);font-size:14.5px}
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--pink);border-radius:8px;padding:22px 24px}
+.rules h3{font-size:20px;margin-bottom:10px}
+.rules ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
+.rules li b{color:var(--ink)}
+
+.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:760px){.proof{grid-template-columns:1fr 1fr}}
+.proof div{background:var(--s1);padding:18px}
+.proof b{font:700 30px var(--display);display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+.proof span{font-size:13.5px;color:var(--ink2)}
+
+.contact{margin-top:72px;background:var(--s1);border-top:1px solid var(--line)}
+.contact .wrap{padding-block:52px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(26px,3.6vw,36px);line-height:1.2;margin-bottom:10px}
+.contact p{color:var(--ink2);margin:0;max-width:52ch}
+.links{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.qr{display:flex;align-items:center;gap:14px}
+.qr img{width:120px;height:120px;background:#fff;padding:6px;border-radius:8px}
+.qr b{display:block;font:700 15px var(--display)}
+.qr span span{font-size:13px;color:var(--ink2)}
+.brands{border-top:1px solid var(--line)}
+.brands .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.brands .lbl{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-right:6px}
+.brand{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
+.brand:hover{border-color:var(--cyan)}
+.brand img{height:44px;width:auto;border-radius:4px}
+.brand small{display:block;font-size:12.5px;color:var(--ink2)}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center}
+.foot .fl{display:flex;align-items:center;gap:10px}.foot .fl img{height:26px;width:auto;opacity:.85}
+.personas figcaption{position:relative;z-index:1;background:var(--s1)}
+
+/* split pages */
+
+/* level switcher */
+#levels{scroll-margin-top:70px}
+.lvtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:640px){.lvtabs{grid-template-columns:1fr}}
+.lvtab{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:4px;background:var(--s1);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:16px 18px}
+.lvtab:hover{border-color:var(--c)}
+.lvtab:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.lvtab[aria-selected="true"]{background:var(--s2);border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
+.lvtab .n{font:700 13px var(--mono);color:var(--c);letter-spacing:.08em}
+.lvtab b{font:600 19px var(--display)}
+.lvtab>span:not(.n){font-size:13.5px;color:var(--ink2)}
+.lvtab b span{font:inherit;color:inherit}
+.lvpanel{margin-top:16px;background:var(--s1);border:1px solid var(--c);border-radius:12px;padding:24px;display:grid;gap:20px}
+.lvhead{display:grid;gap:6px;max-width:68ch}
+.lvhead .k{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+.lvhead h3{font-size:clamp(22px,3vw,28px);line-height:1.3}
+.lvhead p{color:var(--ink2);margin:0}
+.lvcols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.lvcols{grid-template-columns:1fr}}
+.lvbox{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px}
+.lvbox h4{margin:0 0 8px;font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.lvbox ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14.5px;color:var(--ink2)}
+.lvbox li b{color:var(--ink)}
+.lvlooks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:700px){.lvlooks{grid-template-columns:1fr 1fr}}
+.lvlooks a,.lvlooks figure{position:relative;display:block;margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.lvlooks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.lvlooks img[src*="bw3-"]{aspect-ratio:1/1}
+.lvlooks .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 92%,transparent));font-size:13px}
+.lvlooks .cap b{display:block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.lock{display:grid;gap:12px;justify-items:start;background:repeating-linear-gradient(135deg,var(--s2) 0 14px,var(--s1) 14px 28px);border:1px dashed var(--c);border-radius:10px;padding:22px}
+.lock b{font:600 18px var(--display)}
+.lock p{margin:0;color:var(--ink2);max-width:60ch}
+.lock label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink);cursor:pointer}
+.lock input{margin-top:4px;accent-color:var(--pink);width:18px;height:18px}
+.lvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.lvcta .btn.solid{background:var(--c);border-color:var(--c);color:#0E0B10}
+
+@media (max-width:760px){nav a.switch{display:inline-block}}
+.switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
+.switch:hover{color:var(--ink);border-color:var(--cyan)}
+.demo-frame{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
+.demo-frame .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--s1);font:500 12px var(--mono);color:var(--ink3)}
+.demo-frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.demo-frame .bar span{margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.demo-frame iframe{display:block;width:100%;height:760px;border:0;background:var(--bg)}
+.demo-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+.live{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.live{grid-template-columns:1fr}}
+.live a{display:flex;flex-direction:column;gap:6px;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:20px;color:var(--ink);text-decoration:none}
+.live a:hover,.live a:focus-visible{border-color:var(--cyan)}
+.live small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.live b{font:600 19px var(--display);line-height:1.3}
+.live span{color:var(--ink2);font-size:14.5px}
+.live em{font-style:normal;margin-top:auto;padding-top:8px;font:500 13px var(--mono);color:var(--cyan)}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+@media (max-width:700px){.looks{grid-template-columns:1fr}}
+.looks figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.looks img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.looks figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 90%,transparent));font-size:13px}
+.looks figcaption b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+.popen{all:unset;display:block;cursor:pointer;width:100%}
+.popen:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.personas figure{transition:border-color .2s}
+.personas figure:hover{border-color:var(--cyan)}
+.personas .see{display:block;font:500 11px var(--mono);color:var(--cyan)}
+.persona-name{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.why{font-size:13.5px;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+.why b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:2px}
+.mbody{display:flex;flex-direction:column;gap:10px;min-width:0}
+dialog#pdlg{border:1px solid var(--line);border-radius:14px;padding:0;background:var(--s1);color:var(--ink);width:min(860px,calc(100vw - 24px));max-height:calc(100vh - 32px);overflow:auto}
+dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
+.pd{position:relative;display:grid;gap:16px;padding:0 0 20px}
+.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--ink);cursor:pointer;font-size:15px}
+.pdhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border-bottom:1px solid var(--line)}
+.pdhead img{display:block;width:100%;height:100%;min-height:230px;object-fit:cover;object-position:50% 25%}
+.pdhead .mbody{padding:22px}
+@media (max-width:640px){.pdhead{grid-template-columns:1fr}.pdhead img{height:auto;aspect-ratio:16/10;min-height:0}}
+.pdsub{font-size:18px;padding:0 22px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pdsub a{font:500 13px var(--mono);text-decoration:none}
+.pdworks{display:flex;flex-wrap:wrap;gap:10px;padding:0 22px}
+@media (max-width:640px){.pdworks{grid-template-columns:1fr 1fr}}
+.pdworks a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--bg)}
+.pdworks a:hover,.pdworks a:focus-visible{border-color:var(--c)}
+.pdworks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 92%,transparent))}
+.pdworks .cap b{display:block;font:600 14px var(--display);line-height:1.25}
+.pdworks .cap span{font:500 11.5px var(--mono);color:var(--c)}
+.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:color-mix(in srgb,var(--bg) 80%,transparent);color:var(--ink2);padding:2px 7px;border-radius:3px}
+.pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
+.pdfoot{padding:0 22px}
+</style>
+<script src="thbho-i18n.js"></script>
+
+<script src="x-media.js?v=2"></script>
+<script src="thbho-player.js?v=2"></script>
+<meta name="robots" content="noindex,nofollow">
+<style>
+/* ---- colour preview only: 3 palettes, switched by the bar at the bottom ---- */
+:root{--glow:#FF8C3C;--onaccent:#06201E}
+html[data-t="a"]{--bg:#0A0D16;--s1:#111626;--s2:#1A2136;--line:#283250;--ink:#EEF0F6;--ink2:#AEB4C6;--ink3:#77809A;
+ --cyan:#E0B96B;--pink:#C8466F;--gold:#7FD6D0;--glow:#E0B96B;--onaccent:#1A1305}
+html[data-t="b"]{--bg:#100A0D;--s1:#1B1116;--s2:#281820;--line:#3D2530;--ink:#F4ECEA;--ink2:#C2ADB0;--ink3:#8C7479;
+ --cyan:#E8C77A;--pink:#B23A5E;--gold:#E3B7A0;--glow:#B23A5E;--onaccent:#1F1406}
+html[data-t="c"]{--bg:#0D0C14;--s1:#141624;--s2:#1D2033;--line:#2C3048;
+ --cyan:#5FD9D2;--pink:#C8466F;--gold:#E0B96B;--glow:#E0B96B;--onaccent:#06201E}
+body{padding-bottom:84px}
+#tbar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:9999;display:flex;gap:6px;align-items:center;
+ padding:8px;border-radius:999px;background:rgba(8,8,12,.92);border:1px solid rgba(255,255,255,.18);
+ box-shadow:0 10px 40px rgba(0,0,0,.6);max-width:calc(100vw - 16px);font:600 13px/1 "IBM Plex Sans Thai",system-ui,sans-serif}
+#tbar button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:999px;color:#cfcfd6;white-space:nowrap}
+#tbar button[aria-pressed="true"]{background:#fff;color:#111}
+#tbar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#tbar i{display:inline-flex;gap:2px}
+#tbar i b{width:9px;height:9px;border-radius:50%;display:block;border:1px solid rgba(255,255,255,.35)}
+@media (max-width:560px){#tbar button span{display:none}#tbar button{padding:9px 11px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="#top" aria-label="th.ho — creating dreams"><img src="creator-img/thho-logo.png" alt="th.ho — creating dreams" width="900" height="286"></a>
+  <nav>
+   <a href="#strengths"><span lang="th">จุดแข็ง</span><span lang="en">Why us</span></a>
+   <a href="#creators">Collab</a>
+   <a href="#match"><span lang="th">จับคู่</span><span lang="en">Match</span></a>
+   <a href="ThBHoPortfolio.html">Portfolio</a>
+   <a href="https://x.com/widerooms" target="_blank" rel="noopener">X ↗</a>
+   <a href="#roadmap">VR</a>
+   <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
+   <a href="#apply"><span lang="th">สมัคร</span><span lang="en">Apply</span></a>
+   <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
+   <!-- venues link hidden for now: <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับร้าน →</span><span lang="en">For venues →</span></a> -->
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
+  </nav>
+ </div>
+</header>
+
+<main class="wrap" id="top">
+<div class="hero">
+ <p class="eyebrow">ThB.Ho for Creators · Fitness · Physique · Subscription creators · Influencers · Models</p>
+ <h1>ThB.Ho <span style="color:var(--pink)">Creators</span></h1>
+ <p class="role"><span lang="th">Collab กับ Hybrid AI Persona: Three · B. · Hour</span><span lang="en">Collab with Hybrid AI personas Three · B. · Hour</span></p>
+ <p class="thesis"><span lang="th">ทำงานมากขึ้น — <em>โดยถ่ายจริงน้อยลง</em></span><span lang="en">Make more — <em>with fewer shoot days</em></span></p>
+ <p class="lead"><span lang="th">สำหรับ creator สายฟิตเนส platform สมาชิก influencer และนายแบบ · Hybrid AI ลดวันถ่ายจริงราวครึ่งหนึ่ง ถ่ายคู่กับ persona เพื่อไปหาฐานแฟนใหม่ คุณเลือกระดับเนื้อหาเอง และเป็นเจ้าของงาน</span><span lang="en">For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.</span></p>
+ <div class="cta">
+  <a class="btn solid" href="#match"><span lang="th">เช็กว่าคุณเข้ากับ persona ไหน</span><span lang="en">Find your persona match</span></a>
+  <a class="btn" href="#portfolio"><span lang="th">ดูผลงาน</span><span lang="en">See the work</span></a>
+ </div>
+ <figure class="hvid">
+  <video id="hvid" src="creator-vid/thbho-faces-003.mp4" poster="creator-vid/thbho-faces-003.jpg" autoplay muted loop playsinline preload="auto" width="1280" height="720" aria-label="One face shifting through Three, B. and Hour"></video>
+  <button type="button" class="hvid-snd" id="hvidSnd" aria-pressed="false"><span class="on" aria-hidden="true">🔇</span><span class="l1"><span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></span><span class="l0"><span lang="th">ปิดเสียง</span><span lang="en">Sound off</span></span></button>
+  <figcaption><span lang="th">หนึ่งต้นแบบ สาม persona: Three · B. · Hour — สีหน้าและแววตาที่ต่างกันตาม MBTI ของแต่ละคน</span><span lang="en">One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI</span></figcaption>
+ </figure>
+</div>
+
+
+<section id="strengths">
+ <div class="sh">
+  <span class="kick"><span lang="th">จุดแข็งของ ThB.Ho</span><span lang="en">What ThB.Ho brings</span></span>
+  <h2><span lang="th">Content Hybrid AI ที่ไม่มีใครเหมือน</span><span lang="en">Hybrid AI content no one else makes</span></h2>
+  <p><span lang="th">หกอย่างที่ทำให้งานของ Three, B. และ Hour ต่างจาก creator ทั่วไป และเป็นสิ่งที่คุณได้เมื่อ collab กับเรา</span><span lang="en">Six things that set Three, B. and Hour apart, and that you get when you collab with us.</span></p>
+ </div>
+ <div class="usp">
+  <article style="--c:#3FC48A"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
+  <article style="--c:var(--cyan)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><button type="button" class="uclip" data-x="2072701160025428150">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide</button></article>
+  <article style="--c:var(--pink)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
+  <article style="--c:var(--gold)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><button type="button" class="uclip" data-x="2072352936219615678">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds</button></article>
+  <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><button type="button" class="uclip" data-x="2040825962750001292">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING</button></article>
+  <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><button type="button" class="uclip" data-x="2057333372205289701">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona</button></article>
+ </div>
+ <div class="usp-cta">
+  <a class="btn solid" href="ThBHoPortfolio.html"><span lang="th">ดูผลงานทั้งหมดใน Portfolio →</span><span lang="en">See the full Portfolio →</span></a>
+  <span><span lang="th">MV หนังสั้น และเบื้องหลังกว่า 80 คลิป · กรองตาม Three, B. และ Hour ได้</span><span lang="en">80+ music videos, short films and behind-the-scenes clips, filterable by Three, B. and Hour</span></span>
+ </div>
+
+</section>
+
+<section id="levels">
+ <div class="sh">
+  <span class="kick"><span lang="th">เลือกระดับของคุณ</span><span lang="en">Choose your level</span></span>
+  <h2><span lang="th">3 ระดับ เลือกเท่าที่คุณสบายใจ</span><span lang="en">Three levels. Go only as far as you're comfortable.</span></h2>
+  <p><span lang="th">คุณเลือกระดับเองทุกชิ้น เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">You choose the level of every piece, can change it any time, and are never pushed up a level.</span></p>
+ </div>
+ <div class="lvtabs" role="tablist" aria-label="Levels"><button class="lvtab" type="button" role="tab" id="lvt1" data-lv="1" aria-selected="false" style="--c:var(--cyan)"><span class="n">LEVEL 1</span><b><span lang="th">ปกติ</span><span lang="en">Everyday</span></b><span><span lang="th">ฟิตเนส lifestyle influencer</span><span lang="en">Fitness, lifestyle, influencers</span></span></button><button class="lvtab" type="button" role="tab" id="lvt2" data-lv="2" aria-selected="false" style="--c:var(--gold)"><span class="n">LEVEL 2</span><b><span lang="th">Bold</span><span lang="en">Bold</span></b><span><span lang="th">โชว์หุ่น ชุดว่ายน้ำ ลุค after-dark</span><span lang="en">Physique, swimwear, after-dark looks</span></span></button><button class="lvtab" type="button" role="tab" id="lvt3" data-lv="3" aria-selected="false" style="--c:var(--pink)"><span class="n">LEVEL 3</span><b><span lang="th">Private · 20+</span><span lang="en">Private · 20+</span></b><span><span lang="th">เฉพาะ platform สมาชิกที่ตรวจอายุ</span><span lang="en">Age-verified subscription platforms only</span></span></button></div>
+ <div class="lvpanel" id="lvpanel" role="tabpanel" aria-live="polite"></div>
+</section>
+
+<section id="creators">
+ <div class="sh">
+  <span class="kick"><span lang="th">สำหรับ Creator</span><span lang="en">For creators</span></span>
+  <h2><span lang="th">Collab กับ Three, B. และ Hour</span><span lang="en">Collab with Three, B. and Hour</span></h2>
+  <p><span lang="th">ไม่ได้มาแทนที่ความคิดสร้างสรรค์ของคุณ — ช่วยข้ามข้อจำกัดเรื่องคน เวลา และอุปกรณ์</span><span lang="en">Not a replacement for your creativity — a way past limits on crew, time and gear.</span></p>
+ </div>
+ <div class="collab">
+  <div>
+   <div class="personas">
+    <figure><button class="popen" type="button" data-p="three" aria-label="See Three's work"><img style="transform:scale(1.1);transform-origin:50% 45%" src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" loading="lazy" width="560" height="840"><figcaption>Three · INFP<small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+    <figure><button class="popen" type="button" data-p="b" aria-label="See B.'s work"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" loading="lazy" width="560" height="840"><figcaption>B. · INFJ<small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+    <figure><button class="popen" type="button" data-p="hour" aria-label="See Hour's work"><img style="transform:scale(1.11);transform-origin:50% 45%" src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" loading="lazy" width="560" height="840"><figcaption>Hour · ESTP<small class="see"><span lang="th">ดูผลงาน →</span><span lang="en">See work →</span></small></figcaption></button></figure>
+   </div>
+   <p class="note"><span lang="th">กดที่รูปเพื่อดูผลงานบน X · ทุกภาพเป็น Hybrid AI ใบหน้าและร่างกายจริงผสม AI</span><span lang="en">Tap a portrait to see their work on X · all images are Hybrid AI: a real face and body blended with AI.</span></p>
+  </div>
+  <ul class="tracks">
+   <li><b>Persona Collab</b><span><span lang="th">ถ่ายคู่หรือเล่าเรื่องร่วมกับ Three, B. หรือ Hour · ผู้ชมสองฝั่งข้ามมาเจอกัน</span><span lang="en">Shoot or story with Three, B. or Hour — both audiences cross over.</span></span></li>
+   <li><b>Remaster</b><span><span lang="th">ยกระดับ footage เก่าด้วย AI — แสง ฉาก สี และ format ใหม่ (เฉพาะงานที่คุณเป็นเจ้าของและทุกคนในภาพยินยอม)</span><span lang="en">Upgrade old footage with AI — light, set, colour and new formats (only work you own, with consent from everyone in it).</span></span></li>
+   <li><b>Hybrid Shoot</b><span><span lang="th">ถ่ายจริงเป็นฐาน แล้วให้ AI เติมฉากและชุด · ลดวันถ่ายลงราวครึ่งหนึ่ง</span><span lang="en">Real shoot as the base, AI adds sets and wardrobe — about half the shoot days.</span></span></li>
+   <li><b>Hybrid AI Movies</b><span><span lang="th">หนังสั้นและ MV แบบ cinematic สำหรับผู้ชมทั่วโลก</span><span lang="en">Cinematic short films and music videos for a global audience.</span></span></li>
+   <li class="new"><b>Digital Twin</b><span><span lang="th">สร้าง AI Persona จากตัวคุณเอง (ด้วยความยินยอม) ให้แฟนคุยและดูได้ 24 ชั่วโมง แล้วแบ่งรายได้กัน — เตรียมขึ้นแอป VR ในเฟส 3</span><span lang="en">An AI persona built from you (with your consent) that fans can talk to and watch 24/7, on a revenue share — ready for the VR app in phase 3.</span></span></li>
+   <li><b>48 Hours</b><span><span lang="th">คู่ที่ระบบจับด้วย MBTI รับโจทย์หนึ่งเรื่อง ถ่ายเป็น series สองวันในกรอบที่ตกลงไว้</span><span lang="en">An MBTI-matched pair takes one brief and shoots a two-day series inside agreed limits.</span></span></li>
+   <li><b>Creator &amp; Art Lab</b><span><span lang="th">workshop รุ่นละ 6–10 คน — portrait &amp; body, งานสำหรับ platform สมัครสมาชิก, event &amp; documentary, fashion &amp; concept art</span><span lang="en">Cohorts of 6–10 — portrait &amp; body, subscription-platform work, event &amp; documentary, fashion &amp; concept art.</span></span></li>
+  </ul>
+ </div>
+
+ <div class="show" aria-label="Sample work">
+  <figure class="w2 h2"><img src="creator-img/show-book.jpg" alt="Coffee-table portfolio book, Homme — Modern Masculinity" loading="lazy" width="1400" height="800"><figcaption><b>Creator &amp; Art Lab</b><span lang="th">ต่อยอดเป็น portfolio และหนังสือภาพ</span><span lang="en">Extended into portfolios and photo books</span></figcaption></figure>
+  <figure class="h2"><img style="object-position:42% 50%" src="creator-img/show-three.jpg" alt="Three — Hybrid AI persona in yellow and green light" loading="lazy" width="1360" height="768"><span class="who" style="--c:#C9C36A">Three</span><figcaption><b>Digital Twin</b><span lang="th">ใบหน้า แสง และบุคลิกที่คงที่ — ฐานของ persona ที่คุยกับแฟนได้</span><span lang="en">A consistent face, light and personality — the base for a persona fans can talk to</span></figcaption></figure>
+  <figure class="h2 top"><img src="creator-img/show-b-neon.jpg" alt="B. — Hybrid AI persona in blue and pink neon light" loading="lazy" width="1200" height="1200" style="object-position:50% 30%"><span class="who" style="--c:#E0A040">B.</span><figcaption><b>Persona Collab</b><span lang="th">ลุคนีออนพรีเมียม สำหรับ promote แบรนด์และงาน theme</span><span lang="en">A premium neon look for brand and theme-night promos</span></figcaption></figure>
+  <figure class="w2 h2"><img src="creator-img/show-agent-b.jpg" alt="B. as a Secret Agent — the same Hybrid AI face across eight shots" loading="lazy" width="1400" height="788"><figcaption><b>Hybrid Persona</b><span lang="th">B. ในบท Secret Agent — หน้าเดิม คงที่ทุกช็อต ทุกมุม ทุกแสง</span><span lang="en">B. as a Secret Agent: the same face, consistent in every shot, angle and light</span></figcaption></figure>
+  <figure class="w2 h2"><img src="creator-img/show-storyboard.jpg" alt="Nine-frame cinematic storyboard" loading="lazy" width="900" height="900"><figcaption><b>Hybrid AI Movies</b><span lang="th">storyboard 9 ช็อตก่อนถ่ายหนังสั้น</span><span lang="en">A 9-shot storyboard before the short film</span></figcaption></figure>
+  <figure class="h2 top"><img style="object-position:42% 30%" src="creator-img/show-hour-2.jpg" alt="Hour — Hybrid AI persona in warm orange and blue light" loading="lazy" width="1600" height="900"><span class="who" style="--c:#A9C4DA">Hour</span><figcaption><b>Hybrid Shoot</b><span lang="th">ถ่ายจริงเป็นฐาน AI เติมแสงนีออนและฉาก</span><span lang="en">Real shoot, AI neon light and set</span></figcaption></figure>
+ </div>
+ <p class="note"><span lang="th">ทุกภาพเป็น Hybrid AI ของ ThB.Ho</span><span lang="en">All images are Hybrid AI by ThB.Ho.</span></p>
+
+ <div class="levels">
+  <div class="lv"><span class="n">1</span><b><span lang="th">ศิลปะ</span><span lang="en">Art</span></b><span><span lang="th">เผยแพร่ได้ทุก platform</span><span lang="en">Fine on every platform</span></span></div>
+  <div class="lv"><span class="n">2</span><b><span lang="th">เปิดเผยบางส่วน</span><span lang="en">Partial</span></b><span><span lang="th">เฉพาะ platform ที่รองรับ</span><span lang="en">Only on platforms that allow it</span></span></div>
+  <div class="lv"><span class="n">3</span><b><span lang="th">ส่วนตัว</span><span lang="en">Private</span></b><span><span lang="th">เฉพาะ platform ที่ตรวจอายุ · ไม่ขึ้นช่องทางสาธารณะของร้านใดๆ</span><span lang="en">Age-verified platforms only — never on any venue's public channels</span></span></div>
+ </div>
+ <p class="note"><span lang="th">Creator เลือกระดับของงานตัวเองทุกครั้ง เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">Creators choose the level of their own work every time, can change it any time, and are never pushed up a level.</span></p>
+</section>
+
+<section id="match">
+ <div class="sh">
+  <span class="kick">Creator Match</span>
+  <h2><span lang="th">คุณควร collab กับใคร: Three, B. หรือ Hour?</span><span lang="en">Who should you collab with: Three, B. or Hour?</span></h2>
+  <p><span lang="th">ตอบ 6 ข้อ ได้ persona ที่เข้ากับคุณที่สุด รูปแบบ collab 3 แบบ และข้อความสมัครที่คัดลอกส่งได้ทันที หน้านี้ไม่เก็บข้อมูลของคุณ</span><span lang="en">Answer 6 questions to get your best persona match, 3 collab formats and a request message you can copy and send. Nothing about you is stored.</span></p>
+ </div>
+ <div class="demo-frame">
+  <div class="bar"><i></i><i></i><i></i><span>creators.thbho.com/ThBHoCreatorMatch.html</span></div>
+  <iframe data-demo src="ThBHoCreatorMatch.html?embed=1&amp;v=20261107" title="Creator match" loading="lazy"></iframe>
+ </div>
+ <div class="demo-cta">
+  <a class="btn" href="ThBHoCreatorMatch.html" target="_blank" rel="noopener"><span lang="th">เปิดแบบเต็มจอ ↗</span><span lang="en">Open full screen ↗</span></a>
+  <span class="note" style="margin:0"><span lang="th">ระดับเนื้อหาที่เลือกไม่มีผลต่อการจับคู่</span><span lang="en">The content level you pick does not change your match</span></span>
+ </div>
+</section>
+
+<section id="portfolio">
+ <div class="ytwrap">
+  <div class="yttext">
+   <span class="kick">Portfolio · YouTube</span>
+   <h2><span lang="th">Hybrid Persona ในแบบแนวตั้ง</span><span lang="en">Hybrid Persona, made for vertical</span></h2>
+   <p><span lang="th">คลิปแนวตั้งของ Three, B. และ Hour รวมไว้ในเพลย์ลิสต์เดียว เลื่อนดูได้เลย หรือเปิดหน้า Portfolio เพื่อดูทุกคลิปแยกตาม persona</span><span lang="en">Vertical cuts of Three, B. and Hour in one playlist. Swipe through here, or open the Portfolio page for every clip by persona.</span></p>
+   <div class="cta">
+    <a class="btn solid" href="https://www.youtube.com/playlist?list=PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" target="_blank" rel="noopener"><span lang="th">เปิดเพลย์ลิสต์บน YouTube ↗</span><span lang="en">Open the playlist on YouTube ↗</span></a>
+    <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดู MV และหนังสั้นทั้งหมด →</span><span lang="en">See every MV and film →</span></a>
+   </div>
+   <p class="note"><span lang="th">ทุกคลิปเป็น Hybrid AI · ช่อง YouTube @ThreeBestHours</span><span lang="en">Every clip is Hybrid AI · YouTube channel @ThreeBestHours</span></p>
+  </div>
+  <div class="phone"><div class="phone-in">
+   <div class="ytpl" data-list="PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl" data-title="ThB.Ho Hybrid Persona playlist on YouTube"></div>
+  </div></div>
+ </div>
+</section>
+
+<section id="roadmap" class="fold">
+ <div class="sh">
+  <span class="kick">GymMateX O2O · Offline → Online</span>
+  <h2><span lang="th">ถ่ายวันนี้ ให้พร้อมใช้ใน VR และ platform ที่กำลังจะมา</span><span lang="en">Shoot today in formats ready for VR and the platforms coming next</span></h2>
+  <p><span lang="th">VR และ Digital Twin ยังอยู่ในขั้นเตรียมการ ทุกงาน collab วันนี้จึงถ่ายในรูปแบบที่ใช้ต่อได้ ทั้งวิดีโอแนวตั้ง POV, หลายมุมกล้อง, เสียงพูดสะอาด และบันทึกความยินยอมรายชิ้น เมื่อแอปพร้อม งานของคุณจะไม่ต้องถ่ายใหม่ทั้งหมด</span><span lang="en">VR and Digital Twins are still being prepared, so every collab today is shot in formats that carry over: vertical POV video, multi-angle footage, clean voice and consent on record per piece. When the app is ready, your work won't need reshooting.</span></p>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-roadmap"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
+ </div>
+ <div class="fold-body" id="fold-roadmap" hidden>
+ <div class="o2o">
+  <div class="stage"><span class="k">01 · Offline casting</span><h3><span lang="th">อีเวนต์คัดเลือกที่ร้าน</span><span lang="en">Casting events at the venue</span></h3><p><span lang="th">คืน Casting, Pairing Night และ Creator Lab · ค้นหานายแบบและ creator ผ่านกิจกรรมฟิตเนสและการออดิชัน · ลูกค้า VIP ซื้อบัตรเข้าชมงานจริง</span><span lang="en">Casting nights, Pairing Nights and the Creator Lab — finding models and creators through fitness activities and auditions. VIP guests buy tickets to the live event.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">รายได้บัตร ลูกค้าใหม่ และ content หลังงาน</span><span lang="en">Ticket revenue, new guests and post-event content</span></p></div>
+  <div class="stage"><span class="k">02 · Wellness trips</span><h3><span lang="th">ทริปส่วนตัวและการเก็บข้อมูล</span><span lang="en">Private trips &amp; capture</span></h3><p><span lang="th">ทริป 3 วัน 2 คืนสำหรับผู้ชนะและสมาชิก · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · ถ่ายทำและบันทึกท่าทาง เสียง และบุคลิก (ด้วยความยินยอม)</span><span lang="en">3-day trips for winners and members, using partner venues' rooms and massage teams — filming movement, voice and personality, with consent.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">ส่วนแบ่งแพ็กเกจและชื่อในฐานะผู้ร่วมจัด</span><span lang="en">A package share and co-host billing</span></p></div>
+  <div class="stage"><span class="k">03 · Online VR</span><h3><span lang="th">AI Persona และ VR</span><span lang="en">AI personas &amp; VR</span></h3><p><span lang="th">เปลี่ยนข้อมูลเป็น Digital Twin ที่แฟนคุยและพบได้ในโลก VR · ฉาก 3 มิติแนว Fitness &amp; Fantasy · โมเดลสมาชิกรายเดือนจากผู้ใช้ทั่วโลก</span><span lang="en">Data becomes Digital Twins fans can talk to and meet in VR, in Fitness &amp; Fantasy 3D scenes, on a global subscription model.</span></p><p class="fit"><b><span lang="th">Creator ได้</span><span lang="en">Creators get</span></b><span lang="th">ตัวตนดิจิทัลที่ทำรายได้ต่อเนื่อง แบ่งรายได้กัน</span><span lang="en">A digital self that keeps earning, on a revenue share</span></p></div>
+ </div>
+ <ol class="phases">
+  <li class="now"><time>Phase 1 · 2026</time><div><b><span lang="th">ต้นแบบและวางระบบ</span><span lang="en">Prototype &amp; groundwork</span></b><span><span lang="th">"ThB.Ho" (Three · B. · Hour) เป็น AI ต้นแบบตัวแรก · วางกรอบกฎหมายและความเป็นส่วนตัว · เปิด Creator Lab และหน้า Matching ให้ร้านพันธมิตร</span><span lang="en">"ThB.Ho" (Three · B. · Hour) is the first AI prototype. Legal and privacy frameworks, the Creator Lab and matching pages for partner venues.</span></span></div></li>
+  <li><time>Phase 2 · 2027</time><div><b><span lang="th">อีเวนต์จริงและเบต้าปิด</span><span lang="en">Live events &amp; closed beta</span></b><span><span lang="th">จัด Casting Event ที่ร้านพันธมิตร · ทริป Wellness แรก · เปิดแอปให้แฟนกลุ่มแรกทดลองและให้ feedback</span><span lang="en">Casting events at partner venues, the first wellness trip, and an early-fan beta of the app.</span></span></div></li>
+  <li><time>Phase 3 · 2028–29</time><div><b><span lang="th">เปิดตัวเต็มรูปแบบ</span><span lang="en">Full launch</span></b><span><span lang="th">เปิดรับสมาชิกทั่วโลก · ชวนนายแบบและ creator สร้างตัวตนดิจิทัลในแอป · พร้อมรองรับ VR ความละเอียดสูงเมื่ออุปกรณ์ราคาเข้าถึงได้</span><span lang="en">Global subscriptions open, models and creators build their digital selves in the app, ready for high-resolution VR as headsets become affordable.</span></span></div></li>
+ </ol>
+ <p class="note"><span lang="th">แผนเป็นแบบ Agile — ปรับโมเดลและฟีเจอร์ตามเทคโนโลยีที่เปลี่ยนเร็ว</span><span lang="en">An agile plan — models and features adapt as the technology moves.</span></p>
+ <p class="note" style="color:var(--gold)"><span lang="th">แผนฉบับเต็มเป็นเอกสารวงใน เปิดให้เฉพาะ creator ที่สนใจร่วมงานกับ ThB.Ho</span><span lang="en">The full plan is an insider document, shared only with creators interested in working with ThB.Ho.</span></p>
+ <div class="cta"><a class="btn solid" href="https://creators.thbho.com/O2OEventsVR.html" target="_blank" rel="noopener"><span lang="th">🔒 เปิดแผน GymMateX O2O · VR ฉบับวงใน →</span><span lang="en">🔒 Open the insider GymMateX O2O · VR plan →</span></a><a class="btn" href="https://creators.thbho.com/FitFantasy.html" target="_blank" rel="noopener"><span lang="th">เข้าเว็บ GymMateX FIT &amp; Fantasy →</span><span lang="en">Visit GymMateX FIT &amp; Fantasy →</span></a></div>
+ </div>
+</section>
+
+<section id="rules">
+ <div class="rules">
+  <h3><span lang="th">กติกาที่ไม่ยืดหยุ่น</span><span lang="en">Ground rules — not negotiable</span></h3>
+  <ul>
+   <li><b><span lang="th">อายุ 20 ปีขึ้นไป</span><span lang="en">20+ only</span></b> <span lang="th">— ทุกคนแสดงเอกสารยืนยันตัวตนก่อนถ่ายทุกครั้ง</span><span lang="en">— everyone shows ID before every shoot.</span></li>
+   <li><b><span lang="th">ยินยอมเป็นลายลักษณ์อักษร</span><span lang="en">Written consent</span></b> <span lang="th">จากทุกคนในภาพ และระบุระดับความเปิดเผยก่อนเผยแพร่</span><span lang="en">from everyone in frame, with the exposure level agreed before release.</span></li>
+   <li><b><span lang="th">สมัครใจ 100%</span><span lang="en">100% voluntary</span></b> <span lang="th">— ปฏิเสธคู่ได้ทุกครั้ง ถอนตัวได้ตลอดโดยไม่ต้องอธิบาย</span><span lang="en">— any match can be declined, anyone can leave at any time without explaining.</span></li>
+   <li><b><span lang="th">Matching คือการจับคู่เพื่อใช้เวลาร่วมกัน</span><span lang="en">Matching is about time together</span></b> <span lang="th">— ในกรอบเวลาของงาน ไม่มีอย่างอื่นแฝง</span><span lang="en">— within the event window, nothing more implied.</span></li>
+   <li><b><span lang="th">ไม่ใช้ภาพใครโดยไม่ได้รับอนุญาต</span><span lang="en">No one's image without permission</span></b> <span lang="th">— persona ทุกตัวสร้างจากคนที่ยินยอมเท่านั้น</span><span lang="en">— every persona is built only from people who agreed to it.</span></li>
+   <li><b><span lang="th">ต้นฉบับเก็บนอก platform</span><span lang="en">Originals kept off-platform</span></b> <span lang="th">— ไม่ฝากงานไว้กับ platform ใด platform เดียว</span><span lang="en">— no work depends on a single platform.</span></li>
+  </ul>
+ </div>
+</section>
+
+<section aria-label="Background">
+ <div class="sh">
+  <span class="kick"><span lang="th">ทำไมต้อง ThB.Ho</span><span lang="en">Why ThB.Ho</span></span>
+  <h2><span lang="th">Persona ที่มีคนจริงและทีมที่เคยทำงานสถานที่จริงอยู่ข้างหลัง</span><span lang="en">Personas with real people — and real venue experience — behind them</span></h2>
+ </div>
+ <div class="proof">
+  <div><b>245K</b><span><span lang="th">วิว MV "Ritmo del Alma" บน X — คลิปที่มีคนดูมากที่สุด</span><span lang="en">views on the "Ritmo del Alma" MV on X — the most-watched clip</span></span></div>
+  <div><b>3+</b><span><span lang="th">ปี ทำ Hybrid AI Persona และหนังสั้น AI</span><span lang="en">years making Hybrid AI personas and AI films</span></span></div>
+ </div>
+</section>
+<dialog class="vpop" id="vpop" aria-label="Clip">
+ <button type="button" class="vpop-x" id="vpopX"><span lang="th">ปิด</span><span lang="en">Close</span> <b aria-hidden="true">✕</b></button>
+ <div class="vpop-box" id="vpopBox"></div>
+ <p class="vpop-cap" id="vpopCap"></p>
+</dialog>
+ <dialog id="pdlg" aria-labelledby="pdTitle">
+  <div class="pd">
+   <button class="pdx" id="pdClose" type="button" aria-label="Close">✕</button>
+   <div class="pdhead" id="pdHead"></div>
+   <h3 class="pdsub"><span lang="th">ผลงานบน X</span><span lang="en">Work on X</span> <a href="https://x.com/widerooms" target="_blank" rel="noopener">@widerooms ↗</a></h3>
+   <div class="pdworks" id="pdWorks"></div>
+   <div class="pdfoot">
+    <button class="btn solid" id="pdMatch" type="button"><span lang="th">อยาก collab กับคนนี้ → เริ่มจับคู่</span><span lang="en">Collab with him → start matching</span></button>
+   </div>
+  </div>
+ </dialog>
+<section id="apply">
+ <div class="applywrap">
+  <div class="apply-text">
+ <div class="sh">
+  <span class="kick"><span lang="th">สมัคร collab</span><span lang="en">Apply to collab</span></span>
+  <h2><span lang="th">สนใจ collab กับ Three, B. หรือ Hour? กรอกฟอร์มได้เลย</span><span lang="en">Want to collab with Three, B. or Hour? Fill in the form</span></h2>
+  <p><span lang="th">ใช้เวลาราว 3 นาที ทีมจะติดต่อกลับภายใน 3 วันทำการ ข้อมูลใช้เพื่อพิจารณางาน collab เท่านั้น</span><span lang="en">It takes about 3 minutes. We reply within 3 working days, and your answers are only used to plan a collab.</span></p>
+ </div>
+ <ol class="apply-steps">
+  <li><b>1</b><span><span lang="th">บอกเราเกี่ยวกับคุณและช่องทางของคุณ</span><span lang="en">Tell us about you and your channels</span></span></li>
+  <li><b>2</b><span><span lang="th">เลือกระดับเนื้อหาและสไตล์หน้ากล้อง</span><span lang="en">Pick your content level and on-camera vibe</span></span></li>
+  <li><b>3</b><span><span lang="th">เลือก persona และรูปแบบ collab ที่สนใจ</span><span lang="en">Choose a persona and the collab formats you like</span></span></li>
+ </ol>
+ <div class="demo-cta">
+  <a class="btn solid" href="https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
+  <span class="note" style="margin:0"><span lang="th">ถ้าฟอร์มไม่ขึ้น ให้กดเปิดในแท็บใหม่ หรือเข้าสู่ระบบ Google ก่อน</span><span lang="en">If the form doesn't load, open it in a new tab or sign in to Google first.</span></span>
+ </div>
+  </div>
+ <div class="gform">
+  <iframe src="https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform?embedded=true" title="ThB.Ho Creators collab application form" loading="lazy">Loading…</iframe>
+ </div>
+ </div>
+</section>
+</main>
+
+
+
+<div class="contact" id="contact">
+ <div class="wrap">
+  <div>
+   <h2><span lang="th">คุยกันก่อน ไม่มีข้อผูกมัด</span><span lang="en">Talk first — no commitment</span></h2>
+   <p><span lang="th">ส่งลิงก์ผลงานมา แล้วคุยกันว่าจะ collab กับ Three, B. หรือ Hour แบบไหน</span><span lang="en">Send a link to your work and we'll talk about the right collab with Three, B. or Hour.</span></p>
+  </div>
+  <div class="links">
+   <a class="btn solid" href="mailto:threeandhour@gmail.com">Email · threeandhour@gmail.com</a>
+   <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · @widerooms</a>
+  </div>
+ </div>
+ <div class="foot"><div class="wrap"><span class="fl"><img src="creator-img/thho-logo.png" alt="" loading="lazy" width="900" height="286">© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้มีเฉพาะเนื้อหาสาธารณะ</span><span lang="en">All persona images are Hybrid AI · public-safe content only on this page</span></span></div></div>
+</div>
+
+<script>
+(function(){
+ var root=document.documentElement, btn=document.getElementById('lang');
+ function set(l){root.lang=l;btn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}
+  document.querySelectorAll('iframe[data-demo]').forEach(function(f){try{f.contentWindow.postMessage({thbho:'lang',l:l},'*')}catch(e){}});}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ set(THBHO_I18N.pick(q,saved));
+ btn.addEventListener('change',function(){set(btn.value)});
+ // demo iframe grows to fit its content
+ window.addEventListener('message',function(e){
+  if(!e.data||e.data.thbho!=='h')return;
+  document.querySelectorAll('iframe[data-demo]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=Math.max(360,e.data.h)+'px';});
+ });
+
+ var $=function(id){return document.getElementById(id)};
+ function T(th,en){return '<span lang="th">'+th+'</span><span lang="en">'+en+'</span>'}
+
+ var P={
+  three:{n:'Three',mbti:'INFP',c:'var(--nf)',img:'creator-img/persona-three.jpg',show:'creator-img/show-three.jpg',
+   role:{th:'นักเล่าเรื่อง · ไทย-อิตาเลียน',en:'Storyteller · Thai-Italian'},
+   vibe:{th:'อบอุ่น โรแมนติก แบบภาพยนตร์ เน้นอารมณ์และเรื่องราวมากกว่าความหวือหวา',en:'Warm, romantic and cinematic. Mood and story over flash.'},
+   best:{th:'หนังสั้นและ MV, งานศิลปะและ portrait, collab แบบคู่ที่มีเรื่องเล่า',en:'Short films and music videos, art and portrait work, story-led duo collabs'},
+   quote:{th:'"มาเล่าเรื่องของเราสองคนให้คนดูรู้สึกตามไปด้วยกัน"',en:'"Let\'s tell a story about the two of us that people actually feel."'}},
+  b:{n:'B.',mbti:'INFJ',c:'var(--nt)',img:'creator-img/persona-b.jpg',show:'creator-img/show-b-neon.jpg',
+   role:{th:'นักวางกลยุทธ์ · ไทย-สเปน-เกาหลี',en:'Strategist · Thai-Spanish-Korean'},
+   vibe:{th:'ลุค lifestyle หรู สุขุม มีแผน เหมาะกับแบรนด์และการต่อยอดรายได้ระยะยาว',en:'Premium lifestyle, composed and planned. Good for brands and long-term income.'},
+   best:{th:'Digital Twin, Remaster, collab แบรนด์และ lifestyle, วางแผน content ทั้งเดือน',en:'Digital Twins, remasters, brand and lifestyle collabs, month-long content plans'},
+   quote:{th:'"วางระบบให้ดีครั้งเดียว แล้วให้งานทำรายได้แทนคุณ"',en:'"Set it up properly once, then let the work earn for you."'}},
+  hour:{n:'Hour',mbti:'ESTP',c:'var(--sp)',img:'creator-img/persona-hour.jpg',show:'creator-img/show-hour-2.jpg',
+   role:{th:'สายลุย · ไทย-เกาหลี',en:'Entrepreneur · Thai-Korean'},
+   vibe:{th:'พลังเยอะ กล้า สนุก ชอบฟิตเนส ไฟนีออน งาน event และการถ่ายแบบเร็วๆ',en:'High energy, bold and playful. Fitness, neon, events and fast shoots.'},
+   best:{th:'Hybrid Shoot สายกล้าม, 48 Hours, งาน event และทริป, collab ข้ามฐานแฟน',en:'Physique Hybrid Shoots, 48 Hours, events and trips, audience-crossover collabs'},
+   quote:{th:'"ถ่ายจริงครึ่งวัน ที่เหลือให้ AI ช่วย แล้วไปเที่ยวต่อ"',en:'"Half a day of real shooting, AI does the rest, then we go out."'}}
+ };
+
+ // Work on X per persona. Add each persona's own posts to WORKS[persona]:
+ // {u:'https://x.com/widerooms/status/…', img:'creator-img/….jpg', t:'Title', v:'123K'}
+ // SHARED = ThB.Ho clips featuring more than one persona; fills in while a persona has fewer than 3 of its own.
+ var WORKS={
+  three:[
+   {u:'https://x.com/widerooms/status/2062523276543623214',img:'creator-img/show-three.jpg',t:'Three · Video'}
+  ],
+  b:[
+   {u:'https://x.com/widerooms/status/2050586617103179798',img:'creator-img/show-b-neon.jpg',t:'B. · Video'}
+  ],
+  hour:[
+   {u:'https://x.com/widerooms/status/2012110863138971788',img:'creator-img/show-hour-2.jpg',t:'Hour · Video'}
+  ]
+ };
+ var SHARED=[
+  {u:'https://x.com/widerooms/status/2094021510986154482',img:'creator-img/x-154482.jpg',t:'Ritmo del Alma · MV',v:'245K'},
+  {u:'https://x.com/widerooms/status/2109560564754362752',img:'creator-img/x-362752.jpg',t:'Perdiéndonos en el calor',v:'147K'},
+  {u:'https://x.com/widerooms/status/2061309949037400429',img:'creator-img/x-400429.jpg',t:'Explore Together · Full MV',v:'130K'},
+  {u:'https://x.com/widerooms/status/2061643553772830937',img:'creator-img/x-830937.jpg',t:'Explore Together · BTS',v:'83K'},
+  {u:'https://x.com/widerooms/status/2112541590720000085',img:'creator-img/x-000085.jpg',t:'Tell Me It\'s (Not) a Dream',v:'68K'},
+  {u:'https://x.com/widerooms/status/2089337196402852328',img:'creator-img/x-852328.jpg',t:'La sal en la piel',v:'61K'}
+ ];
+ function workCard(w,own){
+  return '<a href="'+w.u+'" target="_blank" rel="noopener"><img src="'+w.img+'" alt="'+w.t.replace(/"/g,'')+'" loading="lazy">'+
+   (own?'':'<span class="tagw">ThB.Ho</span>')+
+   '<span class="cap"><b>'+w.t+'</b><span>'+(w.v?w.v+' '+T('วิว','views')+' · ':'')+T('ดูบน X ↗','View on X ↗')+'</span></span></a>';
+ }
+ var dlg=$('pdlg'), lastFocus=null;
+ function openPersona(k){
+  var p=P[k];
+  dlg.style.setProperty('--c',p.c);
+  $('pdHead').innerHTML='<img src="'+p.show+'" alt="'+p.n+' — Hybrid AI persona">'+
+   '<div class="mbody"><span class="persona-name" style="color:var(--c)">'+p.n+' · '+p.mbti+' · '+T(p.role.th,p.role.en)+'</span>'+
+   '<h3 id="pdTitle" style="font-size:21px;line-height:1.35">'+T(p.quote.th,p.quote.en)+'</h3><p style="color:var(--ink2);margin:0">'+T(p.vibe.th,p.vibe.en)+'</p>'+
+   '<div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div>';
+  $('pdWorks').innerHTML='<a class="btn solid" href="ThBHoPortfolio.html?p='+k+'">'+T('ดูผลงานทั้งหมดของ '+p.n+' →','All of '+p.n+'\'s work →')+'</a><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X @widerooms ↗</a>';
+  lastFocus=document.activeElement;
+  if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
+  dlg.scrollTop=0;
+ }
+ function closePersona(){if(dlg.close)dlg.close();else dlg.removeAttribute('open');if(lastFocus)lastFocus.focus();}
+ document.addEventListener('click',function(e){var b=e.target.closest('[data-p]');if(b&&!b.closest('#pdlg'))openPersona(b.dataset.p);});
+ $('pdClose').addEventListener('click',closePersona);
+ dlg.addEventListener('click',function(e){if(e.target===dlg)closePersona();});
+ $('pdMatch').addEventListener('click',function(){closePersona();$('match').scrollIntoView({block:'start'});});
+
+ // ---- level switcher ----
+ var LV=[{"c": "var(--cyan)", "name_th": "ปกติ", "name_en": "Everyday", "tag_th": "ฟิตเนส lifestyle influencer", "tag_en": "Fitness, lifestyle, influencers", "title": ["Content ที่ลงได้ทุก platform", "Content that works on every platform"], "lead": ["สำหรับ creator สายฟิตเนส ไลฟ์สไตล์ ท่องเที่ยว และ influencer ที่อยากได้งานสวยระดับหนัง ถ่ายจริงน้อยลง และข้ามไปหาฐานแฟนของ Three, B. และ Hour", "For fitness, lifestyle and travel creators and influencers who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Creator ฟิตเนสและสายกล้าม", "Fitness and physique creators"], ["Influencer ไลฟ์สไตล์และท่องเที่ยว", "Lifestyle and travel influencers"], ["ช่างภาพ ผู้กำกับ ศิลปิน", "Photographers, filmmakers, artists"]]}, {"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Persona Collab</b> ถ่ายคู่ ข้ามฐานแฟน", "<b>Persona Collab</b> for audience crossover"], ["<b>Hybrid AI Movies</b> หนังสั้นและ MV", "<b>Hybrid AI Movies</b>: short films and MVs"], ["<b>Creator &amp; Art Lab</b> รุ่นละ 6–10 คน", "<b>Creator &amp; Art Lab</b>, cohorts of 6–10"]]}, {"h": ["ช่องทางและรายได้", "Channels and income"], "items": [["IG · TikTok · YouTube · X", "IG · TikTok · YouTube · X"], ["แบ่งรายได้จากแบรนด์และ sponsor", "Shared brand and sponsor income"], ["คุณเป็นเจ้าของงานของคุณ", "You own your work"]]}], "looks": [{"img": "creator-img/bw3-three.jpg", "alt": "Three, black and white portrait", "k": "Three · Monochrome", "t": ["Mixed Thai-Italian", "Mixed Thai-Italian"]}, {"img": "creator-img/bw3-b.jpg", "alt": "B., black and white portrait", "k": "B. · Monochrome", "t": ["Mixed Thai-Spanish-Korean", "Mixed Thai-Spanish-Korean"]}, {"img": "creator-img/bw3-hour.jpg", "alt": "Hour, black and white portrait", "k": "Hour · Monochrome", "t": ["Mixed Thai-Korean", "Mixed Thai-Korean"]}], "cta": {"href": "#match", "t": ["เช็กว่าเข้ากับ persona ไหน →", "Find your persona match →"]}, "note": ["ระดับ 1 เผยแพร่ได้ทุก platform", "Level 1 is fine on every platform"]}, {"c": "var(--gold)", "name_th": "Bold", "name_en": "Bold", "tag_th": "โชว์หุ่น ชุดว่ายน้ำ ลุค after-dark", "tag_en": "Physique, swimwear, after-dark looks", "title": ["ร้อนแรงแบบมีชั้นเชิง ลงได้ในที่ที่ platform อนุญาต", "Bold with style, where platforms allow it"], "lead": ["สำหรับ creator ที่โชว์ความมั่นใจในรูปร่าง ชุดว่ายน้ำ และลุค after-dark ให้ AI สร้างฉากเรือ ชายหาด และวิลล่า แทนการเช่าโลเคชัน", "For creators who sell confidence in their physique: swimwear and after-dark looks, with AI building the yacht, beach and villa sets instead of renting locations."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Creator สายกล้ามและนายแบบ", "Physique creators and models"], ["Creator คู่รักและ duo", "Couples and duo creators"], ["Creator ที่มีหน้า X หรือ Fansly ระดับ SFW", "Creators with SFW X or Fansly pages"]]}, {"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Hybrid Shoot</b> ถ่ายครึ่งวัน AI เติมฉาก", "<b>Hybrid Shoot</b>: half a day of shooting, AI adds the sets"], ["<b>48 Hours</b> คู่ MBTI ถ่าย series 2 วัน", "<b>48 Hours</b>: an MBTI pair, a two-day series"], ["<b>Remaster</b> ยกระดับงานเก่า", "<b>Remaster</b> your older footage"]]}, {"h": ["ช่องทางและรายได้", "Channels and income"], "items": [["X · Fansly · Patreon · ช่อง VIP", "X · Fansly · Patreon · VIP channels"], ["Collab แบ่งรายได้ 50/50", "Collab revenue split 50/50"], ["คุณกำหนดขอบเขตเองทุกชิ้น", "You set the limits on every piece"]]}], "looks": [{"u": "https://x.com/widerooms/status/2094021510986154482", "img": "creator-img/x-154482.jpg", "alt": "Ritmo del Alma still", "k": "Ritmo del Alma · 245K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2109560564754362752", "img": "creator-img/x-362752.jpg", "alt": "Perdiéndonos en el calor still", "k": "Perdiéndonos · 147K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2089337196402852328", "img": "creator-img/x-852328.jpg", "alt": "La sal en la piel still", "k": "La sal en la piel · 61K", "t": ["ดูบน X ↗", "View on X ↗"]}], "cta": {"href": "#match", "t": ["เช็กว่าเข้ากับ persona ไหน →", "Find your persona match →"]}, "note": ["ระดับ 2 เฉพาะ platform ที่รองรับ", "Level 2 only where platforms allow it"]}, {"c": "var(--pink)", "name_th": "Private · 20+", "name_en": "Private · 20+", "tag_th": "เฉพาะ platform สมาชิกที่ตรวจอายุ", "tag_en": "Age-verified subscription platforms only", "gate": true, "gateText": ["ระดับนี้สำหรับ creator บน platform สมาชิกที่ตรวจอายุ รายละเอียดแสดงเมื่อยืนยันอายุ 20+ เท่านั้น และไม่มีภาพในหน้านี้", "This level is for creators on age-verified subscription platforms. Details show only after you confirm you are 20+, and there are no images on this page."], "title": ["งานส่วนตัว ที่คุณคุมได้ทุกขั้น", "Private work you control at every step"], "lead": ["สำหรับ creator บน platform สมาชิกที่ตรวจอายุ ทำงานร่วมกับ persona ลดวันถ่ายจริง และเตรียม Digital Twin สำหรับระดับ private ในแอป VR ในอนาคต", "For creators on age-verified subscription platforms: work alongside the personas, cut real shoot days, and prepare a Digital Twin for the future private tier of the VR app."], "cols": [{"h": ["รูปแบบงาน", "Formats"], "items": [["<b>Private Persona Collab</b> เฉพาะ platform ตรวจอายุ", "<b>Private Persona Collab</b>, age-verified platforms only"], ["<b>Remaster</b> งานเก่าที่คุณเป็นเจ้าของ", "<b>Remaster</b> footage you own"], ["<b>Digital Twin</b> เตรียมสำหรับแอป VR", "<b>Digital Twin</b>, prepared for the VR app"]]}, {"h": ["โมเดลแบ่งรายได้", "Revenue models"], "items": [["Licensing: creator ได้ 20–30%", "Licensing: creator gets 20–30%"], ["Co-managed: 50–60 / 40–50", "Co-managed: 50–60 / 40–50"], ["Full agency: creator ได้ 30–40% · Collab 50/50", "Full agency: creator gets 30–40% · Collab 50/50"]]}, {"h": ["กติกาเพิ่มเติม", "Extra rules"], "items": [["ตรวจบัตรและเซ็นยินยอมก่อนถ่ายทุกครั้ง", "ID check and signed consent before every shoot"], ["ไม่ขึ้นช่องทางสาธารณะใดๆ ทั้งสิ้น", "Never on any public channel"], ["ถอนงานและถอนตัวได้ตลอด", "Withdraw work or leave at any time"]]}], "privateText": ["เพื่อความเป็นส่วนตัวของทุกคน ผลงานระดับ 3 ไม่แสดงบนเว็บ ส่งให้ดูเป็นรายบุคคลหลังคุยกันและยืนยันตัวตนแล้ว", "For everyone's privacy, level 3 work is never shown on the web. We share it one to one after a conversation and an ID check."], "cta": {"href": "#contact", "t": ["ขอดูผลงานระดับ 3 แบบส่วนตัว →", "Request level 3 work privately →"]}, "note": ["ระดับ 3 เฉพาะ platform ที่ตรวจอายุ", "Level 3 only on age-verified platforms"]}], lvAdult=false;
+ try{lvAdult=sessionStorage.getItem('thbho-20plus')==='1'}catch(e){}
+ function TT(o){return '<span lang="th">'+o[0]+'</span><span lang="en">'+o[1]+'</span>'}
+ function lvList(a){return '<ul>'+a.map(function(x){return '<li>'+TT(x)+'</li>'}).join('')+'</ul>'}
+ function showLevel(n,scroll){
+  var L=LV[n-1],P=document.getElementById('lvpanel');
+  document.querySelectorAll('.lvtab').forEach(function(t){t.setAttribute('aria-selected',t.dataset.lv==n)});
+  P.style.setProperty('--c',L.c);
+  var head='<div class="lvhead"><span class="k">LEVEL '+n+' · '+TT([L.name_th,L.name_en])+'</span><h3>'+TT(L.title)+'</h3><p>'+TT(L.lead)+'</p></div>';
+  if(L.gate&&!lvAdult){
+   P.innerHTML=head+'<div class="lock"><b>'+TT(['🔒 ระดับนี้สำหรับ creator 20+','🔒 This level is for creators 20+'])+'</b><p>'+TT(L.gateText)+'</p>'+
+    '<label for="ageok"><input type="checkbox" id="ageok"> '+TT(['ฉันอายุ 20 ปีขึ้นไป และเข้าใจว่างานระดับนี้เผยแพร่เฉพาะ platform ที่ตรวจอายุ','I am 20 or older and understand this level is only published on age-verified platforms'])+'</label>'+
+    '<button class="btn solid" type="button" id="ageGo" disabled>'+TT(['ดูรายละเอียดระดับ 3','Show level 3 details'])+'</button></div>';
+   var cb=document.getElementById('ageok'),go=document.getElementById('ageGo');
+   cb.addEventListener('change',function(){go.disabled=!cb.checked});
+   go.addEventListener('click',function(){lvAdult=true;try{sessionStorage.setItem('thbho-20plus','1')}catch(e){}showLevel(n);});
+  } else {
+   var cols='<div class="lvcols">'+L.cols.map(function(c){return '<div class="lvbox"><h4>'+TT(c.h)+'</h4>'+lvList(c.items)+'</div>'}).join('')+'</div>';
+   var looks=L.looks?'<div class="lvlooks">'+L.looks.map(function(w){var inner='<img src="'+w.img+'" alt="'+w.alt+'" loading="lazy"><span class="cap"><b>'+w.k+'</b>'+TT(w.t)+'</span>';return w.u?'<a href="'+w.u+'" target="_blank" rel="noopener">'+inner+'</a>':'<figure>'+inner+'</figure>'}).join('')+'</div>'
+     :'<div class="lock"><b>'+TT(['ผลงานระดับนี้ส่งให้เป็นรายบุคคล','Work at this level is shared one to one'])+'</b><p>'+TT(L.privateText)+'</p></div>';
+   P.innerHTML=head+cols+looks+'<div class="lvcta"><a class="btn solid" href="'+L.cta.href+'">'+TT(L.cta.t)+'</a><span class="note" style="margin:0">'+TT(L.note)+'</span></div>';
+  }
+  try{var u=new URL(location.href);u.searchParams.set('level',n);history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}
+  if(scroll)document.getElementById('levels').scrollIntoView({block:'start'});
+ }
+ document.querySelectorAll('.lvtab').forEach(function(t){t.addEventListener('click',function(){showLevel(+t.dataset.lv)})});
+ var lq=+(new URLSearchParams(location.search).get('level')||1); if(!(lq>=1&&lq<=3))lq=1;
+ showLevel(lq,new URLSearchParams(location.search).has('level'));
+
+
+ // ---- reel: play the clip in place instead of leaving for X ----
+ document.querySelectorAll('.reel a').forEach(function(a){
+  var id=(a.href.match(/status\/(\d+)/)||[])[1]; if(!id||!window.THBHO_X||!THBHO_X[id])return;
+  a.addEventListener('click',function(e){
+   if(a.dataset.done)return; e.preventDefault(); a.dataset.done='1';
+   var cap=a.querySelector('.cap'); a.classList.add('playing'); a.querySelectorAll('img,.play,.dur').forEach(function(x){x.remove()});
+   var box=document.createElement('div'); box.className='reel-media'; a.insertBefore(box,cap);
+   if(THBHO_PLAYER(box,id,cap.querySelector('b').textContent)){var b=box.querySelector('button'); if(b)b.click();}else location.href=a.href;
+  });
+ });
+
+ // ---- hero video: sound toggle, pause when off screen ----
+ (function(){
+  var v=document.getElementById('hvid'),b=document.getElementById('hvidSnd'); if(!v||!b)return;
+  b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.querySelector('.on').textContent=v.muted?'🔇':'🔊';if(!v.muted)v.play&&v.play().catch(function(){})});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play&&v.play().catch(function(){})}else v.pause()})}).observe(v);
+ })();
+
+ // ---- strength cards: background clips play only while on screen ----
+ (function(){
+  var vs=document.querySelectorAll('.usp .ubg'); if(!vs.length)return;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  vs.forEach(function(v){v.preload='metadata'});
+  if(still||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting&&!window.__vpop){v.play&&v.play().catch(function(){})}else v.pause()})},{threshold:.25});
+  vs.forEach(function(v){io.observe(v)});
+ })();
+
+ // ---- strength cards: tap a card to watch its clip in a popup ----
+ (function(){
+  var d=document.getElementById('vpop'),box=document.getElementById('vpopBox'),cap=document.getElementById('vpopCap'); if(!d)return;
+  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg').forEach(function(x){x.play&&x.play().catch(function(){})})}
+  function open(id,title){
+   var m=window.THBHO_X&&THBHO_X[id]; if(!m||!m.mp4){window.open('https://x.com/widerooms/status/'+id,'_blank','noopener');return}
+   window.__vpop=1;document.querySelectorAll('.usp .ubg').forEach(function(x){x.pause()});
+   var v=document.createElement('video');v.setAttribute('referrerpolicy','no-referrer');v.controls=true;v.playsInline=true;v.autoplay=true;v.poster=m.poster||'';v.src=m.mp4;
+   box.innerHTML='';box.appendChild(v);
+   cap.innerHTML=title+' · <a href="https://x.com/widerooms/status/'+id+'" target="_blank" rel="noopener">X ↗</a>';
+   d.showModal?d.showModal():d.setAttribute('open','');v.play&&v.play().catch(function(){});
+  }
+  document.querySelectorAll('.usp article').forEach(function(a){
+   var b=a.querySelector('.uclip'); if(!b)return;
+   a.tabIndex=0;a.setAttribute('role','button');
+   var t=b.textContent.split('·').slice(1).join('·').trim();
+   function go(e){e.preventDefault();open(b.dataset.x,t)}
+   a.addEventListener('click',go);
+   a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')go(e)});
+  });
+  document.getElementById('vpopX').addEventListener('click',close);
+  d.addEventListener('close',close);
+  d.addEventListener('click',function(e){if(e.target===d)close()});
+ })();
+
+ // ---- collapsible sections (+/-) ----
+ (function(){
+  function set(sec,open){var b=sec.querySelector('.fold-btn'),d=sec.querySelector('.fold-body');if(!b||!d)return;d.hidden=!open;b.setAttribute('aria-expanded',open);b.querySelector('b').textContent=open?'−':'+';}
+  document.querySelectorAll('section.fold').forEach(function(sec){sec.querySelector('.fold-btn').addEventListener('click',function(){set(sec,this.getAttribute('aria-expanded')!=='true')})});
+  function fromHash(){var h=location.hash.slice(1);if(!h)return;var el=document.getElementById(h);var sec=el&&el.closest('section.fold');if(sec){set(sec,true);setTimeout(function(){el.scrollIntoView()},30)}}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute('href').slice(1));var sec=el&&el.closest('section.fold');if(sec)set(sec,true)});
+  window.addEventListener('hashchange',fromHash);fromHash();
+ })();
+
+})();
+</script>
+<script src="thbho-ytlist.js" defer></script>
+
+<div id="tbar" role="group" aria-label="Colour preview">
+ <button type="button" data-t=""><i><b style="background:#0E0B10"></b><b style="background:#66FCF1"></b><b style="background:#FF4F8B"></b></i>0<span> · ปัจจุบัน</span></button>
+ <button type="button" data-t="a"><i><b style="background:#111626"></b><b style="background:#E0B96B"></b><b style="background:#C8466F"></b></i>A<span> · น้ำลึก + ทอง</span></button>
+ <button type="button" data-t="b"><i><b style="background:#281820"></b><b style="background:#E8C77A"></b><b style="background:#B23A5E"></b></i>B<span> · เบอร์กันดี + ทอง</span></button>
+ <button type="button" data-t="c"><i><b style="background:#141624"></b><b style="background:#5FD9D2"></b><b style="background:#C8466F"></b></i>C<span> · ปรับเบาๆ</span></button>
+</div>
+<script>
+(function(){
+ var bs=[].slice.call(document.querySelectorAll('#tbar button'));
+ function set(t,push){
+  if(t)document.documentElement.setAttribute('data-t',t);else document.documentElement.removeAttribute('data-t');
+  bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===t?'true':'false')});
+  if(push)try{history.replaceState(null,'',location.pathname+(t?'?t='+t:'')+location.hash)}catch(e){}
+ }
+ var q=(new URLSearchParams(location.search).get('t')||'a').toLowerCase(); if(['a','b','c','0'].indexOf(q)<0)q='a'; if(q==='0')q='';
+ set(q,false);
+ bs.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.t,true)})});
+})();
+</script>
+</body>
+</html>

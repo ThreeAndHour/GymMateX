@@ -19,9 +19,9 @@
 <style>
 /* One deliberate night palette — the venue world after dark. Single theme by design. */
 :root{
- --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
- --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
- --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --bg:#0A0D16; --s1:#111626; --s2:#1A2136; --line:#283250;
+ --ink:#EEF0F6; --ink2:#AEB4C6; --ink3:#77809A;
+ --accent:#E0B96B; --rose:#C8466F; --accent2:#7FD6D0;
  --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
  --body:"IBM Plex Sans Thai",system-ui,sans-serif;
  --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -33,18 +33,18 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 var(--body);-webkit-font-smoothing:antialiased}
 html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
 select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
-select.lang option{background:#17121A;color:#F2ECEF}
-a{color:var(--cyan);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+select.lang option{background:#111626;color:#EEF0F6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 p{margin:0 0 12px}
 
-.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:10;background:rgba(10,13,22,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
 .mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
 .mark img{height:38px;width:auto;display:block}
-.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mark b{background:linear-gradient(135deg,var(--accent),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
 nav{display:flex;align-items:center;gap:18px;font-size:14px}
 nav a{color:var(--ink2);text-decoration:none}
 nav a:hover{color:var(--ink)}
@@ -52,16 +52,16 @@ nav a:hover{color:var(--ink)}
 @media (max-width:760px){nav a{display:none}}
 
 .hero{padding:56px 0 40px}
-.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin:0 0 14px}
 .hero h1{font-size:clamp(38px,6.4vw,66px);font-weight:700;line-height:1.04;letter-spacing:-.01em}
 .hero .role{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:10px 0 22px}
 .thesis{font:600 clamp(22px,3vw,30px)/1.35 var(--display);max-width:26ch;margin:0 0 16px}
-.thesis em{font-style:normal;color:var(--cyan)}
+.thesis em{font-style:normal;color:var(--accent)}
 .lead{color:var(--ink2);max-width:62ch;font-size:17px}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:11px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink)}
-.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
-.btn:hover{border-color:var(--cyan)}
+.btn.solid{background:var(--accent);color:#1A1305;border-color:var(--accent)}
+.btn:hover{border-color:var(--accent)}
 .banner{margin-top:36px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
 .banner img{display:block;width:100%;height:auto}
 .banner figcaption{font:500 12px var(--mono);color:var(--ink3);padding:9px 14px;border-top:1px solid var(--line);background:var(--s1)}
@@ -70,13 +70,13 @@ section{padding:64px 0 0}
 .sh{display:grid;gap:8px;margin-bottom:26px;max-width:66ch}
 .sh h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;line-height:1.2}
 .sh p{color:var(--ink2);margin:0}
-.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
 
 .for{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:760px){.for{grid-template-columns:1fr}}
 .door{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:10px}
-.door .who{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.door.pk .who{color:var(--pink)}
+.door .who{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.door.pk .who{color:var(--rose)}
 .door h3{font-size:23px;line-height:1.3}
 .door p{color:var(--ink2);margin:0}
 .door a{margin-top:auto;font-weight:600;text-decoration:none}
@@ -89,13 +89,13 @@ section{padding:64px 0 0}
 .svc h3{font-size:19px;line-height:1.35}
 .svc p{color:var(--ink2);font-size:15px;margin:0}
 .svc article.lead-card{background:var(--s2)}
-.svc article.lead-card small{color:var(--cyan)}
+.svc article.lead-card small{color:var(--accent)}
 
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:st;list-style:none;padding:0;margin:0}
 @media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.flow{grid-template-columns:1fr}}
-.flow li{border-top:2px solid var(--cyan);padding-top:14px;counter-increment:st}
-.flow li::before{content:"0" counter(st);font:500 12px var(--mono);color:var(--cyan);display:block;margin-bottom:6px}
+.flow li{border-top:2px solid var(--accent);padding-top:14px;counter-increment:st}
+.flow li::before{content:"0" counter(st);font:500 12px var(--mono);color:var(--accent);display:block;margin-bottom:6px}
 .flow b{display:block;font:600 17px var(--display);margin-bottom:4px}
 .flow span{color:var(--ink2);font-size:15px}
 .mock{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -117,45 +117,45 @@ section{padding:64px 0 0}
 .tracks b{font:600 16.5px var(--display);display:block}
 .tracks span{color:var(--ink2);font-size:14.5px}
 .tracks li.new{background:var(--s2)}
-.tracks li.new b::after{content:"NEW";font:500 10px var(--mono);letter-spacing:.1em;color:var(--pink);border:1px solid var(--pink);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px}
+.tracks li.new b::after{content:"NEW";font:500 10px var(--mono);letter-spacing:.1em;color:var(--rose);border:1px solid var(--rose);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px}
 
 .show{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:180px;gap:10px;margin-top:34px}
 .show figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1)}
 .show img{display:block;width:100%;height:100%;object-fit:cover}
-.show figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(14,11,16,.9));font-size:13px;color:var(--ink)}
-.show figcaption b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:1px}
-.show .who{position:absolute;top:10px;left:10px;font:600 12px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#0E0B10;background:var(--c);padding:3px 9px;border-radius:3px}
+.show figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(10,13,22,.9));font-size:13px;color:var(--ink)}
+.show figcaption b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1px}
+.show .who{position:absolute;top:10px;left:10px;font:600 12px var(--display);letter-spacing:.06em;text-transform:uppercase;color:#0A0D16;background:var(--c);padding:3px 9px;border-radius:3px}
 .show .w2{grid-column:span 2}.show .h2{grid-row:span 2}
 .show .top img{object-position:50% 15%}
 @media (max-width:700px){.show{grid-template-columns:1fr;grid-auto-rows:auto}.show .w2{grid-column:auto}.show .h2{grid-row:auto}.show img{height:auto;aspect-ratio:16/10}.show .top img{aspect-ratio:4/5}}
 .reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:760px){.reel{grid-template-columns:1fr 1fr}}
 .reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1);color:var(--ink);text-decoration:none}
-.reel a:hover,.reel a:focus-visible{border-color:var(--pink)}
+.reel a:hover,.reel a:focus-visible{border-color:var(--rose)}
 .reel img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s}
 .reel a:hover img{transform:scale(1.03)}
 @media (prefers-reduced-motion:reduce){.reel img{transition:none}.reel a:hover img{transform:none}}
-.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(14,11,16,.7);display:grid;place-items:center;color:#fff}
-.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:rgba(14,11,16,.7);padding:2px 6px;border-radius:3px}
-.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(10,13,22,.7);display:grid;place-items:center;color:#fff}
+.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:rgba(10,13,22,.7);padding:2px 6px;border-radius:3px}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
 .reel .cap b{display:block;font:600 15.5px var(--display);line-height:1.25}
-.reel .cap span{font:500 12px var(--mono);color:var(--cyan);font-variant-numeric:tabular-nums}
-.reel a:first-child .cap span{color:var(--pink)}
+.reel .cap span{font:500 12px var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.reel a:first-child .cap span{color:var(--rose)}
 .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 @media (max-width:700px){.levels{grid-template-columns:1fr}}
 .lv{background:var(--s1);border:1px solid var(--line);border-radius:8px;padding:16px}
-.lv .n{font:700 28px var(--display);color:var(--cyan);line-height:1}
-.lv:nth-child(2) .n{color:var(--gold)}
-.lv:nth-child(3) .n{color:var(--pink)}
+.lv .n{font:700 28px var(--display);color:var(--accent);line-height:1}
+.lv:nth-child(2) .n{color:var(--accent2)}
+.lv:nth-child(3) .n{color:var(--rose)}
 .lv b{display:block;font:600 16px var(--display);margin:6px 0 2px}
 .lv span{font-size:14px;color:var(--ink2)}
 
 .o2o{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:860px){.o2o{grid-template-columns:1fr}}
 .stage{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
-.stage .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.stage:nth-child(2) .k{color:var(--gold)}
-.stage:nth-child(3) .k{color:var(--pink)}
+.stage .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.stage:nth-child(2) .k{color:var(--accent2)}
+.stage:nth-child(3) .k{color:var(--rose)}
 .stage h3{font-size:20px;line-height:1.3}
 .stage p{color:var(--ink2);font-size:15px;margin:0}
 .stage .fit{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink)}
@@ -164,11 +164,11 @@ section{padding:64px 0 0}
 .phases li{background:var(--s1);display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px}
 @media (max-width:600px){.phases li{grid-template-columns:1fr;gap:4px}}
 .phases li.now{background:var(--s2)}
-.phases time{font:500 12px var(--mono);color:var(--cyan);padding-top:3px}
-.phases li.now time::after{content:" ● NOW";color:var(--pink)}
+.phases time{font:500 12px var(--mono);color:var(--accent);padding-top:3px}
+.phases li.now time::after{content:" ● NOW";color:var(--rose)}
 .phases b{font:600 17px var(--display);display:block}
 .phases span{color:var(--ink2);font-size:14.5px}
-.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--pink);border-radius:8px;padding:22px 24px}
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--rose);border-radius:8px;padding:22px 24px}
 .rules h3{font-size:20px;margin-bottom:10px}
 .rules ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
 .rules li b{color:var(--ink)}
@@ -193,7 +193,7 @@ section{padding:64px 0 0}
 .brands .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .brands .lbl{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-right:6px}
 .brand{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
-.brand:hover{border-color:var(--cyan)}
+.brand:hover{border-color:var(--accent)}
 .brand img{height:44px;width:auto;border-radius:4px}
 .brand small{display:block;font-size:12.5px;color:var(--ink2)}
 .foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
@@ -205,16 +205,16 @@ section{padding:64px 0 0}
 .reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:760px){.reel{grid-template-columns:1fr 1fr}}
 .reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--s1);color:var(--ink);text-decoration:none}
-.reel a:hover,.reel a:focus-visible{border-color:var(--pink)}
+.reel a:hover,.reel a:focus-visible{border-color:var(--rose)}
 .reel img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s}
 .reel a:hover img{transform:scale(1.03)}
 @media (prefers-reduced-motion:reduce){.reel img{transition:none}.reel a:hover img{transform:none}}
-.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(14,11,16,.7);display:grid;place-items:center;color:#fff}
-.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:rgba(14,11,16,.7);padding:2px 6px;border-radius:3px}
-.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.reel .play{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:rgba(10,13,22,.7);display:grid;place-items:center;color:#fff}
+.reel .dur{position:absolute;top:14px;right:10px;font:500 11px var(--mono);background:rgba(10,13,22,.7);padding:2px 6px;border-radius:3px}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
 .reel .cap b{display:block;font:600 15.5px var(--display);line-height:1.25}
-.reel .cap span{font:500 12px var(--mono);color:var(--cyan);font-variant-numeric:tabular-nums}
-.reel a:first-child .cap span{color:var(--pink)}
+.reel .cap span{font:500 12px var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.reel a:first-child .cap span{color:var(--rose)}
 .reel a.playing{aspect-ratio:auto}.reel a.playing .cap{position:static;background:none;padding:10px 12px 12px}.reel a.playing .vp{border-radius:0}
 
 /* level switcher */
@@ -244,19 +244,19 @@ section{padding:64px 0 0}
 @media (max-width:700px){.lvlooks{grid-template-columns:1fr 1fr}}
 .lvlooks a,.lvlooks figure{position:relative;display:block;margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
 .lvlooks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.lvlooks .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,rgba(14,11,16,.92));font-size:13px}
+.lvlooks .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,rgba(10,13,22,.92));font-size:13px}
 .lvlooks .cap b{display:block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
 .lock{display:grid;gap:12px;justify-items:start;background:repeating-linear-gradient(135deg,var(--s2) 0 14px,var(--s1) 14px 28px);border:1px dashed var(--c);border-radius:10px;padding:22px}
 .lock b{font:600 18px var(--display)}
 .lock p{margin:0;color:var(--ink2);max-width:60ch}
 .lock label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink);cursor:pointer}
-.lock input{margin-top:4px;accent-color:var(--pink);width:18px;height:18px}
+.lock input{margin-top:4px;accent-color:var(--rose);width:18px;height:18px}
 .lvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.lvcta .btn.solid{background:var(--c);border-color:var(--c);color:#0E0B10}
+.lvcta .btn.solid{background:var(--c);border-color:var(--c);color:#0A0D16}
 
 @media (max-width:760px){nav a.switch{display:inline-block}}
 .switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
-.switch:hover{color:var(--ink);border-color:var(--cyan)}
+.switch:hover{color:var(--ink);border-color:var(--accent)}
 .demo-frame{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
 .demo-frame .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--s1);font:500 12px var(--mono);color:var(--ink3)}
 .demo-frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
@@ -266,35 +266,35 @@ section{padding:64px 0 0}
 .live{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:860px){.live{grid-template-columns:1fr}}
 .live a{display:flex;flex-direction:column;gap:6px;background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:20px;color:var(--ink);text-decoration:none}
-.live a:hover,.live a:focus-visible{border-color:var(--cyan)}
-.live small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.live a:hover,.live a:focus-visible{border-color:var(--accent)}
+.live small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .live b{font:600 19px var(--display);line-height:1.3}
 .live span{color:var(--ink2);font-size:14.5px}
-.live em{font-style:normal;margin-top:auto;padding-top:8px;font:500 13px var(--mono);color:var(--cyan)}
+.live em{font-style:normal;margin-top:auto;padding-top:8px;font:500 13px var(--mono);color:var(--accent)}
 .looks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
 @media (max-width:700px){.looks{grid-template-columns:1fr}}
 .looks figure{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
 .looks img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
-.looks figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,rgba(14,11,16,.9));font-size:13px}
-.looks figcaption b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+.looks figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;background:linear-gradient(transparent,rgba(10,13,22,.9));font-size:13px}
+.looks figcaption b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .popen{all:unset;display:block;cursor:pointer;width:100%}
-.popen:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.popen:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .personas figure{transition:border-color .2s}
-.personas figure:hover{border-color:var(--cyan)}
-.personas .see{display:block;font:500 11px var(--mono);color:var(--cyan)}
+.personas figure:hover{border-color:var(--accent)}
+.personas .see{display:block;font:500 11px var(--mono);color:var(--accent)}
 .hvid{position:relative;margin:34px 0 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
 .hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(14,11,16,.85));font-size:13px;color:var(--ink2)}
-.hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(14,11,16,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
-.hvid-snd:hover{background:rgba(14,11,16,.85)}
+.hvid figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(10,13,22,.85));font-size:13px;color:var(--ink2)}
+.hvid-snd{position:absolute;top:12px;right:12px;display:flex;gap:6px;align-items:center;font:500 12px var(--mono);color:#fff;background:rgba(10,13,22,.65);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 11px;cursor:pointer}
+.hvid-snd:hover{background:rgba(10,13,22,.85)}
 .hvid-snd .l0,.hvid-snd[aria-pressed="true"] .l1{display:none}.hvid-snd[aria-pressed="true"] .l0{display:inline}
 @media (max-width:600px){.hvid figcaption{position:static;background:var(--s1);padding:9px 12px;border-top:1px solid var(--line)}}
 @media (prefers-reduced-motion:reduce){.hvid video{display:none}.hvid{background:url(creator-vid/thbho-faces-003.jpg) center/cover;aspect-ratio:16/9}}
 .ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
 .yttext h2{margin:8px 0 12px}
 .yttext p{color:var(--ink2)}
-.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(255,120,60,.25),0 0 60px -10px rgba(102,252,241,.12)}
-.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone{position:relative;padding:12px;border-radius:44px;background:#12172A;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(224,185,107,.25),0 0 60px -10px rgba(224,185,107,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#12172A;border-radius:0 0 14px 14px;z-index:2}
 .phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
 .phone-in iframe{display:block;width:100%;height:100%;border:0}
 .ytpl{width:100%;height:100%}.ytpl-fb{display:grid;place-items:center;align-content:center;gap:10px;width:100%;height:100%;color:#fff;text-decoration:none;font:600 15px var(--mono)}.ytpl-fb b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#FF0033;font-size:24px}
@@ -308,7 +308,7 @@ section{padding:64px 0 0}
 .usp small{font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--c);margin-top:4px}
 .usp article>*{position:relative;z-index:1}
 .usp article>.ubg{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:opacity .5s,transform 6s ease-out;pointer-events:none}
-.usp article>.ushade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(14,11,16,.35),rgba(14,11,16,.85) 72%);pointer-events:none}
+.usp article>.ushade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(10,13,22,.35),rgba(10,13,22,.85) 72%);pointer-events:none}
 .usp article:hover>.ubg{opacity:.75;transform:scale(1.04)}
 .usp article::before{z-index:2}
 .usp article{transition:border-color .3s,box-shadow .3s}
@@ -319,23 +319,23 @@ section{padding:64px 0 0}
 .usp .uclip:hover,.usp article:hover .uclip{color:var(--c)}
 dialog.vpop{border:0;padding:0;background:transparent;width:min(96vw,1100px);max-width:96vw;max-height:94vh;overflow:visible}
 dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
-.vpop-box{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 0 80px -10px rgba(255,140,60,.25);display:flex;justify-content:center}
+.vpop-box{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 0 80px -10px rgba(224,185,107,.25);display:flex;justify-content:center}
 .vpop-box video{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;background:#000}
 .vpop-x{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;margin:0 0 12px auto;font:600 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
 .vpop-x b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:2px solid currentColor;font-size:14px}
 .vpop-x:hover,.vpop-x:focus-visible{color:#fff}
 .vpop-cap{margin:10px 2px 0;font:500 13px var(--mono);color:var(--ink3);text-align:center}
-.vpop-cap a{color:var(--cyan);text-decoration:none}
+.vpop-cap a{color:var(--accent);text-decoration:none}
 @media (prefers-reduced-motion:reduce){.usp article>.ubg{transition:none}.usp article:hover>.ubg{transform:none}}
-.usp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:22px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,rgba(255,79,139,.10),rgba(102,252,241,.06))}
+.usp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:22px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,rgba(200,70,111,.10),rgba(224,185,107,.06))}
 .usp-cta>span{color:var(--ink2);font-size:14.5px}
 @media (max-width:900px){.usp{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.usp{grid-template-columns:1fr}}
 </style>
 <script src="thbho-i18n.js"></script>
-<script src="thbho-analytics.js?v=3" defer></script>
+<script src="thbho-analytics.js?v=4" defer></script>
 <script src="x-media.js?v=2"></script>
-<script src="thbho-player.js?v=2"></script>
+<script src="thbho-player.js?v=3"></script>
 </head>
 <body>
 
@@ -360,7 +360,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
 <main class="wrap" id="top">
 <div class="hero">
  <p class="eyebrow">ThB.Ho for Venues · Saunas · Spas · Massage · Bars — Bangkok · EEC</p>
- <h1>ThB.Ho <span style="color:var(--cyan)">Venues</span></h1>
+ <h1>ThB.Ho <span style="color:var(--accent)">Venues</span></h1>
  <p class="role"><span lang="th">หน้า Matching ด้วย MBTI · Pairing Night · Content รายเดือน · O2O Events</span><span lang="en">MBTI matching pages · Pairing Nights · Monthly content · O2O events</span></p>
  <p class="thesis"><span lang="th">ร้านอื่นลอก party ได้ — <em>แต่ลอกระบบจับคู่และคลัง content ไม่ได้</em></span><span lang="en">Competitors can copy a party. <em>They can't copy a matching system or a content library.</em></span></p>
  <p class="lead"><span lang="th">เราช่วยซาวน่า สปา ร้านนวด และบาร์ ให้ลูกค้ามีเหตุผลกลับมาซ้ำ และให้ลูกค้าต่างชาติที่มาคนเดียวเจอโปรแกรมและคนที่ใช่ในร้านคุณ ด้วย Hybrid AI Persona Three, B. และ Hour · เริ่มจากบริการเดียวก็ได้ ไม่ต้องลงเงินก้อนก่อน</span><span lang="en">We help saunas, spas, massage houses and bars give guests a reason to come back, and help solo international guests find the right programme and the right people at your place, with Hybrid AI personas Three, B. and Hour. Start with one service, no upfront lump sum.</span></p>
@@ -383,10 +383,10 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <p><span lang="th">หกอย่างที่ทำให้งานของ Three, B. และ Hour ต่างจาก creator ทั่วไป และเป็นสิ่งที่คุณได้เมื่อ collab กับเรา</span><span lang="en">Six things that set Three, B. and Hour apart, and that you get when you collab with us.</span></p>
  </div>
  <div class="usp">
-  <article style="--c:#3FC48A"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
-  <article style="--c:var(--cyan)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><button type="button" class="uclip" data-x="2072701160025428150">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide</button></article>
-  <article style="--c:var(--pink)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
-  <article style="--c:var(--gold)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><button type="button" class="uclip" data-x="2072352936219615678">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds</button></article>
+  <article style="--c:#5DB8A0"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
+  <article style="--c:var(--accent)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><button type="button" class="uclip" data-x="2072701160025428150">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide</button></article>
+  <article style="--c:var(--rose)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
+  <article style="--c:var(--accent2)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><button type="button" class="uclip" data-x="2072352936219615678">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds</button></article>
   <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><button type="button" class="uclip" data-x="2040825962750001292">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING</button></article>
   <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><button type="button" class="uclip" data-x="2057333372205289701">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona</button></article>
  </div>
@@ -403,7 +403,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <h2><span lang="th">3 ระดับ เลือกเท่าที่คุณสบายใจ</span><span lang="en">Three levels. Go only as far as you're comfortable.</span></h2>
   <p><span lang="th">เลือกระดับที่ตรงกับร้านของคุณ บริการ ช่องทาง และเงื่อนไขปรับตามระดับ</span><span lang="en">Pick the level that fits your venue; services, channels and terms follow it.</span></p>
  </div>
- <div class="lvtabs" role="tablist" aria-label="Levels"><button class="lvtab" type="button" role="tab" id="lvt1" data-lv="1" aria-selected="false" style="--c:var(--cyan)"><span class="n">LEVEL 1</span><b><span lang="th">Wellness</span><span lang="en">Wellness</span></b><span><span lang="th">ยิม สปา ร้านนวดทั่วไป</span><span lang="en">Gyms, spas, massage houses</span></span></button><button class="lvtab" type="button" role="tab" id="lvt2" data-lv="2" aria-selected="false" style="--c:var(--gold)"><span class="n">LEVEL 2</span><b><span lang="th">Nightlife</span><span lang="en">Nightlife</span></b><span><span lang="th">Men's spa บาร์ ซาวน่า คืน theme</span><span lang="en">Men's spas, bars, saunas, theme nights</span></span></button><button class="lvtab" type="button" role="tab" id="lvt3" data-lv="3" aria-selected="false" style="--c:var(--pink)"><span class="n">LEVEL 3</span><b><span lang="th">Private · Members</span><span lang="en">Private · Members</span></b><span><span lang="th">คลับและซาวน่าระบบสมาชิก</span><span lang="en">Members-only clubs and saunas</span></span></button></div>
+ <div class="lvtabs" role="tablist" aria-label="Levels"><button class="lvtab" type="button" role="tab" id="lvt1" data-lv="1" aria-selected="false" style="--c:var(--accent)"><span class="n">LEVEL 1</span><b><span lang="th">Wellness</span><span lang="en">Wellness</span></b><span><span lang="th">ยิม สปา ร้านนวดทั่วไป</span><span lang="en">Gyms, spas, massage houses</span></span></button><button class="lvtab" type="button" role="tab" id="lvt2" data-lv="2" aria-selected="false" style="--c:var(--accent2)"><span class="n">LEVEL 2</span><b><span lang="th">Nightlife</span><span lang="en">Nightlife</span></b><span><span lang="th">Men's spa บาร์ ซาวน่า คืน theme</span><span lang="en">Men's spas, bars, saunas, theme nights</span></span></button><button class="lvtab" type="button" role="tab" id="lvt3" data-lv="3" aria-selected="false" style="--c:var(--rose)"><span class="n">LEVEL 3</span><b><span lang="th">Private · Members</span><span lang="en">Private · Members</span></b><span><span lang="th">คลับและซาวน่าระบบสมาชิก</span><span lang="en">Members-only clubs and saunas</span></span></button></div>
  <div class="lvpanel" id="lvpanel" role="tabpanel" aria-live="polite"></div>
 </section>
 
@@ -446,7 +446,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
  </div>
  <div class="demo-frame">
   <div class="bar"><i></i><i></i><i></i><span>creators.thbho.com/ThBHoMatchDemo.html</span></div>
-  <iframe data-demo src="ThBHoMatchDemo.html?embed=1&amp;v=20261107" title="Venue matching demo" loading="lazy"></iframe>
+  <iframe data-demo src="ThBHoMatchDemo.html?embed=1&amp;v=20261111" title="Venue matching demo" loading="lazy"></iframe>
  </div>
  <div class="demo-cta">
   <a class="btn" href="ThBHoMatchDemo.html" target="_blank" rel="noopener"><span lang="th">เปิดเดโมเต็มจอ ↗</span><span lang="en">Open the demo full screen ↗</span></a>
@@ -574,7 +574,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
  });
 
  // ---- level switcher ----
- var LV=[{"c": "var(--cyan)", "name_th": "Wellness", "name_en": "Wellness", "tag_th": "ยิม สปา ร้านนวดทั่วไป", "tag_en": "Gyms, spas, massage houses", "title": ["ให้ลูกค้ากลับมาซ้ำ ด้วยหน้า Matching และ content รายเดือน", "Bring guests back with matching pages and monthly content"], "lead": ["สำหรับยิม สปา และร้านนวดที่เปิดต้อนรับทุกคน ทำหน้า Matching 6 ภาษา ให้ลูกค้าต่างชาติเลือกโปรแกรมได้เองใน 1 นาที แล้วจองผ่าน LINE", "For gyms, spas and massage houses open to everyone: a matching page in six languages so international guests pick a programme in a minute and book through LINE."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["ยิมและฟิตเนส", "Gyms and fitness studios"], ["สปาและร้านนวดทั่วไป", "Spas and massage houses"], ["โรงแรมและ wellness resort", "Hotels and wellness resorts"]]}, {"h": ["บริการ", "Services"], "items": [["<b>หน้า Matching</b> ลูกค้าตอบ 4 ข้อ ได้ 3 ตัวเลือก", "<b>Matching page</b>: 4 questions, 3 picks"], ["<b>Content รายเดือน</b> 8–12 ชิ้น", "<b>Monthly content</b>, 8–12 pieces"], ["<b>Hunk Academy</b> และ <b>ทริป Wellness</b> 3 วัน 2 คืน", "<b>Hunk Academy</b> and 3-day <b>wellness trips</b>"]]}, {"h": ["ช่องทางและเงื่อนไข", "Channels and terms"], "items": [["QR ในร้าน · LINE OA · IG · TikTok", "In-venue QR · LINE OA · IG · TikTok"], ["ลิขสิทธิ์ content เป็นของร้าน", "The venue owns the content"], ["เริ่มจากบริการเดียว หยุดได้ไม่มีค่าปรับ", "Start with one service, stop with no penalty"]]}], "looks": [{"img": "creator-img/show-b-neon.jpg", "alt": "B. in blue and pink neon light", "k": "Premium neon", "t": ["ลุคนีออนพรีเมียมสำหรับโปรแกรม VIP", "A premium neon look for VIP programmes"]}, {"img": "creator-img/show-three.jpg", "alt": "Three in yellow and green light", "k": "Model spotlight", "t": ["แนะนำเทรนเนอร์และนายแบบ", "Trainer and model spotlights"]}, {"img": "creator-img/show-agent-b.jpg", "alt": "B. as a Secret Agent — one original, three Hybrid AI personas", "k": "Hybrid persona", "t": ["ใช้พนักงานจริงของร้านได้", "Built on your real staff"]}], "cta": {"href": "#demo", "t": ["ลองหน้า Matching ตัวอย่าง →", "Try the matching demo →"]}, "note": ["ระดับ 1 ลงได้ทุกช่องทางของร้าน", "Level 1 works on all your channels"]}, {"c": "var(--gold)", "name_th": "Nightlife", "name_en": "Nightlife", "tag_th": "Men's spa บาร์ ซาวน่า คืน theme", "tag_en": "Men's spas, bars, saunas, theme nights", "title": ["คืนที่ลูกค้าพูดถึง และอยากกลับมาอีก", "Nights guests talk about, and come back for"], "lead": ["สำหรับ men's spa บาร์ และซาวน่าที่มีคืน theme · Pairing Night ช่วยให้ลูกค้าที่มาคนเดียวเจอคนที่น่าคุยด้วย content โปรโมทลุคพรีเมียมแบบมีชั้นเชิง และแบ่งรายได้บัตรโดยไม่ต้องจ่ายล่วงหน้า", "For men's spas, bars and saunas with theme nights. Pairing Nights help solo guests meet someone worth talking to, promos get a stylish, premium look, and ticket revenue is shared with nothing paid upfront."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Men's spa และร้านนวดสำหรับผู้ชาย", "Men's spas and massage houses"], ["บาร์และคลับสายไนท์ไลฟ์", "Nightlife bars and clubs"], ["ซาวน่าที่มีคืน theme", "Saunas with theme nights"]]}, {"h": ["บริการ", "Services"], "items": [["<b>MBTI Pairing Night</b> 3 ชั่วโมง ปฏิเสธได้ทุกครั้ง", "<b>MBTI Pairing Night</b>, 3 hours, always declinable"], ["<b>O2O theme night</b> โปรโมทล่วงหน้า 3 สัปดาห์", "<b>O2O theme nights</b> promoted 3 weeks ahead"], ["<b>Casting Night</b> หานายแบบและ creator", "<b>Casting nights</b> to find models and creators"]]}, {"h": ["ช่องทางและเงื่อนไข", "Channels and terms"], "items": [["X · IG · LINE OA · จอในร้าน", "X · IG · LINE OA · in-venue screens"], ["แบ่งรายได้บัตร 50/50 หรือ retainer รายเดือน", "50/50 ticket split or a monthly retainer"], ["Matching คือการจับคู่เพื่อใช้เวลาร่วมกัน ปฏิเสธได้เสมอ", "Matching pairs people for time together, always declinable"]]}], "looks": [{"img": "creator-img/show-hour-2.jpg", "alt": "Hour in warm orange and blue light", "k": "Theme night promo", "t": ["ไฟนีออน คืนปาร์ตี้", "Neon party night"]}, {"u": "https://x.com/widerooms/status/2089337196402852328", "img": "creator-img/x-852328.jpg", "alt": "La sal en la piel still", "k": "Beach night · 61K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2109560564754362752", "img": "creator-img/x-362752.jpg", "alt": "Perdiéndonos en el calor still", "k": "Yacht party · 147K", "t": ["ดูบน X ↗", "View on X ↗"]}], "cta": {"href": "#demo", "t": ["ลองหน้า Matching ตัวอย่าง →", "Try the matching demo →"]}, "note": ["ระดับ 2 ลงได้ในช่องทางที่ platform อนุญาต", "Level 2 goes where platforms allow it"]}, {"c": "var(--pink)", "name_th": "Private · Members", "name_en": "Private · Members", "tag_th": "คลับและซาวน่าระบบสมาชิก", "tag_en": "Members-only clubs and saunas", "gate": true, "gateText": ["ระดับนี้สำหรับสถานที่ระบบสมาชิก รายละเอียดแสดงเมื่อยืนยันอายุ 20+ เท่านั้น และไม่มีภาพในหน้านี้", "This level is for members-only venues. Details show only after you confirm you are 20+, and there are no images on this page."], "title": ["งานส่วนตัวสำหรับสมาชิก ความเป็นส่วนตัวมาก่อนทุกอย่าง", "Private, members-only events where privacy comes first"], "lead": ["สำหรับคลับและซาวน่าระบบสมาชิก งานส่วนตัว ห้ามใช้โทรศัพท์ content เฉพาะ platform ที่ตรวจอายุ และเชื่อมกับระดับ private ของแอป VR ในอนาคต", "For members-only clubs and saunas: private events, phone-free rooms, content for age-verified platforms only, linked to the future private tier of the VR app."], "cols": [{"h": ["บริการ", "Services"], "items": [["<b>งาน members-only</b> ตรวจบัตรหน้างาน", "<b>Members-only events</b> with ID at the door"], ["<b>Content ส่วนตัว</b> เฉพาะ platform ตรวจอายุ", "<b>Private content</b> for age-verified platforms only"], ["<b>VR booth</b> และระดับ private ในแอปอนาคต", "<b>VR booth</b> and the future private tier"]]}, {"h": ["เงื่อนไข", "Terms"], "items": [["แบ่งรายได้บัตร 50/50 หรือ retainer", "50/50 ticket split or a retainer"], ["ร้านได้ส่วนแบ่ง pay-per-experience", "The venue shares pay-per-experience income"], ["สัญญาเป็นรายร้าน ทำหลังคุยกัน", "Contracts are per venue, after we talk"]]}, {"h": ["กติกาเพิ่มเติม", "Extra rules"], "items": [["อายุ 20+ ตรวจบัตรทุกครั้ง", "20+ only, ID every time"], ["ห้ามโทรศัพท์ในโซนงาน · ข้อมูลเข้ารหัส", "No phones in event areas · encrypted data"], ["ไม่ขึ้นช่องทางสาธารณะของร้านใดๆ", "Never on any venue's public channels"]]}], "privateText": ["เพื่อความเป็นส่วนตัวของร้านและแขก ผลงานและรายละเอียดระดับ 3 ไม่แสดงบนเว็บ ส่งให้เฉพาะเจ้าของร้านหลังคุยกันแล้ว", "For the privacy of venues and guests, level 3 work and details are never shown on the web. We share them with venue owners after we talk."], "cta": {"href": "#contact", "t": ["คุยแบบส่วนตัวเรื่องระดับ 3 →", "Talk privately about level 3 →"]}, "note": ["ระดับ 3 ไม่ขึ้นช่องทางสาธารณะใดๆ", "Level 3 never goes on public channels"]}], lvAdult=false;
+ var LV=[{"c": "var(--accent)", "name_th": "Wellness", "name_en": "Wellness", "tag_th": "ยิม สปา ร้านนวดทั่วไป", "tag_en": "Gyms, spas, massage houses", "title": ["ให้ลูกค้ากลับมาซ้ำ ด้วยหน้า Matching และ content รายเดือน", "Bring guests back with matching pages and monthly content"], "lead": ["สำหรับยิม สปา และร้านนวดที่เปิดต้อนรับทุกคน ทำหน้า Matching 6 ภาษา ให้ลูกค้าต่างชาติเลือกโปรแกรมได้เองใน 1 นาที แล้วจองผ่าน LINE", "For gyms, spas and massage houses open to everyone: a matching page in six languages so international guests pick a programme in a minute and book through LINE."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["ยิมและฟิตเนส", "Gyms and fitness studios"], ["สปาและร้านนวดทั่วไป", "Spas and massage houses"], ["โรงแรมและ wellness resort", "Hotels and wellness resorts"]]}, {"h": ["บริการ", "Services"], "items": [["<b>หน้า Matching</b> ลูกค้าตอบ 4 ข้อ ได้ 3 ตัวเลือก", "<b>Matching page</b>: 4 questions, 3 picks"], ["<b>Content รายเดือน</b> 8–12 ชิ้น", "<b>Monthly content</b>, 8–12 pieces"], ["<b>Hunk Academy</b> และ <b>ทริป Wellness</b> 3 วัน 2 คืน", "<b>Hunk Academy</b> and 3-day <b>wellness trips</b>"]]}, {"h": ["ช่องทางและเงื่อนไข", "Channels and terms"], "items": [["QR ในร้าน · LINE OA · IG · TikTok", "In-venue QR · LINE OA · IG · TikTok"], ["ลิขสิทธิ์ content เป็นของร้าน", "The venue owns the content"], ["เริ่มจากบริการเดียว หยุดได้ไม่มีค่าปรับ", "Start with one service, stop with no penalty"]]}], "looks": [{"img": "creator-img/show-b-neon.jpg", "alt": "B. in blue and pink neon light", "k": "Premium neon", "t": ["ลุคนีออนพรีเมียมสำหรับโปรแกรม VIP", "A premium neon look for VIP programmes"]}, {"img": "creator-img/show-three.jpg", "alt": "Three in yellow and green light", "k": "Model spotlight", "t": ["แนะนำเทรนเนอร์และนายแบบ", "Trainer and model spotlights"]}, {"img": "creator-img/show-agent-b.jpg", "alt": "B. as a Secret Agent — one original, three Hybrid AI personas", "k": "Hybrid persona", "t": ["ใช้พนักงานจริงของร้านได้", "Built on your real staff"]}], "cta": {"href": "#demo", "t": ["ลองหน้า Matching ตัวอย่าง →", "Try the matching demo →"]}, "note": ["ระดับ 1 ลงได้ทุกช่องทางของร้าน", "Level 1 works on all your channels"]}, {"c": "var(--accent2)", "name_th": "Nightlife", "name_en": "Nightlife", "tag_th": "Men's spa บาร์ ซาวน่า คืน theme", "tag_en": "Men's spas, bars, saunas, theme nights", "title": ["คืนที่ลูกค้าพูดถึง และอยากกลับมาอีก", "Nights guests talk about, and come back for"], "lead": ["สำหรับ men's spa บาร์ และซาวน่าที่มีคืน theme · Pairing Night ช่วยให้ลูกค้าที่มาคนเดียวเจอคนที่น่าคุยด้วย content โปรโมทลุคพรีเมียมแบบมีชั้นเชิง และแบ่งรายได้บัตรโดยไม่ต้องจ่ายล่วงหน้า", "For men's spas, bars and saunas with theme nights. Pairing Nights help solo guests meet someone worth talking to, promos get a stylish, premium look, and ticket revenue is shared with nothing paid upfront."], "cols": [{"h": ["เหมาะกับ", "For"], "items": [["Men's spa และร้านนวดสำหรับผู้ชาย", "Men's spas and massage houses"], ["บาร์และคลับสายไนท์ไลฟ์", "Nightlife bars and clubs"], ["ซาวน่าที่มีคืน theme", "Saunas with theme nights"]]}, {"h": ["บริการ", "Services"], "items": [["<b>MBTI Pairing Night</b> 3 ชั่วโมง ปฏิเสธได้ทุกครั้ง", "<b>MBTI Pairing Night</b>, 3 hours, always declinable"], ["<b>O2O theme night</b> โปรโมทล่วงหน้า 3 สัปดาห์", "<b>O2O theme nights</b> promoted 3 weeks ahead"], ["<b>Casting Night</b> หานายแบบและ creator", "<b>Casting nights</b> to find models and creators"]]}, {"h": ["ช่องทางและเงื่อนไข", "Channels and terms"], "items": [["X · IG · LINE OA · จอในร้าน", "X · IG · LINE OA · in-venue screens"], ["แบ่งรายได้บัตร 50/50 หรือ retainer รายเดือน", "50/50 ticket split or a monthly retainer"], ["Matching คือการจับคู่เพื่อใช้เวลาร่วมกัน ปฏิเสธได้เสมอ", "Matching pairs people for time together, always declinable"]]}], "looks": [{"img": "creator-img/show-hour-2.jpg", "alt": "Hour in warm orange and blue light", "k": "Theme night promo", "t": ["ไฟนีออน คืนปาร์ตี้", "Neon party night"]}, {"u": "https://x.com/widerooms/status/2089337196402852328", "img": "creator-img/x-852328.jpg", "alt": "La sal en la piel still", "k": "Beach night · 61K", "t": ["ดูบน X ↗", "View on X ↗"]}, {"u": "https://x.com/widerooms/status/2109560564754362752", "img": "creator-img/x-362752.jpg", "alt": "Perdiéndonos en el calor still", "k": "Yacht party · 147K", "t": ["ดูบน X ↗", "View on X ↗"]}], "cta": {"href": "#demo", "t": ["ลองหน้า Matching ตัวอย่าง →", "Try the matching demo →"]}, "note": ["ระดับ 2 ลงได้ในช่องทางที่ platform อนุญาต", "Level 2 goes where platforms allow it"]}, {"c": "var(--rose)", "name_th": "Private · Members", "name_en": "Private · Members", "tag_th": "คลับและซาวน่าระบบสมาชิก", "tag_en": "Members-only clubs and saunas", "gate": true, "gateText": ["ระดับนี้สำหรับสถานที่ระบบสมาชิก รายละเอียดแสดงเมื่อยืนยันอายุ 20+ เท่านั้น และไม่มีภาพในหน้านี้", "This level is for members-only venues. Details show only after you confirm you are 20+, and there are no images on this page."], "title": ["งานส่วนตัวสำหรับสมาชิก ความเป็นส่วนตัวมาก่อนทุกอย่าง", "Private, members-only events where privacy comes first"], "lead": ["สำหรับคลับและซาวน่าระบบสมาชิก งานส่วนตัว ห้ามใช้โทรศัพท์ content เฉพาะ platform ที่ตรวจอายุ และเชื่อมกับระดับ private ของแอป VR ในอนาคต", "For members-only clubs and saunas: private events, phone-free rooms, content for age-verified platforms only, linked to the future private tier of the VR app."], "cols": [{"h": ["บริการ", "Services"], "items": [["<b>งาน members-only</b> ตรวจบัตรหน้างาน", "<b>Members-only events</b> with ID at the door"], ["<b>Content ส่วนตัว</b> เฉพาะ platform ตรวจอายุ", "<b>Private content</b> for age-verified platforms only"], ["<b>VR booth</b> และระดับ private ในแอปอนาคต", "<b>VR booth</b> and the future private tier"]]}, {"h": ["เงื่อนไข", "Terms"], "items": [["แบ่งรายได้บัตร 50/50 หรือ retainer", "50/50 ticket split or a retainer"], ["ร้านได้ส่วนแบ่ง pay-per-experience", "The venue shares pay-per-experience income"], ["สัญญาเป็นรายร้าน ทำหลังคุยกัน", "Contracts are per venue, after we talk"]]}, {"h": ["กติกาเพิ่มเติม", "Extra rules"], "items": [["อายุ 20+ ตรวจบัตรทุกครั้ง", "20+ only, ID every time"], ["ห้ามโทรศัพท์ในโซนงาน · ข้อมูลเข้ารหัส", "No phones in event areas · encrypted data"], ["ไม่ขึ้นช่องทางสาธารณะของร้านใดๆ", "Never on any venue's public channels"]]}], "privateText": ["เพื่อความเป็นส่วนตัวของร้านและแขก ผลงานและรายละเอียดระดับ 3 ไม่แสดงบนเว็บ ส่งให้เฉพาะเจ้าของร้านหลังคุยกันแล้ว", "For the privacy of venues and guests, level 3 work and details are never shown on the web. We share them with venue owners after we talk."], "cta": {"href": "#contact", "t": ["คุยแบบส่วนตัวเรื่องระดับ 3 →", "Talk privately about level 3 →"]}, "note": ["ระดับ 3 ไม่ขึ้นช่องทางสาธารณะใดๆ", "Level 3 never goes on public channels"]}], lvAdult=false;
  try{lvAdult=sessionStorage.getItem('thbho-20plus')==='1'}catch(e){}
  function TT(o){return '<span lang="th">'+o[0]+'</span><span lang="en">'+o[1]+'</span>'}
  function lvList(a){return '<ul>'+a.map(function(x){return '<li>'+TT(x)+'</li>'}).join('')+'</ul>'}

@@ -5,7 +5,7 @@
   '.vp.tall{max-height:78vh;aspect-ratio:auto}.vp.tall img,.vp.tall video{max-height:78vh;width:100%;height:auto;object-fit:contain}'+
   '.vp img,.vp video{display:block;width:100%;height:auto}'+
   '.vp button{all:unset;cursor:pointer;display:block;width:100%;position:relative}'+
-  '.vp button:focus-visible{outline:2px solid #66FCF1;outline-offset:-2px}'+
+  '.vp button:focus-visible{outline:2px solid #E0B96B;outline-offset:-2px}'+
   '.vp .vp-play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(14,11,16,.72);border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:transform .15s,background .15s}'+
   '.vp button:hover .vp-play{transform:scale(1.06);background:rgba(102,252,241,.9)}'+
   '.vp button:hover .vp-play svg{color:#06201E}'+

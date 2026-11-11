@@ -69,7 +69,7 @@
       '.thbho-consent span[lang]{display:none}html[lang^=th] .thbho-consent span[lang=th],html:not([lang^=th]) .thbho-consent span[lang=en]{display:inline}' +
       '.thbho-consent p{margin:0;flex:1 1 280px}.thbho-consent div{display:flex;gap:8px}' +
       '.thbho-consent button{cursor:pointer;font:600 13px system-ui,sans-serif;border-radius:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#e9e6ee}' +
-      '.thbho-consent button[data-c=yes]{background:#66FCF1;border-color:#66FCF1;color:#06201E}';
+      '.thbho-consent button[data-c=yes]{background:#E0B96B;border-color:#E0B96B;color:#1A1305}';
     document.head.appendChild(css);
     d.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;

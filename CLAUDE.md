@@ -19,6 +19,12 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 
 Other old HTML files in the repo are legacy pages; leave them alone unless Thor asks.
 
+## Colours (palette "A · deep water + gold", chosen by Thor 11 Nov 2026)
+Creators, Portfolio, CreatorMatch and Venues share these `:root` variables, named by role:
+`--bg:#0A0D16` `--s1:#111626` `--s2:#1A2136` `--line:#283250` (navy-black), `--accent:#E0B96B` (gold: buttons, links),
+`--rose:#C8466F` (rose burgundy), `--accent2:#7FD6D0` (soft aqua: small labels). No neon pink or neon cyan.
+FitFantasy and O2OEventsVR keep their own orange theme.
+
 ## Shared files (edit with care: every page uses them)
 - `thbho-i18n.js` + `i18n/{zh,ru,ko,ja,es}.js`: 7 languages. In HTML, Thai and English are written inline as
   `<span lang="th">…</span><span lang="en">…</span>`. The other 5 come from the i18n files, keyed by the exact English text:

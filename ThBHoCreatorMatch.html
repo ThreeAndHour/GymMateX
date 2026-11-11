@@ -18,9 +18,9 @@
 <style>
 /* Same night palette as ThBHoStudio.html. Layout: hero with the three personas, quiz, persona match + 3 collab formats, request message, persona profiles, portfolio, rules. */
 :root{
- --bg:#0E0B10; --s1:#17121A; --s2:#211A25; --line:#30263A;
- --ink:#F2ECEF; --ink2:#B9AAB3; --ink3:#857682;
- --cyan:#66FCF1; --pink:#FF4F8B; --gold:#D9B26A;
+ --bg:#0A0D16; --s1:#111626; --s2:#1A2136; --line:#283250;
+ --ink:#EEF0F6; --ink2:#AEB4C6; --ink3:#77809A;
+ --accent:#E0B96B; --rose:#C8466F; --accent2:#7FD6D0;
  --nt:#8E7CF0; --nf:#3FC48A; --sj:#4AA8F0; --sp:#F0B24A;
  --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
  --body:"IBM Plex Sans Thai",system-ui,sans-serif;
@@ -33,18 +33,18 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);-webkit-font-smoothing:antialiased}
 html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
 select.lang{appearance:none;-webkit-appearance:none;background:var(--bg);padding-right:12px}
-select.lang option{background:#17121A;color:#F2ECEF}
-a{color:var(--cyan);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+select.lang option{background:#111626;color:#EEF0F6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:980px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
 p{margin:0 0 12px}
 
-.top{position:sticky;top:0;z-index:10;background:rgba(14,11,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:10;background:rgba(10,13,22,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
 .mark{display:flex;align-items:center;gap:8px;font:700 15px var(--display);letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
 .mark img{height:38px;width:auto;display:block}
-.mark b{background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mark b{background:linear-gradient(135deg,var(--accent),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
 .navr{display:flex;align-items:center;gap:14px;font-size:14px}
 .navr a{color:var(--ink2);text-decoration:none}
 .navr a:hover{color:var(--ink)}
@@ -52,10 +52,10 @@ p{margin:0 0 12px}
 
 .demo-bar{background:var(--s2);border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
 .demo-bar .wrap{padding-block:9px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
-.demo-bar b{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:1px 6px}
+.demo-bar b{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--accent2);border-radius:3px;padding:1px 6px}
 
 .hero{padding:44px 0 26px}
-.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin:0 0 12px}
 .hero h1{font-size:clamp(32px,5.4vw,52px);font-weight:700;line-height:1.08}
 .hero p{color:var(--ink2);max-width:60ch;font-size:17px;margin-top:14px}
 
@@ -76,21 +76,21 @@ p{margin:0 0 12px}
 .quiz{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:18px}
 .prog{display:flex;gap:6px}
 .prog i{flex:1;height:4px;border-radius:2px;background:var(--line)}
-.prog i.on{background:var(--cyan)}
-.qn{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.prog i.on{background:var(--accent)}
+.qn{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .quiz h2{font-size:clamp(22px,3vw,28px);line-height:1.3}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:600px){.opts{grid-template-columns:1fr}}
 .opt{display:flex;gap:12px;align-items:flex-start;text-align:left;font:inherit;color:var(--ink);background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer}
-.opt:hover{border-color:var(--cyan)}
-.opt[aria-pressed="true"]{border-color:var(--cyan);background:#16302f}
-.opt .k{font:600 13px var(--mono);color:var(--cyan);border:1px solid var(--line);border-radius:5px;width:26px;height:26px;display:grid;place-items:center;flex:none}
+.opt:hover{border-color:var(--accent)}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:#16302f}
+.opt .k{font:600 13px var(--mono);color:var(--accent);border:1px solid var(--line);border-radius:5px;width:26px;height:26px;display:grid;place-items:center;flex:none}
 .opt b{display:block;font:600 16px var(--display)}
 .opt small{color:var(--ink2);font-size:13.5px}
 .qnav{display:flex;justify-content:space-between;gap:10px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:10px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
-.btn.solid{background:var(--cyan);color:#06201E;border-color:var(--cyan)}
-.btn:hover{border-color:var(--cyan)}
+.btn.solid{background:var(--accent);color:#1A1305;border-color:var(--accent)}
+.btn:hover{border-color:var(--accent)}
 .btn[disabled]{opacity:.4;cursor:not-allowed}
 
 /* results */
@@ -115,7 +115,7 @@ p{margin:0 0 12px}
 .pick .btn{margin-top:auto;justify-content:center}
 
 /* booking sheet */
-.book{margin-top:18px;background:var(--s1);border:1px solid var(--cyan);border-radius:12px;padding:20px;display:grid;gap:12px}
+.book{margin-top:18px;background:var(--s1);border:1px solid var(--accent);border-radius:12px;padding:20px;display:grid;gap:12px}
 .book h3{font-size:19px}
 .msg{font:14px/1.6 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;white-space:pre-wrap;user-select:all;overflow-wrap:anywhere}
 .book .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -127,7 +127,7 @@ p{margin:0 0 12px}
 .sh{display:grid;gap:6px;margin-bottom:18px;max-width:66ch}
 .sh h2{font-size:clamp(24px,3.4vw,32px)}
 .sh p{color:var(--ink2);margin:0}
-.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .filters button{font:500 13px var(--mono);background:var(--s1);border:1px solid var(--line);color:var(--ink2);border-radius:99px;padding:5px 12px;cursor:pointer}
 .filters button[aria-pressed="true"]{color:var(--bg);background:var(--c,var(--ink));border-color:var(--c,var(--ink))}
@@ -138,7 +138,7 @@ p{margin:0 0 12px}
 .item:target,.item.hl{border-color:var(--c);box-shadow:0 0 0 1px var(--c)}
 .item .code{display:flex;justify-content:space-between;font:500 12px var(--mono);color:var(--ink3)}
 .item .code a{color:var(--ink3);text-decoration:none}
-.item .code a:hover{color:var(--cyan)}
+.item .code a:hover{color:var(--accent)}
 .item h3{font-size:17px;line-height:1.35}
 .item p{color:var(--ink2);font-size:14px;margin:0}
 .item .groups{display:flex;gap:6px;margin-top:auto;padding-top:6px}
@@ -159,7 +159,7 @@ p{margin:0 0 12px}
 
 /* creator page additions */
 .popen{all:unset;display:block;cursor:pointer;width:100%}
-.popen:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:8px}
+.popen:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
 .hosts figure{transition:border-color .2s,transform .2s}
 .hosts figure:hover{border-color:var(--c);transform:translateY(-2px)}
 .hosts .see{display:block;font:500 11px var(--mono);color:var(--c);margin-top:2px}
@@ -167,7 +167,7 @@ p{margin:0 0 12px}
 dialog#pdlg{border:1px solid var(--line);border-radius:14px;padding:0;background:var(--s1);color:var(--ink);width:min(860px,calc(100vw - 24px));max-height:calc(100vh - 32px);overflow:auto}
 dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pd{position:relative;display:grid;gap:16px;padding:0 0 20px}
-.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(14,11,16,.85);color:var(--ink);cursor:pointer;font-size:15px}
+.pdx{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:rgba(10,13,22,.85);color:var(--ink);cursor:pointer;font-size:15px}
 .pdhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border-bottom:1px solid var(--line)}
 .pdhead img{display:block;width:100%;height:100%;min-height:230px;object-fit:cover;object-position:50% 25%}
 .pdhead .mbody{padding:22px}
@@ -179,10 +179,10 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pdworks a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--bg)}
 .pdworks a:hover,.pdworks a:focus-visible{border-color:var(--c)}
 .pdworks img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.pdworks .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 9px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
 .pdworks .cap b{display:block;font:600 14px var(--display);line-height:1.25}
 .pdworks .cap span{font:500 11.5px var(--mono);color:var(--c)}
-.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(14,11,16,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
+.pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(10,13,22,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
 .pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
 .pdfoot{padding:0 22px}
 
@@ -229,17 +229,17 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 @media (max-width:600px){.fields{grid-template-columns:1fr}}
 .fields label{display:grid;gap:4px;font-size:13.5px;color:var(--ink2)}
 .fields input{font:15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 12px}
-.fields input:focus{outline:2px solid var(--cyan);outline-offset:1px}
+.fields input:focus{outline:2px solid var(--accent);outline-offset:1px}
 .btn.ghost{font:500 14px var(--mono)}
 .reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:700px){.reel{grid-template-columns:1fr 1fr}}
 .reel a{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);color:var(--ink);text-decoration:none}
-.reel a:hover{border-color:var(--pink)}
+.reel a:hover{border-color:var(--rose)}
 .reel img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(14,11,16,.92))}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(10,13,22,.92))}
 .reel .cap b{display:block;font:600 15px var(--display);line-height:1.25}
-.reel .cap>span{font:500 12px var(--mono);color:var(--cyan)}
-.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--pink);border-radius:8px;padding:22px 24px}
+.reel .cap>span{font:500 12px var(--mono);color:var(--accent)}
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--rose);border-radius:8px;padding:22px 24px}
 .rules h3{font-size:20px;margin-bottom:10px}
 .rules ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
 .rules li b{color:var(--ink)}
@@ -256,30 +256,30 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
 .pv-head .x:hover{background:var(--s2,rgba(255,255,255,.08));color:var(--ink)}
 .pv-box{padding:0 8px}
 .pv-foot{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px 12px;font:500 12.5px var(--mono)}
-.pv-foot a{color:var(--cyan);text-decoration:none}.pv-foot a:hover{text-decoration:underline}
+.pv-foot a{color:var(--accent);text-decoration:none}.pv-foot a:hover{text-decoration:underline}
 .pv-foot a+a{margin-left:auto}
 .ytwrap{display:grid;grid-template-columns:1fr minmax(260px,360px);gap:40px;align-items:center}
 .yttext h2{margin:8px 0 12px}
 .yttext p{color:var(--ink2)}
-.phone{position:relative;padding:12px;border-radius:44px;background:#16131b;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(255,120,60,.25),0 0 60px -10px rgba(102,252,241,.12)}
-.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#16131b;border-radius:0 0 14px 14px;z-index:2}
+.phone{position:relative;padding:12px;border-radius:44px;background:#12172A;border:1px solid var(--line);box-shadow:0 0 0 1px rgba(255,255,255,.03),0 30px 80px -20px rgba(224,185,107,.25),0 0 60px -10px rgba(224,185,107,.12)}
+.phone::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:34%;height:22px;background:#12172A;border-radius:0 0 14px 14px;z-index:2}
 .phone-in{border-radius:32px;overflow:hidden;background:#000;aspect-ratio:9/16}
 .phone-in iframe{display:block;width:100%;height:100%;border:0}
 .ytpl{width:100%;height:100%}.ytpl-fb{display:grid;place-items:center;align-content:center;gap:10px;width:100%;height:100%;color:#fff;text-decoration:none;font:600 15px var(--mono)}.ytpl-fb b{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#FF0033;font-size:24px}
 @media (max-width:760px){.ytwrap{grid-template-columns:1fr;gap:24px}.phone{max-width:340px;margin:0 auto;width:100%}}
 .quiz{position:relative;overflow:hidden;isolation:isolate}
 .quiz::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--qbg) center/cover no-repeat;opacity:.6;transition:opacity .4s}
-.quiz::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,11,16,.88) 0%,rgba(14,11,16,.7) 55%,rgba(14,11,16,.45) 100%)}
+.quiz::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,13,22,.88) 0%,rgba(10,13,22,.7) 55%,rgba(10,13,22,.45) 100%)}
 .quiz.qfade::before{animation:qin .6s ease}
 @keyframes qin{from{opacity:0}to{opacity:.6}}
-.quiz .opt{background:rgba(26,22,32,.78);backdrop-filter:blur(2px)}
+.quiz .opt{background:rgba(20,26,44,.78);backdrop-filter:blur(2px)}
 @media (prefers-reduced-motion:reduce){.quiz.qfade::before{animation:none}}
 </style>
 <script src="thbho-i18n.js"></script>
-<script src="thbho-analytics.js?v=3" defer></script>
+<script src="thbho-analytics.js?v=4" defer></script>
 <meta name="referrer" content="no-referrer">
 <script src="x-media.js?v=2"></script>
-<script src="thbho-player.js?v=2"></script>
+<script src="thbho-player.js?v=3"></script>
 </head>
 <body>
 
@@ -388,9 +388,9 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
   </div>
   <div class="vr">
    <ol class="vrpath">
-    <li style="--c:var(--cyan)"><small>OFFLINE</small><b><span lang="th">Collab และ Casting</span><span lang="en">Collabs &amp; casting</span></b><span><span lang="th">ถ่ายงาน Hybrid AI ร่วมกับ persona หรือร่วมงาน Casting Night ที่ร้านพันธมิตร</span><span lang="en">Shoot Hybrid AI work with a persona, or join a casting night at a partner venue.</span></span></li>
-    <li style="--c:var(--gold)"><small>DATA TRIP</small><b><span lang="th">ทริปเก็บข้อมูล</span><span lang="en">Capture trip</span></b><span><span lang="th">ทริป wellness 3 วัน 2 คืน บันทึกท่าทาง เสียง และบุคลิก เฉพาะส่วนที่คุณยินยอม</span><span lang="en">A 3-day wellness trip recording movement, voice and personality, only what you agree to.</span></span></li>
-    <li style="--c:var(--pink)"><small>DIGITAL TWIN</small><b><span lang="th">สร้าง AI Persona ของคุณ</span><span lang="en">Your AI persona</span></b><span><span lang="th">คุยได้เหมือนคุณ ตลอด 24 ชม. ในฉาก 3 มิติแนว Fitness &amp; Fantasy</span><span lang="en">Talks like you, 24/7, in Fitness &amp; Fantasy 3D scenes.</span></span></li>
+    <li style="--c:var(--accent)"><small>OFFLINE</small><b><span lang="th">Collab และ Casting</span><span lang="en">Collabs &amp; casting</span></b><span><span lang="th">ถ่ายงาน Hybrid AI ร่วมกับ persona หรือร่วมงาน Casting Night ที่ร้านพันธมิตร</span><span lang="en">Shoot Hybrid AI work with a persona, or join a casting night at a partner venue.</span></span></li>
+    <li style="--c:var(--accent2)"><small>DATA TRIP</small><b><span lang="th">ทริปเก็บข้อมูล</span><span lang="en">Capture trip</span></b><span><span lang="th">ทริป wellness 3 วัน 2 คืน บันทึกท่าทาง เสียง และบุคลิก เฉพาะส่วนที่คุณยินยอม</span><span lang="en">A 3-day wellness trip recording movement, voice and personality, only what you agree to.</span></span></li>
+    <li style="--c:var(--rose)"><small>DIGITAL TWIN</small><b><span lang="th">สร้าง AI Persona ของคุณ</span><span lang="en">Your AI persona</span></b><span><span lang="th">คุยได้เหมือนคุณ ตลอด 24 ชม. ในฉาก 3 มิติแนว Fitness &amp; Fantasy</span><span lang="en">Talks like you, 24/7, in Fitness &amp; Fantasy 3D scenes.</span></span></li>
     <li style="--c:var(--nf)"><small>ONLINE VR</small><b><span lang="th">รายได้ต่อเนื่อง</span><span lang="en">Ongoing income</span></b><span><span lang="th">แบ่งรายได้จากสมาชิกรายเดือน, pay-per-experience และบัตรงานจริง (Agency model)</span><span lang="en">A share of subscriptions, pay-per-experience and live-event tickets (agency model).</span></span></li>
    </ol>
    <div class="vrbox">
@@ -409,8 +409,8 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
      <h3><span lang="th">3 ระดับประสบการณ์ที่วางแผนไว้</span><span lang="en">Three planned experience levels</span></h3>
      <div class="tiers">
       <div class="tier"><i style="--c:var(--nf)">G</i><span><b>General</b><span lang="th">เพื่อนคุย ปรึกษาชีวิต และเทรนเนอร์ฟิตเนสส่วนตัวใน VR</span><span lang="en">Companionship, life chat and a private VR fitness trainer</span></span></div>
-      <div class="tier"><i style="--c:var(--gold)">R</i><span><b>Restricted</b><span lang="th">เดทเสมือนและดินเนอร์ส่วนตัว ท่าทางจับจากคนจริง</span><span lang="en">Virtual dates and private dinners, with motion captured from real people</span></span></div>
-      <div class="tier"><i style="--c:var(--pink)">X</i><span><b>Private · 20+</b><span lang="th">เฉพาะผู้ที่ผ่านการตรวจอายุ 20+ และเฉพาะ creator ที่เลือกเข้าร่วมเอง</span><span lang="en">Age-verified 20+ only, and only for creators who opt in</span></span></div>
+      <div class="tier"><i style="--c:var(--accent2)">R</i><span><b>Restricted</b><span lang="th">เดทเสมือนและดินเนอร์ส่วนตัว ท่าทางจับจากคนจริง</span><span lang="en">Virtual dates and private dinners, with motion captured from real people</span></span></div>
+      <div class="tier"><i style="--c:var(--rose)">X</i><span><b>Private · 20+</b><span lang="th">เฉพาะผู้ที่ผ่านการตรวจอายุ 20+ และเฉพาะ creator ที่เลือกเข้าร่วมเอง</span><span lang="en">Age-verified 20+ only, and only for creators who opt in</span></span></div>
      </div>
     </div>
     <div class="vrbox">
@@ -423,7 +423,7 @@ dialog.pv::backdrop{background:rgba(6,5,8,.78);backdrop-filter:blur(3px)}
      </ul>
     </div>
    </div>
-   <p class="note" style="margin:0;color:var(--gold)"><span lang="th">แผนฉบับเต็มเป็นเอกสารวงใน เปิดให้เฉพาะ creator ที่สนใจร่วมงานกับ ThB.Ho</span><span lang="en">The full plan is an insider document, shared only with creators interested in working with ThB.Ho.</span></p>
+   <p class="note" style="margin:0;color:var(--accent2)"><span lang="th">แผนฉบับเต็มเป็นเอกสารวงใน เปิดให้เฉพาะ creator ที่สนใจร่วมงานกับ ThB.Ho</span><span lang="en">The full plan is an insider document, shared only with creators interested in working with ThB.Ho.</span></p>
    <div class="row" style="display:flex;flex-wrap:wrap;gap:10px">
     <a class="btn solid" href="O2OEventsVR.html"><span lang="th">🔒 เปิดแผน GymMateX O2O · VR ฉบับวงใน →</span><span lang="en">🔒 Open the insider GymMateX O2O · VR plan →</span></a>
     <a class="btn" href="#quiz"><span lang="th">เริ่มจาก collab ก่อน</span><span lang="en">Start with a collab</span></a>

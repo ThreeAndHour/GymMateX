@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "Dark hero theme night": "Тематическая ночь тёмных героев",
+  "Jungle warrior theme night": "Тематическая ночь воинов джунглей",
+  "Wild West theme night": "Тематическая ночь Дикого Запада",
   "Open on YouTube \u2197": "Открыть на YouTube ↗",
   "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Плейлист Hybrid Creator Lab · клипы и фильмы Three, B. и Hour — нажмите на видео, чтобы включить звук",
   "A cinematic opening for your event": "Кинематографичное открытие вашего события",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "Dark hero theme night": "暗黑英雄主题之夜",
+  "Jungle warrior theme night": "丛林战士主题之夜",
+  "Wild West theme night": "狂野西部主题之夜",
   "Open on YouTube \u2197": "在 YouTube 打开 ↗",
   "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab 播放列表 · Three、B. 与 Hour 的 MV 和短片 — 点击视频开启声音",
   "A cinematic opening for your event": "为活动打造电影感开场",

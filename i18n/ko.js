@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "Dark hero theme night": "다크 히어로 테마 나이트",
+  "Jungle warrior theme night": "정글 전사 테마 나이트",
+  "Wild West theme night": "와일드 웨스트 테마 나이트",
   "Open on YouTube \u2197": "YouTube에서 열기 ↗",
   "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab 재생목록 · Three, B., Hour의 뮤직비디오와 영화 — 영상을 눌러 소리를 켜세요",
   "A cinematic opening for your event": "이벤트를 위한 영화 같은 오프닝",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "Dark hero theme night": "ダークヒーローのテーマナイト",
+  "Jungle warrior theme night": "ジャングル戦士のテーマナイト",
+  "Wild West theme night": "ワイルドウエストのテーマナイト",
   "Open on YouTube \u2197": "YouTubeで開く ↗",
   "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Hybrid Creator Lab プレイリスト · Three、B.、Hour のMVと映像 — 動画をタップして音声オン",
   "A cinematic opening for your event": "イベントを彩る映画のようなオープニング",

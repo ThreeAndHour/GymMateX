@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('es', {
+  "Dark hero theme night": "Noche temática de héroes oscuros",
+  "Jungle warrior theme night": "Noche temática de guerreros de la selva",
+  "Wild West theme night": "Noche temática del Lejano Oeste",
   "Open on YouTube \u2197": "Abrir en YouTube ↗",
   "Hybrid Creator Lab playlist · music videos and films of Three, B. and Hour — tap the video for sound": "Lista Hybrid Creator Lab · videoclips y películas de Three, B. y Hour — toca el video para activar el sonido",
   "A cinematic opening for your event": "Una apertura cinematográfica para tu evento",

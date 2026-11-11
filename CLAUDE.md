@@ -33,7 +33,7 @@ FitFantasy and O2OEventsVR keep their own orange theme.
 ## Shared files (edit with care: every page uses them)
 - `thbho-i18n.js` + `i18n/{zh,ru,ko,ja,es}.js`: 7 languages. In HTML, Thai and English are written inline as
   `<span lang="th">…</span><span lang="en">…</span>`. The other 5 come from the i18n files, keyed by the exact English text:
-  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 46).
+  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 47).
 - `x-media.js`: `window.THBHO_X = {id: {mp4 (~720p), poster, w, h, hd (1080p)}}` for X videos.
 - `thbho-player.js`: poster + play button → `<video referrerpolicy="no-referrer">`, swaps to `hd` in full screen.
 - `thbho-ytlist.js`: YouTube playlist player that skips videos YouTube refuses to embed.
@@ -58,6 +58,7 @@ One object per card, newest first:
 - `u:'threeandhour'`: the post is on @threeandhour (default account is @widerooms).
 - YouTube card: `{id:'yt-<ytid>',yt:'<ytid>',…,v:'',vn:0,…}` with poster `creator-img/yt-<ytid>.jpg`. Unlisted YouTube videos show no views/likes.
 - Photo card: `cat:'photo'` with `img:[…]`.
+- Theme filter: every row ends with `th:'…'`, one or more of `beach fantasy scifi city studio love` (space separated). The add scripts do not set it; add it by hand or the clip shows under no theme.
 
 Add X posts with the scripts (run from the repo root, they read api.fxtwitter.com):
 - `python3 -I tools/add_x_post.py --dry <id|url> …` then without `--dry` (add `--account threeandhour` for @threeandhour posts).

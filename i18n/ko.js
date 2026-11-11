@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ko', {
+  "Theme": "테마",
+  "Beach &amp; Yacht": "해변과 요트",
+  "Fantasy &amp; Adventure": "판타지와 모험",
+  "Sci-fi &amp; Time": "SF와 시간 여행",
+  "City &amp; Neon": "도시와 네온",
+  "Fitness &amp; Studio": "피트니스와 스튜디오",
+  "Love stories": "러브 스토리",
   "An Ancient Greek god look": "고대 그리스 신 룩",
   "A desert set and wings built by AI": "AI가 만든 사막 세트와 날개",
   "A two-day series with Three, B. and Hour": "Three, B., Hour와 함께한 이틀 시리즈",

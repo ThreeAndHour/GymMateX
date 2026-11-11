@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ru', {
+  "Theme": "Тема",
+  "Beach &amp; Yacht": "Пляж и яхта",
+  "Fantasy &amp; Adventure": "Фэнтези и приключения",
+  "Sci-fi &amp; Time": "Sci-fi и время",
+  "City &amp; Neon": "Город и неон",
+  "Fitness &amp; Studio": "Фитнес и студия",
+  "Love stories": "Истории любви",
   "An Ancient Greek god look": "Образ древнегреческого бога",
   "A desert set and wings built by AI": "Пустыня и крылья, созданные ИИ",
   "A two-day series with Three, B. and Hour": "Двухдневная серия с Three, B. и Hour",

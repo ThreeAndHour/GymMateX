@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('zh', {
+  "Theme": "主题",
+  "Beach &amp; Yacht": "海滩与游艇",
+  "Fantasy &amp; Adventure": "奇幻与冒险",
+  "Sci-fi &amp; Time": "科幻与时空",
+  "City &amp; Neon": "都市与霓虹",
+  "Fitness &amp; Studio": "健身与棚拍",
+  "Love stories": "爱情故事",
   "An Ancient Greek god look": "古希腊神祇风格",
   "A desert set and wings built by AI": "由 AI 打造的沙漠场景与翅膀",
   "A two-day series with Three, B. and Hour": "与 Three、B. 和 Hour 的两天系列",

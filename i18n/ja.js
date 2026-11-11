@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ja', {
+  "An Ancient Greek god look": "古代ギリシャの神のルック",
   "A desert set and wings built by AI": "AIが作る砂漠のセットと翼",
   "A two-day series with Three, B. and Hour": "Three、B.、Hour との2日間シリーズ",
   "Cinematic short films and MVs": "映画のようなショートフィルムとMV",

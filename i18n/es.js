@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "An Ancient Greek god look": "Un look de dios de la antigua Grecia",
   "A desert set and wings built by AI": "Un set de desierto y alas creados con IA",
   "A two-day series with Three, B. and Hour": "Una serie de dos días con Three, B. y Hour",
   "Cinematic short films and MVs": "Cortos y videoclips cinematográficos",

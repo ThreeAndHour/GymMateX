@@ -33,7 +33,7 @@ FitFantasy and O2OEventsVR keep their own orange theme.
 ## Shared files (edit with care: every page uses them)
 - `thbho-i18n.js` + `i18n/{zh,ru,ko,ja,es}.js`: 7 languages. In HTML, Thai and English are written inline as
   `<span lang="th">…</span><span lang="en">…</span>`. The other 5 come from the i18n files, keyed by the exact English text:
-  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 45).
+  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 46).
 - `x-media.js`: `window.THBHO_X = {id: {mp4 (~720p), poster, w, h, hd (1080p)}}` for X videos.
 - `thbho-player.js`: poster + play button → `<video referrerpolicy="no-referrer">`, swaps to `hd` in full screen.
 - `thbho-ytlist.js`: YouTube playlist player that skips videos YouTube refuses to embed.

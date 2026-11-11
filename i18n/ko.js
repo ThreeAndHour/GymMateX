@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "An Ancient Greek god look": "고대 그리스 신 룩",
   "A desert set and wings built by AI": "AI가 만든 사막 세트와 날개",
   "A two-day series with Three, B. and Hour": "Three, B., Hour와 함께한 이틀 시리즈",
   "Cinematic short films and MVs": "영화 같은 단편과 뮤직비디오",

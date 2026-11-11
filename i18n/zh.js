@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('zh', {
+  "A desert set and wings built by AI": "由 AI 打造的沙漠场景与翅膀",
   "A two-day series with Three, B. and Hour": "与 Three、B. 和 Hour 的两天系列",
   "Cinematic short films and MVs": "电影感短片与 MV",
   "An audience crossover with Three, B. and Hour": "与 Three、B. 和 Hour 互通粉丝",

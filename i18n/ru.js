@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "A desert set and wings built by AI": "Пустыня и крылья, созданные ИИ",
   "A two-day series with Three, B. and Hour": "Двухдневная серия с Three, B. и Hour",
   "Cinematic short films and MVs": "Кинематографичные фильмы и клипы",
   "An audience crossover with Three, B. and Hour": "Пересечение аудиторий с Three, B. и Hour",

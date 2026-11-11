@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ja', {
+  "A desert set and wings built by AI": "AIが作る砂漠のセットと翼",
   "A two-day series with Three, B. and Hour": "Three、B.、Hour との2日間シリーズ",
   "Cinematic short films and MVs": "映画のようなショートフィルムとMV",
   "An audience crossover with Three, B. and Hour": "Three、B.、Hour とファン層をクロスオーバー",

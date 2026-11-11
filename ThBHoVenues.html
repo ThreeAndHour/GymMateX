@@ -152,7 +152,15 @@ section{padding:64px 0 0}
 
 .o2o{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:860px){.o2o{grid-template-columns:1fr}}
-.stage{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
+.stage{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .4s}
+.stage>*{position:relative;z-index:1}
+.stage>.sbg{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.38;transition:opacity .5s,transform 6s ease-out;pointer-events:none}
+.stage>.sshade{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,18,17,.45),rgba(8,18,17,.9) 65%)}
+.stage:hover{border-color:var(--accent);transform:translateY(-3px)}.stage:hover>.sbg{opacity:.65;transform:scale(1.04)}
+.stage:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.stage .sclip{all:unset;position:relative;z-index:1;cursor:pointer;font:500 11.5px var(--mono);color:var(--ink2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage:hover .sclip,.stage .sclip:focus-visible{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.stage>.sbg{transition:none}.stage:hover>.sbg{transform:none}}
 .stage .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .stage:nth-child(2) .k{color:var(--accent2)}
 .stage:nth-child(3) .k{color:var(--rose)}
@@ -488,9 +496,9 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <p><span lang="th">ร้านของคุณคือจุดเริ่มต้นของระบบ — คืน Casting และทริป wellness ที่จัดร่วมกัน สร้างรายได้วันนี้ และเป็นฐานของ persona ในโลก VR ในอนาคต</span><span lang="en">Your venue is where the system starts: casting nights and wellness trips we co-host earn today, and become the base for personas in VR tomorrow.</span></p>
  </div>
  <div class="o2o">
-  <div class="stage"><span class="k">01 · Offline casting</span><h3><span lang="th">อีเวนต์คัดเลือกที่ร้าน</span><span lang="en">Casting events at the venue</span></h3><p><span lang="th">คืน Casting, Pairing Night และ Creator Lab · ค้นหานายแบบและ creator ผ่านกิจกรรมฟิตเนสและการออดิชัน · ลูกค้า VIP ซื้อบัตรเข้าชมงานจริง</span><span lang="en">Casting nights, Pairing Nights and the Creator Lab find models and creators. Guests buy tickets to the live event.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">รายได้บัตร ลูกค้าใหม่ และ content หลังงาน</span><span lang="en">Ticket revenue, new guests and post-event content</span></p></div>
-  <div class="stage"><span class="k">02 · Wellness trips</span><h3><span lang="th">ทริปส่วนตัวและการเก็บข้อมูล</span><span lang="en">Private trips &amp; capture</span></h3><p><span lang="th">ทริป 3 วัน 2 คืนสำหรับผู้ชนะและสมาชิก · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · ถ่ายทำและบันทึกท่าทาง เสียง และบุคลิก (ด้วยความยินยอม)</span><span lang="en">3-day trips for winners and members at partner venues, capturing movement, voice and personality with consent.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">ส่วนแบ่งแพ็กเกจและชื่อในฐานะผู้ร่วมจัด</span><span lang="en">A package share and co-host billing</span></p></div>
-  <div class="stage"><span class="k">03 · Online VR</span><h3><span lang="th">AI Persona และ VR</span><span lang="en">AI personas &amp; VR</span></h3><p><span lang="th">เปลี่ยนข้อมูลเป็น Digital Twin ที่แฟนคุยและพบได้ในโลก VR · ฉาก 3 มิติแนว Fitness &amp; Fantasy · โมเดลสมาชิกรายเดือนจากผู้ใช้ทั่วโลก</span><span lang="en">That data becomes Digital Twins fans can talk to and meet in VR, on a global subscription.</span></p><p class="fit"><b><span lang="th">Creator ได้</span><span lang="en">Creators get</span></b><span lang="th">ตัวตนดิจิทัลที่ทำรายได้ต่อเนื่อง แบ่งรายได้กัน</span><span lang="en">A digital self that keeps earning, on a revenue share</span></p></div>
+  <div class="stage"><video class="sbg" src="https://video.twimg.com/amplify_video/1916344700124205056/vid/avc1/480x270/VQRLp-nlExlruaCL.mp4?tag=16" poster="https://pbs.twimg.com/amplify_video_thumb/1916344700124205056/img/3TnJOjF6B1ao1LeX.jpg" data-start="8" muted loop playsinline preload="none" referrerpolicy="no-referrer" aria-hidden="true"></video><span class="sshade" aria-hidden="true"></span><span class="k">01 · Offline casting</span><h3><span lang="th">อีเวนต์คัดเลือกที่ร้าน</span><span lang="en">Casting events at the venue</span></h3><p><span lang="th">คืน Casting, Pairing Night และ Creator Lab · ค้นหานายแบบและ creator ผ่านกิจกรรมฟิตเนสและการออดิชัน · ลูกค้า VIP ซื้อบัตรเข้าชมงานจริง</span><span lang="en">Casting nights, Pairing Nights and the Creator Lab find models and creators. Guests buy tickets to the live event.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">รายได้บัตร ลูกค้าใหม่ และ content หลังงาน</span><span lang="en">Ticket revenue, new guests and post-event content</span></p><button type="button" class="sclip" data-x="1916508384632651810">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Beautiful Steps · fashion film</button></div>
+  <div class="stage"><video class="sbg" src="https://video.twimg.com/amplify_video/2089287979252719616/vid/avc1/480x270/DLPmBoILJQbAR5dZ.mp4?tag=29" poster="https://pbs.twimg.com/media/HQVf5xjbEAEHJ4f.jpg" data-start="30" muted loop playsinline preload="none" referrerpolicy="no-referrer" aria-hidden="true"></video><span class="sshade" aria-hidden="true"></span><span class="k">02 · Wellness trips</span><h3><span lang="th">ทริปส่วนตัวและการเก็บข้อมูล</span><span lang="en">Private trips &amp; capture</span></h3><p><span lang="th">ทริป 3 วัน 2 คืนสำหรับผู้ชนะและสมาชิก · ใช้สถานที่ ห้องพัก และทีมนวดของร้านพันธมิตร · ถ่ายทำและบันทึกท่าทาง เสียง และบุคลิก (ด้วยความยินยอม)</span><span lang="en">3-day trips for winners and members at partner venues, capturing movement, voice and personality with consent.</span></p><p class="fit"><b><span lang="th">ร้านได้</span><span lang="en">Venue gets</span></b><span lang="th">ส่วนแบ่งแพ็กเกจและชื่อในฐานะผู้ร่วมจัด</span><span lang="en">A package share and co-host billing</span></p><button type="button" class="sclip" data-x="2089337196402852328">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · La sal en la piel</button></div>
+  <div class="stage"><video class="sbg" src="https://video.twimg.com/amplify_video/2079606104322117632/vid/avc1/320x568/I9n0NvZ2NRZnCdrM.mp4?tag=29" poster="https://pbs.twimg.com/media/HNxBJMvbsAEYEM4.jpg" data-start="24" muted loop playsinline preload="none" referrerpolicy="no-referrer" aria-hidden="true"></video><span class="sshade" aria-hidden="true"></span><span class="k">03 · Online VR</span><h3><span lang="th">AI Persona และ VR</span><span lang="en">AI personas &amp; VR</span></h3><p><span lang="th">เปลี่ยนข้อมูลเป็น Digital Twin ที่แฟนคุยและพบได้ในโลก VR · ฉาก 3 มิติแนว Fitness &amp; Fantasy · โมเดลสมาชิกรายเดือนจากผู้ใช้ทั่วโลก</span><span lang="en">That data becomes Digital Twins fans can talk to and meet in VR, on a global subscription.</span></p><p class="fit"><b><span lang="th">Creator ได้</span><span lang="en">Creators get</span></b><span lang="th">ตัวตนดิจิทัลที่ทำรายได้ต่อเนื่อง แบ่งรายได้กัน</span><span lang="en">A digital self that keeps earning, on a revenue share</span></p><button type="button" class="sclip" data-x="2079606281426620478">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Lost in Time feat. 3I/ATLAS</button></div>
  </div>
  <ol class="phases">
   <li class="now"><time>Phase 1 · 2026</time><div><b><span lang="th">ต้นแบบและวางระบบ</span><span lang="en">Prototype &amp; groundwork</span></b><span><span lang="th">"ThB.Ho" (Three · B. · Hour) เป็น AI ต้นแบบตัวแรก · วางกรอบกฎหมายและความเป็นส่วนตัว · เปิด Creator Lab และหน้า Matching ให้ร้านพันธมิตร</span><span lang="en">"ThB.Ho" (Three · B. · Hour) is the first AI prototype. Legal and privacy frameworks, the Creator Lab and matching pages for partner venues.</span></span></div></li>
@@ -625,7 +633,7 @@ function lvInit(P){
  })();
  // ---- strength cards: background clips play only while on screen ----
  (function(){
-  var vs=document.querySelectorAll('.usp .ubg, .looks video'); if(!vs.length)return;
+  var vs=document.querySelectorAll('.usp .ubg, .looks video, .stage .sbg'); if(!vs.length)return;
   var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   vs.forEach(function(v){v.preload='metadata';var st=+v.dataset.start||0;if(!st)return;
    v.addEventListener('loadedmetadata',function(){try{v.currentTime=st}catch(e){}},{once:true});
@@ -637,16 +645,24 @@ function lvInit(P){
  // ---- strength cards: tap a card to watch its clip in a popup ----
  (function(){
   var d=document.getElementById('vpop'),box=document.getElementById('vpopBox'),cap=document.getElementById('vpopCap'); if(!d)return;
-  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg, .lvv video').forEach(function(x){x.play&&x.play().catch(function(){})})}
+  function close(){var v=box.querySelector('video');if(v)v.pause();box.innerHTML='';window.__vpop=0;if(d.open)d.close();document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg').forEach(function(x){x.play&&x.play().catch(function(){})})}
   function open(id,title){
    var m=window.THBHO_X&&THBHO_X[id]; if(!m||!m.mp4){window.open('https://x.com/widerooms/status/'+id,'_blank','noopener');return}
-   window.__vpop=1;document.querySelectorAll('.usp .ubg').forEach(function(x){x.pause()});
+   window.__vpop=1;document.querySelectorAll('.usp .ubg, .lvv video, .stage .sbg').forEach(function(x){x.pause()});
    var v=document.createElement('video');v.setAttribute('referrerpolicy','no-referrer');v.controls=true;v.playsInline=true;v.autoplay=true;v.poster=m.poster||'';v.src=m.mp4;
    box.innerHTML='';box.appendChild(v);
    cap.innerHTML=title+' · <a href="https://x.com/widerooms/status/'+id+'" target="_blank" rel="noopener">X ↗</a>';
    d.showModal?d.showModal():d.setAttribute('open','');v.play&&v.play().catch(function(){});
   }
   window.__vopen=open;
+  document.querySelectorAll('.stage').forEach(function(a){
+   var b=a.querySelector('.sclip'); if(!b)return;
+   a.tabIndex=0;a.setAttribute('role','button');
+   var t=b.textContent.split('·').slice(1).join('·').trim(); a.setAttribute('aria-label',t);
+   function go(e){e.preventDefault();open(b.dataset.x,t)}
+   a.addEventListener('click',go);
+   a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')go(e)});
+  });
   document.querySelectorAll('.usp article').forEach(function(a){
    var b=a.querySelector('.uclip'); if(!b)return;
    a.tabIndex=0;a.setAttribute('role','button');

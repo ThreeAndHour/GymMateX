@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · ティーザー — Three、B.、Hour がそろうネオンの夜",
+  "Gladiator theme night": "グラディエーターのテーマナイト",
+  "Steampunk costume party": "スチームパンクのコスチュームパーティー",
   "We use cookies to count visitors anonymously and improve this page.": "訪問者数を匿名で集計し、ページを改善するために Cookie を使用しています。",
   "Accept": "同意する",
   "Decline": "拒否する",

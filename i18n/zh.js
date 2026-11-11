@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · 预告 — Three、B. 与 Hour 同在一个霓虹之夜",
+  "Gladiator theme night": "角斗士主题之夜",
+  "Steampunk costume party": "蒸汽朋克变装派对",
   "We use cookies to count visitors anonymously and improve this page.": "我们使用 Cookie 匿名统计访客数量，以改进本页面。",
   "Accept": "接受",
   "Decline": "拒绝",

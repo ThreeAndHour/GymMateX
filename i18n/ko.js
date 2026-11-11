@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · 티저 — Three, B., Hour가 함께한 네온의 밤",
+  "Gladiator theme night": "글래디에이터 테마 나이트",
+  "Steampunk costume party": "스팀펑크 코스튬 파티",
   "We use cookies to count visitors anonymously and improve this page.": "방문자 수를 익명으로 집계하고 페이지를 개선하기 위해 쿠키를 사용합니다.",
   "Accept": "수락",
   "Decline": "거부",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "Lost In Neon Light · teaser — Three, B. and Hour in one neon night": "Lost In Neon Light · тизер — Three, B. и Hour в одной неоновой ночи",
+  "Gladiator theme night": "Тематическая ночь гладиаторов",
+  "Steampunk costume party": "Костюмированная вечеринка в стиле стимпанк",
   "We use cookies to count visitors anonymously and improve this page.": "Мы используем cookie, чтобы анонимно считать посетителей и улучшать страницу.",
   "Accept": "Принять",
   "Decline": "Отклонить",

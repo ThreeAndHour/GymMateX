@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ja', {
+  "Fitness content for every platform": "あらゆるプラットフォーム向けのフィットネスコンテンツ",
+  "A cinematic short film": "映画のようなショートフィルム",
+  "A fashion film with Three, B. and Hour": "Three、B.、Hour と作るファッションフィルム",
+  "A beach set built by AI": "AIが作るビーチのセット",
+  "An MBTI pair series": "MBTIペアのシリーズ",
+  "A neon after-dark look": "ネオンのアフターダークルック",
   "Dark hero theme night": "ダークヒーローのテーマナイト",
   "Jungle warrior theme night": "ジャングル戦士のテーマナイト",
   "Wild West theme night": "ワイルドウエストのテーマナイト",

@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('zh', {
+  "Fitness content for every platform": "适用于所有平台的健身内容",
+  "A cinematic short film": "电影感短片",
+  "A fashion film with Three, B. and Hour": "与 Three、B. 和 Hour 合作的时尚短片",
+  "A beach set built by AI": "由 AI 打造的海滩场景",
+  "An MBTI pair series": "MBTI 搭档系列",
+  "A neon after-dark look": "霓虹夜色风格",
   "Dark hero theme night": "暗黑英雄主题之夜",
   "Jungle warrior theme night": "丛林战士主题之夜",
   "Wild West theme night": "狂野西部主题之夜",

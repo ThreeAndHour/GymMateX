@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ko', {
+  "Fitness content for every platform": "모든 플랫폼에 맞는 피트니스 콘텐츠",
+  "A cinematic short film": "영화 같은 단편 영상",
+  "A fashion film with Three, B. and Hour": "Three, B., Hour와 함께한 패션 필름",
+  "A beach set built by AI": "AI가 만든 해변 세트",
+  "An MBTI pair series": "MBTI 페어 시리즈",
+  "A neon after-dark look": "네온 애프터 다크 룩",
   "Dark hero theme night": "다크 히어로 테마 나이트",
   "Jungle warrior theme night": "정글 전사 테마 나이트",
   "Wild West theme night": "와일드 웨스트 테마 나이트",

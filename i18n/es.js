@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('es', {
+  "Fitness content for every platform": "Contenido fitness para todas las plataformas",
+  "A cinematic short film": "Un cortometraje cinematográfico",
+  "A fashion film with Three, B. and Hour": "Un fashion film con Three, B. y Hour",
+  "A beach set built by AI": "Un set de playa creado con IA",
+  "An MBTI pair series": "Una serie en pareja MBTI",
+  "A neon after-dark look": "Un look nocturno de neón",
   "Dark hero theme night": "Noche temática de héroes oscuros",
   "Jungle warrior theme night": "Noche temática de guerreros de la selva",
   "Wild West theme night": "Noche temática del Lejano Oeste",

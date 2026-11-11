@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('ru', {
+  "Fitness content for every platform": "Фитнес-контент для любой платформы",
+  "A cinematic short film": "Кинематографичный короткий фильм",
+  "A fashion film with Three, B. and Hour": "Фэшн-фильм с Three, B. и Hour",
+  "A beach set built by AI": "Пляжная локация, созданная ИИ",
+  "An MBTI pair series": "Серия с MBTI-парой",
+  "A neon after-dark look": "Ночной неоновый образ",
   "Dark hero theme night": "Тематическая ночь тёмных героев",
   "Jungle warrior theme night": "Тематическая ночь воинов джунглей",
   "Wild West theme night": "Тематическая ночь Дикого Запада",

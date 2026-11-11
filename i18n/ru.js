@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "Cinematic short films and MVs": "Кинематографичные фильмы и клипы",
+  "An audience crossover with Three, B. and Hour": "Пересечение аудиторий с Three, B. и Hour",
+  "An MBTI pair series on a yacht": "Серия с MBTI-парой на яхте",
   "Fitness content for every platform": "Фитнес-контент для любой платформы",
   "A cinematic short film": "Кинематографичный короткий фильм",
   "A fashion film with Three, B. and Hour": "Фэшн-фильм с Three, B. и Hour",

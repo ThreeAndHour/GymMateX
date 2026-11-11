@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "Cinematic short films and MVs": "电影感短片与 MV",
+  "An audience crossover with Three, B. and Hour": "与 Three、B. 和 Hour 互通粉丝",
+  "An MBTI pair series on a yacht": "游艇上的 MBTI 搭档系列",
   "Fitness content for every platform": "适用于所有平台的健身内容",
   "A cinematic short film": "电影感短片",
   "A fashion film with Three, B. and Hour": "与 Three、B. 和 Hour 合作的时尚短片",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('es', {
+  "Cinematic short films and MVs": "Cortos y videoclips cinematográficos",
+  "An audience crossover with Three, B. and Hour": "Un cruce de audiencias con Three, B. y Hour",
+  "An MBTI pair series on a yacht": "Una serie en pareja MBTI en un yate",
   "Fitness content for every platform": "Contenido fitness para todas las plataformas",
   "A cinematic short film": "Un cortometraje cinematográfico",
   "A fashion film with Three, B. and Hour": "Un fashion film con Three, B. y Hour",

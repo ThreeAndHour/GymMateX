@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "Cinematic short films and MVs": "映画のようなショートフィルムとMV",
+  "An audience crossover with Three, B. and Hour": "Three、B.、Hour とファン層をクロスオーバー",
+  "An MBTI pair series on a yacht": "ヨットで撮るMBTIペアのシリーズ",
   "Fitness content for every platform": "あらゆるプラットフォーム向けのフィットネスコンテンツ",
   "A cinematic short film": "映画のようなショートフィルム",
   "A fashion film with Three, B. and Hour": "Three、B.、Hour と作るファッションフィルム",

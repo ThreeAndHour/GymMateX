@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "Cinematic short films and MVs": "영화 같은 단편과 뮤직비디오",
+  "An audience crossover with Three, B. and Hour": "Three, B., Hour와 팬층 교차",
+  "An MBTI pair series on a yacht": "요트 위의 MBTI 페어 시리즈",
   "Fitness content for every platform": "모든 플랫폼에 맞는 피트니스 콘텐츠",
   "A cinematic short film": "영화 같은 단편 영상",
   "A fashion film with Three, B. and Hour": "Three, B., Hour와 함께한 패션 필름",

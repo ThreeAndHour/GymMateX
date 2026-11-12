@@ -1,7 +1,7 @@
 name: Refresh X view counts
 on:
   schedule:
-    - cron: '0 20 * * *'   # 03:00 Asia/Bangkok
+    - cron: '17 22 * * *'  # 05:17 Asia/Bangkok (off the hour; GitHub often starts it later in the morning)
   workflow_dispatch:
 permissions:
   contents: write

@@ -65,7 +65,7 @@ Add X posts with the scripts (run from the repo root, they read api.fxtwitter.co
 - `python3 -I tools/add_x_photo.py --dry <id|url> …` for photo posts.
 The scripts guess category and personas; fix them by the rules above before committing.
 
-Daily view/like refresh: `.github/workflows/refresh-views.yml` runs `tools/refresh_views.py` at 20:00 UTC (03:00 Bangkok) and commits to `main` as thbho-bot. It only updates numeric X ids (YouTube rows are skipped).
+Daily view/like refresh: `.github/workflows/refresh-views.yml` runs `tools/refresh_views.py` once a day at 22:17 UTC (05:17 Bangkok; GitHub often starts it 1–3 h late, so expect it in the morning) and commits to `main` as thbho-bot. It only updates numeric X ids (YouTube rows are skipped).
 
 ## Git workflow
 - Work on branch `matching-demo`, publish by pushing it to `main`. Always merge `origin/main` first, because the daily bot commits there:

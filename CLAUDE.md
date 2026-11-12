@@ -66,6 +66,7 @@ Add X posts with the scripts (run from the repo root, they read api.fxtwitter.co
 The scripts guess category and personas; fix them by the rules above before committing.
 
 Daily view/like refresh: `.github/workflows/refresh-views.yml` runs `tools/refresh_views.py` once a day at 22:17 UTC (05:17 Bangkok; GitHub often starts it 1–3 h late, so expect it in the morning) and commits to `main` as thbho-bot. It only updates numeric X ids (YouTube rows are skipped).
+Weekly report: `node tools/weekly_stats.js` (after `git fetch --depth 400 origin main`) prints the week's numbers as JSON from the bot commits. A scheduled task adds them every Monday as a new section at the top of the Claude Doc "ThB.Ho Creators · รายงานยอดวิว X รายสัปดาห์" (https://claude.ai/artifact/RnkemFbp6jKzxmgr2a5SqA). "Gain" for the whole week = clips listed all week; day-over-day bars = all clips listed on both days (new clips count from the day they were added).
 
 ## Git workflow
 - Work on branch `matching-demo`, publish by pushing it to `main`. Always merge `origin/main` first, because the daily bot commits there:

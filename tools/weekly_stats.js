@@ -1,5 +1,5 @@
 // Weekly X view/like stats from the daily refresh commits (thbho-bot) on origin/main.
-// Usage (repo root):  git fetch --depth 400 origin main  &&  node tools/weekly_stats.js [days=7]
+// Usage (repo root):  git fetch --depth 400 origin +main:refs/remotes/origin/main  &&  node tools/weekly_stats.js [days=7]
 // Prints JSON: totals, daily like-for-like gains, top movers, new clips, persona totals, all-time top.
 const { execSync } = require('child_process');
 const days = +(process.argv[2] || 7);

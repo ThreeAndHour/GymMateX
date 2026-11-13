@@ -58,6 +58,7 @@ One object per card, newest first:
 - `u:'threeandhour'`: the post is on @threeandhour (default account is @widerooms).
 - YouTube card: `{id:'yt-<ytid>',yt:'<ytid>',…,v:'',vn:0,…}` with poster `creator-img/yt-<ytid>.jpg`. Unlisted YouTube videos show no views/likes.
 - Photo card: `cat:'photo'` with `img:[…]`.
+- Clips over 30 days old with under 10K views show no view/like numbers (worked out in the page from `ts` and `vn`, so it updates itself).
 - Theme filter: every row ends with `th:'…'`, one or more of `beach fantasy scifi city studio love` (space separated). The add scripts do not set it; add it by hand or the clip shows under no theme.
 
 Add X posts with the scripts (run from the repo root, they read api.fxtwitter.com):
@@ -66,12 +67,12 @@ Add X posts with the scripts (run from the repo root, they read api.fxtwitter.co
 The scripts guess category and personas; fix them by the rules above before committing.
 
 Daily view/like refresh: `.github/workflows/refresh-views.yml` runs `tools/refresh_views.py` once a day at 22:17 UTC (05:17 Bangkok; GitHub often starts it 1–3 h late, so expect it in the morning) and commits to `main` as thbho-bot. It only updates numeric X ids (YouTube rows are skipped).
-Weekly report: `node tools/weekly_stats.js` (after `git fetch --depth 400 origin main`) prints the week's numbers as JSON from the bot commits. A scheduled task adds them every Monday as a new section at the top of the Claude Doc "ThB.Ho Creators · รายงานยอดวิว X รายสัปดาห์" (https://claude.ai/artifact/RnkemFbp6jKzxmgr2a5SqA). "Gain" for the whole week = clips listed all week; day-over-day bars = all clips listed on both days (new clips count from the day they were added).
+Weekly report: `node tools/weekly_stats.js` (after `git fetch --depth 400 origin +main:refs/remotes/origin/main`) prints the week's numbers as JSON from the bot commits. A scheduled task adds them every Monday as a new section at the top of the Claude Doc "ThB.Ho Creators · รายงานยอดวิว X รายสัปดาห์" (https://claude.ai/artifact/RnkemFbp6jKzxmgr2a5SqA). "Gain" for the whole week = clips listed all week; day-over-day bars = all clips listed on both days (new clips count from the day they were added).
 
 ## Git workflow
 - Work on branch `matching-demo`, publish by pushing it to `main`. Always merge `origin/main` first, because the daily bot commits there:
   ```
-  git fetch -q origin main && git merge -q --no-edit origin/main
+  git fetch -q origin +main:refs/remotes/origin/main && git merge -q --no-edit origin/main
   git push origin matching-demo && git push origin matching-demo:main
   ```
 - No force push, no rebase of published history.

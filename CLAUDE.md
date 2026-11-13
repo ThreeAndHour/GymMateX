@@ -58,7 +58,7 @@ One object per card, newest first:
 - `u:'threeandhour'`: the post is on @threeandhour (default account is @widerooms).
 - YouTube card: `{id:'yt-<ytid>',yt:'<ytid>',…,v:'',vn:0,…}` with poster `creator-img/yt-<ytid>.jpg`. Unlisted YouTube videos show no views/likes.
 - Photo card: `cat:'photo'` with `img:[…]`.
-- Clips over 30 days old with under 10K views show no view/like numbers (worked out in the page from `ts` and `vn`, so it updates itself).
+- Clips over 30 days old with under 6K views show no view/like numbers (worked out in the page from `ts` and `vn`, so it updates itself).
 - Theme filter: every row ends with `th:'…'`, one or more of `beach fantasy scifi city studio love` (space separated). The add scripts do not set it; add it by hand or the clip shows under no theme.
 
 Add X posts with the scripts (run from the repo root, they read api.fxtwitter.com):

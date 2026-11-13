@@ -356,8 +356,9 @@ main{padding:22px 0 60px}
  function K(n){return n>=1e6?(n/1e6).toFixed(1)+'M':n>=10000?Math.round(n/1000)+'K':n>=1000?(n/1000).toFixed(1)+'K':String(n)}
  grid.innerHTML=FILMS.map(function(f){
   var pp=f.p.map(function(k){return '<span class="pp" style="--c:'+PC[k]+'">'+PN[k]+'</span>'}).join('');
-  var views=f.v?'<span class="views">'+f.v+' '+T('วิว','views')+'</span>':'';
-  var likes=f.ln?'<span class="likes">♥ '+K(f.ln)+'</span>':'';
+  var quiet=f.cat!=='photo'&&f.ts&&(f.vn||0)<10000&&Date.now()/1e3-f.ts>30*86400; // over a month old and under 10K views: hide the numbers
+  var views=f.v&&!quiet?'<span class="views">'+f.v+' '+T('วิว','views')+'</span>':'';
+  var likes=f.ln&&!quiet?'<span class="likes">♥ '+K(f.ln)+'</span>':'';
   var note='<span>'+f.d+(f.dur?' · '+f.dur:'')+(f.img&&f.img.length>1?' · '+f.img.length+' '+T('ภาพ','photos'):'')+'</span>';
   var emb='<div class="emb"></div>', xurl=f.yt?'https://youtu.be/'+f.yt:'https://x.com/'+(f.u||'widerooms')+'/status/'+f.id;
   var src=f.yt?'<span class="src yt">▶ YouTube</span>':'';

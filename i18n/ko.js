@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "The newest music videos from Hybrid Creator Lab, playing one after another": "Hybrid Creator Lab의 최신 뮤직비디오가 연속 재생됩니다",
   "Personas with a real person and a human heart behind them": "실제 인물과 인간의 마음이 담긴 페르소나",
   "Where Three, B., Hour and the name ThB.Ho come from": "Three, B., Hour와 ThB.Ho라는 이름의 유래",
   "THOR's original personality": "THOR 본래의 성격",

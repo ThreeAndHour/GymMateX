@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "The newest music videos from Hybrid Creator Lab, playing one after another": "Новейшие клипы Hybrid Creator Lab воспроизводятся один за другим",
   "Personas with a real person and a human heart behind them": "За каждой персоной стоит реальный человек и живое сердце",
   "Where Three, B., Hour and the name ThB.Ho come from": "Откуда Three, B., Hour и имя ThB.Ho",
   "THOR's original personality": "Исходный характер THOR",

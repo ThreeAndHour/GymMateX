@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('zh', {
+  "Personas with a real person and a human heart behind them": "每个 persona 背后，都有真实的人和一颗人性的心",
   "Where Three, B., Hour and the name ThB.Ho come from": "Three、B.、Hour 与 ThB.Ho 这个名字的由来",
   "THOR's original personality": "THOR 原本的性格",
   "A persona THOR developed for sales, marketing and PR": "THOR 为销售、营销和公关而发展出的角色",

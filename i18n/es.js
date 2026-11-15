@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "Personas with a real person and a human heart behind them": "Personas con una persona real y un corazón humano detrás",
   "Where Three, B., Hour and the name ThB.Ho come from": "De dónde vienen Three, B., Hour y el nombre ThB.Ho",
   "THOR's original personality": "La personalidad original de THOR",
   "A persona THOR developed for sales, marketing and PR": "Un personaje que THOR desarrolló para ventas, marketing y relaciones públicas",

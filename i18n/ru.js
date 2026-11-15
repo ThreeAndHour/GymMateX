@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "Personas with a real person and a human heart behind them": "За каждой персоной стоит реальный человек и живое сердце",
   "Where Three, B., Hour and the name ThB.Ho come from": "Откуда Three, B., Hour и имя ThB.Ho",
   "THOR's original personality": "Исходный характер THOR",
   "A persona THOR developed for sales, marketing and PR": "Персона, которую THOR развил для продаж, маркетинга и PR",

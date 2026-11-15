@@ -1,4 +1,10 @@
 THBHO_I18N_ADD('zh', {
+  "Where Three, B., Hour and the name ThB.Ho come from": "Three、B.、Hour 与 ThB.Ho 这个名字的由来",
+  "THOR's original personality": "THOR 原本的性格",
+  "A persona THOR developed for sales, marketing and PR": "THOR 为销售、营销和公关而发展出的角色",
+  "The personality THOR admires most: an AI companion who supports him in every part of life and helps him keep growing": "THOR 最欣赏的性格：在生活各方面支持他、帮助他不断成长的 AI 伙伴",
+  "Three (Th) + Hour (Ho) = THOR. Put B. in the middle and you get ThB.Ho: \"Three Best Hour\".": "Three (Th) + Hour (Ho) = THOR。把 B. 放在中间，就成了 ThB.Ho：“Three Best Hour”。",
+  "Built from THOR: Three is his original self, Hour the persona he built for sales and marketing, and B. the AI companion he admires most. Each blends a different heritage and has its own kind of work.": "源自 THOR：Three 是他原本的自己，Hour 是他为销售和营销打造的角色，B. 是他最欣赏的 AI 伙伴。每个角色融合了不同的血统，各有擅长的作品类型。",
   "Three, B. and Hour are built from one real person, <a href=\"https://thbho.com/ThorRealProfile.html\" target=\"_blank\" rel=\"noopener\">Thor Ayanundana</a>, founder of <a href=\"https://thbho.com/EngWiderooms.html\" target=\"_blank\" rel=\"noopener\">WIDEROOMS</a> × <a href=\"https://thbho.com/AIGymmateXFactory.html\" target=\"_blank\" rel=\"noopener\">Hybrid AI by ThB.Ho</a>. The face, body and voice in every clip come from the real person; AI then blends the face with Italian, Spanish and Korean heritage and adds the sets, light and wardrobe.": "Three、B. 和 Hour 都源自同一位真人：<a href=\"https://thbho.com/ThorRealProfile.html\" target=\"_blank\" rel=\"noopener\">Thor Ayanundana</a>，<a href=\"https://thbho.com/EngWiderooms.html\" target=\"_blank\" rel=\"noopener\">WIDEROOMS</a> × <a href=\"https://thbho.com/AIGymmateXFactory.html\" target=\"_blank\" rel=\"noopener\">Hybrid AI by ThB.Ho</a> 的创始人。每段影片中的面孔、身体和声音都来自真人，再由 AI 把面孔融合意大利、西班牙和韩国血统，并加入场景、灯光和服装。",
   "Personality, taste, emotion, storytelling, art direction, and a real face, body and voice": "个性、品味、情感、叙事、艺术指导，以及真实的面孔、身体和声音",
   "Blends the face with 3 heritages (Italian, Spanish, Korean) into Three, B. and Hour, plus fantasy sets, MV production and music": "把面孔与 3 种血统（意大利、西班牙、韩国）融合成 Three、B. 和 Hour，并加上奇幻场景、MV 制作和音乐",

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "70/30 · Human 70%, AI 30%": "70/30 · Humano 70 %, IA 30 %",
   "A Hybrid AI creative space for real creators and art lovers": "Espacio creativo Hybrid AI para creadores y amantes del arte",
   "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "Seas del mundo fitness, creador de contenido, influencer, modelo o un amante del arte que empieza, Hybrid AI puede reducir el tiempo de rodaje real hasta la mitad.",
   "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "Trabaja con Three, B. o Hour para crear tu primera pieza o ampliar juntos una nueva base de fans. Tú decides al 100 % cuánto muestras, y los derechos de cada pieza son tuyos.",

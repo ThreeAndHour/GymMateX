@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "Работайте с Three, B. или Hour, чтобы создать первую работу или вместе расширить новую аудиторию. Степень откровенности вы выбираете сами на 100%, а права на каждую работу принадлежат вам.",
   "For creators and art lovers": "Для авторов и любителей искусства",
   "For fitness, lifestyle and travel creators, influencers, and art lovers just starting out who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour.": "Для фитнес-, лайфстайл- и тревел-авторов, инфлюенсеров и любителей искусства, которые только начинают: кинематографичные работы, меньше съёмочных дней и выход на аудиторию Three, B. и Hour.",
   "Art lovers making their first piece": "Любители искусства, создающие первую работу",

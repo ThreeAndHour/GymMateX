@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "Trabaja con Three, B. o Hour para crear tu primera pieza o ampliar juntos una nueva base de fans. Tú decides al 100 % cuánto muestras, y los derechos de cada pieza son tuyos.",
   "For creators and art lovers": "Para creadores y amantes del arte",
   "For fitness, lifestyle and travel creators, influencers, and art lovers just starting out who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour.": "Para creadores de fitness, lifestyle y viajes, influencers y amantes del arte que están empezando: trabajo cinematográfico, menos días de rodaje y un cruce con los fans de Three, B. y Hour.",
   "Art lovers making their first piece": "Amantes del arte que quieren crear su primera pieza",

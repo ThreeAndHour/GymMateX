@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "Three, B., Hour와 함께 첫 작품을 만들거나 새로운 팬층을 함께 넓혀 보세요. 노출 수위는 100% 직접 정하고, 모든 작품의 권리는 당신에게 있습니다.",
   "For creators and art lovers": "크리에이터와 예술 애호가를 위해",
   "For fitness, lifestyle and travel creators, influencers, and art lovers just starting out who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour.": "피트니스, 라이프스타일, 여행 크리에이터와 인플루언서, 그리고 이제 막 시작하는 예술 애호가를 위해: 영화 같은 작품, 더 적은 촬영일, Three, B., Hour의 팬층과의 만남.",
   "Art lovers making their first piece": "첫 작품을 만들고 싶은 예술 애호가",

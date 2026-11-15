@@ -8,7 +8,7 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 ## Pages in this chat's scope
 | Page | What it is |
 |---|---|
-| `ThBHoCreators.html` | Main creator page. Sections: hero video, `#strengths` (6 USP cards with background clips + popup), `#levels`, `#creators`, `#match` (iframe of the quiz), `#portfolio` (YouTube playlist), `#roadmap` (folded), `#rules`, background, `#apply` (Google Form), contact. Venues link in nav is commented out on purpose. |
+| `ThBHoCreators.html` | Main creator page (goal: get visitors to the `#apply` form, mobile first). Hero H1 "Anyone can become a creator", primary button → `#apply`. On ≤760px: Apply pill + ☰ menu in the header, floating "Start your first collab" button (hidden while hero buttons or `#apply` are on screen), CTA bands `.mcta`, and sections re-ordered with CSS `order` (hero > creators > strengths > background > portfolio > levels > rules > match > roadmap > apply). Sections: hero video, `#strengths` (6 USP cards with background clips + popup), `#levels`, `#creators`, `#match` (iframe of the quiz), `#portfolio` (YouTube playlist), `#roadmap` (folded), `#rules`, background, `#apply` (Google Form), contact. Venues link in nav is commented out on purpose. |
 | `ThBHoPortfolio.html` | Every X / YouTube clip. Data is the `var FILMS=[ … ]` list inside the page. |
 | `ThBHoCreatorMatch.html` | Matching quiz. Also embedded in Creators as `ThBHoCreatorMatch.html?embed=1&v=YYYYMMDD`; bump `v=` after editing the quiz or browsers keep the old one. |
 | `ThBHoVenues.html` | Venue partners page. |
@@ -33,7 +33,7 @@ FitFantasy and O2OEventsVR keep their own orange theme.
 ## Shared files (edit with care: every page uses them)
 - `thbho-i18n.js` + `i18n/{zh,ru,ko,ja,es}.js`: 7 languages. In HTML, Thai and English are written inline as
   `<span lang="th">…</span><span lang="en">…</span>`. The other 5 come from the i18n files, keyed by the exact English text:
-  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 47).
+  add a new key right after the opening `{` of each file. After changing i18n files bump `?v=N` in `thbho-i18n.js` (currently 48).
 - `x-media.js`: `window.THBHO_X = {id: {mp4 (~720p), poster, w, h, hd (1080p)}}` for X videos.
 - `thbho-player.js`: poster + play button → `<video referrerpolicy="no-referrer">`, swaps to `hd` in full screen.
 - `thbho-ytlist.js`: YouTube playlist player that skips videos YouTube refuses to embed.
@@ -50,7 +50,7 @@ FitFantasy and O2OEventsVR keep their own orange theme.
 5. No explicit sex words. Use soft euphemisms everyone understands.
 6. No LGBTQ+ labels on the pages.
 7. Every new text in all 7 languages (th, en, zh, ru, ko, ja, es).
-8. Personas: Three (INFP · Storyteller), B. (INFJ · Strategist), Hour (ESTP · Entrepreneur). Content levels 1 Art / 2 Partial / 3 Private 20+.
+8. Personas: Three (INFP · Storyteller), B. (INFJ · Strategist), Hour (ESTP · The go-getter, Thai "สายลุย"). Content levels 1 Art / 2 Partial / 3 Private 20+.
 
 ## Portfolio data (`FILMS` in ThBHoPortfolio.html)
 One object per card, newest first:

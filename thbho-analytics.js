@@ -56,29 +56,39 @@
   // Small consent bar, shown once until the visitor chooses
   if (saved === 'yes' || saved === 'no') return;
   function bar() {
+    try { if (sessionStorage.getItem(KEY + '-closed') === '1') return; } catch (e) {}
     var d = document.createElement('div');
     d.className = 'thbho-consent';
     d.setAttribute('role', 'region'); d.setAttribute('aria-label', 'Cookies');
     d.innerHTML =
-      '<p><span lang="th">เราใช้คุกกี้เพื่อนับจำนวนผู้เข้าชมแบบไม่ระบุตัวตน ช่วยให้เราปรับปรุงหน้าเว็บ</span>' +
-      '<span lang="en">We use cookies to count visitors anonymously and improve this page.</span></p>' +
+      '<p><span lang="th">เราใช้คุกกี้นับผู้เข้าชมแบบไม่ระบุตัวตน</span>' +
+      '<span lang="en">We use cookies to count visits anonymously.</span></p>' +
       '<div><button type="button" data-c="yes"><span lang="th">ยอมรับ</span><span lang="en">Accept</span></button>' +
-      '<button type="button" data-c="no"><span lang="th">ไม่ยอมรับ</span><span lang="en">Decline</span></button></div>';
+      '<button type="button" data-c="no"><span lang="th">ไม่ยอมรับ</span><span lang="en">Decline</span></button>' +
+      '<button type="button" data-c="x" class="x" aria-label="Close">✕</button></div>';
     var css = document.createElement('style');
-    css.textContent = '.thbho-consent{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:720px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:12px;background:rgba(22,19,27,.96);border:1px solid rgba(255,255,255,.12);color:#e9e6ee;font:14px/1.5 system-ui,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.5)}' +
+    // A slim strip on the bottom edge; pages read --thbho-consent-h to keep floating buttons above it.
+    css.textContent = '.thbho-consent{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;gap:8px 12px;align-items:center;justify-content:center;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(18,18,24,.97);border-top:1px solid rgba(255,255,255,.12);color:#d9d6de;font:12.5px/1.4 system-ui,sans-serif}' +
       '.thbho-consent span[lang]{display:none}html[lang^=th] .thbho-consent span[lang=th],html:not([lang^=th]) .thbho-consent span[lang=en]{display:inline}' +
-      '.thbho-consent p{margin:0;flex:1 1 280px}.thbho-consent div{display:flex;gap:8px}' +
-      '.thbho-consent button{cursor:pointer;font:600 13px system-ui,sans-serif;border-radius:8px;padding:8px 14px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#e9e6ee}' +
-      '.thbho-consent button[data-c=yes]{background:#E0B96B;border-color:#E0B96B;color:#1A1305}';
+      '.thbho-consent p{margin:0;flex:0 1 auto;min-width:0}.thbho-consent div{display:flex;gap:6px;flex:none;align-items:center}' +
+      '.thbho-consent button{cursor:pointer;font:600 12px system-ui,sans-serif;border-radius:6px;padding:5px 10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#e9e6ee}' +
+      '.thbho-consent button[data-c=yes]{background:#E0B96B;border-color:#E0B96B;color:#1A1305}' +
+      '.thbho-consent button.x{border:0;padding:5px 6px;color:#a9a6b0;font-size:14px}';
     document.head.appendChild(css);
+    var root = document.documentElement;
+    function size() { root.style.setProperty('--thbho-consent-h', d.offsetHeight + 'px'); }
+    function gone() { d.remove(); root.style.removeProperty('--thbho-consent-h'); window.removeEventListener('resize', size); }
     d.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.c === 'x') { try { sessionStorage.setItem(KEY + '-closed', '1'); } catch (e3) {} gone(); return; }
       var yes = b.dataset.c === 'yes';
       try { localStorage.setItem(KEY, yes ? 'yes' : 'no'); } catch (e2) {}
       gtag('consent', 'update', { analytics_storage: yes ? 'granted' : 'denied' });
-      d.remove();
+      gone();
     });
     document.body.appendChild(d);
+    size(); window.addEventListener('resize', size);
+    if (window.ResizeObserver) new ResizeObserver(size).observe(d);
   }
   if (document.body) bar(); else document.addEventListener('DOMContentLoaded', bar);
 })();

@@ -5,10 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>ThB.Ho Creators</title>
-<meta name="description" content="ThB.Ho สำหรับ creator: collab กับ Hybrid AI Persona Three, B. และ Hour สำหรับ creator สายฟิตเนส platform สมาชิก influencer และนายแบบ">
+<meta name="description" content="ใคร ๆ ก็เป็นครีเอเตอร์ได้ ThB.Ho Creators แล็บศิลปะ Hybrid AI สำหรับครีเอเตอร์และคนรักศิลปะ collab กับ Three, B. และ Hour สมัครได้ในประมาณ 3 นาที">
+<link rel="canonical" href="https://creators.thbho.com/ThBHoCreators.html">
 <meta property="og:title" content="ThB.Ho Creators">
-<meta property="og:description" content="Collab with Hybrid AI personas Three, B. and Hour: fitness, physique, subscription-platform, influencer and model creators.">
-<meta property="og:type" content="profile">
+<meta property="og:description" content="Anyone can become a creator. ThB.Ho Creators is a hybrid AI art lab where creators and art lovers collab with Three, B. and Hour.">
+<meta property="og:url" content="https://creators.thbho.com/ThBHoCreators.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThB.Ho Creators">
+<meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:title" content="ThB.Ho Creators">
+<meta name="twitter:description" content="Anyone can become a creator. Collab with Hybrid AI personas Three, B. and Hour.">
 <meta property="og:image" content="https://creators.thbho.com/creator-img/og-creators-three.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -373,47 +380,119 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 .pdworks .cap span{font:500 11.5px var(--mono);color:var(--c)}
 .pdworks .tagw{position:absolute;top:8px;left:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:rgba(10,13,22,.8);color:var(--ink2);padding:2px 7px;border-radius:3px}
 .pdnote{grid-column:1/-1;font-size:13px;color:var(--ink3);margin:0}
-.pdfoot{padding:0 22px}
+.pdfoot{padding:0 22px;display:flex;flex-wrap:wrap;gap:10px}
+.pdgo{padding-top:16px}
+button.btn{background:none;cursor:pointer}
+.team{display:grid;grid-template-columns:1fr 1.1fr;gap:22px 32px;margin-bottom:22px;align-items:start}
+.team h3{font-size:20px;margin-bottom:8px}
+.team .tm p{color:var(--ink2);margin:0}
+.how{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.how li{display:flex;gap:12px;align-items:flex-start}
+.how li>b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 13px var(--mono)}
+.how strong{display:block;font:600 15.5px var(--display);color:var(--ink)}
+.how span{color:var(--ink2);font-size:14.5px}
+@media (max-width:760px){.team{grid-template-columns:1fr}}
+/* ---- mobile path to the form (Nov 2026) ---- */
+section,#contact{scroll-margin-top:66px}
+#apply{scroll-margin-top:72px}
+.hero .sub{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:0 0 6px;max-width:44ch}
+.hero .pline{font:500 15px/1.5 var(--display);color:var(--accent2);margin:0 0 18px}
+.hero .lead p{margin:0 0 10px}
+.hero .lead p.open{color:var(--ink);font-weight:600}
+.mbtn{display:none;width:40px;height:34px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;flex:none}
+.mmenu{position:absolute;left:0;right:0;top:100%;background:rgba(10,13,22,.97);border-bottom:1px solid var(--line);padding:6px 20px 14px;display:grid}
+.mmenu[hidden]{display:none}
+.mmenu a{color:var(--ink);text-decoration:none;padding:11px 2px;border-bottom:1px solid var(--line);font-size:16px}
+.mmenu a:last-child{border-bottom:0}
+.fab{position:fixed;right:16px;bottom:calc(16px + var(--thbho-consent-h,0px));z-index:20;display:none;align-items:center;gap:6px;font:700 15px var(--display);padding:12px 18px;border-radius:99px;background:var(--accent);color:#1A1305;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);transition:opacity .2s,transform .2s}
+.fab.off{opacity:0;transform:translateY(12px);pointer-events:none}
+.mcta{display:none}
+.proof .src,.usp .src{display:block;font:500 11px var(--mono);color:var(--ink3);margin-top:4px;letter-spacing:.02em}
+.proof .src a{color:var(--ink2)}
+@media (max-width:760px){
+ nav{gap:8px}
+ nav a.napply{display:inline-flex;align-items:center;font:600 13px var(--display);color:#1A1305;background:var(--accent);border-radius:99px;padding:5px 12px;white-space:nowrap}
+ .mbtn{display:grid;place-items:center}
+ .fab{display:inline-flex}
+ .mark img{height:32px}
+ .hero{padding:24px 0 8px;display:flex;flex-direction:column}
+ .hero .eyebrow{margin-bottom:8px}
+ .hero h1{font-size:clamp(32px,9vw,40px);line-height:1.12}
+ .hero .thesis{font-size:21px;margin:10px 0 12px}
+ .hero .sub{font-size:16px}
+ .hero .pline{margin-bottom:0}
+ .hero .cta{order:1;margin-top:16px}
+ .hero .lead{order:2;margin-top:22px;font-size:16px}
+ .hero .hvid{order:3}
+ .hero .cta .btn{flex:1 1 auto;justify-content:center}
+ main#top{display:flex;flex-direction:column}
+ main#top>.hero{order:1}
+ main#top>#creators{order:2}
+ main#top>.mcta.m1{order:3}
+ main#top>#strengths{order:4}
+ main#top>section[aria-label="Background"]{order:5}
+ main#top>#portfolio{order:6}
+ main#top>.mcta.m2{order:7}
+ main#top>#levels{order:8}
+ main#top>#rules{order:9}
+ main#top>.mcta.m3{order:10}
+ main#top>#match{order:11}
+ main#top>#roadmap{order:12}
+ main#top>#apply{order:13}
+ main#top>dialog{order:14}
+ .mcta{display:grid;gap:10px;margin-top:40px;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,rgba(224,185,107,.10),rgba(127,214,208,.05))}
+ .mcta p{margin:0;font:600 16px/1.4 var(--display)}
+ .mcta .btn{justify-content:center}
+ .apply-text .demo-cta .btn{flex:1 1 100%;justify-content:center}
+}
 </style>
 <script src="thbho-i18n.js"></script>
-<script src="thbho-analytics.js?v=4" defer></script>
+<script src="thbho-analytics.js?v=5" defer></script>
 <script src="x-media.js?v=2"></script>
 <script src="thbho-player.js?v=3"></script>
 </head>
 <body>
 
 <header class="top">
- <div class="wrap">
-  <a class="mark" href="#top" aria-label="th.ho — creating dreams"><img src="creator-img/thho-logo.png" alt="th.ho — creating dreams" width="900" height="286"></a>
+ <div class="wrap" style="position:static">
+  <a class="mark" href="#top" aria-label="ThB.Ho — creating dreams"><img src="creator-img/thho-logo.png" alt="ThB.Ho — creating dreams" width="900" height="286"></a>
   <nav>
    <a href="#strengths"><span lang="th">จุดแข็ง</span><span lang="en">Why us</span></a>
-   <a href="#creators">Collab</a>
+   <a href="#creators"><span lang="th">Collab</span><span lang="en">Collab</span></a>
    <a href="#match"><span lang="th">จับคู่</span><span lang="en">Match</span></a>
-   <a href="ThBHoPortfolio.html">Portfolio</a>
+   <a href="ThBHoPortfolio.html"><span lang="th">Portfolio</span><span lang="en">Portfolio</span></a>
    <a href="https://x.com/widerooms" target="_blank" rel="noopener">X ↗</a>
-   <a href="#roadmap">VR</a>
+   <a href="#roadmap"><span lang="th">VR</span><span lang="en">VR</span></a>
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
-   <a href="#apply"><span lang="th">สมัคร</span><span lang="en">Apply</span></a>
+   <a class="napply" href="#apply"><span lang="th">สมัคร</span><span lang="en">Apply</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
    <!-- venues link hidden for now: <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับร้าน →</span><span lang="en">For venues →</span></a> -->
    <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
+   <button type="button" class="mbtn" id="mbtn" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">☰</button>
   </nav>
+  <div class="mmenu" id="mmenu" hidden></div>
  </div>
 </header>
 
 <main class="wrap" id="top">
 <div class="hero">
- <p class="eyebrow">ThB.Ho for Creators · Fitness · Physique · Subscription creators · Influencers · Models</p>
- <h1>ThB.Ho <span style="color:var(--rose)">Creators</span></h1>
- <p class="role"><span lang="th">Collab กับ Hybrid AI Persona: Three · B. · Hour</span><span lang="en">Collab with Hybrid AI personas Three · B. · Hour</span></p>
- <p class="thesis"><span lang="th">ทำงานมากขึ้น — <em>โดยถ่ายจริงน้อยลง</em></span><span lang="en">Make more — <em>with fewer shoot days</em></span></p>
- <p class="lead"><span lang="th">สำหรับ creator สายฟิตเนส platform สมาชิก influencer และนายแบบ · Hybrid AI ลดวันถ่ายจริงราวครึ่งหนึ่ง ถ่ายคู่กับ persona เพื่อไปหาฐานแฟนใหม่ คุณเลือกระดับเนื้อหาเอง และเป็นเจ้าของงาน</span><span lang="en">For fitness, subscription-platform, influencer and model creators. Hybrid AI cuts real shoot days by about half, a persona collab brings new fans, you choose the content level, and you keep your work.</span></p>
- <div class="cta">
-  <a class="btn solid" href="#match"><span lang="th">เช็กว่าคุณเข้ากับ persona ไหน</span><span lang="en">Find your persona match</span></a>
-  <a class="btn" href="#portfolio"><span lang="th">ดูผลงาน</span><span lang="en">See the work</span></a>
+ <p class="eyebrow">ThB.Ho Creators · Hybrid AI</p>
+ <h1><span lang="th">ใคร ๆ ก็เป็นครีเอเตอร์ได้</span><span lang="en">Anyone can become a creator</span></h1>
+ <p class="thesis"><span lang="th">จากนี้ไป คุณจะสนุกกับ<em>การสร้าง</em> มากกว่าการดู</span><span lang="en">From here on, <em>creating</em> will thrill you more than watching ever did</span></p>
+ <p class="sub"><span lang="th">สร้างสรรค์ร่วมกับ Hybrid AI ทั้งครีเอเตอร์ตัวจริง และผู้หลงรักงานศิลปะ</span><span lang="en">Create with Hybrid AI, for seasoned creators and art lovers alike</span></p>
+ <p class="pline"><span lang="th">เลือก collab กับ persona ที่ใช่: Three · B. · Hour</span><span lang="en">Collab with the persona who fits you: Three · B. · Hour</span></p>
+ <div class="lead">
+  <p class="open"><span lang="th">เริ่มได้ทันที ไม่ต้องมีประสบการณ์</span><span lang="en">No experience needed.</span></p>
+  <p><span lang="th">ไม่ว่าคุณจะเป็นครีเอเตอร์สายฟิตเนส ครีเอเตอร์บน platform สมาชิก influencer นายแบบ หรือคนรักศิลปะที่กำลังจะก้าวแรก Hybrid AI ช่วยลดวันถ่ายจริงได้ราวครึ่งหนึ่ง</span><span lang="en">Whether you're a fitness creator, a subscription-platform creator, an influencer, a model, or an art lover about to take your first step, Hybrid AI cuts real shoot days by about half.</span></p>
+  <p><span lang="th">ถ่ายคู่กับ Three, B. หรือ Hour เพื่อสร้างผลงานชิ้นแรก หรือพาคุณไปพบแฟนกลุ่มใหม่</span><span lang="en">Shoot with Three, B. or Hour to make your first piece or meet a whole new audience.</span></p>
+  <p><span lang="th">คุณกำหนดระดับเนื้อหาเอง และผลงานทุกชิ้นเป็นของคุณ</span><span lang="en">You set the content level, and every piece stays yours.</span></p>
+ </div>
+ <div class="cta" id="heroCta">
+  <a class="btn solid" href="#apply"><span lang="th">เริ่ม collab แรกของคุณ</span><span lang="en">Start your first collab</span> →</a>
+  <a class="btn" href="#match"><span lang="th">เช็กว่าเข้ากับ persona ไหน</span><span lang="en">Find your persona match</span></a>
  </div>
  <figure class="hvid">
-  <video id="hvid" src="creator-vid/thbho-faces-003.mp4" poster="creator-vid/thbho-faces-003.jpg" autoplay muted loop playsinline preload="auto" width="1280" height="720" aria-label="One face shifting through Three, B. and Hour"></video>
+  <video id="hvid" data-src="creator-vid/thbho-faces-003.mp4" poster="creator-vid/thbho-faces-003.jpg" muted loop playsinline preload="metadata" width="1280" height="720" aria-label="One face shifting through Three, B. and Hour"></video>
   <button type="button" class="hvid-snd" id="hvidSnd" aria-pressed="false"><span class="on" aria-hidden="true">🔇</span><span class="l1"><span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></span><span class="l0"><span lang="th">ปิดเสียง</span><span lang="en">Sound off</span></span></button>
   <figcaption><span lang="th">หนึ่งต้นแบบ สาม persona: Three · B. · Hour — สีหน้าและแววตาที่ต่างกันตาม MBTI ของแต่ละคน</span><span lang="en">One original, three personas: Three · B. · Hour — each expression and gaze shaped by his MBTI</span></figcaption>
  </figure>
@@ -427,9 +506,9 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <p><span lang="th">หกอย่างที่ทำให้งานของ Three, B. และ Hour ต่างจาก creator ทั่วไป และเป็นสิ่งที่คุณได้เมื่อ collab กับเรา</span><span lang="en">Six things that set Three, B. and Hour apart, and that you get when you collab with us.</span></p>
  </div>
  <div class="usp">
-  <article style="--c:#5DB8A0"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
+  <article style="--c:#5DB8A0"><video class="ubg" src="creator-vid/usp-mbti.mp4" poster="creator-vid/usp-mbti.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◐</i><h3><span lang="th">ตัวละครตาม MBTI</span><span lang="en">MBTI Characters</span></h3><p><span lang="th">Three (INFP), B. (INFJ) และ Hour (ESTP) มีน้ำเสียง อารมณ์ และแววตาเป็นของตัวเอง · Three × Hour คือคู่ที่แฟนจำได้จากจี้ "3" และ "H" ในทุกคลิป</span><span lang="en">Three (INFP), B. (INFJ) and Hour (ESTP) each have their own voice, mood and look in the eyes. Three × Hour is the couple fans spot in every clip by their "3" and "H" pendants.</span></p><small><span lang="th">คู่ Three × Hour: วิวมากกว่าคลิปเดี่ยว 3 เท่า</span><span lang="en">Three × Hour: 3× the views of solo clips</span></small><small class="src"><span lang="th">ข้อมูลจาก X ณ พ.ย. 2026</span><span lang="en">Data from X as of Nov 2026</span></small><button type="button" class="uclip" data-x="2117252195011993896">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · El paseo</button></article>
   <article style="--c:var(--accent)"><video class="ubg" src="creator-vid/usp-fitness.mp4" poster="creator-vid/usp-fitness.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◆</i><h3><span lang="th">กล้ามและฟิตเนส</span><span lang="en">Muscular & Fitness</span></h3><p><span lang="th">หุ่นจริงคือหัวใจ ฉากยิม ชายหาด ชุดว่ายน้ำ และกีฬา ที่แฟนสายฟิตเนสและแบรนด์ตอบรับ</span><span lang="en">Real physiques at the core: gym, beach, swimwear and sport scenes that fitness fans and brands respond to.</span></p><small><span lang="th">content ที่เริ่มจากหุ่นจริง</span><span lang="en">Physique-first content</span></small><button type="button" class="uclip" data-x="2072701160025428150">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Fit, twist, and let it collide</button></article>
-  <article style="--c:var(--rose)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 575K วิว</span><span lang="en">10 Spanish clips · 575K views</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
+  <article style="--c:var(--rose)"><video class="ubg" src="creator-vid/usp-bl.mp4" poster="creator-vid/usp-bl.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">♥</i><h3><span lang="th">เรื่องราว Boy's Love</span><span lang="en">Boy's Love Stories</span></h3><p><span lang="th">ความรักและเคมีระหว่าง persona เล่าผ่าน MV และหนังสั้น · สูตรเด่นของเรา: เพลงรักภาษาสเปน เรือยอชต์ และชายหาดยามเย็น แนว Latin-pop BL ที่ไม่มีใครทำ</span><span lang="en">Romance and chemistry between the personas, told as music videos and short films. Our signature: Spanish love songs, a yacht and a beach at sunset. Latin-pop BL no one else makes.</span></p><small><span lang="th">10 คลิปภาษาสเปน · 590K วิว</span><span lang="en">10 Spanish clips · 590K views</span></small><small class="src"><span lang="th">ข้อมูลจาก X ณ พ.ย. 2026</span><span lang="en">Data from X as of Nov 2026</span></small><button type="button" class="uclip" data-x="2094021510986154482">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Ritmo del Alma</button></article>
   <article style="--c:var(--accent2)"><video class="ubg" src="creator-vid/usp-match.mp4" poster="creator-vid/usp-match.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">⇄</i><h3><span lang="th">การจับคู่เฉพาะบุคคล</span><span lang="en">Personalized Matching</span></h3><p><span lang="th">ตอบ 4 ข้อ ได้ 3 ตัวเลือก ระบบเดียวกันจับคู่แฟนกับ persona, creator กับงาน collab และลูกค้ากับร้าน</span><span lang="en">Four questions, three matches. The same engine pairs fans with personas, creators with collabs and guests with venues.</span></p><small><span lang="th">สร้างบนพื้นฐาน MBTI</span><span lang="en">Built on MBTI</span></small><button type="button" class="uclip" data-x="2072352936219615678">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Two different worlds</button></article>
   <article style="--c:#8E7CF0"><video class="ubg" src="creator-vid/usp-fantasy.mp4" poster="creator-vid/usp-fantasy.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">✦</i><h3><span lang="th">โลกแฟนตาซี</span><span lang="en">Fantasy Worlds</span></h3><p><span lang="th">นักรบทะเลทราย กลาดิเอเตอร์ เทพมีปีก นักเดินทางข้ามเวลา และทริปเรือยอชต์ AI สร้างฉากที่งบถ่ายจริงเช่าไม่ไหว</span><span lang="en">Desert warriors, gladiators, winged gods, time riders and yacht escapes. AI builds the sets no shoot budget could rent.</span></p><small><span lang="th">Fitness & Fantasy</span><span lang="en">Fitness & Fantasy</span></small><button type="button" class="uclip" data-x="2040825962750001292">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · GOD WING</button></article>
   <article style="--c:#A9C4DA"><video class="ubg" src="creator-vid/usp-hybrid.mp4" poster="creator-vid/usp-hybrid.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i aria-hidden="true">◎</i><h3><span lang="th">ความสมจริงแบบ Hybrid AI</span><span lang="en">Hybrid AI Realism</span></h3><p><span lang="th">ใบหน้าและร่างกายจริงผสม AI คงที่ทุกช็อต ทุก MV ทุกเพลง และพร้อมต่อยอดสู่ VR</span><span lang="en">A real face and body blended with AI, consistent across every shot, MV and song, and ready for VR.</span></p><small><span lang="th">หน้าจริง · 7 ภาษา</span><span lang="en">Real face · 7 languages</span></small><button type="button" class="uclip" data-x="2057333372205289701">▶ <span lang="th">ดูคลิป</span><span lang="en">Watch</span> · Without a persona</button></article>
@@ -450,6 +529,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  <div class="lvtabs" role="tablist" aria-label="Levels"><button class="lvtab" type="button" role="tab" id="lvt1" data-lv="1" aria-selected="false" style="--c:var(--accent)"><span class="n">LEVEL 1</span><b><span lang="th">ปกติ</span><span lang="en">Everyday</span></b><span><span lang="th">ฟิตเนส lifestyle influencer</span><span lang="en">Fitness, lifestyle, influencers</span></span></button><button class="lvtab" type="button" role="tab" id="lvt2" data-lv="2" aria-selected="false" style="--c:var(--accent2)"><span class="n">LEVEL 2</span><b><span lang="th">Bold</span><span lang="en">Bold</span></b><span><span lang="th">โชว์หุ่น ชุดว่ายน้ำ ลุค after-dark</span><span lang="en">Physique, swimwear, after-dark looks</span></span></button><button class="lvtab" type="button" role="tab" id="lvt3" data-lv="3" aria-selected="false" style="--c:var(--rose)"><span class="n">LEVEL 3</span><b><span lang="th">Private · 20+</span><span lang="en">Private · 20+</span></b><span><span lang="th">เฉพาะ platform สมาชิกที่ตรวจอายุ</span><span lang="en">Age-verified subscription platforms only</span></span></button></div>
  <div class="lvpanel" id="lvpanel" role="tabpanel" aria-live="polite"></div>
 </section>
+
+<div class="mcta m3"><p><span lang="th">คุณกำหนดระดับเอง และผลงานเป็นของคุณ</span><span lang="en">You set the level, and the work stays yours.</span></p><a class="btn solid" href="#apply"><span lang="th">เริ่ม collab แรกของคุณ</span><span lang="en">Start your first collab</span> →</a></div>
 
 <section id="creators">
  <div class="sh">
@@ -478,12 +559,12 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  </div>
 
  <div class="show" aria-label="Sample work">
-  <figure class="w2 h2"><img src="creator-img/show-book.jpg" alt="Coffee-table portfolio book, Homme — Modern Masculinity" loading="lazy" width="1400" height="800"><figcaption><b>Creator &amp; Art Lab</b><span lang="th">ต่อยอดเป็น portfolio และหนังสือภาพ</span><span lang="en">Extended into portfolios and photo books</span></figcaption></figure>
-  <figure class="h2"><img style="object-position:42% 50%" src="creator-img/show-three.jpg" alt="Three — Hybrid AI persona in yellow and green light" loading="lazy" width="1360" height="768"><span class="who" style="--c:#C9C36A">Three</span><figcaption><b>Digital Twin</b><span lang="th">ใบหน้า แสง และบุคลิกที่คงที่ — ฐานของ persona ที่คุยกับแฟนได้</span><span lang="en">A consistent face, light and personality — the base for a persona fans can talk to</span></figcaption></figure>
-  <figure class="h2 top"><img src="creator-img/show-b-neon.jpg" alt="B. — Hybrid AI persona in blue and pink neon light" loading="lazy" width="1200" height="1200" style="object-position:50% 30%"><span class="who" style="--c:#E0A040">B.</span><figcaption><b>Persona Collab</b><span lang="th">ลุคนีออนพรีเมียม สำหรับ promote แบรนด์และงาน theme</span><span lang="en">A premium neon look for brand and theme-night promos</span></figcaption></figure>
-  <figure class="w2 h2"><img src="creator-img/show-agent-b.jpg" alt="B. as a Secret Agent — the same Hybrid AI face across eight shots" loading="lazy" width="1400" height="788"><figcaption><b>Hybrid Persona</b><span lang="th">B. ในบท Secret Agent — หน้าเดิม คงที่ทุกช็อต ทุกมุม ทุกแสง</span><span lang="en">B. as a Secret Agent: the same face, consistent in every shot, angle and light</span></figcaption></figure>
+  <figure class="w2 h2"><img src="creator-img/show-book.jpg" srcset="creator-img/show-book-800.jpg 800w, creator-img/show-book.jpg 1400w" sizes="(max-width:700px) calc(100vw - 40px), 700px" alt="Coffee-table portfolio book, Homme — Modern Masculinity" loading="lazy" width="1400" height="800"><figcaption><b>Creator &amp; Art Lab</b><span lang="th">ต่อยอดเป็น portfolio และหนังสือภาพ</span><span lang="en">Extended into portfolios and photo books</span></figcaption></figure>
+  <figure class="h2"><img style="object-position:42% 50%" src="creator-img/show-three.jpg" srcset="creator-img/show-three-800.jpg 800w, creator-img/show-three.jpg 1360w" sizes="(max-width:700px) calc(100vw - 40px), 700px" alt="Three — Hybrid AI persona in yellow and green light" loading="lazy" width="1360" height="768"><span class="who" style="--c:#C9C36A">Three</span><figcaption><b>Digital Twin</b><span lang="th">ใบหน้า แสง และบุคลิกที่คงที่ — ฐานของ persona ที่คุยกับแฟนได้</span><span lang="en">A consistent face, light and personality — the base for a persona fans can talk to</span></figcaption></figure>
+  <figure class="h2 top"><img src="creator-img/show-b-neon.jpg" srcset="creator-img/show-b-neon-800.jpg 800w, creator-img/show-b-neon.jpg 1200w" sizes="(max-width:700px) calc(100vw - 40px), 700px" alt="B. — Hybrid AI persona in blue and pink neon light" loading="lazy" width="1200" height="1200" style="object-position:50% 30%"><span class="who" style="--c:#E0A040">B.</span><figcaption><b>Persona Collab</b><span lang="th">ลุคนีออนพรีเมียม สำหรับ promote แบรนด์และงาน theme</span><span lang="en">A premium neon look for brand and theme-night promos</span></figcaption></figure>
+  <figure class="w2 h2"><img src="creator-img/show-agent-b.jpg" srcset="creator-img/show-agent-b-800.jpg 800w, creator-img/show-agent-b.jpg 1400w" sizes="(max-width:700px) calc(100vw - 40px), 700px" alt="B. as a Secret Agent — the same Hybrid AI face across eight shots" loading="lazy" width="1400" height="788"><figcaption><b>Hybrid Persona</b><span lang="th">B. ในบท Secret Agent — หน้าเดิม คงที่ทุกช็อต ทุกมุม ทุกแสง</span><span lang="en">B. as a Secret Agent: the same face, consistent in every shot, angle and light</span></figcaption></figure>
   <figure class="w2 h2"><img src="creator-img/show-storyboard.jpg" alt="Nine-frame cinematic storyboard" loading="lazy" width="900" height="900"><figcaption><b>Hybrid AI Movies</b><span lang="th">storyboard 9 ช็อตก่อนถ่ายหนังสั้น</span><span lang="en">A 9-shot storyboard before the short film</span></figcaption></figure>
-  <figure class="h2 top"><img style="object-position:42% 30%" src="creator-img/show-hour-2.jpg" alt="Hour — Hybrid AI persona in warm orange and blue light" loading="lazy" width="1600" height="900"><span class="who" style="--c:#A9C4DA">Hour</span><figcaption><b>Hybrid Shoot</b><span lang="th">ถ่ายจริงเป็นฐาน AI เติมแสงนีออนและฉาก</span><span lang="en">Real shoot, AI neon light and set</span></figcaption></figure>
+  <figure class="h2 top"><img style="object-position:42% 30%" src="creator-img/show-hour-2.jpg" srcset="creator-img/show-hour-2-800.jpg 800w, creator-img/show-hour-2.jpg 1600w" sizes="(max-width:700px) calc(100vw - 40px), 700px" alt="Hour — Hybrid AI persona in warm orange and blue light" loading="lazy" width="1600" height="900"><span class="who" style="--c:#A9C4DA">Hour</span><figcaption><b>Hybrid Shoot</b><span lang="th">ถ่ายจริงเป็นฐาน AI เติมแสงนีออนและฉาก</span><span lang="en">Real shoot, AI neon light and set</span></figcaption></figure>
  </div>
  <p class="note"><span lang="th">ทุกภาพเป็น Hybrid AI ของ ThB.Ho</span><span lang="en">All images are Hybrid AI by ThB.Ho.</span></p>
 
@@ -495,6 +576,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  <p class="note"><span lang="th">Creator เลือกระดับของงานตัวเองทุกครั้ง เปลี่ยนได้ตลอด ไม่มีการกดดันให้ขยับขึ้น</span><span lang="en">Creators choose the level of their own work every time, can change it any time, and are never pushed up a level.</span></p>
 </section>
 
+<div class="mcta m1"><p><span lang="th">รู้แล้วใช่ไหมว่าอยากถ่ายคู่กับใคร?</span><span lang="en">Know who you'd like to shoot with?</span></p><a class="btn solid" href="#apply"><span lang="th">เริ่ม collab แรกของคุณ</span><span lang="en">Start your first collab</span> →</a></div>
+
 <section id="match">
  <div class="sh">
   <span class="kick">Creator Match</span>
@@ -503,7 +586,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  </div>
  <div class="demo-frame">
   <div class="bar"><i></i><i></i><i></i><span>creators.thbho.com/ThBHoCreatorMatch.html</span></div>
-  <iframe data-demo src="ThBHoCreatorMatch.html?embed=1&amp;v=20261111c" title="Creator match" loading="lazy"></iframe>
+  <iframe data-demo src="ThBHoCreatorMatch.html?embed=1&amp;v=20261115" title="Creator match" loading="lazy"></iframe>
  </div>
  <div class="demo-cta">
   <a class="btn" href="ThBHoCreatorMatch.html" target="_blank" rel="noopener"><span lang="th">เปิดแบบเต็มจอ ↗</span><span lang="en">Open full screen ↗</span></a>
@@ -528,6 +611,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   </div></div>
  </div>
 </section>
+
+<div class="mcta m2"><p><span lang="th">อยากมีผลงานแบบนี้เป็นของตัวเอง?</span><span lang="en">Want work like this of your own?</span></p><a class="btn solid" href="#apply"><span lang="th">เริ่ม collab แรกของคุณ</span><span lang="en">Start your first collab</span> →</a></div>
 
 <section id="roadmap" class="fold">
  <div class="sh">
@@ -572,8 +657,20 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <span class="kick"><span lang="th">ทำไมต้อง ThB.Ho</span><span lang="en">Why ThB.Ho</span></span>
   <h2><span lang="th">Persona ที่มีคนจริงและทีมที่เคยทำงานสถานที่จริงอยู่ข้างหลัง</span><span lang="en">Personas with real people — and real venue experience — behind them</span></h2>
  </div>
+
+ <div class="team">
+  <div class="tm">
+   <h3><span lang="th">คนจริงหลัง persona</span><span lang="en">The real people behind the personas</span></h3>
+   <p><span lang="th">Three, B. และ Hour สร้างจากต้นแบบคนเดียวกัน คือ <a href="https://thbho.com/ThorRealProfile.html" target="_blank" rel="noopener">Thor Ayanundana</a> ผู้ก่อตั้ง <a href="https://thbho.com/EngWiderooms.html" target="_blank" rel="noopener">WIDEROOMS</a> × <a href="https://thbho.com/AIGymmateXFactory.html" target="_blank" rel="noopener">Hybrid AI by ThB.Ho</a> ใบหน้าและร่างกายในทุกคลิปมาจากการถ่ายจริง แล้วทีมจึงใช้ AI เติมฉาก แสง และชุด</span><span lang="en">Three, B. and Hour are built from one real person, <a href="https://thbho.com/ThorRealProfile.html" target="_blank" rel="noopener">Thor Ayanundana</a>, founder of <a href="https://thbho.com/EngWiderooms.html" target="_blank" rel="noopener">WIDEROOMS</a> × <a href="https://thbho.com/AIGymmateXFactory.html" target="_blank" rel="noopener">Hybrid AI by ThB.Ho</a>. The face and body in every clip come from a real shoot; the team then uses AI for the sets, light and wardrobe.</span></p>
+  </div>
+  <ol class="how">
+   <li><b>1</b><span><strong><span lang="th">คุยและตกลงกรอบงาน</span><span lang="en">Talk and agree the brief</span></strong><span lang="th">เลือก persona ระดับเนื้อหา และรูปแบบ collab · ยืนยันอายุ 20+ และเซ็นยินยอมก่อนถ่าย</span><span lang="en">Pick a persona, a content level and a format. Age 20+ is checked and consent is signed before the shoot.</span></span></li>
+   <li><b>2</b><span><strong><span lang="th">ถ่ายจริง</span><span lang="en">Real shoot</span></strong><span lang="th">ถ่ายตัวจริงเป็นฐาน ใช้เวลาราวครึ่งหนึ่งของการถ่ายปกติ</span><span lang="en">You are filmed for real as the base, in about half the usual shoot time.</span></span></li>
+   <li><b>3</b><span><strong><span lang="th">AI เติม แล้วคุณอนุมัติ</span><span lang="en">AI finishing, then your approval</span></strong><span lang="th">ทีมเติมฉาก แสง และชุดด้วย AI คุณดูและอนุมัติก่อนเผยแพร่ทุกชิ้น</span><span lang="en">The team adds sets, light and wardrobe with AI, and you approve every piece before it goes out.</span></span></li>
+  </ol>
+ </div>
  <div class="proof">
-  <div><b>245K</b><span><span lang="th">วิว MV "Ritmo del Alma" บน X — คลิปที่มีคนดูมากที่สุด</span><span lang="en">views on the "Ritmo del Alma" MV on X — the most-watched clip</span></span></div>
+  <div><b>246K</b><span><span lang="th">วิว MV "Ritmo del Alma" บน X — คลิปที่มีคนดูมากที่สุด</span><span lang="en">views on the "Ritmo del Alma" MV on X — the most-watched clip</span></span><small class="src"><span lang="th">ข้อมูลจาก X ณ พ.ย. 2026</span><span lang="en">Data from X as of Nov 2026</span> · <a href="https://x.com/widerooms/status/2094021510986154482" target="_blank" rel="noopener"><span lang="th">ดูบน X ↗</span><span lang="en">View on X ↗</span></a></small></div>
   <div><b>3+</b><span><span lang="th">ปี ทำ Hybrid AI Persona และหนังสั้น AI</span><span lang="en">years making Hybrid AI personas and AI films</span></span></div>
  </div>
 </section>
@@ -586,11 +683,12 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   <div class="pd">
    <button class="pdx" id="pdClose" type="button" aria-label="Close">✕</button>
    <div class="pdhead" id="pdHead"></div>
+   <div class="pdfoot pdgo">
+    <a class="btn solid" id="pdApply" href="#apply"></a>
+    <button class="btn" id="pdMatch" type="button"><span lang="th">อยาก collab กับคนนี้ → เริ่มจับคู่</span><span lang="en">Collab with him → start matching</span></button>
+   </div>
    <h3 class="pdsub"><span lang="th">ผลงานบน X</span><span lang="en">Work on X</span> <a href="https://x.com/widerooms" target="_blank" rel="noopener">@widerooms ↗</a></h3>
    <div class="pdworks" id="pdWorks"></div>
-   <div class="pdfoot">
-    <button class="btn solid" id="pdMatch" type="button"><span lang="th">อยาก collab กับคนนี้ → เริ่มจับคู่</span><span lang="en">Collab with him → start matching</span></button>
-   </div>
   </div>
  </dialog>
 <section id="apply">
@@ -620,6 +718,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
 
 
 
+<a class="fab" id="fab" href="#apply"><span lang="th">เริ่ม collab แรกของคุณ</span><span lang="en">Start your first collab</span></a>
+
 <div class="contact" id="contact">
  <div class="wrap">
   <div>
@@ -631,7 +731,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · @widerooms</a>
   </div>
  </div>
- <div class="foot"><div class="wrap"><span class="fl"><img src="creator-img/thho-logo.png" alt="" loading="lazy" width="900" height="286">© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้มีเฉพาะเนื้อหาสาธารณะ</span><span lang="en">All persona images are Hybrid AI · public-safe content only on this page</span></span></div></div>
+ <div class="foot"><div class="wrap"><span class="fl"><img src="creator-img/thho-logo.png" alt="ThB.Ho — creating dreams" loading="lazy" width="900" height="286">© 2026 ThB.Ho · Three · B. · Hour</span><span><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้มีเฉพาะเนื้อหาสาธารณะ</span><span lang="en">All persona images are Hybrid AI · public-safe content only on this page</span></span></div></div>
 </div>
 
 <script>
@@ -664,7 +764,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    best:{th:'Digital Twin, Remaster, collab แบรนด์และ lifestyle, วางแผน content ทั้งเดือน',en:'Digital Twins, remasters, brand and lifestyle collabs, month-long content plans'},
    quote:{th:'"วางระบบให้ดีครั้งเดียว แล้วให้งานทำรายได้แทนคุณ"',en:'"Set it up properly once, then let the work earn for you."'}},
   hour:{n:'Hour',mbti:'ESTP',c:'var(--sp)',img:'creator-img/persona-hour.jpg',show:'creator-img/show-hour-2.jpg',
-   role:{th:'สายลุย · ไทย-เกาหลี',en:'Entrepreneur · Thai-Korean'},
+   role:{th:'สายลุย · ไทย-เกาหลี',en:'The go-getter · Thai-Korean'},
    vibe:{th:'พลังเยอะ กล้า สนุก ชอบฟิตเนส ไฟนีออน งาน event และการถ่ายแบบเร็วๆ',en:'High energy, bold and playful. Fitness, neon, events and fast shoots.'},
    best:{th:'Hybrid Shoot สายกล้าม, 48 Hours, งาน event และทริป, collab ข้ามฐานแฟน',en:'Physique Hybrid Shoots, 48 Hours, events and trips, audience-crossover collabs'},
    quote:{th:'"ถ่ายจริงครึ่งวัน ที่เหลือให้ AI ช่วย แล้วไปเที่ยวต่อ"',en:'"Half a day of real shooting, AI does the rest, then we go out."'}}
@@ -685,7 +785,7 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
   ]
  };
  var SHARED=[
-  {u:'https://x.com/widerooms/status/2094021510986154482',img:'creator-img/x-154482.jpg',t:'Ritmo del Alma · MV',v:'245K'},
+  {u:'https://x.com/widerooms/status/2094021510986154482',img:'creator-img/x-154482.jpg',t:'Ritmo del Alma · MV',v:'246K'},
   {u:'https://x.com/widerooms/status/2109560564754362752',img:'creator-img/x-362752.jpg',t:'Perdiéndonos en el calor',v:'147K'},
   {u:'https://x.com/widerooms/status/2061309949037400429',img:'creator-img/x-400429.jpg',t:'Explore Together · Full MV',v:'130K'},
   {u:'https://x.com/widerooms/status/2061643553772830937',img:'creator-img/x-830937.jpg',t:'Explore Together · BTS',v:'83K'},
@@ -705,7 +805,8 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
    '<div class="mbody"><span class="persona-name" style="color:var(--c)">'+p.n+' · '+p.mbti+' · '+T(p.role.th,p.role.en)+'</span>'+
    '<h3 id="pdTitle" style="font-size:21px;line-height:1.35">'+T(p.quote.th,p.quote.en)+'</h3><p style="color:var(--ink2);margin:0">'+T(p.vibe.th,p.vibe.en)+'</p>'+
    '<div class="why"><b>'+T('แนวงานที่ถนัด','Best at')+'</b>'+T(p.best.th,p.best.en)+'</div></div>';
-  $('pdWorks').innerHTML='<a class="btn solid" href="ThBHoPortfolio.html?p='+k+'">'+T('ดูผลงานทั้งหมดของ '+p.n+' →','All of '+p.n+'\'s work →')+'</a><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X @widerooms ↗</a>';
+  $('pdWorks').innerHTML='<a class="btn" href="ThBHoPortfolio.html?p='+k+'">'+T('ดูผลงานทั้งหมดของ '+p.n+' →','All of '+p.n+'\'s work →')+'</a><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X @widerooms ↗</a>';
+  $('pdApply').innerHTML=T('สมัคร collab กับ '+p.n,'Apply to collab with '+p.n)+' →';
   lastFocus=document.activeElement;
   if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
   dlg.scrollTop=0;
@@ -715,6 +816,29 @@ dialog#pdlg::backdrop{background:rgba(6,4,8,.78);backdrop-filter:blur(4px)}
  $('pdClose').addEventListener('click',closePersona);
  dlg.addEventListener('click',function(e){if(e.target===dlg)closePersona();});
  $('pdMatch').addEventListener('click',function(){closePersona();$('match').scrollIntoView({block:'start'});});
+ $('pdApply').addEventListener('click',function(e){e.preventDefault();lastFocus=null;closePersona();$('apply').scrollIntoView({block:'start'});});
+ // the quiz (in its iframe) asks us to scroll to the form
+ window.addEventListener('message',function(e){if(e.data&&e.data.thbho==='apply'){var a=$('apply');if(a)a.scrollIntoView({block:'start'})}});
+
+ // ---- mobile menu (links hidden in the header on small screens) ----
+ (function(){
+  var b=$('mbtn'),m=$('mmenu'); if(!b||!m)return;
+  document.querySelectorAll('.top nav > a').forEach(function(a){m.appendChild(a.cloneNode(true))});
+  function set(o){m.hidden=!o;b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰'}
+  b.addEventListener('click',function(e){e.stopPropagation();set(m.hidden)});
+  m.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+  document.addEventListener('click',function(e){if(!m.hidden&&!e.target.closest('.top'))set(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
+  window.addEventListener('resize',function(){if(innerWidth>760)set(false)});
+ })();
+
+ // ---- floating "start your first collab": hidden while the hero buttons or the form are on screen ----
+ (function(){
+  var f=$('fab'); if(!f||!('IntersectionObserver' in window))return;
+  var seen={};
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){seen[e.target.id]=e.isIntersecting});f.classList.toggle('off',!!(seen.apply||seen.heroCta))},{threshold:0});
+  ['apply','heroCta'].forEach(function(id){var el=$(id);if(el)io.observe(el)});
+ })();
 
  // ---- level switcher ----
 function lvInit(P){
@@ -779,8 +903,11 @@ function lvInit(P){
  // ---- hero video: sound toggle, pause when off screen ----
  (function(){
   var v=document.getElementById('hvid'),b=document.getElementById('hvidSnd'); if(!v||!b)return;
-  b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.querySelector('.on').textContent=v.muted?'🔇':'🔊';if(!v.muted)v.play&&v.play().catch(function(){})});
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play&&v.play().catch(function(){})}else v.pause()})}).observe(v);
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function load(){if(!v.getAttribute('src')&&v.dataset.src){v.src=v.dataset.src}}
+  if(!('IntersectionObserver' in window)&&!still){load();v.play&&v.play().catch(function(){})}
+  b.addEventListener('click',function(){load();v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.querySelector('.on').textContent=v.muted?'🔇':'🔊';if(!v.muted)v.play&&v.play().catch(function(){})});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(still&&v.muted)return;load();v.play&&v.play().catch(function(){})}else v.pause()})}).observe(v);
  })();
 
  // ---- strength cards: background clips play only while on screen ----

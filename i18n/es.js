@@ -16,7 +16,7 @@ THBHO_I18N_ADD('es', {
   "Fitness &amp; Fantasy": "Fitness & Fantasy",
   "Anyone can become a creator": "Cualquiera puede ser creador",
   "From here on, <em>creating</em> will thrill you more than watching ever did": "A partir de ahora, <em>crear</em> te emocionará más que mirar",
-  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Crea con Hybrid AI, tanto si ya eres creador como si simplemente amas el arte",
+  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Crea con Hybrid AI, seas creador o amante del arte",
   "Collab with the persona who fits you: Three · B. · Hour": "Colabora con la persona que encaja contigo: Three · B. · Hour",
   "No experience needed.": "No necesitas experiencia.",
   "Whether you're a fitness creator, a subscription-platform creator, an influencer, a model, or an art lover about to take your first step, Hybrid AI cuts real shoot days by about half.": "Seas creador de fitness, creador en plataformas de suscripción, influencer, modelo o un amante del arte a punto de dar su primer paso, Hybrid AI reduce los días de rodaje real a la mitad, más o menos.",

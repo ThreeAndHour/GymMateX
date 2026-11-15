@@ -395,7 +395,9 @@ button.btn{background:none;cursor:pointer}
 /* ---- mobile path to the form (Nov 2026) ---- */
 section,#contact{scroll-margin-top:66px}
 #apply{scroll-margin-top:72px}
-.hero .sub{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:0 0 6px;max-width:44ch}
+.hero .sub{font:500 clamp(17px,2.2vw,21px)/1.4 var(--display);color:var(--ink2);margin:0 0 6px}
+.hero .fit{white-space:nowrap;max-width:none}
+.hero .fit.wrap2{white-space:normal;text-wrap:balance}
 .hero .pline{font:500 15px/1.5 var(--display);color:var(--accent2);margin:0 0 18px}
 .hero .lead p{margin:0 0 10px}
 .hero .lead p.open{color:var(--ink);font-weight:600}
@@ -477,10 +479,10 @@ section,#contact{scroll-margin-top:66px}
 <main class="wrap" id="top">
 <div class="hero">
  <p class="eyebrow">ThB.Ho Creators · Hybrid AI</p>
- <h1><span lang="th">ใคร ๆ ก็เป็นครีเอเตอร์ได้</span><span lang="en">Anyone can become a creator</span></h1>
- <p class="thesis"><span lang="th">จากนี้ไป คุณจะสนุกกับ<em>การสร้าง</em> มากกว่าการดู</span><span lang="en">From here on, <em>creating</em> will thrill you more than watching ever did</span></p>
- <p class="sub"><span lang="th">สร้างสรรค์ร่วมกับ Hybrid AI ทั้งครีเอเตอร์ตัวจริง และผู้หลงรักงานศิลปะ</span><span lang="en">Create with Hybrid AI, for seasoned creators and art lovers alike</span></p>
- <p class="pline"><span lang="th">เลือก collab กับ persona ที่ใช่: Three · B. · Hour</span><span lang="en">Collab with the persona who fits you: Three · B. · Hour</span></p>
+ <h1 class="fit" data-min="14"><span lang="th">ใคร ๆ ก็เป็นครีเอเตอร์ได้</span><span lang="en">Anyone can become a creator</span></h1>
+ <p class="thesis fit" data-min="10"><span lang="th">จากนี้ไป คุณจะสนุกกับ<em>การสร้าง</em> มากกว่าการดู</span><span lang="en">From here on, <em>creating</em> will thrill you more than watching ever did</span></p>
+ <p class="sub fit" data-min="10"><span lang="th">สร้างสรรค์ร่วมกับ Hybrid AI ทั้งครีเอเตอร์ตัวจริง และผู้หลงรักงานศิลปะ</span><span lang="en">Create with Hybrid AI, for seasoned creators and art lovers alike</span></p>
+ <p class="pline fit" data-min="10"><span lang="th">เลือก collab กับ persona ที่ใช่: Three · B. · Hour</span><span lang="en">Collab with the persona who fits you: Three · B. · Hour</span></p>
  <div class="lead">
   <p class="open"><span lang="th">เริ่มได้ทันที ไม่ต้องมีประสบการณ์</span><span lang="en">No experience needed.</span></p>
   <p><span lang="th">ไม่ว่าคุณจะเป็นครีเอเตอร์สายฟิตเนส ครีเอเตอร์บน platform สมาชิก influencer นายแบบ หรือคนรักศิลปะที่กำลังจะก้าวแรก Hybrid AI ช่วยลดวันถ่ายจริงได้ราวครึ่งหนึ่ง</span><span lang="en">Whether you're a fitness creator, a subscription-platform creator, an influencer, a model, or an art lover about to take your first step, Hybrid AI cuts real shoot days by about half.</span></p>
@@ -899,6 +901,25 @@ function lvInit(P){
    if(THBHO_PLAYER(box,id,cap.querySelector('b').textContent)){var b=box.querySelector('button'); if(b)b.click();}else location.href=a.href;
   });
  });
+
+
+ // ---- hero lines: one line on every screen; shrink the font to fit, wrap only if it would get too small ----
+ (function(){
+  var els=[].slice.call(document.querySelectorAll('.hero .fit')); if(!els.length)return;
+  function fit(){els.forEach(function(el){
+   el.style.fontSize='';el.classList.remove('wrap2');
+   var w=el.clientWidth, base=parseFloat(getComputedStyle(el).fontSize), min=+el.dataset.min||12, need=el.scrollWidth;
+   if(need<=w+1)return;
+   var f=Math.floor(base*w/need*10)/10;
+   if(f>=min){el.style.fontSize=f+'px';while(el.scrollWidth>el.clientWidth+1&&f>min){f-=.5;el.style.fontSize=f+'px'}}
+   else el.classList.add('wrap2');
+  })}
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60)}
+  fit();window.addEventListener('resize',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  new MutationObserver(later).observe(document.querySelector('.hero'),{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['lang']});
+  new MutationObserver(later).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+ })();
 
  // ---- hero video: sound toggle, pause when off screen ----
  (function(){

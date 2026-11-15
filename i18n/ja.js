@@ -16,7 +16,7 @@ THBHO_I18N_ADD('ja', {
   "Fitness &amp; Fantasy": "Fitness & Fantasy",
   "Anyone can become a creator": "誰でもクリエイターになれる",
   "From here on, <em>creating</em> will thrill you more than watching ever did": "これからは、見るより<em>つくる</em>ほうが楽しくなる",
-  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Hybrid AI と一緒に創作しよう。本格派のクリエイターにも、アートが好きな人にも",
+  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Hybrid AI で創作しよう。本格派にもアート好きにも",
   "Collab with the persona who fits you: Three · B. · Hour": "相性のいいペルソナとコラボ：Three · B. · Hour",
   "No experience needed.": "経験は不要です。",
   "Whether you're a fitness creator, a subscription-platform creator, an influencer, a model, or an art lover about to take your first step, Hybrid AI cuts real shoot days by about half.": "フィットネスクリエイター、会員制プラットフォームのクリエイター、インフルエンサー、モデル、そして最初の一歩を踏み出そうとしているアート好きの方も、Hybrid AI なら実際の撮影日数をおよそ半分にできます。",

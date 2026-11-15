@@ -16,7 +16,7 @@ THBHO_I18N_ADD('ru', {
   "Fitness &amp; Fantasy": "Fitness & Fantasy",
   "Anyone can become a creator": "Креатором может стать каждый",
   "From here on, <em>creating</em> will thrill you more than watching ever did": "Отныне <em>создавать</em> будет интереснее, чем смотреть",
-  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Творите вместе с Hybrid AI — и опытные авторы, и любители искусства",
+  "Create with Hybrid AI, for seasoned creators and art lovers alike": "Творите с Hybrid AI — и профи, и любители искусства",
   "Collab with the persona who fits you: Three · B. · Hour": "Выберите персону для коллаборации: Three · B. · Hour",
   "No experience needed.": "Опыт не нужен.",
   "Whether you're a fitness creator, a subscription-platform creator, an influencer, a model, or an art lover about to take your first step, Hybrid AI cuts real shoot days by about half.": "Фитнес-автор, автор на платформе по подписке, инфлюенсер, модель или любитель искусства, который только делает первый шаг, — Hybrid AI сокращает дни реальных съёмок примерно вдвое.",

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "Hour in cinematic black and white: film-grade light and mood": "Hour en blanco y negro cinematográfico: luz y ambiente de cine",
   "For creators confident in their physique who love swimwear, fantasy or after-dark looks, with AI building desert, ancient-temple and otherworldly sets instead of renting real locations.": "Para creadores seguros de su físico a los que les gustan los looks de bañador, fantasía o after-dark: la IA crea desiertos, templos antiguos y mundos más allá de la imaginación, sin alquilar localizaciones reales.",
   "Collab": "Colaboración",
   "VR": "VR",

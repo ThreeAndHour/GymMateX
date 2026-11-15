@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('zh', {
+  "Hour in cinematic black and white: film-grade light and mood": "Hour 的电影感黑白肖像：电影级的光影与情绪",
   "For creators confident in their physique who love swimwear, fantasy or after-dark looks, with AI building desert, ancient-temple and otherworldly sets instead of renting real locations.": "适合对身材有自信、喜欢泳装、奇幻或夜色风格的创作者，由 AI 打造沙漠、古代神殿和超乎想象的世界，无需租用真实场地。",
   "Collab": "合作",
   "VR": "VR",

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ru', {
+  "Hour in cinematic black and white: film-grade light and mood": "Hour в кинематографичном чёрно-белом: свет и настроение как в кино",
   "For creators confident in their physique who love swimwear, fantasy or after-dark looks, with AI building desert, ancient-temple and otherworldly sets instead of renting real locations.": "Для авторов, уверенных в своей фигуре и любящих купальники, фэнтези или after-dark-образы: пустыню, древний храм и невероятные миры строит ИИ, без аренды реальных локаций.",
   "Collab": "Коллаб",
   "VR": "VR",

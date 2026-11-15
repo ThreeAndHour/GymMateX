@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ja', {
+  "Hour in cinematic black and white: film-grade light and mood": "シネマティックなモノクロの Hour：映画のような光とムード",
   "For creators confident in their physique who love swimwear, fantasy or after-dark looks, with AI building desert, ancient-temple and otherworldly sets instead of renting real locations.": "体に自信があり、水着、ファンタジー、after-dark のルックが好きなクリエイター向け。実際のロケ地を借りる代わりに、AI が砂漠、古代の神殿、想像を超える世界をつくります。",
   "Collab": "コラボ",
   "VR": "VR",

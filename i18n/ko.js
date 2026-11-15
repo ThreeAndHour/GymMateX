@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "Hour in cinematic black and white: film-grade light and mood": "시네마틱 흑백 속 Hour: 영화 같은 빛과 분위기",
   "For creators confident in their physique who love swimwear, fantasy or after-dark looks, with AI building desert, ancient-temple and otherworldly sets instead of renting real locations.": "몸매에 자신 있고 수영복, 판타지, after-dark 룩을 좋아하는 크리에이터를 위해, 실제 로케이션을 빌리는 대신 AI가 사막, 고대 신전, 상상 너머의 세계를 만들어 드립니다.",
   "Collab": "콜라보",
   "VR": "VR",

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('zh', {
+  "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "无论你是健身爱好者、内容创作者、网红、模特，还是刚起步的艺术爱好者，Hybrid AI 都能把实拍时间最多减少一半。",
   "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "与 Three、B. 或 Hour 合作，完成你的第一件作品，或一起拓展新的粉丝群。尺度 100% 由你决定，每件作品的权利都归你所有。",
   "For creators and art lovers": "面向创作者与艺术爱好者",
   "For fitness, lifestyle and travel creators, influencers, and art lovers just starting out who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour.": "适合健身、生活方式和旅行类创作者、网红，以及刚起步的艺术爱好者：想要电影感作品、更少的实拍天数，并触达 Three、B. 和 Hour 的粉丝。",

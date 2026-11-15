@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "Seas del mundo fitness, creador de contenido, influencer, modelo o un amante del arte que empieza, Hybrid AI puede reducir el tiempo de rodaje real hasta la mitad.",
   "Work with Three, B. or Hour to make your first piece or grow a new fan base together. You choose 100% how much you reveal, and you own the rights to every piece.": "Trabaja con Three, B. o Hour para crear tu primera pieza o ampliar juntos una nueva base de fans. Tú decides al 100 % cuánto muestras, y los derechos de cada pieza son tuyos.",
   "For creators and art lovers": "Para creadores y amantes del arte",
   "For fitness, lifestyle and travel creators, influencers, and art lovers just starting out who want cinematic work, fewer shoot days, and a crossover to the fans of Three, B. and Hour.": "Para creadores de fitness, lifestyle y viajes, influencers y amantes del arte que están empezando: trabajo cinematográfico, menos días de rodaje y un cruce con los fans de Three, B. y Hour.",

@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('es', {
+  "Merging Myself with AI · 70/30": "Fusionándome con la IA · 70/30",
+  "Nothing here is made 100% by AI. A real person is blended with AI, and the human side leads. When you collab with us, you are the 70%.": "Nada de esto está hecho al 100 % por IA. Una persona real se fusiona con la IA, y lo humano lleva la iniciativa. Cuando colaboras con nosotros, tú eres ese 70 %.",
+  "Human core": "Núcleo humano",
+  "Personality, taste, emotion, storytelling, art direction, and a real face and body": "Personalidad, gusto, emoción, narrativa, dirección de arte, y una cara y un cuerpo reales",
+  "AI augmentation": "Impulso de IA",
+  "Fantasy sets, MV production, music, and alter egos like Three, B. and Hour": "Escenarios de fantasía, producción de videoclips, música y alter egos como Three, B. y Hour",
+  "The full-length work of Three, B. and Hour as posted on X, in one place. Every piece is 70% human (real face, body, story and direction) and 30% AI (sets, fantasy and music). Play them right here, or open them on X.": "Las obras completas de Three, B. y Hour publicadas en X, en un solo lugar. Cada pieza es 70 % humana (cara, cuerpo, historia y dirección reales) y 30 % IA (escenarios, fantasía y música). Reprodúcelas aquí o ábrelas en X.",
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: 70% human (real face, body and story), 30% AI": "Toca un retrato para ver el clip de cada personaje · todas las imágenes son Hybrid AI: 70 % humano (cara, cuerpo e historia reales), 30 % IA",
   "70/30 · Human 70%, AI 30%": "70/30 · Humano 70 %, IA 30 %",
   "A Hybrid AI creative space for real creators and art lovers": "Espacio creativo Hybrid AI para creadores y amantes del arte",
   "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "Seas del mundo fitness, creador de contenido, influencer, modelo o un amante del arte que empieza, Hybrid AI puede reducir el tiempo de rodaje real hasta la mitad.",

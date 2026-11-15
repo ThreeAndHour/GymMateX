@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('zh', {
+  "Merging Myself with AI · 70/30": "与 AI 融合的我 · 70/30",
+  "Nothing here is made 100% by AI. A real person is blended with AI, and the human side leads. When you collab with us, you are the 70%.": "这里没有任何作品是 100% 由 AI 完成的。真实的人与 AI 融合，由人主导。与我们合作时，你就是那 70%。",
+  "Human core": "人的核心",
+  "Personality, taste, emotion, storytelling, art direction, and a real face and body": "个性、品味、情感、叙事、艺术指导，以及真实的面孔与身体",
+  "AI augmentation": "AI 增强",
+  "Fantasy sets, MV production, music, and alter egos like Three, B. and Hour": "奇幻场景、MV 制作、音乐，以及 Three、B. 和 Hour 这样的另一个自我",
+  "The full-length work of Three, B. and Hour as posted on X, in one place. Every piece is 70% human (real face, body, story and direction) and 30% AI (sets, fantasy and music). Play them right here, or open them on X.": "Three、B. 和 Hour 在 X 上发布的完整作品，集中在一页。每件作品都是 70% 真人（真实的面孔、身体、故事与导演）加 30% AI（场景、奇幻与音乐）。可直接在此播放，或在 X 上打开。",
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: 70% human (real face, body and story), 30% AI": "点击头像观看每个角色的短片 · 所有图像均为 Hybrid AI：70% 真人（真实面孔、身体与故事），30% AI",
   "70/30 · Human 70%, AI 30%": "70/30 · 真人 70%，AI 30%",
   "A Hybrid AI creative space for real creators and art lovers": "一个 Hybrid AI 创作空间，献给真正的创作者与艺术爱好者",
   "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "无论你是健身爱好者、内容创作者、网红、模特，还是刚起步的艺术爱好者，Hybrid AI 都能把实拍时间最多减少一半。",

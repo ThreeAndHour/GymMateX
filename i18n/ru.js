@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('ru', {
+  "Merging Myself with AI · 70/30": "Сливаюсь с ИИ · 70/30",
+  "Nothing here is made 100% by AI. A real person is blended with AI, and the human side leads. When you collab with us, you are the 70%.": "Ничего здесь не создано ИИ на 100%. Реальный человек соединён с ИИ, и ведёт человек. В коллаборации с нами эти 70% — вы.",
+  "Human core": "Человеческое ядро",
+  "Personality, taste, emotion, storytelling, art direction, and a real face and body": "Характер, вкус, эмоции, история, арт-дирекшн, реальные лицо и тело",
+  "AI augmentation": "Усиление ИИ",
+  "Fantasy sets, MV production, music, and alter egos like Three, B. and Hour": "Фэнтези-декорации, производство клипов, музыка и альтер эго вроде Three, B. и Hour",
+  "The full-length work of Three, B. and Hour as posted on X, in one place. Every piece is 70% human (real face, body, story and direction) and 30% AI (sets, fantasy and music). Play them right here, or open them on X.": "Полные работы Three, B. и Hour из X на одной странице. Каждая работа — на 70% человек (реальные лицо, тело, история и режиссура) и на 30% ИИ (декорации, фэнтези и музыка). Смотрите прямо здесь или откройте в X.",
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: 70% human (real face, body and story), 30% AI": "Нажмите на портрет, чтобы посмотреть клип каждой персоны · все изображения — Hybrid AI: 70% человек (реальные лицо, тело и история), 30% ИИ",
   "70/30 · Human 70%, AI 30%": "70/30 · человек 70%, ИИ 30%",
   "A Hybrid AI creative space for real creators and art lovers": "Пространство Hybrid AI для авторов и ценителей искусства",
   "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "Фитнес, контент-креатор, инфлюенсер, модель или любитель искусства, который только начинает, — Hybrid AI сокращает время реальных съёмок до половины.",

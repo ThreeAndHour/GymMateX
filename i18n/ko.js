@@ -1,4 +1,12 @@
 THBHO_I18N_ADD('ko', {
+  "Merging Myself with AI · 70/30": "AI와 하나 되는 나 · 70/30",
+  "Nothing here is made 100% by AI. A real person is blended with AI, and the human side leads. When you collab with us, you are the 70%.": "여기의 어떤 작품도 AI가 100% 만들지 않았습니다. 실제 사람이 AI와 섞이고, 사람이 이끕니다. 우리와 콜라보할 때 그 70%는 바로 당신입니다.",
+  "Human core": "사람의 핵심",
+  "Personality, taste, emotion, storytelling, art direction, and a real face and body": "성격, 취향, 감정, 스토리텔링, 아트 디렉션, 그리고 실제 얼굴과 몸",
+  "AI augmentation": "AI 증강",
+  "Fantasy sets, MV production, music, and alter egos like Three, B. and Hour": "판타지 세트, MV 제작, 음악, 그리고 Three, B., Hour 같은 또 다른 자아",
+  "The full-length work of Three, B. and Hour as posted on X, in one place. Every piece is 70% human (real face, body, story and direction) and 30% AI (sets, fantasy and music). Play them right here, or open them on X.": "X에 올린 Three, B., Hour의 전체 작품을 한곳에 모았습니다. 모든 작품은 사람 70%(실제 얼굴, 몸, 이야기, 연출)와 AI 30%(세트, 판타지, 음악)로 만들어졌습니다. 여기서 바로 재생하거나 X에서 열어 보세요.",
+  "Tap a portrait to watch each persona's clip · all images are Hybrid AI: 70% human (real face, body and story), 30% AI": "사진을 눌러 각 페르소나의 클립을 보세요 · 모든 이미지는 Hybrid AI: 사람 70%(실제 얼굴, 몸, 이야기), AI 30%",
   "70/30 · Human 70%, AI 30%": "70/30 · 사람 70%, AI 30%",
   "A Hybrid AI creative space for real creators and art lovers": "진짜 크리에이터와 예술 애호가를 위한 Hybrid AI 창작 공간",
   "Whether you're into fitness, a content creator, an influencer, a model, or an art lover just starting out, Hybrid AI can cut real shooting time by up to half.": "피트니스, 콘텐츠 크리에이터, 인플루언서, 모델, 혹은 이제 막 시작하는 예술 애호가 누구든, Hybrid AI가 실제 촬영 시간을 최대 절반까지 줄여 줍니다.",

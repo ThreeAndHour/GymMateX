@@ -80,6 +80,6 @@ Weekly report: `node tools/weekly_stats.js` (after `git fetch --depth 400 origin
 - Check the live page at https://creators.thbho.com/<page> (curl works) and look at it on phone and desktop widths before telling Thor it is done.
 
 ## Other references
-- Collab form: https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/edit (rebuilt by `tools/rebuild-collab-form.gs`). Embedded in `#apply` with `?embedded=true`.
+- Collab form: https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/edit (edit in place with `tools/update-collab-form.gs`; the older `rebuild-collab-form.gs` wipes the form and must not be run). Embedded in `#apply` with `?embedded=true`.
 - YouTube playlist on Creators: `PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl`.
 - Domain, Google Analytics and cross-site plans live in the Claude Docs doc "ThB.Ho · Domain & Analytics Roadmap" and are handled in a separate core chat.

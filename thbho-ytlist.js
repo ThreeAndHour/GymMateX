@@ -11,13 +11,19 @@
  }
  function build(box,i){
   var id='ytpl'+i, list=box.getAttribute('data-list'), errs=0, total=0;
-  var holder=document.createElement('div'); holder.id=id; box.appendChild(holder);
-  var p=new YT.Player(id,{
-   host:'https://www.youtube-nocookie.com', width:'100%', height:'100%',
-   playerVars:{listType:'playlist',list:list,rel:0,playsinline:1,modestbranding:1},
+  /* Build the iframe ourselves so referrerpolicy is set BEFORE it loads: the pages use
+     <meta name="referrer" content="no-referrer">, and without a referrer YouTube shows
+     "Error 153" (Safari / iPhone is strict about this). Then attach the API to it. */
+  var f=document.createElement('iframe'); f.id=id;
+  f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+  f.title=box.getAttribute('data-title')||'YouTube playlist';
+  f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true;
+  f.style.cssText='width:100%;height:100%;border:0;display:block';
+  f.src='https://www.youtube-nocookie.com/embed/videoseries?list='+encodeURIComponent(list)+'&enablejsapi=1&rel=0&playsinline=1&modestbranding=1&origin='+encodeURIComponent(location.origin);
+  box.appendChild(f);
+  var p=new YT.Player(f,{
    events:{
-    onReady:function(){try{total=(p.getPlaylist()||[]).length||12}catch(e){total=12}
-     var f=box.querySelector('iframe'); if(f){f.title=box.getAttribute('data-title')||'YouTube playlist';f.setAttribute('referrerpolicy','strict-origin-when-cross-origin')}},
+    onReady:function(){try{total=(p.getPlaylist()||[]).length||12}catch(e){total=12}},
     onStateChange:function(e){if(e.data===1)errs=0},
     onError:function(){errs++; if(errs>=Math.max(total,1)){fallback(box);return} try{p.nextVideo()}catch(e){fallback(box)}}
    }

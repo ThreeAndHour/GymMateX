@@ -34,7 +34,7 @@ function setupGuestRegistry() {
       .setHelpText('ไม่ต้องแก้ไข ช่วยให้ทีมรู้ว่าคุณมาจากคลิปไหน และผลแบบทดสอบของคุณ · Leave as is: it tells us which clip brought you here and your quiz result.')
       .setRequired(false);
   }
-  var pre = form.createResponse().withItemResponse(ref.asTextItem().createResponse('x')).toPrefilledUrl();
+  var pre = form.createResponse().withItemResponse((ref.asTextItem ? ref.asTextItem() : ref).createResponse('x')).toPrefilledUrl();
   var entry = (pre.match(/entry\.(\d+)=/) || [])[1];
 
   // 2. Responses Sheet

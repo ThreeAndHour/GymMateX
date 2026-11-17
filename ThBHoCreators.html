@@ -328,7 +328,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
 .lvcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .lvcta .btn.solid{background:var(--c);border-color:var(--c);color:#0A0D16}
 
-@media (max-width:760px){nav a.switch{display:inline-block}}
+@media (max-width:760px){nav a.switch{display:none}.mmenu a.switch{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:11px 2px;font:inherit;color:var(--accent)}}
 .switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
 .switch:hover{color:var(--ink);border-color:var(--accent)}
 .demo-frame{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden}
@@ -457,8 +457,9 @@ section,#contact{scroll-margin-top:66px}
  main#top>.mcta.m3{order:10}
  main#top>#match{order:11}
  main#top>#roadmap{order:12}
- main#top>#apply{order:13}
- main#top>dialog{order:14}
+ main#top>#home{order:13}
+ main#top>#apply{order:14}
+ main#top>dialog{order:15}
  .mcta{display:grid;gap:10px;margin-top:40px;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,rgba(224,185,107,.10),rgba(127,214,208,.05))}
  .mcta p{margin:0;font:600 16px/1.4 var(--display)}
  .mcta .btn{justify-content:center}
@@ -468,6 +469,7 @@ section,#contact{scroll-margin-top:66px}
 <script src="thbho-i18n.js"></script>
 <script src="thbho-analytics.js?v=5" defer></script>
 <script src="thbho-ref.js?v=3" defer></script>
+<script src="thbho-home.js?v=1" defer></script>
 <script src="x-media.js?v=2"></script>
 <script src="thbho-player.js?v=3"></script>
 </head>
@@ -486,7 +488,7 @@ section,#contact{scroll-margin-top:66px}
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
    <a class="napply" href="#apply"><span lang="th">สมัคร</span><span lang="en">Apply</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
-   <!-- venues link hidden for now: <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับร้าน →</span><span lang="en">For venues →</span></a> -->
+   <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับสถานที่ →</span><span lang="en">For venues →</span></a>
    <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
    <button type="button" class="mbtn" id="mbtn" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">☰</button>
   </nav>
@@ -728,6 +730,16 @@ section,#contact{scroll-margin-top:66px}
    <div class="pdworks" id="pdWorks"></div>
   </div>
  </dialog>
+<section id="home">
+ <div class="sh">
+  <span class="kick"><span lang="th">เว็บไซต์คือบ้าน</span><span lang="en">A website is a home</span></span>
+  <h2><span lang="th">บ้านของ ThB.Ho ใช้บางห้องทุกวัน ห้องที่เหลือสร้างรอไว้แล้ว</span><span lang="en">The ThB.Ho house: some rooms in daily use, the rest built and waiting</span></h2>
+  <p><span lang="th">ThB.Ho ไม่ได้อยู่แค่บนโซเชียล เราวางระบบทั้งหลังไว้ตั้งแต่แรก ห้องที่เปิดไฟคือสิ่งที่คุณใช้ได้วันนี้ ห้องที่ยังปิดไฟจะเปิดเมื่อพร้อม</span><span lang="en">ThB.Ho doesn't live only on social media. We laid out the whole house from the start: lit rooms are what you can use today, and dark rooms open when they are ready.</span></p>
+ </div>
+ <div class="thome" data-home></div>
+ <p class="note"><a href="ThBHoDigitalHome.html" style="color:var(--accent);font-weight:600;text-decoration:none"><span lang="th">อ่านแนวคิดเต็ม: เว็บไซต์คือบ้านของธุรกิจ →</span><span lang="en">Read the full idea: a website is a business's home →</span></a></p>
+</section>
+
 <section id="apply">
  <div class="applywrap">
   <div class="apply-text">
@@ -742,12 +754,12 @@ section,#contact{scroll-margin-top:66px}
   <li><b>3</b><span><span lang="th">เลือก persona และรูปแบบ collab ที่สนใจ</span><span lang="en">Choose a persona and the collab formats you like</span></span></li>
  </ol>
  <div class="demo-cta">
-  <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
+  <a class="btn solid" data-form-link="collab" href="https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
   <span class="note" style="margin:0"><span lang="th">ถ้าฟอร์มไม่ขึ้น ให้กดเปิดในแท็บใหม่ หรือเข้าสู่ระบบ Google ก่อน</span><span lang="en">If the form doesn't load, open it in a new tab or sign in to Google first.</span></span>
  </div>
   </div>
  <div class="gform">
-  <iframe data-form title="ThB.Ho Creators collab application form">Loading…</iframe>
+  <iframe data-form="collab" title="ThB.Ho Creators collab application form">Loading…</iframe>
  </div>
  </div>
 </section>

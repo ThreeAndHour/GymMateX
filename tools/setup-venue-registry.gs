@@ -11,6 +11,9 @@
  */
 var REGISTRY_SS = '1OPFoIURCKrcfU1Ulph0tXWtX7HM0KgtukgH14wQkux0';
 var VENUE_FORM_ID = ''; // fill in after the first run if Script Properties are ever lost
+var VENUE_TYPES = ['ซาวน่า · Sauna', 'สปา / ร้านนวด / เวลเนส · Spa / massage / wellness', 'ฟิตเนส / ยิม · Gym / fitness', 'โรงแรม / รีสอร์ท · Hotel / resort',
+      'บาร์ / lounge / ไนต์ไลฟ์ · Bar / lounge / nightlife', 'ร้านอาหาร / คาเฟ่ · Restaurant / café',
+      'สตูดิโอ · Studio', 'เรือยอชต์ / ชายหาด · Yacht / beach'];
 var VENUE_KEYS = [
   ['Source · มาจาก', 'src'], ['First clip · คลิปแรก', 'clip'], ['Campaign', 'c'], ['Came back from', 'last'],
   ['Clips opened · คลิปที่เปิดดู', 'seen'], ['Language', 'lang'], ['Visits', 'visits'], ['First visit · มาครั้งแรก', 'first']
@@ -21,6 +24,10 @@ function setupVenueRegistry() {
   var id = VENUE_FORM_ID || props.getProperty('VENUE_FORM_ID');
   var form = id ? FormApp.openById(id) : buildVenueForm_();
   props.setProperty('VENUE_FORM_ID', form.getId());
+  // keep the venue-type choices in step with the Venues page (safe on a live form: answers keep their text)
+  form.getItems(FormApp.ItemType.CHECKBOX).forEach(function (it) {
+    if (/^ประเภทสถานที่/.test(it.getTitle())) it.asCheckboxItem().setChoiceValues(VENUE_TYPES).showOtherOption(true);
+  });
 
   // responses go to the shared registry spreadsheet
   var dest = null; try { dest = form.getDestinationId(); } catch (e) {}
@@ -101,9 +108,7 @@ function buildVenueForm_() {
 
   form.addTextItem().setTitle('ชื่อสถานที่ · Venue name').setRequired(true);
   form.addCheckboxItem().setTitle('ประเภทสถานที่ · Type of venue')
-    .setChoiceValues(['ฟิตเนส / ยิม · Gym / fitness', 'สปา / เวลเนส · Spa / wellness', 'โรงแรม / รีสอร์ท · Hotel / resort',
-      'บาร์ / lounge / ไนต์ไลฟ์ · Bar / lounge / nightlife', 'ร้านอาหาร / คาเฟ่ · Restaurant / café',
-      'สตูดิโอ · Studio', 'เรือยอชต์ / ชายหาด · Yacht / beach'])
+    .setChoiceValues(VENUE_TYPES)
     .showOtherOption(true).setRequired(true);
   form.addTextItem().setTitle('ที่ตั้ง (เมือง / ย่าน) · Location (city / area)').setRequired(true);
   form.addTextItem().setTitle('ชื่อผู้ติดต่อ และตำแหน่ง · Contact person and role').setRequired(true);

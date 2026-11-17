@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>เว็บไซต์คือบ้าน · ThB.Ho Creators &amp; Venues</title>
+<meta name="description" content="แนวคิด ‘เว็บไซต์คือบ้านของธุรกิจ’ ฉบับ Creators & Venues: ห้องไหนใช้ทุกวัน ห้องไหนสร้างรอไว้ และเจ้าบ้าน AI ที่ชวนครีเอเตอร์และสถานที่ที่ใช่เข้าบ้าน">
+<link rel="canonical" href="https://creators.thbho.com/ThBHoDigitalHome.html">
+<meta property="og:title" content="A website is a home · ThB.Ho Creators &amp; Venues">
+<meta property="og:description" content="Which rooms ThB.Ho uses every day, which are built and waiting, and the AI host that invites the right creators and venues.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://creators.thbho.com/ThBHoDigitalHome.html">
+<meta property="og:image" content="https://creators.thbho.com/creator-img/og-creators-three.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://creators.thbho.com/creator-img/og-creators-three.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="creator-img/thho-icon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="creator-img/thho-icon-64.png">
+<link rel="apple-touch-icon" href="creator-img/thho-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="thbho-i18n.js"></script>
+<script src="thbho-analytics.js?v=5" defer></script>
+<script src="thbho-ref.js?v=3" defer></script>
+<script src="thbho-home.js?v=1" defer></script>
+<style>
+/* "A website is a home" — Creators & Venues edition. Concept: thbho.com/DigitalHome.html (Agent Network core).
+   Creators palette (navy-black + gold). Infographic: thbho-home.js. */
+:root{
+ --bg:#0A0D16; --s1:#111626; --s2:#1A2136; --line:#283250;
+ --ink:#EEF0F6; --ink2:#AEB4C6; --ink3:#77809A;
+ --accent:#E0B96B; --rose:#C8466F; --accent2:#7FD6D0;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.72 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.top{position:sticky;top:0;z-index:10;background:rgba(10,13,22,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark img{height:38px;width:auto;display:block}
+.navr{display:flex;align-items:center;gap:14px;font-size:14px}
+.navr a{color:var(--ink2);text-decoration:none;white-space:nowrap}
+.navr a:hover{color:var(--ink)}
+.switch{font:500 12.5px var(--mono);border:1px solid var(--line);border-radius:99px;padding:4px 12px}
+select.lang{font:500 12px var(--mono);background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer;appearance:none;-webkit-appearance:none}
+select.lang option{background:#111626;color:#EEF0F6}
+@media (max-width:820px){.navr a.hs{display:none}}
+@media (max-width:480px){.navr a.switch{display:none}}
+.hero{padding:52px 0 18px}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:12px}
+h1{font-size:clamp(32px,5.4vw,54px);font-weight:700;line-height:1.12;margin-bottom:16px}
+.lede{font-size:clamp(17px,2.1vw,20px);color:var(--ink2);max-width:62ch;margin:0}
+.pull{margin:24px 0 0;padding:14px 18px;border-left:3px solid var(--accent);background:rgba(224,185,107,.08);border-radius:0 12px 12px 0;max-width:62ch;font-weight:500}
+section{padding:38px 0}
+h2{font-size:clamp(24px,3.4vw,34px);font-weight:700;line-height:1.22;margin-bottom:10px}
+h3{font-size:18px;font-weight:600;line-height:1.35;margin-bottom:6px}
+p{margin:0 0 14px}
+.sub{color:var(--ink2);max-width:66ch}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card>*:last-child{margin-bottom:0}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.step{position:relative;padding-top:44px}
+.step b.n{position:absolute;top:16px;left:20px;font:500 12.5px var(--mono);letter-spacing:.1em;color:var(--ink3)}
+.step p{font-size:15.5px;color:var(--ink2)}
+.step.best{border-color:var(--accent);background:linear-gradient(180deg,rgba(224,185,107,.12),var(--s1) 70%)}
+.step.best b.n{color:var(--accent)}
+.map{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.map li{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:34px 1fr;gap:10px;font-size:15.5px;line-height:1.55}
+.map li b.n{width:30px;height:30px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font:600 13px var(--mono)}
+.map li strong{display:block}
+.map li span.eq{color:var(--ink2)}
+.rooms h3{display:flex;align-items:center;gap:9px}
+.rooms h3 i{width:14px;height:14px;border-radius:4px;flex:none}
+.rooms .on h3 i{background:rgba(224,185,107,.2);border:1.5px solid var(--accent)}
+.rooms .off h3 i{background:var(--s2);border:1.5px dashed var(--ink3)}
+.rooms ul{margin:8px 0 0;padding-left:20px;color:var(--ink2);font-size:15.5px}
+.rooms li{margin:6px 0}
+.tag{display:inline-block;font:500 11px var(--mono);letter-spacing:.06em;color:var(--accent2);border:1px solid rgba(127,214,208,.35);border-radius:99px;padding:0 8px;margin-left:4px;vertical-align:1px;white-space:nowrap}
+.tw{overflow-x:auto;margin-top:16px}
+table.cmp{width:100%;border-collapse:collapse;background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px;min-width:560px}
+.cmp th,.cmp td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.55}
+.cmp th{background:var(--s2);color:var(--accent);font:600 13.5px var(--body)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp td:first-child{font-weight:600;width:22%}
+.cmp td:nth-child(3){color:var(--ink3)}
+.host{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;align-items:start;margin-top:16px}
+.host ul{margin:0;padding-left:20px}
+.host li{margin:8px 0;color:var(--ink2)}
+.host li b{color:var(--ink)}
+.q{counter-reset:q;list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.q li{counter-increment:q;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:12px 14px 12px 54px;position:relative}
+.q li::before{content:counter(q);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;border:1px solid var(--rose);color:var(--rose);display:grid;place-items:center;font:600 13px var(--mono)}
+.cta{border:1px solid var(--line);border-radius:20px;padding:28px 26px;display:grid;gap:10px;background:linear-gradient(135deg,rgba(224,185,107,.12),rgba(127,214,208,.06))}
+.cta p{color:var(--ink2);margin:0;max-width:66ch}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;font:600 15px var(--display);text-decoration:none;border:1px solid var(--line);color:var(--ink)}
+.btn.solid{background:var(--accent);color:#1C1705;border-color:var(--accent)}
+.btn:hover{border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:26px 0 44px;font-size:14px;color:var(--ink3)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600}
+footer a{text-decoration:none}
+@media (max-width:820px){.g3,.g2,.map,.host{grid-template-columns:1fr}body{font-size:16px}.btns .btn{flex:1 1 100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="ThBHoCreators.html" aria-label="th.ho — creating dreams"><img src="creator-img/thho-logo.png" alt="th.ho — creating dreams" width="900" height="286"></a>
+  <div class="navr">
+   <a class="hs" href="#house"><span lang="th">ผังบ้าน</span><span lang="en">The house</span></a>
+   <a class="hs" href="#rooms"><span lang="th">ห้องวันนี้ ห้องวันหน้า</span><span lang="en">Rooms</span></a>
+   <a class="hs" href="#host"><span lang="th">เจ้าบ้านที่ดี</span><span lang="en">The host</span></a>
+   <a class="switch" href="ThBHoVenues.html"><span lang="th">สำหรับสถานที่ →</span><span lang="en">For venues →</span></a>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
+  </div>
+ </div>
+</header>
+
+<main>
+<div class="wrap hero">
+ <span class="kick"><span lang="th">แนวคิดการสร้างเว็บของเรา · ฉบับ Creators &amp; Venues</span><span lang="en">How we think about websites · Creators &amp; Venues edition</span></span>
+ <h1><span lang="th">เว็บไซต์คือบ้านของงานครีเอเตอร์และสถานที่</span><span lang="en">A website is the home of creator work and venues</span></h1>
+ <p class="lede"><span lang="th">บ้านไม่ได้สร้างเพื่ออยู่แค่วันนี้ เราวางโครงสร้างและระบบทั้งหลังตั้งแต่แรก ใช้บางห้องทุกวัน และเปิดห้องที่เหลือเมื่อถึงเวลา creators.thbho.com ก็สร้างแบบนี้ เป็นทั้งบ้านของผลงาน Three, B. และ Hour และเป็นร้านที่รับครีเอเตอร์และสถานที่มาร่วมงาน</span><span lang="en">A house is not built for today alone. You lay the structure and the systems for the whole building at the start, live in a few rooms every day, and open the rest when the time comes. creators.thbho.com is built the same way: it is the home of Three, B. and Hour's work, and the shop where creators and venues come to work with us.</span></p>
+ <p class="pull"><span lang="th">มันไม่ใช่แค่การย้ายผลงานออกจาก X, IG และ TikTok มาอยู่บนเว็บของตัวเอง คำถามที่สำคัญกว่าคือ บ้านหลังนี้ถูกวางระบบไว้ให้รองรับครีเอเตอร์และสถานที่ได้อีกกี่ปี</span><span lang="en">This is not only about moving work off X, IG and TikTok onto a site of your own. The bigger question is how many years of creators and venues the new house was planned to hold.</span></p>
+</div>
+
+<section>
+ <div class="wrap">
+  <span class="kick"><span lang="th">สามระดับ</span><span lang="en">Three levels</span></span>
+  <h2><span lang="th">ย้ายบ้าน ยังไม่เท่ากับ สร้างบ้านที่ดี</span><span lang="en">Moving out is not the same as building well</span></h2>
+  <div class="g3">
+   <div class="card step"><b class="n">01</b><h3><span lang="th">แผงเช่าในตลาด</span><span lang="en">A rented stall in the market</span></h3><p><span lang="th">โพสต์ผลงานบน X, IG หรือ TikTok อย่างเดียว คนดูเยอะ แต่แพลตฟอร์มเปลี่ยนการมองเห็น จำกัดเนื้อหา หรือปิดบัญชีได้ทุกเมื่อ และรายชื่อคนที่สนใจ collab ไม่ได้อยู่กับคุณ</span><span lang="en">Posting work only on X, IG or TikTok. Plenty of viewers, but the platform can change your reach, restrict your content or close the account at any time, and the list of people who want to collab is not yours.</span></p></div>
+   <div class="card step"><b class="n">02</b><h3><span lang="th">บ้านเปล่าของตัวเอง</span><span lang="en">An empty house of your own</span></h3><p><span lang="th">มีเว็บพอร์ตโฟลิโอแล้ว แต่เป็นแค่แกลเลอรี ไม่มีระบบสมัคร ไม่มีทะเบียนแขก พองานโต ต้องรื้อทำใหม่ทั้งหลัง</span><span lang="en">You have a portfolio site, but it is only a gallery: no application flow, no guest registry. When the work grows, the whole thing has to be rebuilt.</span></p></div>
+   <div class="card step best"><b class="n">03</b><h3><span lang="th">บ้านที่วางระบบไว้ครบ</span><span lang="en">A house planned to last</span></h3><p><span lang="th">ข้อมูลผลงาน ฟอร์มสมัคร ทะเบียนแขก และ 7 ภาษา ถูกวางไว้ตั้งแต่แรก ห้องไหนยังไม่ใช้ก็ปิดไว้ก่อน วันที่พร้อมก็เปิดได้เลยโดยไม่ต้องทุบผนัง</span><span lang="en">Work data, application forms, a guest registry and 7 languages are laid out from the start. Rooms you do not need yet stay closed, and open without knocking down a wall when you are ready.</span></p></div>
+  </div>
+ </div>
+</section>
+
+<section id="house">
+ <div class="wrap">
+  <span class="kick"><span lang="th">ผังบ้าน</span><span lang="en">The floor plan</span></span>
+  <h2><span lang="th">ทุกส่วนของบ้าน คือส่วนหนึ่งของเว็บ</span><span lang="en">Every part of the house is a part of the website</span></h2>
+  <p class="sub"><span lang="th">ห้องที่เปิดไฟคือสิ่งที่ใช้ทุกวันบน creators.thbho.com แล้ว ห้องที่ยังปิดไฟสร้างรอไว้ เส้นประสีฟ้าคือระบบที่เดินไว้ถึงทุกห้องตั้งแต่ตอนสร้าง</span><span lang="en">Lit rooms are already in daily use on creators.thbho.com. Dark rooms are built and waiting. The blue dashed line is the wiring that reached every room while the house was built.</span></p>
+  <div class="thome" data-home></div>
+  <ol class="map">
+   <li><b class="n">1</b><div><strong><span lang="th">ที่ดินและโฉนด</span><span lang="en">Land and title deed</span></strong><span class="eq"><span lang="th">โดเมน creators.thbho.com ผลงาน และรายชื่อแขกเป็นของเราเอง ไม่มีแพลตฟอร์มไหนปิดร้านหรือเปลี่ยนกติกาได้</span><span lang="en">The creators.thbho.com domain, the work and the guest list are our own. No platform can close the shop or change the rules.</span></span></div></li>
+   <li><b class="n">2</b><div><strong><span lang="th">ฐานรากและโครงสร้าง</span><span lang="en">Foundation and structure</span></strong><span class="eq"><span lang="th">ตารางผลงานชุดเดียว (คลิป ยอดวิว persona และธีม) ที่ทุกหน้าดึงไปใช้ แก้ที่เดียว เปลี่ยนทุกหน้า</span><span lang="en">One table of work (clips, views, personas and themes) that every page reads. Change it once and every page follows.</span></span></div></li>
+   <li><b class="n">3</b><div><strong><span lang="th">ไฟ น้ำ เน็ต และเครื่องใช้ไฟฟ้า</span><span lang="en">Utilities and appliances</span></strong><span class="eq"><span lang="th">7 ภาษา ตัวเล่นคลิป สถิติ และบอตอัปเดตยอดวิวทุกเช้า เดินสายไว้ถึงทุกห้อง</span><span lang="en">7 languages, clip players, statistics and a bot that refreshes views every morning, wired to every room.</span></span></div></li>
+   <li><b class="n">4</b><div><strong><span lang="th">ห้องที่ใช้ทุกวัน</span><span lang="en">Everyday rooms</span></strong><span class="eq"><span lang="th">Portfolio แบบทดสอบจับคู่ persona ฟอร์มสมัคร และทะเบียนแขก ใช้ได้แล้ววันนี้</span><span lang="en">The Portfolio, the persona match quiz, the application forms and the guest registry, all in use today.</span></span></div></li>
+   <li><b class="n">5</b><div><strong><span lang="th">ห้องที่สร้างรอไว้ และห้องว่าง</span><span lang="en">Waiting rooms and spare rooms</span></strong><span class="eq"><span lang="th">ห้องคุยกับ persona ด้วย AI ศาลาสำหรับอีเวนต์ O2O และ VR และห้อง Private 20+ ห้องว่างเปลี่ยนหน้าที่ได้ตามตลาด</span><span lang="en">A room to chat with a persona through AI, a pavilion for O2O and VR events, and the Private 20+ room. Spare rooms change their job as the market moves.</span></span></div></li>
+   <li><b class="n">6</b><div><strong><span lang="th">สวนและลาน</span><span lang="en">Garden and terrace</span></strong><span class="eq"><span lang="th">สถานที่พาร์ทเนอร์ที่ใช้ถ่ายงานและจัดอีเวนต์ เปิดรับแล้ว และต่อเข้าทะเบียนแขกชุดเดียวกับครีเอเตอร์</span><span lang="en">Partner venues where we shoot and host events. Now open, and wired into the same guest registry as creators.</span></span></div></li>
+  </ol>
+ </div>
+</section>
+
+<section id="rooms">
+ <div class="wrap">
+  <span class="kick"><span lang="th">ห้องวันนี้ ห้องวันหน้า</span><span lang="en">Rooms now, rooms later</span></span>
+  <h2><span lang="th">ไม่ต้องใช้ทุกห้องในวันแรก แต่ต้องมีห้องรอไว้</span><span lang="en">You do not need every room on day one, but the rooms need to exist</span></h2>
+  <p class="sub"><span lang="th">ห้องที่ครีเอเตอร์และสถานที่ใช้ได้วันนี้ เปิดไฟไว้แล้ว ส่วนห้องที่เหลือสร้างรอไว้ วันที่มีแขกพร้อมก็เปิดได้ทันที และห้องว่างยังเปลี่ยนหน้าที่ได้ตามตลาด</span><span lang="en">The rooms creators and venues can use today already have the lights on. The rest are built and waiting, ready the day the guests are, and a spare room can change its job as the market moves.</span></p>
+  <div class="g2 rooms">
+   <div class="card on"><h3><i></i><span lang="th">ห้องที่ใช้ทุกวัน</span><span lang="en">Rooms in daily use</span></h3>
+    <ul>
+     <li><span lang="th">Portfolio รวมคลิปและ MV ทั้งหมด ยอดวิวอัปเดตทุกเช้า</span><span lang="en">The Portfolio with every clip and music video, views refreshed every morning</span> <span class="tag">Creators</span></li>
+     <li><span lang="th">แบบทดสอบจับคู่ persona และระดับเนื้อหาที่เลือกเองได้</span><span lang="en">The persona match quiz and content levels you choose yourself</span> <span class="tag">Creators</span></li>
+     <li><span lang="th">ฟอร์มสมัคร collab และฟอร์มพาร์ทเนอร์สถานที่</span><span lang="en">The collab form and the venue partner form</span> <span class="tag">Creators</span> <span class="tag">Venues</span></li>
+     <li><span lang="th">ทะเบียนแขก รู้ว่าแขกมาจากโพสต์ไหน ดูคลิปอะไร และได้ผลแบบทดสอบอะไร</span><span lang="en">The guest registry: which post brought each guest, which clips they watched and their quiz result</span> <span class="tag">Creators</span> <span class="tag">Venues</span></li>
+     <li><span lang="th">หน้า Matching ตัวอย่างสำหรับสถานที่</span><span lang="en">A sample matching page for venues</span> <span class="tag">Venues</span></li>
+    </ul>
+   </div>
+   <div class="card off"><h3><i></i><span lang="th">ห้องที่สร้างรอไว้</span><span lang="en">Rooms built and waiting</span></h3>
+    <ul>
+     <li><span lang="th">ห้องคุยกับ persona ด้วย AI ที่ตอบคำถามแรกของแขกเอง</span><span lang="en">A room to chat with a persona through AI, answering a guest's first questions</span></li>
+     <li><span lang="th">อีเวนต์ O2O, theme night และ VR ที่สถานที่พาร์ทเนอร์</span><span lang="en">O2O events, theme nights and VR at partner venues</span></li>
+     <li><span lang="th">Digital Twin และห้อง Private 20+ บน platform ที่ตรวจอายุ</span><span lang="en">Digital Twins and the Private 20+ room on age-verified platforms</span></li>
+     <li><span lang="th">ห้องว่างสำหรับงานที่ตลาดจะพาไป เช่น เวิร์กช็อป Hybrid AI งานแบรนด์ หรือ wellness retreat</span><span lang="en">Spare rooms for wherever the market goes: Hybrid AI workshops, brand work or wellness retreats</span></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <span class="kick"><span lang="th">ทำไมต้องตั้งแต่แรก</span><span lang="en">Why at the start</span></span>
+  <h2><span lang="th">เดินท่อและสายไฟตอนสร้าง ง่ายกว่าทุบผนังทีหลัง</span><span lang="en">Pipes and wiring are easy while you build, and costly once the walls are up</span></h2>
+  <p class="sub"><span lang="th">ฟังก์ชันและระบบหลังบ้านคือเฟอร์นิเจอร์ เครื่องใช้ไฟฟ้า และระบบในบ้าน บางอย่างซื้อเพิ่มทีหลังได้ แต่ทุกอย่างต้องมีปลั๊กและท่อรอรับ</span><span lang="en">Functions and back-office systems are the furniture, appliances and utilities of the house. Some can be bought later, but each one needs a socket and a pipe waiting for it.</span></p>
+  <div class="tw">
+   <table class="cmp">
+    <thead><tr><th><span lang="th">เรื่อง</span><span lang="en">Topic</span></th><th><span lang="th">วางไว้ตั้งแต่แรก</span><span lang="en">Planned at the start</span></th><th><span lang="th">มาเติมทีหลัง</span><span lang="en">Added later</span></th></tr></thead>
+    <tbody>
+     <tr><td><span lang="th">ข้อมูลผลงาน</span><span lang="en">Work data</span></td><td><span lang="th">ตารางเดียว ทุกหน้าและบอตยอดวิวใช้ร่วมกัน</span><span lang="en">One table that every page and the view bot share</span></td><td><span lang="th">วางคลิปซ้ำทีละหน้า ยอดวิวต้องแก้เอง</span><span lang="en">Clips pasted page by page; views updated by hand</span></td></tr>
+     <tr><td><span lang="th">หลายภาษา</span><span lang="en">Languages</span></td><td><span lang="th">7 ภาษาโดยไม่แตะโครงหน้า</span><span lang="en">7 languages without touching the layout</span></td><td><span lang="th">ต้องทำหน้าใหม่ทีละภาษา</span><span lang="en">A new copy of each page per language</span></td></tr>
+     <tr><td><span lang="th">ใบสมัคร</span><span lang="en">Applications</span></td><td><span lang="th">ทุกใบมีที่มาของแขกติดมา: โพสต์ คลิป และผลแบบทดสอบ</span><span lang="en">Every one arrives with where the guest came from: post, clips and quiz result</span></td><td><span lang="th">รู้แค่ชื่อกับช่องทางติดต่อ</span><span lang="en">Only a name and a contact</span></td></tr>
+     <tr><td><span lang="th">งานโต</span><span lang="en">Growth</span></td><td><span lang="th">เพิ่ม persona สถานที่ หรืออีเวนต์ในระบบเดิม</span><span lang="en">Add personas, venues or events to the same system</span></td><td><span lang="th">รื้อทำใหม่ทั้งหลัง</span><span lang="en">A full rebuild</span></td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section id="host">
+ <div class="wrap">
+  <span class="kick"><span lang="th">เจ้าบ้านที่ดี</span><span lang="en">The good host</span></span>
+  <h2><span lang="th">AI และการตลาด คือเจ้าบ้านที่เชิญแขกที่ใช่เข้ามา</span><span lang="en">AI and marketing are the host who invites the right guests</span></h2>
+  <div class="host">
+   <div class="card">
+    <p><span lang="th">บ้านสวยแค่ไหนก็เงียบ ถ้าไม่มีใครเชิญแขก เครื่องมือ AI และการตลาดของเราทำหน้าที่เหมือนเจ้าบ้านที่ดี</span><span lang="en">A beautiful house stays quiet if nobody invites guests. Our AI and marketing tools act like a good host:</span></p>
+    <ul>
+     <li><b><span lang="th">ออกไปชวนแขกที่ถนนตลาด</span><span lang="en">Goes out to the market street</span></b> <span lang="th">ทุกโพสต์บน X, IG, TikTok และ YouTube มีลิงก์ติดตามที่พากลับมาที่บ้าน</span><span lang="en">every post on X, IG, TikTok and YouTube carries a tracked link back home</span></li>
+     <li><b><span lang="th">เลือกแขกที่เหมาะกับบ้าน</span><span lang="en">Chooses guests who fit the house</span></b> <span lang="th">แบบทดสอบจับคู่ครีเอเตอร์กับ persona ที่เข้ากันที่สุด และจับคู่แขกของสถานที่ด้วย MBTI</span><span lang="en">the quiz matches each creator with the persona that suits them, and venue guests are matched by MBTI</span></li>
+     <li><b><span lang="th">ต้อนรับเป็นภาษาของแขก</span><span lang="en">Welcomes them in their language</span></b> <span lang="th">7 ภาษาในทุกหน้า และอีกไม่นาน persona จะตอบคำถามแรกเอง</span><span lang="en">7 languages on every page, and soon the personas will answer the first questions themselves</span></li>
+     <li><b><span lang="th">จำแขกได้</span><span lang="en">Remembers them</span></b> <span lang="th">ทะเบียนแขกรู้ว่าใครมาจากโพสต์ไหน ชอบคลิปไหน และคุยถึงขั้นไหนแล้ว</span><span lang="en">the guest registry knows who came from which post, which clips they liked and how far the talks have gone</span></li>
+    </ul>
+   </div>
+   <div class="card">
+    <h3><span lang="th">โซเชียลยังสำคัญ</span><span lang="en">Social media still matters</span></h3>
+    <p><span lang="th">X, IG, TikTok และ YouTube คือถนนตลาดที่คนเดิน ป้ายร้านของเราควรอยู่ตรงนั้นต่อไป แต่ผลงานต้นฉบับ รายชื่อแขก และระบบสมัคร ควรอยู่ในบ้านของเราเอง</span><span lang="en">X, IG, TikTok and YouTube are the market street where people walk. Keep the sign there. Keep the original work, the guest list and the application system inside your own house.</span></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <span class="kick"><span lang="th">ก่อนสร้างบ้าน</span><span lang="en">Before you build</span></span>
+  <h2><span lang="th">5 คำถามที่ครีเอเตอร์และสถานที่ควรตอบได้</span><span lang="en">Five questions creators and venues should be able to answer</span></h2>
+  <ol class="q">
+   <li><span lang="th">ที่ดินเป็นชื่อใคร: โดเมน ไฟล์ผลงาน และรายชื่อคนที่สนใจ collab เป็นของคุณหรือของแพลตฟอร์ม</span><span lang="en">Whose name is on the land: do the domain, the work files and the list of people who want to collab belong to you or to a platform?</span></li>
+   <li><span lang="th">อีก 3 ปี บ้านนี้ต้องรองรับอะไร: ผลงานกี่ชิ้น กี่ภาษา กี่ persona และกี่สถานที่พาร์ทเนอร์</span><span lang="en">What must the house hold in three years: how many pieces of work, languages, personas and partner venues?</span></li>
+   <li><span lang="th">ห้องไหนใช้ทุกวัน และห้องไหนสร้างรอไว้ได้</span><span lang="en">Which rooms do you use every day, and which can be built to wait?</span></li>
+   <li><span lang="th">เครื่องมือใหม่ เช่น AI แชตหรือระบบจองอีเวนต์ จะเสียบปลั๊กเดิมได้ไหม หรือต้องเดินสายใหม่ทุกครั้ง</span><span lang="en">Will new tools, such as an AI chat or event booking, plug into the same sockets, or need new wiring every time?</span></li>
+   <li><span lang="th">ใครเป็นเจ้าบ้านที่คอยเชิญแขกและจำแขกได้</span><span lang="en">Who is the host that invites the guests and remembers them?</span></li>
+  </ol>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="cta">
+   <h2><span lang="th">มาเป็นแขกในบ้านหลังนี้</span><span lang="en">Come in as a guest</span></h2>
+   <p><span lang="th">ครีเอเตอร์มา collab กับ Three, B. หรือ Hour หรือสถานที่มาเป็นพาร์ทเนอร์ ทั้งสองทางเข้าทะเบียนแขกชุดเดียวกัน และทีมตอบกลับภายใน 3 วันทำการ</span><span lang="en">Creators can collab with Three, B. or Hour, and venues can become partners. Both doors lead into the same guest registry, and we reply within 3 working days.</span></p>
+   <div class="btns">
+    <a class="btn solid" href="ThBHoCreators.html#apply"><span lang="th">สมัคร collab (ครีเอเตอร์)</span><span lang="en">Apply to collab (creators)</span> →</a>
+    <a class="btn" href="ThBHoVenues.html#apply"><span lang="th">สมัครเป็นพาร์ทเนอร์สถานที่</span><span lang="en">Become a venue partner</span> →</a>
+    <a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดูผลงาน</span><span lang="en">See the work</span></a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="row">
+   <a href="ThBHoCreators.html">ThB.Ho Creators</a>
+   <a href="ThBHoPortfolio.html">Portfolio</a>
+   <a href="ThBHoVenues.html">Venues</a>
+   <a href="https://thbho.com/AIGymmateXFactory.html">Hybrid AI by ThB.Ho</a>
+   <a href="https://thbho.com/EngWiderooms.html">WIDEROOMS</a>
+  </div>
+  <p style="margin-top:12px">© 2026 Hybrid AI by ThB.Ho × WIDEROOMS</p>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var root=document.documentElement,langBtn=document.getElementById('lang');
+ function setLang(l){root.lang=l;langBtn.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ var q=new URLSearchParams(location.search).get('lang');
+ setLang(THBHO_I18N.pick(q,saved));
+ langBtn.addEventListener('change',function(){setLang(langBtn.value)});
+})();
+</script>
+</body>
+</html>

@@ -345,10 +345,22 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
 .usp-cta>span{color:var(--ink2);font-size:14.5px}
 @media (max-width:900px){.usp{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.usp{grid-template-columns:1fr}}
+.applywrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:40px;align-items:start}
+.apply-text{position:sticky;top:90px}
+.apply-text .sh{margin-bottom:18px}
+.apply-steps{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.apply-steps li{display:flex;gap:12px;align-items:center;color:var(--ink2);font-size:15px}
+.apply-steps b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 13px var(--mono)}
+.gform{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);padding:10px;box-shadow:0 30px 80px -30px rgba(224,185,107,.18)}
+.gform iframe{display:block;width:100%;height:900px;border:0;border-radius:10px;background:#fff}
+#apply{scroll-margin-top:72px}
+@media (max-width:860px){.applywrap{grid-template-columns:1fr;gap:24px}.apply-text{position:static}.gform iframe{height:1100px}}
+@media (max-width:600px){.gform iframe{height:1500px}.apply-text .demo-cta .btn{flex:1 1 100%;justify-content:center}}
 </style>
 <script src="thbho-i18n.js"></script>
 <script src="thbho-analytics.js?v=5" defer></script>
 <script src="thbho-ref.js?v=3" defer></script>
+<script src="thbho-home.js?v=1" defer></script>
 <script src="x-media.js?v=2"></script>
 <script src="thbho-player.js?v=3"></script>
 </head>
@@ -365,6 +377,7 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
    <a href="#roadmap"><span lang="th">แผน O2O</span><span lang="en">O2O plan</span></a>
    <a href="#strengths"><span lang="th">จุดแข็ง</span><span lang="en">Why us</span></a>
    <a href="#levels"><span lang="th">ระดับ</span><span lang="en">Levels</span></a>
+   <a href="#apply"><span lang="th">สมัคร</span><span lang="en">Apply</span></a>
    <a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a>
    <a class="switch" href="ThBHoCreators.html"><span lang="th">สำหรับ Creator →</span><span lang="en">For creators →</span></a>
    <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
@@ -380,8 +393,8 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
  <p class="thesis"><span lang="th">ร้านอื่นลอก party ได้ — <em>แต่ลอกระบบจับคู่และคลัง content ไม่ได้</em></span><span lang="en">Competitors can copy a party. <em>They can't copy a matching system or a content library.</em></span></p>
  <p class="lead"><span lang="th">เราช่วยซาวน่า สปา ร้านนวด และบาร์ ให้ลูกค้ามีเหตุผลกลับมาซ้ำ และให้ลูกค้าต่างชาติที่มาคนเดียวเจอโปรแกรมและคนที่ใช่ในร้านคุณ ด้วย Hybrid AI Persona Three, B. และ Hour · เริ่มจากบริการเดียวก็ได้ ไม่ต้องลงเงินก้อนก่อน</span><span lang="en">We help saunas, spas, massage houses and bars give guests a reason to come back, and help solo international guests find the right programme and the right people at your place, with Hybrid AI personas Three, B. and Hour. Start with one service, no upfront lump sum.</span></p>
  <div class="cta">
-  <a class="btn solid" href="#demo"><span lang="th">ลองหน้า Matching ตัวอย่าง</span><span lang="en">Try the matching demo</span></a>
-  <a class="btn" href="#venues"><span lang="th">ดูบริการ</span><span lang="en">See services</span></a>
+  <a class="btn solid" href="#apply"><span lang="th">สมัครเป็นพาร์ทเนอร์</span><span lang="en">Become a venue partner</span> →</a>
+  <a class="btn" href="#demo"><span lang="th">ลองหน้า Matching ตัวอย่าง</span><span lang="en">Try the matching demo</span></a>
  </div>
  <figure class="hvid">
   <iframe id="hvid" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLV9Z52snDXW0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="ThB.Ho Hybrid Creator Lab playlist on YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="eager"></iframe>
@@ -532,6 +545,40 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
   <div><b>3+</b><span><span lang="th">ปี ทำ Hybrid AI Persona และหนังสั้น AI</span><span lang="en">years making Hybrid AI personas and AI films</span></span></div>
  </div>
 </section>
+<section id="home">
+ <div class="sh">
+  <span class="kick"><span lang="th">เว็บไซต์คือบ้าน</span><span lang="en">A website is a home</span></span>
+  <h2><span lang="th">สถานที่ของคุณคือสวนและลานของบ้านหลังนี้</span><span lang="en">Your venue is the garden and terrace of this house</span></h2>
+  <p><span lang="th">ครีเอเตอร์ ผลงาน และแขกอยู่ในบ้านหลังเดียวกัน พาร์ทเนอร์สถานที่คือสวนและลานที่ใช้ถ่ายงานและจัดอีเวนต์ ส่วนศาลาสำหรับอีเวนต์ O2O และ VR สร้างรอไว้แล้ว</span><span lang="en">Creators, work and guests live in one house. Partner venues are the garden and terrace where we shoot and host events, and the pavilion for O2O and VR events is already built and waiting.</span></p>
+ </div>
+ <div class="thome" data-home></div>
+ <p class="note"><a href="ThBHoDigitalHome.html" style="color:var(--accent);font-weight:600;text-decoration:none"><span lang="th">อ่านแนวคิดเต็ม: เว็บไซต์คือบ้านของธุรกิจ →</span><span lang="en">Read the full idea: a website is a business's home →</span></a></p>
+</section>
+
+<section id="apply">
+ <div class="applywrap">
+  <div class="apply-text">
+   <div class="sh">
+    <span class="kick"><span lang="th">สมัครเป็นพาร์ทเนอร์</span><span lang="en">Become a venue partner</span></span>
+    <h2><span lang="th">อยากให้สถานที่ของคุณมี content และงานอีเวนต์จาก Three, B. และ Hour?</span><span lang="en">Want content and events with Three, B. and Hour at your venue?</span></h2>
+    <p><span lang="th">ใช้เวลาราว 2 นาที ไม่มีข้อผูกมัด ทีมจะติดต่อกลับภายใน 3 วันทำการ เพื่อนัดคุยหรือดูสถานที่</span><span lang="en">It takes about 2 minutes, with no commitment. We reply within 3 working days to set up a call or a visit.</span></p>
+   </div>
+   <ol class="apply-steps">
+    <li><b>1</b><span><span lang="th">บอกเราว่าสถานที่ของคุณคือที่ไหน และเป็นแบบไหน</span><span lang="en">Tell us where your venue is and what kind it is</span></span></li>
+    <li><b>2</b><span><span lang="th">เลือกงานที่สนใจ: หน้า Matching, content รายเดือน หรืออีเวนต์</span><span lang="en">Pick what interests you: a matching page, monthly content or events</span></span></li>
+    <li><b>3</b><span><span lang="th">เลือกระดับเนื้อหาที่สถานที่รับได้ เปลี่ยนได้ทุกงาน</span><span lang="en">Choose the content levels you are comfortable with; change them for any project</span></span></li>
+   </ol>
+   <div class="demo-cta">
+    <a class="btn solid" data-form-link="venue" href="https://docs.google.com/forms/d/e/1FAIpQLSeudlIR0rNawtQ8d0plhZ_3cuBJ194bHNKQ8i6p6M38k7ipqQ/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
+    <span class="note" style="margin:0"><span lang="th">ถ้าฟอร์มไม่ขึ้น ให้กดเปิดในแท็บใหม่ หรือเข้าสู่ระบบ Google ก่อน</span><span lang="en">If the form doesn't load, open it in a new tab or sign in to Google first.</span></span>
+   </div>
+  </div>
+  <div class="gform">
+   <iframe data-form="venue" title="ThB.Ho Venues partner application form">Loading…</iframe>
+  </div>
+ </div>
+</section>
+
 </main>
 
 <div class="contact" id="contact">
@@ -541,7 +588,8 @@ dialog.vpop::backdrop{background:rgba(5,4,7,.88);backdrop-filter:blur(4px)}
    <p><span lang="th">ส่งรายการโปรแกรมหรือเมนูมา เราจะทำหน้า Matching ตัวอย่างจากเมนูจริงของร้านให้ดู 1 หน้าก่อน</span><span lang="en">Send your programme or menu and we'll build one sample matching page from your real menu first.</span></p>
   </div>
   <div class="links">
-   <a class="btn solid" href="mailto:threeandhour@gmail.com">Email · threeandhour@gmail.com</a>
+   <a class="btn solid" href="#apply"><span lang="th">สมัครเป็นพาร์ทเนอร์</span><span lang="en">Become a venue partner</span> →</a>
+   <a class="btn" href="mailto:threeandhour@gmail.com">Email · threeandhour@gmail.com</a>
    <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · @widerooms</a>
   </div>
  </div>

@@ -13,11 +13,13 @@
      https://creators.thbho.com/ThBHoPortfolio.html?src=ig&c=nov-launch
 */
 (function () {
-  // Published form address. The editor-id address (/forms/d/1H0qL2E3.../viewform) redirects here
-  // and drops the ?entry=... pre-fill on the way, so always use this one.
-  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform';
-  // Prefill id of the form question "รหัสอ้างอิง · Reference". Empty = do not prefill.
-  var ENTRY = '363909456';
+  // Published form addresses (/forms/d/e/...): the editor-id address redirects and drops the
+  // ?entry=... pre-fill on the way. ENTRY = prefill id of each form's "รหัสอ้างอิง · Reference" question.
+  //   collab: tools/setup-guest-registry.gs   venue: tools/setup-venue-registry.gs (same registry Sheet)
+  var FORMS = {
+    collab: { url: 'https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform', entry: '363909456' },
+    venue: { url: 'https://docs.google.com/forms/d/e/1FAIpQLSeudlIR0rNawtQ8d0plhZ_3cuBJ194bHNKQ8i6p6M38k7ipqQ/viewform', entry: '1547059447' }
+  };
   var K = 'thbho-ref';
 
   function load() { try { return JSON.parse(localStorage.getItem(K)) || {}; } catch (e) { return {}; } }
@@ -70,24 +72,25 @@
     out.push('first:' + (f.day || '') + ' ' + (f.page || ''));
     return out.join('; ');
   }
-  function formUrl(embedded) {
-    var u = FORM + '?' + (embedded ? 'embedded=true&' : '') + 'usp=pp_url';
-    return ENTRY ? u + '&entry.' + ENTRY + '=' + encodeURIComponent(line()) : (embedded ? FORM + '?embedded=true' : FORM);
+  function formUrl(embedded, kind) {
+    var f = FORMS[kind] || FORMS.collab;
+    var u = f.url + '?' + (embedded ? 'embedded=true&' : '') + 'usp=pp_url';
+    return f.entry ? u + '&entry.' + f.entry + '=' + encodeURIComponent(line()) : f.url + (embedded ? '?embedded=true' : '');
   }
-  // The collab-form iframe is written as <iframe data-form ...> without src: it loads when the
+  // A form iframe is written as <iframe data-form="collab|venue" ...> without src: it loads when the
   // visitor gets near it, so the reference line already includes the quiz they just took.
   function wire() {
     document.querySelectorAll('iframe[data-form]').forEach(function (f) {
-      var go = function () { f.src = formUrl(true); };
+      var go = function () { f.src = formUrl(true, f.getAttribute('data-form')); };
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { go(); io.disconnect(); } }, { rootMargin: '800px' });
         io.observe(f);
       } else go();
     });
-    if (!ENTRY) return;
+    // Links that open a form in a new tab: <a data-form-link="collab|venue">
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href*="docs.google.com/forms/d/1H0qL2E3TmePwci"],a[href*="docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP"]');
-      if (a) a.href = formUrl(false);
+      var a = e.target.closest && e.target.closest('a[data-form-link]');
+      if (a) a.href = formUrl(false, a.getAttribute('data-form-link'));
     }, true);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
@@ -98,6 +101,7 @@
   window.THBHO_REF = {
     line: line,
     formUrl: formUrl,
+    forms: FORMS,
     quiz: function (z) { var r = load(); r.quiz = z; save(r); },
     data: load
   };

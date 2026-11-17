@@ -60,6 +60,8 @@ function setupGuestRegistry() {
     SpreadsheetApp.flush(); Utilities.sleep(2000);
   }
   var R = "'" + resp.getName().replace(/'/g, "''") + "'!";
+  // INDIRECT: Google inserts a row for every new response, which would shift a plain A2:A reference to A3:A
+  function rng(c) { return 'INDIRECT("' + R.replace(/"/g, '""') + c + '2:' + c + '")'; }
   function col(i) { var s = ''; i++; while (i > 0) { var m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = (i - m - 1) / 26; } return s; }
   function byTitle(title) { var i = head.indexOf(title); return i < 0 ? null : col(i); }
   function byItem(id) { var it = form.getItemById(id); return it ? byTitle(it.getTitle()) : null; }
@@ -81,11 +83,11 @@ function setupGuestRegistry() {
   var headers = [], formulas = [];
   cols.forEach(function (c) {
     headers.push(c[0]);
-    formulas.push(c[1] ? '=ARRAYFORMULA(IF(LEN(' + R + 'A2:A),' + R + c[1] + '2:' + c[1] + ',))' : '');
+    formulas.push(c[1] ? '=ARRAYFORMULA(IF(LEN(' + rng('A') + '),' + rng(c[1]) + ',))' : '');
   });
   KEYS.forEach(function (k) {
     headers.push(k[0]);
-    formulas.push('=ARRAYFORMULA(IF(LEN(' + R + 'A2:A),IFERROR(TRIM(REGEXEXTRACT(' + R + refCol + '2:' + refCol +
+    formulas.push('=ARRAYFORMULA(IF(LEN(' + rng('A') + '),IFERROR(TRIM(REGEXEXTRACT(' + rng(refCol) +
       ',"(?:^|; )' + k[1] + ':([^;]*)")),),))');
   });
   headers.push('Status · สถานะ', 'Notes · บันทึก');

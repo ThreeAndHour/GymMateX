@@ -13,7 +13,9 @@
      https://creators.thbho.com/ThBHoPortfolio.html?src=ig&c=nov-launch
 */
 (function () {
-  var FORM = 'https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/viewform';
+  // Published form address. The editor-id address (/forms/d/1H0qL2E3.../viewform) redirects here
+  // and drops the ?entry=... pre-fill on the way, so always use this one.
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform';
   // Prefill id of the form question "รหัสอ้างอิง · Reference". Empty = do not prefill.
   var ENTRY = '363909456';
   var K = 'thbho-ref';
@@ -84,7 +86,7 @@
     });
     if (!ENTRY) return;
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href*="docs.google.com/forms/d/1H0qL2E3TmePwci"]');
+      var a = e.target.closest && e.target.closest('a[href*="docs.google.com/forms/d/1H0qL2E3TmePwci"],a[href*="docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP"]');
       if (a) a.href = formUrl(false);
     }, true);
   }

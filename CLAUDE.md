@@ -82,5 +82,6 @@ Weekly report: `node tools/weekly_stats.js` (after `git fetch --depth 400 origin
 
 ## Other references
 - Collab form: https://docs.google.com/forms/d/1H0qL2E3TmePwci-rgiNAyc3WZBDWpoo7kXJE0oXMA2Y/edit (edit in place with `tools/update-collab-form.gs`; the older `rebuild-collab-form.gs` wipes the form and must not be run). Embedded in `#apply` with `?embedded=true`.
+- Guest registry (ran 17 Nov 2026 with project "ThB.Ho Creators form setup" on script.google.com): responses Sheet https://docs.google.com/spreadsheets/d/1OPFoIURCKrcfU1Ulph0tXWtX7HM0KgtukgH14wQkux0/edit (tab "Guests"), reference question prefill `entry.363909456` (= `ENTRY` in thbho-ref.js).
 - YouTube playlist on Creators: `PLLS5V99ZfVi-FKQv0txA63aTHqNIZVLPl`.
 - Domain, Google Analytics and cross-site plans live in the Claude Docs doc "ThB.Ho · Domain & Analytics Roadmap" and are handled in a separate core chat.

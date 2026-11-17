@@ -37,6 +37,7 @@ FitFantasy and O2OEventsVR keep their own orange theme.
 - `x-media.js`: `window.THBHO_X = {id: {mp4 (~720p), poster, w, h, hd (1080p)}}` for X videos.
 - `thbho-player.js`: poster + play button → `<video referrerpolicy="no-referrer">`, swaps to `hd` in full screen.
 - `thbho-ytlist.js`: YouTube playlist player that skips videos YouTube refuses to embed.
+- `thbho-ref.js` (guest registry, site side): remembers in localStorage where a visitor first came from (`?src=` / utm, referrer), clips opened (`data-x`) and the quiz result, and pre-fills the form's "รหัสอ้างอิง · Reference" question when `ENTRY` is set (from `tools/setup-guest-registry.gs`, which also builds the "Guests" tab in the responses Sheet). The `#apply` iframe has `data-form` and no `src`: thbho-ref.js loads it when the visitor gets near it. Tracked links for posts: `https://creators.thbho.com/ThBHoCreators.html?src=x&clip=<x id>` (src: x, ig, tiktok, youtube, line, facebook; optional `&c=<campaign>`).
 - `thbho-analytics.js`: Google Analytics 4 (G-9Y2YDL6KT9) with a 7-language cookie consent bar. Not run in `?embed=1`.
   Events: video_play, persona_open, apply_click, language. Also loaded by thbho.com/AIGymmateXFactory.html by absolute URL.
 - When you change a shared .js file, bump its `?v=` in every page that loads it (`grep -l "file.js?v=" *.html`).

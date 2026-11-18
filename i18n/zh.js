@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('zh', {
+  "Three formats for every partner venue": "三种形式，适用于所有合作店",
+  "A date": "约会",
+  "A relaxed first meeting over a drink or a meal.": "轻松的初次见面，一起喝一杯或吃顿饭。",
+  "Work out together": "一起运动",
+  "Train or unwind together in a closed venue, such as a gym or a sauna.": "在健身房或桑拿等封闭场所一起训练或放松。",
+  "Creator test shoot": "创作者试拍",
+  "Two creators try a casual photo shoot together before a real collab.": "两位创作者在正式合作前，先轻松地一起试拍。",
   "A website is a home": "网站就是家",
   "The ThB.Ho house: some rooms in daily use, the rest built and waiting": "ThB.Ho 之家：有的房间天天在用，其余已建好等待开放",
   "ThB.Ho doesn't live only on social media. We laid out the whole house from the start: lit rooms are what you can use today, and dark rooms open when they are ready.": "ThB.Ho 不只存在于社交媒体。我们一开始就规划好整栋房子：亮灯的房间今天就能用，暗着的房间准备好就会开放。",

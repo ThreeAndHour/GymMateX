@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ru', {
+  "Three formats for every partner venue": "Три формата для каждого заведения-партнёра",
+  "A date": "Свидание",
+  "A relaxed first meeting over a drink or a meal.": "Непринуждённая первая встреча за напитком или ужином.",
+  "Work out together": "Тренировка вдвоём",
+  "Train or unwind together in a closed venue, such as a gym or a sauna.": "Тренироваться или отдыхать вместе в закрытом месте, например в спортзале или сауне.",
+  "Creator test shoot": "Пробная съёмка креаторов",
+  "Two creators try a casual photo shoot together before a real collab.": "Два креатора пробуют лёгкую совместную фотосессию перед настоящей коллаборацией.",
   "A website is a home": "Сайт — это дом",
   "The ThB.Ho house: some rooms in daily use, the rest built and waiting": "Дом ThB.Ho: одни комнаты в работе каждый день, остальные построены и ждут",
   "ThB.Ho doesn't live only on social media. We laid out the whole house from the start: lit rooms are what you can use today, and dark rooms open when they are ready.": "ThB.Ho живёт не только в соцсетях. Мы спланировали весь дом с самого начала: освещённые комнаты доступны уже сегодня, тёмные откроются, когда будут готовы.",

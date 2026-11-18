@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('ja', {
+  "Three formats for every partner venue": "すべての提携店で選べる3つのスタイル",
+  "A date": "デート",
+  "A relaxed first meeting over a drink or a meal.": "一杯のドリンクや食事を楽しむ、気軽な初対面。",
+  "Work out together": "一緒にワークアウト",
+  "Train or unwind together in a closed venue, such as a gym or a sauna.": "ジムやサウナなどの貸切空間で、一緒にトレーニングやリラックス。",
+  "Creator test shoot": "クリエイターの試し撮り",
+  "Two creators try a casual photo shoot together before a real collab.": "本番のコラボの前に、2人のクリエイターが気軽に撮影を試します。",
   "A website is a home": "ウェブサイトは家",
   "The ThB.Ho house: some rooms in daily use, the rest built and waiting": "ThB.Ho の家：毎日使う部屋と、建てて待っている部屋",
   "ThB.Ho doesn't live only on social media. We laid out the whole house from the start: lit rooms are what you can use today, and dark rooms open when they are ready.": "ThB.Ho は SNS だけにいるわけではありません。最初から家全体を設計しました。明かりのついた部屋は今日から使え、暗い部屋は準備ができたら開きます。",

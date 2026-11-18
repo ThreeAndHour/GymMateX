@@ -1,4 +1,11 @@
 THBHO_I18N_ADD('es', {
+  "Three formats for every partner venue": "Tres formatos para cada local asociado",
+  "A date": "Una cita",
+  "A relaxed first meeting over a drink or a meal.": "Un primer encuentro relajado con una copa o una comida.",
+  "Work out together": "Entrenar juntos",
+  "Train or unwind together in a closed venue, such as a gym or a sauna.": "Entrenar o relajarse juntos en un espacio cerrado, como un gimnasio o una sauna.",
+  "Creator test shoot": "Sesión de prueba entre creadores",
+  "Two creators try a casual photo shoot together before a real collab.": "Dos creadores prueban una sesión de fotos informal antes de una colaboración real.",
   "A website is a home": "Un sitio web es un hogar",
   "The ThB.Ho house: some rooms in daily use, the rest built and waiting": "La casa ThB.Ho: unos cuartos en uso diario, los demás construidos y en espera",
   "ThB.Ho doesn't live only on social media. We laid out the whole house from the start: lit rooms are what you can use today, and dark rooms open when they are ready.": "ThB.Ho no vive solo en las redes. Diseñamos toda la casa desde el principio: los cuartos iluminados ya se pueden usar hoy y los oscuros abrirán cuando estén listos.",

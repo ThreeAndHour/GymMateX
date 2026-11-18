@@ -1,6 +1,6 @@
 # ThB.Ho Creators web (repo ThreeAndHour/GymMateX)
 
-Owner: Thor (THOR). Address him as ทรี, use ผม/คุณ, reply in Thai unless he writes English.
+Owner: Thor (THOR). Address him as ธอร์ (THOR; changed from ทรี on 18 Nov 2026, "Three" is only his persona), use ผม/คุณ, reply in Thai unless he writes English.
 Live site: https://creators.thbho.com (GitHub Pages, custom domain since 10 Nov 2026).
 Old links `threeandhour.github.io/GymMateX/...` redirect here. Never delete the `CNAME` file.
 The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.com) with its own chats; do not edit it from here.

@@ -133,6 +133,9 @@ dialog.vpop::backdrop{background:rgba(5,4,3,.82);backdrop-filter:blur(4px)}
 .vpop .vx:hover,.vpop .vx:focus-visible{background:var(--card2);color:var(--ink)}
 .vpop .vb{background:#000;display:flex;justify-content:center}
 .vpop video{display:block;width:100%;max-height:74vh;object-fit:contain;background:#000}
+dialog.vpop.isimg{width:min(1080px,96vw)}
+.vpop img.vimg{display:block;width:100%;max-height:80vh;object-fit:contain;background:#000}
+.reel:not([data-xv]),.mi:not([data-xv]),.item .ph,.flc .ph{cursor:zoom-in}
 .vpop .vf{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:center;padding:10px 14px;font-size:14px}
 .vpop .vf a{color:var(--copper2);text-decoration:none}
 .tg.hy{white-space:nowrap;cursor:pointer;border:1px solid rgba(231,200,119,.55);color:var(--copper2);text-decoration:none;pointer-events:auto}
@@ -1583,7 +1586,7 @@ document.getElementById("recBtn").addEventListener("click",()=>{
   function go(e){ var h=e.target.closest&&e.target.closest("[data-hy]"); if(!h) return false; e.preventDefault(); e.stopPropagation(); window.open(HY_URL,"_blank","noopener"); return true; }
   document.addEventListener("click",go,true);
   var vp=document.getElementById("vpop"), box=document.getElementById("vpBox");
-  function close(){ box.querySelectorAll("video").forEach(function(v){v.pause();v.removeAttribute("src");v.load();}); box.innerHTML=""; if(vp.open) vp.close(); }
+  function close(){ var hy0=document.getElementById("vpHy"); if(hy0) hy0.hidden=false; vp.classList.remove("isimg"); box.querySelectorAll("video").forEach(function(v){v.pause();v.removeAttribute("src");v.load();}); box.innerHTML=""; if(vp.open) vp.close(); }
   function swap(v,url){ if(!url||v.src===url) return; var tm=v.currentTime||0, pl=!v.paused; v.src=url; v.addEventListener("loadedmetadata",function f(){v.removeEventListener("loadedmetadata",f); try{v.currentTime=tm}catch(e){} if(pl) v.play().catch(function(){});}); v.load(); }
   window.KRUBB_OPEN=function(el){ open(el); };
   function open(el){ var id=el.dataset.xv, m=XV[id], xu=el.dataset.xu||(/^\d+$/.test(id)?"https://x.com/widerooms/status/"+id:"");
@@ -1597,6 +1600,20 @@ document.getElementById("recBtn").addEventListener("click",()=>{
     box.appendChild(v); vp.showModal(); v.play().catch(function(){});
   }
   document.addEventListener("click",function(e){ var el=e.target.closest&&e.target.closest("[data-xv]"); if(!el||e.target.closest("a,button,[data-hy]")) return; e.preventDefault(); e.stopPropagation(); open(el); },true);
+  function openImg(img,card){ var wrap=card.closest(".item,.flc")||card; var h=wrap.querySelector("h3,figcaption b,.t span"), title=((h&&h.textContent)||"").replace(/^\u2605\s*/,"").trim();
+    var tl=wrap.querySelector(".t i"); if(tl&&wrap.classList.contains("flc")) title=tl.textContent+" \u00b7 "+title;
+    document.getElementById("vpTitle").textContent=title;
+    var sid=card.dataset&&card.dataset.sid, st=sid?STORIES.concat(SPACES).find(function(x){return x.id===sid;}):null;
+    document.getElementById("vpP").innerHTML=st?ptags(st.p):"";
+    var tg=(img.parentElement&&img.parentElement.querySelector(".tg"))||card.querySelector(".tg"); var ai=!!(tg&&tg.classList.contains("hy"));
+    document.getElementById("vpHy").hidden=!ai; document.getElementById("vpX").hidden=true;
+    if(!vp.showModal){ window.open(img.src,"_blank","noopener"); return; }
+    vp.classList.add("isimg"); box.innerHTML=""; var im=document.createElement("img"); im.className="vimg"; im.src=img.currentSrc||img.src; im.alt=title; box.appendChild(im); vp.showModal(); }
+  document.addEventListener("click",function(e){ var t0=e.target; if(!t0.closest||t0.closest("a,button,[data-hy],[data-xv],dialog")) return;
+    var card=t0.closest(".reel,.mi,.item .ph,.flc .ph"); if(!card||card.classList.contains("more")) return;
+    var img=(t0.tagName==="IMG"&&card.contains(t0))?t0:(card.querySelector(".rot figure.on img")||card.querySelector("img")); if(!img||!img.src) return;
+    var rf=img.closest(".rot"); if(rf){ var on=rf.querySelector("figure.on img"); if(on) img=on; }
+    e.preventDefault(); e.stopPropagation(); openImg(img,card); },true);
   document.getElementById("vpClose").addEventListener("click",close);
   vp.addEventListener("close",close);
   vp.addEventListener("click",function(e){ if(e.target===vp) close(); });

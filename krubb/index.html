@@ -320,6 +320,7 @@ nav.links a{white-space:nowrap;padding:6px 10px;border-radius:999px;font-size:13
 .reel.fm{border:2px solid var(--copper2)}
 .reel .fmstrip{position:absolute;left:0;right:0;top:0;z-index:2;background:linear-gradient(90deg,#C9A04A,#E7C877,#C9A04A);color:#16110C;font:600 12px/1.3 var(--body);letter-spacing:.02em;text-align:center;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reel .fmstrip::before{content:"★ "}
+.fmstrip.next{background:#16110C;color:#E7C877;border-bottom:1px solid #C9A04A}
 .reel.fm .top{top:36px}
 .reel .lrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .reel .cpl{font:500 11.5px/1 var(--mono);color:#e9e2d8;background:rgba(0,0,0,.45);border:1px solid rgba(233,226,216,.3);border-radius:999px;padding:5px 10px;cursor:pointer;white-space:nowrap}
@@ -1074,6 +1075,7 @@ nw_lbl:["ข่าว Krubb","Krubb news","Krubb 动态","Krubbニュース","Kr
 nw_tonight:["คืนนี้","Tonight","今晚","今夜","오늘 밤","Сегодня","Esta noche"],
 fmv:["MV แนะนำ · ทริปพิเศษ","Featured MV · Exclusive Trip","精选 MV · 专属旅程","注目のMV · 特別トリップ","추천 MV · 익스클루시브 트립","Клип · эксклюзивный тур","MV destacado · Viaje exclusivo"],
 nx_pty:["แพลนถัดไป · ทริป Wellness พัทยา","Next up · Pattaya wellness trip","下一站 · 芭提雅健康之旅","次の企画 · パタヤ・ウェルネストリップ","다음 계획 · 파타야 웰니스 트립","Далее · wellness-поездка в Паттайю","Próximamente · viaje wellness a Pattaya"],
+feat_next:["นายแบบประจำเดือนถัดไป", "Next month's featured model", "下月主打模特", "来月のモデル", "다음 달의 모델", "Модель следующего месяца", "Modelo del próximo mes"],
 feat_kicker:["นายแบบประจำเดือน", "Monthly featured model", "每月主打模特", "今月のモデル", "이달의 모델", "Модель месяца", "Modelo del mes"],
 feat_go:["ดูผลงานเดือนนี้ →", "See this month's work →", "查看本月作品 →", "今月の作品を見る →", "이달의 작품 보기 →", "Работы месяца →", "Ver su trabajo →"],
 feat_three:["นักเล่าเรื่องสายสงบ ชวนคุณพักที่ซาวน่าและเซนโตะช่วงบ่าย เรื่องใหม่ทุกสัปดาห์ในเดือนนี้", "The calm storyteller, inviting you to slow afternoons in the sauna and sento. New stories every week this month.", "安静的讲故事的人，邀你在桑拿和钱汤度过慢节奏的午后。本月每周都有新故事。", "穏やかなストーリーテラー。サウナと銭湯でのゆったりした午後へ。今月は毎週新しいストーリー。", "차분한 스토리텔러, 사우나와 센토에서 느긋한 오후로 초대해요. 이번 달 매주 새 이야기.", "Спокойный рассказчик зовёт на неспешный день в сауне и сэнто. Новые истории каждую неделю.", "El narrador tranquilo te invita a tardes lentas de sauna y sento. Historias nuevas cada semana."],
@@ -1154,7 +1156,7 @@ const COUNTRIES = ["TH","CN","TW","HK","JP","KR","SG","MY","PH","VN","IN","AU","
 
 /* ---------- pages ---------- */
 const PAGE_IDS=["stories","vote","portfolio","academy"];
-const LEAD=["s0","t9","s1","h5","h1"], FM_CARD="t9", HOME_NEW=["g15","g24","g18","g26","g20"];
+const LEAD=["s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["g15","g24","g18","g26","g20"];
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
 const SLUG={smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
 const SHARE_BASE="https://creators.thbho.com/krubb/";
@@ -1330,7 +1332,8 @@ function renderPortfolio(){
     return `<figure class="mi"${xvAttr(x)}><img src="${imgSrc(x.img,600,800)}" alt="">${tagFor(x.img,x)}${x.clip&&xvOf(x)?'<div class="play" aria-hidden="true"></div>':""}
     <figcaption class="cap2"><b>${isFeat(x)?"★ ":""}${esc(x.t)}</b>${x.real?'<span class="realb">Krubb × Mister Smart Beach Thailand</span>':""}${x.x?`<a class="xlink" href="${x.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}<div class="tags">${ptags(x.p)}</div><div class="meta" style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px"><span>${esc(t("th_"+x.th))}</span><button class="heart" data-vote="${x.id}" aria-pressed="${!!myVotes[x.id]}">♥ ${count(x).toLocaleString()}</button></div></figcaption></figure>`; }).join("");
 }
-function fmStrip(st){ if(STRIP[st.id]) return `<div class="fmstrip">${esc(t(STRIP[st.id]))}</div>`; if(st.id!==FM_CARD||!isFeat(st)) return ""; const F=featNow(); return `<div class="fmstrip">${esc(t("feat_kicker"))} · ${esc(fmMonth(F.m))}</div>`; }
+function featNext(){ const F=featNow(), i=FEATURED.indexOf(F); return FEATURED[i+1]||null; }
+function fmStrip(st){ if(st.id===NEXT_CARD){ const N=featNext(); if(N && (st.p||[]).includes(N.p)) return `<div class="fmstrip next">${esc(t("feat_next"))} · ${esc(fmMonth(N.m))}</div>`; } if(STRIP[st.id]) return `<div class="fmstrip">${esc(t(STRIP[st.id]))}</div>`; if(st.id!==FM_CARD||!isFeat(st)) return ""; const F=featNow(); return `<div class="fmstrip">${esc(t("feat_kicker"))} · ${esc(fmMonth(F.m))}</div>`; }
 function fmMonth(ym){ const [y,m]=ym.split("-").map(Number); try{ return new Intl.DateTimeFormat(LOCALE[lang],{month:"short",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,15))); }catch(e){ return ym; } }
 function deepCard(){ const id=deepId(); if(!id) return; const el=[...document.querySelectorAll(`[data-sid="${id}"]`)].find(e=>e.offsetParent); if(!el) return;
   el.scrollIntoView({behavior:"smooth",block:"center",inline:"center"}); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");

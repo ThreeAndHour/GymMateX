@@ -1156,7 +1156,7 @@ const COUNTRIES = ["TH","CN","TW","HK","JP","KR","SG","MY","PH","VN","IN","AU","
 
 /* ---------- pages ---------- */
 const PAGE_IDS=["stories","vote","portfolio","academy"];
-const LEAD=["s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["h1","g15","g24","g18","g26"];
+const LEAD=["s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["h1","g15","g24","g26","g7"];
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
 const SLUG={smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
 const SHARE_BASE="https://creators.thbho.com/krubb/";
@@ -1265,10 +1265,25 @@ function isReal(x){ return !!x.real || (x.p||[]).includes("krubb"); }
 const LOCMAP={"ai:t_duogym1":"gym","ai:t_duogym2":"gym","ai:t_n3showerback":"sh","ai:t_n3gym":"gym","ai:t_n3locker":"lk","ai:t_n3pool":"pool","ai:t_n3stairs":"st","ai:t_n3sauna":"sa","ai:t_n3shower":"sh","ai:h_klockor":"lk","ai:t_s3towel":"sa","ai:t_s3pool":"pool","ai:t_s3sauna":"sa","ai:t_s3shower":"sh","ai:t_s3bunk":"rest","ai:t_s3stairs":"st","ai:t_s3counter":"bar","ai:h_wpool":"pool","ai:h_wcorr2":"lk","ai:h_wneon2":"st","ai:h_onsen":"bar","ai:social":"1f","ai:h_1f":"1f","ai:h_1fw":"1f","wix:gym":"gym","ai:gym":"gym","ai:h_kgym":"gym","wix:lockers":"lk","wix:door":"lk","ai:uwear":"lk","ai:t_klocker":"lk","ai:t_kneon":"lk","wix:pool":"pool","ai:pool3":"pool","wix:stairs":"st","ai:stairs2":"st","wix:sauna":"sa","ai:sauna":"sa","ai:groom":"sa"};
 function locOf(x){ return (x&&(x.loc||LOCMAP[x.img]))||null; }
 function whoOf(x){ return (x&&(x.p||[]).filter(k=>k!=="creator").slice().sort().join("+"))||""; }
-function spread(a,keep){ a=a.slice(); const bad=(x,i)=>{ const near=[a[i-1],a[i-2]].map(locOf).filter(Boolean); return (locOf(x)&&near.includes(locOf(x))) || (whoOf(x) && whoOf(x)===whoOf(a[i-1])); };
-  for(let i=Math.max(1,keep||0);i<a.length;i++){ if(!bad(a[i],i)) continue; let j=i+1; while(j<a.length && bad(a[j],i)) j++;
-    if(j>=a.length){ const near=[a[i-1],a[i-2]].map(locOf).filter(Boolean); if(!(locOf(a[i])&&near.includes(locOf(a[i])))) continue; j=i+1; while(j<a.length && locOf(a[j])&&near.includes(locOf(a[j]))) j++; }
-    if(j<a.length){ const [m]=a.splice(j,1); a.splice(i,0,m); } } return a; }
+/* v55 mix (Thor 20 Nov 2026): next to each other = a different activity (Krubb spot, real event or MV) and a different model; one model not in 3 cards in a row; MVs and each model spread evenly, newer still first */
+function actOf(x){ return locOf(x) || (isReal(x)?"real":"") || (x&&x.x ? "mv" : (x&&x.th)||""); }
+function pplOf(x){ return ((x&&x.p)||[]).filter(k=>k!=="creator"&&k!=="krubb"); }
+function mixCost(x,a){ const p1=a[a.length-1], p2=a[a.length-2]; if(!p1) return 0; let c=0; const ac=actOf(x);
+  if(ac && ac===actOf(p1)) c+=8; if(ac && p2 && ac===actOf(p2)) c+=3;
+  const w=whoOf(x); if(w && w===whoOf(p1)) c+=6;
+  const px=pplOf(x), q1=pplOf(p1), q2=pplOf(p2);
+  if(px.length===1 && q1.length===1 && px[0]===q1[0]) c+=2;
+  if(p2 && px.some(k=>q1.includes(k)&&q2.includes(k))) c+=2;
+  return c; }
+function evenOut(a){ const N=a.length; if(N<3) return a.slice(); const key=x=>(actOf(x)==="mv"?"mv":"v")+"|"+whoOf(x); const cnt={}, rk=new Map();
+  a.forEach(x=>{ const k=key(x); cnt[k]=(cnt[k]||0); rk.set(x,cnt[k]++); });
+  const sc=new Map(a.map((x,i)=>[x, .6*((rk.get(x)+.5)/cnt[key(x)]) + .4*(i/N)]));
+  return a.map((x,i)=>[x,i]).sort((p,q)=>sc.get(p[0])-sc.get(q[0])||p[1]-q[1]).map(p=>p[0]); }
+function spread(a,keep){ keep=Math.min(keep||0,2); const out=a.slice(0,keep), pool=evenOut(a.slice(keep));
+  while(pool.length){ let bi=0, bc=1e9; const lim=Math.min(pool.length,10);
+    for(let i=0;i<lim;i++){ const m=mixCost(pool[i],out), c=m*100+i; if(c<bc){ bc=c; bi=i; } if(!m) break; }
+    out.push(pool.splice(bi,1)[0]); }
+  return out; }
 function krubbMix(list,n){ const L=LEAD.map(id=>list.find(x=>x.id===id)).filter(Boolean); const rest=list.filter(x=>!L.includes(x));
   const r=rest.filter(isReal), o=featMix(rest.filter(x=>!isReal(x)),Math.max(0,n-L.length)), out=[...L]; let i=0,j=0;
   while(i<r.length||j<o.length){ if(i<r.length) out.push(r[i++]); if(j<o.length) out.push(o[j++]); } return spread(out,L.length); }
@@ -1354,7 +1369,7 @@ function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.re
   </article>`; }
 function renderTeasers(){
   const top=leadMix([...STORIES].sort(byNew),4).slice(0,4); HOME_NEW.map(id=>STORIES.find(x=>x.id===id)).filter(x=>x&&!top.includes(x)).forEach(x=>top.push(x));
-  document.getElementById("railTeaser").innerHTML = top.map(reelCard).join("") + `<a class="reel more js-nav" data-to="stories" href="${pageHref("stories")}"><div><b>${esc(t("see_all"))}</b><span>→</span><p class="muted" style="margin-top:6px">${STORIES.length} ${esc(t("nav_stories"))}</p></div></a>`;
+  document.getElementById("railTeaser").innerHTML = spread(top,2).map(reelCard).join("") + `<a class="reel more js-nav" data-to="stories" href="${pageHref("stories")}"><div><b>${esc(t("see_all"))}</b><span>→</span><p class="muted" style="margin-top:6px">${STORIES.length} ${esc(t("nav_stories"))}</p></div></a>`;
   const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id)); const lead=items.reduce((a,b)=>count(b)>count(a)?b:a); const total=items.reduce((a,x)=>a+count(x),0);
   document.getElementById("tzVoteImg").style.backgroundImage="url('"+imgSrc(lead.img)+"')";
   document.getElementById("tzVoteWk").textContent=t("week_lbl")+" "+weekNo();

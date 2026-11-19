@@ -1349,7 +1349,7 @@ function renderTeasers(){
   document.getElementById("tzVoteWk").textContent=t("week_lbl")+" "+weekNo();
   document.getElementById("tzVoteLead").textContent="♛ "+t("leading")+": "+lead.t+" · "+Math.round(count(lead)/total*100)+"%";
   const pf=STORIES.concat(SPACES);
-  document.getElementById("tzPort").innerHTML=[pf[0],pf[16],pf[14],pf[5]].map(x=>`<img src="${imgSrc(x.img,400,300)}" alt="">`).join("");
+  document.getElementById("tzPort").innerHTML=["ai:h_kgym","ai:t_s3pool","ai:t_s3sauna","ai:h_wneon"].map(k=>`<img src="${imgSrc(k,400,300)}" alt="">`).join("");
   document.getElementById("tzPortN").textContent=pf.length+" "+t("items");
   const F=featNow(), ai=F.img.startsWith("ai:");
   document.getElementById("featImg").style.backgroundImage="url('"+imgSrc(F.img)+"')";

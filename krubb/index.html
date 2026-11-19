@@ -1152,7 +1152,7 @@ const LEAD=["s0","h1","s1","h5"], FM_CARD="h1";
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
 const SLUG={smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",explore:"h3",green:"h4",cast:"s8"};
 const SHARE_BASE="https://creators.thbho.com/krubb/";
-function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id)||id; return SHARE_BASE+"#v-"+k; }
+function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id); return k?SHARE_BASE+"v/"+k+"/":SHARE_BASE+"#v-"+id; }
 function copyLink(id){ const u=cardLink(id); const done=()=>toast(t("cp_done")+" · "+u.replace("https://","")); const fb=()=>{ const ta=document.createElement("textarea"); ta.value=u; ta.setAttribute("readonly",""); ta.style.position="absolute"; ta.style.left="-9999px"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(e){ toast(u); } ta.remove(); };
   if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(u).then(done,fb); else fb(); }
 document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest("[data-cp]"); if(!b) return; e.preventDefault(); e.stopPropagation(); copyLink(b.dataset.cp); },true);

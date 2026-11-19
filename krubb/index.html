@@ -1120,7 +1120,7 @@ const WEEK = [
 const CATALOG = [
  {id:"hf",img:"ai:gym",cat:"well",p:"soon",g:["train","relax"],w:["aft","wkd"],v:"calm",c:["friends","solo"]},
  {id:"rit",img:"wix:sauna",cat:"well",p:"incl",g:["relax"],w:["aft","wkd"],v:"calm",c:["solo","friends"]},
- {id:"mob",img:"wix:gym",cat:"well",p:"soon",g:["relax","train"],w:["aft"],v:"calm",c:["solo","friends"]},
+ {id:"mob",img:"ai:h_kgym",cat:"well",p:"soon",g:["relax","train"],w:["aft"],v:"calm",c:["solo","friends"]},
  {id:"grw",img:"ai:groom",cat:"well",p:"soon",g:["relax","create"],w:["aft","wkd"],v:"calm",c:["friends","solo"]},
  {id:"msg",img:"ai:massage",cat:"well",p:"soon",g:["relax"],w:["aft","eve","wkd"],v:"calm",c:["solo"]},
  {id:"soc",img:"ai:social",cat:"well",p:"incl",g:["social","relax"],w:["aft","wkd"],v:"calm",c:["solo","friends"]},
@@ -1231,13 +1231,17 @@ function byNew(a,b){ return b.d.localeCompare(a.d); }
 /* opening order, Krubb first; FM_CARD carries the "featured model of the month" strip */
 const STRIP={h5:"fmv"}, NOTE={h5:"nx_pty",t8:"nx_pty"};
 function isReal(x){ return !!x.real || (x.p||[]).includes("krubb"); }
+/* same spot in Krubb (gym, lockers, pool, stairs, sauna) never sits next to itself, incl. the row above/below in 2-col grids */
+const LOCMAP={"wix:gym":"gym","ai:gym":"gym","ai:h_kgym":"gym","wix:lockers":"lk","wix:door":"lk","ai:uwear":"lk","ai:t_klocker":"lk","wix:pool":"pool","ai:pool3":"pool","wix:stairs":"st","ai:stairs2":"st","wix:sauna":"sa","ai:sauna":"sa","ai:groom":"sa"};
+function locOf(x){ return (x&&(x.loc||LOCMAP[x.img]))||null; }
+function spread(a,keep){ a=a.slice(); for(let i=Math.max(1,keep||0);i<a.length;i++){ const near=[a[i-1],a[i-2]].map(locOf).filter(Boolean); if(!near.includes(locOf(a[i]))) continue; let j=i+1; while(j<a.length && near.includes(locOf(a[j]))) j++; if(j<a.length){ const [m]=a.splice(j,1); a.splice(i,0,m); } } return a; }
 function krubbMix(list,n){ const L=LEAD.map(id=>list.find(x=>x.id===id)).filter(Boolean); const rest=list.filter(x=>!L.includes(x));
   const r=rest.filter(isReal), o=featMix(rest.filter(x=>!isReal(x)),Math.max(0,n-L.length)), out=[...L]; let i=0,j=0;
-  while(i<r.length||j<o.length){ if(i<r.length) out.push(r[i++]); if(j<o.length) out.push(o[j++]); } return out; }
-function leadMix(list,n){ const L=LEAD.map(id=>list.find(x=>x.id===id)).filter(Boolean); const rest=list.filter(x=>!L.includes(x)); return L.concat(featMix(rest,Math.max(0,n-L.length))); }
+  while(i<r.length||j<o.length){ if(i<r.length) out.push(r[i++]); if(j<o.length) out.push(o[j++]); } return spread(out,L.length); }
+function leadMix(list,n){ const L=LEAD.map(id=>list.find(x=>x.id===id)).filter(Boolean); const rest=list.filter(x=>!L.includes(x)); return spread(L.concat(featMix(rest,Math.max(0,n-L.length))),L.length); }
 function featMix(list,n){ const F=featNow(); const k=Math.round(n*featShare(F)); const fe=list.filter(isFeat), ot=list.filter(x=>!isFeat(x)); const head=[]; let i=0,j=0;
   while(head.length<n && (i<fe.length||j<ot.length)){ const wantF = i<k && i<fe.length && (head.length%2===0 || j>=ot.length); if(wantF) head.push(fe[i++]); else if(j<ot.length) head.push(ot[j++]); else if(i<fe.length) head.push(fe[i++]); }
-  const used=new Set(head); return head.concat(list.filter(x=>!used.has(x))); }
+  const used=new Set(head); return spread(head.concat(list.filter(x=>!used.has(x))),0); }
 function featNow(){ let ym; try{ const d=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Bangkok"})); ym=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"); }catch(e){ ym="2026-11"; }
   const past=FEATURED.filter(f=>f.m<=ym); return past.length?past[past.length-1]:FEATURED[0]; }
 function monthLabel(ym){ const [y,m]=ym.split("-").map(Number); try{ return new Intl.DateTimeFormat(LOCALE[lang],{month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,15))); }catch(e){ return ym; } }
@@ -1285,7 +1289,7 @@ function renderPortfolio(){
   document.getElementById("pfTheme").innerHTML = th.map(k=>`<button class="chip" data-pft="${k}" aria-pressed="${pfT===k}">${esc(k==="all"?t("f_all"):t("th_"+k))}</button>`).join("");
   let list=STORIES.concat(SPACES).filter(x=>(pfP==="all"||x.p.includes(pfP))&&(pfT==="all"||x.th===pfT));
   list.sort(pfSort==="top"?(a,b)=>count(b)-count(a):byNew);
-  if(pfP==="all" && pfT==="all") list=pfSort==="top"?featMix(list,10):krubbMix(list,10);
+  if(pfP==="all" && pfT==="all") list=pfSort==="top"?featMix(list,10):krubbMix(list,10); else list=spread(list,0);
   const F=featNow(), fai=F.img.startsWith("ai:"), nF=STORIES.concat(SPACES).filter(isFeat).length;
   document.getElementById("pfFeat").innerHTML=`<div class="pff-img" style="background-image:url('${imgSrc(F.img)}')" role="img" aria-label="${esc(F.n)}">${tagFor(F.img,{p:[F.p]})}</div>
     <div class="pff-b"><span class="featbadge static">${esc(t("feat_badge"))}</span><div class="kicker">${esc(t("feat_kicker"))} · ${esc(monthLabel(F.m))}</div><h3>${esc(F.n)} <small>${esc(F.role)}</small></h3><p class="muted">${esc(t(F.bio))}</p>
@@ -1423,7 +1427,7 @@ function priceLabel(p){
 }
 function itemCard(it,why){
   const title=t("it_"+it.id+"_t");
-  const ph = it.img ? `<div class="ph"><img src="${imgSrc(it.img,800,450)}" alt=""><span class="tg${it.img.startsWith("ai:")?" ai":""}">${esc(t(it.img.startsWith("ai:")?"ai_tag":"photo_tag"))}</span></div>` : `<div class="ph blank"><b>KRUBB × ThB.Ho</b></div>`;
+  const ph = it.img ? `<div class="ph"><img src="${imgSrc(it.img,800,450)}" alt="">${tagFor(it.img)}</div>` : `<div class="ph blank"><b>KRUBB × ThB.Ho</b></div>`;
   return `<article class="item">
     ${ph}
     <span class="cat">${esc(t("f_"+it.cat))}</span>

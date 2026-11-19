@@ -315,6 +315,9 @@ nav.links a{white-space:nowrap;padding:6px 10px;border-radius:999px;font-size:13
 .reel .fmstrip{position:absolute;left:0;right:0;top:0;z-index:2;background:linear-gradient(90deg,#C9A04A,#E7C877,#C9A04A);color:#16110C;font:600 12px/1.3 var(--body);letter-spacing:.02em;text-align:center;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reel .fmstrip::before{content:"★ "}
 .reel.fm .top{top:36px}
+.reel .lrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.reel .cpl{font:500 11.5px/1 var(--mono);color:#e9e2d8;background:rgba(0,0,0,.45);border:1px solid rgba(233,226,216,.3);border-radius:999px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+.reel .cpl:hover,.reel .cpl:focus-visible{border-color:var(--copper2);color:var(--copper2);outline:none}
 .reel.flash{animation:flash 1.6s ease 1}@keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(231,200,119,0)}30%{box-shadow:0 0 0 4px rgba(231,200,119,.85)}}
 .newsw{max-width:1080px;margin:18px auto 0;padding:0}
 .newsbar{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:22px;padding:7px 8px 7px 7px;min-height:40px}
@@ -1059,6 +1062,8 @@ real_tag:["ภาพจริง", "Real", "真实", "リアル", "실제", "Р�
 real_alt:["ห้องซาวน่าไม้ของ Krubb", "Krubb's wooden sauna", "Krubb 的木质桑拿房", "Krubbの木のサウナ", "Krubb의 나무 사우나", "Деревянная сауна Krubb", "La sauna de madera de Krubb"],
 watch_x:["ดูคลิปบน X ↗", "Watch on X ↗", "在 X 上观看 ↗", "Xで見る ↗", "X에서 보기 ↗", "Смотреть в X ↗", "Ver en X ↗"],
 feat_badge:["★ ประจำเดือน", "★ Featured", "★ 本月主打", "★ 今月の顔", "★ 이달의 모델", "★ Модель месяца", "★ Del mes"],
+cp_link:["ก๊อปลิงก์","Copy link","复制链接","リンクをコピー","링크 복사","Ссылка","Copiar enlace"],
+cp_done:["คัดลอกลิงก์แล้ว","Link copied","已复制链接","リンクをコピーしました","링크를 복사했어요","Ссылка скопирована","Enlace copiado"],
 nw_lbl:["ข่าว Krubb","Krubb news","Krubb 动态","Krubbニュース","Krubb 소식","Новости Krubb","Novedades Krubb"],
 nw_tonight:["คืนนี้","Tonight","今晚","今夜","오늘 밤","Сегодня","Esta noche"],
 fmv:["MV แนะนำ · ทริปพิเศษ","Featured MV · Exclusive Trip","精选 MV · 专属旅程","注目のMV · 特別トリップ","추천 MV · 익스클루시브 트립","Клип · эксклюзивный тур","MV destacado · Viaje exclusivo"],
@@ -1146,6 +1151,11 @@ const PAGE_IDS=["stories","vote","portfolio","academy"];
 const LEAD=["s0","h1","s1","h5"], FM_CARD="h1";
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
 const SLUG={smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",explore:"h3",green:"h4",cast:"s8"};
+const SHARE_BASE="https://creators.thbho.com/krubb/";
+function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id)||id; return SHARE_BASE+"#v-"+k; }
+function copyLink(id){ const u=cardLink(id); const done=()=>toast(t("cp_done")+" · "+u.replace("https://","")); const fb=()=>{ const ta=document.createElement("textarea"); ta.value=u; ta.setAttribute("readonly",""); ta.style.position="absolute"; ta.style.left="-9999px"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(e){ toast(u); } ta.remove(); };
+  if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(u).then(done,fb); else fb(); }
+document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest("[data-cp]"); if(!b) return; e.preventDefault(); e.stopPropagation(); copyLink(b.dataset.cp); },true);
 function deepId(){ const h=location.hash.slice(1); if(!h.startsWith("v-")) return null; const k=h.slice(2); return SLUG[k]||(STORIES.some(x=>x.id===k)?k:null); }
 function pageFromHash(){ const h=location.hash.slice(1); if(PAGE_IDS.includes(h)) return h; if(h.startsWith("v-")){ const id=deepId(); return id&&!LEAD.includes(id)?"stories":"home"; } if(h==="collab") return "stories"; return "home"; }
 let PAGE = pageFromHash();
@@ -1286,7 +1296,7 @@ function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.re
       ${NOTE[st.id]?`<span class="nextb">${esc(t(NOTE[st.id]))}</span>`:""}
       ${prodChip(st)}
       <h3>${esc(st.t)}</h3>
-      ${st.x?`<a class="xlink" href="${st.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}
+      <div class="lrow">${st.x?`<a class="xlink" href="${st.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}<button type="button" class="cpl" data-cp="${st.id}" aria-label="${esc(t("cp_link"))}">🔗 ${esc(t("cp_link"))}</button></div>
       <div class="meta"><span>${esc(t("th_"+st.th))}${st.clip?" · "+esc(t("clip")):""}</span><button class="heart" data-vote="${st.id}" aria-pressed="${!!myVotes[st.id]}">♥ ${count(st).toLocaleString()}</button></div>
     </div>
   </article>`; }

@@ -20,6 +20,19 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 
 Other old HTML files in the repo are legacy pages; leave them alone unless Thor asks.
 
+## Krubb (owned by another chat: do not edit from here)
+Since 19 Nov 2026 the Krubb collab page lives in this repo and is built by the chat "KRUBB Bangkok online plan".
+- `krubb/index.html` (https://creators.thbho.com/krubb/, noindex), `krubb/media/` (its clips), `krubb/v/<slug>/index.html` (one share page per card), `creator-img/og-krubb*.jpg` (its share images), `KrubbBangkok.html` (old address, redirect only).
+- The page is self-contained: it loads none of the shared .js files, so version bumps here never need to touch it.
+- This chat does not edit any of those files. If a Creators change needs something on the Krubb page, tell Thor so the KRUBB chat does it.
+- The KRUBB chat pushes to `main` often: always merge `origin/main` right before pushing (see Git workflow) and never resolve a conflict in its files by taking this branch's side.
+
+## Shared skills and the Update Log (from 19 Nov 2026)
+- Every AI image or video for Thor's work goes through the `thbho-visual-qa` skill (score ≥ 85, no auto-fail; content level is only noted, Thor decides per channel). Doc: https://claude.ai/artifact/GWN3GmBbyNMnVdhJg8N7EJ
+- Link-preview images (og:image 1200×630) use the `thbho-share-card` skill (Krubb layout).
+- Partner proposal PDFs use the `thbho-proposal-pdf` skill.
+- Cross-chat changes are logged in the Claude Doc "ThB.Ho · Update Log" (https://claude.ai/artifact/V4ZkqJETs7jttXdSWSRrt7, PDF copy in Drive › Update Log). When Thor says "อ่าน Update Log", read the newest rows; when he says "สรุปอัปเดตลง Update Log", add this chat's rows at the top of its table.
+
 ## Colours (chosen by Thor 11 Nov 2026: deep "Water element" darks + gold, no neon pink / neon cyan)
 All four pages use the same `:root` variable names, by role: `--bg --s1 --s2 --line` (surfaces), `--accent` (buttons, links),
 `--rose`, `--accent2` (small labels). Each page has its own palette on purpose:

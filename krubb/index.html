@@ -315,6 +315,7 @@ nav.links a{white-space:nowrap;padding:6px 10px;border-radius:999px;font-size:13
 .reel .fmstrip{position:absolute;left:0;right:0;top:0;z-index:2;background:linear-gradient(90deg,#C9A04A,#E7C877,#C9A04A);color:#16110C;font:600 12px/1.3 var(--body);letter-spacing:.02em;text-align:center;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .reel .fmstrip::before{content:"★ "}
 .reel.fm .top{top:36px}
+.reel .nextb{justify-self:start;max-width:100%;font-size:11px;font-weight:600;letter-spacing:.02em;line-height:1.35;color:var(--copper2);background:rgba(14,12,11,.55);border:1px solid rgba(231,200,119,.45);border-radius:8px;padding:4px 8px}
 .mi:has(.realb) img{aspect-ratio:3/4;object-fit:cover;width:100%}
 .page-stories #stories > .shead,.page-portfolio #portfolio > .shead,.page-vote #vote > .shead{display:none}
 .page-stories .rail{grid-auto-flow:row;grid-template-columns:repeat(2,1fr);grid-auto-columns:auto;overflow:visible;margin:0;padding:0}
@@ -1049,6 +1050,8 @@ real_tag:["ภาพจริง", "Real", "真实", "リアル", "실제", "Р�
 real_alt:["ห้องซาวน่าไม้ของ Krubb", "Krubb's wooden sauna", "Krubb 的木质桑拿房", "Krubbの木のサウナ", "Krubb의 나무 사우나", "Деревянная сауна Krubb", "La sauna de madera de Krubb"],
 watch_x:["ดูคลิปบน X ↗", "Watch on X ↗", "在 X 上观看 ↗", "Xで見る ↗", "X에서 보기 ↗", "Смотреть в X ↗", "Ver en X ↗"],
 feat_badge:["★ ประจำเดือน", "★ Featured", "★ 本月主打", "★ 今月の顔", "★ 이달의 모델", "★ Модель месяца", "★ Del mes"],
+fmv:["MV แนะนำ","Featured MV","精选 MV","注目のMV","추천 MV","Избранный клип","MV destacado"],
+nx_pty:["แพลนถัดไป · ทริป Wellness พัทยา","Next up · Pattaya wellness trip","下一站 · 芭提雅健康之旅","次の企画 · パタヤ・ウェルネストリップ","다음 계획 · 파타야 웰니스 트립","Далее · wellness-поездка в Паттайю","Próximamente · viaje wellness a Pattaya"],
 feat_kicker:["นายแบบประจำเดือน", "Monthly featured model", "每月主打模特", "今月のモデル", "이달의 모델", "Модель месяца", "Modelo del mes"],
 feat_go:["ดูผลงานเดือนนี้ →", "See this month's work →", "查看本月作品 →", "今月の作品を見る →", "이달의 작품 보기 →", "Работы месяца →", "Ver su trabajo →"],
 feat_three:["นักเล่าเรื่องสายสงบ ชวนคุณพักที่ซาวน่าและเซนโตะช่วงบ่าย เรื่องใหม่ทุกสัปดาห์ในเดือนนี้", "The calm storyteller, inviting you to slow afternoons in the sauna and sento. New stories every week this month.", "安静的讲故事的人，邀你在桑拿和钱汤度过慢节奏的午后。本月每周都有新故事。", "穏やかなストーリーテラー。サウナと銭湯でのゆったりした午後へ。今月は毎週新しいストーリー。", "차분한 스토리텔러, 사우나와 센토에서 느긋한 오후로 초대해요. 이번 달 매주 새 이야기.", "Спокойный рассказчик зовёт на неспешный день в сауне и сэнто. Новые истории каждую неделю.", "El narrador tranquilo te invita a tardes lentas de sauna y sento. Historias nuevas cada semana."],
@@ -1192,6 +1195,7 @@ function isFeat(x){ const F=featNow(); return F.who ? x.who===F.who : x.p.includ
 function byNew(a,b){ return b.d.localeCompare(a.d); }
 /* opening order, Krubb first; FM_CARD carries the "featured model of the month" strip */
 const LEAD=["s0","h1","s1","h5"], FM_CARD="h1";
+const STRIP={h5:"fmv"}, NOTE={h5:"nx_pty"};
 function leadMix(list,n){ const L=LEAD.map(id=>list.find(x=>x.id===id)).filter(Boolean); const rest=list.filter(x=>!L.includes(x)); return L.concat(featMix(rest,Math.max(0,n-L.length))); }
 function featMix(list,n){ const F=featNow(); const k=Math.round(n*featShare(F)); const fe=list.filter(isFeat), ot=list.filter(x=>!isFeat(x)); const head=[]; let i=0,j=0;
   while(head.length<n && (i<fe.length||j<ot.length)){ const wantF = i<k && i<fe.length && (head.length%2===0 || j>=ot.length); if(wantF) head.push(fe[i++]); else if(j<ot.length) head.push(ot[j++]); else if(i<fe.length) head.push(fe[i++]); }
@@ -1252,7 +1256,7 @@ function renderPortfolio(){
     return `<figure class="mi"${xvAttr(x)}><img src="${imgSrc(x.img,600,800)}" alt="">${tagFor(x.img,x)}${x.clip&&xvOf(x)?'<div class="play" aria-hidden="true"></div>':""}
     <figcaption class="cap2"><b>${isFeat(x)?"★ ":""}${esc(x.t)}</b>${x.real?'<span class="realb">Krubb × Mister Smart Beach Thailand</span>':""}${x.x?`<a class="xlink" href="${x.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}<div class="tags">${ptags(x.p)}</div><div class="meta" style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px"><span>${esc(t("th_"+x.th))}</span><button class="heart" data-vote="${x.id}" aria-pressed="${!!myVotes[x.id]}">♥ ${count(x).toLocaleString()}</button></div></figcaption></figure>`; }).join("");
 }
-function fmStrip(st){ if(st.id!==FM_CARD||!isFeat(st)) return ""; const F=featNow(); return `<div class="fmstrip">${esc(t("feat_kicker"))} · ${esc(fmMonth(F.m))}</div>`; }
+function fmStrip(st){ if(STRIP[st.id]) return `<div class="fmstrip">${esc(t(STRIP[st.id]))}</div>`; if(st.id!==FM_CARD||!isFeat(st)) return ""; const F=featNow(); return `<div class="fmstrip">${esc(t("feat_kicker"))} · ${esc(fmMonth(F.m))}</div>`; }
 function fmMonth(ym){ const [y,m]=ym.split("-").map(Number); try{ return new Intl.DateTimeFormat(LOCALE[lang],{month:"short",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,15))); }catch(e){ return ym; } }
 function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.real?" real":""}${fm?" fm":""}"${xvAttr(st)}>${fm}
     <img src="${imgSrc(st.img)}" alt="${st.real?esc(t("real_alt")):""}">
@@ -1261,6 +1265,7 @@ function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.re
     <div class="top"><div class="tags">${isFeat(st)?`<span class="pt fstar">★</span>`:""}${ptags(st.p)}</div>${st.real?`<span class="tg">${esc(t("real_tag"))}</span>`:tagFor(st.img,st)}</div>
     <div class="bot">
       ${st.real?'<span class="realb">Krubb × Mister Smart Beach Thailand</span>':""}
+      ${NOTE[st.id]?`<span class="nextb">${esc(t(NOTE[st.id]))}</span>`:""}
       ${prodChip(st)}
       <h3>${esc(st.t)}</h3>
       ${st.x?`<a class="xlink" href="${st.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}

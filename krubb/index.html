@@ -1226,13 +1226,14 @@ function heroTag(){ const tg=document.querySelector(".herotag"); if(!tg) return;
   tg.textContent = k==="real" ? t("photo_ai_tag") : k==="concept" ? t("hy_tag")+" · "+t("hero_concept") : t("hy_tag");
   if(k==="real"){ tg.className="tg herotag"; delete tg.dataset.hy; tg.removeAttribute("role"); tg.removeAttribute("tabindex"); }
   else { tg.className="tg ai hy herotag"; tg.dataset.hy=""; tg.setAttribute("role","link"); tg.tabIndex=0; } }
-function heroGo(i){ const bg=document.getElementById("herobg"); if(!bg) return; heroI=(i+HERO.length)%HERO.length;
+function heroLoad(i){ const s=document.querySelectorAll("#herobg .hs")[(i+HERO.length)%HERO.length]; if(s&&s.dataset.src){ s.style.backgroundImage="url('"+s.dataset.src+"')"; delete s.dataset.src; } }
+function heroGo(i){ const bg=document.getElementById("herobg"); if(!bg) return; heroI=(i+HERO.length)%HERO.length; heroLoad(heroI); heroLoad(heroI+1);
   bg.querySelectorAll(".hs").forEach((s,j)=>s.classList.toggle("on",j===heroI));
   document.querySelectorAll(".hdots button").forEach((d,j)=>d.setAttribute("aria-pressed",j===heroI));
   heroTag(); }
 function heroShow(){ const bg=document.getElementById("herobg"); if(!bg) return;
   if(!bg.dataset.init){ bg.dataset.init="1"; bg.dataset.set=HERO_SET; bg.style.backgroundImage="";
-    bg.innerHTML=HERO.map((h,j)=>`<div class="hs${j?"":" on"}" style="background-image:url('${HERO_M}${h.f}');--p:${h.p}"></div>`).join("");
+    bg.innerHTML=HERO.map((h,j)=>`<div class="hs${j?"":" on"}" data-src="${HERO_M}${h.f}" style="--p:${h.p}"></div>`).join(""); heroLoad(0); heroLoad(1);
     const d=document.createElement("div"); d.className="hdots"; d.innerHTML=HERO.map((h,j)=>`<button type="button" aria-label="${j+1}/${HERO.length}" aria-pressed="${!j}"></button>`).join("");
     bg.parentNode.appendChild(d);
     d.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; heroGo([...d.children].indexOf(b)); clearInterval(heroT); heroT=setInterval(()=>{ if(!document.hidden) heroGo(heroI+1); },6000); });

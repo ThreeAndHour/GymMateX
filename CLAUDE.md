@@ -42,7 +42,7 @@ Full table: Claude Sheet "ThB.Ho Brand Map" (https://claude.ai/artifact/QSoTdNDo
 - Hybrid AI Venue Network (brand #6, ThBHoVenues.html): network of gay venues (Krubb = founding hub), 3 rings membership, venue staff/therapists, catalog of lifestyle products (underwear, grooming, sponsor items) sold through venues.
 - GYMMATEX (O2OEventsVR.html, FitFantasy.html): fitness · wellness · longevity + O2O / VR for the muscle community: PT and massage courses, Hunk/Fit Academy, wellness trips and retreats, LEV / BODY EVOLT, FitFantasy.
 - Hybrid Creator Labs also owns photo books / prints and the Creator Residency / exchange; the 3SOME universe / novel is persona IP under Hybrid AI by ThB.Ho.
-- Socials: X @widerooms ("WIDEROOMS X ThB.Ho") is the main channel for ThB.Ho and all gay-side creator work; IG th_b_ho is supplementary. YouTube channels: @threeandhour (still live; older uploads such as the O2O overview nUAdZZLAhkQ) and @ThreeBestHours (playlists).
+- Socials: X @widerooms ("WIDEROOMS X ThB.Ho") is the main channel for ThB.Ho and all gay-side creator work; IG th_b_ho is supplementary. YouTube channels: @threeandhour (still live; older uploads such as the O2O overview nUAdZZLAhkQ) and @ThreeBestHours (playlists); Thor has several channels and only the one on his main email is closed.
 - "Th.Ho" = the original short name / logo wordmark of ThB.Ho (still used).
 - Hybrid AI Agent Network (thbho.com/HybridAIAgentNetwork.html): real-estate agent network; not linked from creator pages.
 

@@ -1206,8 +1206,21 @@ function pageFromHash(){ const h=location.hash.slice(1); if(PAGE_IDS.includes(h)
 let PAGE = pageFromHash();
 const HERO_M="https://creators.thbho.com/krubb/media/";
 /* v69 hero slideshow (Thor 20 Nov 2026): 6 images, model and no-model shots alternate */
-const HERO=[{f:"hero-1.jpg?v=1",k:"hy",p:"62% 28%"},{f:"hero-2.jpg?v=1",k:"real",p:"60% 50%"},{f:"hero-3.jpg?v=1",k:"hy",p:"60% 30%"},
- {f:"hero-4.jpg?v=2",k:"real",p:"55% 50%"},{f:"hero-5.jpg?v=1",k:"concept",p:"60% 45%"},{f:"hero-6.jpg?v=1",k:"real",p:"70% 50%"}];
+/* Rules (Thor 20 Nov 2026): every set = 6 slides: 3 Krubb spaces with no model (props / products only) + 3 models inside Krubb, alternating.
+   3 sets: B = overall (centre set), T = Three, H = Hour. The set changes every day (Bangkok date): B -> T -> H -> B ...
+   A set with fewer than 6 slides falls back to B. Preview a set with ?hero=B|T|H.
+   Next phase: pick the day's set from the highest real likes/views (X + this page). */
+const HERO_SETS={
+ B:[{f:"hero-1.jpg?v=1",k:"hy",p:"62% 28%"},{f:"hero-2.jpg?v=1",k:"real",p:"60% 50%"},{f:"hero-3.jpg?v=1",k:"hy",p:"60% 30%"},
+    {f:"hero-4.jpg?v=2",k:"real",p:"55% 50%"},{f:"hero-5.jpg?v=1",k:"concept",p:"60% 45%"},{f:"hero-6.jpg?v=1",k:"real",p:"70% 50%"}],
+ T:[],  /* Three set: in production */
+ H:[]   /* Hour set: in production */
+};
+const HERO_ORDER=["B","T","H"];
+function heroSetKey(){ const q=(new URLSearchParams(location.search).get("hero")||"").toUpperCase(); if(HERO_SETS[q]&&HERO_SETS[q].length>=6) return q;
+  let d; try{ const n=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Bangkok"})); d=Math.floor(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/864e5); }catch(e){ d=Math.floor(Date.now()/864e5); }
+  const k=HERO_ORDER[d%HERO_ORDER.length]; return HERO_SETS[k].length>=6?k:"B"; }
+const HERO_SET=heroSetKey(), HERO=HERO_SETS[HERO_SET];
 let heroI=0, heroT=null;
 function heroTag(){ const tg=document.querySelector(".herotag"); if(!tg) return; const k=HERO[heroI].k;
   tg.textContent = k==="real" ? t("photo_ai_tag") : k==="concept" ? t("hy_tag")+" · "+t("hero_concept") : t("hy_tag");
@@ -1218,7 +1231,7 @@ function heroGo(i){ const bg=document.getElementById("herobg"); if(!bg) return; 
   document.querySelectorAll(".hdots button").forEach((d,j)=>d.setAttribute("aria-pressed",j===heroI));
   heroTag(); }
 function heroShow(){ const bg=document.getElementById("herobg"); if(!bg) return;
-  if(!bg.dataset.init){ bg.dataset.init="1"; bg.style.backgroundImage="";
+  if(!bg.dataset.init){ bg.dataset.init="1"; bg.dataset.set=HERO_SET; bg.style.backgroundImage="";
     bg.innerHTML=HERO.map((h,j)=>`<div class="hs${j?"":" on"}" style="background-image:url('${HERO_M}${h.f}');--p:${h.p}"></div>`).join("");
     const d=document.createElement("div"); d.className="hdots"; d.innerHTML=HERO.map((h,j)=>`<button type="button" aria-label="${j+1}/${HERO.length}" aria-pressed="${!j}"></button>`).join("");
     bg.parentNode.appendChild(d);

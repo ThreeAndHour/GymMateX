@@ -11,7 +11,7 @@ The real-estate site is a different repo (ThBHo/thbho.github.io, https://thbho.c
 | `ThBHoCreators.html` | Main creator page (goal: get visitors to the `#apply` form, mobile first). Hero H1 "Anyone can become a creator", primary button → `#apply`. On ≤760px: Apply pill + ☰ menu in the header, floating "Start your first collab" button (hidden while hero buttons or `#apply` are on screen), CTA bands `.mcta`, and sections re-ordered with CSS `order` (hero > creators > strengths > background > portfolio > levels > rules > match > roadmap > apply). Sections: hero video, `#strengths` (6 USP cards with background clips + popup), `#levels`, `#creators`, `#match` (iframe of the quiz), `#portfolio` (YouTube playlist), `#roadmap` (folded), `#rules`, background, `#apply` (Google Form), `#home` (house infographic), contact. Nav has a "For venues →" link (shown in the ☰ menu on phones). |
 | `ThBHoPortfolio.html` | Every X / YouTube clip. Data is the `var FILMS=[ … ]` list inside the page. |
 | `ThBHoCreatorMatch.html` | Matching quiz. Also embedded in Creators as `ThBHoCreatorMatch.html?embed=1&v=YYYYMMDD`; bump `v=` after editing the quiz or browsers keep the old one. |
-| `ThBHoVenues.html` | Venue partners page. Open for partners since 17 Nov 2026: `#apply` embeds the venue partner form (same guest registry Sheet), `#home` house infographic. |
+| `ThBHoVenues.html` | Home page of the brand **Hybrid AI Venue Network** (renamed 20 Nov 2026, same URL; title/H1 say "Hybrid AI Venue Network", eyebrow "by ThB.Ho"). Venue partners page. Open for partners since 17 Nov 2026: `#apply` embeds the venue partner form (same guest registry Sheet), `#home` house infographic. |
 | `ThBHoDigitalHome.html` | "A website is a home" concept, Creators & Venues edition (7 languages). Concept source: thbho.com/DigitalHome.html (Agent Network core chat owns the concept; only the examples are ours). Linked from `#home` on Creators and Venues. |
 | `ThBHoStudio.html`, `ThBHoMatchDemo.html` | Backups of older versions. Do not link them. |
 | `O2OEventsVR.html` | GymMateX O2O · VR plan. |
@@ -39,7 +39,11 @@ Full table: Claude Sheet "ThB.Ho Brand Map" (https://claude.ai/artifact/QSoTdNDo
 - WIDEROOMS (https://thbho.com/EngWiderooms.html, house logo): personalized interior design + smart home + real estate only. Never on pages in this repo.
 - WIDEROOMS X ThB.Ho = Thor's X account @widerooms (muscle / BL / gay content). Always the full name, never just "WIDEROOMS"; text link to https://x.com/widerooms, never with the house logo. This is the gay-side link used here.
 - Hybrid Creator Labs = the brand of this site (content + web/back-office systems for gay creators and gay businesses). The site name stays "ThB.Ho Creators" for now: do not rename pages.
-- GYMMATEX (O2OEventsVR.html): VR / O2O, wellness and retreat events for the muscle community.
+- Hybrid AI Venue Network (brand #6, ThBHoVenues.html): network of gay venues (Krubb = founding hub), 3 rings membership, venue staff/therapists, catalog of lifestyle products (underwear, grooming, sponsor items) sold through venues.
+- GYMMATEX (O2OEventsVR.html, FitFantasy.html): fitness · wellness · longevity + O2O / VR for the muscle community: PT and massage courses, Hunk/Fit Academy, wellness trips and retreats, LEV / BODY EVOLT, FitFantasy.
+- Hybrid Creator Labs also owns photo books / prints and the Creator Residency / exchange; the 3SOME universe / novel is persona IP under Hybrid AI by ThB.Ho.
+- Socials: X @widerooms ("WIDEROOMS X ThB.Ho") is the main channel for ThB.Ho and all gay-side creator work; IG th_b_ho is supplementary. The YouTube channel @threeandhour is gone.
+- "Th.Ho" = the original short name / logo wordmark of ThB.Ho (still used).
 - Hybrid AI Agent Network (thbho.com/HybridAIAgentNetwork.html): real-estate agent network; not linked from creator pages.
 
 ## Sales docs, ads and proposals (Thor, 20 Nov 2026)

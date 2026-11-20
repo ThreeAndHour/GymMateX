@@ -16,6 +16,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://creators.thbho.com/creator-img/og-krubb.jpg?v=3">
 
+<link rel="manifest" href="/krubb/manifest.webmanifest">
+<meta name="theme-color" content="#0E0C0B">
+<link rel="icon" type="image/png" sizes="192x192" href="/krubb/media/icon-192.png">
+<link rel="apple-touch-icon" href="/krubb/media/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KRUBB">
 <meta name="description" content="KRUBB Bangkok × ThB.Ho Creators: collab page in 7 languages, run by ThB.Ho. Draft, pending Krubb's confirmation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1768,5 +1776,6 @@ document.getElementById("recBtn").addEventListener("click",()=>{
   var hb=document.querySelector(".herotag[data-hy]"); if(hb) hb.title="Hybrid AI by ThB.Ho";
 })();
 </script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/krubb/sw.js",{scope:"/krubb/"}).catch(function(){});});}</script>
 </body>
 </html>

@@ -33,6 +33,18 @@ Since 19 Nov 2026 the Krubb collab page lives in this repo and is built by the c
 - Partner proposal PDFs use the `thbho-proposal-pdf` skill.
 - Cross-chat changes are logged in the Claude Doc "ThB.Ho · Update Log" (https://claude.ai/artifact/V4ZkqJETs7jttXdSWSRrt7, PDF copy in Drive › Update Log). When Thor says "อ่าน Update Log", read the newest rows; when he says "สรุปอัปเดตลง Update Log", add this chat's rows at the top of its table.
 
+## Brands, logos and footer links (Thor, 20 Nov 2026)
+Full table: Claude Sheet "ThB.Ho Brand Map" (https://claude.ai/artifact/QSoTdNDo8woNKZZqLvfBmJ); copy + logos in Drive "ThB.Ho (Main) › Group & Brand Profile (ThB.Ho)" (logos in its "Logos" folder).
+- Hybrid AI by ThB.Ho (https://thbho.com/AIGymmateXFactory.html): the core of every Hybrid AI job; logo = th.ho aperture "CREATING DREAMS". Goes on every page and document.
+- WIDEROOMS (https://thbho.com/EngWiderooms.html, house logo): personalized interior design + smart home + real estate only. Never on pages in this repo.
+- WIDEROOMS X ThB.Ho = Thor's X account @widerooms (muscle / BL / gay content). Always the full name, never just "WIDEROOMS"; text link to https://x.com/widerooms, never with the house logo. This is the gay-side link used here.
+- Hybrid Creator Labs = the brand of this site (content + web/back-office systems for gay creators and gay businesses). The site name stays "ThB.Ho Creators" for now: do not rename pages.
+- GYMMATEX (O2OEventsVR.html): VR / O2O, wellness and retreat events for the muscle community.
+- Hybrid AI Agent Network (thbho.com/HybridAIAgentNetwork.html): real-estate agent network; not linked from creator pages.
+
+## Sales docs, ads and proposals (Thor, 20 Nov 2026)
+Every ad, poster, quotation, proposal or sales document that earns Thor money goes through the `thbho-fortune-check` skill: colours / layout / wording checked against his chart for that month (readings in Drive "ThB.Ho (Main) › AI Personalized Matching › 03", made automatically on the 25th), and, when the recipient is known, matched to their MBTI and chart (Sheet "Match Profiles", tab Profiles only; never use its hidden Private tab). Workflow doc in the same Drive folder. Important documents are saved in subfolders of Drive "ThB.Ho (Main)".
+
 ## Colours (chosen by Thor 11 Nov 2026: deep "Water element" darks + gold, no neon pink / neon cyan)
 All four pages use the same `:root` variable names, by role: `--bg --s1 --s2 --line` (surfaces), `--accent` (buttons, links),
 `--rose`, `--accent2` (small labels). Each page has its own palette on purpose:

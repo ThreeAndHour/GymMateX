@@ -1010,6 +1010,7 @@ vote_now:["ไปโหวต →", "Vote now →", "去投票 →", "投票す�
 open_port:["เปิดพอร์ต →", "Open portfolio →", "打开作品集 →", "ポートフォリオへ →", "포트폴리오 보기 →", "Открыть портфолио →", "Abrir portafolio →"],
 join_collab:["ดูรูปแบบคอลแลบ →", "Formats & tiers →", "合作形式与等级 →", "コラボ形式とランク →", "콜라보 형식·등급 →", "Форматы и уровни →", "Formatos y niveles →"],
 collab_tz:["คอลแลบกับเรา", "Collab with us", "与我们合作", "一緒にコラボ", "함께 콜라보", "Коллаб с нами", "Colabora con nosotros"],
+vote_soon:["เปิดโหวตเร็วๆ นี้","Voting opens soon","即将开放投票","投票はまもなく開始","곧 투표 오픈","Голосование скоро","La votación abre pronto"],
 leading:["นำอยู่", "Leading", "领先", "トップ", "1위", "Лидер", "Va ganando"],
 items:["ผลงาน", "items", "件作品", "点", "개", "работ", "piezas"],
 stories_lead:["เรื่องไลฟ์สไตล์ hunk ฟิตเนส และฟีล BL ถ่ายในพื้นที่จริงของ Krubb อัปเดตทุกสัปดาห์", "Lifestyle, hunk, fitness and BL-vibe stories shot in Krubb's own spaces, new every week.", "在 Krubb 真实空间拍摄的生活方式、型男、健身与 BL 氛围故事，每周更新。", "Krubbの実際の空間で撮影したライフスタイル、ハンク、フィットネス、BLムードのストーリー。毎週更新。", "Krubb의 실제 공간에서 촬영한 라이프스타일, 헝크, 피트니스, BL 무드 스토리. 매주 업데이트.", "Лайфстайл, ханки, фитнес и BL-настроение — снято в пространствах Krubb, каждую неделю новое.", "Lifestyle, hunk, fitness y vibra BL, grabado en los espacios de Krubb, nuevo cada semana."],
@@ -1237,24 +1238,24 @@ const STORIES=[
  {id:"g1",img:"ai:h_kgym",t:"Hour · Krubb 3F Gym",p:["hour"],th:"fit",v:0,d:"2026-11-19"},
  {id:"g2",img:"ai:t_klocker",t:"Three & Hour · Locker Talk",p:["three","hour"],th:"life",clip:true,vid:"lk1",v:0,d:"2026-11-19"},
  {id:"s0",img:"wix:smartbeach",t:"Smart Beach Sauna Day",p:["krubb","creator"],th:"well",real:true,clip:true,x:"https://x.com/krubb_bkkth/status/2122744755935383933",v:13,d:"2026-11-18"},
- {id:"s1",img:"ai:pool3",t:"Midnight Sento",p:["three","hour","creator"],th:"bl",clip:true,v:1240,d:"2026-11-16"},
- {id:"s2",img:"ai:h_klockor",t:"Locker Room Gold",p:["hour"],th:"hunk",prod:"uw",v:1530,d:"2026-11-15"},
- {id:"s3",img:"ai:stairs2",t:"Blue Stairs",p:["three","b"],th:"bl",clip:true,v:980,d:"2026-11-14"},
- {id:"s4",img:"ai:t_s3towel",t:"Pine & Steam",p:["three"],th:"well",prod:"gr",v:760,d:"2026-11-13"},
- {id:"s5",img:"ai:gym",t:"3F Pump",p:["b"],th:"fit",clip:true,v:640,d:"2026-11-12"},
- {id:"s6",img:"ai:sauna",t:"Sauna Reset",p:["creator"],th:"well",v:520,d:"2026-11-11"},
- {id:"s7",img:"ai:social",t:"Board Game Night",p:["creator"],th:"life",v:410,d:"2026-11-10"},
- {id:"s8",img:"ai:trio",t:"Season 01 Cast",p:["three","b","hour"],th:"hunk",v:1890,d:"2026-11-17"}
+ {id:"s1",img:"ai:pool3",t:"Midnight Sento",p:["three","hour","creator"],th:"bl",clip:true,v:0,d:"2026-11-16"},
+ {id:"s2",img:"ai:h_klockor",t:"Locker Room Gold",p:["hour"],th:"hunk",prod:"uw",v:0,d:"2026-11-15"},
+ {id:"s3",img:"ai:stairs2",t:"Blue Stairs",p:["three","b"],th:"bl",clip:true,v:0,d:"2026-11-14"},
+ {id:"s4",img:"ai:t_s3towel",t:"Pine & Steam",p:["three"],th:"well",prod:"gr",v:0,d:"2026-11-13"},
+ {id:"s5",img:"ai:gym",t:"3F Pump",p:["b"],th:"fit",clip:true,v:0,d:"2026-11-12"},
+ {id:"s6",img:"ai:sauna",t:"Sauna Reset",p:["creator"],th:"well",v:0,d:"2026-11-11"},
+ {id:"s7",img:"ai:social",t:"Board Game Night",p:["creator"],th:"life",v:0,d:"2026-11-10"},
+ {id:"s8",img:"ai:trio",t:"Season 01 Cast",p:["three","b","hour"],th:"hunk",v:0,d:"2026-11-17"}
 ];
 const SPACES=[
  {id:"hp1",img:"ai:h_studio",t:"Hour · Studio Light",p:["hour"],th:"hunk",v:0,d:"2026-11-16"},
  {id:"hp2",img:"ai:h_bw",t:"Hour · Monochrome",p:["hour"],th:"life",v:0,d:"2026-11-15"},
- {id:"k1",img:"wix:pool",t:"Rooftop Sento",p:["krubb"],th:"well",v:300,d:"2026-11-01"},
- {id:"k2",img:"wix:gym",t:"3F Gym",p:["krubb"],th:"fit",v:280,d:"2026-11-01"},
- {id:"k3",img:"wix:door",t:"Gold Lockers",p:["krubb"],th:"life",v:260,d:"2026-11-01"},
- {id:"k4",img:"wix:stairs",t:"Neon Stairs",p:["krubb"],th:"bl",v:240,d:"2026-11-01"},
- {id:"k5",img:"wix:sauna",t:"Pine Sauna",p:["krubb"],th:"well",v:220,d:"2026-11-01"},
- {id:"k6",img:"wix:lockers",t:"Locker Room",p:["krubb"],th:"hunk",v:200,d:"2026-11-01"},
+ {id:"k1",img:"wix:pool",t:"Rooftop Sento",p:["krubb"],th:"well",v:0,d:"2026-11-01"},
+ {id:"k2",img:"wix:gym",t:"3F Gym",p:["krubb"],th:"fit",v:0,d:"2026-11-01"},
+ {id:"k3",img:"wix:door",t:"Gold Lockers",p:["krubb"],th:"life",v:0,d:"2026-11-01"},
+ {id:"k4",img:"wix:stairs",t:"Neon Stairs",p:["krubb"],th:"bl",v:0,d:"2026-11-01"},
+ {id:"k5",img:"wix:sauna",t:"Pine Sauna",p:["krubb"],th:"well",v:0,d:"2026-11-01"},
+ {id:"k6",img:"wix:lockers",t:"Locker Room",p:["krubb"],th:"hunk",v:0,d:"2026-11-01"},
  {id:"k7",img:"wix:rest1",t:"Rest Room · Bunks & Belongings",p:["krubb"],th:"life",v:0,d:"2026-11-20"},
  {id:"k8",img:"wix:cafe",t:"1F Café · Coffee Break",p:["krubb"],th:"life",v:0,d:"2026-11-20"},
  {id:"k9",img:"wix:shower",t:"Shower Hall · Hung Up",p:["krubb"],th:"well",v:0,d:"2026-11-20"},
@@ -1342,12 +1343,12 @@ function renderVote(){
   document.getElementById("weekNo").textContent = t("week_lbl")+" "+weekNo();
   const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id));
   const total=items.reduce((a,x)=>a+count(x),0); const max=Math.max(...items.map(count));
-  document.getElementById("voteGrid").innerHTML = items.map(st=>{ const c=count(st); const pct=Math.round(c/total*100);
-    return `<article class="vc${c===max?" lead":""}">${c===max?'<span class="crown">♛ #1</span>':""}
+  document.getElementById("voteGrid").innerHTML = items.map(st=>{ const c=count(st); const pct=total?Math.round(c/total*100):0; const ld=total>0&&c===max;
+    return `<article class="vc${ld?" lead":""}">${ld?'<span class="crown">♛ #1</span>':""}
       <div class="ph"><img src="${imgSrc(st.img)}" alt="">${tagFor(st.img,st)}</div>
       <div class="vb"><b>${esc(st.t)}</b><div class="tags">${ptags(st.p)}</div>
       <div class="vbar"><i style="width:${pct}%"></i></div>
-      <div class="row"><span>${pct}% · ${c.toLocaleString()}</span><button class="heart" data-vote="${st.id}" aria-pressed="${!!myVotes[st.id]}">${myVotes[st.id]?esc(t("voted")):"♥ "+esc(t("vote_btn"))}</button></div></div>
+      <div class="row"><span>${total?pct+"% · "+c.toLocaleString():esc(t("vote_soon"))}</span><button class="heart" data-vote="${st.id}" aria-pressed="${!!myVotes[st.id]}">${myVotes[st.id]?esc(t("voted")):"♥ "+esc(t("vote_btn"))}</button></div></div>
     </article>`; }).join("");
 }
 function renderCast(){
@@ -1397,7 +1398,7 @@ function renderTeasers(){
   const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id)); const lead=items.reduce((a,b)=>count(b)>count(a)?b:a); const total=items.reduce((a,x)=>a+count(x),0);
   document.getElementById("tzVoteImg").style.backgroundImage="url('"+imgSrc(lead.img)+"')";
   document.getElementById("tzVoteWk").textContent=t("week_lbl")+" "+weekNo();
-  document.getElementById("tzVoteLead").textContent="♛ "+t("leading")+": "+lead.t+" · "+Math.round(count(lead)/total*100)+"%";
+  document.getElementById("tzVoteLead").textContent=total?("♛ "+t("leading")+": "+lead.t+" · "+Math.round(count(lead)/total*100)+"%"):t("vote_soon");
   const pf=STORIES.concat(SPACES);
   document.getElementById("tzPort").innerHTML=["ai:h_kgym","ai:t_s3pool","ai:t_s3sauna","ai:h_wneon2"].map(k=>`<img src="${imgSrc(k,400,300)}" alt="">`).join("");
   document.getElementById("tzPortN").textContent=pf.length+" "+t("items");

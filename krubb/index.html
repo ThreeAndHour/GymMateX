@@ -122,6 +122,14 @@ img.broken{visibility:hidden}
 @media(max-width:700px){.heromark{width:104px;height:104px}}
 .footlogo{width:72px;height:72px;margin-bottom:10px}
 .herotag{position:absolute;right:16px;bottom:44px}
+.herobg .hs{position:absolute;inset:0;background-size:cover;background-position:var(--p,70% 40%);opacity:0;transform:scale(1.05);transition:opacity 1.6s ease,transform 7s ease-out}
+.herobg .hs.on{opacity:1;transform:scale(1)}
+.hdots{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:7px;z-index:3}
+.hdots button{all:unset;cursor:pointer;width:8px;height:8px;border-radius:50%;background:rgba(243,236,227,.35);transition:width .3s,background .3s}
+.hdots button[aria-pressed="true"]{width:22px;border-radius:99px;background:var(--copper2)}
+@media(prefers-reduced-motion:reduce){.herobg .hs{transition:opacity .6s ease;transform:none}}
+@media(max-width:700px){.hdots{bottom:10px}}
+
 .tg{font-family:var(--mono);font-size:10px;letter-spacing:.06em;background:rgba(0,0,0,.62);color:#e9e2d8;border-radius:999px;padding:3px 8px;backdrop-filter:blur(4px)}
 .tg.ai::before{content:"✦ ";color:var(--copper2)}
 [data-xv]{cursor:pointer}
@@ -513,7 +521,7 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding:34px 0 44px;back
 
 <main id="top">
 <div class="hero" data-pages="home">
-  <div class="herobg" id="herobg" role="img" aria-label="Rooftop sento at night"></div>
+  <div class="herobg" id="herobg" role="img" aria-label="Krubb Bangkok · Hybrid AI and real photos"></div>
   <div class="steam" aria-hidden="true"></div>
   <span class="tg ai hy herotag" data-hy role="link" tabindex="0" data-t="hy_tag"></span>
   <div class="wrap">
@@ -1113,6 +1121,7 @@ hy_title:["Hybrid AI คืออะไร · ThB.Ho Creators","What is Hybrid A
 ai_tag:["ภาพประกอบ AI","AI image","AI 插图","AIイメージ","AI 이미지","Изображение ИИ","Imagen IA"],
 hv_new:["ใหม่","New","新","NEW","신규","Новое","Nuevo"],
 hv_mine:["ถูกใจแล้ว","Liked","已赞","いいね済み","좋아요함","Нравится","Te gusta"],
+hero_concept:["คอนเซปต์ · ห้องนวดในแผนอนาคต","Concept · planned massage room","概念图 · 规划中的按摩室","コンセプト · 計画中のマッサージルーム","콘셉트 · 계획 중인 마사지 룸","Концепт · будущая массажная","Concepto · sala de masaje prevista"],
 photo_ai_tag:["ภาพจริง · แต่งแสงและพร็อพด้วย AI","Real photo · AI light & props","实拍 · AI 调光与道具","実写 · AI 光と小物","실사 · AI 조명·소품","Фото · свет и реквизит AI","Foto real · luz y atrezo IA"],
 photo_tag:["ภาพจริงจากร้าน","Photo: Krubb","Krubb 实拍","Krubb実写","Krubb 실사","Фото Krubb","Foto: Krubb"],
 cap_steam:["ไอน้ำ","Steam","蒸汽","スチーム","스팀","Пар","Vapor"],
@@ -1195,6 +1204,27 @@ document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closes
 function deepId(){ const h=location.hash.slice(1); if(!h.startsWith("v-")) return null; const k=h.slice(2); return SLUG[k]||(STORIES.some(x=>x.id===k)?k:null); }
 function pageFromHash(){ const h=location.hash.slice(1); if(PAGE_IDS.includes(h)) return h; if(h.startsWith("v-")){ const id=deepId(); return id&&!LEAD.includes(id)?"stories":"home"; } if(h==="collab") return "stories"; return "home"; }
 let PAGE = pageFromHash();
+const HERO_M="https://creators.thbho.com/krubb/media/";
+/* v69 hero slideshow (Thor 20 Nov 2026): 6 images, model and no-model shots alternate */
+const HERO=[{f:"hero-1.jpg?v=1",k:"hy",p:"62% 28%"},{f:"hero-2.jpg?v=1",k:"real",p:"60% 50%"},{f:"hero-3.jpg?v=1",k:"hy",p:"60% 30%"},
+ {f:"hero-4.jpg?v=1",k:"real",p:"55% 50%"},{f:"hero-5.jpg?v=1",k:"concept",p:"60% 45%"},{f:"hero-6.jpg?v=1",k:"real",p:"70% 50%"}];
+let heroI=0, heroT=null;
+function heroTag(){ const tg=document.querySelector(".herotag"); if(!tg) return; const k=HERO[heroI].k;
+  tg.textContent = k==="real" ? t("photo_ai_tag") : k==="concept" ? t("hy_tag")+" · "+t("hero_concept") : t("hy_tag");
+  if(k==="real"){ tg.className="tg herotag"; delete tg.dataset.hy; tg.removeAttribute("role"); tg.removeAttribute("tabindex"); }
+  else { tg.className="tg ai hy herotag"; tg.dataset.hy=""; tg.setAttribute("role","link"); tg.tabIndex=0; } }
+function heroGo(i){ const bg=document.getElementById("herobg"); if(!bg) return; heroI=(i+HERO.length)%HERO.length;
+  bg.querySelectorAll(".hs").forEach((s,j)=>s.classList.toggle("on",j===heroI));
+  document.querySelectorAll(".hdots button").forEach((d,j)=>d.setAttribute("aria-pressed",j===heroI));
+  heroTag(); }
+function heroShow(){ const bg=document.getElementById("herobg"); if(!bg) return;
+  if(!bg.dataset.init){ bg.dataset.init="1"; bg.style.backgroundImage="";
+    bg.innerHTML=HERO.map((h,j)=>`<div class="hs${j?"":" on"}" style="background-image:url('${HERO_M}${h.f}');--p:${h.p}"></div>`).join("");
+    const d=document.createElement("div"); d.className="hdots"; d.innerHTML=HERO.map((h,j)=>`<button type="button" aria-label="${j+1}/${HERO.length}" aria-pressed="${!j}"></button>`).join("");
+    bg.parentNode.appendChild(d);
+    d.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; heroGo([...d.children].indexOf(b)); clearInterval(heroT); heroT=setInterval(()=>{ if(!document.hidden) heroGo(heroI+1); },6000); });
+    heroT=setInterval(()=>{ if(!document.hidden) heroGo(heroI+1); },6000); }
+  heroTag(); }
 function pageHref(to,hash){ if(to==="home") return hash?"#"+hash:"#home"; return "#"+(hash||to); }
 function goHash(){
   const h=location.hash.slice(1); const np=pageFromHash();
@@ -1493,7 +1523,7 @@ function renderStatic(){
   document.querySelectorAll("[data-t]").forEach(el=>{ el.textContent = t(el.dataset.t); });
   document.querySelectorAll(".js-line").forEach(a=>{ a.href = lineFor("hi"); });
   document.querySelectorAll("img[data-img]").forEach(im=>{ if(!im.src){ im.addEventListener("error",()=>im.classList.add("broken")); im.src = imgSrc(im.dataset.img, 900, 675); } });
-  document.getElementById("herobg").style.backgroundImage = "url('"+AI2.trio+"')";
+  heroShow();
   document.querySelectorAll("[data-bg]").forEach(el=>{ el.style.backgroundImage="url('"+imgSrc(el.dataset.bg,800,450)+"')"; });
   const btn=document.getElementById("langBtn"); btn.innerHTML = "🌐 <span class=\"ll\">"+LANG_LABEL[lang]+"</span><span class=\"lc\">"+lang.toUpperCase()+"</span>"; btn.setAttribute("aria-label",LANG_LABEL[lang]);
   const menu=document.getElementById("langMenu");

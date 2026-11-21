@@ -1248,13 +1248,14 @@ const COUNTRIES = ["TH","CN","TW","HK","JP","KR","SG","MY","PH","VN","IN","AU","
 const PAGE_IDS=["stories","vote","portfolio","academy"];
 const LEAD=["g32","s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["g32","h1","g31","g15","g30","g24"];
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
-const SLUG={fittwist:"t10",twolights:"g32",smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
+const SLUG={saunasit:"g27",lockertowel:"g28",massage:"g29",matcha:"g30",cafeaftergym:"g31",lockergold:"s2",restroom:"k7",coffeebreak:"k8",showerhall:"k9",fittwist:"t10",twolights:"g32",smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
 const SHARE_BASE="https://creators.thbho.com/krubb/";
-function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id); return k?SHARE_BASE+"v/"+k+"/":SHARE_BASE+"#v-"+id; }
+/* ?openExternalBrowser=1: LINE opens the link in Safari / Chrome instead of its own browser (Android then opens it in the installed KRUBB app) */
+function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id); return k?SHARE_BASE+"v/"+k+"/?openExternalBrowser=1":SHARE_BASE+"?openExternalBrowser=1#v-"+id; }
 function copyLink(id){ const u=cardLink(id); const done=()=>toast(t("cp_done")+" · "+u.replace("https://","")); const fb=()=>{ const ta=document.createElement("textarea"); ta.value=u; ta.setAttribute("readonly",""); ta.style.position="absolute"; ta.style.left="-9999px"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(e){ toast(u); } ta.remove(); };
   if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(u).then(done,fb); else fb(); }
 document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest("[data-cp]"); if(!b) return; e.preventDefault(); e.stopPropagation(); copyLink(b.dataset.cp); },true);
-function deepId(){ const h=location.hash.slice(1); if(!h.startsWith("v-")) return null; const k=h.slice(2); return SLUG[k]||(STORIES.some(x=>x.id===k)?k:null); }
+function deepId(){ const h=location.hash.slice(1); if(!h.startsWith("v-")) return null; const k=h.slice(2); if(SLUG[k]) return SLUG[k]; try{ return STORIES.concat(SPACES).some(x=>x.id===k)?k:null; }catch(e){ return k; } }
 function pageFromHash(){ const h=location.hash.slice(1); if(PAGE_IDS.includes(h)) return h; if(h.startsWith("v-")){ const id=deepId(); return id&&!LEAD.includes(id)?"stories":"home"; } if(h==="collab") return "stories"; return "home"; }
 let PAGE = pageFromHash();
 const HERO_M="https://creators.thbho.com/krubb/media/";
@@ -1487,11 +1488,11 @@ function renderVote(){
   const cards=items.map((st,ix)=>{ const c=tally?(tally[st.id]||0):0, pct=total?Math.round(c/total*100):0, ld=tally&&total>0&&c===max, isPick=pickToday===st.id;
     const res = !votedWeek ? `<span class="muted">${esc(t("wv_hidden"))}</span>` : tally ? `<span>${pct}%</span>` : (mine[st.id]?`<span class="wvmine">✓ ${esc(t("wv_yours"))}${mine[st.id]>1?" ×"+mine[st.id]:""}</span>`:`<span class="muted">${esc(t("wv_monday"))}</span>`);
     const btn = isPick ? `<button class="wvbtn done" disabled>✓ ${esc(t("wv_done"))}</button>` : pickToday ? `<button class="wvbtn later" disabled>${esc(t("wv_tomorrow"))}</button>` : `<button class="wvbtn" data-wv="${st.id}">♥ ${esc(t("wv_btn"))}</button>`;
-    return `<article class="vc${ld?" lead":""}${isPick?" picked":""}">${ld?'<span class="crown">♛ #1</span>':""}<span class="wvn">${ix+1} / ${items.length}</span>
+    return `<article class="vc${ld?" lead":""}${isPick?" picked":""}" data-sid="${st.id}">${ld?'<span class="crown">♛ #1</span>':""}<span class="wvn">${ix+1} / ${items.length}</span>
       <div class="ph"${xvAttr(st)}><img loading="lazy" decoding="async" src="${imgSrc(st.img)}" alt="">${xvOf(st)?'<div class="play" aria-hidden="true"></div>':""}${tagFor(st.img,st)}</div>
       <div class="vb"><b>${esc(st.t)}</b><div class="tags">${ptags(st.p)}</div>
       ${votedWeek&&tally?`<div class="vbar"><i style="width:${pct}%"></i></div>`:""}
-      <div class="row">${res}</div>${btn}</div>
+      <div class="row">${res}<button type="button" class="cpl" data-cp="${st.id}" aria-label="${esc(t("cp_link"))}">🔗 ${esc(t("cp_link"))}</button></div>${btn}</div>
     </article>`; }).join("");
   const dots=`<div class="wvdots">${items.map((_,k)=>`<i data-k="${k}"></i>`).join("")}</div>`;
   document.getElementById("voteGrid").innerHTML = head+`<div class="wvtrack">${cards}</div>`+dots;
@@ -1519,15 +1520,20 @@ function renderPortfolio(){
     <div class="pff-b"><span class="featbadge static">${esc(t("feat_badge"))}</span><div class="kicker">${esc(t("feat_kicker"))} · ${esc(monthLabel(F.m))}</div><h3>${esc(F.n)} <small>${esc(F.role)}</small></h3><p class="muted">${esc(t(F.bio))}</p>
     <div class="pff-row"><span>${nF} ${esc(t("items"))}</span><span>${Math.round(featShare(F)*100)}% ${esc(t("feat_share"))}</span>${F.x?`<a class="xlink" href="${F.x}" target="_blank" rel="noopener">${esc(F.tag||"X")} · ${esc(t("watch_x"))}</a>`:""}<button class="chip" data-pfp="${F.kind==="persona"?F.p:"creator"}" aria-pressed="${pfP===(F.kind==="persona"?F.p:"creator")}">${esc(t("feat_only"))}</button>${F.pf?`<a class="xlink" href="${F.pf}" target="_blank" rel="noopener">${esc(t("feat_pf").replace("{n}",F.n))}</a>`:""}</div>${F.kind==="persona"?`<div class="pff-collab"><b>${esc(t("collab3_h").replace("{n}",F.n))}</b><p>${esc(t("collab3_d").replace("{n}",F.n))}</p><div class="pff-cta"><a class="btn line sm" href="https://line.me/ti/p/lMN8pLDt_V" target="_blank" rel="noopener">${esc(t("collab3_line"))}</a><a class="btn ghost sm" href="${pageHref("stories","collab")}">${esc(t("join_collab"))}</a></div></div>`:""}</div>`;
   document.getElementById("masonry").innerHTML = list.map(x=>{ const ai=x.img.startsWith("ai:");
-    return `<figure class="mi"${xvAttr(x)}><img loading="lazy" decoding="async" src="${imgSrc(x.img,600,800)}" alt="">${tagFor(x.img,x)}${x.clip&&xvOf(x)?'<div class="play" aria-hidden="true"></div>':""}
+    return `<figure class="mi" data-sid="${x.id}"${xvAttr(x)}><img loading="lazy" decoding="async" src="${imgSrc(x.img,600,800)}" alt="">${tagFor(x.img,x)}${x.clip&&xvOf(x)?'<div class="play" aria-hidden="true"></div>':""}
     <figcaption class="cap2"><b>${isFeat(x)?"★ ":""}${esc(x.t)}</b>${x.real?'<span class="realb">Krubb × Mister Smart Beach Thailand</span>':""}${x.x?`<a class="xlink" href="${x.x}" target="_blank" rel="noopener">${esc(t("watch_x"))}</a>`:""}<div class="tags">${ptags(x.p)}</div><div class="meta" style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px"><span>${esc(t("th_"+x.th))}</span><button class="heart" data-vote="${x.id}" aria-pressed="${!!myVotes[x.id]}">${heartTxt(x)}</button></div></figcaption></figure>`; }).join("");
 }
 function featNext(){ const F=featNow(), i=FEATURED.indexOf(F); return FEATURED[i+1]||null; }
 function fmStrip(st){ if(st.id===NEXT_CARD){ const N=featNext(); if(N && (st.p||[]).includes(N.p)) return `<div class="fmstrip next">${esc(t("feat_next"))} · ${esc(fmMonth(N.m))}</div>`; } if(STRIP[st.id]) return `<div class="fmstrip">${esc(t(STRIP[st.id]))}</div>`; if(st.id!==FM_CARD||!isFeat(st)) return ""; const F=featNow(); return `<div class="fmstrip">${esc(t("feat_kicker"))} · ${esc(fmMonth(F.m))}</div>`; }
 function fmMonth(ym){ const [y,m]=ym.split("-").map(Number); try{ return new Intl.DateTimeFormat(LOCALE[lang],{month:"short",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,15))); }catch(e){ return ym; } }
-function deepCard(){ const id=deepId(); if(!id) return; const el=[...document.querySelectorAll(`[data-sid="${id}"]`)].find(e=>e.offsetParent); if(!el){ if(PAGE==="stories"){ PAGE="portfolio"; applyPage(); renderV4(); setTimeout(deepCard,80); } return; }
+/* deep link #v-<slug>: open the card on the page where it is shown (a vote entry opens on the Vote page), then its clip */
+function deepCard(tried){ const id=deepId(); if(!id) return; tried=tried||[];
+  let inVote=false; try{ inVote=VOTE_IDS.includes(id); }catch(e){}
+  if(!tried.length && inVote && PAGE!=="vote"){ PAGE="vote"; applyPage(); renderV4(); setTimeout(()=>deepCard(["vote"]),120); return; }
+  const el=[...document.querySelectorAll(`[data-sid="${id}"]`)].find(e=>e.offsetParent);
+  if(!el){ tried.push(PAGE); const nx=["stories","portfolio","home","vote"].find(p=>!tried.includes(p)); if(nx){ PAGE=nx; applyPage(); renderV4(); setTimeout(()=>deepCard(tried),120); } return; }
   el.scrollIntoView({behavior:"smooth",block:"center",inline:"center"}); el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
-  if(el.dataset.xv && window.KRUBB_OPEN) setTimeout(()=>window.KRUBB_OPEN(el),450); }
+  const xe=el.dataset.xv?el:el.querySelector("[data-xv]"); if(xe && window.KRUBB_OPEN) setTimeout(()=>window.KRUBB_OPEN(xe),450); }
 function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.real?" real":""}${fm?" fm":""}" data-sid="${st.id}"${xvAttr(st)}>${fm}
     <img loading="lazy" decoding="async" src="${imgSrc(st.img)}" alt="${st.real?esc(t("real_alt")):""}">
     <div class="shade"></div>

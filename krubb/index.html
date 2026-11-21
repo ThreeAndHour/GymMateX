@@ -199,11 +199,25 @@ dialog.vpop.isimg{width:min(1080px,96vw)}
 .prod{font-size:11.5px;background:rgba(231,200,119,.16);border:1px solid rgba(231,200,119,.45);color:var(--copper2);border-radius:8px;padding:4px 8px;justify-self:start}
 .heart{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:3px 9px;font:500 12px var(--mono);cursor:pointer}
 .heart[aria-pressed="true"]{background:#5b2a3c;border-color:#ff7aa2;color:#ffd1de}
-.vote{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:900px){.vote{grid-template-columns:repeat(3,1fr);gap:16px}}
 .vc .ph{position:relative}
 .vc .ph[data-xv] .play{top:50%}
 .vc .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.vote{display:block}
+.wvhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--copper);margin-bottom:10px}
+.wvhead span:last-child{color:var(--ink3)}
+.wvtrack{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.wvtrack::-webkit-scrollbar{display:none}
+.wvtrack .vc{flex:0 0 84%;scroll-snap-align:center}
+.wvn{position:absolute;top:8px;right:8px;z-index:2;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:1px 8px;font:500 11px var(--mono);color:#fff}
+.wvdots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.wvdots i{width:6px;height:6px;border-radius:99px;background:#4a403a;transition:width .2s}
+.wvdots i.on{width:16px;background:var(--copper)}
+.wvbtn{width:100%;min-height:44px;border-radius:999px;border:0;background:var(--copper);color:#1a0f07;font:600 15px var(--body);cursor:pointer}
+.wvbtn.done{background:#2f4a36;color:#cfeed6}
+.wvbtn.later{background:#241f1b;color:var(--ink3);font-size:13px}
+.wvmine{color:var(--ok)}
+.vc.picked{border-color:var(--ok)}
+@media(min-width:900px){.wvtrack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;overflow:visible}.wvtrack .vc{flex:none}.wvdots,.wvn{display:none}}
 .vc{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .vc .ph{aspect-ratio:4/5}
 .vc .vb{padding:10px 12px 12px;display:grid;gap:8px}
@@ -1061,6 +1075,16 @@ vote_now:["ไปโหวต →", "Vote now →", "去投票 →", "投票す�
 open_port:["เปิดพอร์ต →", "Open portfolio →", "打开作品集 →", "ポートフォリオへ →", "포트폴리오 보기 →", "Открыть портфолио →", "Abrir portafolio →"],
 join_collab:["ดูรูปแบบคอลแลบ →", "Formats & tiers →", "合作形式与等级 →", "コラボ形式とランク →", "콜라보 형식·등급 →", "Форматы и уровни →", "Formatos y niveles →"],
 collab_tz:["คอลแลบกับเรา", "Collab with us", "与我们合作", "一緒にコラボ", "함께 콜라보", "Коллаб с нами", "Colabora con nosotros"],
+wv_btn:["โหวตคนนี้", "Vote for this", "投给这个", "これに投票", "이걸로 투표", "Голосовать", "Votar por este"],
+wv_done:["โหวตวันนี้แล้ว", "Voted today", "今天已投票", "今日は投票済み", "오늘 투표 완료", "Сегодня проголосовано", "Votado hoy"],
+wv_tomorrow:["พรุ่งนี้โหวตได้อีก", "Vote again tomorrow", "明天可再投", "明日また投票", "내일 다시 투표", "Завтра снова", "Vuelve a votar mañana"],
+wv_rule:["วันละ 1 โหวต · ประกาศผลทุกวันจันทร์", "1 vote a day · winner every Monday", "每天1票 · 每周一公布", "1日1票 · 毎週月曜に発表", "하루 1표 · 매주 월요일 발표", "1 голос в день · итоги по понедельникам", "1 voto al día · ganador cada lunes"],
+wv_left:["เหลือ", "Ends in", "剩余", "残り", "남은 시간", "Осталось", "Quedan"],
+wv_d:["วัน", "d", "天", "日", "일", "д", "d"],
+wv_h:["ชม.", "h", "小时", "時間", "시간", "ч", "h"],
+wv_hidden:["โหวตก่อนเพื่อดูผล", "Vote to see results", "投票后查看结果", "投票すると結果が見られます", "투표 후 결과 확인", "Проголосуйте, чтобы увидеть", "Vota para ver resultados"],
+wv_yours:["ที่คุณโหวต", "Your pick", "你的选择", "あなたの票", "내 선택", "Ваш выбор", "Tu elección"],
+wv_monday:["ผลรวมประกาศวันจันทร์", "Totals out Monday", "总票数周一公布", "合計は月曜に発表", "합계는 월요일 발표", "Итоги в понедельник", "Totales el lunes"],
 vote_soon:["เปิดโหวตเร็วๆ นี้","Voting opens soon","即将开放投票","投票はまもなく開始","곧 투표 오픈","Голосование скоро","La votación abre pronto"],
 leading:["นำอยู่", "Leading", "领先", "トップ", "1위", "Лидер", "Va ganando"],
 items:["ผลงาน", "items", "件作品", "点", "개", "работ", "piezas"],
@@ -1442,17 +1466,38 @@ function renderRail(){
     </div>
   </article>`).join("");
 }
+function wvNow(){ return new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Bangkok"})); }
+function wvDay(){ const d=wvNow(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+/* Weekly vote (step 1): 1 vote per person per day, round Mon–Sun 23:59 Bangkok, order shuffled per visit,
+   results hidden until you vote. Votes are kept on this device until the shared counter (Sheet + Apps Script) is live;
+   then WV_TALLY is filled from it and the bars show the real totals. */
+let WV_TALLY=null;
+function wvState(){ const wk=weekNo(); let s0=store("krubbWV"); if(!s0||s0.wk!==wk) s0={wk:wk,days:{}}; return s0; }
+function wvOrder(){ let o=null; try{ o=JSON.parse(sessionStorage.getItem("krubbWVo")); }catch(e){}
+  if(!o||o.join()!==[...VOTE_IDS].sort().join()&&o.length!==VOTE_IDS.length){ o=[...VOTE_IDS]; for(let i=o.length-1;i>0;i--){ const k=Math.floor(Math.random()*(i+1)); [o[i],o[k]]=[o[k],o[i]]; } try{ sessionStorage.setItem("krubbWVo",JSON.stringify(o)); }catch(e){} }
+  return o.filter(id=>VOTE_IDS.includes(id)).concat(VOTE_IDS.filter(id=>!o.includes(id))); }
+function wvLeft(){ const n=wvNow(); const end=new Date(n); end.setHours(23,59,59,0); end.setDate(end.getDate()+((7-n.getDay())%7)); const ms=Math.max(0,end-n); const d=Math.floor(ms/864e5), h=Math.floor(ms%864e5/36e5); return t("wv_left")+" "+(d?d+" "+t("wv_d")+" ":"")+h+" "+t("wv_h"); }
 function renderVote(){
   document.getElementById("weekNo").textContent = t("week_lbl")+" "+weekNo();
-  const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id));
-  const total=items.reduce((a,x)=>a+vcount(x),0); const max=Math.max(...items.map(vcount));
-  document.getElementById("voteGrid").innerHTML = items.map(st=>{ const c=vcount(st); const pct=total?Math.round(c/total*100):0; const ld=total>0&&c===max;
-    return `<article class="vc${ld?" lead":""}">${ld?'<span class="crown">♛ #1</span>':""}
+  const W=wvState(), today=wvDay(), pickToday=W.days[today], votedWeek=Object.keys(W.days).length>0;
+  const mine={}; Object.values(W.days).forEach(id=>mine[id]=(mine[id]||0)+1);
+  const items=wvOrder().map(id=>STORIES.find(x=>x.id===id)).filter(Boolean);
+  const tally=WV_TALLY, total=tally?items.reduce((a,x)=>a+(tally[x.id]||0),0):0, max=tally?Math.max(...items.map(x=>tally[x.id]||0)):0;
+  const head=`<div class="wvhead"><span>${esc(wvLeft())}</span><span>${esc(t("wv_rule"))}</span></div>`;
+  const cards=items.map((st,ix)=>{ const c=tally?(tally[st.id]||0):0, pct=total?Math.round(c/total*100):0, ld=tally&&total>0&&c===max, isPick=pickToday===st.id;
+    const res = !votedWeek ? `<span class="muted">${esc(t("wv_hidden"))}</span>` : tally ? `<span>${pct}%</span>` : (mine[st.id]?`<span class="wvmine">✓ ${esc(t("wv_yours"))}${mine[st.id]>1?" ×"+mine[st.id]:""}</span>`:`<span class="muted">${esc(t("wv_monday"))}</span>`);
+    const btn = isPick ? `<button class="wvbtn done" disabled>✓ ${esc(t("wv_done"))}</button>` : pickToday ? `<button class="wvbtn later" disabled>${esc(t("wv_tomorrow"))}</button>` : `<button class="wvbtn" data-wv="${st.id}">♥ ${esc(t("wv_btn"))}</button>`;
+    return `<article class="vc${ld?" lead":""}${isPick?" picked":""}">${ld?'<span class="crown">♛ #1</span>':""}<span class="wvn">${ix+1} / ${items.length}</span>
       <div class="ph"${xvAttr(st)}><img loading="lazy" decoding="async" src="${imgSrc(st.img)}" alt="">${xvOf(st)?'<div class="play" aria-hidden="true"></div>':""}${tagFor(st.img,st)}</div>
       <div class="vb"><b>${esc(st.t)}</b><div class="tags">${ptags(st.p)}</div>
-      <div class="vbar"><i style="width:${pct}%"></i></div>
-      <div class="row"><span>${total?pct+"% · "+c.toLocaleString():esc(t("vote_soon"))}</span><button class="heart" data-vote="${st.id}" aria-pressed="${!!myVotes[st.id]}">${myVotes[st.id]?esc(t("voted")):"♥ "+esc(t("vote_btn"))}</button></div></div>
+      ${votedWeek&&tally?`<div class="vbar"><i style="width:${pct}%"></i></div>`:""}
+      <div class="row">${res}</div>${btn}</div>
     </article>`; }).join("");
+  const dots=`<div class="wvdots">${items.map((_,k)=>`<i data-k="${k}"></i>`).join("")}</div>`;
+  document.getElementById("voteGrid").innerHTML = head+`<div class="wvtrack">${cards}</div>`+dots;
+  const tr=document.querySelector("#voteGrid .wvtrack"), ds=[...document.querySelectorAll("#voteGrid .wvdots i")];
+  const mark=()=>{ const w=tr.firstElementChild?tr.firstElementChild.offsetWidth+12:1; const k=Math.round(tr.scrollLeft/w); ds.forEach((d,n)=>d.classList.toggle("on",n===k)); };
+  tr.addEventListener("scroll",()=>requestAnimationFrame(mark),{passive:true}); mark();
 }
 function renderCast(){
   document.getElementById("castGrid").innerHTML = PERSONAS.map(p=>{const f=p.id===featNow().p, xt=p.n+" | MODE 001"; return `<article class="pc pcv${f?" isfeat":""}" role="button" tabindex="0" data-xv="${p.x}" data-xu="https://x.com/widerooms/status/${p.x}" data-xt="${esc(xt)}" data-xp="${p.id}" aria-label="${esc(xt)}">${f?`<span class="featbadge">${esc(t("feat_badge"))}</span>`:""}<div class="ph"><img loading="lazy" decoding="async" src="${p.face}" alt="${esc(p.n)}" width="560" height="840" style="transform:scale(${p.sc});transform-origin:50% 45%"></div><div class="cap" style="--c:var(--${p.id})"><b>${esc(p.n)} · ${p.m}</b><small>▶ MODE 001 · Hybrid AI</small></div></article>`;}).join("")
@@ -1688,6 +1733,7 @@ document.addEventListener("click",e=>{
   if(l){ lang=l.dataset.l; store("krubbLang",lang); document.getElementById("langMenu").classList.remove("open"); document.getElementById("langBtn").setAttribute("aria-expanded","false"); renderAll(); return; }
   if(e.target.closest("#langBtn")){ const m=document.getElementById("langMenu"); const o=m.classList.toggle("open"); e.target.closest("#langBtn").setAttribute("aria-expanded",String(o)); return; }
   if(!e.target.closest(".langsel")) document.getElementById("langMenu").classList.remove("open");
+  const wv=e.target.closest("[data-wv]"); if(wv){ const W=wvState(), d=wvDay(); if(!W.days[d]){ W.days[d]=wv.dataset.wv; store("krubbWV",W); } renderVote(); return; }
   const hv=e.target.closest("[data-vote]"); if(hv){ const id=hv.dataset.vote; if(myVotes[id]) delete myVotes[id]; else myVotes[id]=1; store("krubbVotes",myVotes); renderV4(); return; }
   const fp=e.target.closest("[data-pfp]"); if(fp){ pfP=fp.dataset.pfp; renderPortfolio(); return; }
   const ft=e.target.closest("[data-pft]"); if(ft){ pfT=ft.dataset.pft; renderPortfolio(); return; }

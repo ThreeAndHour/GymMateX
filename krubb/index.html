@@ -1247,9 +1247,9 @@ const COUNTRIES = ["TH","CN","TW","HK","JP","KR","SG","MY","PH","VN","IN","AU","
 
 /* ---------- pages ---------- */
 const PAGE_IDS=["stories","vote","portfolio","academy"];
-const LEAD=["g32","s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["g32","h1","g31","g15","g30","g24"];
+const LEAD=["g32","s0","t9","s1","h5","h1"], FM_CARD="t9", NEXT_CARD="h1", HOME_NEW=["g32","h1","g31","g15","g28","g24"];
 /* share links: creators.thbho.com/krubb/#v-<slug> opens that card (and its clip) */
-const SLUG={saunasit:"g27",lockertowel:"g28",massage:"g29",matcha:"g30",cafeaftergym:"g31",lockergold:"s2",restroom:"k7",coffeebreak:"k8",showerhall:"k9",fittwist:"t10",twolights:"g32",smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
+const SLUG={saunasit:"g27",lockertowel:"g28",massage:"g29",cafeaftergym:"g31",lockergold:"s2",restroom:"k7",coffeebreak:"k8",showerhall:"k9",fittwist:"t10",twolights:"g32",smartbeach:"s0",luz:"h1",sento:"s1",ritmo:"h5",writer:"h2",green:"h4",cast:"s8",worlds:"t1",twist:"t2",twistmv:"t3",bts3:"t4",midtime:"t5",firstmet:"t6",sweet:"t7",olas:"t8",olasfull:"t9",hourgym:"g1",locker:"g2",neon:"g4",lounge:"g5",onsenbar:"g6",stroll:"g7",aftergym:"g8",lockerwalk:"g8",purplelanding:"g10",neonwalk:"g10",swimpool:"g12",swimsauna:"g13",swimshower:"g14",swimrest:"g15",swimstairs:"g16",swimtowel:"g17",n3gym:"g18",n3locker:"g19",n3pool:"g20",n3stairs:"g21",n3sauna:"g22",n3shower:"g23",duogym:"g24",duospot:"g25",n3showerback:"g26"};
 const SHARE_BASE="https://creators.thbho.com/krubb/";
 /* ?openExternalBrowser=1: LINE opens the link in Safari / Chrome instead of its own browser (Android then opens it in the installed KRUBB app) */
 function cardLink(id){ const k=Object.keys(SLUG).find(x=>SLUG[x]===id); return k?SHARE_BASE+"v/"+k+"/?openExternalBrowser=1":SHARE_BASE+"?openExternalBrowser=1#v-"+id; }
@@ -1340,7 +1340,6 @@ const STORIES=[
  {id:"g29",img:"ai:t_spa",clip:true,vid:"t3spa",t:"Three · Massage Room (Concept)",p:["three"],th:"well",v:0,d:"2026-11-20"},
  {id:"g32",img:"ai:t_twolights",clip:true,vid:"t3tl",t:"Three · Two Lights at KRUBB",p:["three"],th:"life",v:0,d:"2026-11-21"},
 {id:"g31",img:"ai:d_1fcafe",t:"Three & Hour · 1F Café After Gym",p:["three","hour"],th:"life",v:0,d:"2026-11-20"},
- {id:"g30",img:"ai:t_1fcafe",t:"Three · 1F Café Matcha",p:["three"],th:"life",v:0,d:"2026-11-20"},
  {id:"g24",img:"ai:t_duogym1",t:"Three & Hour · Gym Meet-up",p:["three", "hour"],th:"fit",clip:true,vid:"th1",v:0,d:"2026-11-20"},
  {id:"g25",img:"ai:t_duogym2",clip:true,vid:"th2",t:"Three & Hour · Spot Me",p:["three", "hour"],th:"fit",v:0,d:"2026-11-20"},
  {id:"g26",img:"ai:t_n3showerback",t:"Three · Back to the Shower",p:["three"],th:"life",clip:true,vid:"t3b",v:0,d:"2026-11-20"},

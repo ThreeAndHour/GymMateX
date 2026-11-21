@@ -58,6 +58,7 @@ p{margin:0 0 12px}
 
 /* header */
 header.top{position:sticky;top:0;z-index:20;background:rgba(14,12,11,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,var(--copper) 0 55%,var(--month,#7A2232));pointer-events:none}
 .bar{display:flex;align-items:center;gap:14px;height:60px}
 .logo{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:.12em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:9px;line-height:1}
 .logo small{font-size:10.5px;letter-spacing:.3em;color:var(--copper);font-weight:500}
@@ -1842,6 +1843,29 @@ document.getElementById("recBtn").addEventListener("click",()=>{
   document.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" ") go(e); },true);
   var hb=document.querySelector(".herotag[data-hy]"); if(hb) hb.title="Hybrid AI by ThB.Ho";
 })();
+</script>
+<script>
+/* Team monthly fortune (Krubb team: NoNy GM + ThB.Ho admin; more members join via the Match Profiles sheet, column S "Krubb: ...").
+   Both need Fire + Earth (cold Water birth month), so every month keeps a warm accent; Krubb's dark brand palette stays.
+   MONTH_ACCENT sets --month, the gold -> month strip under the top bar, per Chinese solar month (Bangkok date). */
+const MONTH_ACCENT = [
+  ["2026-11-07", "#7A2232"], // 己亥 burgundy: Water month, warm it up
+  ["2026-12-07", "#A4472C"], // 庚子 terracotta: cold Metal/Water month
+  ["2027-01-05", "#7A2232"], // 辛丑 burgundy
+  ["2027-02-04", "#8E2C48"], // 壬寅 oxblood: Tiger month punishes both Snake years, keep it calm
+  ["2027-03-06", "#7A2232"], // 癸卯 burgundy
+  ["2027-04-05", "#B8913F"], // 甲辰 gold: Earth month, steady for both
+  ["2027-05-06", "#8E2A2A"], // 乙巳 deep red: Snake month, Fire for both
+  ["2027-06-06", "#8E2A2A"], // 丙午 deep red: strongest Fire
+  ["2027-07-07", "#A4472C"], // 丁未 terracotta: Fire + Earth, best mix for the team
+  ["2027-08-08", "#B8913F"], // 戊申 gold
+  ["2027-09-08", "#B8913F"], // 己酉 gold
+  ["2027-10-08", "#A4472C"], // 庚戌 terracotta
+  ["2027-11-08", "#7A2232"]  // 辛亥 burgundy: Pig month clashes both Snake years
+];
+(() => { let today; try { today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" }); } catch (e) { today = new Date().toISOString().slice(0, 10); }
+  let c = null; for (const [from, col] of MONTH_ACCENT) if (from <= today) c = col;
+  if (c) document.documentElement.style.setProperty("--month", c); })();
 </script>
 <script>window.HAI_APP={"container": "main, main > .wrap", "tabs": [{"id": "home", "href": "#home", "icon": "home", "match": "^(#|#/|#home)?$", "label": {"th": "หน้าแรก", "en": "Home", "zh": "首页", "ja": "ホーム", "ko": "홈", "ru": "Главная", "es": "Inicio"}}, {"id": "week", "href": "#week", "icon": "cal", "match": "^#week$", "label": {"th": "สัปดาห์นี้", "en": "This week", "zh": "本周", "ja": "今週", "ko": "이번 주", "ru": "Неделя", "es": "Semana"}}, {"id": "vote", "href": "#vote", "icon": "heart", "match": "^#vote$", "label": {"th": "โหวต", "en": "Vote", "zh": "投票", "ja": "投票", "ko": "투표", "ru": "Голос", "es": "Votar"}}, {"id": "first", "href": "#first", "icon": "flag", "match": "^#first$", "label": {"th": "มาครั้งแรก", "en": "First visit", "zh": "初次来", "ja": "はじめて", "ko": "첫 방문", "ru": "Впервые", "es": "1ª visita"}}, {"id": "line", "icon": "chat", "label": {"th": "LINE ร้าน", "en": "LINE", "zh": "LINE", "ja": "LINE", "ko": "LINE", "ru": "LINE", "es": "LINE"}}], "screens": [{"match": "^(#|#/|#home)?$", "show": [".hero", "#lab", "#week"], "more": true}, {"match": "^#week$", "show": ["#week"]}, {"match": "^#first$", "show": ["#first"]}, {"match": "^#catalog$", "show": ["#catalog"]}, {"match": "^#prices$", "show": ["#prices"]}, {"match": "^#match$", "show": ["#match"]}, {"match": "^#pass$", "show": ["#pass"]}], "more": {"after": "#week", "title": {"th": "เมนูอื่น", "en": "More", "zh": "更多", "ja": "その他", "ko": "더 보기", "ru": "Ещё", "es": "Más"}, "links": [{"href": "#stories", "icon": "🎬", "label": {"th": "สตอรี่", "en": "Stories", "zh": "故事", "ja": "ストーリー", "ko": "스토리", "ru": "Истории", "es": "Historias"}}, {"href": "#portfolio", "icon": "🖼", "label": {"th": "พอร์ต", "en": "Portfolio", "zh": "作品集", "ja": "ポートフォリオ", "ko": "포트폴리오", "ru": "Портфолио", "es": "Portafolio"}}, {"href": "#catalog", "icon": "🛍", "label": {"th": "แคตตาล็อก", "en": "Catalog", "zh": "目录", "ja": "カタログ", "ko": "카탈로그", "ru": "Каталог", "es": "Catálogo"}}, {"href": "#prices", "icon": "♨️", "label": {"th": "ค่าเข้าและยิม", "en": "Entry & gym", "zh": "门票与健身房", "ja": "入場料とジム", "ko": "입장료와 짐", "ru": "Вход и спортзал", "es": "Entrada y gym"}}, {"href": "#match", "icon": "✨", "label": {"th": "หา Krubb ที่ใช่", "en": "Find your Krubb", "zh": "找到你的 Krubb", "ja": "あなたのKrubb", "ko": "나에게 맞는 Krubb", "ru": "Свой Krubb", "es": "Tu Krubb"}}, {"href": "#pass", "icon": "🎟", "label": {"th": "Guest Pass", "en": "Guest Pass", "zh": "Guest Pass", "ja": "Guest Pass", "ko": "Guest Pass", "ru": "Guest Pass", "es": "Guest Pass"}}, {"href": "#academy", "icon": "🎓", "label": {"th": "Academy", "en": "Academy", "zh": "Academy", "ja": "Academy", "ko": "Academy", "ru": "Academy", "es": "Academy"}}]}};
 window.HAI_APP.tabs[4].act=function(){ try{ window.open(lineFor("hi"),"_blank","noopener"); }catch(e){} };</script>

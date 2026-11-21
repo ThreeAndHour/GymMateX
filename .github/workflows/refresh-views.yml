@@ -18,10 +18,12 @@ jobs:
           python-version: '3.12'
       - name: Pull current numbers from X
         run: python3 tools/refresh_views.py
+      - name: Pull Krubb like counts from X
+        run: python3 tools/refresh_krubb_likes.py
       - name: Commit if anything changed
         run: |
           if git diff --quiet; then echo "no change"; exit 0; fi
           git config user.name "thbho-bot"
           git config user.email "thbho-bot@users.noreply.github.com"
-          git commit -am "Portfolio: refresh X view counts ($(TZ=Asia/Bangkok date +%F))"
+          git commit -am "Portfolio + Krubb: refresh X counts ($(TZ=Asia/Bangkok date +%F))"
           git push origin HEAD:main

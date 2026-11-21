@@ -1260,15 +1260,17 @@ function deepId(){ const h=location.hash.slice(1); if(!h.startsWith("v-")) retur
 function pageFromHash(){ const h=location.hash.slice(1); if(PAGE_IDS.includes(h)) return h; if(h.startsWith("v-")){ const id=deepId(); return id&&!LEAD.includes(id)?"stories":"home"; } if(h==="collab") return "stories"; return "home"; }
 let PAGE = pageFromHash();
 const HERO_M="https://creators.thbho.com/krubb/media/";
-/* v69 hero slideshow (Thor 20 Nov 2026): 6 images, model and no-model shots alternate */
+/* v69 hero slideshow (Thor 20 Nov 2026; slide 1 of B and T = trio heroes 22 Nov 2026): 6 images, model and no-model shots alternate */
 /* Rules (Thor 20 Nov 2026): every set = 6 slides: 3 Krubb spaces with no model (props / products only) + 3 models inside Krubb, alternating.
    3 sets: B = overall (centre set), T = Three, H = Hour. The set changes every day (Bangkok date): B -> T -> H -> B ...
    A set with fewer than 6 slides falls back to B. Preview a set with ?hero=B|T|H.
    Next phase: pick the day's set from the highest real likes/views (X + this page). */
 const HERO_SETS={
- B:[{f:"hero-1.jpg?v=2",k:"hy",p:"70% 40%"},{f:"hero-2.jpg?v=2",k:"real",p:"62% 50%"},{f:"hero-3.jpg?v=2",k:"hy",p:"62% 35%"},
+ B:[{f:"hero-b1.jpg?v=1",k:"hy",p:"76% 40%"},{f:"hero-2.jpg?v=2",k:"real",p:"62% 50%"},{f:"hero-3.jpg?v=2",k:"hy",p:"62% 35%"},
     {f:"hero-4.jpg?v=5",k:"real",p:"72% 50%"},{f:"hero-5.jpg?v=5",k:"hy",p:"72% 50%"},{f:"hero-6.jpg?v=3",k:"real",p:"64% 50%"}],
- T:[],  /* Three set: in production */
+ /* T (22 Nov 2026): first slide = Three / B. / Hour trio hero; slides 2-6 borrow set B until the Three set is shot */
+ T:[{f:"hero-t1.jpg?v=1",k:"hy",p:"78% 45%"},{f:"hero-2.jpg?v=2",k:"real",p:"62% 50%"},{f:"hero-3.jpg?v=2",k:"hy",p:"62% 35%"},
+    {f:"hero-4.jpg?v=5",k:"real",p:"72% 50%"},{f:"hero-5.jpg?v=5",k:"hy",p:"72% 50%"},{f:"hero-6.jpg?v=3",k:"real",p:"64% 50%"}],
  H:[]   /* Hour set: in production */
 };
 const HERO_ORDER=["B","T","H"];

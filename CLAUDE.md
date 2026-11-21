@@ -24,6 +24,7 @@ Other old HTML files in the repo are legacy pages; leave them alone unless Thor 
 Since 19 Nov 2026 the Krubb collab page lives in this repo and is built by the chat "KRUBB Bangkok online plan".
 - `krubb/index.html` (https://creators.thbho.com/krubb/, noindex), `krubb/media/` (its clips), `krubb/v/<slug>/index.html` (one share page per card), `creator-img/og-krubb*.jpg` (its share images), `KrubbBangkok.html` (old address, redirect only).
 - The page is self-contained: it loads none of the shared .js files, so version bumps here never need to touch it.
+- Since 21 Nov 2026 Krubb is an installable app (PWA): `krubb/manifest.webmanifest`, `krubb/sw.js`, `krubb/pwa.js`, and a site-wide service worker `/sw.js` (VERSION krubb-v1, scope = whole creators site, skips mp4/Range). They belong to the KRUBB chat. Never delete or rename `/sw.js`.
 - This chat does not edit any of those files. If a Creators change needs something on the Krubb page, tell Thor so the KRUBB chat does it.
 - The KRUBB chat pushes to `main` often: always merge `origin/main` right before pushing (see Git workflow) and never resolve a conflict in its files by taking this branch's side.
 

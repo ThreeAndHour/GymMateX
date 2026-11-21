@@ -200,7 +200,10 @@ dialog.vpop.isimg{width:min(1080px,96vw)}
 .heart{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:3px 9px;font:500 12px var(--mono);cursor:pointer}
 .heart[aria-pressed="true"]{background:#5b2a3c;border-color:#ff7aa2;color:#ffd1de}
 .vote{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:900px){.vote{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.vote{grid-template-columns:repeat(3,1fr);gap:16px}}
+.vc .ph{position:relative}
+.vc .ph[data-xv] .play{top:50%}
+.vc .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .vc{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .vc .ph{aspect-ratio:4/5}
 .vc .vb{padding:10px 12px 12px;display:grid;gap:8px}
@@ -1360,7 +1363,7 @@ const SPACES=[
  {id:"k16",img:"wix:kstairs",t:"Neon Stairs · Left on the Steps",p:["krubb"],th:"bl",v:0,d:"2026-11-20"},
  {id:"k17",img:"wix:klockers",t:"Locker Room · Bags Packed",p:["krubb"],th:"hunk",v:0,d:"2026-11-20"}
 ];
-const VOTE_IDS=["s1","s2","s3","s4"];
+const VOTE_IDS=["g32","s1","s0","s2","s3","h1"]; /* this week: 6 entries, votes start from 0 each week */
 /* Monthly featured model: one person per month, from the content Sheet.
    kind "persona" = Three / B. / Hour (AI image); kind "creator" / "model" = real people (20+, signed consent). */
 const FEATURED=[
@@ -1414,6 +1417,7 @@ let myVotes = store("krubbVotes") || {};
 function weekNo(){ const d=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Bangkok"})); const j=new Date(d.getFullYear(),0,1); return Math.ceil(((d-j)/864e5+j.getDay()+1)/7); }
 function ptags(arr){ return arr.map(p=>`<span class="pt ${p}">${p==="creator"?esc(t("f_creator")):p==="krubb"?"KRUBB":esc((PERSONAS.find(x=>x.id===p)||{}).n||p)}</span>`).join(""); }
 function count(st){ return st.v + (myVotes[st.id]?1:0); }
+function vcount(st){ return (st.wv||0) + (myVotes[st.id]?1:0); }
 /* demo page: content not posted yet has no likes, so show "New" (or "Liked" after a tap) instead of a 0 */
 function heartTxt(x){ return (x.v||0)>0 ? "♥ "+count(x).toLocaleString() : "♥ "+esc(t(myVotes[x.id]?"hv_mine":"hv_new")); }
 function prodChip(st){ if(!st.prod) return ""; return `<span class="prod">${esc(t(st.prod==="uw"?"wearing":"using"))}: ${esc(t(st.prod==="uw"?"prod_uw":"prod_gr"))}</span>`; }
@@ -1440,10 +1444,10 @@ function renderRail(){
 function renderVote(){
   document.getElementById("weekNo").textContent = t("week_lbl")+" "+weekNo();
   const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id));
-  const total=items.reduce((a,x)=>a+count(x),0); const max=Math.max(...items.map(count));
-  document.getElementById("voteGrid").innerHTML = items.map(st=>{ const c=count(st); const pct=total?Math.round(c/total*100):0; const ld=total>0&&c===max;
+  const total=items.reduce((a,x)=>a+vcount(x),0); const max=Math.max(...items.map(vcount));
+  document.getElementById("voteGrid").innerHTML = items.map(st=>{ const c=vcount(st); const pct=total?Math.round(c/total*100):0; const ld=total>0&&c===max;
     return `<article class="vc${ld?" lead":""}">${ld?'<span class="crown">♛ #1</span>':""}
-      <div class="ph"><img loading="lazy" decoding="async" src="${imgSrc(st.img)}" alt="">${tagFor(st.img,st)}</div>
+      <div class="ph"${xvAttr(st)}><img loading="lazy" decoding="async" src="${imgSrc(st.img)}" alt="">${xvOf(st)?'<div class="play" aria-hidden="true"></div>':""}${tagFor(st.img,st)}</div>
       <div class="vb"><b>${esc(st.t)}</b><div class="tags">${ptags(st.p)}</div>
       <div class="vbar"><i style="width:${pct}%"></i></div>
       <div class="row"><span>${total?pct+"% · "+c.toLocaleString():esc(t("vote_soon"))}</span><button class="heart" data-vote="${st.id}" aria-pressed="${!!myVotes[st.id]}">${myVotes[st.id]?esc(t("voted")):"♥ "+esc(t("vote_btn"))}</button></div></div>
@@ -1495,10 +1499,10 @@ function reelCard(st){ const fm=fmStrip(st); return `<article class="reel${st.re
 function renderTeasers(){
   const top=leadMix([...STORIES].sort(byNew),4).slice(0,4); HOME_NEW.map(id=>STORIES.find(x=>x.id===id)).filter(x=>x&&!top.includes(x)).forEach(x=>top.push(x));
   document.getElementById("railTeaser").innerHTML = spread(top,2).map(reelCard).join("") + `<a class="reel more js-nav" data-to="stories" href="${pageHref("stories")}"><div><b>${esc(t("see_all"))}</b><span>→</span><p class="muted" style="margin-top:6px">${STORIES.length} ${esc(t("nav_stories"))}</p></div></a>`;
-  const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id)); const lead=items.reduce((a,b)=>count(b)>count(a)?b:a); const total=items.reduce((a,x)=>a+count(x),0);
+  const items=VOTE_IDS.map(id=>STORIES.find(x=>x.id===id)); const lead=items.reduce((a,b)=>vcount(b)>vcount(a)?b:a); const total=items.reduce((a,x)=>a+vcount(x),0);
   document.getElementById("tzVoteImg").style.backgroundImage="url('"+imgSrc(lead.img)+"')";
   document.getElementById("tzVoteWk").textContent=t("week_lbl")+" "+weekNo();
-  document.getElementById("tzVoteLead").textContent=total?("♛ "+t("leading")+": "+lead.t+" · "+Math.round(count(lead)/total*100)+"%"):t("vote_soon");
+  document.getElementById("tzVoteLead").textContent=total?("♛ "+t("leading")+": "+lead.t+" · "+Math.round(vcount(lead)/total*100)+"%"):t("vote_soon");
   const pf=STORIES.concat(SPACES);
   document.getElementById("tzPort").innerHTML=["ai:h_kgym","ai:t_s3pool","ai:t_s3sauna","ai:h_wneon2"].map(k=>`<img loading="lazy" decoding="async" src="${imgSrc(k,400,300)}" alt="">`).join("");
   document.getElementById("tzPortN").textContent=pf.length+" "+t("items");

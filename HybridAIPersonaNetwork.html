@@ -65,8 +65,11 @@ nav a:hover{color:var(--ink)}
 .eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin:0 0 12px}
 .hero h1{font-size:clamp(36px,6.2vw,64px);font-weight:700;line-height:1.05;letter-spacing:-.01em}
 .hero h1 b{color:var(--accent)}
-.thesis{font:600 clamp(20px,2.8vw,28px)/1.4 var(--display);max-width:30ch;margin:16px 0 12px}
+.thesis{font:600 clamp(15px,2.6vw,28px)/1.4 var(--display);margin:16px 0 12px;white-space:nowrap;text-wrap:nowrap}
+@media (max-width:760px){html:not([lang="th"]) .thesis{white-space:normal;text-wrap:balance;font-size:19px}}
+html:is([lang="ru"],[lang="es"]) .thesis{white-space:normal;text-wrap:balance}
 .thesis em{font-style:normal;color:var(--accent)}
+.nw{white-space:nowrap}
 .lead{color:var(--ink2);max-width:62ch;font-size:17px}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:11px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
@@ -248,7 +251,7 @@ nav a:hover{color:var(--ink)}
  </figure>
  <p class="eyebrow">by Hybrid Creator Labs · ThB.Ho</p>
  <h1>Hybrid AI <b>Persona Network</b></h1>
- <p class="thesis"><span lang="th">คนจริง 1 คน <em>มีได้หลายหน้า</em> และทุกหน้ารับงานได้</span><span lang="en">One real person <em>can have many faces</em>, and every face can take work</span></p>
+ <p class="thesis"><span lang="th"><span class="nw">คนจริง 1 คน <em>มีได้หลายหน้า</em></span> <span class="nw">และทุกหน้ารับงานได้</span></span><span lang="en">One real person <em>can have many faces</em>, and every face can take work</span></p>
  <p class="lead"><span lang="th">ทำเนียบของ Hybrid AI persona และ creator หน้าจริงที่ยินยอม รับงานได้ทุกสายที่ถูกกฎหมาย เจ้าของตัวจริงเลือกเองว่าจะเปิดหน้าหรือไม่ และตัวตนจริงอยู่หลังบ้านเสมอ</span><span lang="en">A directory of Hybrid AI personas and opt-in real-face creators, ready for any legal job. Each owner decides whether to show their real face, and their real identity always stays private.</span></p>
  <div class="cta">
   <a class="btn solid" href="#hire"><span lang="th">จ้าง persona / collab</span><span lang="en">Hire a persona / collab</span> →</a>

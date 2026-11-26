@@ -119,6 +119,19 @@ html:is([lang="ru"],[lang="es"]) .thesis{white-space:normal;text-wrap:balance}
 .card .acts .btn{padding:9px 14px;font-size:14px}
 
 /* work lines */
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gi{position:relative;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background:var(--s1)}
+.gi img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block;transition:transform .6s}
+.gi:hover img{transform:scale(1.04)}
+.gi span{position:absolute;left:10px;bottom:8px;font:600 13px var(--display);color:var(--c);background:rgba(14,10,12,.75);border-radius:99px;padding:2px 10px}
+@media (max-width:560px){.gal{gap:6px}.gi span{font-size:11px;left:6px;bottom:6px}}
+#lbox{border:0;padding:0;background:transparent;max-width:min(92vw,900px)}
+#lbox::backdrop{background:rgba(8,5,7,.88)}
+#lbox img{display:block;max-width:100%;max-height:86vh;border-radius:10px}
+#lbox button{position:absolute;top:8px;right:8px;font:600 14px var(--mono);background:rgba(14,10,12,.8);color:#fff;border:1px solid var(--line);border-radius:99px;padding:4px 12px;cursor:pointer}
+
+/* work cards */
 .work{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 @media (max-width:900px){.work{grid-template-columns:1fr 1fr}}
 .work article{background:var(--s1);padding:18px;display:grid;gap:6px;align-content:start}
@@ -338,6 +351,15 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
  <p class="note"><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้แสดงเฉพาะเนื้อหาระดับ 1–2</span><span lang="en">Every persona image is Hybrid AI · this page shows content levels 1–2 only</span></p>
 </section>
 
+<section id="gallery">
+ <div class="sh">
+  <span class="kick"><span lang="th">ภาพจากงานจริง</span><span lang="en">Photos from real work</span></span>
+  <h2><span lang="th">Three, B. และ Hour ในหลายบทบาท</span><span lang="en">Three, B. and Hour in many roles</span></h2>
+  <p><span lang="th">ไลฟ์สไตล์ แฟชั่น แฟนตาซี และไซไฟ จากคนเดียวกัน กดที่ภาพเพื่อดูภาพใหญ่</span><span lang="en">Lifestyle, fashion, fantasy and sci-fi from the same person. Tap a photo to see it larger.</span></p>
+ </div>
+ <div class="gal"><a class="gi" href="creator-img/g-three-1.jpg" data-cap="Three" style="--c:#8FCBF2"><img src="creator-img/g-three-1.jpg" alt="Three — Hybrid AI persona" loading="lazy" style="object-position:29% 25%"><span>Three</span></a><a class="gi" href="creator-img/g-b-1.jpg" data-cap="B." style="--c:#B49AF5"><img src="creator-img/g-b-1.jpg" alt="B. — Hybrid AI persona" loading="lazy"><span>B.</span></a><a class="gi" href="creator-img/g-hour-1.jpg" data-cap="Hour" style="--c:#F2A055"><img src="creator-img/g-hour-1.jpg" alt="Hour — Hybrid AI persona" loading="lazy"><span>Hour</span></a><a class="gi" href="creator-img/g-three-2.jpg" data-cap="Three" style="--c:#8FCBF2"><img src="creator-img/g-three-2.jpg" alt="Three — Hybrid AI persona" loading="lazy"><span>Three</span></a><a class="gi" href="creator-img/g-b-2.jpg" data-cap="B." style="--c:#B49AF5"><img src="creator-img/g-b-2.jpg" alt="B. — Hybrid AI persona" loading="lazy"><span>B.</span></a><a class="gi" href="creator-img/g-hour-2.jpg" data-cap="Hour" style="--c:#F2A055"><img src="creator-img/g-hour-2.jpg" alt="Hour — Hybrid AI persona" loading="lazy"><span>Hour</span></a><a class="gi" href="creator-img/g-three-3.jpg" data-cap="Three" style="--c:#8FCBF2"><img src="creator-img/g-three-3.jpg" alt="Three — Hybrid AI persona" loading="lazy"><span>Three</span></a><a class="gi" href="creator-img/g-b-3.jpg" data-cap="B." style="--c:#B49AF5"><img src="creator-img/g-b-3.jpg" alt="B. — Hybrid AI persona" loading="lazy"><span>B.</span></a><a class="gi" href="creator-img/g-hour-3.jpg" data-cap="Hour" style="--c:#F2A055"><img src="creator-img/g-hour-3.jpg" alt="Hour — Hybrid AI persona" loading="lazy"><span>Hour</span></a></div>
+</section>
+
 <section id="work">
  <div class="sh">
   <span class="kick"><span lang="th">งานที่รับ</span><span lang="en">What personas do</span></span>
@@ -521,6 +543,7 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
  </div>
 </section>
 </main>
+<dialog id="lbox"><img alt=""><button type="button" aria-label="Close">✕</button></dialog>
 
 <div class="contact" id="contact">
  <div class="wrap">
@@ -561,6 +584,10 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
   document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute('href').slice(1));var sec=el&&el.closest('section.fold');if(sec)set(sec,true)});
   fromHash();window.addEventListener('hashchange',fromHash);
  })();
+ // gallery lightbox
+ (function(){var d=document.getElementById('lbox');if(!d||!d.showModal)return;var im=d.querySelector('img');
+  document.querySelectorAll('.gi').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();im.src=a.href;im.alt=a.dataset.cap;d.showModal()})});
+  d.addEventListener('click',function(){d.close()});})();
  // "Hire X" buttons: show which persona was picked above the form
  var pk=document.getElementById('picked');
  document.querySelectorAll('[data-persona]').forEach(function(a){a.addEventListener('click',function(){

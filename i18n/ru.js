@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "Photos from real work": "Фото из реальных работ",
+  "Three, B. and Hour in many roles": "Three, B. и Hour в разных ролях",
+  "Lifestyle, fashion, fantasy and sci-fi from the same person. Tap a photo to see it larger.": "Лайфстайл, мода, фэнтези и научная фантастика — от одного человека. Нажмите на фото, чтобы увеличить.",
   "Your persona <em>works every day, in every language and every market</em>, while <em>the real you</em> keeps living your own life.": "Ваша персона <em>работает каждый день, на любом языке и на любом рынке</em>, а <em>настоящий вы</em> продолжаете жить своей жизнью.",
   "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "Когда весь мир заполнен AI-контентом, самым ценным станет <em>персона, которая и есть вы и которой владеете вы</em>",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · настоящий клип Hybrid AI персон",

@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "Photos from real work": "真实作品照片",
+  "Three, B. and Hour in many roles": "Three、B. 和 Hour 的多种角色",
+  "Lifestyle, fashion, fantasy and sci-fi from the same person. Tap a photo to see it larger.": "同一个人的生活方式、时尚、奇幻与科幻。点击照片查看大图。",
   "Your persona <em>works every day, in every language and every market</em>, while <em>the real you</em> keeps living your own life.": "你的角色<em>每天都在工作，用每一种语言，面向每一个市场</em>，而<em>真实的你</em>照常过自己的生活。",
   "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "当整个世界都充满 AI 内容时，未来最有价值的将是<em>那个就是你、并且由你拥有的角色</em>",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI 角色的真实 MV",

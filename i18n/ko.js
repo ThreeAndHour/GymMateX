@@ -1,4 +1,7 @@
 THBHO_I18N_ADD('ko', {
+  "Photos from real work": "실제 작업 사진",
+  "Three, B. and Hour in many roles": "다양한 역할의 Three, B., Hour",
+  "Lifestyle, fashion, fantasy and sci-fi from the same person. Tap a photo to see it larger.": "한 사람에게서 나온 라이프스타일, 패션, 판타지, SF. 사진을 누르면 크게 볼 수 있습니다.",
   "Your persona <em>works every day, in every language and every market</em>, while <em>the real you</em> keeps living your own life.": "당신의 페르소나는 <em>매일, 모든 언어로, 모든 시장에서 일하고</em>, <em>진짜 당신</em>은 평소처럼 삶을 살아갑니다.",
   "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "온 세상이 AI 콘텐츠로 가득할 때 가장 가치 있는 것은 <em>바로 당신이고, 당신이 소유한 페르소나</em>입니다",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI 페르소나의 실제 MV",

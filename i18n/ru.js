@@ -1,7 +1,7 @@
 THBHO_I18N_ADD('ru', {
+  "Your persona <em>works every day, in every language and every market</em>, while <em>the real you</em> keeps living your own life.": "Ваша персона <em>работает каждый день, на любом языке и на любом рынке</em>, а <em>настоящий вы</em> продолжаете жить своей жизнью.",
   "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "Когда весь мир заполнен AI-контентом, самым ценным станет <em>персона, которая и есть вы и которой владеете вы</em>",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · настоящий клип Hybrid AI персон",
-  "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "В будущем, где всё в мире — это AI-контент, самое ценное — <em>персона, которая и есть вы</em>, и <em>вы владеете</em> этой Hybrid персоной.",
   "What you get with a persona": "Что вы получаете с персоной",
   "Not just a new face, a presence ready to work": "Не просто новое лицо, а образ, готовый к работе",
   "Every package includes these five things; only the amounts differ.": "Каждый пакет включает эти пять пунктов, отличается только количество.",

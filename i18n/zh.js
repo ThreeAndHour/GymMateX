@@ -1,7 +1,7 @@
 THBHO_I18N_ADD('zh', {
+  "Your persona <em>works every day, in every language and every market</em>, while <em>the real you</em> keeps living your own life.": "你的角色<em>每天都在工作，用每一种语言，面向每一个市场</em>，而<em>真实的你</em>照常过自己的生活。",
   "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "当整个世界都充满 AI 内容时，未来最有价值的将是<em>那个就是你、并且由你拥有的角色</em>",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI 角色的真实 MV",
-  "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "当世界上的一切都是 AI 内容时，未来最有价值的东西，是<em>那个就是你的角色</em>，而且<em>你拥有</em>这个 Hybrid 角色。",
   "What you get with a persona": "打造角色能得到什么",
   "Not just a new face, a presence ready to work": "不只是一张新面孔，而是随时能工作的存在",
   "Every package includes these five things; only the amounts differ.": "每个套餐都包含这五项，只是数量不同。",

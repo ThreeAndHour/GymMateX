@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Hybrid AI Persona Network · Hybrid Creator Labs</title>
+<meta name="description" content="Hybrid AI Persona Network: ทำเนียบ Hybrid AI persona และ creator หน้าจริง จ้างงาน collab หรือสร้าง persona ของคุณเองกับ Persona Lab">
+<link rel="canonical" href="https://creators.thbho.com/HybridAIPersonaNetwork.html">
+<meta property="og:title" content="Hybrid AI Persona Network · Hybrid Creator Labs">
+<meta property="og:description" content="Hire a Hybrid AI persona, collab with real-face creators, or build your own persona with Persona Lab.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://creators.thbho.com/HybridAIPersonaNetwork.html">
+<meta property="og:image" content="https://creators.thbho.com/creator-img/thho-banner.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="creator-img/thho-icon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="creator-img/thho-icon-64.png">
+<link rel="apple-touch-icon" href="creator-img/thho-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Persona Network palette (Dec 2026 chart): deep wine-black surfaces, gold lead, burgundy + cream support. No blue/aqua backgrounds. */
+:root{
+ --bg:#0E0A0C; --s1:#181115; --s2:#231920; --line:#3A2A31;
+ --ink:#F4ECE4; --ink2:#C4B3AA; --ink3:#8A7770;
+ --accent:#E0B96B; --rose:#C8466F; --accent2:#EBDCC0; --green:#3F8E6E;
+ --display:"Bai Jamjuree","IBM Plex Sans Thai",system-ui,sans-serif;
+ --body:"IBM Plex Sans Thai",system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,monospace;
+ color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 var(--body);-webkit-font-smoothing:antialiased}
+html:not([lang="th"]) span[lang="th"],html[lang="th"] span[lang="en"]{display:none!important}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+p{margin:0 0 12px}
+section{padding:64px 0 0;scroll-margin-top:64px}
+
+.top{position:sticky;top:0;z-index:10;background:rgba(14,10,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.mark{display:flex;align-items:center;text-decoration:none}
+.mark img{height:38px;width:auto;display:block}
+nav{display:flex;align-items:center;gap:18px;font-size:14px}
+nav a{color:var(--ink2);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.lang{appearance:none;-webkit-appearance:none;font:500 12px var(--mono);background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:99px;padding:4px 12px;cursor:pointer}
+.lang option{background:#181115;color:#F4ECE4}
+.pill{font:600 13px var(--display);color:#1A1305;background:var(--accent);border-radius:99px;padding:5px 14px;text-decoration:none;white-space:nowrap}
+.switch{font:500 12.5px var(--mono);color:var(--ink2);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
+@media (max-width:760px){nav a:not(.pill){display:none}}
+
+.preview{background:repeating-linear-gradient(135deg,rgba(200,70,111,.16) 0 12px,rgba(200,70,111,.06) 12px 24px);border-bottom:1px solid var(--line);font:500 12px var(--mono);color:var(--accent2);text-align:center;padding:6px 12px}
+
+.hero{padding:30px 0 10px}
+.hvid{margin:0 0 26px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;position:relative}
+.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.hvid figcaption{padding:9px 14px;background:var(--s1);border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
+.snd{position:absolute;top:12px;right:12px;font:500 12px var(--mono);color:#fff;background:rgba(14,10,12,.7);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:5px 12px;cursor:pointer}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin:0 0 12px}
+.hero h1{font-size:clamp(36px,6.2vw,64px);font-weight:700;line-height:1.05;letter-spacing:-.01em}
+.hero h1 b{color:var(--accent)}
+.thesis{font:600 clamp(20px,2.8vw,28px)/1.4 var(--display);max-width:30ch;margin:16px 0 12px}
+.thesis em{font-style:normal;color:var(--accent)}
+.lead{color:var(--ink2);max-width:62ch;font-size:17px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--display);padding:11px 20px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer}
+.btn.solid{background:var(--accent);color:#1A1305;border-color:var(--accent)}
+.btn.close{background:var(--green);border-color:var(--green);color:#fff}
+.btn:hover{border-color:var(--accent)}
+
+.sh{display:grid;gap:8px;margin-bottom:26px;max-width:66ch}
+.sh h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;line-height:1.2}
+.sh p{color:var(--ink2);margin:0}
+.kick{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.note{font-size:13.5px;color:var(--ink3);margin-top:12px}
+
+/* one owner, many faces */
+.idea{display:grid;grid-template-columns:1fr auto 1.6fr;gap:18px;align-items:center;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:24px}
+.owner{border:1px dashed var(--accent2);border-radius:10px;padding:18px;text-align:center}
+.owner b{display:block;font:600 18px var(--display)}
+.owner span{font-size:13.5px;color:var(--ink2)}
+.arrow{font:500 26px var(--mono);color:var(--accent)}
+.faces{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.face{background:var(--s2);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:14px}
+.face small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.face b{display:block;font:600 16px var(--display);margin-top:2px}
+.face span{font-size:13.5px;color:var(--ink2)}
+.idea-eg{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;font-size:14.5px;color:var(--ink2)}
+.idea-eg b{color:var(--accent)}
+@media (max-width:760px){.idea{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}.faces{grid-template-columns:1fr}}
+
+/* persona cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.cards{grid-template-columns:1fr}}
+.card{background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{position:relative}
+.card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 46%}
+@media (max-width:860px){.card img{aspect-ratio:4/3;object-position:50% 52%}}
+.badge{position:absolute;top:10px;left:10px;font:500 11px var(--mono);letter-spacing:.06em;color:#1A1305;background:var(--accent);padding:3px 9px;border-radius:3px}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:24px;line-height:1.2}
+.card h3 small{font:500 13px var(--mono);color:var(--c);margin-left:6px}
+.card .role{font:600 15px var(--display);color:var(--c)}
+.card p{color:var(--ink2);font-size:14.5px;margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{font-size:12.5px;border:1px solid var(--line);border-radius:99px;padding:2px 10px;color:var(--ink)}
+.facts{display:grid;gap:4px;font-size:13px;color:var(--ink3);border-top:1px dashed var(--line);padding-top:10px}
+.facts b{color:var(--ink2);font-weight:500}
+.card .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.card .acts .btn{padding:9px 14px;font-size:14px}
+
+/* work lines */
+.work{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media (max-width:900px){.work{grid-template-columns:1fr 1fr}}
+.work article{background:var(--s1);padding:18px;display:grid;gap:6px;align-content:start}
+.work i{font-style:normal;font:500 12px var(--mono);color:var(--accent)}
+.work h3{font-size:17px;line-height:1.3}
+.work p{color:var(--ink2);font-size:14px;margin:0}
+.work article.cta-cell{background:var(--s2);align-content:center}
+
+/* real-face creators */
+.seats{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px}
+.seat{height:84px;border:1px dashed var(--line);border-radius:8px;display:grid;place-items:center;font:500 12px var(--mono);color:var(--ink3);background:var(--s1)}
+.seat:first-child{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.seats{gap:4px}.seat{height:56px;font-size:10px}}
+.opencall{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.opencall p{margin:0;color:var(--ink2);max-width:60ch}
+
+/* persona lab */
+.lab{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
+@media (max-width:860px){.lab{grid-template-columns:1fr}}
+.steps{list-style:none;padding:0;margin:0;counter-reset:st;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.steps li{background:var(--s1);padding:14px 18px 14px 58px;position:relative;counter-increment:st}
+.steps li::before{content:counter(st);position:absolute;left:18px;top:14px;width:26px;height:26px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font:600 12px var(--mono)}
+.steps b{display:block;font:600 16px var(--display)}
+.steps span{color:var(--ink2);font-size:14.5px}
+.forwho{display:grid;gap:12px}
+.forwho article{background:var(--s2);border:1px solid var(--line);border-radius:12px;padding:18px}
+.forwho small{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+.forwho h3{font-size:19px;margin:4px 0 6px;line-height:1.35}
+.forwho p{color:var(--ink2);font-size:14.5px;margin:0}
+.price{background:linear-gradient(90deg,rgba(200,70,111,.14),rgba(224,185,107,.10));border:1px solid var(--line);border-radius:12px;padding:18px}
+.price b{font:600 17px var(--display);display:block;margin-bottom:4px}
+.price p{margin:0 0 12px;color:var(--ink2);font-size:14.5px}
+
+/* rules */
+.rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--rose);border-radius:10px;padding:22px 24px}
+.rules ol{margin:0;padding-left:22px;display:grid;gap:8px;color:var(--ink2)}
+.rules li b{color:var(--ink)}
+
+/* hire */
+.applywrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:40px;align-items:start}
+.apply-text{position:sticky;top:90px}
+.apply-steps{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px}
+.apply-steps li{display:flex;gap:12px;align-items:center;color:var(--ink2);font-size:15px}
+.apply-steps b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font:600 13px var(--mono)}
+.gform{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--s1);padding:10px}
+.gform iframe{display:block;width:100%;height:900px;border:0;border-radius:10px;background:#fff}
+@media (max-width:860px){.applywrap{grid-template-columns:1fr;gap:24px}.apply-text{position:static}.gform iframe{height:1300px}}
+
+.contact{margin-top:72px;background:var(--s1);border-top:1px solid var(--line)}
+.contact .wrap{padding-block:46px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:end}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-bottom:10px}
+.contact p{color:var(--ink2);margin:0;max-width:52ch}
+.links{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.foot{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line)}
+.foot .wrap{padding-block:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center}
+.foot .fl{display:flex;align-items:center;gap:10px}.foot .fl img{height:26px;width:auto;opacity:.9}
+.foot nav{gap:12px;flex-wrap:wrap;font-size:12.5px}
+.foot nav a{display:inline!important;color:var(--ink2)}
+</style>
+<script src="thbho-i18n.js"></script>
+<script src="thbho-analytics.js?v=5" defer></script>
+<script src="thbho-ref.js?v=3" defer></script>
+</head>
+<body>
+
+<header class="top">
+ <div class="wrap">
+  <a class="mark" href="#top" aria-label="th.ho — creating dreams"><img src="creator-img/thho-logo.png" alt="th.ho — creating dreams" width="900" height="286"></a>
+  <nav>
+   <a href="#personas">Personas</a>
+   <a href="#work"><span lang="th">งานที่รับ</span><span lang="en">Work</span></a>
+   <a href="#lab">Persona Lab</a>
+   <a href="#rules"><span lang="th">กติกา</span><span lang="en">Rules</span></a>
+   <a class="switch" href="ThBHoCreators.html">Creators →</a>
+   <a class="pill" href="#hire"><span lang="th">จ้าง / collab</span><span lang="en">Hire / collab</span></a>
+   <select class="lang" id="lang" aria-label="Language"><option value="th">TH</option><option value="en">EN</option><option value="zh">中文</option><option value="ru">RU</option><option value="ko">한국어</option><option value="ja">日本語</option><option value="es">ES</option></select>
+  </nav>
+ </div>
+</header>
+<div class="preview"><span lang="th">หน้าตัวอย่าง · กำลังเตรียมเปิดตัว</span><span lang="en">Preview page · launching soon</span></div>
+
+<main class="wrap" id="top">
+<div class="hero">
+ <figure class="hvid">
+  <video id="hvid" src="https://video.twimg.com/amplify_video/2125223068587237376/vid/avc1/1280x720/GmkLZgtIs6RkRQgC.mp4?tag=29" poster="https://pbs.twimg.com/media/HX5UhwFa4AA2Wif.jpg" referrerpolicy="no-referrer" autoplay muted loop playsinline preload="metadata"></video>
+  <button class="snd" type="button" id="snd" aria-pressed="false">🔇 <span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></button>
+  <figcaption><span lang="th">Three × Hour · "Ve con la corriente, crece con el agua." · งานจริงจาก Hybrid AI persona</span><span lang="en">Three × Hour · "Ve con la corriente, crece con el agua." · real work by Hybrid AI personas</span> · <a href="https://x.com/widerooms/status/2125225422678106502" target="_blank" rel="noopener">X ↗</a></figcaption>
+ </figure>
+ <p class="eyebrow">by Hybrid Creator Labs · ThB.Ho</p>
+ <h1>Hybrid AI <b>Persona Network</b></h1>
+ <p class="thesis"><span lang="th">คนจริง 1 คน <em>มีได้หลายหน้า</em> และทุกหน้ารับงานได้</span><span lang="en">One real person <em>can have many faces</em>, and every face can take work</span></p>
+ <p class="lead"><span lang="th">ทำเนียบของ Hybrid AI persona และ creator หน้าจริงที่ยินยอม รับงานได้ทุกสายที่ถูกกฎหมาย เจ้าของตัวจริงเลือกเองว่าจะเปิดหน้าหรือไม่ และตัวตนจริงอยู่หลังบ้านเสมอ</span><span lang="en">A directory of Hybrid AI personas and opt-in real-face creators, ready for any legal job. Each owner decides whether to show their real face, and their real identity always stays private.</span></p>
+ <div class="cta">
+  <a class="btn solid" href="#hire"><span lang="th">จ้าง persona / collab</span><span lang="en">Hire a persona / collab</span> →</a>
+  <a class="btn" href="#lab"><span lang="th">สร้าง persona ของคุณ</span><span lang="en">Build your own persona</span></a>
+ </div>
+</div>
+
+<section id="idea">
+ <div class="sh">
+  <span class="kick"><span lang="th">หลักคิด</span><span lang="en">The idea</span></span>
+  <h2><span lang="th">เจ้าของ 1 คน มีได้หลายหน้า</span><span lang="en">One owner, many faces</span></h2>
+  <p><span lang="th">คนจำนวนมากอยากทำงานหน้ากล้อง แต่ไม่อยากเปิดหน้า persona ทำให้ทำงานได้ โดยตัวจริงอยู่หลังบ้าน ส่วน creator ที่เปิดหน้าอยู่แล้วก็มี persona จากตัวเองเพิ่มได้ เพื่อรับงานหลากหลายขึ้น</span><span lang="en">Many people want to work on camera without showing their face. A persona lets them work while the real person stays behind the scenes. Creators who already show their face can add personas based on themselves to take on more kinds of work.</span></p>
+ </div>
+ <div class="idea">
+  <div class="owner"><b><span lang="th">เจ้าของตัวจริง</span><span lang="en">The real owner</span></b><span><span lang="th">ยืนยันตัวตน · 20+ · อยู่หลังบ้าน</span><span lang="en">Verified · 20+ · stays private</span></span></div>
+  <div class="arrow" aria-hidden="true">→</div>
+  <div class="faces">
+   <div class="face" style="--c:var(--accent2)"><small><span lang="th">ถ้าเลือก</span><span lang="en">Optional</span></small><b><span lang="th">หน้าจริง</span><span lang="en">Real face</span></b><span><span lang="th">งานที่ต้องเจอตัว</span><span lang="en">Jobs in person</span></span></div>
+   <div class="face" style="--c:var(--accent)"><small>Persona 1</small><b>Hybrid AI</b><span><span lang="th">ภาพ คลิป แบรนด์</span><span lang="en">Photos, clips, brands</span></span></div>
+   <div class="face" style="--c:var(--rose)"><small>Persona 2–3</small><b>Hybrid AI</b><span><span lang="th">สายงานหรือตลาดอื่น</span><span lang="en">Other lines or markets</span></span></div>
+  </div>
+  <p class="idea-eg"><span lang="th">ตัวอย่างแรก: ผู้ก่อตั้งไม่เปิดหน้า แต่มี persona 3 ตัว คือ <b>Three, B. และ Hour</b> ที่ทำงานจริงมาแล้วทั้ง MV หนังสั้น และงานแบรนด์</span><span lang="en">First example: our founder doesn't show his face, but works through three personas, <b>Three, B. and Hour</b>, who already make music videos, short films and brand work.</span></p>
+ </div>
+</section>
+
+<section id="personas">
+ <div class="sh">
+  <span class="kick"><span lang="th">ทำเนียบรอบแรก</span><span lang="en">Founding personas</span></span>
+  <h2><span lang="th">Three, B. และ Hour</span><span lang="en">Three, B. and Hour</span></h2>
+  <p><span lang="th">persona ผู้ก่อตั้ง 3 ตัว แต่ละตัวมี MBTI และนิสัยคงที่ ใช้กับทุกงาน</span><span lang="en">Three founding personas. Each has a fixed MBTI and personality, used in every job.</span></p>
+ </div>
+ <div class="cards">
+  <article class="card" style="--c:var(--accent)">
+   <div class="ph"><img src="creator-img/persona-three.jpg" alt="Three — Hybrid AI persona, INFP" loading="lazy" width="560" height="840"><span class="badge">Hybrid AI persona</span></div>
+   <div class="body">
+    <h3>Three<small>INFP</small></h3>
+    <span class="role"><span lang="th">นักเล่าเรื่อง</span><span lang="en">The storyteller</span></span>
+    <p><span lang="th">อบอุ่น ช่างฝัน เล่าเรื่องผ่านสายตา เหมาะกับ MV หนังสั้น และแบรนด์ที่อยากเล่าเรื่องราว</span><span lang="en">Warm and dreamy, tells stories with his eyes. Best for music videos, short films and brands with a story to tell.</span></p>
+    <ul class="tags"><li><span lang="th">นายแบบ</span><span lang="en">Model</span></li><li>MV</li><li><span lang="th">หนังสั้น</span><span lang="en">Short film</span></li><li><span lang="th">เล่าเรื่อง</span><span lang="en">Storytelling</span></li></ul>
+    <div class="facts"><span><b><span lang="th">ระดับเนื้อหาบนหน้า</span><span lang="en">Content on this page</span>:</b> 1–2</span><span><b><span lang="th">เจ้าของ</span><span lang="en">Owner</span>:</b> <span lang="th">ยืนยันตัวตนแล้ว · 20+</span><span lang="en">Verified · 20+</span></span></div>
+    <div class="acts"><a class="btn solid" href="#hire" data-persona="Three"><span lang="th">จ้าง Three</span><span lang="en">Hire Three</span></a><a class="btn" href="ThBHoPortfolio.html?p=three"><span lang="th">ดูผลงาน</span><span lang="en">See work</span></a></div>
+   </div>
+  </article>
+  <article class="card" style="--c:var(--accent2)">
+   <div class="ph"><img src="creator-img/persona-b.jpg" alt="B. — Hybrid AI persona, INFJ" loading="lazy" width="560" height="840"><span class="badge">Hybrid AI persona</span></div>
+   <div class="body">
+    <h3>B.<small>INFJ</small></h3>
+    <span class="role"><span lang="th">นักวางแผน</span><span lang="en">The strategist</span></span>
+    <p><span lang="th">สุขุม ลึก มองไกล เหมาะกับหน้าแบรนด์ งานพรีเมียม และงานที่ปรึกษาที่ต้องการความน่าเชื่อถือ</span><span lang="en">Calm, deep and far-sighted. Best for brand faces, premium work and advisory roles that need trust.</span></p>
+    <ul class="tags"><li><span lang="th">หน้าแบรนด์</span><span lang="en">Brand face</span></li><li><span lang="th">นายแบบ</span><span lang="en">Model</span></li><li><span lang="th">ที่ปรึกษา</span><span lang="en">Advisor</span></li></ul>
+    <div class="facts"><span><b><span lang="th">ระดับเนื้อหาบนหน้า</span><span lang="en">Content on this page</span>:</b> 1–2</span><span><b><span lang="th">เจ้าของ</span><span lang="en">Owner</span>:</b> <span lang="th">ยืนยันตัวตนแล้ว · 20+</span><span lang="en">Verified · 20+</span></span></div>
+    <div class="acts"><a class="btn solid" href="#hire" data-persona="B."><span lang="th">จ้าง B.</span><span lang="en">Hire B.</span></a><a class="btn" href="ThBHoPortfolio.html?p=b"><span lang="th">ดูผลงาน</span><span lang="en">See work</span></a></div>
+   </div>
+  </article>
+  <article class="card" style="--c:var(--rose)">
+   <div class="ph"><img src="creator-img/persona-hour.jpg" alt="Hour — Hybrid AI persona, ESTP" loading="lazy" width="560" height="840"><span class="badge">Hybrid AI persona</span></div>
+   <div class="body">
+    <h3>Hour<small>ESTP</small></h3>
+    <span class="role"><span lang="th">สายลุย</span><span lang="en">The go-getter</span></span>
+    <p><span lang="th">กล้า สนุก พลังเยอะ เหมาะกับงานกีฬา ฟิตเนส อีเวนต์ และ MC ที่ต้องดึงคนดู</span><span lang="en">Bold, fun and full of energy. Best for sports, fitness, events and MC work that needs to pull a crowd.</span></p>
+    <ul class="tags"><li><span lang="th">ฟิตเนส</span><span lang="en">Fitness</span></li><li><span lang="th">อีเวนต์ O2O</span><span lang="en">O2O events</span></li><li>MC</li><li><span lang="th">นายแบบ</span><span lang="en">Model</span></li></ul>
+    <div class="facts"><span><b><span lang="th">ระดับเนื้อหาบนหน้า</span><span lang="en">Content on this page</span>:</b> 1–2</span><span><b><span lang="th">เจ้าของ</span><span lang="en">Owner</span>:</b> <span lang="th">ยืนยันตัวตนแล้ว · 20+</span><span lang="en">Verified · 20+</span></span></div>
+    <div class="acts"><a class="btn solid" href="#hire" data-persona="Hour"><span lang="th">จ้าง Hour</span><span lang="en">Hire Hour</span></a><a class="btn" href="ThBHoPortfolio.html?p=hour"><span lang="th">ดูผลงาน</span><span lang="en">See work</span></a></div>
+   </div>
+  </article>
+ </div>
+ <p class="note"><span lang="th">ภาพ persona ทุกภาพเป็น Hybrid AI · หน้านี้แสดงเฉพาะเนื้อหาระดับ 1–2</span><span lang="en">Every persona image is Hybrid AI · this page shows content levels 1–2 only</span></p>
+</section>
+
+<section id="work">
+ <div class="sh">
+  <span class="kick"><span lang="th">งานที่รับ</span><span lang="en">What personas do</span></span>
+  <h2><span lang="th">7 สายงานที่ persona รับได้</span><span lang="en">Seven lines of work</span></h2>
+  <p><span lang="th">ทุกงานต้องถูกกฎหมาย งานที่ต้องเจอตัว ลูกค้าจะรู้ก่อนว่าคนที่มาคือเจ้าของ persona</span><span lang="en">Every job must be legal. For in-person jobs, the client knows in advance that the persona's owner is the one who comes.</span></p>
+ </div>
+ <div class="work">
+  <article><i>01</i><h3><span lang="th">นายแบบ</span><span lang="en">Modelling</span></h3><p><span lang="th">ภาพสินค้า แฟชั่น ชุดชั้นใน ชุดว่ายน้ำ</span><span lang="en">Product, fashion, underwear and swimwear shoots</span></p></article>
+  <article><i>02</i><h3><span lang="th">หน้าแบรนด์</span><span lang="en">Brand face</span></h3><p><span lang="th">ตัวแทนแบรนด์ระยะยาว โพสต์ และแคมเปญ</span><span lang="en">Long-term brand ambassador, posts and campaigns</span></p></article>
+  <article><i>03</i><h3><span lang="th">MV / หนังสั้น</span><span lang="en">Music videos / short films</span></h3><p><span lang="th">นักแสดงนำ พร้อมทีมผลิตของ Lab</span><span lang="en">Lead roles, with the Lab's production team</span></p></article>
+  <article><i>04</i><h3><span lang="th">พิธีกร / MC</span><span lang="en">Host / MC</span></h3><p><span lang="th">ไลฟ์ วิดีโอแนะนำ และงานบนเวที</span><span lang="en">Live streams, explainer videos and stage work</span></p></article>
+  <article><i>05</i><h3><span lang="th">อีเวนต์ O2O</span><span lang="en">O2O events</span></h3><p><span lang="th">จากออนไลน์สู่งานจริงที่ศูนย์กลางในกรุงเทพฯ</span><span lang="en">From online to real events at our Bangkok hub</span></p></article>
+  <article><i>06</i><h3><span lang="th">เทรนเนอร์ / wellness</span><span lang="en">Trainer / wellness</span></h3><p><span lang="th">ฟิตเนส ดูแลตัวเอง และคอร์สสุขภาพ</span><span lang="en">Fitness, self-care and wellness courses</span></p></article>
+  <article><i>07</i><h3><span lang="th">ที่ปรึกษา / เล่าเรื่อง</span><span lang="en">Advisor / storyteller</span></h3><p><span lang="th">เล่าเรื่องแบรนด์ นิยาย และคอนเทนต์ยาว</span><span lang="en">Brand stories, fiction and long-form content</span></p></article>
+  <article class="cta-cell"><a class="btn close" href="#hire"><span lang="th">บอกงานของคุณ</span><span lang="en">Tell us your job</span> →</a></article>
+ </div>
+</section>
+
+<section id="creators">
+ <div class="sh">
+  <span class="kick"><span lang="th">creator หน้าจริง</span><span lang="en">Real-face creators</span></span>
+  <h2><span lang="th">เปิดรับรอบแรก 7 ที่</span><span lang="en">First round: seven places</span></h2>
+  <p><span lang="th">creator ที่เปิดหน้าและยินยอม จะขึ้นทำเนียบนี้พร้อมป้าย "หน้าจริง" และมี persona จากตัวเองเพิ่มได้</span><span lang="en">Creators who show their face and opt in join this directory with a "real face" label, and can add personas based on themselves.</span></p>
+ </div>
+ <div class="seats" aria-hidden="true"><div class="seat">01</div><div class="seat">02</div><div class="seat">03</div><div class="seat">04</div><div class="seat">05</div><div class="seat">06</div><div class="seat">07</div></div>
+ <div class="opencall">
+  <p><span lang="th">คุณเป็น creator อายุ 20+ และอยากรับงานผ่านเครือข่ายนี้? เริ่มจากฟอร์ม collab ด้านล่าง หรือทักเราทาง LINE</span><span lang="en">Are you a creator aged 20+ who wants work through this network? Start with the collab form below or message us on LINE.</span></p>
+  <a class="btn solid" href="#hire"><span lang="th">สมัครเป็น creator</span><span lang="en">Apply as a creator</span> →</a>
+ </div>
+</section>
+
+<section id="lab">
+ <div class="sh">
+  <span class="kick">Persona Lab</span>
+  <h2><span lang="th">สร้าง persona ของคุณเอง</span><span lang="en">Build your own persona</span></h2>
+  <p><span lang="th">ทีมเดียวกับที่สร้าง Three, B. และ Hour ทำให้คุณได้ทั้งคนที่ไม่เปิดหน้า และ creator ที่อยากมี persona จากตัวเอง รอบแรกมีได้สูงสุด 3 persona ต่อคน</span><span lang="en">The team behind Three, B. and Hour builds yours too, whether you stay off camera or already show your face. Up to three personas per person in the first round.</span></p>
+ </div>
+ <div class="lab">
+  <ol class="steps">
+   <li><b><span lang="th">สมัครและยืนยันตัวตน</span><span lang="en">Apply and verify</span></b><span><span lang="th">อายุ 20+ และใบยินยอม ข้อมูลจริงเก็บหลังบ้าน</span><span lang="en">Aged 20+ with a signed consent; your real details stay private</span></span></li>
+   <li><b><span lang="th">คุยเป้าหมาย</span><span lang="en">Talk through your goals</span></b><span><span lang="th">อยากรับงานสายไหน ตลาดไหน</span><span lang="en">Which lines of work and which markets</span></span></li>
+   <li><b><span lang="th">ออกแบบตัวละคร</span><span lang="en">Design the character</span></b><span><span lang="th">ชื่อ MBTI เสียง สไตล์ และเรื่องราว</span><span lang="en">Name, MBTI, voice, style and backstory</span></span></li>
+   <li><b><span lang="th">ถ่ายภาพต้นแบบ</span><span lang="en">Reference shoot</span></b><span><span lang="th">หน้าตรง หุ่นจริง และคลิปพื้นฐาน ที่ศูนย์กลางในกรุงเทพฯ</span><span lang="en">Face, real body and basic clips, at our Bangkok hub</span></span></li>
+   <li><b><span lang="th">สร้างและตรวจคุณภาพ</span><span lang="en">Create and check quality</span></b><span><span lang="th">ภาพและคลิปชุดแรก ผ่านการตรวจ 100 คะแนน</span><span lang="en">The first photos and clips pass our 100-point check</span></span></li>
+   <li><b><span lang="th">คุณอนุมัติ</span><span lang="en">You approve</span></b><span><span lang="th">เลือกระดับเนื้อหาและงานที่รับเอง</span><span lang="en">You choose the content levels and the work you take</span></span></li>
+   <li><b><span lang="th">เปิดโปรไฟล์และรับงานแรก</span><span lang="en">Go live and take your first job</span></b><span><span lang="th">ขึ้นทำเนียบนี้ และเปิดตัวบน X</span><span lang="en">Join this directory and launch on X</span></span></li>
+  </ol>
+  <div class="forwho">
+   <article><small><span lang="th">ไม่เปิดหน้า</span><span lang="en">Off camera</span></small><h3><span lang="th">ทำงานหน้ากล้องได้ โดยไม่ต้องเปิดตัวตนจริง</span><span lang="en">Work on camera without revealing who you are</span></h3><p><span lang="th">persona ใช้หน้าผสมที่ไม่เหมือนใคร แต่หุ่นและนิสัยมาจากตัวคุณ</span><span lang="en">Your persona has a unique blended face, with your own body and personality.</span></p></article>
+   <article><small><span lang="th">เปิดหน้าอยู่แล้ว</span><span lang="en">Already on camera</span></small><h3><span lang="th">รับงานได้มากขึ้น ในหลายตลาดพร้อมกัน</span><span lang="en">Take more work, in more markets at once</span></h3><p><span lang="th">persona จากตัวคุณทำงานภาพและคลิปได้ ขณะที่ตัวจริงรับงานที่ต้องเจอตัว</span><span lang="en">A persona based on you handles photo and clip work while you take the in-person jobs.</span></p></article>
+   <div class="price"><b><span lang="th">ราคาและส่วนแบ่ง</span><span lang="en">Prices and revenue share</span></b><p><span lang="th">แจ้งเมื่อคุยเป้าหมาย พร้อมงวดจ่ายและส่วนแบ่งที่เขียนชัดในสัญญา</span><span lang="en">Shared when we talk through your goals, with clear payment stages and revenue share written into the contract.</span></p><a class="btn solid" href="https://line.me/ti/p/lMN8pLDt_V" target="_blank" rel="noopener"><span lang="th">ส่งข้อความทาง LINE</span><span lang="en">Message us on LINE</span></a></div>
+  </div>
+ </div>
+</section>
+
+<section id="rules">
+ <div class="sh">
+  <span class="kick"><span lang="th">กติกา</span><span lang="en">Rules</span></span>
+  <h2><span lang="th">7 ข้อที่ทุกคนในเครือข่ายใช้</span><span lang="en">Seven rules for everyone in the network</span></h2>
+ </div>
+ <div class="rules">
+  <ol>
+   <li><b><span lang="th">อายุ 20 ปีขึ้นไป</span><span lang="en">Aged 20 or over</span></b> <span lang="th">เจ้าของทุกคนยืนยันตัวตนกับเราก่อนเปิดโปรไฟล์</span><span lang="en">Every owner verifies their identity with us before a profile goes live.</span></li>
+   <li><b><span lang="th">บอกเสมอว่าเป็น Hybrid AI</span><span lang="en">Always labelled as Hybrid AI</span></b> <span lang="th">ทั้งบนโปรไฟล์ ในโพสต์ และตอนรับงาน</span><span lang="en">On profiles, in posts and when taking jobs.</span></li>
+   <li><b><span lang="th">ไม่สร้าง persona จากหน้าคนอื่น</span><span lang="en">No persona from someone else's face</span></b> <span lang="th">ใช้ได้เฉพาะหน้าเจ้าของเอง หรือหน้าผสมที่ไม่เหมือนใคร</span><span lang="en">Only the owner's own face or a unique blended face.</span></li>
+   <li><b><span lang="th">งานที่ต้องเจอตัวจริง</span><span lang="en">In-person jobs</span></b> <span lang="th">ลูกค้ารู้ก่อนว่าคนที่มาคือเจ้าของ persona ไม่ใช่หน้าในรูป</span><span lang="en">The client knows in advance that the owner comes, not the face in the pictures.</span></li>
+   <li><b><span lang="th">รับเฉพาะงานที่ถูกกฎหมาย</span><span lang="en">Legal work only</span></b> <span lang="th">ไม่รับจองตัวเพื่อบริการส่วนตัวแบบผู้ใหญ่</span><span lang="en">No bookings for private adult services.</span></li>
+   <li><b><span lang="th">เจ้าของเลือกระดับเนื้อหาเอง</span><span lang="en">Owners choose their content level</span></b> <span lang="th">เปลี่ยนได้ตลอด ระดับ 3 เฉพาะแพลตฟอร์มที่ตรวจอายุ</span><span lang="en">They can change it any time; level 3 only on age-checked platforms.</span></li>
+   <li><b><span lang="th">ถอนตัวได้ตลอด</span><span lang="en">Leave any time</span></b> <span lang="th">ปิดโปรไฟล์และขอลบข้อมูลได้ตาม PDPA</span><span lang="en">Close your profile and ask us to delete your data under PDPA.</span></li>
+  </ol>
+ </div>
+</section>
+
+<section id="hire">
+ <div class="applywrap">
+  <div class="apply-text">
+   <div class="sh">
+    <span class="kick"><span lang="th">จ้าง / collab</span><span lang="en">Hire / collab</span></span>
+    <h2><span lang="th">บอกเราว่าอยากทำงานกับ persona ตัวไหน</span><span lang="en">Tell us which persona you want to work with</span></h2>
+    <p><span lang="th">ใช้เวลาราว 2 นาที ไม่มีข้อผูกมัด ทีมจะติดต่อกลับภายใน 3 วันทำการ</span><span lang="en">It takes about two minutes, with no commitment. We reply within three working days.</span></p>
+   </div>
+   <ol class="apply-steps">
+    <li><b>1</b><span><span lang="th">เลือก persona หรือบอกงานที่อยากได้</span><span lang="en">Pick a persona or describe the job</span></span></li>
+    <li><b>2</b><span><span lang="th">บอกวัน สถานที่ และระดับเนื้อหา</span><span lang="en">Give the date, place and content level</span></span></li>
+    <li><b>3</b><span><span lang="th">เราส่งข้อเสนอพร้อมเงื่อนไขที่ชัดเจน</span><span lang="en">We send an offer with clear terms</span></span></li>
+   </ol>
+   <p id="picked" class="note" hidden></p>
+   <div class="cta">
+    <a class="btn solid" data-form-link="collab" href="https://docs.google.com/forms/d/e/1FAIpQLSeMq_JTFGpiQJKP_9g-QZOdutqorRxWlo_YVePwwGsQq9kePQ/viewform" target="_blank" rel="noopener"><span lang="th">เปิดฟอร์มในแท็บใหม่ ↗</span><span lang="en">Open the form in a new tab ↗</span></a>
+    <a class="btn" href="https://line.me/ti/p/lMN8pLDt_V" target="_blank" rel="noopener"><span lang="th">ส่งข้อความทาง LINE</span><span lang="en">Message us on LINE</span></a>
+   </div>
+  </div>
+  <div class="gform"><iframe data-form="collab" title="Hybrid AI Persona Network hire and collab form">Loading…</iframe></div>
+ </div>
+</section>
+</main>
+
+<div class="contact" id="contact">
+ <div class="wrap">
+  <div>
+   <h2><span lang="th">คุยกันก่อน ไม่มีข้อผูกมัด</span><span lang="en">Talk first, no commitment</span></h2>
+   <p><span lang="th">จะจ้าง persona collab หรือสร้าง persona ของคุณเอง ทักมาได้ทุกช่องทาง</span><span lang="en">Whether you want to hire a persona, collab or build your own, reach us on any channel.</span></p>
+  </div>
+  <div class="links">
+   <a class="btn solid" href="https://line.me/ti/p/lMN8pLDt_V" target="_blank" rel="noopener"><span lang="th">ส่งข้อความทาง LINE</span><span lang="en">Message us on LINE</span></a>
+   <a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · WIDEROOMS X ThB.Ho</a>
+   <a class="btn" href="mailto:threeandhour@gmail.com">Email · threeandhour@gmail.com</a>
+  </div>
+ </div>
+</div>
+<div class="foot"><div class="wrap">
+ <span class="fl"><a href="https://thbho.com/AIGymmateXFactory.html"><img src="creator-img/thho-logo.png" alt="Hybrid AI by ThB.Ho" loading="lazy" width="900" height="286"></a>© 2026 Hybrid Creator Labs · ThB.Ho</span>
+ <nav aria-label="Related pages"><a href="https://thbho.com/AIGymmateXFactory.html">Hybrid AI by ThB.Ho</a><a href="https://x.com/widerooms">WIDEROOMS X ThB.Ho</a><a href="ThBHoCreators.html">Creators</a><a href="ThBHoVenues.html">Venues</a><a href="ThBHoPortfolio.html">Portfolio</a></nav>
+</div></div>
+
+<script>
+(function(){
+ var root=document.documentElement, sel=document.getElementById('lang');
+ function set(l){root.lang=l;sel.value=l;THBHO_I18N.set(l);try{localStorage.setItem('thbho-lang',l)}catch(e){}}
+ var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
+ set(THBHO_I18N.pick(new URLSearchParams(location.search).get('lang'),saved));
+ sel.addEventListener('change',function(){set(sel.value)});
+
+ // hero clip: sound toggle, pause when off screen
+ var v=document.getElementById('hvid'),b=document.getElementById('snd');
+ b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.firstChild.nodeValue=v.muted?'🔇 ':'🔊 ';if(!v.muted)v.play().catch(function(){})});
+ if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)v.play().catch(function(){});else v.pause()})}).observe(v);
+ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause()}
+
+ // "Hire X" buttons: show which persona was picked above the form
+ var pk=document.getElementById('picked');
+ document.querySelectorAll('[data-persona]').forEach(function(a){a.addEventListener('click',function(){
+  var n=a.dataset.persona;pk.hidden=false;
+  pk.innerHTML='<span lang="th">คุณเลือก '+n+' · ใส่ชื่อ '+n+' ในฟอร์มด้วยนะครับ</span><span lang="en">You picked '+n+' · please write '+n+' in the form</span>';
+  try{window.gtag&&gtag('event','persona_open',{persona:n,page:'persona_network'})}catch(e){}
+ })});
+})();
+</script>
+</body>
+</html>

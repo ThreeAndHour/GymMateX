@@ -149,6 +149,38 @@ nav a:hover{color:var(--ink)}
 .price b{font:600 17px var(--display);display:block;margin-bottom:4px}
 .price p{margin:0 0 12px;color:var(--ink2);font-size:14.5px}
 
+/* what you get */
+.gets{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media (max-width:900px){.gets{grid-template-columns:1fr 1fr}.gets article:last-child{grid-column:1/-1}}
+.gets article{background:var(--s1);padding:18px;display:grid;gap:6px;align-content:start}
+.gets i{font-style:normal;font:500 12px var(--mono);color:var(--accent)}
+.gets h3{font-size:17px;line-height:1.3}
+.gets p{color:var(--ink2);font-size:14px;margin:0}
+.eg{margin-top:18px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;background:var(--s2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:22px 24px}
+@media (max-width:760px){.eg{grid-template-columns:1fr}}
+.eg h3{font-size:21px;line-height:1.3;margin:4px 0 8px}
+.eg p{color:var(--ink2);font-size:14.5px}
+.stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats li{background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stats b{display:block;font:700 26px var(--display);color:var(--accent)}
+.stats span{font-size:13px;color:var(--ink2)}
+.net{margin-top:18px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+@media (max-width:760px){.net{grid-template-columns:1fr}}
+.net h3{font-size:21px;line-height:1.3;margin-bottom:8px}
+.net p{color:var(--ink2);font-size:14.5px}
+.tones{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tones li{font:600 14px var(--display);border:1px solid var(--rose);color:var(--accent2);border-radius:99px;padding:5px 14px}
+.pk{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.pk{grid-template-columns:1fr}}
+.pk article{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px}
+.pk article.hot{border-color:var(--accent);background:linear-gradient(180deg,rgba(224,185,107,.08),var(--s1) 40%)}
+.pk small{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.pk h3{font-size:22px;margin:2px 0 10px}
+.pk ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--ink2);font-size:14.5px}
+.addons{margin-top:12px;background:var(--s2);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.addons p{margin:0 0 6px;color:var(--ink2);font-size:14.5px}
+.addons b{color:var(--ink);margin-right:6px}
+
 /* rules */
 .rules{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--rose);border-radius:10px;padding:22px 24px}
 .rules ol{margin:0;padding-left:22px;display:grid;gap:8px;color:var(--ink2)}
@@ -329,6 +361,85 @@ nav a:hover{color:var(--ink)}
    <article><small><span lang="th">เปิดหน้าอยู่แล้ว</span><span lang="en">Already on camera</span></small><h3><span lang="th">รับงานได้มากขึ้น ในหลายตลาดพร้อมกัน</span><span lang="en">Take more work, in more markets at once</span></h3><p><span lang="th">persona จากตัวคุณทำงานภาพและคลิปได้ ขณะที่ตัวจริงรับงานที่ต้องเจอตัว</span><span lang="en">A persona based on you handles photo and clip work while you take the in-person jobs.</span></p></article>
    <div class="price"><b><span lang="th">ราคาและส่วนแบ่ง</span><span lang="en">Prices and revenue share</span></b><p><span lang="th">แจ้งเมื่อคุยเป้าหมาย พร้อมงวดจ่ายและส่วนแบ่งที่เขียนชัดในสัญญา</span><span lang="en">Shared when we talk through your goals, with clear payment stages and revenue share written into the contract.</span></p><a class="btn solid" href="https://line.me/ti/p/lMN8pLDt_V" target="_blank" rel="noopener"><span lang="th">ส่งข้อความทาง LINE</span><span lang="en">Message us on LINE</span></a></div>
   </div>
+ </div>
+</section>
+
+<section id="get">
+ <div class="sh">
+  <span class="kick"><span lang="th">จ้างทำ persona แล้วได้อะไร</span><span lang="en">What you get with a persona</span></span>
+  <h2><span lang="th">ไม่ใช่แค่หน้าใหม่ แต่เป็นตัวตนที่พร้อมทำงาน</span><span lang="en">Not just a new face, a presence ready to work</span></h2>
+  <p><span lang="th">ทุกแพ็กเกจได้ 5 อย่างนี้ ต่างกันที่จำนวน</span><span lang="en">Every package includes these five things; only the amounts differ.</span></p>
+ </div>
+ <div class="gets">
+  <article><i>01</i><h3><span lang="th">ตัวละคร</span><span lang="en">Character</span></h3><p><span lang="th">ชื่อ MBTI เสียง สไตล์ และเรื่องราว ที่ใช้ได้ทุกงาน</span><span lang="en">Name, MBTI, voice, style and story, used in every job</span></p></article>
+  <article><i>02</i><h3><span lang="th">ภาพและคลิป</span><span lang="en">Photos and clips</span></h3><p><span lang="th">ภาพต้นแบบ คลิปสั้น และ MV หรือหนังสั้นในแพ็กเกจใหญ่</span><span lang="en">Reference photos, short clips, and a music video or short film in the larger packages</span></p></article>
+  <article><i>03</i><h3><span lang="th">เพลงประจำตัว</span><span lang="en">Signature music</span></h3><p><span lang="th">เพลงใหม่ของ persona ไว้ประกอบคอนเทนต์และ MV</span><span lang="en">Original songs for your persona's content and music videos</span></p></article>
+  <article><i>04</i><h3><span lang="th">ช่องโซเชียลพร้อมโพสต์</span><span lang="en">Social channels ready to post</span></h3><p><span lang="th">X, Instagram และ YouTube ตั้งชื่อ รูป ปก และคำแนะนำตัวให้ครบ</span><span lang="en">X, Instagram and YouTube set up with name, avatar, banner and bio</span></p></article>
+  <article><i>05</i><h3><span lang="th">โปรโมทในเครือข่าย</span><span lang="en">Promotion in the network</span></h3><p><span lang="th">เปิดตัวพร้อมกันบนช่องของเครือข่าย และแชร์ต่อในกลุ่มโทนเดียวกัน</span><span lang="en">Launched together on the network's channels and shared on within groups of the same tone</span></p></article>
+ </div>
+
+ <div class="eg">
+  <div>
+   <span class="kick"><span lang="th">ตัวอย่างจริง</span><span lang="en">A real example</span></span>
+   <h3><span lang="th">Three, B. และ Hour ทำมาแล้วแบบนี้</span><span lang="en">Three, B. and Hour already work this way</span></h3>
+   <p><span lang="th">ตัวเลขจากผลงานบน X (พ.ย. 2569) ทุกอย่างทำด้วยระบบเดียวกับที่ใช้สร้าง persona ให้คุณ</span><span lang="en">Figures from their work on X (Nov 2026), all made with the same system we use to build your persona.</span></p>
+   <div class="cta"><a class="btn" href="ThBHoPortfolio.html"><span lang="th">ดูผลงานทั้งหมด</span><span lang="en">See all the work</span> →</a><a class="btn" href="https://x.com/widerooms" target="_blank" rel="noopener">X · WIDEROOMS X ThB.Ho ↗</a></div>
+  </div>
+  <ul class="stats">
+   <li><b>90</b><span><span lang="th">คลิปบนหน้า Portfolio</span><span lang="en">clips in the Portfolio</span></span></li>
+   <li><b>45</b><span><span lang="th">MV พร้อมเพลงของตัวเอง</span><span lang="en">music videos with their own songs</span></span></li>
+   <li><b>1.3M+</b><span><span lang="th">ยอดวิวรวมบน X</span><span lang="en">total views on X</span></span></li>
+   <li><b>3</b><span><span lang="th">ช่องหลัก: X, Instagram, YouTube</span><span lang="en">main channels: X, Instagram, YouTube</span></span></li>
+  </ul>
+ </div>
+
+ <div class="net">
+  <div>
+   <h3><span lang="th">ยิ่งเครือข่ายกว้าง คอนเทนต์ยิ่งไปไว</span><span lang="en">The wider the network, the faster content travels</span></h3>
+   <p><span lang="th">persona ในเครือข่ายแชร์งานกันเองในกลุ่มคนดูโทนเดียวกัน คนที่ชอบแบบหนึ่งมักชอบอีกแบบที่ใกล้กัน งานใหม่จึงกระจายได้เร็วกว่าเริ่มจากศูนย์คนเดียว</span><span lang="en">Personas in the network share each other's work with audiences of the same tone. People who like one usually like a close neighbour, so new work spreads faster than starting alone from zero.</span></p>
+   <p class="note"><span lang="th">เราไม่สัญญาตัวเลขยอดวิว แต่รับประกันจำนวนครั้งที่แชร์ตามแพ็กเกจ</span><span lang="en">We don't promise view numbers, but we guarantee the number of shares in your package.</span></p>
+  </div>
+  <ul class="tones"><li>Hunk</li><li>BL</li><li><span lang="th">สายออกกำลังกาย</span><span lang="en">Fitness</span></li><li><span lang="th">เรื่องราวสามคน</span><span lang="en">Trio stories</span></li><li><span lang="th">ทะเลและการเดินทาง</span><span lang="en">Beach and travel</span></li><li><span lang="th">แฟนตาซีและไซไฟ</span><span lang="en">Fantasy and sci-fi</span></li><li><span lang="th">แฟชั่นชุดชั้นใน</span><span lang="en">Underwear fashion</span></li></ul>
+ </div>
+
+ <div class="pk">
+  <article>
+   <small>Seed</small><h3><span lang="th">เริ่มต้น</span><span lang="en">Starter</span></h3>
+   <ul>
+    <li><span lang="th">1 persona · ตัวละครครบ</span><span lang="en">1 persona · full character</span></li>
+    <li><span lang="th">ภาพต้นแบบ 9 ภาพ</span><span lang="en">9 reference photos</span></li>
+    <li><span lang="th">คลิปสั้น 3 คลิป</span><span lang="en">3 short clips</span></li>
+    <li><span lang="th">ตั้งช่อง X และ Instagram</span><span lang="en">X and Instagram set up</span></li>
+    <li><span lang="th">แชร์เปิดตัวในเครือข่าย 3 ครั้ง</span><span lang="en">3 launch shares in the network</span></li>
+   </ul>
+  </article>
+  <article class="hot">
+   <small>Studio</small><h3><span lang="th">พร้อมรับงาน</span><span lang="en">Ready for work</span></h3>
+   <ul>
+    <li><span lang="th">1 persona · ถ่ายต้นแบบที่ศูนย์กลางในกรุงเทพฯ</span><span lang="en">1 persona · reference shoot at our Bangkok hub</span></li>
+    <li><span lang="th">ภาพ 27 ภาพ · คลิป 7 คลิป</span><span lang="en">27 photos · 7 clips</span></li>
+    <li><span lang="th">เพลงประจำตัว 1 เพลง</span><span lang="en">1 signature song</span></li>
+    <li><span lang="th">ตั้งช่อง X, Instagram และ YouTube</span><span lang="en">X, Instagram and YouTube set up</span></li>
+    <li><span lang="th">คลิป collab กับ persona ผู้ก่อตั้ง 1 คลิป</span><span lang="en">1 collab clip with a founding persona</span></li>
+    <li><span lang="th">แชร์เปิดตัวในเครือข่าย 7 ครั้ง · ขึ้นทำเนียบ 3 เดือน</span><span lang="en">7 launch shares in the network · 3 months in the directory</span></li>
+   </ul>
+  </article>
+  <article>
+   <small>Universe</small><h3><span lang="th">จักรวาลของคุณ</span><span lang="en">Your own universe</span></h3>
+   <ul>
+    <li><span lang="th">สูงสุด 3 persona ที่มีเรื่องราวร่วมกัน</span><span lang="en">Up to 3 personas with a shared story</span></li>
+    <li><span lang="th">MV หรือหนังสั้น 1 เรื่อง · คลิป 27 คลิป</span><span lang="en">1 music video or short film · 27 clips</span></li>
+    <li><span lang="th">เพลงใหม่ 3 เพลง</span><span lang="en">3 original songs</span></li>
+    <li><span lang="th">ตั้งช่องครบทุกช่อง รวม TikTok</span><span lang="en">Every channel set up, TikTok included</span></li>
+    <li><span lang="th">แคมเปญเปิดตัว แชร์ในเครือข่าย 27 ครั้ง</span><span lang="en">Launch campaign with 27 shares in the network</span></li>
+    <li><span lang="th">ขึ้น Portfolio และทำเนียบ 9 เดือน</span><span lang="en">Featured in the Portfolio and 9 months in the directory</span></li>
+   </ul>
+  </article>
+ </div>
+ <div class="addons">
+  <p><b><span lang="th">คอนเทนต์รายเดือน</span><span lang="en">Monthly content</span></b> <span lang="th">ภาพ 9 ภาพ + คลิป 3 คลิป + แชร์ในเครือข่าย 7 ครั้ง ต่อเดือน</span><span lang="en">9 photos + 3 clips + 7 network shares a month</span></p>
+  <p><b>Network Boost</b> <span lang="th">ดันงานชิ้นเดียว แชร์ในเครือข่าย 7 ครั้งภายใน 7 วัน</span><span lang="en">Push one piece of work with 7 network shares within 7 days</span></p>
+  <p class="note"><span lang="th">ราคาแจ้งเมื่อคุยเป้าหมาย งวดจ่ายและส่วนแบ่งเขียนชัดในสัญญา</span><span lang="en">Prices are shared when we talk through your goals; payment stages and revenue share are written clearly into the contract.</span></p>
  </div>
 </section>
 

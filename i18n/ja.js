@@ -1,7 +1,7 @@
 THBHO_I18N_ADD('ja', {
+  "When the whole world is full of AI content, the most valuable thing will be <em>a persona that is you, and that you own</em>": "世界が AI コンテンツであふれるとき、いちばん価値があるのは<em>あなた自身であり、あなたが持ち主であるペルソナ</em>です",
   "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI ペルソナによる実際の MV",
   "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "世界のすべてが AI コンテンツになる未来で、いちばん価値があるのは<em>あなた自身であるペルソナ</em>、そして<em>あなたが所有する</em> Hybrid ペルソナです。",
-  "When the whole world is full of AI content, the most valuable thing will be <em>an ad that is you, and that you own</em>": "世界が AI コンテンツであふれるとき、いちばん価値があるのは<em>あなた自身である広告、そしてあなたが持ち主である広告</em>です",
   "What you get with a persona": "ペルソナで得られるもの",
   "Not just a new face, a presence ready to work": "新しい顔だけでなく、すぐ働ける存在",
   "Every package includes these five things; only the amounts differ.": "どのパッケージにもこの5つが入っていて、違うのは量だけです。",

@@ -126,6 +126,20 @@ html:is([lang="ru"],[lang="es"]) .thesis{white-space:normal;text-wrap:balance}
 .work h3{font-size:17px;line-height:1.3}
 .work p{color:var(--ink2);font-size:14px;margin:0}
 .work article.cta-cell{background:var(--s2);align-content:center}
+.work article.vc{position:relative;overflow:hidden;min-height:190px;align-content:end}
+.work article.vc>*{position:relative;z-index:1}
+.work article.vc>.ubg{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;opacity:.55;transition:opacity .5s,transform 6s ease-out;pointer-events:none}
+.work article.vc>.ushade{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(14,10,12,.15),rgba(14,10,12,.88) 70%);pointer-events:none}
+.work article.vc:hover>.ubg{opacity:.8;transform:scale(1.04)}
+.work article.vc p{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.work article.vc>.ubg{transition:none}.work article.vc:hover>.ubg{transform:none}}
+/* folds */
+.fold-btn{justify-self:start;display:inline-flex;align-items:center;gap:8px;margin-top:6px;font:600 13px var(--mono);letter-spacing:.06em;color:var(--ink2);background:var(--s1);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;cursor:pointer}
+.fold-btn b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#1A1305;font:700 16px/1 var(--mono)}
+.fold-btn:hover{color:var(--ink);border-color:var(--accent)}
+.fold-btn .c,.fold-btn[aria-expanded="true"] .o{display:none}.fold-btn[aria-expanded="true"] .c{display:inline}
+.fold .sh{margin-bottom:12px}.fold-body{margin-top:14px}
+
 
 /* real-face creators */
 .seats{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px}
@@ -259,12 +273,14 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
  </div>
 </div>
 
-<section id="idea">
+<section id="idea" class="fold">
  <div class="sh">
   <span class="kick"><span lang="th">หลักคิด</span><span lang="en">The idea</span></span>
   <h2><span lang="th">เจ้าของ 1 คน มีได้หลายหน้า</span><span lang="en">One owner, many faces</span></h2>
   <p><span lang="th">คนจำนวนมากอยากทำงานหน้ากล้อง แต่ไม่อยากเปิดหน้า persona ทำให้ทำงานได้ โดยตัวจริงอยู่หลังบ้าน ส่วน creator ที่เปิดหน้าอยู่แล้วก็มี persona จากตัวเองเพิ่มได้ เพื่อรับงานหลากหลายขึ้น</span><span lang="en">Many people want to work on camera without showing their face. A persona lets them work while the real person stays behind the scenes. Creators who already show their face can add personas based on themselves to take on more kinds of work.</span></p>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-idea"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
  </div>
+ <div class="fold-body" id="fold-idea" hidden>
  <div class="idea">
   <div class="owner"><b><span lang="th">เจ้าของตัวจริง</span><span lang="en">The real owner</span></b><span><span lang="th">ยืนยันตัวตน · 20+ · อยู่หลังบ้าน</span><span lang="en">Verified · 20+ · stays private</span></span></div>
   <div class="arrow" aria-hidden="true">→</div>
@@ -274,6 +290,7 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
    <div class="face" style="--c:var(--rose)"><small>Persona 2–3</small><b>Hybrid AI</b><span><span lang="th">สายงานหรือตลาดอื่น</span><span lang="en">Other lines or markets</span></span></div>
   </div>
   <p class="idea-eg"><span lang="th">ตัวอย่างแรก: ผู้ก่อตั้งไม่เปิดหน้า แต่มี persona 3 ตัว คือ <b>Three, B. และ Hour</b> ที่ทำงานจริงมาแล้วทั้ง MV หนังสั้น และงานแบรนด์</span><span lang="en">First example: our founder doesn't show his face, but works through three personas, <b>Three, B. and Hour</b>, who already make music videos, short films and brand work.</span></p>
+ </div>
  </div>
 </section>
 
@@ -328,27 +345,30 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
   <p><span lang="th">ทุกงานต้องถูกกฎหมาย งานที่ต้องเจอตัว ลูกค้าจะรู้ก่อนว่าคนที่มาคือเจ้าของ persona</span><span lang="en">Every job must be legal. For in-person jobs, the client knows in advance that the persona's owner is the one who comes.</span></p>
  </div>
  <div class="work">
-  <article><i>01</i><h3><span lang="th">นายแบบ</span><span lang="en">Modelling</span></h3><p><span lang="th">ภาพสินค้า แฟชั่น ชุดชั้นใน ชุดว่ายน้ำ</span><span lang="en">Product, fashion, underwear and swimwear shoots</span></p></article>
-  <article><i>02</i><h3><span lang="th">หน้าแบรนด์</span><span lang="en">Brand face</span></h3><p><span lang="th">ตัวแทนแบรนด์ระยะยาว โพสต์ และแคมเปญ</span><span lang="en">Long-term brand ambassador, posts and campaigns</span></p></article>
-  <article><i>03</i><h3><span lang="th">MV / หนังสั้น</span><span lang="en">Music videos / short films</span></h3><p><span lang="th">นักแสดงนำ พร้อมทีมผลิตของ Lab</span><span lang="en">Lead roles, with the Lab's production team</span></p></article>
-  <article><i>04</i><h3><span lang="th">พิธีกร / MC</span><span lang="en">Host / MC</span></h3><p><span lang="th">ไลฟ์ วิดีโอแนะนำ และงานบนเวที</span><span lang="en">Live streams, explainer videos and stage work</span></p></article>
-  <article><i>05</i><h3><span lang="th">อีเวนต์ O2O</span><span lang="en">O2O events</span></h3><p><span lang="th">จากออนไลน์สู่งานจริงที่ศูนย์กลางในกรุงเทพฯ</span><span lang="en">From online to real events at our Bangkok hub</span></p></article>
-  <article><i>06</i><h3><span lang="th">เทรนเนอร์ / wellness</span><span lang="en">Trainer / wellness</span></h3><p><span lang="th">ฟิตเนส ดูแลตัวเอง และคอร์สสุขภาพ</span><span lang="en">Fitness, self-care and wellness courses</span></p></article>
-  <article><i>07</i><h3><span lang="th">ที่ปรึกษา / เล่าเรื่อง</span><span lang="en">Advisor / storyteller</span></h3><p><span lang="th">เล่าเรื่องแบรนด์ นิยาย และคอนเทนต์ยาว</span><span lang="en">Brand stories, fiction and long-form content</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-model.mp4" poster="creator-vid/pn-model.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>01</i><h3><span lang="th">นายแบบ</span><span lang="en">Modelling</span></h3><p><span lang="th">ภาพสินค้า แฟชั่น ชุดชั้นใน ชุดว่ายน้ำ</span><span lang="en">Product, fashion, underwear and swimwear shoots</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-brand.mp4" poster="creator-vid/pn-brand.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>02</i><h3><span lang="th">หน้าแบรนด์</span><span lang="en">Brand face</span></h3><p><span lang="th">ตัวแทนแบรนด์ระยะยาว โพสต์ และแคมเปญ</span><span lang="en">Long-term brand ambassador, posts and campaigns</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-mv.mp4" poster="creator-vid/pn-mv.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>03</i><h3><span lang="th">MV / หนังสั้น</span><span lang="en">Music videos / short films</span></h3><p><span lang="th">นักแสดงนำ พร้อมทีมผลิตของ Lab</span><span lang="en">Lead roles, with the Lab's production team</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-mc.mp4" poster="creator-vid/pn-mc.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>04</i><h3><span lang="th">พิธีกร / MC</span><span lang="en">Host / MC</span></h3><p><span lang="th">ไลฟ์ วิดีโอแนะนำ และงานบนเวที</span><span lang="en">Live streams, explainer videos and stage work</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-o2o.mp4" poster="creator-vid/pn-o2o.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>05</i><h3><span lang="th">อีเวนต์ O2O</span><span lang="en">O2O events</span></h3><p><span lang="th">จากออนไลน์สู่งานจริงที่ศูนย์กลางในกรุงเทพฯ</span><span lang="en">From online to real events at our Bangkok hub</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-trainer.mp4" poster="creator-vid/pn-trainer.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>06</i><h3><span lang="th">เทรนเนอร์ / wellness</span><span lang="en">Trainer / wellness</span></h3><p><span lang="th">ฟิตเนส ดูแลตัวเอง และคอร์สสุขภาพ</span><span lang="en">Fitness, self-care and wellness courses</span></p></article>
+  <article class="vc"><video class="ubg" src="creator-vid/pn-story.mp4" poster="creator-vid/pn-story.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="ushade" aria-hidden="true"></span><i>07</i><h3><span lang="th">ที่ปรึกษา / เล่าเรื่อง</span><span lang="en">Advisor / storyteller</span></h3><p><span lang="th">เล่าเรื่องแบรนด์ นิยาย และคอนเทนต์ยาว</span><span lang="en">Brand stories, fiction and long-form content</span></p></article>
   <article class="cta-cell"><a class="btn close" href="#hire"><span lang="th">บอกงานของคุณ</span><span lang="en">Tell us your job</span> →</a></article>
  </div>
 </section>
 
-<section id="creators">
+<section id="creators" class="fold">
  <div class="sh">
   <span class="kick"><span lang="th">creator หน้าจริง</span><span lang="en">Real-face creators</span></span>
   <h2><span lang="th">เปิดรับรอบแรก 7 ที่</span><span lang="en">First round: seven places</span></h2>
   <p><span lang="th">creator ที่เปิดหน้าและยินยอม จะขึ้นทำเนียบนี้พร้อมป้าย "หน้าจริง" และมี persona จากตัวเองเพิ่มได้</span><span lang="en">Creators who show their face and opt in join this directory with a "real face" label, and can add personas based on themselves.</span></p>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-creators"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
  </div>
+ <div class="fold-body" id="fold-creators" hidden>
  <div class="seats" aria-hidden="true"><div class="seat">01</div><div class="seat">02</div><div class="seat">03</div><div class="seat">04</div><div class="seat">05</div><div class="seat">06</div><div class="seat">07</div></div>
  <div class="opencall">
   <p><span lang="th">คุณเป็น creator อายุ 20+ และอยากรับงานผ่านเครือข่ายนี้? เริ่มจากฟอร์ม collab ด้านล่าง หรือทักเราทาง LINE</span><span lang="en">Are you a creator aged 20+ who wants work through this network? Start with the collab form below or message us on LINE.</span></p>
   <a class="btn solid" href="#hire"><span lang="th">สมัครเป็น creator</span><span lang="en">Apply as a creator</span> →</a>
+ </div>
  </div>
 </section>
 
@@ -457,11 +477,13 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
  </div>
 </section>
 
-<section id="rules">
+<section id="rules" class="fold">
  <div class="sh">
   <span class="kick"><span lang="th">กติกา</span><span lang="en">Rules</span></span>
   <h2><span lang="th">7 ข้อที่ทุกคนในเครือข่ายใช้</span><span lang="en">Seven rules for everyone in the network</span></h2>
+  <button type="button" class="fold-btn" aria-expanded="false" aria-controls="fold-rules"><b aria-hidden="true">+</b><span class="o"><span lang="th">แสดง</span><span lang="en">Show</span></span><span class="c"><span lang="th">ซ่อน</span><span lang="en">Hide</span></span></button>
  </div>
+ <div class="fold-body" id="fold-rules" hidden>
  <div class="rules">
   <ol>
    <li><b><span lang="th">อายุ 20 ปีขึ้นไป</span><span lang="en">Aged 20 or over</span></b> <span lang="th">เจ้าของทุกคนยืนยันตัวตนกับเราก่อนเปิดโปรไฟล์</span><span lang="en">Every owner verifies their identity with us before a profile goes live.</span></li>
@@ -472,6 +494,7 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
    <li><b><span lang="th">เจ้าของเลือกระดับเนื้อหาเอง</span><span lang="en">Owners choose their content level</span></b> <span lang="th">เปลี่ยนได้ตลอด ระดับ 3 เฉพาะแพลตฟอร์มที่ตรวจอายุ</span><span lang="en">They can change it any time; level 3 only on age-checked platforms.</span></li>
    <li><b><span lang="th">ถอนตัวได้ตลอด</span><span lang="en">Leave any time</span></b> <span lang="th">ปิดโปรไฟล์และขอลบข้อมูลได้ตาม PDPA</span><span lang="en">Close your profile and ask us to delete your data under PDPA.</span></li>
   </ol>
+ </div>
  </div>
 </section>
 
@@ -525,6 +548,19 @@ html:is([lang="th"],[lang="ko"]) .motto p{word-break:keep-all}.nw{white-space:no
  set(THBHO_I18N.pick(new URLSearchParams(location.search).get('lang'),saved));
  sel.addEventListener('change',function(){set(sel.value)});
 
+ // work cards: background clips play only while on screen
+ (function(){var vs=document.querySelectorAll('.work .ubg');if(!vs.length)return;
+  if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.preload='auto';e.target.play().catch(function(){})}else e.target.pause()})},{threshold:.25});
+  vs.forEach(function(v){io.observe(v)});})();
+ // +/- folds
+ (function(){
+  function set(sec,open){var b=sec.querySelector('.fold-btn'),d=sec.querySelector('.fold-body');if(!b||!d)return;d.hidden=!open;b.setAttribute('aria-expanded',open);b.querySelector('b').textContent=open?'−':'+';}
+  document.querySelectorAll('section.fold').forEach(function(sec){sec.querySelector('.fold-btn').addEventListener('click',function(){set(sec,this.getAttribute('aria-expanded')!=='true')})});
+  function fromHash(){var h=location.hash.slice(1);if(!h)return;var el=document.getElementById(h);var sec=el&&el.closest('section.fold');if(sec){set(sec,true);setTimeout(function(){el.scrollIntoView()},30)}}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute('href').slice(1));var sec=el&&el.closest('section.fold');if(sec)set(sec,true)});
+  fromHash();window.addEventListener('hashchange',fromHash);
+ })();
  // "Hire X" buttons: show which persona was picked above the form
  var pk=document.getElementById('picked');
  document.querySelectorAll('[data-persona]').forEach(function(a){a.addEventListener('click',function(){

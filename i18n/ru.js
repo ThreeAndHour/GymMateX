@@ -1,4 +1,6 @@
 THBHO_I18N_ADD('ru', {
+  "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "В будущем, где всё в мире — это AI-контент, самое ценное — <em>персона, которая и есть вы</em>, и <em>вы владеете</em> этой Hybrid персоной.",
+  "When the whole world is full of AI content, the most valuable thing will be <em>an ad that is you, and that you own</em>": "Когда весь мир заполнен AI-контентом, самым ценным станет <em>реклама, которая — это вы, и которой владеете вы</em>",
   "What you get with a persona": "Что вы получаете с персоной",
   "Not just a new face, a presence ready to work": "Не просто новое лицо, а образ, готовый к работе",
   "Every package includes these five things; only the amounts differ.": "Каждый пакет включает эти пять пунктов, отличается только количество.",

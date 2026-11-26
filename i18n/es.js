@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('es', {
+  "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · un videoclip real de personas Hybrid AI",
   "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "En un futuro en el que todo en el mundo es contenido de IA, lo más valioso es <em>una persona que eres tú</em>, y que <em>tú eres dueño</em> de esa persona Hybrid.",
   "When the whole world is full of AI content, the most valuable thing will be <em>an ad that is you, and that you own</em>": "Cuando el mundo entero esté lleno de contenido de IA, lo más valioso será <em>un anuncio que eres tú, y que es tuyo</em>",
   "What you get with a persona": "Qué obtienes con una persona",

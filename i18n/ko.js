@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('ko', {
+  "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI 페르소나의 실제 MV",
   "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "세상의 모든 것이 AI 콘텐츠가 되는 미래에 가장 가치 있는 것은 <em>바로 당신인 페르소나</em>, 그리고 <em>당신이 소유한</em> Hybrid 페르소나입니다.",
   "When the whole world is full of AI content, the most valuable thing will be <em>an ad that is you, and that you own</em>": "온 세상이 AI 콘텐츠로 가득해질 때, 가장 값진 것은 <em>바로 당신인 광고, 그리고 당신이 소유한 광고</em>입니다",
   "What you get with a persona": "페르소나로 얻는 것",

@@ -1,4 +1,5 @@
 THBHO_I18N_ADD('zh', {
+  "\"Whisper in the Shadow\" · a real music video by Hybrid AI personas": "\"Whisper in the Shadow\" · Hybrid AI 角色的真实 MV",
   "In a future where everything in the world is AI content, the most valuable thing is <em>a persona that is you</em>, and <em>you own</em> that Hybrid persona.": "当世界上的一切都是 AI 内容时，未来最有价值的东西，是<em>那个就是你的角色</em>，而且<em>你拥有</em>这个 Hybrid 角色。",
   "When the whole world is full of AI content, the most valuable thing will be <em>an ad that is you, and that you own</em>": "当整个世界都充满 AI 内容时，最有价值的将是<em>一个就是你、并且归你所有的广告</em>",
   "What you get with a persona": "打造角色能得到什么",

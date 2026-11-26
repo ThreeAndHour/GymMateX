@@ -59,7 +59,7 @@ nav a:hover{color:var(--ink)}
 
 .hero{padding:30px 0 10px}
 .hvid{margin:0 0 26px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000;position:relative}
-.hvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.hvid .yt{position:relative;aspect-ratio:16/9}.hvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .hvid figcaption{padding:9px 14px;background:var(--s1);border-top:1px solid var(--line);font-size:13px;color:var(--ink2)}
 .snd{position:absolute;top:12px;right:12px;font:500 12px var(--mono);color:#fff;background:rgba(14,10,12,.7);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:5px 12px;cursor:pointer}
 .eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin:0 0 12px}
@@ -243,9 +243,8 @@ nav a:hover{color:var(--ink)}
 <main class="wrap" id="top">
 <div class="hero">
  <figure class="hvid">
-  <video id="hvid" src="https://video.twimg.com/amplify_video/2125223068587237376/vid/avc1/1280x720/GmkLZgtIs6RkRQgC.mp4?tag=29" poster="https://pbs.twimg.com/media/HX5UhwFa4AA2Wif.jpg" referrerpolicy="no-referrer" autoplay muted loop playsinline preload="metadata"></video>
-  <button class="snd" type="button" id="snd" aria-pressed="false">🔇 <span lang="th">เปิดเสียง</span><span lang="en">Sound on</span></button>
-  <figcaption><span lang="th">Three × Hour · "Ve con la corriente, crece con el agua." · งานจริงจาก Hybrid AI persona</span><span lang="en">Three × Hour · "Ve con la corriente, crece con el agua." · real work by Hybrid AI personas</span> · <a href="https://x.com/widerooms/status/2125225422678106502" target="_blank" rel="noopener">X ↗</a></figcaption>
+  <div class="yt"><iframe id="hvid" src="https://www.youtube-nocookie.com/embed/EaiV-ZXeQvg?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=EaiV-ZXeQvg&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="Whisper in the Shadow — Hybrid AI personas" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <figcaption><span lang="th">"Whisper in the Shadow" · MV จริงจาก Hybrid AI persona</span><span lang="en">"Whisper in the Shadow" · a real music video by Hybrid AI personas</span> · <a href="https://youtu.be/EaiV-ZXeQvg" target="_blank" rel="noopener">YouTube ↗</a></figcaption>
  </figure>
  <p class="eyebrow">by Hybrid Creator Labs · ThB.Ho</p>
  <h1>Hybrid AI <b>Persona Network</b></h1>
@@ -522,12 +521,6 @@ nav a:hover{color:var(--ink)}
  var saved=null;try{saved=localStorage.getItem('thbho-lang')}catch(e){}
  set(THBHO_I18N.pick(new URLSearchParams(location.search).get('lang'),saved));
  sel.addEventListener('change',function(){set(sel.value)});
-
- // hero clip: sound toggle, pause when off screen
- var v=document.getElementById('hvid'),b=document.getElementById('snd');
- b.addEventListener('click',function(){v.muted=!v.muted;b.setAttribute('aria-pressed',!v.muted);b.firstChild.nodeValue=v.muted?'🔇 ':'🔊 ';if(!v.muted)v.play().catch(function(){})});
- if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)v.play().catch(function(){});else v.pause()})}).observe(v);
- if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause()}
 
  // "Hire X" buttons: show which persona was picked above the form
  var pk=document.getElementById('picked');
